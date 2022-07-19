@@ -1,0 +1,26 @@
+import createSagaMiddleware from "redux-saga";
+import { configureStore } from "@reduxjs/toolkit";
+import logger from "redux-logger";
+
+import rootReducer from "./rootReducer";
+// import { rootSaga } from "./rootSaga";
+
+// disable thunk and add redux-saga middleware
+let sagaMiddleware = createSagaMiddleware();
+const middleware = [sagaMiddleware];
+
+// Mount it on the Store
+const store = configureStore({
+  reducer: rootReducer,
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware().concat(middleware).concat(logger),
+  devTools: process.env.NODE_ENV !== "production",
+});
+
+export type AppDispatch = typeof store.dispatch;
+export type RootState = ReturnType<typeof store.getState>;
+
+// Run the saga
+// sagaMiddleware.run(rootSaga);
+
+export default store;
