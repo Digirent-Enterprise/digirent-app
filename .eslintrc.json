@@ -25,6 +25,7 @@
     "react/jsx-uses-react": ["off"],
     "react/jsx-props-no-spreading": ["warn"],
     "react/no-unescaped-entities": ["off"],
-    "import/prefer-default-export": ["off"]
+    "import/prefer-default-export": ["off"],
+    "default-param-last": ["off"]
   }
 }
