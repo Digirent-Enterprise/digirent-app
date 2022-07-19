@@ -1,7 +1,7 @@
 import { all, fork } from "redux-saga/effects";
 
-import productSaga from "./product/sagas";
+// import productSaga from "./product/sagas";
 
-export function* rootSaga() {
-  yield all([fork(productSaga)]);
-}
+// export function* rootSaga() {
+//   yield all([fork(productSaga)]);
+// }
