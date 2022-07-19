@@ -1,40 +1,40 @@
 import {
-  FETCH_USERS_ACTIVE,
-  FETCH_USERS_DEACTIVATE,
-  FETCH_USERS_ERROR,
+  FETCH_PRODUCTS_PENDING,
+  FETCH_PRODUCTS_AVAILABLE,
+  FETCH_PRODUCTS_ERROR,
 } from "../types/action.types";
 
-interface UserAction {
+interface ProductAction {
   type: string;
   payload: string;
   error: Error | string;
 }
 
 const initialState = {
-  active: false,
-  users: [],
+  pending: false,
+  products: [],
   error: null,
 };
 
 // eslint-disable-next-line @typescript-eslint/default-param-last
-const productsReducer = (state = initialState, action: UserAction) => {
+const productsReducer = (state = initialState, action: ProductAction) => {
   switch (action.type) {
-    case FETCH_USERS_ACTIVE:
+    case FETCH_PRODUCTS_PENDING:
       return {
         ...state,
-        active: true,
-        users: action.payload,
+        pending: true,
+        products: action.payload,
       };
-    case FETCH_USERS_DEACTIVATE:
+    case FETCH_PRODUCTS_AVAILABLE:
       return {
         ...state,
-        active: false,
-        users: action.payload,
+        pending: false,
+        products: action.payload,
       };
-    case FETCH_USERS_ERROR:
+    case FETCH_PRODUCTS_ERROR:
       return {
         ...state,
-        active: false,
+        pending: false,
         error: action.error,
       };
     default:
