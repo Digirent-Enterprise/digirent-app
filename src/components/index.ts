@@ -1,3 +1,4 @@
-import { SearchField } from "./form/SearchField/SearchField";
+import Breadcrumb from "./breadcrumb/Breadcrumb/Breadcrumb";
+import SearchField from "./form/SearchField/SearchField";
 
-export { SearchField };
+export { SearchField, Breadcrumb };

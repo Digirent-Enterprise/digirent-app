@@ -4,4 +4,4 @@ function SearchField() {
   return <div>Search</div>;
 }
 
-export { SearchField };
+export default SearchField;
