@@ -1,7 +1,5 @@
-const localHostFE = "http://localhost:3000/";
+import axios from "axios";
 
-const api = {
-  urlDomain: localHostFE, // localHostFE(dev) or cloudDomain(production)
-};
-
-export default api;
+export default axios.create({
+    baseURL: 'https://jsonplaceholder.typicode.com'
+})
