@@ -6,7 +6,7 @@ import rootReducer from "./rootReducer";
 // import { rootSaga } from "./rootSaga";
 
 // disable thunk and add redux-saga middleware
-let sagaMiddleware = createSagaMiddleware();
+const sagaMiddleware = createSagaMiddleware();
 const middleware = [sagaMiddleware];
 
 // Mount it on the Store
