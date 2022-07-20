@@ -2,7 +2,7 @@ import {
   FETCH_USERS_ACTIVE,
   FETCH_USERS_DEACTIVATE,
   FETCH_USERS_ERROR,
-} from "../types/action.types";
+} from "../types/actionTypes";
 
 interface UserAction {
   type: string;

@@ -1,9 +1,10 @@
 import { combineReducers } from "@reduxjs/toolkit";
-
-import errorReducer from "./reducers/errorReducer";
+import productsReducer from "./reducers/productsReducer";
+import usersReducer from "./reducers/usersReducer";
 
 const rootReducer = combineReducers({
-  error: errorReducer,
+  product: productsReducer,
+  user: usersReducer,
 });
 
 export type AppState = ReturnType<typeof rootReducer>;

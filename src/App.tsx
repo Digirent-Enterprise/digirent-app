@@ -1,10 +1,8 @@
 import React from "react";
 import "./App.css";
-// Components
-// import { Breadcrumb } from "./components";
 
 function App() {
-  return <div>HI</div>;
+  return <div>Hi</div>;
 }
 
 export default App;
