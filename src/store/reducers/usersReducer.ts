@@ -16,8 +16,7 @@ const initialState = {
   error: null,
 };
 
-// eslint-disable-next-line @typescript-eslint/default-param-last
-const productsReducer = (state = initialState, action: UserAction) => {
+const usersReducer = (state = initialState, action: UserAction) => {
   switch (action.type) {
     case FETCH_USERS_ACTIVE:
       return {
@@ -42,4 +41,4 @@ const productsReducer = (state = initialState, action: UserAction) => {
   }
 };
 
-export default productsReducer;
+export default usersReducer;

@@ -16,7 +16,6 @@ const initialState = {
   error: null,
 };
 
-// eslint-disable-next-line @typescript-eslint/default-param-last
 const productsReducer = (state = initialState, action: ProductAction) => {
   switch (action.type) {
     case FETCH_PRODUCTS_PENDING:
