@@ -1,15 +1,16 @@
 import axios from "axios";
 import { all, call, put, takeLatest } from "redux-saga/effects";
-import { IProduct } from "../types/productTypes";
+import { IProduct } from "../types/product.types";
 import {
   fetchProductsAvailable,
   fetchProductsError,
   fetchProductsPending,
-} from "../actions/productActions";
-import { FETCH_PRODUCTS_REQUEST } from "../types/actionTypes";
-import { baseURL } from "../../utils/api";
+} from "../actions/product.action";
+import { FETCH_PRODUCTS_REQUEST } from "../types/action.types";
+import { API_BASE_URL } from "../../utils/constants/api.constants";
 
-const getProducts = () => axios.get<IProduct[]>(`${baseURL}/admin/products)`);
+const getProducts = () =>
+  axios.get<IProduct[]>(`${API_BASE_URL}/admin/products)`);
 
 function* fetchProductAvailableSaga(): any {
   try {

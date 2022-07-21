@@ -1,4 +1,5 @@
-import Breadcrumb from "./breadcrumb/Breadcrumb/Breadcrumb";
-import SearchField from "./form/SearchField/SearchField";
+import { SearchField, Breadcrumb } from "./elements";
 
-export { SearchField, Breadcrumb };
+import { DefaultModal } from "./modules";
+
+export { SearchField, Breadcrumb, DefaultModal };

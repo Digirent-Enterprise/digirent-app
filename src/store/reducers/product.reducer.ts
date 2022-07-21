@@ -3,9 +3,9 @@ import {
   FETCH_PRODUCTS_PENDING,
   FETCH_PRODUCTS_AVAILABLE,
   FETCH_PRODUCTS_ERROR,
-} from "../types/actionTypes";
+} from "../types/action.types";
 
-import { ProductActions, ProductState } from "../types/productTypes";
+import { ProductActions, ProductState } from "../types/product.types";
 
 const initialState: ProductState = {
   pending: false,
@@ -13,7 +13,7 @@ const initialState: ProductState = {
   error: null,
 };
 
-const productsReducer = (state = initialState, action: ProductActions) => {
+const ProductReducer = (state = initialState, action: ProductActions) => {
   switch (action.type) {
     case FETCH_PRODUCTS_REQUEST:
       return {
@@ -43,4 +43,4 @@ const productsReducer = (state = initialState, action: ProductActions) => {
   }
 };
 
-export default productsReducer;
+export default ProductReducer;

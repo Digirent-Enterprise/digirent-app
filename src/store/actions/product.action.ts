@@ -3,7 +3,7 @@ import {
   FETCH_PRODUCTS_PENDING,
   FETCH_PRODUCTS_AVAILABLE,
   FETCH_PRODUCTS_ERROR,
-} from "../types/actionTypes";
+} from "../types/action.types";
 
 import {
   FetchProductRequest,
@@ -13,7 +13,7 @@ import {
   FetchProductPendingPayload,
   FetchProductError,
   FetchProductErrorPayload,
-} from "../types/productTypes";
+} from "../types/product.types";
 
 export const fetchProductRequest = (): FetchProductRequest => ({
   type: FETCH_PRODUCTS_REQUEST,

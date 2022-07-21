@@ -2,7 +2,7 @@ import {
   FETCH_USERS_ACTIVE,
   FETCH_USERS_DEACTIVATE,
   FETCH_USERS_ERROR,
-} from "../types/actionTypes";
+} from "../types/action.types";
 
 interface UserAction {
   type: string;
@@ -16,7 +16,7 @@ const initialState = {
   error: null,
 };
 
-const usersReducer = (state = initialState, action: UserAction) => {
+const UserReducer = (state = initialState, action: UserAction) => {
   switch (action.type) {
     case FETCH_USERS_ACTIVE:
       return {
@@ -41,4 +41,4 @@ const usersReducer = (state = initialState, action: UserAction) => {
   }
 };
 
-export default usersReducer;
+export default UserReducer;

@@ -1,10 +1,12 @@
 import { combineReducers } from "@reduxjs/toolkit";
-import productsReducer from "./reducers/productsReducer";
-import usersReducer from "./reducers/usersReducer";
+import ModalReducer from "./reducers/modal.reducer";
+import ProductReducer from "./reducers/product.reducer";
+import UserReducer from "./reducers/user.reducer";
 
 const rootReducer = combineReducers({
-  product: productsReducer,
-  user: usersReducer,
+  product: ProductReducer,
+  user: UserReducer,
+  modal: ModalReducer,
 });
 
 export type AppState = ReturnType<typeof rootReducer>;

@@ -3,7 +3,7 @@ import {
   FETCH_PRODUCTS_AVAILABLE,
   FETCH_PRODUCTS_ERROR,
   FETCH_PRODUCTS_PENDING,
-} from "./actionTypes";
+} from "./action.types";
 
 export interface IProduct {
   id: number;

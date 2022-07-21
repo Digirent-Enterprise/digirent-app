@@ -5,6 +5,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Provider } from "react-redux";
 import App from "./App";
 import store from "./store";
+import { UserManagement, ProductManagement, ProductSearchPage } from "./pages";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement,
@@ -22,11 +23,11 @@ root.render(
           <Route path="send-email" />
           <Route path="forgot-password" />
           {/* Product */}
-          <Route path="products" />
+          <Route path="products" element={<ProductSearchPage />} />
           <Route path="products/?category=phone" />
           <Route path="products/:id" />
           {/* Payment */}
-          <Route path="checkout/:id" />
+          <Route path="checkout/k:id" />
           <Route path="checkout-success/:id" />
           {/* Users */}
           <Route path="users" />
@@ -39,11 +40,11 @@ root.render(
           {/* Admin */}
           <Route path="admin" />
           {/* User management */}
-          <Route path="admin/users" />
+          <Route path="admin/users" element={<UserManagement />} />
           <Route path="admin/users/:id/edit" />
           <Route path="admin/users/:id/delete" />
           {/* Product management */}
-          <Route path="admin/products" />
+          <Route path="admin/products" element={<ProductManagement />} />
           <Route path="admin/add-product" />
           <Route path="admin/product/:id" />
           <Route path="admin/products/:id/edit" />
