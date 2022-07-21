@@ -1,3 +1,3 @@
-import DefaultModal from "./modal/RootModal";
+import DeleteUserModal from "./modal/delete-user-modal";
 
-export { DefaultModal };
+export default DeleteUserModal;

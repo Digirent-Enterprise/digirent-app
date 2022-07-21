@@ -1,6 +1,7 @@
 import React, { useMemo } from "react";
 
 import DefaultManagementLayout from "../DefaultManagementLayout";
+import DeleteUserModal from "../../../components/modules";
 
 function UserManagement() {
   const columnsHeader = useMemo(
@@ -40,6 +41,7 @@ function UserManagement() {
     <DefaultManagementLayout
       title="User Management"
       columnsHeader={columnsHeader}
+      pageType='user'
     />
   );
 }
