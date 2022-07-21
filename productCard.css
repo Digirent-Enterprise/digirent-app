@@ -1,0 +1,77 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,400;0,500;0,600;0,700;0,800;1,100&family=Roboto:wght@100;400;500;700;900&display=swap");
+/*Border radius*/
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Poppins, sans-seriff;
+  margin: 2rem;
+}
+
+.wrapper {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(12rem, 16rem));
+  gap: 2rem;
+  justify-content: center;
+}
+
+.card {
+  overflow: hidden;
+  width: 250px;
+  box-shadow: 0 2px 15px lightgrey;
+  border-radius: 0.2rem;
+  flex-direction: column;
+  cursor: pointer;
+  transition: transform 200ms ease-in;
+}
+.card__image {
+  height: 13rem;
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.card__title {
+  color: grey;
+}
+.card__title2 {
+  font-size: smaller;
+}
+.card__description {
+  padding: 0 1rem;
+  font-weight: 500;
+}
+.card:hover {
+  transform: scale(1.02);
+}
+.card__btn {
+  width: 24px;
+  height: 24px;
+  /* Inside auto layout */
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+  background: transparent;
+  border: 1px solid lightgrey;
+  border-radius: 0.2rem;
+  float: right;
+  position: relative;
+  top: -205px;
+  right: 10px;
+  opacity: 0.75;
+}
+.card__btn:hover {
+  border-color: red;
+}
+.card__btn p {
+  font-size: medium;
+  color: lightgrey;
+  opacity: 0.75;
+}
+.card__btn p:hover {
+  color: red;
+}/*# sourceMappingURL=productCard.css.map */
