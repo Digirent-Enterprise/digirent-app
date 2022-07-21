@@ -1,6 +1,10 @@
 /* eslint-disable react/no-unused-prop-types */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { createContext, useState, useMemo } from "react";
+import {
+  SearchHeaderSection,
+  SearchResultsSection,
+} from "../../components/layouts";
 
 export const sortByOptions = [
   {
@@ -110,7 +114,7 @@ function ProductSearchPage({
 
   return (
     <SearchSectionContext.Provider value={contextValues}>
-      <div
+      <SearchHeaderSection
         data-setsearchquery={setSearchQuery}
         data-setissearching={setIsSearching}
       />
@@ -122,7 +126,7 @@ function ProductSearchPage({
           data-addfiltercategory={addFilterCategory}
           data-removefiltercategory={removeFilterCategory}
         />
-        <div
+        <SearchResultsSection
           data-triggersearch={triggerSearch}
           data-setissearching={setIsSearching}
           data-setorderBy={setOrderBy}

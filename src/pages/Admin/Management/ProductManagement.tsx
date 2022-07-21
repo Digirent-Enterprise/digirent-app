@@ -44,6 +44,7 @@ function ProductManagement() {
     <DefaultManagementLayout
       title="Product Management"
       columnsHeader={columnsHeader}
+      pageType="product"
     />
   );
 }

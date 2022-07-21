@@ -1,5 +1,3 @@
-import { SearchField, Breadcrumb } from "./elements";
+import { Breadcrumb } from "./elements";
 
-import { DefaultModal } from "./modules";
-
-export { SearchField, Breadcrumb, DefaultModal };
+export { Breadcrumb };

@@ -5,7 +5,12 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Provider } from "react-redux";
 import App from "./App";
 import store from "./store";
-import { UserManagement, ProductManagement, ProductSearchPage } from "./pages";
+import {
+  UserManagement,
+  ProductManagement,
+  TransactionManagement,
+  ProductSearchPage,
+} from "./pages";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement,
@@ -50,7 +55,10 @@ root.render(
           <Route path="admin/products/:id/edit" />
           <Route path="admin/products/:id/delete" />
           {/* Transaction management */}
-          <Route path="admin/transactions" />
+          <Route
+            path="admin/transactions"
+            element={<TransactionManagement />}
+          />
           <Route path="admin/transactions/:id/edit" />
           <Route path="admin/transactions/:id/delete" />
           {/* Chat */}

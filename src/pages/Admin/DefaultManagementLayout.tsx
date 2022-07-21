@@ -1,10 +1,12 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React from "react";
-import { DefaultModal } from "../../components";
-import { useAppDispatch, useAppSelector } from "../../hooks";
-import { setModal } from "../../store/actions/modal.action";
+import React, { useState } from "react";
+import {
+  DeleteProductModal,
+  DeleteTransactionModal,
+  DeleteUserModal,
+} from "../../components/modules";
 
 interface ColumnHeader {
   id: number;
@@ -14,20 +16,27 @@ interface ColumnHeader {
 interface ManagementTableProps {
   title: string;
   columnsHeader: Array<ColumnHeader>;
+  pageType?: string;
 }
 
 function DefaultManagementLayout({
   title,
   columnsHeader,
+  pageType,
 }: ManagementTableProps) {
-  const dispatch = useAppDispatch();
-  const isModalOpen = useAppSelector((state) => state.modal);
+  // const [editModalVisible, setEditModalVisible] = useState(false);
+  // const onEditModalOpen = () => {
+  //   setEditModalVisible(true);
+  // };
 
-  const clickOutsideModal = (e: any) => {
-    e.stopPropagation();
-    dispatch(setModal(false));
+  // const onEditModalClose = () => setEditModalVisible(false);
+
+  const [deleteModalVisible, setDeleteModalVisible] = useState(false);
+  const onDeleteModalOpen = () => {
+    setDeleteModalVisible(true);
   };
 
+  const onDeleteModalClose = () => setDeleteModalVisible(false);
   return (
     <div className="overflow-x-auto relative shadow-md sm:rounded-lg">
       <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
@@ -53,20 +62,57 @@ function DefaultManagementLayout({
             <td className="py-4 px-6">$2999</td>
             <td className="flex items-center py-4 px-6 space-x-3">
               <div
-                onClick={() => dispatch(setModal(true))}
+                // onClick={onEditModalOpen}
                 role="button"
                 tabIndex={0}
                 className="font-medium text-blue-600 dark:text-blue-500 hover:underline"
               >
                 Edit
               </div>
-              {isModalOpen && <DefaultModal />}
-              <a
-                href="#"
+              {/* {pageType === "user" && (
+                <EditUserModal
+                  visible={editModalVisible}
+                  onClose={onEditModalClose}
+                />
+              )}
+              {pageType === "product" && (
+                <EditProductModal
+                  visible={editModalVisible}
+                  onClose={onEditModalClose}
+                />
+              )}
+              {pageType === "transaction" && (
+                <EditTransactionModal
+                  visible={editModalVisible}
+                  onClose={onEditModalClose}
+                />
+              )} */}
+              <div
+                onClick={onDeleteModalOpen}
+                role="button"
+                tabIndex={0}
                 className="font-medium text-red-600 dark:text-red-500 hover:underline"
               >
                 Remove
-              </a>
+              </div>
+              {pageType === "user" && (
+                <DeleteUserModal
+                  visible={deleteModalVisible}
+                  onClose={onDeleteModalClose}
+                />
+              )}
+              {pageType === "product" && (
+                <DeleteProductModal
+                  visible={deleteModalVisible}
+                  onClose={onDeleteModalClose}
+                />
+              )}
+              {pageType === "transaction" && (
+                <DeleteTransactionModal
+                  visible={deleteModalVisible}
+                  onClose={onDeleteModalClose}
+                />
+              )}
             </td>
           </tr>
         </tbody>

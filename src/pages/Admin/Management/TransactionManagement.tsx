@@ -2,28 +2,28 @@ import React, { useMemo } from "react";
 
 import DefaultManagementLayout from "../DefaultManagementLayout";
 
-function UserManagement() {
+function TransactionManagement() {
   const columnsHeader = useMemo(
     () => [
       {
         id: 1,
-        header: "User",
+        header: "Transaction ID",
       },
       {
         id: 2,
-        header: "Email",
+        header: "User Name",
       },
       {
         id: 3,
-        header: "Role",
+        header: "Total Rental Cost",
       },
       {
         id: 4,
-        header: "Location",
+        header: "Borrowed Date",
       },
       {
         id: 5,
-        header: "Created Time",
+        header: "Return Date",
       },
       {
         id: 6,
@@ -31,6 +31,10 @@ function UserManagement() {
       },
       {
         id: 7,
+        header: "Product Serial",
+      },
+      {
+        id: 8,
         header: "Action",
       },
     ],
@@ -38,11 +42,11 @@ function UserManagement() {
   );
   return (
     <DefaultManagementLayout
-      title="User Management"
+      title="Transaction Management"
       columnsHeader={columnsHeader}
-      pageType="user"
+      pageType="transaction"
     />
   );
 }
 
-export default UserManagement;
+export default TransactionManagement;

@@ -1,3 +1,5 @@
-import DefaultModal from "./modal/RootModal";
+import DeleteProductModal from "./modal/Product/DeleteProductModal";
+import DeleteTransactionModal from "./modal/Transaction/DeleteTransactionModal";
+import DeleteUserModal from "./modal/User/DeleteUserModal";
 
-export { DefaultModal };
+export { DeleteUserModal, DeleteProductModal, DeleteTransactionModal };
