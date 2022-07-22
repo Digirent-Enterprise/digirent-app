@@ -1,3 +1,17 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* 1. Global Font */
+@import url(https://fonts.googleapis.com/css?family=Roboto);
+@import url(https://fonts.googleapis.com/css?family=Poppins);
+
+body,
+html {
+  font-family: Roboto, Poppins, sans-serif;
+}
+
+/* 2. Global styles */
+* {
+  box-sizing: border-box;
+}
