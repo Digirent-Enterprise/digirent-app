@@ -1,3 +1,4 @@
-import Breadcrumb from "./breadcrumb/Breadcrumb/Breadcrumb";
+import Banner from "./banner/Banner/Banner";
+import BreadcrumbC from "./breadcrumb/Breadcrumb/Breadcrumb";
 
-export { Breadcrumb };
+export { BreadcrumbC, Banner };
