@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
 import {
   Box,
   Button,
@@ -11,15 +12,17 @@ import {
   Stack,
   FormHelperText,
   Link,
+  useToast,
 } from "@chakra-ui/react";
+import axios from "../../http-common";
 import AuthFormGrid from "../../components/form/LoginForm/AuthFormGrid";
 
 interface IFormInputs {
-  username: string;
-  pw1: string;
-  pw2: string;
+  name: string;
   email: string;
   phone: number;
+  pw1: string;
+  pw2: string;
   isSubmitting: boolean;
 }
 
@@ -30,8 +33,36 @@ function LoginPage() {
 
   const { register, handleSubmit } = useForm<IFormInputs>();
 
+  const navigate = useNavigate();
+  const toast = useToast();
+
   const onSubmit = (data: IFormInputs) => {
-    console.log(data);
+    const { email, pw1, name, pw2, phone } = data;
+    console.log("fdsafdsadsa", data);
+    return axios
+      .post("/auth/register", { email, pw1, name, pw2, phone })
+      .then((res) => {
+        console.log(res.status);
+
+        if (res.status === 200) {
+          toast({
+            title: "Account created.",
+            description: "We've created your account for you.",
+            status: "success",
+            duration: 9000,
+            isClosable: true,
+          });
+          console.log("res.status", res.status);
+        } else {
+          toast({
+            title: "Account failed to create.",
+            description: "Your information is invalid",
+            status: "warning",
+            duration: 9000,
+            isClosable: true,
+          });
+        }
+      });
   };
 
   return (
@@ -48,27 +79,15 @@ function LoginPage() {
             >
               <FormControl>
                 <FormLabel>Username</FormLabel>
-                <Input
-                  {...register("username")}
-                  placeholder="supernam"
-                  size="md"
-                />
+                <Input {...register("name")} placeholder="supernam" size="md" />
               </FormControl>
               <FormControl>
                 <FormLabel>Email</FormLabel>
-                <Input
-                  {...register("email")}
-                  placeholder="supernam"
-                  size="md"
-                />
+                <Input {...register("email")} placeholder="email" size="md" />
               </FormControl>
               <FormControl>
                 <FormLabel>Phone</FormLabel>
-                <Input
-                  {...register("phone")}
-                  placeholder="supernam"
-                  size="md"
-                />
+                <Input {...register("phone")} placeholder="phone" size="md" />
               </FormControl>
               <FormControl>
                 <FormLabel>Password</FormLabel>

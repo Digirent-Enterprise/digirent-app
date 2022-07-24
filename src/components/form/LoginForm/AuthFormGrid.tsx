@@ -6,33 +6,23 @@ interface ParentCompProps {
   childTitle?: React.ReactNode;
 }
 
-const LoginForm: React.FC<ParentCompProps> = (props) => {
+const AuthFormGrid: React.FC<ParentCompProps> = (props) => {
   const { childCompForm, childCompSideContent, childTitle } = props;
-  console.log("childCompSideContent :>> ", childCompSideContent);
 
   return (
     <div className="flex items-center min-h-screen bg-cover bg-auth">
-      <div className="flex-1 h-full max-w-4xl mx-auto bg-white rounded-lg shadow-xl">
+      <div className="flex-1 h-full max-w-4xl mx-auto bg-white opacity-90 rounded-lg shadow-xl">
         <div className="flex flex-col md:flex-row">
           <div className="h-32 md:h-auto md:w-1/2">
             <img
-              className="object-cover w-full h-full brightness-50"
+              className="object-cover w-full h-full brightness-50 opacity-100"
               src={`${childCompSideContent}`}
               alt="img"
             />
           </div>
           <div className="flex items-center justify-center p-6 sm:p-12 md:w-1/2">
             <div className="w-full">
-              <div className="flex justify-center">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="w-20 h-20 text-blue-600"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                />
-              </div>
-              <h1 className="italic mb-4 text-5xl font-bold text-center text-blue-100">
+              <h1 className="italic mb-4 text-5xl font-bold text-center text-blue-100 p-5">
                 Digirent
               </h1>
               <h1 className="mb-4 text-2xl font-bold text-center text-gray-700">
@@ -43,7 +33,10 @@ const LoginForm: React.FC<ParentCompProps> = (props) => {
               <hr className="my-8" />
 
               <div className="flex items-center justify-center gap-4">
-                <button className="flex items-center justify-center w-full px-4 py-2 text-sm text-white text-gray-700 border border-gray-300 rounded-lg hover:border-gray-500 focus:border-gray-500">
+                <button
+                  type="button"
+                  className="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
+                >
                   <svg
                     className="w-4 h-4 mr-2"
                     aria-hidden="true"
@@ -54,7 +47,10 @@ const LoginForm: React.FC<ParentCompProps> = (props) => {
                   </svg>
                   Github
                 </button>
-                <button className="flex items-center justify-center w-full px-4 py-2 text-sm text-white text-gray-700 border border-gray-300 rounded-lg hover:border-gray-500 focus:border-gray-500">
+                <button
+                  type="button"
+                  className="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
+                >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     xmlnsXlink="http://www.w3.org/1999/xlink"
@@ -102,4 +98,4 @@ const LoginForm: React.FC<ParentCompProps> = (props) => {
   );
 };
 
-export default LoginForm;
+export default AuthFormGrid;
