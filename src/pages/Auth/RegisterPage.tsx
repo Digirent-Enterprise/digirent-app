@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
+import qs from "qs";
 import {
   Box,
   Button,
@@ -37,32 +38,29 @@ function LoginPage() {
   const toast = useToast();
 
   const onSubmit = (data: IFormInputs) => {
-    const { email, pw1, name, pw2, phone } = data;
-    console.log("fdsafdsadsa", data);
-    return axios
-      .post("/auth/register", { email, pw1, name, pw2, phone })
-      .then((res) => {
-        console.log(res.status);
+    console.log("fdsafdsadsa", typeof data);
+    return axios.post("/auth/register", qs.stringify(data)).then((res) => {
+      console.log(res.status);
 
-        if (res.status === 200) {
-          toast({
-            title: "Account created.",
-            description: "We've created your account for you.",
-            status: "success",
-            duration: 9000,
-            isClosable: true,
-          });
-          console.log("res.status", res.status);
-        } else {
-          toast({
-            title: "Account failed to create.",
-            description: "Your information is invalid",
-            status: "warning",
-            duration: 9000,
-            isClosable: true,
-          });
-        }
-      });
+      if (res.status === 200) {
+        toast({
+          title: "Account created.",
+          description: "We've created your account for you.",
+          status: "success",
+          duration: 9000,
+          isClosable: true,
+        });
+        console.log("res.status", res.status);
+      } else {
+        toast({
+          title: "Account failed to create.",
+          description: "Your information is invalid",
+          status: "warning",
+          duration: 9000,
+          isClosable: true,
+        });
+      }
+    });
   };
 
   return (
