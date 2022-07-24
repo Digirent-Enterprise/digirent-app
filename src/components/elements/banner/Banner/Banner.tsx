@@ -9,7 +9,7 @@ function Banner() {
           <h1 className="text-4xl md:text-4xl lg:text-6xl w-11/12 lg:w-11/12 xl:w-full xl:text-6xl text-gray-900 font-extrabold f-f-l">
             Mini is mighty
           </h1>
-          <div className="f-f-r text-base lg:text-base pb-20 sm:pb-0 pt-10 xl:pt-6">
+          <div className="text-base lg:text-base pb-20 sm:pb-0 pt-10 xl:pt-6">
             <h2>
               Our smallest devices pack the biggest punch. Check out our
               pocket-friendly smartphones, wearables, and headphones at

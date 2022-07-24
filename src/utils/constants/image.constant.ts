@@ -1,4 +1,4 @@
-const banner = "../../assets/images/banner.pngS";
+const banner = "../../assets/images/banner.png";
 
 const image = {
   bannerImg: banner,
