@@ -10,6 +10,8 @@
     "plugin:import/typescript",
     "plugin:prettier/recommended"
   ],
+ 
+
   "parserOptions": {
     "ecmaFeatures": {
       "jsx": true
