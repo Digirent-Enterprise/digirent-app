@@ -12,6 +12,8 @@ import {
   ProductManagement,
   TransactionManagement,
   ProductSearchPage,
+  Maintain,
+  NotFound,
 } from "./pages";
 
 const root = ReactDOM.createRoot(
@@ -46,6 +48,8 @@ root.render(
               <Route path="users/:id/edit" />
               <Route path="users/:id/deactivate" />
               <Route path="users/:id/change-password" />
+              {/* Maintain */}
+              <Route path="maintain" element={<Maintain />} />
             </Route>
             {/* Admin */}
             <Route path="admin">
@@ -69,14 +73,7 @@ root.render(
             </Route>
 
             {/* 404 Not Found Route */}
-            <Route
-              path="*"
-              element={
-                <main style={{ padding: "1rem" }}>
-                  <p>There is nothing here!</p>
-                </main>
-              }
-            />
+            <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>
       </ChakraProvider>
