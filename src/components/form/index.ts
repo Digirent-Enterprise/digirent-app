@@ -1,3 +1,3 @@
-import AuthFormGrid from "./LoginForm/AuthFormGrid";
+import AuthFormGrid from "./AuthForm/AuthFormGrid";
 
 export { AuthFormGrid };

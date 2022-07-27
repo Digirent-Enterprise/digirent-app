@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
 import {
   Box,
   Button,
@@ -13,23 +14,38 @@ import {
   Link,
 } from "@chakra-ui/react";
 import axios from "../../http-common";
-import AuthFormGrid from "../../components/form/LoginForm/AuthFormGrid";
+import { storeUserSession } from "../../helpers/authHelpers";
+import AuthFormGrid from "../../components/form/AuthForm/AuthFormGrid";
+import { SuccessToaster, FailedToaster } from "../../components/toaster/index";
 
 interface IFormInputs {
-  username: string;
+  email: string;
   password: string;
   isSubmitting: boolean;
 }
 
 function LoginPage() {
   const [show, setShow] = useState<boolean>(false);
-
   const handleShowPassword = () => setShow(!show);
-
   const { register, handleSubmit } = useForm<IFormInputs>();
+  const navigate = useNavigate();
 
   const onSubmit = (data: IFormInputs) => {
-    axios.post("auth/login", data);
+    axios.post("auth/login", data).then((res) => {
+      if (res.status === 201) {
+        <SuccessToaster
+          childCompToasterTitle="Welcome back!"
+          childCompToasterDescription="You have successfully logged in!"
+        />;
+        storeUserSession(res.data.accessToken);
+        navigate("/");
+      } else {
+        <FailedToaster
+          childCompToasterTitle={`Fail to log you in, error ${res.status}.`}
+          childCompToasterDescription={`${res.statusText}`}
+        />;
+      }
+    });
   };
 
   return (
@@ -45,10 +61,10 @@ function LoginPage() {
               boxShadow="md"
             >
               <FormControl>
-                <FormLabel>Username</FormLabel>
+                <FormLabel>Email</FormLabel>
                 <Input
-                  {...register("username")}
-                  placeholder="supernam"
+                  {...register("email")}
+                  placeholder="Enter email"
                   size="md"
                 />
               </FormControl>
@@ -82,7 +98,7 @@ function LoginPage() {
               </Button>
 
               <Box>
-                New to us?{" "}
+                New to us?
                 <Link color="brand" href="/register">
                   Sign Up
                 </Link>

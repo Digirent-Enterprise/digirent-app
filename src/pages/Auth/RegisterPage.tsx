@@ -13,10 +13,10 @@ import {
   Stack,
   FormHelperText,
   Link,
-  useToast,
 } from "@chakra-ui/react";
 import axios from "../../http-common";
-import AuthFormGrid from "../../components/form/LoginForm/AuthFormGrid";
+import { AuthFormGrid } from "../../components/form/index";
+import { SuccessToaster, FailedToaster } from "../../components/toaster/index";
 
 interface IFormInputs {
   name: string;
@@ -29,36 +29,23 @@ interface IFormInputs {
 
 function LoginPage() {
   const [show, setShow] = useState<boolean>(false);
-
   const handleShowPassword = () => setShow(!show);
-
   const { register, handleSubmit } = useForm<IFormInputs>();
-
   const navigate = useNavigate();
-  const toast = useToast();
 
   const onSubmit = (data: IFormInputs) => {
-    console.log("fdsafdsadsa", typeof data);
-    return axios.post("/auth/register", qs.stringify(data)).then((res) => {
-      console.log(res.status);
-
-      if (res.status === 200) {
-        toast({
-          title: "Account created.",
-          description: "We've created your account for you.",
-          status: "success",
-          duration: 9000,
-          isClosable: true,
-        });
-        console.log("res.status", res.status);
+    return axios.post("api/auth/register", qs.stringify(data)).then((res) => {
+      if (res.status === 201) {
+        <SuccessToaster
+          childCompToasterTitle="Account created!"
+          childCompToasterDescription="Your information has been registered successfully with us!"
+        />;
+        navigate("/login");
       } else {
-        toast({
-          title: "Account failed to create.",
-          description: "Your information is invalid",
-          status: "warning",
-          duration: 9000,
-          isClosable: true,
-        });
+        <FailedToaster
+          childCompToasterTitle={`Failed to register, error code ${res.status}`}
+          childCompToasterDescription={`${res.statusText} error has happened while creating your account!`}
+        />;
       }
     });
   };
