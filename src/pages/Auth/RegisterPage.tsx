@@ -16,7 +16,7 @@ import {
 } from "@chakra-ui/react";
 import axios from "../../http-common";
 import { AuthFormGrid } from "../../components/form/index";
-import { SuccessToaster, FailedToaster } from "../../components/toaster/index";
+import { StatusToaster} from "../../components/toaster/index";
 
 interface IFormInputs {
   name: string;
@@ -36,13 +36,15 @@ function LoginPage() {
   const onSubmit = (data: IFormInputs) => {
     return axios( "application/x-www-form-urlencoded").post("api/auth/register", qs.stringify(data)).then((res) => {
       if (res.status === 201) {
-        <SuccessToaster
+        <StatusToaster
+        childCompStatusColor="success"
           childCompToasterTitle="Account created!"
           childCompToasterDescription="Your information has been registered successfully with us!"
         />;
         navigate("/login");
       } else {
-        <FailedToaster
+        <StatusToaster
+        childCompStatusColor="warning"
           childCompToasterTitle={`Failed to register, error code ${res.status}`}
           childCompToasterDescription={`${res.statusText} error has happened while creating your account!`}
         />;

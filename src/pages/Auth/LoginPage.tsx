@@ -16,7 +16,7 @@ import {
 import axios from "../../http-common";
 import { storeUserSession } from "../../helpers/authHelpers";
 import AuthFormGrid from "../../components/form/AuthForm/AuthFormGrid";
-import { SuccessToaster, FailedToaster } from "../../components/toaster/index";
+import {StatusToaster } from "../../components/toaster/index";
 
 interface IFormInputs {
   email: string;
@@ -33,14 +33,16 @@ function LoginPage() {
   const onSubmit = (data: IFormInputs) => {
     axios( "application/x-www-form-urlencoded").post("auth/login", data).then((res) => {
       if (res.status === 201) {
-        <SuccessToaster
+        <StatusToaster
           childCompToasterTitle="Welcome back!"
+          childCompStatusColor="success"
           childCompToasterDescription="You have successfully logged in!"
         />;
         storeUserSession(res.data.accessToken);
         navigate("/");
       } else {
-        <FailedToaster
+        <StatusToaster
+        childCompStatusColor="warning"
           childCompToasterTitle={`Fail to log you in, error ${res.status}.`}
           childCompToasterDescription={`${res.statusText}`}
         />;

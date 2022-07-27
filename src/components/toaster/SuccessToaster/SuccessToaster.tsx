@@ -2,11 +2,16 @@ import React from "react";
 import { useToast } from "@chakra-ui/react";
 
 interface ParentCompProps {
-  childCompToasterTitle?: React.ReactNode;
-  childCompToasterDescription?: React.ReactNode;
+  childCompToasterTitle: React.ReactNode;
+  childCompToasterDescription: React.ReactNode;
+  childCompStatusColor?: any;
 }
-const SuccessToaster: React.FC<ParentCompProps> = (props) => {
-  const { childCompToasterTitle, childCompToasterDescription } = props;
+const StatusToaster: React.FC<ParentCompProps> = (props) => {
+  const {
+    childCompToasterTitle,
+    childCompToasterDescription,
+    childCompStatusColor,
+  } = props;
   const SuccessToast = useToast();
 
   return (
@@ -15,7 +20,7 @@ const SuccessToaster: React.FC<ParentCompProps> = (props) => {
         position: "top-right",
         title: `${childCompToasterTitle}`,
         description: `${childCompToasterDescription}`,
-        status: "success",
+        status: childCompStatusColor,
         duration: 9000,
         isClosable: true,
       })}
@@ -23,4 +28,4 @@ const SuccessToaster: React.FC<ParentCompProps> = (props) => {
   );
 };
 
-export default SuccessToaster;
+export default StatusToaster;

@@ -1,4 +1,3 @@
-import SuccessToaster from "./SuccessToaster/SuccessToaster";
-import FailedToaster from "./FailedToaster/FailedToaster";
+import StatusToaster from "./SuccessToaster/SuccessToaster";
 
-export { SuccessToaster, FailedToaster };
+export { StatusToaster };
