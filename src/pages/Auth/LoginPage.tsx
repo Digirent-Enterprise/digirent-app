@@ -31,7 +31,7 @@ function LoginPage() {
   const navigate = useNavigate();
 
   const onSubmit = (data: IFormInputs) => {
-    axios.post("auth/login", data).then((res) => {
+    axios( "application/x-www-form-urlencoded").post("auth/login", data).then((res) => {
       if (res.status === 201) {
         <SuccessToaster
           childCompToasterTitle="Welcome back!"

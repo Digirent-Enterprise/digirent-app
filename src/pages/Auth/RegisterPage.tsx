@@ -34,7 +34,7 @@ function LoginPage() {
   const navigate = useNavigate();
 
   const onSubmit = (data: IFormInputs) => {
-    return axios.post("api/auth/register", qs.stringify(data)).then((res) => {
+    return axios( "application/x-www-form-urlencoded").post("api/auth/register", qs.stringify(data)).then((res) => {
       if (res.status === 201) {
         <SuccessToaster
           childCompToasterTitle="Account created!"
