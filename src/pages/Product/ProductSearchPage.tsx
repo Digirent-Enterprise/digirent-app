@@ -1,11 +1,11 @@
 /* eslint-disable react/no-unused-prop-types */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { createContext, useState, useMemo } from "react";
-
 import {
+  Transition,
   SearchHeaderSection,
   SearchResultsSection,
-} from "../../components/layouts";
+} from "../../components";
 
 export const sortByOptions = [
   {
@@ -122,27 +122,29 @@ const ProductSearchPage = ({
   };
 
   return (
-    <SearchSectionContext.Provider value={contextValues}>
-      <SearchHeaderSection
-        setSearchQuery={setSearchQuery}
-        setIsSearching={setIsSearching}
-      />
-      <div className="pb-10 mx-auto max-w-7xl lg:py-12 lg:px-8 lg:grid lg:grid-cols-12 lg:gap-x-5">
-        {/* <div
+    <Transition>
+      <SearchSectionContext.Provider value={contextValues}>
+        <SearchHeaderSection
+          setSearchQuery={setSearchQuery}
+          setIsSearching={setIsSearching}
+        />
+        <div className="pb-10 mx-auto max-w-7xl lg:py-12 lg:px-8 lg:grid lg:grid-cols-12 lg:gap-x-5">
+          {/* <div
           data-triggerSearch={triggerSearch}
           data-setRentalCostFrom={setRentalCostFrom}
           data-setRentalCostTo={setRentalCostTo}
           data-addFilterCategory={addFilterCategory}
           data-removeFilterCategory={removeFilterCategory}
         /> */}
-        <SearchResultsSection
-          triggerSearch={triggerSearch}
-          setIsSearching={setIsSearching}
-          setOrderBy={setOrderBy}
-          setPageNumber={setPageNumber}
-        />
-      </div>
-    </SearchSectionContext.Provider>
+          <SearchResultsSection
+            triggerSearch={triggerSearch}
+            setIsSearching={setIsSearching}
+            setOrderBy={setOrderBy}
+            setPageNumber={setPageNumber}
+          />
+        </div>
+      </SearchSectionContext.Provider>
+    </Transition>
   );
 };
 

@@ -1,7 +1,7 @@
 import { Tooltip } from "@chakra-ui/react";
 import { AiFillInfoCircle } from "react-icons/ai";
 
-const TooltipC = () => {
+const CustomTooltip = () => {
   const iconStyles = { color: "white" };
 
   return (
@@ -13,4 +13,4 @@ const TooltipC = () => {
   );
 };
 
-export default TooltipC;
+export default CustomTooltip;
