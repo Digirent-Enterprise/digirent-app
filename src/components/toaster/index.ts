@@ -1,3 +1,3 @@
-import StatusToaster from "./SuccessToaster/SuccessToaster";
+import StatusToaster from "./StatusToaster/StatusToaster";
 
 export { StatusToaster };
