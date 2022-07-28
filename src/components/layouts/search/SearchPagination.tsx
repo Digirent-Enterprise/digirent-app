@@ -13,11 +13,11 @@ interface PaginationProps {
   pageMaxValue: number;
 }
 
-function SearchPagination({
+const SearchPagination = ({
   triggerSearch,
   setPageNumber,
   pageMaxValue,
-}: PaginationProps) {
+}: PaginationProps) => {
   const searchContext = useContext(SearchSectionContext);
   const pageOffset = 2;
   const goToPage = (page: number) => {
@@ -25,15 +25,15 @@ function SearchPagination({
     triggerSearch();
   };
   return (
-    <nav className="border-t border-gray-200 px-4 flex items-center justify-between sm:px-0">
-      <div className="-mt-px w-0 flex-1 flex">
+    <nav className="flex items-center justify-between px-4 border-t border-gray-200 sm:px-0">
+      <div className="flex flex-1 w-0 -mt-px">
         {searchContext.pageNumber > 1 ? (
           <button
             onClick={() => {
               setPageNumber(searchContext.pageNumber - 1);
               triggerSearch();
             }}
-            className="border-t-2 border-transparent pt-4 pr-1 inline-flex items-center text-sm font-medium text-gray-500 hover:text-gray-700 hover:border-gray-300"
+            className="inline-flex items-center pt-4 pr-1 text-sm font-medium text-gray-500 border-t-2 border-transparent hover:text-gray-700 hover:border-gray-300"
           >
             <IconContext.Provider
               value={{
@@ -54,12 +54,12 @@ function SearchPagination({
           <>
             <button
               onClick={() => goToPage(1)}
-              className="border-t-2 pt-4 px-4 inline-flex items-center text-sm font-medium border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300"
+              className="inline-flex items-center px-4 pt-4 text-sm font-medium text-gray-500 border-t-2 border-transparent hover:text-gray-700 hover:border-gray-300"
             >
               1
             </button>
             {searchContext.pageNumber > pageOffset + 2 && (
-              <span className="border-transparent text-gray-500 border-t-2 pt-4 px-4 inline-flex items-center text-sm font-medium">
+              <span className="inline-flex items-center px-4 pt-4 text-sm font-medium text-gray-500 border-t-2 border-transparent">
                 ...
               </span>
             )}
@@ -89,27 +89,27 @@ function SearchPagination({
         {searchContext.pageNumber < pageMaxValue - 2 ? (
           <>
             {searchContext.pageNumber < pageMaxValue - 3 && (
-              <span className="border-transparent text-gray-500 border-t-2 pt-4 px-4 inline-flex items-center text-sm font-medium">
+              <span className="inline-flex items-center px-4 pt-4 text-sm font-medium text-gray-500 border-t-2 border-transparent">
                 ...
               </span>
             )}
             <button
               onClick={() => goToPage(pageMaxValue)}
-              className="border-t-2 pt-4 px-4 inline-flex items-center text-sm font-medium border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300"
+              className="inline-flex items-center px-4 pt-4 text-sm font-medium text-gray-500 border-t-2 border-transparent hover:text-gray-700 hover:border-gray-300"
             >
               {pageMaxValue}
             </button>
           </>
         ) : null}
       </div>
-      <div className="-mt-px w-0 flex-1 flex justify-end">
+      <div className="flex justify-end flex-1 w-0 -mt-px">
         {searchContext.pageNumber < pageMaxValue ? (
           <button
             onClick={() => {
               setPageNumber(searchContext.pageNumber + 1);
               triggerSearch();
             }}
-            className="border-t-2 border-transparent pt-4 pl-1 inline-flex items-center text-sm font-medium text-gray-500 hover:text-gray-700 hover:border-gray-300"
+            className="inline-flex items-center pt-4 pl-1 text-sm font-medium text-gray-500 border-t-2 border-transparent hover:text-gray-700 hover:border-gray-300"
           >
             Next
             <IconContext.Provider
@@ -127,6 +127,6 @@ function SearchPagination({
       </div>
     </nav>
   );
-}
+};
 
 export default SearchPagination;

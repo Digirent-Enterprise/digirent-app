@@ -6,10 +6,10 @@ interface SearchHeaderSectionProps {
   setIsSearching: Dispatch<SetStateAction<boolean>>;
 }
 
-function SearchHeaderSection({
+const SearchHeaderSection = ({
   setSearchQuery,
   setIsSearching,
-}: SearchHeaderSectionProps) {
+}: SearchHeaderSectionProps) => {
   const searchContext = useContext(SearchSectionContext);
 
   return (
@@ -25,7 +25,7 @@ function SearchHeaderSection({
                 id="search"
                 type="search"
                 placeholder="Search for an item"
-                className="border-black/30	block w-full px-4 py-3 text-base text-gray-900 placeholder-gray-500 border-2 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-300 focus:ring-offset-gray-900"
+                className="block w-full px-4 py-3 text-base text-gray-900 placeholder-gray-500 border-2 rounded-md border-black/30 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-300 focus:ring-offset-gray-900"
                 value={searchContext.searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
               />
@@ -47,6 +47,6 @@ function SearchHeaderSection({
       </div>
     </div>
   );
-}
+};
 
 export default SearchHeaderSection;

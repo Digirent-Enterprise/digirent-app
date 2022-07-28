@@ -15,7 +15,12 @@ module.exports = {
       green: "#11995B",
       modal: "#C8C8C8",
     },
-    extend: {},
+
+    extend: {
+      backgroundImage: (theme) => ({
+        auth: "url('assets/AuthBG.png')",
+      }),
+    },
   },
   plugins: [],
 };

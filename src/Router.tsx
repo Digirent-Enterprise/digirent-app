@@ -9,22 +9,24 @@ import {
   ProductSearchPage,
   Maintain,
   NotFound,
+  RegisterPage,
+  LoginPage,
 } from "./pages";
 
-function AppRouter() {
+const AppRouter = () => {
   const location = useLocation();
   return (
     <AnimatePresence exitBeforeEnter>
       <Routes key={location.pathname} location={location}>
         <Route path="/" element={<Home />} />
-        <Route path="login" />
+        <Route path="login" element={<LoginPage />} />
         <Route path="logout" />
-        <Route path="register" />
+        <Route path="register" element={<RegisterPage />} />
         <Route path="reset-password" />
         <Route path="send-email" />
         <Route path="forgot-password" />
         {/* Product */}
-        <Route path="/products" element={<ProductSearchPage />} />
+        <Route path="products" element={<ProductSearchPage />} />
         <Route path="products/?category=phone" />
         <Route path="products/:id" />
         {/* Payment */}
@@ -59,12 +61,11 @@ function AppRouter() {
         {/* Chat */}
         <Route path="admin/chat" />
         <Route path="admin/chat/:id" />
-
         {/* 404 Not Found Route */}
         <Route path="*" element={<NotFound />} />
       </Routes>
     </AnimatePresence>
   );
-}
+};
 
 export default AppRouter;

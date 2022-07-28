@@ -5,7 +5,7 @@ const animationConfiguration = {
   animate: { opacity: 1 },
   exit: { opacity: 0 },
 };
-function Transitions({ children }: any) {
+const Transitions = ({ children }: any) => {
   return (
     <motion.div
       variants={animationConfiguration}
@@ -17,5 +17,5 @@ function Transitions({ children }: any) {
       {children}
     </motion.div>
   );
-}
+};
 export default Transitions;

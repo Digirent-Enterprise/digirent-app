@@ -4,7 +4,7 @@ import { Breadcrumb, BreadcrumbItem, BreadcrumbLink } from "@chakra-ui/react";
 
 import { Link } from "react-router-dom";
 
-function BreadcrumbC() {
+const BreadcrumbC = () => {
   return (
     <Breadcrumb>
       <BreadcrumbItem>
@@ -24,6 +24,6 @@ function BreadcrumbC() {
       </BreadcrumbItem>
     </Breadcrumb>
   );
-}
+};
 
 export default BreadcrumbC;

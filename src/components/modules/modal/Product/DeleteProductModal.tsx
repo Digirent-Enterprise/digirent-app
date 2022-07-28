@@ -2,7 +2,7 @@ import React from "react";
 import RootDeleteModal from "../RootDeleteModal";
 import { ProductModalProps } from "./products.type";
 
-function DeleteProductModal(props: ProductModalProps) {
+const DeleteProductModal = (props: ProductModalProps) => {
   return (
     <RootDeleteModal {...props}>
       <h1 className="mb-5">Delete Product</h1>
@@ -12,5 +12,5 @@ function DeleteProductModal(props: ProductModalProps) {
       </h3>
     </RootDeleteModal>
   );
-}
+};
 export default DeleteProductModal;
