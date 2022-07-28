@@ -1,3 +1,3 @@
-import { Breadcrumb } from "./elements";
+import { BreadcrumbC } from "./elements";
 
-export { Breadcrumb };
+export { BreadcrumbC };

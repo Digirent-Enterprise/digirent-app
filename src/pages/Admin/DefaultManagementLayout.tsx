@@ -19,11 +19,11 @@ interface ManagementTableProps {
   pageType?: string;
 }
 
-function DefaultManagementLayout({
+const DefaultManagementLayout = ({
   title,
   columnsHeader,
   pageType,
-}: ManagementTableProps) {
+}: ManagementTableProps) => {
   // const [editModalVisible, setEditModalVisible] = useState(false);
   // const onEditModalOpen = () => {
   //   setEditModalVisible(true);
@@ -220,6 +220,6 @@ function DefaultManagementLayout({
       </nav>
     </div>
   );
-}
+};
 
 export default DefaultManagementLayout;

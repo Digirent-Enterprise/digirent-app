@@ -16,7 +16,7 @@ import {
 } from "@chakra-ui/react";
 import axios from "../../http-common";
 import { AuthFormGrid } from "../../components/form/index";
-import { StatusToaster} from "../../components/toaster/index";
+import { StatusToaster } from "../../components/toaster/index";
 
 interface IFormInputs {
   name: string;
@@ -27,29 +27,31 @@ interface IFormInputs {
   isSubmitting: boolean;
 }
 
-function LoginPage() {
+const LoginPage = () => {
   const [show, setShow] = useState<boolean>(false);
   const handleShowPassword = () => setShow(!show);
   const { register, handleSubmit } = useForm<IFormInputs>();
   const navigate = useNavigate();
 
   const onSubmit = (data: IFormInputs) => {
-    return axios( "application/x-www-form-urlencoded").post("api/auth/register", qs.stringify(data)).then((res) => {
-      if (res.status === 201) {
-        <StatusToaster
-        childCompStatusColor="success"
-          childCompToasterTitle="Account created!"
-          childCompToasterDescription="Your information has been registered successfully with us!"
-        />;
-        navigate("/login");
-      } else {
-        <StatusToaster
-        childCompStatusColor="warning"
-          childCompToasterTitle={`Failed to register, error code ${res.status}`}
-          childCompToasterDescription={`${res.statusText} error has happened while creating your account!`}
-        />;
-      }
-    });
+    return axios("application/x-www-form-urlencoded")
+      .post("api/auth/register", qs.stringify(data))
+      .then((res) => {
+        if (res.status === 201) {
+          <StatusToaster
+            childCompStatusColor="success"
+            childCompToasterTitle="Account created!"
+            childCompToasterDescription="Your information has been registered successfully with us!"
+          />;
+          navigate("/login");
+        } else {
+          <StatusToaster
+            childCompStatusColor="warning"
+            childCompToasterTitle={`Failed to register, error code ${res.status}`}
+            childCompToasterDescription={`${res.statusText} error has happened while creating your account!`}
+          />;
+        }
+      });
   };
 
   return (
@@ -134,6 +136,6 @@ function LoginPage() {
       childCompSideContent="https://i.pinimg.com/originals/a5/92/23/a59223a81638be37d096fcfa72d7dd48.jpg"
     />
   );
-}
+};
 
 export default LoginPage;

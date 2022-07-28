@@ -1,24 +1,29 @@
 import React from "react";
+
+import { Breadcrumb, BreadcrumbItem, BreadcrumbLink } from "@chakra-ui/react";
+
 import { Link } from "react-router-dom";
 
-interface Product {
-  categoryId: number;
-}
-
-function Breadcrumb({ categoryId }: Product) {
+const BreadcrumbC = () => {
   return (
-    <div className="ui breadcrumb">
-      <Link className="section" to="/">
-        Home
-      </Link>
-      <i className="right angle icon divider" />
-      <Link className="section" to={`/product/${categoryId}`}>
-        Category
-      </Link>
-      <i className="right angle icon divider" />
-      <div className="active section">Phone</div>
-    </div>
-  );
-}
+    <Breadcrumb>
+      <BreadcrumbItem>
+        <BreadcrumbLink as={Link} to="/">
+          Home
+        </BreadcrumbLink>
+      </BreadcrumbItem>
 
-export default Breadcrumb;
+      <BreadcrumbItem>
+        <BreadcrumbLink as={Link} to="#">
+          Category
+        </BreadcrumbLink>
+      </BreadcrumbItem>
+
+      <BreadcrumbItem isCurrentPage>
+        <BreadcrumbLink>Phone</BreadcrumbLink>
+      </BreadcrumbItem>
+    </Breadcrumb>
+  );
+};
+
+export default BreadcrumbC;

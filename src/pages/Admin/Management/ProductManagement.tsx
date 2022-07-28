@@ -2,7 +2,7 @@ import React, { useMemo } from "react";
 
 import DefaultManagementLayout from "../DefaultManagementLayout";
 
-function ProductManagement() {
+const ProductManagement = () => {
   const columnsHeader = useMemo(
     () => [
       {
@@ -47,6 +47,6 @@ function ProductManagement() {
       pageType="product"
     />
   );
-}
+};
 
 export default ProductManagement;

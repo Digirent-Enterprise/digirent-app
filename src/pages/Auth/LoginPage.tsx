@@ -16,7 +16,7 @@ import {
 import axios from "../../http-common";
 import { storeUserSession } from "../../helpers/authHelpers";
 import AuthFormGrid from "../../components/form/AuthForm/AuthFormGrid";
-import {StatusToaster } from "../../components/toaster/index";
+import { StatusToaster } from "../../components/toaster/index";
 
 interface IFormInputs {
   email: string;
@@ -24,30 +24,32 @@ interface IFormInputs {
   isSubmitting: boolean;
 }
 
-function LoginPage() {
+const LoginPage = () => {
   const [show, setShow] = useState<boolean>(false);
   const handleShowPassword = () => setShow(!show);
   const { register, handleSubmit } = useForm<IFormInputs>();
   const navigate = useNavigate();
 
   const onSubmit = (data: IFormInputs) => {
-    axios( "application/x-www-form-urlencoded").post("auth/login", data).then((res) => {
-      if (res.status === 201) {
-        <StatusToaster
-          childCompToasterTitle="Welcome back!"
-          childCompStatusColor="success"
-          childCompToasterDescription="You have successfully logged in!"
-        />;
-        storeUserSession(res.data.accessToken);
-        navigate("/");
-      } else {
-        <StatusToaster
-        childCompStatusColor="warning"
-          childCompToasterTitle={`Fail to log you in, error ${res.status}.`}
-          childCompToasterDescription={`${res.statusText}`}
-        />;
-      }
-    });
+    axios("application/x-www-form-urlencoded")
+      .post("auth/login", data)
+      .then((res) => {
+        if (res.status === 201) {
+          <StatusToaster
+            childCompToasterTitle="Welcome back!"
+            childCompStatusColor="success"
+            childCompToasterDescription="You have successfully logged in!"
+          />;
+          storeUserSession(res.data.accessToken);
+          navigate("/");
+        } else {
+          <StatusToaster
+            childCompStatusColor="warning"
+            childCompToasterTitle={`Fail to log you in, error ${res.status}.`}
+            childCompToasterDescription={`${res.statusText}`}
+          />;
+        }
+      });
   };
 
   return (
@@ -112,6 +114,6 @@ function LoginPage() {
       childCompSideContent="https://i.pinimg.com/originals/a5/92/23/a59223a81638be37d096fcfa72d7dd48.jpg"
     />
   );
-}
+};
 
 export default LoginPage;

@@ -4,12 +4,18 @@ import TransactionManagement from "./Admin/Management/TransactionManagement";
 import ProductSearchPage from "./Product/ProductSearchPage";
 import LoginPage from "./Auth/LoginPage";
 import RegisterPage from "./Auth/RegisterPage";
+import Maintain from "./Maintain/Maintain";
+import NotFound from "./NotFound/NotFound";
+import Home from "./Home/Home";
 
 export {
+  Home,
   UserManagement,
   ProductManagement,
   TransactionManagement,
   ProductSearchPage,
   LoginPage,
   RegisterPage,
+  Maintain,
+  NotFound,
 };

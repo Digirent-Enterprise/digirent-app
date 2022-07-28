@@ -2,7 +2,7 @@ import React, { useMemo } from "react";
 
 import DefaultManagementLayout from "../DefaultManagementLayout";
 
-function UserManagement() {
+const UserManagement = () => {
   const columnsHeader = useMemo(
     () => [
       {
@@ -43,6 +43,6 @@ function UserManagement() {
       pageType="user"
     />
   );
-}
+};
 
 export default UserManagement;
