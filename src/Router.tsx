@@ -30,7 +30,7 @@ const AppRouter = () => {
         <Route path="products/?category=phone" />
         <Route path="products/:id" />
         {/* Payment */}
-        <Route path="checkout/k:id" />
+        <Route path="checkout/:id" />
         <Route path="checkout-success/:id" />
         {/* Users */}
         <Route path="users" />
