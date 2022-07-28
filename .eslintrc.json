@@ -29,6 +29,8 @@
     "default-param-last": "off",
     "@typescript-eslint/default-param-last": ["off"],
     "react/require-default-props": ["off"],
-    "jsx-a11y/label-has-associated-control": ["off"]
+    "jsx-a11y/label-has-associated-control": ["off"],
+    "import/no-cycle": ["off"],
+    "react/button-has-type": ["off"]
   }
 }

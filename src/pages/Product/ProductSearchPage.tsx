@@ -1,6 +1,7 @@
 /* eslint-disable react/no-unused-prop-types */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { createContext, useState, useMemo } from "react";
+
 import {
   SearchHeaderSection,
   SearchResultsSection,
@@ -46,6 +47,14 @@ const defaultSearchSectionContextValue: SearchSectionContextValue = {
 export const SearchSectionContext = createContext<SearchSectionContextValue>(
   defaultSearchSectionContextValue,
 );
+
+interface SearchSectionProps {
+  setIsSearching: boolean;
+  setOrderBy: string;
+  setPageNumber: number;
+  triggerSearch: any;
+  setSearchQuery: string;
+}
 
 interface ProductSearchPageProps {
   requestSearchQuery?: string;
@@ -115,22 +124,22 @@ function ProductSearchPage({
   return (
     <SearchSectionContext.Provider value={contextValues}>
       <SearchHeaderSection
-        data-setsearchquery={setSearchQuery}
-        data-setissearching={setIsSearching}
+        setSearchQuery={setSearchQuery}
+        setIsSearching={setIsSearching}
       />
       <div className="pb-10 mx-auto max-w-7xl lg:py-12 lg:px-8 lg:grid lg:grid-cols-12 lg:gap-x-5">
-        <div
-          data-triggersearch={triggerSearch}
-          data-setrentalcostfrom={setRentalCostFrom}
-          data-setrentalcostto={setRentalCostTo}
-          data-addfiltercategory={addFilterCategory}
-          data-removefiltercategory={removeFilterCategory}
-        />
+        {/* <div
+          data-triggerSearch={triggerSearch}
+          data-setRentalCostFrom={setRentalCostFrom}
+          data-setRentalCostTo={setRentalCostTo}
+          data-addFilterCategory={addFilterCategory}
+          data-removeFilterCategory={removeFilterCategory}
+        /> */}
         <SearchResultsSection
-          data-triggersearch={triggerSearch}
-          data-setissearching={setIsSearching}
-          data-setorderBy={setOrderBy}
-          data-setpagenumber={setPageNumber}
+          triggerSearch={triggerSearch}
+          setIsSearching={setIsSearching}
+          setOrderBy={setOrderBy}
+          setPageNumber={setPageNumber}
         />
       </div>
     </SearchSectionContext.Provider>

@@ -1,3 +1,6 @@
-import Breadcrumb from "./breadcrumb/Breadcrumb/Breadcrumb";
+import Banner from "./banner/Banner/Banner";
+import BreadcrumbC from "./breadcrumb/Breadcrumb/Breadcrumb";
+import TooltipC from "./tooltip/Tooltip/Tooltip";
+import Transition from "./transition/Transition";
 
-export { Breadcrumb };
+export { BreadcrumbC, Banner, TooltipC, Transition };

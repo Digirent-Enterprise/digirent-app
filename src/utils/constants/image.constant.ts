@@ -1,4 +1,4 @@
-const banner = "http://www.example.com";
+const banner = "../../assets/images/banner.png";
 
 const image = {
   bannerImg: banner,

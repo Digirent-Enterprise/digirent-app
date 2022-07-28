@@ -3,6 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@chakra-ui/react": "^2.2.4",
+    "@emotion/react": "^11.9.3",
+    "@emotion/styled": "^11.9.3",
     "@reduxjs/toolkit": "^1.8.3",
     "@types/axios": "^0.14.0",
     "@types/node": "^16.11.43",
@@ -12,6 +15,7 @@
     "@types/redux-logger": "^3.0.9",
     "@types/redux-saga": "^0.10.5",
     "axios": "^0.27.2",
+    "framer-motion": "^6.5.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^4.4.0",
