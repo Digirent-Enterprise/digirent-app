@@ -13,7 +13,7 @@ import { FiChevronDown } from "react-icons/fi";
 //   isOpen: boolean;
 // }
 
-function SortOptions() {
+const SortOptions = () => {
   return (
     <Menu>
       {({ isOpen }) => (
@@ -43,6 +43,6 @@ function SortOptions() {
       )}
     </Menu>
   );
-}
+};
 
 export default SortOptions;

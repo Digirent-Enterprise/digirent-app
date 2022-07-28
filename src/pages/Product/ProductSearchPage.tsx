@@ -66,14 +66,14 @@ interface ProductSearchPageProps {
   requestPageLimit?: number;
 }
 
-function ProductSearchPage({
+const ProductSearchPage = ({
   requestSearchQuery = "",
   requestRentalCostFrom = 0,
   requestRentalCostTo = 0,
   requestFilterCategories = [],
   requestPageNumber = 1,
   requestPageLimit = 6,
-}: ProductSearchPageProps) {
+}: ProductSearchPageProps) => {
   const [searchQuery, setSearchQuery] = useState(requestSearchQuery);
   const [filterCategories, setFilterCategories] = useState(
     requestFilterCategories,
@@ -144,7 +144,7 @@ function ProductSearchPage({
       </div>
     </SearchSectionContext.Provider>
   );
-}
+};
 
 ProductSearchPage.getInitialProps = ({ query }: any) => {
   const search =

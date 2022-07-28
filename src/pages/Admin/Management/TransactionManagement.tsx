@@ -2,7 +2,7 @@ import React, { useMemo } from "react";
 
 import DefaultManagementLayout from "../DefaultManagementLayout";
 
-function TransactionManagement() {
+const TransactionManagement = () => {
   const columnsHeader = useMemo(
     () => [
       {
@@ -47,6 +47,6 @@ function TransactionManagement() {
       pageType="transaction"
     />
   );
-}
+};
 
 export default TransactionManagement;

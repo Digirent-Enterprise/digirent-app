@@ -19,12 +19,12 @@ type SearchResultsSectionProps = {
   triggerSearch: any;
 };
 
-function SearchResultsSection({
+const SearchResultsSection = ({
   setIsSearching,
   setOrderBy,
   setPageNumber,
   triggerSearch,
-}: SearchResultsSectionProps) {
+}: SearchResultsSectionProps) => {
   const searchContext = useContext(SearchSectionContext);
   const [products, setProducts] = useState([]);
   const [productsCount, setProductsCount] = useState(0);
@@ -62,6 +62,6 @@ function SearchResultsSection({
       />
     </div>
   );
-}
+};
 
 export default SearchResultsSection;

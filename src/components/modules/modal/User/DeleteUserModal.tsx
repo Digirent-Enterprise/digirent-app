@@ -2,7 +2,7 @@ import React from "react";
 import RootDeleteModal from "../RootDeleteModal";
 import { UserModalProps } from "./users.type";
 
-function DeleteUserModal(props: UserModalProps) {
+const DeleteUserModal = (props: UserModalProps) => {
   return (
     <RootDeleteModal {...props}>
       <h1 className="mb-5">Delete User</h1>
@@ -11,5 +11,5 @@ function DeleteUserModal(props: UserModalProps) {
       </h3>
     </RootDeleteModal>
   );
-}
+};
 export default DeleteUserModal;

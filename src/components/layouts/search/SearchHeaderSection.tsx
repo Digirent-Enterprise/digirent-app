@@ -6,10 +6,10 @@ interface SearchHeaderSectionProps {
   setIsSearching: Dispatch<SetStateAction<boolean>>;
 }
 
-function SearchHeaderSection({
+const SearchHeaderSection = ({
   setSearchQuery,
   setIsSearching,
-}: SearchHeaderSectionProps) {
+}: SearchHeaderSectionProps) => {
   const searchContext = useContext(SearchSectionContext);
 
   return (
@@ -47,6 +47,6 @@ function SearchHeaderSection({
       </div>
     </div>
   );
-}
+};
 
 export default SearchHeaderSection;

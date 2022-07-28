@@ -1,7 +1,7 @@
 import React from "react";
 import image from "../../../../utils/constants/image.constant";
 
-function Banner() {
+const Banner = () => {
   return (
     <div className="relative w-full h-full pb-10">
       <div className="relative px-4 xl:px-0 container mx-auto md:flex items-center gap-8">
@@ -32,6 +32,6 @@ function Banner() {
       </div>
     </div>
   );
-}
+};
 
 export default Banner;

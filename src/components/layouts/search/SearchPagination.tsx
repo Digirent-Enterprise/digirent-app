@@ -13,11 +13,11 @@ interface PaginationProps {
   pageMaxValue: number;
 }
 
-function SearchPagination({
+const SearchPagination = ({
   triggerSearch,
   setPageNumber,
   pageMaxValue,
-}: PaginationProps) {
+}: PaginationProps) => {
   const searchContext = useContext(SearchSectionContext);
   const pageOffset = 2;
   const goToPage = (page: number) => {
@@ -127,6 +127,6 @@ function SearchPagination({
       </div>
     </nav>
   );
-}
+};
 
 export default SearchPagination;

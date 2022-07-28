@@ -2,7 +2,7 @@ import React from "react";
 import RootDeleteModal from "../RootDeleteModal";
 import { TransactionModalProps } from "./transactions.type";
 
-function DeleteTransactionModal(props: TransactionModalProps) {
+const DeleteTransactionModal = (props: TransactionModalProps) => {
   return (
     <RootDeleteModal {...props}>
       <h1 className="my-5 text-lg font-bold">Delete Transaction</h1>
@@ -12,5 +12,5 @@ function DeleteTransactionModal(props: TransactionModalProps) {
       </h3>
     </RootDeleteModal>
   );
-}
+};
 export default DeleteTransactionModal;
