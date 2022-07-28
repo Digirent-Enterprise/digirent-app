@@ -15,9 +15,7 @@ import {
   Link,
 } from "@chakra-ui/react";
 import axios from "../../http-common";
-import { AuthFormGrid } from "../../components/form/index";
-import { Transition } from "../../components/elements";
-import { StatusToaster } from "../../components/toaster/index";
+import { AuthFormGrid, Transition, StatusToaster } from "../../components";
 
 interface IFormInputs {
   name: string;
@@ -72,17 +70,25 @@ const LoginPage = () => {
                   <FormLabel>Username</FormLabel>
                   <Input
                     {...register("name")}
-                    placeholder="supernam"
+                    placeholder="Enter name"
                     size="md"
                   />
                 </FormControl>
                 <FormControl>
                   <FormLabel>Email</FormLabel>
-                  <Input {...register("email")} placeholder="email" size="md" />
+                  <Input
+                    {...register("email")}
+                    placeholder="Enter email"
+                    size="md"
+                  />
                 </FormControl>
                 <FormControl>
                   <FormLabel>Phone</FormLabel>
-                  <Input {...register("phone")} placeholder="phone" size="md" />
+                  <Input
+                    {...register("phone")}
+                    placeholder="Enter phone"
+                    size="md"
+                  />
                 </FormControl>
                 <FormControl>
                   <FormLabel>Password</FormLabel>
@@ -139,7 +145,8 @@ const LoginPage = () => {
 
                 <Box>
                   Already had an account?
-                  <Link color="brand.500" href="/register">
+                  <Link color="brand.500" href="/login">
+                    {" "}
                     Sign In
                   </Link>
                 </Box>
