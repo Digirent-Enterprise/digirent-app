@@ -15,9 +15,7 @@ import {
 } from "@chakra-ui/react";
 import axios from "../../http-common";
 import { storeUserSession } from "../../helpers/authHelpers";
-import AuthFormGrid from "../../components/form/AuthForm/AuthFormGrid";
-import { Transition } from "../../components/elements";
-import { StatusToaster } from "../../components/toaster/index";
+import { AuthFormGrid, Transition, StatusToaster } from "../../components";
 
 interface IFormInputs {
   email: string;
