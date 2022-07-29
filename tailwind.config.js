@@ -12,7 +12,7 @@ module.exports = {
       },
       red: "#AE1010",
       green: "#11995B",
-      modal: "#C8C8C8"
+      modal: "#C8C8C8",
     },
     extend: {},
   },
