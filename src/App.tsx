@@ -1,10 +1,13 @@
 import React from "react";
-// import { NavBar } from "./components/layouts";
-import { Footer } from "./components/layouts/footer/Footer";
-import {NavBar} from "./component/layouts/navigation/NavBar"
+import { BrowserRouter } from "react-router-dom";
+import AppRouter from "./Router";
 
-function App() {
-  return <NavBar />;
-}
+const App = () => {
+  return (
+    <BrowserRouter>
+      <AppRouter />
+    </BrowserRouter>
+  );
+};
 
 export default App;

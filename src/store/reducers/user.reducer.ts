@@ -1,40 +1,39 @@
 import {
-  FETCH_USERS_ACTIVE,
-  FETCH_USERS_DEACTIVATE,
-  FETCH_USERS_ERROR,
-} from "../types/action.types";
+  SET_USER,
+  SET_AUTHENTICATED,
+  SET_UNAUTHENTICATED,
+  LOADING_USER,
+} from "../types/user.types";
+
+const initialState = {
+  authenticated: false,
+  credentials: {},
+  loading: false,
+};
 
 interface UserAction {
   type: string;
-  payload: string;
-  error: Error | string;
+  payload: any;
 }
-
-const initialState = {
-  active: false,
-  users: [],
-  error: null,
-};
-
 const UserReducer = (state = initialState, action: UserAction) => {
   switch (action.type) {
-    case FETCH_USERS_ACTIVE:
+    case SET_AUTHENTICATED:
       return {
         ...state,
-        active: true,
-        users: action.payload,
+        authenticated: true,
       };
-    case FETCH_USERS_DEACTIVATE:
+    case SET_UNAUTHENTICATED:
+      return initialState;
+    case SET_USER:
       return {
-        ...state,
-        active: false,
-        users: action.payload,
+        authenticated: true,
+        loading: false,
+        ...action.payload,
       };
-    case FETCH_USERS_ERROR:
+    case LOADING_USER:
       return {
         ...state,
-        active: false,
-        error: action.error,
+        loading: true,
       };
     default:
       return state;
