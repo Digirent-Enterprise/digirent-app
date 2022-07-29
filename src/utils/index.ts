@@ -1,3 +1,3 @@
-import { getGoogleUrl } from "./getGoogleUrl";
+import getGoogleUrl from "./getGoogleUrl";
 
 export { getGoogleUrl };

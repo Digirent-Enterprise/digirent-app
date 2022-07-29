@@ -1,9 +1,9 @@
-export const getGoogleUrl = async () => {
+const getGoogleUrl = () => {
   const rootUrl = `https://accounts.google.com/o/oauth2/v2/auth`;
 
   const options = {
-    redirect_uri: process.env.GOOGLE_REDIRECT_URI as string,
-    client_id: process.env.GOOGLE_CLIENT_ID as string,
+    redirect_uri: process.env.REACT_APP_GOOGLE_REDIRECT_URI as string,
+    client_id: process.env.REACT_APP_GOOGLE_CLIENT_ID as string,
     access_type: "offline",
     response_type: "code",
     prompt: "consent",
@@ -17,3 +17,5 @@ export const getGoogleUrl = async () => {
 
   return `${rootUrl}?${qs.toString()}`;
 };
+
+export default getGoogleUrl;
