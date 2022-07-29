@@ -3,6 +3,7 @@ import {
   FETCH_PRODUCTS_PENDING,
   FETCH_PRODUCTS_AVAILABLE,
   FETCH_PRODUCTS_ERROR,
+  SET_PRODUCTS
 } from "../types/action.types";
 
 import { ProductActions, ProductState } from "../types/product.types";
@@ -32,11 +33,12 @@ const ProductReducer = (state = initialState, action: ProductActions) => {
         pending: false,
         products: action.payload.products,
       };
-    case FETCH_PRODUCTS_ERROR:
+    case SET_PRODUCTS:
+      console.log('new product', action.payload)
       return {
         ...state,
         pending: false,
-        error: action.payload.error,
+        products: action.payload.products,
       };
     default:
       return state;

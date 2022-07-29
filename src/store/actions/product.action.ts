@@ -2,7 +2,7 @@ import {
   FETCH_PRODUCTS_REQUEST,
   FETCH_PRODUCTS_PENDING,
   FETCH_PRODUCTS_AVAILABLE,
-  FETCH_PRODUCTS_ERROR,
+  FETCH_PRODUCTS_ERROR, SET_PRODUCTS, GET_PRODUCTS,
 } from "../types/action.types";
 
 import {
@@ -12,7 +12,7 @@ import {
   FetchProductPending,
   FetchProductPendingPayload,
   FetchProductError,
-  FetchProductErrorPayload,
+  FetchProductErrorPayload, SetProductPayload, IProduct,
 } from "../types/product.types";
 
 export const fetchProductRequest = (): FetchProductRequest => ({
@@ -39,3 +39,26 @@ export const fetchProductsError = (
   type: FETCH_PRODUCTS_ERROR,
   payload,
 });
+
+export const setProducts = (
+    payload: IProduct[],
+) => {
+  console.log('product data at here', payload)
+  return {
+    type: SET_PRODUCTS,
+    payload: {
+      status: 'available',
+      products: payload,
+      error: null
+    },
+  }
+};
+
+
+export const getProducts = () => {
+  return {
+    type: GET_PRODUCTS
+  }
+}
+
+

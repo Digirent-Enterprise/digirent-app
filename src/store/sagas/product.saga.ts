@@ -4,17 +4,17 @@ import { IProduct } from "../types/product.types";
 import {
   fetchProductsAvailable,
   fetchProductsError,
-  fetchProductsPending,
+  fetchProductsPending, setProducts,
 } from "../actions/product.action";
-import { FETCH_PRODUCTS_REQUEST } from "../types/action.types";
+import {FETCH_PRODUCTS_REQUEST, GET_PRODUCTS} from "../types/action.types";
 import { API_BASE_URL } from "../../utils/constants/api.constants";
 
-const getProducts = () =>
-  axios.get<IProduct[]>(`${API_BASE_URL}/admin/products)`);
-
+const fetchProducts = () => {
+  return axios.get<IProduct[]>(`${API_BASE_URL}/v1/api/product/`);
+}
 function* fetchProductAvailableSaga(): any {
   try {
-    const response = yield call(getProducts);
+    const response = yield call(fetchProducts);
     yield put(
       fetchProductsAvailable({
         products: response.data,
@@ -32,7 +32,7 @@ function* fetchProductAvailableSaga(): any {
 
 function* fetchProductPendingSaga(): any {
   try {
-    const response = yield call(getProducts);
+    const response = yield call(fetchProducts);
     yield put(
       fetchProductsPending({
         products: response.data,
@@ -48,10 +48,25 @@ function* fetchProductPendingSaga(): any {
   }
 }
 
+function* getProducts(): any {
+  try {
+    const response = yield call(fetchProducts);
+    yield put(setProducts(response.data));
+
+  } catch (e: any) {
+    yield put(
+        fetchProductsError({
+          error: e.message,
+        }),
+    );
+  }
+}
+
 function* productSaga() {
   yield all([
     takeLatest(FETCH_PRODUCTS_REQUEST, fetchProductAvailableSaga),
     takeLatest(FETCH_PRODUCTS_REQUEST, fetchProductPendingSaga),
+    takeLatest(GET_PRODUCTS, getProducts)
   ]);
 }
 

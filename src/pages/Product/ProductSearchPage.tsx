@@ -1,11 +1,17 @@
 /* eslint-disable react/no-unused-prop-types */
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import React, { createContext, useState, useMemo } from "react";
+import React, {createContext, useState, useMemo, useEffect} from "react";
 import {
   Transition,
   SearchHeaderSection,
   SearchResultsSection,
 } from "../../components";
+import {useDispatch, useSelector} from "react-redux";
+import {products} from '../../store/selectors/product.selector';
+import {getProducts, setProducts} from "../../store/actions/product.action";
+import axios from "axios";
+import {IProduct} from "../../store/types/product.types";
+import {API_BASE_URL} from "../../utils/constants/api.constants";
 
 export const sortByOptions = [
   {
@@ -84,6 +90,24 @@ const ProductSearchPage = ({
   const [pageNumber, setPageNumber] = useState(requestPageNumber);
   const [pageLimit, setPageLimit] = useState(requestPageLimit);
   const [isSearching, setIsSearching] = useState(true);
+  const data = useSelector(products);
+  const [newProduct, setNewProduct] = useState<IProduct>({
+    id: 1,
+    title: 'qwe',
+    description: 'qweqweqwe',
+    status: "available",
+    rentalCost: 100,
+    imagePath: "123"
+  });
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getProducts())
+  }, [])
+
+
+
+  // caching
   const contextValues = useMemo(
     () => ({
       filterCategories,
@@ -120,6 +144,12 @@ const ProductSearchPage = ({
   const triggerSearch = () => {
     setIsSearching(true);
   };
+  const _onClick = () => {
+    dispatch(setProducts([...data, newProduct]))
+  }
+  const _onSubmit = async () => {
+    await axios.post('http://localhost:8000/v1/api/product', newProduct);
+  }
 
   return (
     <Transition>
@@ -142,7 +172,10 @@ const ProductSearchPage = ({
             setOrderBy={setOrderBy}
             setPageNumber={setPageNumber}
           />
+
         </div>
+        <button onClick={_onClick} > ADD PRODUCT </button>
+        <button onClick={_onSubmit} > submit </button>
       </SearchSectionContext.Provider>
     </Transition>
   );

@@ -10,3 +10,11 @@ export const FETCH_PRODUCTS_ERROR = "FETCH_PRODUCTS_ERROR";
 export const API_REQUEST = "API_REQUEST";
 export const FETCH_DATA_SUCCESS = "FETCH_DATA_SUCCESS";
 export const FETCH_DATA_FAILURE = "FETCH_DATA_FAILURE";
+
+// setters
+
+export const SET_PRODUCTS = 'SET_PRODUCTS';
+
+// getters
+
+export const GET_PRODUCTS = 'GET_PRODUCTS';

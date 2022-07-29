@@ -6,6 +6,8 @@ const getProductRequest = (state: AppState) => state.product.pending;
 
 const getProductAvailable = (state: AppState) => state.product.products;
 
+export const products = (state: AppState) => state.product.products;
+
 const getProductPending = (state: AppState) => state.product.products;
 
 const getProductError = (state: AppState) => state.product.error;

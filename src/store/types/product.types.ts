@@ -3,6 +3,8 @@ import {
   FETCH_PRODUCTS_AVAILABLE,
   FETCH_PRODUCTS_ERROR,
   FETCH_PRODUCTS_PENDING,
+    SET_PRODUCTS,
+    GET_PRODUCTS
 } from "./action.types";
 
 export interface IProduct {
@@ -23,6 +25,10 @@ export interface ProductState {
 export interface FetchProductAvailablePayload {
   products: IProduct[];
   status: "available";
+}
+
+export interface SetProductPayload {
+  products: IProduct[];
 }
 
 export interface FetchProductPendingPayload {
@@ -53,8 +59,14 @@ export type FetchProductError = {
   payload: FetchProductErrorPayload;
 };
 
+export type SetProduct = {
+  type: string,
+  payload: SetProductPayload
+}
+
 export type ProductActions =
   | FetchProductRequest
   | FetchProductAvailable
   | FetchProductPending
-  | FetchProductError;
+  | FetchProductError
+  | SetProduct;
