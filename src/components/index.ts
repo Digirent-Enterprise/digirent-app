@@ -3,6 +3,7 @@ import {
   Banner,
   CustomTooltip,
   Transition,
+  CustomSpinner,
 } from "./elements";
 import {
   AuthFormGrid,
@@ -26,6 +27,7 @@ export {
   CustomBreadcrumb,
   Banner,
   CustomTooltip,
+  CustomSpinner,
   Transition,
   StatusToaster,
   AuthFormGrid,
