@@ -53,24 +53,25 @@ const LoginPage = () => {
   }, []);
 
   const onSubmit = (data: IFormInputs) => {
-    customAxios("application/json").post("auth/login", data).then((res: any) => {
-      console.log('res', res)
-      if (res.status === 200 || res.status === 201) {
-        storeUserSession(res.data.accessToken);
-        <StatusToaster
-          childCompToasterTitle="Welcome back!"
-          childCompStatusColor="success"
-          childCompToasterDescription="You have successfully logged in!"
-        />;
-        navigate("/");
-      } else {
-        <StatusToaster
-          childCompStatusColor="warning"
-          childCompToasterTitle={`Fail to log you in, error ${res.status}.`}
-          childCompToasterDescription={`${res.statusText}`}
-        />;
-      }
-    });
+    customAxios("application/json")
+      .post("auth/login", data)
+      .then((res: any) => {
+        if (res.status === 200 || res.status === 201) {
+          storeUserSession(res.data.accessToken);
+          <StatusToaster
+            childCompToasterTitle="Welcome back!"
+            childCompStatusColor="success"
+            childCompToasterDescription="You have successfully logged in!"
+          />;
+          navigate("/");
+        } else {
+          <StatusToaster
+            childCompStatusColor="warning"
+            childCompToasterTitle={`Fail to log you in, error ${res.status}.`}
+            childCompToasterDescription={`${res.statusText}`}
+          />;
+        }
+      });
   };
 
   return (

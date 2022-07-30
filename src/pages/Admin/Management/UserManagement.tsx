@@ -15,22 +15,26 @@ const UserManagement = () => {
       },
       {
         id: 3,
-        header: "Role",
+        header: "Phone",
       },
       {
         id: 4,
-        header: "Location",
+        header: "Role",
       },
       {
         id: 5,
-        header: "Created Time",
+        header: "Location",
       },
       {
         id: 6,
-        header: "Status",
+        header: "Created Time",
       },
       {
         id: 7,
+        header: "Status",
+      },
+      {
+        id: 8,
         header: "Action",
       },
     ],

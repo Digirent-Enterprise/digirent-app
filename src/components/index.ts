@@ -9,6 +9,9 @@ import {
   DeleteProductModal,
   DeleteTransactionModal,
   DeleteUserModal,
+  EditProductModal,
+  EditTransactionModal,
+  EditUserModal,
   StatusToaster,
 } from "./modules";
 import {
@@ -28,6 +31,9 @@ export {
   DeleteProductModal,
   DeleteTransactionModal,
   DeleteUserModal,
+  EditUserModal,
+  EditTransactionModal,
+  EditProductModal,
   SearchHeaderSection,
   SearchResultsSection,
   ChatLeftSide,

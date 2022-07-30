@@ -1,6 +1,6 @@
 import axios from "axios";
-import {customAxios} from "../../http-common";
 import { all, call, put, takeLatest } from "redux-saga/effects";
+import { customAxios } from "../../http-common";
 import { GET_USERS, GET_USER_DETAIL } from "../types/action.types";
 import { IUser, IUserDetail } from "../types/user.types";
 import {
@@ -13,8 +13,9 @@ import { API_BASE_URL } from "../../utils/constants/api.constants";
 
 const fetchUsers = () => axios.get<IUser[]>(`${API_BASE_URL}/v1/api/user/`);
 const fetchUserDetails = () => {
-  console.log(`${API_BASE_URL}/v1/api/user/user-detail`);
-  return customAxios().get<IUserDetail>(`${API_BASE_URL}/v1/api/user/user-detail`);
+  return customAxios().get<IUserDetail>(
+    `${API_BASE_URL}/v1/api/user/user-detail`,
+  );
 };
 
 function* getUsers(): any {

@@ -1,12 +1,15 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React, { useState } from "react";
+import { useDisclosure } from "@chakra-ui/hooks";
 import {
   DeleteProductModal,
   DeleteTransactionModal,
   DeleteUserModal,
-} from "../../components/modules";
+  EditProductModal,
+  EditTransactionModal,
+  EditUserModal,
+} from "../../components";
 
 interface ColumnHeader {
   id: number;
@@ -24,21 +27,19 @@ const DefaultManagementLayout = ({
   columnsHeader,
   pageType,
 }: ManagementTableProps) => {
-  // const [editModalVisible, setEditModalVisible] = useState(false);
-  // const onEditModalOpen = () => {
-  //   setEditModalVisible(true);
-  // };
+  const {
+    isOpen: isEditOpen,
+    onOpen: onEditOpen,
+    onClose: onEditClose,
+  } = useDisclosure();
+  const {
+    isOpen: isDeleteOpen,
+    onOpen: onDeleteOpen,
+    onClose: onDeleteClose,
+  } = useDisclosure();
 
-  // const onEditModalClose = () => setEditModalVisible(false);
-
-  const [deleteModalVisible, setDeleteModalVisible] = useState(false);
-  const onDeleteModalOpen = () => {
-    setDeleteModalVisible(true);
-  };
-
-  const onDeleteModalClose = () => setDeleteModalVisible(false);
   return (
-    <div className="overflow-x-auto relative shadow-md sm:rounded-lg">
+    <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
       <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
         <caption className="p-5 text-lg font-semibold text-left text-gray-900 bg-white dark:text-white dark:bg-gray-800">
           {title}
@@ -47,7 +48,7 @@ const DefaultManagementLayout = ({
           <tr>
             {columnsHeader.map((column) => {
               return (
-                <th scope="col" className="py-3 px-6" key={column.id}>
+                <th scope="col" className="px-6 py-3" key={column.id}>
                   {column.header}
                 </th>
               );
@@ -56,61 +57,55 @@ const DefaultManagementLayout = ({
         </thead>
         <tbody>
           <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-            <td className="py-4 px-6">Apple MacBook Pro 17"</td>
-            <td className="py-4 px-6">Sliver</td>
-            <td className="py-4 px-6">Laptop</td>
-            <td className="py-4 px-6">$2999</td>
-            <td className="flex items-center py-4 px-6 space-x-3">
+            <td className="px-6 py-4">Apple MacBook Pro 17"</td>
+            <td className="px-6 py-4">Sliver</td>
+            <td className="px-6 py-4">Laptop</td>
+            <td className="px-6 py-4">$2999</td>
+            <td className="flex items-center px-6 py-4 space-x-3">
               <div
-                // onClick={onEditModalOpen}
+                onClick={onEditOpen}
                 role="button"
                 tabIndex={0}
-                className="font-medium text-blue-600 dark:text-blue-500 hover:underline"
+                className="font-medium text-blue-100 dark:text-blue-500 hover:underline"
               >
                 Edit
               </div>
-              {/* {pageType === "user" && (
-                <EditUserModal
-                  visible={editModalVisible}
-                  onClose={onEditModalClose}
-                />
+              {pageType === "user" && (
+                <EditUserModal isOpen={isEditOpen} onClose={onEditClose} />
               )}
               {pageType === "product" && (
-                <EditProductModal
-                  visible={editModalVisible}
-                  onClose={onEditModalClose}
-                />
+                <EditProductModal isOpen={isEditOpen} onClose={onEditClose} />
               )}
               {pageType === "transaction" && (
                 <EditTransactionModal
-                  visible={editModalVisible}
-                  onClose={onEditModalClose}
+                  isOpen={isEditOpen}
+                  onClose={onEditClose}
                 />
-              )} */}
+              )}
               <div
-                onClick={onDeleteModalOpen}
+                onClick={onDeleteOpen}
                 role="button"
                 tabIndex={0}
-                className="font-medium text-red-600 dark:text-red-500 hover:underline"
+                className="font-medium text-red dark:text-red-500 hover:underline"
               >
                 Remove
               </div>
               {pageType === "user" && (
                 <DeleteUserModal
-                  visible={deleteModalVisible}
-                  onClose={onDeleteModalClose}
+                  isOpen={isDeleteOpen}
+                  onClose={onDeleteClose}
                 />
               )}
               {pageType === "product" && (
                 <DeleteProductModal
-                  visible={deleteModalVisible}
-                  onClose={onDeleteModalClose}
+                  isOpen={isDeleteOpen}
+                  onClose={onDeleteClose}
                 />
               )}
               {pageType === "transaction" && (
                 <DeleteTransactionModal
-                  visible={deleteModalVisible}
-                  onClose={onDeleteModalClose}
+                  isOpen={isDeleteOpen}
+                  onClose={onDeleteClose}
                 />
               )}
             </td>
@@ -118,7 +113,7 @@ const DefaultManagementLayout = ({
         </tbody>
       </table>
       <nav
-        className="flex justify-between items-center pt-4"
+        className="flex items-center justify-between pt-4"
         aria-label="Table navigation"
       >
         <span className="text-sm font-normal text-gray-500 dark:text-gray-400">
@@ -136,7 +131,7 @@ const DefaultManagementLayout = ({
           <li>
             <a
               href="#"
-              className="block py-2 px-3 ml-0 leading-tight text-gray-500 bg-white rounded-l-lg border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+              className="block px-3 py-2 ml-0 leading-tight text-gray-500 bg-white border border-gray-300 rounded-l-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
             >
               <span className="sr-only">Previous</span>
               <svg
@@ -157,7 +152,7 @@ const DefaultManagementLayout = ({
           <li>
             <a
               href="#"
-              className="py-2 px-3 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+              className="px-3 py-2 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
             >
               1
             </a>
@@ -165,7 +160,7 @@ const DefaultManagementLayout = ({
           <li>
             <a
               href="#"
-              className="py-2 px-3 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+              className="px-3 py-2 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
             >
               2
             </a>
@@ -174,7 +169,7 @@ const DefaultManagementLayout = ({
             <a
               href="#"
               aria-current="page"
-              className="z-10 py-2 px-3 leading-tight text-blue-600 bg-blue-50 border border-blue-300 hover:bg-blue-100 hover:text-blue-700 dark:border-gray-700 dark:bg-gray-700 dark:text-white"
+              className="z-10 px-3 py-2 leading-tight text-blue-600 border border-blue-300 bg-blue-50 hover:bg-blue-100 hover:text-blue-700 dark:border-gray-700 dark:bg-gray-700 dark:text-white"
             >
               3
             </a>
@@ -182,7 +177,7 @@ const DefaultManagementLayout = ({
           <li>
             <a
               href="#"
-              className="py-2 px-3 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+              className="px-3 py-2 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
             >
               ...
             </a>
@@ -190,7 +185,7 @@ const DefaultManagementLayout = ({
           <li>
             <a
               href="#"
-              className="py-2 px-3 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+              className="px-3 py-2 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
             >
               100
             </a>
@@ -198,7 +193,7 @@ const DefaultManagementLayout = ({
           <li>
             <a
               href="#"
-              className="block py-2 px-3 leading-tight text-gray-500 bg-white rounded-r-lg border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+              className="block px-3 py-2 leading-tight text-gray-500 bg-white border border-gray-300 rounded-r-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
             >
               <span className="sr-only">Next</span>
               <svg
