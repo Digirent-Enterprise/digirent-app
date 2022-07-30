@@ -1,42 +1,44 @@
 import React from "react";
-import { Navbar, Typography } from "@material-tailwind/react";
-// import {
-//   Avatar,
-//   Button,
-//   Menu,
-//   MenuButton,
-//   MenuList,
-//   MenuItem,
-//   MenuDivider,
-//   Center,
-// } from "@chakra-ui/react";
+import { Box, Button, Flex } from "@chakra-ui/react";
 import { NavButton } from "./NavButton";
-
-function NavBar() {
+import { AvatarMenu } from "../../AvatarMenu";
+// const NavLink = ({ children }: { children: ReactNode }) => (
+//   <Link
+//     px={2}
+//     py={1}
+//     rounded="md"
+//     _hover={{
+//       textDecoration: "none",
+//       bg: useColorModeValue("gray.200", "gray.700"),
+//     }}
+//     href="#"
+//   >
+//     {children}
+//   </Link>
+// );
+const NavBar = () => {
+  // const { isOpen, onOpen, onClose } = useDisclosure();
   return (
-    <Navbar className="mx-auto max-w-screen bg-black">
-      <div className="container flex items-center justify-between text-blue-grey-900">
-        <Typography
-          as="a"
-          href="#"
-          variant="small"
-          className="mr-4 cursor-pointer py-1.5 font-bold text-3xl"
+    <Box bgColor="#222" px={7} py={3} h="90px">
+      <Flex h={16} alignItems="center" justifyContent="space-between">
+        <Button
+          variant="link"
+          color="white"
+          mr="4"
+          py="1.5"
+          fontSize="3xl"
+          as="em"
         >
           Digirent
-        </Typography>
-        <ul className="flex items-right gap-6">
-          <NavButton />
-        </ul>
-      </div>
-      <div className="flex items-right gap-6 h-12 w-12 mb-4 lg:mb-0 mr-4">
-        <img
-          src="https://tuk-cdn.s3.amazonaws.com/assets/components/avatars/a_3_0.png"
-          alt=""
-          className="h-full w-full rounded-full overflow-hidden shadow"
-        />
-      </div>
-    </Navbar>
+        </Button>
+        <Flex alignItems="center">
+          <NavButton navItem="Home" />
+          <NavButton navItem="Contact" />
+          <AvatarMenu />
+        </Flex>
+      </Flex>
+    </Box>
   );
-}
+};
 
 export { NavBar };

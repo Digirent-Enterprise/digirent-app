@@ -1,6 +1,6 @@
 import React, { ReactNode } from "react";
 
-import { getGoogleUrl } from "../../../utils";
+import { getGoogleUrl } from "../../../../utils";
 
 interface ParentCompProps {
   childCompForm?: ReactNode;

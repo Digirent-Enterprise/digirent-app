@@ -1,17 +1,23 @@
 import React from "react";
-import { Button, Typography } from "@material-tailwind/react";
+import { Button, Box } from "@chakra-ui/react";
 
 interface INavButton {
-  home: string;
-  contact: string;
+  navItem: string;
 }
 
-function NavButton(props: string) {
+const NavButton = ({ navItem }: INavButton) => {
   return (
-    <Typography as="li" variant="small" className="p-1 font-normal">
-      <Button className="flex items-right">${props}</Button>
-    </Typography>
+    <Box pr="3">
+      <Button
+        colorScheme="blackAlpha"
+        variant="ghost"
+        alignItems="center"
+        color="white"
+      >
+        {navItem}
+      </Button>
+    </Box>
   );
-}
+};
 
 export { NavButton };
