@@ -15,6 +15,7 @@ import {
   StatusToaster,
 } from "./modules";
 import {
+  AdminTab,
   ChatLeftSide,
   ChatRightSide,
   SearchHeaderSection,
@@ -38,4 +39,5 @@ export {
   SearchResultsSection,
   ChatLeftSide,
   ChatRightSide,
+  AdminTab,
 };

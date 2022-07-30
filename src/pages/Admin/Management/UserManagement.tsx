@@ -1,6 +1,6 @@
 import React, { useMemo } from "react";
 
-import DefaultManagementLayout from "../DefaultManagementLayout";
+import DefaultManagementLayout from "./DefaultManagementLayout";
 
 const UserManagement = () => {
   const columnsHeader = useMemo(

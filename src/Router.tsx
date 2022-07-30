@@ -12,7 +12,9 @@ import {
   RegisterPage,
   LoginPage,
   ChatViewPage,
+  AdminHome,
 } from "./pages";
+import PrivateRoute from "./components/PrivateRoute";
 
 const AppRouter = () => {
   const location = useLocation();
@@ -44,9 +46,16 @@ const AppRouter = () => {
         {/* Maintain */}
         <Route path="maintain" element={<Maintain />} />
         {/* Admin */}
-        <Route path="admin" />
+        <Route path="admin" element={<AdminHome />} />
         {/* User management */}
-        <Route path="admin/users" element={<UserManagement />} />
+        <Route
+          path="admin/users"
+          element={
+            <PrivateRoute>
+              <UserManagement />
+            </PrivateRoute>
+          }
+        />
         <Route path="admin/users/:id/edit" />
         <Route path="admin/users/:id/delete" />
         {/* Product management */}

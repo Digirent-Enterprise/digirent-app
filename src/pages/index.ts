@@ -7,10 +7,12 @@ import RegisterPage from "./Auth/RegisterPage";
 import Maintain from "./Maintain/Maintain";
 import NotFound from "./NotFound/NotFound";
 import Home from "./Home/Home";
-import ChatViewPage from "./Chat/ChatViewPage";
+import ChatViewPage from "./Admin/Chat/ChatViewPage";
+import AdminHome from "./Admin/Home/AdminHome";
 
 export {
   Home,
+  AdminHome,
   UserManagement,
   ProductManagement,
   TransactionManagement,
