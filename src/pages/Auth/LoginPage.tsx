@@ -53,14 +53,15 @@ const LoginPage = () => {
   }, []);
 
   const onSubmit = (data: IFormInputs) => {
-    customAxios.post("auth/login", data).then((res: any) => {
-      if (res.status === 201) {
+    customAxios("application/json").post("auth/login", data).then((res: any) => {
+      console.log('res', res)
+      if (res.status === 200 || res.status === 201) {
+        storeUserSession(res.data.accessToken);
         <StatusToaster
           childCompToasterTitle="Welcome back!"
           childCompStatusColor="success"
           childCompToasterDescription="You have successfully logged in!"
         />;
-        storeUserSession(res.data.accessToken);
         navigate("/");
       } else {
         <StatusToaster

@@ -51,7 +51,7 @@ const LoginPage = () => {
   const navigate = useNavigate();
 
   const onSubmit = (data: IFormInputs) => {
-    return customAxios
+    return customAxios("application/json")
       .post("api/auth/register", qs.stringify(data))
       .then((res) => {
         if (res.status === 201) {
