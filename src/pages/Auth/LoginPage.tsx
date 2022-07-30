@@ -1,5 +1,7 @@
-import { useState } from "react";
+import { isValidElement, useState } from "react";
 import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
 import { useNavigate } from "react-router-dom";
 import {
   Box,
@@ -7,11 +9,10 @@ import {
   FormControl,
   FormLabel,
   Input,
-  InputGroup,
-  InputRightElement,
   Stack,
   FormHelperText,
   Link,
+  FormErrorMessage,
 } from "@chakra-ui/react";
 import axios from "../../http-common";
 import { storeUserSession } from "../../helpers/authHelpers";
@@ -23,10 +24,20 @@ interface IFormInputs {
   isSubmitting: boolean;
 }
 
+const schema = yup.object().shape({
+  email: yup.string().email().required(),
+  password: yup.string().min(8).required(),
+});
+
 const LoginPage = () => {
-  const [show, setShow] = useState<boolean>(false);
-  const handleShowPassword = () => setShow(!show);
-  const { register, handleSubmit } = useForm<IFormInputs>();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<IFormInputs>({
+    resolver: yupResolver(schema),
+    mode: "all",
+  });
   const navigate = useNavigate();
 
   const onSubmit = (data: IFormInputs) => {
@@ -64,33 +75,30 @@ const LoginPage = () => {
                 backgroundColor="whiteAlpha.900"
                 boxShadow="md"
               >
-                <FormControl>
+                <FormControl isInvalid={!!errors?.email?.message} isRequired>
                   <FormLabel>Email</FormLabel>
                   <Input
                     {...register("email")}
-                    placeholder="Enter email"
+                    type="email"
+                    name="email"
+                    placeholder="Enter your email"
                     size="md"
                   />
+                  <FormErrorMessage>{errors?.email?.message}</FormErrorMessage>
                 </FormControl>
-                <FormControl>
+
+                <FormControl isInvalid={!!errors?.password?.message} isRequired>
                   <FormLabel>Password</FormLabel>
-                  <InputGroup size="md">
-                    <Input
-                      {...register("password")}
-                      pr="4.5rem"
-                      type={show ? "text" : "password"}
-                      placeholder="Enter password"
-                    />
-                    <InputRightElement width="4.5rem">
-                      <Button
-                        h="1.75rem"
-                        size="sm"
-                        onClick={handleShowPassword}
-                      >
-                        {show ? "Hide" : "Show"}
-                      </Button>
-                    </InputRightElement>
-                  </InputGroup>
+                  <Input
+                    {...register("password")}
+                    name="password"
+                    size="md"
+                    type="password"
+                    placeholder="Enter your password"
+                  />
+                  <FormErrorMessage>
+                    {errors?.password?.message}
+                  </FormErrorMessage>
                   <FormHelperText textAlign="right">
                     <Link href="/forgot-password">forgot password?</Link>
                   </FormHelperText>
@@ -101,8 +109,9 @@ const LoginPage = () => {
                   variant="solid"
                   colorScheme="brand"
                   width="full"
+                  disabled={!!errors.email || !!errors.password}
                 >
-                  Log in
+                  Login
                 </Button>
 
                 <Box>
