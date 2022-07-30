@@ -11,12 +11,7 @@ import {
   DeleteUserModal,
   StatusToaster,
 } from "./modules";
-import {
-  ChatLeftSide,
-  ChatRightSide,
-  SearchHeaderSection,
-  SearchResultsSection,
-} from "./layouts";
+import { SearchHeaderSection, SearchResultsSection } from "./layouts";
 
 export {
   CustomBreadcrumb,
@@ -30,6 +25,4 @@ export {
   DeleteUserModal,
   SearchHeaderSection,
   SearchResultsSection,
-  ChatLeftSide,
-  ChatRightSide,
 };
