@@ -10,11 +10,22 @@ export interface IUser {
   avatar: string;
 }
 
+export interface IUserDetail {
+  role: string;
+  isEmailVerified: boolean;
+  id: string;
+  name: string;
+  email: string;
+  phone: string;
+}
+
 export interface UserState {
   pending: boolean;
   users: IUser[];
   error: string | null;
 }
+
+export interface CurrentUserState extends IUserDetail {}
 export interface SetUserPayload {
   users: IUser[];
 }

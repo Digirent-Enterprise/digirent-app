@@ -14,7 +14,7 @@ import {
   Link,
   FormErrorMessage,
 } from "@chakra-ui/react";
-import axios from "../../http-common";
+import { customAxios } from "../../http-common";
 import { AuthFormGrid, Transition, StatusToaster } from "../../components";
 
 interface IFormInputs {
@@ -51,7 +51,7 @@ const LoginPage = () => {
   const navigate = useNavigate();
 
   const onSubmit = (data: IFormInputs) => {
-    return axios("application/x-www-form-urlencoded")
+    return customAxios
       .post("api/auth/register", qs.stringify(data))
       .then((res) => {
         if (res.status === 201) {
