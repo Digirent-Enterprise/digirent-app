@@ -1,7 +1,7 @@
 import {
   Box,
+  Flex,
   chakra,
-  Container,
   Stack,
   Text,
   useColorModeValue,
@@ -9,20 +9,8 @@ import {
 } from "@chakra-ui/react";
 import { FaInstagram, FaTwitter, FaLinkedin, FaFacebook } from "react-icons/fa";
 import { ReactNode } from "react";
-import { Typography } from "@material-tailwind/react";
-
-const Logo = () => {
-  return (
-    <Typography
-      as="a"
-      href="#"
-      variant="small"
-      className="mr-4 cursor-pointer py-1.5 font-bold text-3xl"
-    >
-      Digirent
-    </Typography>
-  );
-};
+// import { Typography } from "@material-tailwind/react";
+import { Logo } from "../navigation/NavBar/Logo";
 
 const SocialButton = ({
   children,
@@ -37,8 +25,8 @@ const SocialButton = ({
     <chakra.button
       bg={useColorModeValue("blackAlpha.100", "whiteAlpha.100")}
       rounded="full"
-      w={8}
-      h={8}
+      w={10}
+      h={10}
       cursor="pointer"
       as="a"
       href={href}
@@ -58,36 +46,42 @@ const SocialButton = ({
 
 const Footer = () => {
   return (
-    <Box
-      bg={useColorModeValue("gray.50", "gray.900")}
-      color={useColorModeValue("gray.700", "gray.200")}
-    >
-      <Container
-        as={Stack}
-        maxW="6xl"
-        py={4}
+    <Box bgColor="#222" px={7} py={3} h="90px" color="white">
+      <Flex
+        h={16}
+        alignItems="center"
+        justifyContent="space-between"
         direction={{ base: "column", md: "row" }}
-        spacing={4}
-        justify={{ base: "center", md: "space-between" }}
-        align={{ base: "center", md: "center" }}
       >
         <Logo />
-        <Text>© 2022 Chakra Templates. All rights reserved</Text>
         <Stack direction="row" spacing={6}>
-          <SocialButton label="Twitter" href="#">
+          <SocialButton
+            label="Twitter"
+            href="https://www.facebook.com/nguyenthi.quynhgiang.52"
+          >
             <FaTwitter />
           </SocialButton>
-          <SocialButton label="Linkedin" href="#">
+          <SocialButton
+            label="Linkedin"
+            href="https://www.facebook.com/vogia.bao.12"
+          >
             <FaLinkedin />
           </SocialButton>
-          <SocialButton label="Facebook" href="#">
+          <SocialButton
+            label="Facebook"
+            href="https://www.facebook.com/profile.php?id=100008659242682"
+          >
             <FaFacebook />
           </SocialButton>
-          <SocialButton label="Instagram" href="#">
+          <SocialButton
+            label="Instagram"
+            href="https://www.facebook.com/profile.php?id=100001087908267"
+          >
             <FaInstagram />
           </SocialButton>
         </Stack>
-      </Container>
+        <Text>@2022. Digirent. All Right Reserved</Text>
+      </Flex>
     </Box>
   );
 };
