@@ -11,6 +11,7 @@ import {
   NotFound,
   RegisterPage,
   LoginPage,
+  ChatViewPage,
 } from "./pages";
 
 const AppRouter = () => {
@@ -59,7 +60,7 @@ const AppRouter = () => {
         <Route path="admin/transactions/:id/edit" />
         <Route path="admin/transactions/:id/delete" />
         {/* Chat */}
-        <Route path="admin/chat" />
+        <Route path="admin/chat" element={<ChatViewPage />} />
         <Route path="admin/chat/:id" />
         {/* 404 Not Found Route */}
         <Route path="*" element={<NotFound />} />
