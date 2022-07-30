@@ -1,54 +1,28 @@
-import axios from "axios";
-import { SET_UNAUTHENTICATED } from "../types/user.types";
+import {
+  FetchUserError,
+  FetchUserErrorPayload,
+  IUser,
+} from "../types/user.types";
+import { SET_USERS, GET_USERS, FETCH_USERS_ERROR } from "../types/action.types";
 
-interface UserProps {
-  name: string;
-  email: string;
-  pw1: string;
-  pw2: string;
-  phone: string;
-}
-
-export const signInAction = async (method: any, { email, pw1 }: UserProps) => {
-  const res = await method({ variables: { email, pw1 } });
-  const { token } = res.data.signIn;
-  return token;
+export const setUsers = (payload: IUser[]) => {
+  return {
+    type: SET_USERS,
+    payload: {
+      users: payload,
+      error: null,
+    },
+  };
 };
 
-export const registerAction = async (
-  method: any,
-  { name, pw1, pw2, email, phone }: UserProps,
-) => {
-  const res = await method({
-    variables: { name, pw1, pw2, email, phone },
-  });
-  const { token } = res.data.register;
-  return token;
+export const getUsers = () => {
+  return {
+    type: GET_USERS,
+  };
 };
-
-const setAuthorizationHeader = (token: string) => {
-  const UserToken = `Bearer ${token}`;
-  localStorage.setItem("UserToken", UserToken);
-  axios.defaults.headers.common.Authorization = UserToken;
-};
-
-export const loginUser =
-  (method: any, userData: UserProps, history: string[]) => async () => {
-    const token = await signInAction(method, userData);
-    setAuthorizationHeader(token);
-    history.push("/");
-  };
-
-export const registerUser =
-  (method: any, userData: UserProps, history: string[]) => async () => {
-    const token = await registerAction(method, userData);
-    setAuthorizationHeader(token);
-    history.push("/");
-  };
-
-export const logoutUser =
-  () => (dispatch: (arg0: { type: string }) => void) => {
-    localStorage.removeItem("UserToken");
-    delete axios.defaults.headers.common.Authorization;
-    dispatch({ type: SET_UNAUTHENTICATED });
-  };
+export const fetchUsersError = (
+  payload: FetchUserErrorPayload,
+): FetchUserError => ({
+  type: FETCH_USERS_ERROR,
+  payload,
+});
