@@ -13,7 +13,7 @@ const AuthFormGrid: React.FC<ParentCompProps> = (props) => {
 
   return (
     <div className="flex items-center min-h-screen bg-cover bg-auth">
-      <div className="flex-1 h-full max-w-4xl mx-auto bg-white rounded-lg shadow-xl opacity-90">
+      <div className="flex-1 h-full max-w-4xl mx-auto bg-white rounded-lg shadow-xl">
         <div className="flex flex-col md:flex-row">
           <div className="h-32 md:h-auto md:w-1/2">
             <img
@@ -24,10 +24,10 @@ const AuthFormGrid: React.FC<ParentCompProps> = (props) => {
           </div>
           <div className="flex items-center justify-center p-6 sm:p-12 md:w-1/2">
             <div className="w-full">
-              <h1 className="p-5 mb-4 text-5xl italic font-bold text-center text-blue-100">
+              <h1 className="p-3 mb-2 text-5xl italic font-bold text-center text-blue-100">
                 Digirent
               </h1>
-              <h1 className="mb-4 text-2xl font-bold text-center text-gray-700">
+              <h1 className="mb-3 text-2xl font-bold text-center text-gray-700">
                 {childTitle}
               </h1>
               <div>{childCompForm}</div>

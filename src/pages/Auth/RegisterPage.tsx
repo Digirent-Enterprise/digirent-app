@@ -14,6 +14,7 @@ import {
   Link,
   FormErrorMessage,
 } from "@chakra-ui/react";
+import { WarningTwoIcon } from "@chakra-ui/icons";
 import axios from "../../http-common";
 import { AuthFormGrid, Transition, StatusToaster } from "../../components";
 
@@ -79,10 +80,10 @@ const LoginPage = () => {
           <Box textAlign="center">
             <form onSubmit={handleSubmit(onSubmit)}>
               <Stack
-                spacing={4}
+                spacing={2}
                 p="1rem"
                 backgroundColor="whiteAlpha.900"
-                boxShadow="md"
+                boxShadow="lg"
               >
                 <FormControl isInvalid={!!errors?.name?.message} isRequired>
                   <FormLabel>Name</FormLabel>
@@ -93,7 +94,9 @@ const LoginPage = () => {
                     type="text"
                     name="name"
                   />
-                  <FormErrorMessage>{errors?.name?.message}</FormErrorMessage>
+                  <FormErrorMessage>
+                    <WarningTwoIcon /> {errors?.name?.message}
+                  </FormErrorMessage>
                 </FormControl>
                 <FormControl isInvalid={!!errors.email?.message} isRequired>
                   <FormLabel>Email</FormLabel>
@@ -104,7 +107,10 @@ const LoginPage = () => {
                     size="md"
                     name="email"
                   />
-                  <FormErrorMessage>{errors?.email?.message}</FormErrorMessage>
+                  <FormErrorMessage>
+                    <WarningTwoIcon />
+                    {errors?.email?.message}
+                  </FormErrorMessage>
                 </FormControl>
                 <FormControl isInvalid={!!errors.phone?.message} isRequired>
                   <FormLabel>Phone</FormLabel>
@@ -115,7 +121,9 @@ const LoginPage = () => {
                     type="tel"
                     name="phone"
                   />
-                  <FormErrorMessage>{errors?.phone?.message}</FormErrorMessage>
+                  <FormErrorMessage>
+                    <WarningTwoIcon /> {errors?.phone?.message}
+                  </FormErrorMessage>
                 </FormControl>
                 <FormControl isInvalid={!!errors.pw1?.message}>
                   <FormLabel>Password</FormLabel>
@@ -124,9 +132,13 @@ const LoginPage = () => {
                     pr="4.5rem"
                     type="password"
                     placeholder="Enter password"
-                    name="pw1"
+                    name="Password"
                   />
-                  <FormErrorMessage>{errors?.pw1?.message}</FormErrorMessage>
+                  <FormErrorMessage>
+                    {" "}
+                    <WarningTwoIcon />
+                    {errors?.pw1?.message}
+                  </FormErrorMessage>
                 </FormControl>
                 <FormControl isInvalid={!!errors.pw2?.message}>
                   <FormLabel>Confirm Password</FormLabel>
@@ -137,7 +149,10 @@ const LoginPage = () => {
                     placeholder="Confirm password"
                     name="pw2"
                   />
-                  <FormErrorMessage>{errors?.pw2?.message}</FormErrorMessage>
+                  <FormErrorMessage>
+                    <WarningTwoIcon />
+                    {errors?.pw2?.message}
+                  </FormErrorMessage>
                   <FormHelperText textAlign="right">
                     <Link href="/forgot-password">forgot password?</Link>
                   </FormHelperText>
