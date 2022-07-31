@@ -19,6 +19,18 @@ const UserTab = () => {
             <Tab>Two</Tab>
             <Tab>Three</Tab>
           </TabList>
+
+          <TabPanels>
+            <TabPanel>
+              <p>User Profile view</p>
+            </TabPanel>
+            <TabPanel>
+              <p>two!</p>
+            </TabPanel>
+            <TabPanel>
+              <p>three!</p>
+            </TabPanel>
+          </TabPanels>
         </Tabs>
       </Flex>
     </Box>
