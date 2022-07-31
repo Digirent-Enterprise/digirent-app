@@ -3,8 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@chakra-ui/icons": "^2.0.4",
     "@chakra-ui/hooks": "^2.0.4",
+    "@chakra-ui/icons": "^2.0.4",
     "@chakra-ui/react": "^2.2.4",
     "@emotion/react": "^11.9.3",
     "@emotion/styled": "^11.9.3",
@@ -41,7 +41,7 @@
     "eject": "react-scripts eject",
     "lint": "eslint .",
     "lint:fix": "eslint --fix .",
-    "format": "concurrently \"prettier --write .\"\"eslint --fix .\""
+    "format": "concurrently \"prettier --write .\" \"eslint --fix .\""
   },
   "eslintConfig": {
     "extends": [

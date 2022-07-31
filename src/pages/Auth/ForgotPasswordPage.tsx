@@ -13,7 +13,7 @@ import {
   Link,
   FormErrorMessage,
 } from "@chakra-ui/react";
-import axios from "../../http-common";
+import { customAxios } from "../../http-common";
 import { AuthFormGrid, Transition, StatusToaster } from "../../components";
 
 interface IFormInputs {
