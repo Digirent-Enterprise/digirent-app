@@ -6,6 +6,8 @@ import {
   SearchHeaderSection,
   SearchResultsSection,
 } from "../../components";
+import Pagination from "../../components/elements/Pagination/Pagination";
+import { ProductCardListing } from "../../components/layouts";
 
 export const sortByOptions = [
   {
@@ -144,6 +146,15 @@ const ProductSearchPage = ({
           />
         </div>
       </SearchSectionContext.Provider>
+
+      <div className="pb-10 mx-auto max-w-7xl lg:py-12 lg:px-8 grid grid-cols-5">
+        <div className="col-span-1">
+          <p>Filter Pane</p>
+        </div>
+        <div className="col-span-4">
+          <ProductCardListing />
+        </div>
+      </div>
     </Transition>
   );
 };
