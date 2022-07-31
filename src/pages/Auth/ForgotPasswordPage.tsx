@@ -1,7 +1,7 @@
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 import {
   Box,
   Button,
@@ -9,12 +9,12 @@ import {
   FormLabel,
   Input,
   Stack,
-  FormHelperText,
+  // FormHelperText,
   Link,
   FormErrorMessage,
 } from "@chakra-ui/react";
-import { customAxios } from "../../http-common";
-import { AuthFormGrid, Transition, StatusToaster } from "../../components";
+// import { customAxios } from "../../http-common";
+import { AuthFormGrid, Transition } from "../../components";
 
 interface IFormInputs {
   email: string;
@@ -34,7 +34,7 @@ const LoginPage = () => {
     resolver: yupResolver(schema),
     mode: "onBlur",
   });
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   const onSubmit = (data: IFormInputs) => {
     // axios("application/x-www-form-urlencoded")
