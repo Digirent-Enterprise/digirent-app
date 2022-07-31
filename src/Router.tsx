@@ -3,6 +3,7 @@ import { Routes, Route, useLocation } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
 import {
   Home,
+  UserProfile,
   UserManagement,
   ProductManagement,
   TransactionManagement,
@@ -40,7 +41,7 @@ const AppRouter = () => {
         {/* Users */}
         <Route path="users" />
         <Route path="users/:id" />
-        <Route path="users/:id/profile" />
+        <Route path="users/profile" element={<UserProfile />} />
         <Route path="users/:id/favorite-products" />
         <Route path="users/:id/edit" />
         <Route path="users/:id/deactivate" />
