@@ -13,24 +13,16 @@ import {
   Link,
   FormErrorMessage,
 } from "@chakra-ui/react";
-import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
-import { storeUserSession } from "../../helpers/authHelpers";
-import { AuthFormGrid, Transition, StatusToaster } from "../../components";
-
-import { userDetail } from "../../store/selectors/user.selector";
-import { getUserDetail } from "../../store/actions/user.action";
 import { customAxios } from "../../http-common";
+import { AuthFormGrid, Transition, StatusToaster } from "../../components";
 
 interface IFormInputs {
   email: string;
-  password: string;
   isSubmitting: boolean;
 }
 
 const schema = yup.object().shape({
   email: yup.string().email().required(),
-  password: yup.string().min(8).required(),
 });
 
 const LoginPage = () => {
@@ -44,40 +36,33 @@ const LoginPage = () => {
   });
   const navigate = useNavigate();
 
-  const dispatch = useDispatch();
-  const getDetail = useSelector(userDetail);
-
-  useEffect(() => {
-    dispatch(getUserDetail());
-    console.log("getDetail", getDetail);
-  }, []);
-
   const onSubmit = (data: IFormInputs) => {
-    customAxios("application/json")
-      .post("auth/login", data)
-      .then((res: any) => {
-        if (res.status === 200 || res.status === 201) {
-          storeUserSession(res.data.accessToken);
-          <StatusToaster
-            childCompToasterTitle="Welcome back!"
-            childCompStatusColor="success"
-            childCompToasterDescription="You have successfully logged in!"
-          />;
-          navigate("/");
-        } else {
-          <StatusToaster
-            childCompStatusColor="warning"
-            childCompToasterTitle={`Fail to log you in, error ${res.status}.`}
-            childCompToasterDescription={`${res.statusText}`}
-          />;
-        }
-      });
+    // axios("application/x-www-form-urlencoded")
+    //   .post("auth/login", data)
+    //   .then((res) => {
+    //     if (res.status === 201) {
+    //       <StatusToaster
+    //         childCompToasterTitle="Welcome back!"
+    //         childCompStatusColor="success"
+    //         childCompToasterDescription="You have successfully logged in!"
+    //       />;
+    //       storeUserSession(res.data.accessToken);
+    //       navigate("/");
+    //     } else {
+    //       <StatusToaster
+    //         childCompStatusColor="warning"
+    //         childCompToasterTitle={`Fail to log you in, error ${res.status}.`}
+    //         childCompToasterDescription={`${res.statusText}`}
+    //       />;
+    //     }
+    //   });
+    alert(data);
   };
 
   return (
     <Transition>
       <AuthFormGrid
-        childTitle="Log in to your account"
+        childTitle="Forgot Password"
         childCompForm={
           <Box textAlign="center">
             <form onSubmit={handleSubmit(onSubmit)}>
@@ -99,38 +84,22 @@ const LoginPage = () => {
                   <FormErrorMessage>{errors?.email?.message}</FormErrorMessage>
                 </FormControl>
 
-                <FormControl isInvalid={!!errors?.password?.message} isRequired>
-                  <FormLabel>Password</FormLabel>
-                  <Input
-                    {...register("password")}
-                    name="password"
-                    size="md"
-                    type="password"
-                    placeholder="Enter your password"
-                  />
-                  <FormErrorMessage>
-                    {errors?.password?.message}
-                  </FormErrorMessage>
-                  <FormHelperText textAlign="right">
-                    <Link href="/forgot-password">forgot password?</Link>
-                  </FormHelperText>
-                </FormControl>
                 <Button
                   borderRadius={0}
                   type="submit"
                   variant="solid"
                   colorScheme="brand"
                   width="full"
-                  disabled={!!errors.email || !!errors.password}
+                  disabled={!!errors.email}
                 >
-                  Login
+                  Reset
                 </Button>
 
                 <Box>
-                  New to us?
+                  Use email and password instead?
                   <Link color="brand.500" href="/register">
                     {" "}
-                    Sign Up
+                    Sign In
                   </Link>
                 </Box>
               </Stack>
@@ -138,7 +107,7 @@ const LoginPage = () => {
           </Box>
         }
         childCompSideContent="https://i.pinimg.com/originals/a5/92/23/a59223a81638be37d096fcfa72d7dd48.jpg"
-        childOAuthButtonsVisibility
+        childOAuthButtonsVisibility={false}
       />
     </Transition>
   );
