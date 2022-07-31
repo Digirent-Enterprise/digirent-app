@@ -13,7 +13,10 @@ import {
   LoginPage,
   ResetPasswordPage,
   ForgotPasswordPage,
+  ChatViewPage,
+  AdminHome,
 } from "./pages";
+import PrivateRoute from "./components/PrivateRoute";
 
 const AppRouter = () => {
   const location = useLocation();
@@ -45,9 +48,16 @@ const AppRouter = () => {
         {/* Maintain */}
         <Route path="maintain" element={<Maintain />} />
         {/* Admin */}
-        <Route path="admin" />
+        <Route path="admin" element={<AdminHome />} />
         {/* User management */}
-        <Route path="admin/users" element={<UserManagement />} />
+        <Route
+          path="admin/users"
+          element={
+            <PrivateRoute>
+              <UserManagement />
+            </PrivateRoute>
+          }
+        />
         <Route path="admin/users/:id/edit" />
         <Route path="admin/users/:id/delete" />
         {/* Product management */}
@@ -61,7 +71,7 @@ const AppRouter = () => {
         <Route path="admin/transactions/:id/edit" />
         <Route path="admin/transactions/:id/delete" />
         {/* Chat */}
-        <Route path="admin/chat" />
+        <Route path="admin/chat" element={<ChatViewPage />} />
         <Route path="admin/chat/:id" />
         {/* 404 Not Found Route */}
         <Route path="*" element={<NotFound />} />

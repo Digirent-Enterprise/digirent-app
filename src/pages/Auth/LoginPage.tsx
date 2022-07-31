@@ -13,9 +13,14 @@ import {
   Link,
   FormErrorMessage,
 } from "@chakra-ui/react";
-import axios from "../../http-common";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
 import { storeUserSession } from "../../helpers/authHelpers";
 import { AuthFormGrid, Transition, StatusToaster } from "../../components";
+
+import { userDetail } from "../../store/selectors/user.selector";
+import { getUserDetail } from "../../store/actions/user.action";
+import { customAxios } from "../../http-common";
 
 interface IFormInputs {
   email: string;
@@ -39,17 +44,25 @@ const LoginPage = () => {
   });
   const navigate = useNavigate();
 
+  const dispatch = useDispatch();
+  const getDetail = useSelector(userDetail);
+
+  useEffect(() => {
+    dispatch(getUserDetail());
+    console.log("getDetail", getDetail);
+  }, []);
+
   const onSubmit = (data: IFormInputs) => {
-    axios("application/x-www-form-urlencoded")
+    customAxios("application/json")
       .post("auth/login", data)
-      .then((res) => {
-        if (res.status === 201) {
+      .then((res: any) => {
+        if (res.status === 200 || res.status === 201) {
+          storeUserSession(res.data.accessToken);
           <StatusToaster
             childCompToasterTitle="Welcome back!"
             childCompStatusColor="success"
             childCompToasterDescription="You have successfully logged in!"
           />;
-          storeUserSession(res.data.accessToken);
           navigate("/");
         } else {
           <StatusToaster
