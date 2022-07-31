@@ -18,7 +18,7 @@ import { useEffect } from "react";
 import { storeUserSession } from "../../helpers/authHelpers";
 import { AuthFormGrid, Transition, StatusToaster } from "../../components";
 
-import { userDetail } from "../../store/selectors/user.selector";
+import { getCurrentUser } from "../../store/selectors/user.selector";
 import { getUserDetail } from "../../store/actions/user.action";
 import { customAxios } from "../../http-common";
 
@@ -45,7 +45,7 @@ const LoginPage = () => {
   const navigate = useNavigate();
 
   const dispatch = useDispatch();
-  const getDetail = useSelector(userDetail);
+  const getDetail = useSelector(getCurrentUser);
 
   useEffect(() => {
     dispatch(getUserDetail());

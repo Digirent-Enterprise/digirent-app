@@ -91,10 +91,10 @@ const LoginPage = () => {
                 </Button>
 
                 <Box>
-                  Use email and password instead?
-                  <Link color="brand.500" href="/register">
+                  Remember your password?
+                  <Link color="brand.500" href="/login">
                     {" "}
-                    Sign In
+                    Login instead
                   </Link>
                 </Box>
               </Stack>

@@ -1,13 +1,14 @@
 import React from "react";
 import { Transition } from "../../components/elements";
-import { NavBar, Footer, UserTab } from "../../components";
+import { UserTab } from "../../components";
+import DefaultLayout from "../DefaultLayout";
 
 const UserProfile = () => {
   return (
     <Transition>
-      <NavBar />
-      <UserTab />
-      <Footer />
+      <DefaultLayout>
+        <UserTab />
+      </DefaultLayout>
     </Transition>
   );
 };

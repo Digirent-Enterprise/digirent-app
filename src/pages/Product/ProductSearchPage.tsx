@@ -9,6 +9,7 @@ import {
 } from "../../components";
 import { getProducts, setProducts } from "../../store/actions/product.action";
 import { getAllProducts } from "../../store/selectors/product.selector";
+import DefaultLayout from "../DefaultLayout";
 
 export const sortByOptions = [
   {
@@ -134,27 +135,29 @@ const ProductSearchPage = ({
 
   return (
     <Transition>
-      <SearchSectionContext.Provider value={contextValues}>
-        <SearchHeaderSection
-          setSearchQuery={setSearchQuery}
-          setIsSearching={setIsSearching}
-        />
-        <div className="pb-10 mx-auto max-w-7xl lg:py-12 lg:px-8 lg:grid lg:grid-cols-12 lg:gap-x-5">
-          {/* <div
+      <DefaultLayout>
+        <SearchSectionContext.Provider value={contextValues}>
+          <SearchHeaderSection
+            setSearchQuery={setSearchQuery}
+            setIsSearching={setIsSearching}
+          />
+          <div className="pb-10 mx-auto max-w-7xl lg:py-12 lg:px-8 lg:grid lg:grid-cols-12 lg:gap-x-5">
+            {/* <div
           data-triggerSearch={triggerSearch}
           data-setRentalCostFrom={setRentalCostFrom}
           data-setRentalCostTo={setRentalCostTo}
           data-addFilterCategory={addFilterCategory}
           data-removeFilterCategory={removeFilterCategory}
         /> */}
-          <SearchResultsSection
-            triggerSearch={triggerSearch}
-            setIsSearching={setIsSearching}
-            setOrderBy={setOrderBy}
-            setPageNumber={setPageNumber}
-          />
-        </div>
-      </SearchSectionContext.Provider>
+            <SearchResultsSection
+              triggerSearch={triggerSearch}
+              setIsSearching={setIsSearching}
+              setOrderBy={setOrderBy}
+              setPageNumber={setPageNumber}
+            />
+          </div>
+        </SearchSectionContext.Provider>
+      </DefaultLayout>
     </Transition>
   );
 };

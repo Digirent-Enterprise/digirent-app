@@ -9,8 +9,7 @@ import {
 } from "@chakra-ui/react";
 import { FaInstagram, FaTwitter, FaLinkedin, FaFacebook } from "react-icons/fa";
 import { ReactNode } from "react";
-// import { Typography } from "@material-tailwind/react";
-import { Logo } from "../navigation/NavBar/Logo";
+import Logo from "../navigation/NavBar/Logo";
 
 const SocialButton = ({
   children,
@@ -30,6 +29,7 @@ const SocialButton = ({
       cursor="pointer"
       as="a"
       href={href}
+      target="_blank"
       display="inline-flex"
       alignItems="center"
       justifyContent="center"
@@ -63,35 +63,23 @@ const Footer = () => {
       >
         <Logo />
         <Stack direction="row" spacing={6}>
-          <SocialButton
-            label="Twitter"
-            href="https://www.facebook.com/nguyenthi.quynhgiang.52"
-          >
+          <SocialButton label="Twitter" href="/maintain">
             <FaTwitter />
           </SocialButton>
-          <SocialButton
-            label="Linkedin"
-            href="https://www.facebook.com/vogia.bao.12"
-          >
+          <SocialButton label="Linkedin" href="/maintain">
             <FaLinkedin />
           </SocialButton>
-          <SocialButton
-            label="Facebook"
-            href="https://www.facebook.com/profile.php?id=100008659242682"
-          >
+          <SocialButton label="Facebook" href="/maintain">
             <FaFacebook />
           </SocialButton>
-          <SocialButton
-            label="Instagram"
-            href="https://www.facebook.com/profile.php?id=100001087908267"
-          >
+          <SocialButton label="Instagram" href="/maintain">
             <FaInstagram />
           </SocialButton>
         </Stack>
-        <Text>@2022. Digirent. All Right Reserved</Text>
+        <Text>@2022 Digirent. All Right Reserved</Text>
       </Flex>
     </Box>
   );
 };
 
-export { Footer };
+export default Footer;

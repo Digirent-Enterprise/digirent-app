@@ -1,11 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import React, {
-  useState,
-  useContext,
-  useEffect,
-  Dispatch,
-  SetStateAction,
-} from "react";
+import React, { useState, useContext, Dispatch, SetStateAction } from "react";
 import {
   SearchSectionContext,
   sortByOptions,
