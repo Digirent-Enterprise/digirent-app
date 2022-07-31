@@ -46,7 +46,7 @@ const LoginPage = () => {
     handleSubmit,
     formState: { errors },
   } = useForm<IFormInputs>({
-    mode: "all",
+    mode: "onBlur",
     resolver: yupResolver(schema),
   });
   const navigate = useNavigate();
@@ -185,6 +185,7 @@ const LoginPage = () => {
           </Box>
         }
         childCompSideContent="https://i.pinimg.com/originals/a5/92/23/a59223a81638be37d096fcfa72d7dd48.jpg"
+        childOAuthButtonsVisibility
       />
     </Transition>
   );

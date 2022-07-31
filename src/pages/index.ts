@@ -7,7 +7,8 @@ import RegisterPage from "./Auth/RegisterPage";
 import Maintain from "./Maintain/Maintain";
 import NotFound from "./NotFound/NotFound";
 import Home from "./Home/Home";
-import ResetPasswordPage from "./Auth/ForgotPasswordPage";
+import ResetPasswordPage from "./Auth/ResetPasswordPage";
+import ForgotPasswordPage from "./Auth/ForgotPasswordPage";
 
 export {
   Home,
@@ -20,4 +21,5 @@ export {
   Maintain,
   NotFound,
   ResetPasswordPage,
+  ForgotPasswordPage,
 };

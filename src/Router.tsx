@@ -11,7 +11,8 @@ import {
   NotFound,
   RegisterPage,
   LoginPage,
-  ResetPasswordPage
+  ResetPasswordPage,
+  ForgotPasswordPage,
 } from "./pages";
 
 const AppRouter = () => {
@@ -23,9 +24,9 @@ const AppRouter = () => {
         <Route path="login" element={<LoginPage />} />
         <Route path="logout" />
         <Route path="register" element={<RegisterPage />} />
-        <Route path="reset-password" />
+        <Route path="reset-password" element={<ResetPasswordPage />} />
         <Route path="send-email" />
-        <Route path="forgot-password" element={<ResetPasswordPage/>} />
+        <Route path="forgot-password" element={<ForgotPasswordPage />} />
         {/* Product */}
         <Route path="products" element={<ProductSearchPage />} />
         <Route path="products/?category=phone" />

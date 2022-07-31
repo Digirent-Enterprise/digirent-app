@@ -32,7 +32,7 @@ const LoginPage = () => {
     formState: { errors },
   } = useForm<IFormInputs>({
     resolver: yupResolver(schema),
-    mode: "all",
+    mode: "onBlur",
   });
   const navigate = useNavigate();
 
@@ -62,7 +62,7 @@ const LoginPage = () => {
   return (
     <Transition>
       <AuthFormGrid
-        childTitle="Log in to your account"
+        childTitle="Forgot Password"
         childCompForm={
           <Box textAlign="center">
             <form onSubmit={handleSubmit(onSubmit)}>
@@ -96,7 +96,7 @@ const LoginPage = () => {
                 </Button>
 
                 <Box>
-                  Use password instead?
+                  Use email and password instead?
                   <Link color="brand.500" href="/register">
                     {" "}
                     Sign In
@@ -107,6 +107,7 @@ const LoginPage = () => {
           </Box>
         }
         childCompSideContent="https://i.pinimg.com/originals/a5/92/23/a59223a81638be37d096fcfa72d7dd48.jpg"
+        childOAuthButtonsVisibility={false}
       />
     </Transition>
   );
