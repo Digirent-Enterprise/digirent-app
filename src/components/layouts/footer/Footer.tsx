@@ -9,7 +9,6 @@ import {
 } from "@chakra-ui/react";
 import { FaInstagram, FaTwitter, FaLinkedin, FaFacebook } from "react-icons/fa";
 import { ReactNode } from "react";
-// import { Typography } from "@material-tailwind/react";
 import { Logo } from "../navigation/NavBar/Logo";
 
 const SocialButton = ({
@@ -30,6 +29,7 @@ const SocialButton = ({
       cursor="pointer"
       as="a"
       href={href}
+      target="_blank"
       display="inline-flex"
       alignItems="center"
       justifyContent="center"
@@ -88,7 +88,7 @@ const Footer = () => {
             <FaInstagram />
           </SocialButton>
         </Stack>
-        <Text>@2022. Digirent. All Right Reserved</Text>
+        <Text>@2022 Digirent. All Right Reserved</Text>
       </Flex>
     </Box>
   );

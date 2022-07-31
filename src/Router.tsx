@@ -41,7 +41,7 @@ const AppRouter = () => {
         {/* Users */}
         <Route path="users" />
         <Route path="users/:id" />
-        <Route path="users/profile" element={<UserProfile />} />
+        <Route path="user/profile" element={<UserProfile />} />
         <Route path="users/:id/favorite-products" />
         <Route path="users/:id/edit" />
         <Route path="users/:id/deactivate" />
