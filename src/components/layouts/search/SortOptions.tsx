@@ -1,7 +1,5 @@
 // import React, { Fragment } from "react";
-import { Menu, MenuButton, MenuList, MenuItem } from "@chakra-ui/react";
-
-import { Button } from "@chakra-ui/react";
+import { Menu, MenuButton, MenuList, MenuItem, Button } from "@chakra-ui/react";
 
 import { FiChevronDown } from "react-icons/fi";
 
@@ -23,7 +21,7 @@ const SortOptions = () => {
               isActive={isOpen}
               as={Button}
               rightIcon={<FiChevronDown />}
-              className="inline-flex justify-center w-full px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-indigo-500"
+              className="inline-flex justify-center w-full px-4 py-2 text-sm font-medium text-gray-700 bg-black border border-gray-300 rounded-md shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-indigo-500"
             >
               Sort Options
             </MenuButton>
@@ -36,7 +34,6 @@ const SortOptions = () => {
                   Recently Updated
                 </a>
               </MenuItem>
-              <MenuItem>Create a Copy</MenuItem>
             </div>
           </MenuList>
         </>

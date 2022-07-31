@@ -20,4 +20,4 @@ const NavButton = ({ navItem }: INavButton) => {
   );
 };
 
-export { NavButton };
+export default NavButton;

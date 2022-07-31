@@ -99,7 +99,7 @@ const LoginPage = () => {
                   Remember your password?
                   <Link color="brand.500" href="/login">
                     {" "}
-                    Sign In instead
+                    Login instead
                   </Link>
                 </Box>
               </Stack>
