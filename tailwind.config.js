@@ -1,7 +1,25 @@
 module.exports = {
   content: ["./src/*.{ts,tsx}", "./src/**/*.{ts,tsx}", "./public/index.html"],
   theme: {
-    extend: {},
+    colors: {
+      transparent: "transparent",
+      current: "currentColor",
+      black: "#222",
+      white: "#fff",
+      blue: {
+        100: "#4169E1",
+        200: "#1010AE",
+        300: "#153289",
+      },
+      red: "#AE1010",
+      green: "#11995B",
+    },
+
+    extend: {
+      backgroundImage: (theme) => ({
+        auth: "url('assets/images/AuthBG.png')",
+      }),
+    },
   },
   plugins: [],
 };
