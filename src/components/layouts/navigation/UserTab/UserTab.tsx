@@ -37,4 +37,4 @@ const UserTab = () => {
   );
 };
 
-export { UserTab };
+export default UserTab;

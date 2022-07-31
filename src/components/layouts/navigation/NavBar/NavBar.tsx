@@ -1,9 +1,9 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { Box, Flex } from "@chakra-ui/react";
-import { Logo } from "./Logo";
-import { NavButton } from "./NavButton";
-import { AvatarMenu } from "./AvatarMenu";
+import Logo from "./Logo";
+import NavButton from "./NavButton";
+import AvatarMenu from "./AvatarMenu";
 import { getCurrentUser } from "../../../../store/selectors/user.selector";
 
 const NavBar = () => {
@@ -22,4 +22,4 @@ const NavBar = () => {
   );
 };
 
-export { NavBar };
+export default NavBar;

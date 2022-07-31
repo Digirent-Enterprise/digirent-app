@@ -18,10 +18,10 @@ const Maintain = () => {
               />
             </svg>
             <h1 className="mb-4 text-4xl font-bold leading-none tracking-tight text-gray-900 lg:mb-6 md:text-5xl xl:text-6xl">
-              Under Maintenance
+              Under Development
             </h1>{" "}
             <p className="mt-4 mb-8 dark:text-gray-400">
-              Our Enterprise administrators are performing scheduled maintenance
+              This feature is still being in development
             </p>
             <Link
               to="/"

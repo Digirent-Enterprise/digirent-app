@@ -53,4 +53,4 @@ const AvatarMenu = () => {
   );
 };
 
-export { AvatarMenu };
+export default AvatarMenu;
