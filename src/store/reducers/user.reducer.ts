@@ -1,39 +1,19 @@
-import {
-  SET_USER,
-  SET_AUTHENTICATED,
-  SET_UNAUTHENTICATED,
-  LOADING_USER,
-} from "../types/user.types";
+import { SET_USERS } from "../types/action.types";
+import { UserActions, UserState } from "../types/user.types";
 
-const initialState = {
-  authenticated: false,
-  credentials: {},
-  loading: false,
+const initialState: UserState = {
+  pending: false,
+  users: [],
+  error: null,
 };
 
-interface UserAction {
-  type: string;
-  payload: any;
-}
-const UserReducer = (state = initialState, action: UserAction) => {
+const UserReducer = (state = initialState, action: UserActions) => {
   switch (action.type) {
-    case SET_AUTHENTICATED:
+    case SET_USERS:
       return {
         ...state,
-        authenticated: true,
-      };
-    case SET_UNAUTHENTICATED:
-      return initialState;
-    case SET_USER:
-      return {
-        authenticated: true,
-        loading: false,
-        ...action.payload,
-      };
-    case LOADING_USER:
-      return {
-        ...state,
-        loading: true,
+        pending: false,
+        users: action.payload.users,
       };
     default:
       return state;
