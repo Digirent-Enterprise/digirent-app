@@ -3,7 +3,7 @@ import { AppState } from "../rootReducer";
 
 export const getAllUsers = (state: AppState) => state.user.users;
 
-export const userDetail = (state: AppState) => state.currentUser;
+export const getCurrentUser = (state: AppState) => state.currentUser;
 
 const getUserError = (state: AppState) => state.user.error;
 

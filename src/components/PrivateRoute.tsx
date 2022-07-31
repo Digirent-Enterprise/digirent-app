@@ -1,11 +1,12 @@
+import { useSelector } from "react-redux";
 import { Navigate } from "react-router-dom";
-import { AppState } from "../store/rootReducer";
+import { getCurrentUser } from "../store/selectors/user.selector";
 
 const PrivateRoute = ({ children }: any) => {
-  const currentUser = (state: AppState) => state.currentUser;
+  const currentUser = useSelector(getCurrentUser);
 
   if (!currentUser) {
-    return <Navigate to="/login" />;
+    return <Navigate to="/" />;
   }
   return children;
 };

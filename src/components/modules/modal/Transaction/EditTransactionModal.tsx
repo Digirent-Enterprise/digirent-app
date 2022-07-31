@@ -32,10 +32,10 @@ const EditTransactionModal = ({
         <ModalBody />
         <h1>Form</h1>
         <ModalFooter>
-          <Button colorScheme="orange" mr={3} onClick={onClose}>
+          <Button colorScheme="blue" mr={3} onClick={onClose}>
             Edit
           </Button>
-          <Button colorScheme="telegram" onClick={onClose}>
+          <Button colorScheme="telegram" onClick={onClose} variant="outline">
             Cancel
           </Button>
         </ModalFooter>

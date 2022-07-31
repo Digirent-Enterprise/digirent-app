@@ -3,6 +3,7 @@ import { Routes, Route, useLocation } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
 import {
   Home,
+  UserProfile,
   UserManagement,
   ProductManagement,
   TransactionManagement,
@@ -11,6 +12,8 @@ import {
   NotFound,
   RegisterPage,
   LoginPage,
+  ResetPasswordPage,
+  ForgotPasswordPage,
   ChatViewPage,
   AdminHome,
 } from "./pages";
@@ -25,9 +28,9 @@ const AppRouter = () => {
         <Route path="login" element={<LoginPage />} />
         <Route path="logout" />
         <Route path="register" element={<RegisterPage />} />
-        <Route path="reset-password" />
+        <Route path="reset-password" element={<ResetPasswordPage />} />
         <Route path="send-email" />
-        <Route path="forgot-password" />
+        <Route path="forgot-password" element={<ForgotPasswordPage />} />
         {/* Product */}
         <Route path="products" element={<ProductSearchPage />} />
         <Route path="products/?category=phone" />
@@ -38,7 +41,7 @@ const AppRouter = () => {
         {/* Users */}
         <Route path="users" />
         <Route path="users/:id" />
-        <Route path="users/:id/profile" />
+        <Route path="user/profile" element={<UserProfile />} />
         <Route path="users/:id/favorite-products" />
         <Route path="users/:id/edit" />
         <Route path="users/:id/deactivate" />

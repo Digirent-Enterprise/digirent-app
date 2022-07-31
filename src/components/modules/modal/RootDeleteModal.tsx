@@ -54,7 +54,7 @@ const RootDeleteModal = ({
           <Button colorScheme="red" mr={3} onClick={onClose}>
             Delete
           </Button>
-          <Button colorScheme="telegram" onClick={onClose}>
+          <Button colorScheme="telegram" onClick={onClose} variant="outline">
             Cancel
           </Button>
         </ModalFooter>
