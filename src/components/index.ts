@@ -16,6 +16,8 @@ import {
   StatusToaster,
 } from "./modules";
 import {
+  NavBar,
+  Footer,
   AdminTab,
   ChatLeftSide,
   ChatRightSide,
@@ -24,6 +26,8 @@ import {
 } from "./layouts";
 
 export {
+  NavBar,
+  Footer,
   CustomBreadcrumb,
   Banner,
   CustomTooltip,

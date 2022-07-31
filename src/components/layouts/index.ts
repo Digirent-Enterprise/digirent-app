@@ -8,6 +8,7 @@ import SearchResultsSection from "./search/SearchResultsSection";
 
 export {
   NavBar,
+  Footer,
   AdminTab,
   SearchHeaderSection,
   SearchResultsSection,
