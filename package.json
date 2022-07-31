@@ -33,7 +33,7 @@
     "yup": "^0.32.11"
   },
   "scripts": {
-    "start": "concurrently \"react-scripts start \" \"eslint --fix .\"",
+    "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "buildAndStart": "react-scripts build && react-scripts start",

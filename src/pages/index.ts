@@ -9,10 +9,12 @@ import NotFound from "./NotFound/NotFound";
 import Home from "./Home/Home";
 import ChatViewPage from "./Admin/Chat/ChatViewPage";
 import AdminHome from "./Admin/Home/AdminHome";
+import UserProfile from "./User/UserProfile";
 
 export {
   Home,
   AdminHome,
+  UserProfile,
   UserManagement,
   ProductManagement,
   TransactionManagement,
