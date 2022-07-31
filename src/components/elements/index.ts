@@ -1,6 +1,7 @@
 import Banner from "./Banner/Banner";
 import CustomBreadcrumb from "./Breadcrumb/CustomBreadcrumb";
-import CustomTooltip from "./Tooltip/Tooltip";
+import CustomSpinner from "./Spinner/CustomSpinner";
+import CustomTooltip from "./Tooltip/CustomTooltip";
 import Transition from "./Transition/Transition";
 
-export { CustomBreadcrumb, Banner, CustomTooltip, Transition };
+export { CustomBreadcrumb, Banner, CustomTooltip, Transition, CustomSpinner };
