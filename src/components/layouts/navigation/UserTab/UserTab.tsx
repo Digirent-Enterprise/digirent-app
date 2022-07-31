@@ -7,12 +7,12 @@ import {
   TabPanel,
   Box,
   Flex,
-} from "@chakra-ui/react";  
+} from "@chakra-ui/react";
 
 const UserTab = () => {
   return (
     <Box>
-      <Flex>
+      <Flex alignContent="center" justifyContent="center">
         <Tabs alignItems="center">
           <TabList>
             <Tab>One</Tab>

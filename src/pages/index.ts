@@ -13,8 +13,8 @@ import UserProfile from "./User/UserProfile";
 
 export {
   Home,
-  UserProfile,
   AdminHome,
+  UserProfile,
   UserManagement,
   ProductManagement,
   TransactionManagement,
