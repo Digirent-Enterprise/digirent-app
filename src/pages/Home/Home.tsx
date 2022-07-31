@@ -16,7 +16,6 @@ const Home = () => {
   return (
     <Transition>
       <NavBar />
-      <h3>Welcome to Digirent</h3>
       <Footer />
     </Transition>
   );

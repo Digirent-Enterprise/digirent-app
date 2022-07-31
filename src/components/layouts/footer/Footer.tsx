@@ -46,7 +46,15 @@ const SocialButton = ({
 
 const Footer = () => {
   return (
-    <Box bgColor="#222" px={7} py={3} h="90px" color="white">
+    <Box
+      bgColor="#222"
+      px={7}
+      py={3}
+      h="90px"
+      color="white"
+      position="relative"
+      mt="45em"
+    >
       <Flex
         h={16}
         alignItems="center"

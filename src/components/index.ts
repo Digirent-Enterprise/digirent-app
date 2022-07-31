@@ -19,6 +19,7 @@ import {
   NavBar,
   Footer,
   AdminTab,
+  UserTab,
   ChatLeftSide,
   ChatRightSide,
   SearchHeaderSection,
@@ -46,4 +47,5 @@ export {
   ChatLeftSide,
   ChatRightSide,
   AdminTab,
+  UserTab,
 };
