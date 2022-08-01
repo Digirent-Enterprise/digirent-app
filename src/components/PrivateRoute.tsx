@@ -5,7 +5,7 @@ import { getCurrentUser } from "../store/selectors/user.selector";
 const PrivateRoute = ({ children }: any) => {
   const currentUser = useSelector(getCurrentUser);
 
-  if (!currentUser) {
+  if (!currentUser.email) {
     return <Navigate to="/" />;
   }
   return children;
