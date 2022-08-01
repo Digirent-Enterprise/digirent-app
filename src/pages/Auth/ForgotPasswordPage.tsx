@@ -37,7 +37,6 @@ const LoginPage = () => {
   });
   // const navigate = useNavigate();
 
-
   const onSubmit = (data: IFormInputs) => {
     // axios("application/x-www-form-urlencoded")
     //   .post("auth/login", data)

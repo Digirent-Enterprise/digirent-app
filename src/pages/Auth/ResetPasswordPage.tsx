@@ -7,10 +7,10 @@ import {
   Box,
   Button,
   FormControl,
+  FormErrorMessage,
   FormLabel,
   Input,
   Stack,
-  FormErrorMessage,
 } from "@chakra-ui/react";
 import { WarningTwoIcon } from "@chakra-ui/icons";
 // import { customAxios } from "../../http-common";
@@ -27,7 +27,7 @@ const schema = yup.object().shape({
   pw2: yup.string().oneOf([yup.ref("pw1"), null], "Passwords do not match!"),
 });
 
-const LoginPage = () => {
+const ResetPasswordPage = () => {
   const {
     register,
     handleSubmit,
@@ -37,7 +37,6 @@ const LoginPage = () => {
     resolver: yupResolver(schema),
   });
   // const navigate = useNavigate();
-
 
   const onSubmit = (data: IFormInputs) => {
     // return axios("application/x-www-form-urlencoded")
@@ -124,4 +123,4 @@ const LoginPage = () => {
   );
 };
 
-export default LoginPage;
+export default ResetPasswordPage;
