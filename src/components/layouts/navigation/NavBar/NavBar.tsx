@@ -8,6 +8,7 @@ import { getCurrentUser } from "../../../../store/selectors/user.selector";
 
 const NavBar = () => {
   const currentUser = useSelector(getCurrentUser);
+  console.log("current user", currentUser);
   return (
     <Box bgColor="#222" px={7} py={3} h="90px">
       <Flex h={16} alignItems="center" justifyContent="space-between">
@@ -15,7 +16,7 @@ const NavBar = () => {
         <Flex alignItems="center">
           <NavButton navItem="Home" />
           <NavButton navItem="Contact" />
-          {!currentUser ? <NavButton navItem="Login" /> : <AvatarMenu />}
+          {!currentUser.email ? <NavButton navItem="Login" /> : <AvatarMenu />}
         </Flex>
       </Flex>
     </Box>
