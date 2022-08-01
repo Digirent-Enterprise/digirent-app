@@ -6,8 +6,7 @@ import {
   SearchHeaderSection,
   SearchResultsSection,
 } from "../../components";
-import Pagination from "../../components/elements/Pagination/Pagination";
-import { ProductCardListing } from "../../components/layouts";
+import { FilterPanel, ProductCardListing } from "../../components/layouts";
 
 export const sortByOptions = [
   {
@@ -130,28 +129,28 @@ const ProductSearchPage = ({
           setSearchQuery={setSearchQuery}
           setIsSearching={setIsSearching}
         />
-        <div className="pb-10 mx-auto max-w-7xl lg:py-12 lg:px-8 lg:grid lg:grid-cols-12 lg:gap-x-5">
-          {/* <div
+        {/* <div className="pb-10 mx-auto max-w-7xl lg:py-12 lg:px-8 lg:grid lg:grid-cols-12 lg:gap-x-5"> */}
+        {/* <div
           data-triggerSearch={triggerSearch}
           data-setRentalCostFrom={setRentalCostFrom}
           data-setRentalCostTo={setRentalCostTo}
           data-addFilterCategory={addFilterCategory}
           data-removeFilterCategory={removeFilterCategory}
         /> */}
+        {/* </div> */}
+      </SearchSectionContext.Provider>
+
+      <div className="pb-10 mx-auto max-w-7xl lg:py-12 lg:px-8 grid grid-cols-5">
+        <div className="col-span-1">
+          <FilterPanel />
+        </div>
+        <div className="col-span-4">
           <SearchResultsSection
             triggerSearch={triggerSearch}
             setIsSearching={setIsSearching}
             setOrderBy={setOrderBy}
             setPageNumber={setPageNumber}
           />
-        </div>
-      </SearchSectionContext.Provider>
-
-      <div className="pb-10 mx-auto max-w-7xl lg:py-12 lg:px-8 grid grid-cols-5">
-        <div className="col-span-1">
-          <p>Filter Pane</p>
-        </div>
-        <div className="col-span-4">
           <ProductCardListing />
         </div>
       </div>

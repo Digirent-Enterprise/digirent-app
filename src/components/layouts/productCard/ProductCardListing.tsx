@@ -1,7 +1,13 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import ProductListLayout from "./productListLayout/productListLayout";
-import { Products } from "./interface/interface";
+
+export interface Products {
+  id: number;
+  image: string;
+  title: string;
+  price: number;
+}
 
 const ProductsListing = () => {
   const [products, setProducts] = useState<Products[]>([]);

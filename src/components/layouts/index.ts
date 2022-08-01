@@ -1,3 +1,4 @@
+import FilterPanel from "./filter/FilterPanel";
 import { NavBar } from "./navigation/NavBar/NavBar";
 import ProductCardListing from "./productCard/ProductCardListing";
 import SearchHeaderSection from "./search/SearchHeaderSection";
@@ -8,4 +9,5 @@ export {
   SearchHeaderSection,
   SearchResultsSection,
   ProductCardListing,
+  FilterPanel,
 };

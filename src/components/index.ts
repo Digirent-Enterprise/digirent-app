@@ -11,7 +11,11 @@ import {
   DeleteUserModal,
   StatusToaster,
 } from "./modules";
-import { SearchHeaderSection, SearchResultsSection } from "./layouts";
+import {
+  FilterPanel,
+  SearchHeaderSection,
+  SearchResultsSection,
+} from "./layouts";
 
 export {
   CustomBreadcrumb,
@@ -25,4 +29,5 @@ export {
   DeleteUserModal,
   SearchHeaderSection,
   SearchResultsSection,
+  FilterPanel,
 };
