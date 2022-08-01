@@ -1,12 +1,15 @@
 /* eslint-disable react/no-unused-prop-types */
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import React, { createContext, useState, useMemo } from "react";
+import React, { createContext, useState, useMemo, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import {
   Transition,
   SearchHeaderSection,
   SearchResultsSection,
 } from "../../components";
 import { FilterPanel, ProductCardListing } from "../../components/layouts";
+import { getProducts, setProducts } from "../../store/actions/product.action";
+import { getAllProducts } from "../../store/selectors/product.selector";
 
 export const sortByOptions = [
   {
@@ -85,6 +88,14 @@ const ProductSearchPage = ({
   const [pageNumber, setPageNumber] = useState(requestPageNumber);
   const [pageLimit, setPageLimit] = useState(requestPageLimit);
   const [isSearching, setIsSearching] = useState(true);
+
+  const productData = useSelector(getAllProducts);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getProducts());
+  }, []);
+
   const contextValues = useMemo(
     () => ({
       filterCategories,

@@ -1,5 +1,4 @@
 export type TransactionModalProps = {
-  onSubmit?: () => void;
-  visible: boolean;
-  onClose?: () => void;
+  isOpen: boolean;
+  onClose: () => void;
 };

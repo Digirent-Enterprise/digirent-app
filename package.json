@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@chakra-ui/hooks": "^2.0.4",
     "@chakra-ui/react": "^2.2.4",
     "@emotion/react": "^11.10.0",
     "@emotion/styled": "^11.10.0",
@@ -37,7 +38,7 @@
     "yup": "^0.32.11"
   },
   "scripts": {
-    "start": "concurrently \"react-scripts start \" \"eslint --fix .\"",
+    "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "buildAndStart": "react-scripts build && react-scripts start",

@@ -5,10 +5,12 @@ import { ProductModalProps } from "./products.type";
 const DeleteProductModal = (props: ProductModalProps) => {
   return (
     <RootDeleteModal {...props}>
-      <h1 className="mb-5">Delete Product</h1>
-      <h3 className="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">
-        Are you sure you want to delete this product? This action cannot be
-        undone
+      <h1 className="my-5 text-4xl text-red">Delete Product</h1>
+      <h3 className="mt-5 text-lg font-normal decoration-current">
+        Are you sure you want to delete this product?
+      </h3>
+      <h3 className="text-lg font-normal decoration-current">
+        This action cannot be undone
       </h3>
     </RootDeleteModal>
   );
