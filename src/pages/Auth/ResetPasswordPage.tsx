@@ -1,20 +1,20 @@
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-import { useNavigate } from "react-router-dom";
-import qs from "qs";
+// import { useNavigate } from "react-router-dom";
+// import qs from "qs";
 import {
   Box,
   Button,
   FormControl,
+  FormErrorMessage,
   FormLabel,
   Input,
   Stack,
-  FormErrorMessage,
 } from "@chakra-ui/react";
 import { WarningTwoIcon } from "@chakra-ui/icons";
-import { customAxios } from "../../http-common";
-import { AuthFormGrid, Transition, StatusToaster } from "../../components";
+// import { customAxios } from "../../http-common";
+import { AuthFormGrid, Transition } from "../../components";
 
 interface IFormInputs {
   pw1: string;
@@ -27,7 +27,7 @@ const schema = yup.object().shape({
   pw2: yup.string().oneOf([yup.ref("pw1"), null], "Passwords do not match!"),
 });
 
-const LoginPage = () => {
+const ResetPasswordPage = () => {
   const {
     register,
     handleSubmit,
@@ -36,7 +36,7 @@ const LoginPage = () => {
     mode: "onBlur",
     resolver: yupResolver(schema),
   });
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   const onSubmit = (data: IFormInputs) => {
     // return axios("application/x-www-form-urlencoded")
@@ -123,4 +123,4 @@ const LoginPage = () => {
   );
 };
 
-export default LoginPage;
+export default ResetPasswordPage;
