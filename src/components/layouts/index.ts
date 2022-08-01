@@ -1,4 +1,3 @@
-import FilterPanel from "./filter/FilterPanel";
 import ChatLeftSide from "./chat/ChatLeftSide";
 import ChatRightSide from "./chat/ChatRightSide";
 import AdminTab from "./navigation/AdminTab/AdminTab";
@@ -20,5 +19,4 @@ export {
   ChatLeftSide,
   ChatRightSide,
   ProductCardListing,
-  FilterPanel,
 };

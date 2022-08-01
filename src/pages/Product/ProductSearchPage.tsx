@@ -7,7 +7,7 @@ import {
   SearchHeaderSection,
   SearchResultsSection,
 } from "../../components";
-import { FilterPanel, ProductCardListing } from "../../components/layouts";
+import { ProductCardListing } from "../../components/layouts";
 import { getProducts, setProducts } from "../../store/actions/product.action";
 import { getAllProducts } from "../../store/selectors/product.selector";
 
@@ -153,7 +153,7 @@ const ProductSearchPage = ({
 
       <div className="pb-10 mx-auto max-w-7xl lg:py-12 lg:px-8 grid grid-cols-5">
         <div className="col-span-1">
-          <FilterPanel />
+          Filter Panel
         </div>
         <div className="col-span-4">
           <SearchResultsSection
