@@ -44,14 +44,6 @@ const LoginPage = () => {
   });
   const navigate = useNavigate();
 
-  const dispatch = useDispatch();
-  const getDetail = useSelector(getCurrentUser);
-
-  useEffect(() => {
-    dispatch(getUserDetail());
-    console.log("getDetail", getDetail);
-  }, []);
-
   const onSubmit = (data: IFormInputs) => {
     customAxios("application/json")
       .post("auth/login", data)
