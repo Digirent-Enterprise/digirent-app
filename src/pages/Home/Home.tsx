@@ -2,16 +2,16 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavBar, Footer } from "../../components";
 import { Transition } from "../../components/elements";
-import { getUserDetail } from "../../store/actions/user.action";
-import { getCurrentUser } from "../../store/selectors/user.selector";
+import { getProducts } from "../../store/actions/product.action";
+import { getAllProducts } from "../../store/selectors/product.selector";
 
 const Home = () => {
   const dispatch = useDispatch();
-  const getDetail = useSelector(getCurrentUser);
 
+  const data = useSelector(getAllProducts);
   useEffect(() => {
-    dispatch(getUserDetail());
-    console.log("getDetail", getDetail);
+    dispatch(getProducts());
+    console.log("productdata", data);
   }, []);
 
   return (

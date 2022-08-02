@@ -1,6 +1,6 @@
 import { AdminTab } from "../../components";
 
-const DefaultLayout = ({ children }: any) => {
+const DefaultAdminLayout = ({ children }: any) => {
   return (
     <div>
       <AdminTab />
@@ -9,4 +9,4 @@ const DefaultLayout = ({ children }: any) => {
   );
 };
 
-export default DefaultLayout;
+export default DefaultAdminLayout;

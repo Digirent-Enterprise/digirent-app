@@ -4,9 +4,6 @@ import { AnimatePresence } from "framer-motion";
 import {
   Home,
   UserProfile,
-  UserManagement,
-  ProductManagement,
-  TransactionManagement,
   ProductSearchPage,
   Maintain,
   NotFound,
@@ -16,6 +13,7 @@ import {
   ForgotPasswordPage,
   ChatViewPage,
   AdminHome,
+  ProductManagement,
 } from "./pages";
 import PrivateRoute from "./components/PrivateRoute";
 
@@ -51,24 +49,24 @@ const AppRouter = () => {
         {/* Admin */}
         <Route path="admin" element={<AdminHome />} />
         {/* User management */}
-        <Route
-          path="admin/users"
-          element={
-            <PrivateRoute>
-              <UserManagement />
-            </PrivateRoute>
-          }
-        />
+        <Route path="admin/users" />
         <Route path="admin/users/:id/edit" />
         <Route path="admin/users/:id/delete" />
         {/* Product management */}
-        <Route path="admin/products" element={<ProductManagement />} />
+        <Route
+          path="admin/products"
+          element={
+            <PrivateRoute>
+              <ProductManagement />
+            </PrivateRoute>
+          }
+        />
         <Route path="admin/add-product" />
         <Route path="admin/product/:id" />
         <Route path="admin/products/:id/edit" />
         <Route path="admin/products/:id/delete" />
         {/* Transaction management */}
-        <Route path="admin/transactions" element={<TransactionManagement />} />
+        <Route path="admin/transactions" />
         <Route path="admin/transactions/:id/edit" />
         <Route path="admin/transactions/:id/delete" />
         {/* Chat */}

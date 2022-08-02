@@ -11,7 +11,7 @@ import {
 
 import { API_BASE_URL } from "../../utils/constants/api.constants";
 
-const fetchUsers = () => axios.get<IUser[]>(`${API_BASE_URL}/v1/api/user/`);
+const fetchUsers = () => axios.get<IUser[]>(`${API_BASE_URL}/v1/api/user`);
 const fetchUserDetails = () => {
   return customAxios().get<IUserDetail>(
     `${API_BASE_URL}/v1/api/user/user-detail`,

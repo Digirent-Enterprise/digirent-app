@@ -9,7 +9,7 @@ export interface IProduct {
   status: boolean;
   rentalCost: String;
   rentalCostType: string;
-  imagePath: string[];
+  images: string[];
 }
 
 export interface ProductState {

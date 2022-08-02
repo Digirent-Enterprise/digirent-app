@@ -2,7 +2,7 @@ import { createSelector } from "@reduxjs/toolkit";
 
 import { AppState } from "../rootReducer";
 
-const getProductError = (state: AppState) => state.product.error;
+export const getProductError = (state: AppState) => state.product.error;
 
 export const getProductErrorSelector = createSelector(
   getProductError,
