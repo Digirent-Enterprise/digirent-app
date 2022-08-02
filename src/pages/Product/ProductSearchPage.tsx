@@ -152,9 +152,7 @@ const ProductSearchPage = ({
       </SearchSectionContext.Provider>
 
       <div className="pb-10 mx-auto max-w-7xl lg:py-12 lg:px-8 grid grid-cols-5">
-        <div className="col-span-1">
-          Filter Panel
-        </div>
+        <div className="col-span-1">Filter Panel</div>
         <div className="col-span-4">
           <SearchResultsSection
             triggerSearch={triggerSearch}

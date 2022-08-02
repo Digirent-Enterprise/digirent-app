@@ -16,7 +16,6 @@ import {
   StatusToaster,
 } from "./modules";
 import {
-  FilterPanel,
   NavBar,
   Footer,
   AdminTab,
@@ -45,7 +44,6 @@ export {
   EditProductModal,
   SearchHeaderSection,
   SearchResultsSection,
-  FilterPanel,
   ChatLeftSide,
   ChatRightSide,
   AdminTab,
