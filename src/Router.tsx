@@ -16,6 +16,7 @@ import {
   ProductManagement,
 } from "./pages";
 import PrivateRoute from "./components/PrivateRoute";
+import { AdminPermission } from "./utils/constants/route.constants";
 
 const AppRouter = () => {
   const location = useLocation();
@@ -56,7 +57,7 @@ const AppRouter = () => {
         <Route
           path="admin/products"
           element={
-            <PrivateRoute>
+            <PrivateRoute permission={[AdminPermission]}>
               <ProductManagement />
             </PrivateRoute>
           }
