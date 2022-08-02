@@ -12,7 +12,7 @@ import {
   FETCH_USERS_ERROR,
 } from "../types/action.types";
 
-export const setUsers = (payload: IUser) => {
+export const setUsers = (payload: IUser[]) => {
   return {
     type: SET_USERS,
     payload: {

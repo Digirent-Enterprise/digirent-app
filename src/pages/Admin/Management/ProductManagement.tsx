@@ -92,7 +92,6 @@ const ProductManagement = () => {
   } = tableInstance;
 
   const { pageIndex } = state;
-  console.log("page index", pageIndex);
 
   const [selectedSortColumn, setSelectedSortColumn] = useState({
     id: "",
@@ -120,16 +119,6 @@ const ProductManagement = () => {
       setSortBy([tempColumn]);
     }
   };
-  // const {
-  //   isOpen: isEditOpen,
-  //   onOpen: onEditOpen,
-  //   onClose: onEditClose,
-  // } = useDisclosure();
-  // const {
-  //   isOpen: isDeleteOpen,
-  //   onOpen: onDeleteOpen,
-  //   onClose: onDeleteClose,
-  // } = useDisclosure();
 
   return (
     <DefaultAdminLayout>

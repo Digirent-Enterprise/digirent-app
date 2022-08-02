@@ -1,4 +1,5 @@
 import { Column } from "react-table";
+import { ClickDelete, ClickEdit } from "../HandleButtonClick";
 
 export const ProductColumns: Array<Column> = [
   {
@@ -31,6 +32,11 @@ export const ProductColumns: Array<Column> = [
   },
   {
     Header: "Action",
-    accessor: "action",
+    accessor: () => (
+      <div>
+        <ClickEdit pageType="product" />
+        <ClickDelete pageType="product" />
+      </div>
+    ),
   },
 ];

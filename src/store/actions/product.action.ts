@@ -10,7 +10,7 @@ import {
   IProduct,
 } from "../types/product.types";
 
-export const setProducts = (payload: IProduct) => {
+export const setProducts = (payload: IProduct[]) => {
   return {
     type: SET_PRODUCTS,
     payload: {
