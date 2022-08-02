@@ -1,7 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { NavBar, Footer } from "../../components";
-import { Transition } from "../../components/elements";
+import DefaultLayout from "../DefaultLayout";
 import { getProducts } from "../../store/actions/product.action";
 import { getAllProducts } from "../../store/selectors/product.selector";
 
@@ -14,12 +13,7 @@ const Home = () => {
     console.log("productdata", data);
   }, []);
 
-  return (
-    <Transition>
-      <NavBar />
-      <Footer />
-    </Transition>
-  );
+  return <DefaultLayout>Hi</DefaultLayout>;
 };
 
 export default Home;

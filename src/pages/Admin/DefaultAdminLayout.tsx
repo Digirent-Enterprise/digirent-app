@@ -1,11 +1,11 @@
-import { AdminTab } from "../../components";
+import { AdminTab, Transition } from "../../components";
 
 const DefaultAdminLayout = ({ children }: any) => {
   return (
-    <div>
+    <Transition>
       <AdminTab />
       {children}
-    </div>
+    </Transition>
   );
 };
 
