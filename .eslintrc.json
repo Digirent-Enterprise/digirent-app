@@ -35,6 +35,7 @@
     "react/button-has-type": ["off"],
     "no-nested-ternary": ["off"],
     "react/no-array-index-key": ["off"],
+    "no-unneeded-ternary": ["off"],
     "react/function-component-definition": [
       2,
       {

@@ -38,18 +38,22 @@ import { ProductColumns } from "./Columns";
 import DefaultAdminLayout from "../DefaultAdminLayout";
 import { getAllProducts } from "../../../store/selectors/product.selector";
 import { getProducts } from "../../../store/actions/product.action";
+import { getCurrentUser } from "../../../store/selectors/user.selector";
+import { getUserDetail } from "../../../store/actions/user.action";
 
 const ProductManagement = () => {
   const dispatch = useDispatch();
 
   const productFetchData = useSelector(getAllProducts);
+  const currentUser = useSelector(getCurrentUser);
 
   useEffect(() => {
+    dispatch(getUserDetail());
     dispatch(getProducts());
   }, []);
 
   const productColumns = useMemo(() => ProductColumns, []);
-  const productData = useMemo(() => productFetchData, []);
+  const productData = useMemo(() => productFetchData, [productFetchData]);
   const tableInstance = useTable(
     {
       columns: productColumns,

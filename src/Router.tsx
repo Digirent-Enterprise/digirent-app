@@ -32,7 +32,6 @@ const AppRouter = () => {
         <Route path="forgot-password" element={<ForgotPasswordPage />} />
         {/* Product */}
         <Route path="products" element={<ProductSearchPage />} />
-        <Route path="products/?category=phone" />
         <Route path="products/:id" />
         {/* Payment */}
         <Route path="checkout/:id" />
@@ -48,7 +47,14 @@ const AppRouter = () => {
         {/* Maintain */}
         <Route path="maintain" element={<Maintain />} />
         {/* Admin */}
-        <Route path="admin" element={<AdminHome />} />
+        <Route
+          path="admin"
+          element={
+            <PrivateRoute permission={AdminPermission}>
+              <AdminHome />
+            </PrivateRoute>
+          }
+        />
         {/* User management */}
         <Route path="admin/users" />
         <Route path="admin/users/:id/edit" />
@@ -57,7 +63,7 @@ const AppRouter = () => {
         <Route
           path="admin/products"
           element={
-            <PrivateRoute permission={[AdminPermission]}>
+            <PrivateRoute permission={AdminPermission}>
               <ProductManagement />
             </PrivateRoute>
           }
@@ -71,7 +77,14 @@ const AppRouter = () => {
         <Route path="admin/transactions/:id/edit" />
         <Route path="admin/transactions/:id/delete" />
         {/* Chat */}
-        <Route path="admin/chat" element={<ChatViewPage />} />
+        <Route
+          path="admin/chat"
+          element={
+            <PrivateRoute permission={AdminPermission}>
+              <ChatViewPage />
+            </PrivateRoute>
+          }
+        />
         <Route path="admin/chat/:id" />
         {/* 404 Not Found Route */}
         <Route path="*" element={<NotFound />} />
