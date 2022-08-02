@@ -1,18 +1,18 @@
 import { Column } from "react-table";
-import { ClickDelete, ClickEdit } from "../HandleButtonClick";
+import { ClickDelete, ClickEdit } from "../HandleActionClick";
 
 export const ProductColumns: Array<Column> = [
   {
     Header: "Product ID",
-    accessor: "product_id",
+    accessor: "_id",
   },
   {
     Header: "Product Name",
-    accessor: "product_name",
+    accessor: "name",
   },
   {
     Header: "Product Serial",
-    accessor: "product_serial",
+    accessor: "serial",
   },
   {
     Header: "Brand",

@@ -1,8 +1,3 @@
-/* eslint-disable react/no-array-index-key */
-/* eslint-disable no-nested-ternary */
-/* eslint-disable jsx-a11y/click-events-have-key-events */
-/* eslint-disable jsx-a11y/label-has-associated-control */
-/* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useMemo, useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -40,15 +35,6 @@ import { useTable, useSortBy, usePagination } from "react-table";
 
 import { ProductColumns } from "./Columns";
 
-// import { useDisclosure } from "@chakra-ui/hooks";
-// import {
-//   DeleteProductModal,
-//   DeleteTransactionModal,
-//   DeleteUserModal,
-//   EditProductModal,
-//   EditTransactionModal,
-//   EditUserModal,
-// } from "../../../components";
 import DefaultAdminLayout from "../DefaultAdminLayout";
 import { getAllProducts } from "../../../store/selectors/product.selector";
 import { getProducts } from "../../../store/actions/product.action";
@@ -164,18 +150,15 @@ const ProductManagement = () => {
           </MenuButton>
           <MenuList color="gray.800" zIndex="3" minWidth="240px">
             <MenuOptionGroup type="radio" onChange={(e) => handleSort(e)}>
-              {allColumns.map((column: any, idx: any) => (
+              {allColumns.map((column: any, idx: number) => (
                 <MenuItemOption
                   icon={
-                    column.isSorted ? (
-                      column.isSortedDesc ? (
-                        <TriangleDownIcon />
+                    <>
+                      column.isSorted ? ( column.isSortedDesc ? (
+                      <TriangleDownIcon />
                       ) : (
-                        <TriangleUpIcon />
-                      )
-                    ) : (
-                      ""
-                    )
+                      <TriangleUpIcon />) ) : ( "" )
+                    </>
                   }
                   key={idx}
                   value={column.id}

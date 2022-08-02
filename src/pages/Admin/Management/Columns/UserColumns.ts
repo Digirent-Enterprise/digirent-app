@@ -3,7 +3,7 @@ import { Column } from "react-table";
 export const UserColumns: Array<Column> = [
   {
     Header: "User",
-    accessor: "user",
+    accessor: "name",
   },
   {
     Header: "Email",
