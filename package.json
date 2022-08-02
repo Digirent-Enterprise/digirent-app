@@ -42,7 +42,8 @@
     "eject": "react-scripts eject",
     "lint": "eslint .",
     "lint:fix": "eslint --fix .",
-    "format": "concurrently \"prettier --write .\" \"eslint --fix .\""
+    "prettier": "prettier --write .",
+    "format": "npm run prettier && eslint --fix ."
   },
   "eslintConfig": {
     "extends": [

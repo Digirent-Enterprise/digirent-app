@@ -69,12 +69,7 @@ const LoginPage = () => {
         childCompForm={
           <Box textAlign="center">
             <form onSubmit={handleSubmit(onSubmit)}>
-              <Stack
-                spacing={4}
-                p="1rem"
-                backgroundColor="whiteAlpha.900"
-                boxShadow="md"
-              >
+              <Stack spacing={4} p="1rem" backgroundColor="whiteAlpha.900">
                 <FormControl isInvalid={!!errors?.email?.message} isRequired>
                   <FormLabel>Email</FormLabel>
                   <Input
