@@ -307,7 +307,7 @@ const ProductManagement = () => {
             m="0"
             alignSelf="center"
             borderRightColor=""
-            defaultChecked={pageIndex + 1}
+            defaultChecked={!!(pageIndex + 1)}
             borderColor="gray.300"
             fontWeight="bold"
             fontSize="sm"
