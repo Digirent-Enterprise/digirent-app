@@ -1,7 +1,7 @@
 import { FETCH_USERS_ERROR } from "./action.types";
 
 export interface IUser {
-  id: string;
+  _id: string;
   name: string;
   email: string;
   phone: string;
@@ -13,7 +13,7 @@ export interface IUser {
 export interface IUserDetail {
   role: string;
   isEmailVerified: boolean;
-  id: string;
+  _id: string;
   name: string;
   email: string;
   phone: string;

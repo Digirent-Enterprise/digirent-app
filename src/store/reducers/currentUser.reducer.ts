@@ -2,7 +2,7 @@ import { SET_USER_DETAIL } from "../types/action.types";
 import { CurrentUserState } from "../types/user.types";
 
 const initialState: CurrentUserState = {
-  id: "",
+  _id: "",
   role: "",
   isEmailVerified: false,
   name: "",

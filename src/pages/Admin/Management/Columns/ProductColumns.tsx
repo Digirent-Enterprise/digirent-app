@@ -1,4 +1,5 @@
 import { Column } from "react-table";
+import { Badge } from "@chakra-ui/react";
 import { ClickDelete, ClickEdit } from "../HandleActionClick";
 
 export const ProductColumns: Array<Column> = [
@@ -27,13 +28,21 @@ export const ProductColumns: Array<Column> = [
     accessor: "description",
   },
   {
+    id: "status",
     Header: "Status",
-    accessor: "status",
+    accessor: (d: any) => {
+      return d.status ? (
+        <Badge colorScheme="green">Available</Badge>
+      ) : (
+        <Badge colorScheme="yellow">Pending</Badge>
+      );
+    },
   },
   {
+    id: "action",
     Header: "Action",
     accessor: () => (
-      <div>
+      <div className="flex pr-6 space-x-3">
         <ClickEdit pageType="product" />
         <ClickDelete pageType="product" />
       </div>
