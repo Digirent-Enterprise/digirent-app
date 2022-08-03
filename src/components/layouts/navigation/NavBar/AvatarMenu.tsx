@@ -11,12 +11,28 @@ import {
   Stack,
   Center,
 } from "@chakra-ui/react";
+import { useSelector } from "react-redux";
+import axios from "axios";
+
+import { useNavigate } from "react-router-dom";
+import { getCurrentUser } from "../../../../store/selectors/user.selector";
 
 const AvatarMenu = () => {
+  const navigate = useNavigate();
+  const currentUser = useSelector(getCurrentUser);
+
+  const logOut = () => {
+    axios.post(
+      "http://localhost:8000/v1/api/auth/logout",
+      localStorage.getItem("currentUser"),
+    );
+    navigate(0);
+  };
+
   return (
     <Flex alignItems="right">
       <Stack direction="row" spacing={7}>
-        <Menu>
+        <Menu isLazy>
           <MenuButton
             as={Button}
             rounded="full"
@@ -25,27 +41,26 @@ const AvatarMenu = () => {
             minW={0}
             p="2"
           >
-            <Avatar
-              size="sm"
-              src="https://avatars.dicebear.com/api/male/username.svg"
-            />
+            <Avatar size="sm" />
           </MenuButton>
           <MenuList alignItems="center">
             <br />
             <Center>
-              <Avatar
-                size="2xl"
-                src="https://avatars.dicebear.com/api/male/username.svg"
-              />
+              <Avatar size="2xl" />
             </Center>
             <br />
             <Center>
-              <p>Joe Mama</p>
+              <p>{currentUser.name}</p>
             </Center>
             <br />
             <MenuDivider />
-            <MenuItem>Account Settings</MenuItem>
-            <MenuItem>Logout</MenuItem>
+            <MenuItem onClick={() => navigate("/user/profile")}>
+              Account Settings
+            </MenuItem>
+            <MenuItem onClick={() => navigate("/user/transactions")}>
+              Transaction History
+            </MenuItem>
+            <MenuItem onClick={() => logOut()}>Logout</MenuItem>
           </MenuList>
         </Menu>
       </Stack>

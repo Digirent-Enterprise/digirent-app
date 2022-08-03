@@ -1,9 +1,7 @@
 const bannerImg = "../../assets/images/banner.png";
-const defaultAvatar = "../../assets/images/default-avatar.png";
 
-const image = {
+const IMAGES = {
   bannerImg,
-  defaultAvatar,
 };
 
-export default image;
+export default IMAGES;

@@ -2,11 +2,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { createContext, useState, useMemo, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  Transition,
-  SearchHeaderSection,
-  SearchResultsSection,
-} from "../../components";
+import { SearchHeaderSection, SearchResultsSection } from "../../components";
 import { getProducts, setProducts } from "../../store/actions/product.action";
 import { getAllProducts } from "../../store/selectors/product.selector";
 import DefaultLayout from "../DefaultLayout";
@@ -134,31 +130,29 @@ const ProductSearchPage = ({
   };
 
   return (
-    <Transition>
-      <DefaultLayout>
-        <SearchSectionContext.Provider value={contextValues}>
-          <SearchHeaderSection
-            setSearchQuery={setSearchQuery}
-            setIsSearching={setIsSearching}
-          />
-          <div className="pb-10 mx-auto max-w-7xl lg:py-12 lg:px-8 lg:grid lg:grid-cols-12 lg:gap-x-5">
-            {/* <div
+    <DefaultLayout>
+      <SearchSectionContext.Provider value={contextValues}>
+        <SearchHeaderSection
+          setSearchQuery={setSearchQuery}
+          setIsSearching={setIsSearching}
+        />
+        <div className="pb-10 mx-auto max-w-7xl lg:py-12 lg:px-8 lg:grid lg:grid-cols-12 lg:gap-x-5">
+          {/* <div
           data-triggerSearch={triggerSearch}
           data-setRentalCostFrom={setRentalCostFrom}
           data-setRentalCostTo={setRentalCostTo}
           data-addFilterCategory={addFilterCategory}
           data-removeFilterCategory={removeFilterCategory}
         /> */}
-            <SearchResultsSection
-              triggerSearch={triggerSearch}
-              setIsSearching={setIsSearching}
-              setOrderBy={setOrderBy}
-              setPageNumber={setPageNumber}
-            />
-          </div>
-        </SearchSectionContext.Provider>
-      </DefaultLayout>
-    </Transition>
+          <SearchResultsSection
+            triggerSearch={triggerSearch}
+            setIsSearching={setIsSearching}
+            setOrderBy={setOrderBy}
+            setPageNumber={setPageNumber}
+          />
+        </div>
+      </SearchSectionContext.Provider>
+    </DefaultLayout>
   );
 };
 

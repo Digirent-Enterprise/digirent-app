@@ -1,24 +1,24 @@
 import { useEffect } from "react";
+import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { NavBar, Footer } from "../../components";
-import { Transition } from "../../components/elements";
+import DefaultLayout from "../DefaultLayout";
+import { getProducts } from "../../store/actions/product.action";
+import { getAllProducts } from "../../store/selectors/product.selector";
 import { getUserDetail } from "../../store/actions/user.action";
-import { getCurrentUser } from "../../store/selectors/user.selector";
 
 const Home = () => {
   const dispatch = useDispatch();
-  const getDetail = useSelector(getCurrentUser);
+
+  const data = useSelector(getAllProducts);
 
   useEffect(() => {
+    dispatch(getProducts());
     dispatch(getUserDetail());
-    console.log("getDetail", getDetail);
   }, []);
-
   return (
-    <Transition>
-      <NavBar />
-      <Footer />
-    </Transition>
+    <DefaultLayout>
+      <Link to="/admin/products">Admin Product</Link>
+    </DefaultLayout>
   );
 };
 

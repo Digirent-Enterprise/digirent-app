@@ -1,7 +1,7 @@
-import DefaultLayout from "../DefaultLayout";
+import DefaultAdminLayout from "../DefaultAdminLayout";
 
 const AdminHome = () => {
-  return <DefaultLayout>Hi</DefaultLayout>;
+  return <DefaultAdminLayout>Hi</DefaultAdminLayout>;
 };
 
 export default AdminHome;
