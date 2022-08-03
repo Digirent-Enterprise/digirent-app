@@ -2,12 +2,12 @@ import { SET_USER_DETAIL } from "../types/action.types";
 import { CurrentUserState } from "../types/user.types";
 
 const initialState: CurrentUserState = {
-  _id: "",
+  id: "",
   role: "",
-  isEmailVerified: false,
   name: "",
   email: "",
   phone: "",
+  avatar: "",
 };
 
 const CurrentUserReducer = (state = initialState, action: any) => {

@@ -5,20 +5,25 @@ import DefaultLayout from "../DefaultLayout";
 import { getProducts } from "../../store/actions/product.action";
 import { getAllProducts } from "../../store/selectors/product.selector";
 import { getUserDetail } from "../../store/actions/user.action";
+import { Banner } from "../../components";
+import { getCurrentUser } from "../../store/selectors/user.selector";
 
 const Home = () => {
   const dispatch = useDispatch();
 
   const data = useSelector(getAllProducts);
+  const currentUser = useSelector(getCurrentUser);
 
   useEffect(() => {
     dispatch(getProducts());
     dispatch(getUserDetail());
     console.log(data);
+    console.log(currentUser, "dsaasda");
   }, []);
   return (
     <DefaultLayout>
       <Link to="/admin/products">Admin Product</Link>
+      <Banner />
     </DefaultLayout>
   );
 };

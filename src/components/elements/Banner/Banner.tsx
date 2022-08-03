@@ -1,5 +1,5 @@
 import React from "react";
-import image from "../../../utils/constants/image.constant";
+import IMAGES from "../../../utils/constants/image.constant";
 
 const Banner = () => {
   return (
@@ -25,7 +25,7 @@ const Banner = () => {
         <div>
           <img
             className="object-fill w-full mt-8 md:mt-0 md:w-2/3 md:-ml-4 lg:-ml-4 xl:ml-0"
-            src={image.bannerImg}
+            src={window.location.origin + IMAGES.bannerImg}
             alt="banner"
           />
         </div>
