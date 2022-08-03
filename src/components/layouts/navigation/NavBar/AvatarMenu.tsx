@@ -16,6 +16,7 @@ import axios from "axios";
 
 import { useNavigate } from "react-router-dom";
 import { getCurrentUser } from "../../../../store/selectors/user.selector";
+import IMAGES from "../../../../utils/constants/image.constant";
 
 const AvatarMenu = () => {
   const navigate = useNavigate();
@@ -41,12 +42,18 @@ const AvatarMenu = () => {
             minW={0}
             p="2"
           >
-            <Avatar size="sm" />
+            <Avatar
+              size="sm"
+              src={window.location.origin + IMAGES.defaultAvatar}
+            />
           </MenuButton>
           <MenuList alignItems="center">
             <br />
             <Center>
-              <Avatar size="2xl" />
+              <Avatar
+                size="2xl"
+                src={window.location.origin + IMAGES.defaultAvatar}
+              />
             </Center>
             <br />
             <Center>

@@ -17,7 +17,7 @@ module.exports = {
 
     extend: {
       backgroundImage: (theme) => ({
-        auth: "url('assets/images/AuthBG.png')",
+        auth: "url('/public/images/AuthBG.png')",
       }),
     },
   },

@@ -24,7 +24,7 @@
   "rules": {
     "react/react-in-jsx-scope": ["off"],
     "react/jsx-uses-react": ["off"],
-    "react/jsx-props-no-spreading": ["warn"],
+    "react/jsx-props-no-spreading": ["off"],
     "react/no-unescaped-entities": ["off"],
     "import/prefer-default-export": ["off"],
     "default-param-last": "off",

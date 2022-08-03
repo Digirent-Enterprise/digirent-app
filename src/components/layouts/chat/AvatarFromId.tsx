@@ -1,4 +1,6 @@
 import { FC } from "react";
+import { useSelector } from "react-redux";
+import { getCurrentUser } from "../../../store/selectors/user.selector";
 
 interface IAvatarFromIdProps {
   // uid: string;
@@ -6,12 +8,13 @@ interface IAvatarFromIdProps {
 }
 
 const AvatarFromId: FC<IAvatarFromIdProps> = ({ size = 40 }) => {
+  const currentUser = useSelector(getCurrentUser);
   return (
     <img
       className="object-cover rounded-full"
       style={{ width: size, height: size }}
-      src="https://cdn.pixabay.com/photo/2016/06/15/15/25/loudspeaker-1459128__340.png"
-      alt="username"
+      src={currentUser.avatar}
+      alt="user avatar"
     />
   );
 };

@@ -1,7 +1,7 @@
 import { FETCH_PRODUCTS_ERROR } from "./action.types";
 
 export interface IProduct {
-  id: string;
+  _id: string;
   name: string;
   serial: string;
   brand: string;
