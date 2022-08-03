@@ -25,7 +25,7 @@ export const ClickEdit = ({ pageType }: HandleProps) => {
       onClick={onEditOpen}
       role="button"
       tabIndex={0}
-      className="font-medium text-blue-100 dark:text-blue-200 hover:underline"
+      className="font-medium text-blue dark:text-blue-500 hover:underline"
     >
       Edit
       {pageType === "user" && (

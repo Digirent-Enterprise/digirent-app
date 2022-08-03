@@ -31,10 +31,7 @@ import {
   ChevronDownIcon,
 } from "@chakra-ui/icons";
 
-import { BiExport } from "react-icons/bi";
-
 import { useTable, useSortBy, usePagination } from "react-table";
-import { CSVLink } from "react-csv";
 
 import { ProductColumns } from "./Columns";
 
@@ -53,7 +50,6 @@ const ProductManagement = () => {
   useEffect(() => {
     dispatch(getUserDetail());
     dispatch(getProducts());
-    console.log("currentUser", currentUser);
   }, []);
 
   const productColumns = useMemo(() => ProductColumns, []);
@@ -113,105 +109,80 @@ const ProductManagement = () => {
       setSortBy([tempColumn]);
     }
   };
-  const headers = [
-    { label: "Product ID", key: "_id" },
-    { label: "Product Name", key: "name" },
-    { label: "Product Serial", key: "serial" },
-    { label: "Brand", key: "brand" },
-    { label: "Category", key: "category" },
-    { label: "Description", key: "description" },
-    { label: "Status", key: "status" },
-  ];
 
   return (
     <DefaultAdminLayout>
-      <caption className="flex justify-center p-4 text-4xl font-semibold text-black">
-        Product Management
-      </caption>
-      <div className="flex justify-between">
-        <CSVLink
-          filename="Products.csv"
-          data={productData}
-          headers={headers}
-          className="p-4"
-        >
-          <Button leftIcon={<BiExport />} colorScheme="gray">
-            Export CSV
-          </Button>
-        </CSVLink>
-        <Box className="p-4">
-          <Menu>
-            <MenuButton
-              alignSelf="center"
-              rightIcon={<ChevronDownIcon />}
-              variant="outline"
-              mx="1em"
-              size="xs"
-              as={Button}
-              colorScheme="blue"
-            >
-              {selectedSortColumn.desc === true ? "Descending" : "Ascending"}
-            </MenuButton>
-            <MenuList color="gray.800" zIndex="3" minWidth="240px">
-              <MenuOptionGroup
-                type="radio"
-                defaultValue="0"
-                onChange={(e) => typeOfSort(e)}
-              >
-                <MenuItemOption key={0} value="0">
-                  Ascending
-                </MenuItemOption>
-                <MenuItemOption key={1} value="1">
-                  Descending
-                </MenuItemOption>
-              </MenuOptionGroup>
-            </MenuList>
-          </Menu>
-          <Menu>
-            <MenuButton
-              alignSelf="center"
-              rightIcon={<ChevronDownIcon />}
-              variant="outline"
-              mx="1em"
-              size="xs"
-              as={Button}
-              colorScheme="blue"
-            >
-              Sort By
-            </MenuButton>
-            <MenuList color="gray.800" zIndex="3" minWidth="240px">
-              <MenuOptionGroup type="radio" onChange={(e) => handleSort(e)}>
-                {allColumns.map((column: any, idx: number) => (
-                  <MenuItemOption
-                    icon={
-                      <>
-                        column.isSorted ? ( column.isSortedDesc ? (
-                        <TriangleDownIcon />
-                        ) : (
-                        <TriangleUpIcon />) ) : ( "" )
-                      </>
-                    }
-                    key={idx}
-                    value={column.id}
-                  >
-                    {column.Header}
-                  </MenuItemOption>
-                ))}
-              </MenuOptionGroup>
-            </MenuList>
-          </Menu>
-          <Button
-            size="xs"
-            m="4px"
-            colorScheme="red"
+      <Box>
+        <Menu>
+          <MenuButton
+            alignSelf="center"
+            rightIcon={<ChevronDownIcon />}
             variant="outline"
-            onClick={() => setSortBy([])}
+            mx="1em"
+            size="xs"
+            as={Button}
+            colorScheme="blue"
           >
-            Reset Sorting
-          </Button>
-        </Box>
-      </div>
-
+            {selectedSortColumn.desc === true ? "Descending" : "Ascending"}
+          </MenuButton>
+          <MenuList color="gray.800" zIndex="3" minWidth="240px">
+            <MenuOptionGroup
+              type="radio"
+              defaultValue="0"
+              onChange={(e) => typeOfSort(e)}
+            >
+              <MenuItemOption key={0} value="0">
+                Ascending
+              </MenuItemOption>
+              <MenuItemOption key={1} value="1">
+                Descending
+              </MenuItemOption>
+            </MenuOptionGroup>
+          </MenuList>
+        </Menu>
+        <Menu>
+          <MenuButton
+            alignSelf="center"
+            rightIcon={<ChevronDownIcon />}
+            variant="outline"
+            mx="1em"
+            size="xs"
+            as={Button}
+            colorScheme="blue"
+          >
+            Sort By
+          </MenuButton>
+          <MenuList color="gray.800" zIndex="3" minWidth="240px">
+            <MenuOptionGroup type="radio" onChange={(e) => handleSort(e)}>
+              {allColumns.map((column: any, idx: number) => (
+                <MenuItemOption
+                  icon={
+                    <>
+                      column.isSorted ? ( column.isSortedDesc ? (
+                      <TriangleDownIcon />
+                      ) : (
+                      <TriangleUpIcon />) ) : ( "" )
+                    </>
+                  }
+                  key={idx}
+                  value={column.id}
+                >
+                  {column.Header}
+                </MenuItemOption>
+              ))}
+            </MenuOptionGroup>
+          </MenuList>
+        </Menu>
+        <Button
+          size="xs"
+          m="4px"
+          colorScheme="red"
+          variant="outline"
+          onClick={() => setSortBy([])}
+        >
+          Reset Sorting
+        </Button>
+      </Box>
       <Box maxH="30em" overflowY="scroll">
         <Table {...getTableProps()} size="sm" variant="simple">
           <Thead
@@ -233,7 +204,7 @@ const ProductManagement = () => {
                     color="gray.800"
                     {...column.getHeaderProps(column.getSortByToggleProps())}
                   >
-                    {/* Render the Title of column */}
+                    {/* This will render the Title of column */}
                     {column.render("Header")}
                     {column.isSorted ? (
                       column.isSortedDesc ? (
