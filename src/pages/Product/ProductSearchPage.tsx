@@ -2,7 +2,12 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { createContext, useState, useMemo, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { SearchHeaderSection, SearchResultsSection } from "../../components";
+import {
+  Transition,
+  SearchHeaderSection,
+  SearchResultsSection,
+} from "../../components";
+import ProductCardListing from "../../components/layouts/productCard/ProductCardListing";
 import { getProducts, setProducts } from "../../store/actions/product.action";
 import { getAllProducts } from "../../store/selectors/product.selector";
 import DefaultLayout from "../DefaultLayout";
@@ -130,13 +135,14 @@ const ProductSearchPage = ({
   };
 
   return (
-    <DefaultLayout>
-      <SearchSectionContext.Provider value={contextValues}>
-        <SearchHeaderSection
-          setSearchQuery={setSearchQuery}
-          setIsSearching={setIsSearching}
-        />
-        <div className="pb-10 mx-auto max-w-7xl lg:py-12 lg:px-8 lg:grid lg:grid-cols-12 lg:gap-x-5">
+    <Transition>
+      <DefaultLayout>
+        <SearchSectionContext.Provider value={contextValues}>
+          <SearchHeaderSection
+            setSearchQuery={setSearchQuery}
+            setIsSearching={setIsSearching}
+          />
+          {/* <div className="pb-10 mx-auto max-w-7xl lg:py-12 lg:px-8 lg:grid lg:grid-cols-12 lg:gap-x-5"> */}
           {/* <div
           data-triggerSearch={triggerSearch}
           data-setRentalCostFrom={setRentalCostFrom}
@@ -144,15 +150,28 @@ const ProductSearchPage = ({
           data-addFilterCategory={addFilterCategory}
           data-removeFilterCategory={removeFilterCategory}
         /> */}
-          <SearchResultsSection
-            triggerSearch={triggerSearch}
-            setIsSearching={setIsSearching}
-            setOrderBy={setOrderBy}
-            setPageNumber={setPageNumber}
-          />
+          {/* <SearchResultsSection
+              triggerSearch={triggerSearch}
+              setIsSearching={setIsSearching}
+              setOrderBy={setOrderBy}
+              setPageNumber={setPageNumber}
+            />
+          </div> */}
+        </SearchSectionContext.Provider>
+        <div className="pb-10 mx-auto max-w-7xl lg:py-12 lg:px-8 grid grid-cols-5">
+          <div className="col-span-1">Filter Panel</div>
+          <div className="col-span-4">
+            <SearchResultsSection
+              triggerSearch={triggerSearch}
+              setIsSearching={setIsSearching}
+              setOrderBy={setOrderBy}
+              setPageNumber={setPageNumber}
+            />
+            <ProductCardListing />
+          </div>
         </div>
-      </SearchSectionContext.Provider>
-    </DefaultLayout>
+      </DefaultLayout>
+    </Transition>
   );
 };
 
