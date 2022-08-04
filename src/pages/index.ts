@@ -1,6 +1,3 @@
-import UserManagement from "./Admin/Management/UserManagement";
-import ProductManagement from "./Admin/Management/ProductManagement";
-import TransactionManagement from "./Admin/Management/TransactionManagement";
 import ProductSearchPage from "./Product/ProductSearchPage";
 import LoginPage from "./Auth/LoginPage";
 import RegisterPage from "./Auth/RegisterPage";
@@ -12,14 +9,13 @@ import ForgotPasswordPage from "./Auth/ForgotPasswordPage";
 import ChatViewPage from "./Admin/Chat/ChatViewPage";
 import AdminHome from "./Admin/Home/AdminHome";
 import UserProfile from "./User/UserProfile";
+import ProductManagement from "./Admin/Management/ProductManagement";
 
 export {
   Home,
   AdminHome,
-  UserProfile,
-  UserManagement,
   ProductManagement,
-  TransactionManagement,
+  UserProfile,
   ProductSearchPage,
   LoginPage,
   RegisterPage,

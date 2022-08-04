@@ -1,11 +1,13 @@
 import React from "react";
 import { Button, Box } from "@chakra-ui/react";
+import { Link } from "react-router-dom";
 
 interface INavButton {
   navItem: string;
+  directUrl: string;
 }
 
-const NavButton = ({ navItem }: INavButton) => {
+const NavButton = ({ navItem, directUrl }: INavButton) => {
   return (
     <Box pr="3">
       <Button
@@ -14,7 +16,7 @@ const NavButton = ({ navItem }: INavButton) => {
         alignItems="center"
         color="white"
       >
-        {navItem}
+        <Link to={directUrl}>{navItem}</Link>
       </Button>
     </Box>
   );
