@@ -15,7 +15,7 @@ const ProductCardListing: React.FC<Props> = (props) => {
   const [like, setLike] = useState(false);
 
   const handleAddToFavourite = () => {
-    setLike(true);
+    setLike(!like);
   };
   return (
     <div className="card overflow-hidden w-full aspect-w-1 aspect-h-1 shadow-md rounded-lg flex-col col-span-1 cursor-pointer transition-transform hover:scale-105 my-5 mx-5 xl:aspect-w-7 xl:aspect-h-8">
