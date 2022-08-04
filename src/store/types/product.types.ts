@@ -7,7 +7,7 @@ export interface IProduct {
   brand: string;
   description: string;
   status: boolean;
-  rentalCost: String;
+  rentalCost: string;
   rentalCostType: string;
   images: string[];
 }
