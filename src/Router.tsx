@@ -16,7 +16,7 @@ import {
   ProductManagement,
 } from "./pages";
 import PrivateRoute from "./components/PrivateRoute";
-import { AdminPermission } from "./utils/constants/route.constants";
+import { AdminPermission } from "./utils/constants/permission.constants";
 
 const AppRouter = () => {
   const location = useLocation();

@@ -12,21 +12,18 @@ import {
   Center,
 } from "@chakra-ui/react";
 import { useSelector } from "react-redux";
-import axios from "axios";
 
 import { useNavigate } from "react-router-dom";
 import { getCurrentUser } from "../../../../store/selectors/user.selector";
 import IMAGES from "../../../../utils/constants/image.constant";
+import { customAxios } from "../../../../http-common";
 
 const AvatarMenu = () => {
   const navigate = useNavigate();
   const currentUser = useSelector(getCurrentUser);
 
   const logOut = () => {
-    axios.post(
-      "http://localhost:8000/v1/api/auth/logout",
-      localStorage.getItem("currentUser"),
-    );
+    customAxios().post("auth/logout");
     navigate(0);
   };
 
@@ -42,18 +39,26 @@ const AvatarMenu = () => {
             minW={0}
             p="2"
           >
-            <Avatar
-              size="sm"
-              src={window.location.origin + IMAGES.defaultAvatar}
-            />
+            {!currentUser.avatar ? (
+              <Avatar
+                size="sm"
+                src={window.location.origin + IMAGES.defaultAvatar}
+              />
+            ) : (
+              <Avatar size="sm" src={currentUser.avatar} />
+            )}
           </MenuButton>
           <MenuList alignItems="center">
             <br />
             <Center>
-              <Avatar
-                size="2xl"
-                src={window.location.origin + IMAGES.defaultAvatar}
-              />
+              {!currentUser.avatar ? (
+                <Avatar
+                  size="2xl"
+                  src={window.location.origin + IMAGES.defaultAvatar}
+                />
+              ) : (
+                <Avatar size="2xl" src={currentUser.avatar} />
+              )}
             </Center>
             <br />
             <Center>
