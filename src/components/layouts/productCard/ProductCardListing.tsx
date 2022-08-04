@@ -1,6 +1,9 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import ProductListLayout from "./productListLayout/productListLayout";
+import { customAxios } from "../../../http-common";
+import { getAllProducts } from "../../../store/selectors/product.selector";
 
 export interface Products {
   id: number;
@@ -10,19 +13,8 @@ export interface Products {
 }
 
 const ProductsListing = () => {
-  const [products, setProducts] = useState<Products[]>([]);
-  const getProduct = async () => {
-    const res = await axios.get("https://fakestoreapi.com/products");
-    return res.data;
-  };
-  useEffect(() => {
-    const fetchProductList = async () => {
-      const productList = await getProduct();
-      setProducts(productList);
-    };
-    fetchProductList();
-  }, []);
-
+  const products = useSelector(getAllProducts);
+  // console.log("products :>> ", products);
   return <ProductListLayout products={products} />;
 };
 

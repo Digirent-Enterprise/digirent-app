@@ -6,7 +6,7 @@ import { GET_PRODUCTS } from "../types/action.types";
 import { API_BASE_URL } from "../../utils/constants/api.constants";
 
 const fetchProducts = () =>
-  axios.get<IProduct[]>(`${API_BASE_URL}/v1/api/product/)`);
+  axios.get<IProduct[]>(`${API_BASE_URL}/v1/api/product/`);
 
 function* getProducts(): any {
   try {

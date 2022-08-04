@@ -5,7 +5,7 @@ import "../../../../index.css";
 
 interface Products {
   id: number;
-  image: string;
+  images: string[];
   title: string;
   price: number;
 }
@@ -17,6 +17,7 @@ const ProductListLayout = (props: { products: any }) => {
   const [itemOffset, setItemOffset] = useState(0);
   const itemsPerPage = 6;
 
+  console.log("products", products);
   useEffect(() => {
     const endOffset = itemOffset + itemsPerPage;
     setCurrentItems(products.slice(itemOffset, endOffset));
@@ -36,7 +37,7 @@ const ProductListLayout = (props: { products: any }) => {
             <ProductCardListing
               key={product.id}
               title={product.title}
-              image={product.image}
+              images={product.images}
               price={product.price}
             />
           );
