@@ -1,21 +1,21 @@
-import axios from "axios";
-import { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
-import ProductListLayout from "./productListLayout/productListLayout";
-import { customAxios } from "../../../http-common";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect, useMemo } from "react";
+import ProductListLayout from "./ProductListLayout/ProductListLayout";
 import { getAllProducts } from "../../../store/selectors/product.selector";
-
-export interface Products {
-  id: number;
-  image: string;
-  title: string;
-  price: number;
-}
+import { getProducts } from "../../../store/actions/product.action";
 
 const ProductsListing = () => {
-  const products = useSelector(getAllProducts);
-  // console.log("products :>> ", products);
-  return <ProductListLayout products={products} />;
+  const dispatch = useDispatch();
+
+  const productFetchData = useSelector(getAllProducts);
+
+  useEffect(() => {
+    dispatch(getProducts());
+  }, []);
+
+  const productData = useMemo(() => productFetchData, [productFetchData]);
+
+  return <ProductListLayout products={productData} />;
 };
 
 export default ProductsListing;

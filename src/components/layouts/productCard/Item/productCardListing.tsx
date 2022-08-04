@@ -1,30 +1,42 @@
-import React from "react";
-import { AiOutlineHeart } from "react-icons/ai";
+import React, { useState } from "react";
+import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 import Rating from "../Rating/Rating";
 
 interface Props {
-  title: string;
-  images: string[];
-  price: number;
+  brand: string;
+  image?: string;
+  description?: string;
+  rentalCost: string;
+  rentalCostType?: string;
 }
 
-const productCardListing: React.FC<Props> = function (props) {
-  const { title, images, price } = props;
+const ProductCardListing: React.FC<Props> = (props) => {
+  const { brand, image, rentalCost, rentalCostType } = props;
+  const [like, setLike] = useState(false);
+
+  const handleAddToFavourite = () => {
+    setLike(true);
+  };
   return (
-    <div className="card overflow-hidden w-72 shadow-md rounded flex-col col-span-1 cursor-pointer transition-transform hover:scale-105 my-5 mx-5">
-      {images.map((image) => (
-        <img src={image} alt="pictures" className="h-52 w-64 object-cover" />
-      ))}
+    <div className="card overflow-hidden w-full aspect-w-1 aspect-h-1 shadow-md rounded-lg flex-col col-span-1 cursor-pointer transition-transform hover:scale-105 my-5 mx-5 xl:aspect-w-7 xl:aspect-h-8">
+      <img src={image} alt="pictures" className="h-52 w-64 object-cover" />
       <button
         type="submit"
-        className="w-5 h-5 text-black bg-white border-solid border border-black rounded-md float-right relative bottom-52 right-0 hover:bg-red flex justify-center"
+        className="text-black bg-white float-right relative bottom-52 right-0 flex justify-center p-3"
+        onClick={handleAddToFavourite}
       >
-        <AiOutlineHeart />
+        {!like ? (
+          <AiOutlineHeart size="30" fill="red" />
+        ) : (
+          <AiFillHeart size="30" fill="red" />
+        )}
       </button>
       <div className="card-content p-5">
-        <span className="text-sm opacity-50">Brand</span>
-        <p className="font-bold text-lg">{title}</p>
-        <h4 className="font-bold">$ {price} / month</h4>
+        <p className="font-bold text-lg text-transform: uppercase">{brand}</p>
+        <h4 className="font-bold">
+          {rentalCostType}
+          {rentalCost}/month
+        </h4>
         <div className="rating flex items-center mt-1">
           <Rating />
         </div>
@@ -33,4 +45,4 @@ const productCardListing: React.FC<Props> = function (props) {
   );
 };
 
-export default productCardListing;
+export default ProductCardListing;
