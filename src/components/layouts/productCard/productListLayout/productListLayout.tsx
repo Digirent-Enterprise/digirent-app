@@ -2,15 +2,7 @@ import React, { useState, useEffect } from "react";
 import ReactPaginate from "react-paginate";
 import ProductCardListing from "../Item/ProductCardListing";
 import "../../../../index.css";
-
-interface IProducts {
-  _id: string;
-  image: string[];
-  brand: string;
-  rentalCost: string;
-  rentalCostType: string;
-  description: string;
-}
+import { IProduct } from "../../../../store/types/product.types";
 
 const ProductListLayout = (props: { products: any }) => {
   const { products } = props;
@@ -34,7 +26,7 @@ const ProductListLayout = (props: { products: any }) => {
   return (
     <>
       <div className="grid grid-cols-1 gap-y-10 sm:grid-cols-2 gap-x-6 lg:grid-cols-2 xl:grid-cols-3 xl:gap-x-8">
-        {currentItems.map((product: IProducts) => {
+        {currentItems.map((product: IProduct) => {
           return (
             <ProductCardListing
               key={product._id}
