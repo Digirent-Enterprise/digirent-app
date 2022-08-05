@@ -24,9 +24,9 @@ import DefaultLayout from "../DefaultLayout";
 type FormValues = {
   name: string;
   category: string;
-  brand: number;
+  brand: string;
   description: string;
-  imagePath: string;
+  images: string;
   rentalCost: string;
   rentalCostType: string;
   serial: string;
@@ -45,9 +45,26 @@ type FormValues = {
 
 const AddProduct = () => {
   const { register, handleSubmit } = useForm<FormValues>();
+
+  const _onConvertData = (data: FormValues, fd: FormData) => {
+    fd.append('name', data.name)
+    fd.append('category', data.category)
+    fd.append('brand', data.brand)
+    fd.append('images', data.images)
+    fd.append('description', data.description)
+    fd.append('rentalCost', data.rentalCost)
+    fd.append('rentalCostType', data.rentalCostType)
+    fd.append('serial', data.serial || "123")
+    return fd;
+  }
+
   const onSubmit: SubmitHandler<FormValues> = (data) => {
+    let fd = new FormData();
+    console.log('data', data)
+    fd = _onConvertData(data, fd)
+    console.log('fd', fd)
     return customAxios("multipart/form-data")
-      .post("/product", qs.stringify(data))
+      .post("/product", fd)
       .then((res) => {
         if (res.status === 201) {
           <StatusToaster
@@ -107,8 +124,8 @@ const AddProduct = () => {
                   <Grid templateColumns="repeat(5, 1fr)" gap={4}>
                     <GridItem rowSpan={2} colSpan={1}>
                       <Input
-                        {...register("imagePath")}
-                        name="imagePath"
+                        {...register("images")}
+                        name="images"
                         type="file"
                         multiple
                       />
