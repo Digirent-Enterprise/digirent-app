@@ -4,7 +4,6 @@ import {
   SearchSectionContext,
   sortByOptions,
 } from "../../../pages/Product/ProductSearchPage";
-import SearchPagination from "./SearchPagination";
 
 type SearchResultsSectionProps = {
   setIsSearching: Dispatch<SetStateAction<boolean>>;
@@ -25,7 +24,7 @@ const SearchResultsSection = ({
   return (
     <div className="px-4 space-y-6 sm:px-6 lg:px-0 lg:col-span-10">
       <div className="flex flex-col sm:flex-row sm:flex-wrap sm:space-x-6">
-        <div className="flex items-center text-base font-medium text-gray-400">
+        <div className="flex items-center px-5 text-base font-medium text-gray-400">
           Found {productsCount} results
         </div>
         <div className="flex-1" />
@@ -49,11 +48,6 @@ const SearchResultsSection = ({
           </select>
         </div>
       </div>
-      <SearchPagination
-        setPageNumber={setPageNumber}
-        triggerSearch={triggerSearch}
-        pageMaxValue={Math.ceil(productsCount / searchContext.pageLimit)}
-      />
     </div>
   );
 };

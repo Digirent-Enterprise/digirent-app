@@ -6,6 +6,7 @@ import NavBar from "./navigation/NavBar/NavBar";
 import Footer from "./footer/Footer";
 import SearchHeaderSection from "./search/SearchHeaderSection";
 import SearchResultsSection from "./search/SearchResultsSection";
+import ProductCardListing from "./productCard/ProductCardListing";
 
 export {
   NavBar,
@@ -16,4 +17,5 @@ export {
   SearchResultsSection,
   ChatLeftSide,
   ChatRightSide,
+  ProductCardListing,
 };
