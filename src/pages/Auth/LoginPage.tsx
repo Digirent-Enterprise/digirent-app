@@ -13,13 +13,13 @@ import {
   Link,
   FormErrorMessage,
 } from "@chakra-ui/react";
-import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
+// import { useDispatch, useSelector } from "react-redux";
+// import { useEffect } from "react";
 import { storeUserSession } from "../../helpers/authHelpers";
 import { AuthFormGrid, Transition, StatusToaster } from "../../components";
 
-import { getCurrentUser } from "../../store/selectors/user.selector";
-import { getUserDetail } from "../../store/actions/user.action";
+// import { getCurrentUser } from "../../store/selectors/user.selector";
+// import { getUserDetail } from "../../store/actions/user.action";
 import { customAxios } from "../../http-common";
 
 interface IFormInputs {

@@ -18,6 +18,7 @@ import {
   AdminHome,
 } from "./pages";
 import PrivateRoute from "./components/PrivateRoute";
+import AddProduct from "./pages/Admin/AddProduct/AddProduct";
 
 const AppRouter = () => {
   const location = useLocation();
@@ -63,7 +64,7 @@ const AppRouter = () => {
         <Route path="admin/users/:id/delete" />
         {/* Product management */}
         <Route path="admin/products" element={<ProductManagement />} />
-        <Route path="admin/add-product" />
+        <Route path="admin/add-product" element={<AddProduct />} />
         <Route path="admin/product/:id" />
         <Route path="admin/products/:id/edit" />
         <Route path="admin/products/:id/delete" />
