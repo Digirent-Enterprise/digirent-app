@@ -20,6 +20,7 @@ import { customAxios } from "../../../http-common";
 
 import { StatusToaster, Transition } from "../../../components";
 import DefaultLayout from "../DefaultLayout";
+// import { AiOutlineCloudUpload } from "react-icons/ai";
 
 type FormValues = {
   name: string;
@@ -47,36 +48,27 @@ const AddProduct = () => {
   const { register, handleSubmit } = useForm<FormValues>();
 
   const _onConvertData = (data: FormValues, fd: FormData) => {
-    fd.append('name', data.name)
-    fd.append('category', data.category)
-    fd.append('brand', data.brand)
-    fd.append('images', data.images)
-    fd.append('description', data.description)
-    fd.append('rentalCost', data.rentalCost)
-    fd.append('rentalCostType', data.rentalCostType)
-    fd.append('serial', data.serial || "123")
+    fd.append("name", data.name);
+    fd.append("category", data.category);
+    fd.append("brand", data.brand);
+    fd.append("images", data.images);
+    fd.append("description", data.description);
+    fd.append("rentalCost", data.rentalCost);
+    fd.append("rentalCostType", data.rentalCostType);
+    fd.append("serial", data.serial || "123");
     return fd;
-  }
+  };
 
   const onSubmit: SubmitHandler<FormValues> = (data) => {
     let fd = new FormData();
-    console.log('data', data)
-    fd = _onConvertData(data, fd)
-    console.log('fd', fd)
+    console.log("data", data);
+    fd = _onConvertData(data, fd);
+    console.log("fd", fd);
     return customAxios("multipart/form-data")
-      .post("/product", fd)
-      .then((res) => {
-        if (res.status === 201) {
-          <StatusToaster
-            childCompToasterTitle="Product is added"
-            childCompStatusColor="success"
-            childCompToasterDescription="Product is added!"
-          />;
-          console.log("success");
-        } else {
-          console.log(res.status, "failed");
-        }
-      });
+      .post("/product", fd),
+    
+      alert('Product is added successfully!')
+        
   };
 
   return (
@@ -121,44 +113,18 @@ const AddProduct = () => {
               <GridItem colSpan={3}>
                 <FormControl>
                   <FormLabel>Product Images</FormLabel>
-                  <Grid templateColumns="repeat(5, 1fr)" gap={4}>
-                    <GridItem rowSpan={2} colSpan={1}>
-                      <Input
-                        {...register("images")}
-                        name="images"
-                        type="file"
-                        multiple
-                      />
-                    </GridItem>
-                    {/* <GridItem rowSpan={1} colSpan={2}>
-                      <Input
-                        {...register("imagePath")}
-                        name="imagePath"
-                        type="file"
-                      />
-                    </GridItem>
-                    <GridItem rowSpan={1} colSpan={2}>
-                      <Input
-                        {...register("imagePath")}
-                        name="imagePath"
-                        type="file"
-                      />
-                    </GridItem>
-                    <GridItem rowSpan={1} colSpan={2}>
-                      <Input
-                        {...register("imagePath")}
-                        name="imagePath"
-                        type="file"
-                      />
-                    </GridItem>
-                    <GridItem rowSpan={1} colSpan={2}>
-                      <Input
-                        {...register("imagePath")}
-                        name="imagePath"
-                        type="file"
-                      />
-                    </GridItem> */}
-                  </Grid>
+                  <Input
+                    {...register("images")}
+                    name="images"
+                    type="file"
+                    multiple
+                    id="images"
+                  />
+                  {/* <div className="border-2 border-dashed text-blue-100 text-center p-8 m-5">
+                    <label htmlFor="images" className="cursor-pointer ">
+                      Choose images
+                    </label>
+                  </div> */}
                 </FormControl>
 
                 <FormControl isRequired>
@@ -187,14 +153,24 @@ const AddProduct = () => {
                   <Input {...register("serial")} type="text" name="name" />
                 </FormControl>
 
-                <div className="text-center">
-                  <button
-                    className="bg-blue-200 p-2 my-5 text-white rounded hover:bg-blue-100 w-full"
-                    type="submit"
-                  >
-                    Add Product
-                  </button>
-                </div>
+                <Grid templateColumns="repeat(4, 1fr)" gap={4}>
+                  <GridItem colSpan={2}>
+                    <button
+                      className="bg-blue-200 p-2 my-5 text-white rounded hover:bg-blue-100 w-full"
+                      type="submit"
+                    >
+                      Submit
+                    </button>
+                  </GridItem>
+                  <GridItem colSpan={2}>
+                    <button
+                      className="bg-blue-200 p-2 my-5 text-white rounded hover:bg-blue-100 w-full"
+                      type="reset"
+                    >
+                      Clear
+                    </button>
+                  </GridItem>
+                </Grid>
               </GridItem>
             </Grid>
           </div>
