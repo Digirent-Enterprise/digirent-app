@@ -24,6 +24,7 @@ import {
   ChatRightSide,
   SearchHeaderSection,
   SearchResultsSection,
+  ProductCardListing,
 } from "./layouts";
 
 export {
@@ -48,4 +49,5 @@ export {
   ChatRightSide,
   AdminTab,
   UserTab,
+  ProductCardListing,
 };

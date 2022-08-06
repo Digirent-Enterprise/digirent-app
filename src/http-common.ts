@@ -1,4 +1,3 @@
-/* eslint-disable no-param-reassign */
 import axios from "axios";
 
 const devURL = "http://localhost:8000/v1/api/";
