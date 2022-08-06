@@ -1,5 +1,4 @@
 import { useEffect } from "react";
-import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import DefaultLayout from "../DefaultLayout";
 import { getProducts } from "../../store/actions/product.action";
@@ -19,7 +18,6 @@ const Home = () => {
   }, []);
   return (
     <DefaultLayout>
-      <Link to="/admin/products">Admin Product</Link>
       <Banner />
     </DefaultLayout>
   );
