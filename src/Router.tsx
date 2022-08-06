@@ -14,6 +14,8 @@ import {
   ChatViewPage,
   AdminHome,
   ProductManagement,
+  UserFavorite,
+  UserManagement,
 } from "./pages";
 import PrivateRoute from "./components/PrivateRoute";
 import { AdminPermission } from "./utils/constants/permission.constants";
@@ -40,10 +42,10 @@ const AppRouter = () => {
         <Route path="users" />
         <Route path="users/:id" />
         <Route path="user/profile" element={<UserProfile />} />
-        <Route path="users/:id/favorite-products" />
-        <Route path="users/:id/edit" />
-        <Route path="users/:id/deactivate" />
-        <Route path="users/:id/change-password" />
+        <Route path="user/favorite" element={<UserFavorite />} />
+        <Route path="user/:id/edit" />
+        <Route path="user/:id/deactivate" />
+        <Route path="user/:id/change-password" />
         {/* Maintain */}
         <Route path="maintain" element={<Maintain />} />
         {/* Admin */}
@@ -56,16 +58,21 @@ const AppRouter = () => {
           }
         />
         {/* User management */}
-        <Route path="admin/users" />
+        <Route
+          path="admin/users"
+          element={
+            // <PrivateRoute permission={AdminPermission}>
+            <UserManagement />
+          }
+        />
         <Route path="admin/users/:id/edit" />
         <Route path="admin/users/:id/delete" />
         {/* Product management */}
         <Route
           path="admin/products"
           element={
-            <PrivateRoute permission={AdminPermission}>
-              <ProductManagement />
-            </PrivateRoute>
+            // <PrivateRoute permission={AdminPermission}>
+            <ProductManagement />
           }
         />
         <Route path="admin/add-product" />
