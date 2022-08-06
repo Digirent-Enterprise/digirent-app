@@ -15,6 +15,7 @@ const Home = () => {
   useEffect(() => {
     dispatch(getProducts());
     dispatch(getUserDetail());
+    console.log("data", data);
   }, []);
   return (
     <DefaultLayout>
