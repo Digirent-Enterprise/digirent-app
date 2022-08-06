@@ -6,17 +6,16 @@ export interface IUser {
   email: string;
   phone: string;
   role: string;
-  pw1: string;
   avatar: string;
 }
 
 export interface IUserDetail {
   role: string;
-  isEmailVerified: boolean;
   id: string;
   name: string;
   email: string;
   phone: string;
+  avatar: string;
 }
 
 export interface UserState {

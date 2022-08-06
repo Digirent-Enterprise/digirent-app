@@ -4,9 +4,6 @@ import { AnimatePresence } from "framer-motion";
 import {
   Home,
   UserProfile,
-  UserManagement,
-  ProductManagement,
-  TransactionManagement,
   ProductSearchPage,
   Maintain,
   NotFound,
@@ -16,9 +13,14 @@ import {
   ForgotPasswordPage,
   ChatViewPage,
   AdminHome,
+  ProductManagement,
 } from "./pages";
 import PrivateRoute from "./components/PrivateRoute";
+
 import AddProduct from "./pages/Admin/AddProduct/AddProduct";
+
+import { AdminPermission } from "./utils/constants/permission.constants";
+
 
 const AppRouter = () => {
   const location = useLocation();
@@ -34,7 +36,6 @@ const AppRouter = () => {
         <Route path="forgot-password" element={<ForgotPasswordPage />} />
         {/* Product */}
         <Route path="products" element={<ProductSearchPage />} />
-        <Route path="products/?category=phone" />
         <Route path="products/:id" />
         {/* Payment */}
         <Route path="checkout/:id" />
@@ -50,30 +51,46 @@ const AppRouter = () => {
         {/* Maintain */}
         <Route path="maintain" element={<Maintain />} />
         {/* Admin */}
-        <Route path="admin" element={<AdminHome />} />
-        {/* User management */}
         <Route
-          path="admin/users"
+          path="admin"
           element={
-            <PrivateRoute>
-              <UserManagement />
+            <PrivateRoute permission={AdminPermission}>
+              <AdminHome />
             </PrivateRoute>
           }
         />
+        {/* User management */}
+        <Route path="admin/users" />
         <Route path="admin/users/:id/edit" />
         <Route path="admin/users/:id/delete" />
         {/* Product management */}
-        <Route path="admin/products" element={<ProductManagement />} />
-        <Route path="admin/add-product" element={<AddProduct />} />
+        
+        <Route
+          path="admin/products"
+          element={
+            <PrivateRoute permission={AdminPermission}>
+              <ProductManagement />
+            </PrivateRoute>
+          }
+        />
+        <Route path="admin/add-product" element={<AddProduct />}/>
+
         <Route path="admin/product/:id" />
         <Route path="admin/products/:id/edit" />
         <Route path="admin/products/:id/delete" />
         {/* Transaction management */}
-        <Route path="admin/transactions" element={<TransactionManagement />} />
+        <Route path="admin/transactions" />
         <Route path="admin/transactions/:id/edit" />
         <Route path="admin/transactions/:id/delete" />
         {/* Chat */}
-        <Route path="admin/chat" element={<ChatViewPage />} />
+        <Route
+          path="admin/chat"
+          element={
+            <PrivateRoute permission={AdminPermission}>
+              <ChatViewPage />
+            </PrivateRoute>
+          }
+        />
         <Route path="admin/chat/:id" />
         {/* 404 Not Found Route */}
         <Route path="*" element={<NotFound />} />

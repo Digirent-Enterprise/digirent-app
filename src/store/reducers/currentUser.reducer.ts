@@ -4,10 +4,10 @@ import { CurrentUserState } from "../types/user.types";
 const initialState: CurrentUserState = {
   id: "",
   role: "",
-  isEmailVerified: false,
   name: "",
   email: "",
   phone: "",
+  avatar: "",
 };
 
 const CurrentUserReducer = (state = initialState, action: any) => {

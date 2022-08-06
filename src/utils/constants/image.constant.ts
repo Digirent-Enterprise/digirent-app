@@ -1,9 +1,9 @@
-const bannerImg = "../../assets/images/banner.png";
-const defaultAvatar = "../../assets/images/default-avatar.png";
+const bannerImg = "/images/banner.png";
+const defaultAvatar = "/images/default-avatar.svg";
 
-const image = {
+const IMAGES = {
   bannerImg,
   defaultAvatar,
 };
 
-export default image;
+export default IMAGES;
