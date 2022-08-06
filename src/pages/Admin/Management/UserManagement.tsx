@@ -25,10 +25,22 @@ const UserManagement = () => {
 
   const userColumns = useMemo(() => UserColumns, []);
   const userData = useMemo(() => userFetchData, [userFetchData]);
+
+  const headers = [
+    { label: "User", key: "name" },
+    { label: "Email", key: "email" },
+    { label: "Phone", key: "phone" },
+    { label: "Role", key: "role" },
+    { label: "Location", key: "location" },
+    { label: "Created Date", key: "createdDate" },
+    { label: "Status", key: "status" },
+  ];
+
   return (
     <DefaultManagement
       title="User Management"
       filename="Users.csv"
+      headers={headers}
       columnProps={userColumns}
       dataProps={userData}
     />
