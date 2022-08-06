@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import ReactPaginate from "react-paginate";
-import ProductCardListing from "../Item/ProductCardListing";
+import ProductCardListing from "../Item/productCardListing";
 import "../../../../index.css";
 import { IProduct } from "../../../../store/types/product.types";
 
@@ -30,7 +30,8 @@ const ProductListLayout = (props: { products: any }) => {
           return (
             <ProductCardListing
               key={product._id}
-              brand={product.brand}
+              name = {product.name}
+              // brand={product.brand}
               // image={product.image[0]}
               rentalCost={product.rentalCost}
               // description={product.description}

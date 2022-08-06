@@ -3,7 +3,8 @@ import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 import Rating from "../Rating/Rating";
 
 interface Props {
-  brand: string;
+  name: string;
+  // brand: string;
   image?: string;
   description?: string;
   rentalCost: string;
@@ -11,7 +12,7 @@ interface Props {
 }
 
 const ProductCardListing: React.FC<Props> = (props) => {
-  const { brand, image, rentalCost, rentalCostType } = props;
+  const { name, image, rentalCost, rentalCostType } = props;
   const [like, setLike] = useState(false);
 
   const handleAddToFavourite = () => {
@@ -32,10 +33,10 @@ const ProductCardListing: React.FC<Props> = (props) => {
         )}
       </button>
       <div className="card-content p-5">
-        <p className="font-bold text-lg text-transform: uppercase">{brand}</p>
+        <p className="font-bold text-lg text-transform: uppercase">{name}</p>
         <h4 className="font-bold">
-          {rentalCostType}
-          {rentalCost}/month
+          {/* Type: Day, Month, Year */}
+          {rentalCost}$/{rentalCostType} 
         </h4>
         <div className="rating flex items-center mt-1">
           <Rating />
