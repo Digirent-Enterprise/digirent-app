@@ -41,6 +41,7 @@ const DefaultManagement = ({
   columnProps,
   dataProps,
   title,
+  headers,
   filename,
 }: any): any => {
   const tableInstance = useTable(
@@ -98,16 +99,6 @@ const DefaultManagement = ({
       setSortBy([tempColumn]);
     }
   };
-
-  const headers = [
-    { label: "Product ID", key: "_id" },
-    { label: "Product Name", key: "name" },
-    { label: "Product Serial", key: "serial" },
-    { label: "Brand", key: "brand" },
-    { label: "Category", key: "category" },
-    { label: "Description", key: "description" },
-    { label: "Status", key: "status" },
-  ];
 
   return (
     <DefaultAdminLayout>

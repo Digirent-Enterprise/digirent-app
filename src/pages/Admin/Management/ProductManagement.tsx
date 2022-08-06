@@ -23,10 +23,22 @@ const ProductManagement = () => {
 
   const productColumns = useMemo(() => ProductColumns, []);
   const productData = useMemo(() => productFetchData, [productFetchData]);
+
+  const headers = [
+    { label: "Product ID", key: "_id" },
+    { label: "Product Name", key: "name" },
+    { label: "Product Serial", key: "serial" },
+    { label: "Brand", key: "brand" },
+    { label: "Category", key: "category" },
+    { label: "Description", key: "description" },
+    { label: "Status", key: "status" },
+  ];
+
   return (
     <DefaultManagement
       title="Product Management"
       filename="Products.csv"
+      headers={headers}
       columnProps={productColumns}
       dataProps={productData}
     />

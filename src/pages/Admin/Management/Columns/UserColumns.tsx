@@ -23,8 +23,8 @@ export const UserColumns: Array<Column> = [
     accessor: "location",
   },
   {
-    Header: "Created Time",
-    accessor: "created_time",
+    Header: "Created Date",
+    accessor: "createdDate",
   },
   {
     Header: "Status",
