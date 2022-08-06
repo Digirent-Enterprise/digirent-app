@@ -150,7 +150,7 @@ const AddProduct = () => {
 
                 <FormControl isRequired>
                   <FormLabel>Serial</FormLabel>
-                  <Input {...register("serial")} type="text" name="name" />
+                  <Input {...register("serial")} type="text" name="serial" />
                 </FormControl>
 
                 <Grid templateColumns="repeat(4, 1fr)" gap={4}>
