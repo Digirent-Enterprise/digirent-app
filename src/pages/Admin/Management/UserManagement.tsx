@@ -35,6 +35,7 @@ const UserManagement = () => {
     { label: "Created Date", key: "createdDate" },
     { label: "Status", key: "status" },
   ];
+
   return (
     <DefaultManagement
       title="User Management"
