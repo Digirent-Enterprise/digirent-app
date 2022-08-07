@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 import { useDispatch, useSelector } from "react-redux";
-import classNames from "classnames";
 import {
   addToFavorites,
   removeFromFavorites,
@@ -11,6 +10,7 @@ import Rating from "../Rating/Rating";
 
 interface ProductCardProps {
   _id: string;
+  name: string;
   brand: string;
   image?: string;
   rentalCost: string;
@@ -18,10 +18,10 @@ interface ProductCardProps {
   theme?: any;
 }
 
-const productListing = classNames("flex-col col-span-1 w-full");
 
 const ProductCard = ({
   _id,
+  name,
   brand,
   image,
   rentalCost,
@@ -34,6 +34,7 @@ const ProductCard = ({
   console.log("favorites", favorites);
 
   const product = { _id, brand, image, rentalCost, rentalCostType };
+  const product = { _id, name, brand, image, rentalCost, rentalCostType };
 
   const [like, setLike] = useState(false);
 
@@ -66,8 +67,10 @@ const ProductCard = ({
       </button>
       <div className="p-5 card-content">
         <p className="text-lg font-bold uppercase text-transform:">{brand}</p>
+        <p className="text-lg font-bold uppercase text-transform:">{name}</p>
         <h4 className="font-bold">
           {rentalCost}/ {rentalCostType}
+          {rentalCost}$/ {rentalCostType}
         </h4>
         <div className="flex items-center mt-1 rating">
           <Rating />
