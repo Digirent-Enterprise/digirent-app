@@ -23,8 +23,7 @@ const UserFavorite = () => {
                 image={favorite.images[0]}
                 rentalCost={favorite.rentalCost}
                 rentalCostType={favorite.rentalCostType}
-                theme={productFav}
-              />
+                theme={productFav} name={""}              />
             ))}
           </div>
         </div>

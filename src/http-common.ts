@@ -10,6 +10,7 @@ export const customAxios = (
     headers: {
       "Content-Type": contentType,
       Authorization: `Bearer ${localStorage.getItem("currentUser")}`,
+      "Access-Control-Allow-Origin": "*",
     },
   });
 };
