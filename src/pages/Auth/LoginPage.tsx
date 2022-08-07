@@ -15,9 +15,9 @@ import {
   Link,
   FormErrorMessage,
 } from "@chakra-ui/react";
+
 import { storeUserSession } from "../../helpers/authHelpers";
 import { AuthFormGrid, Transition, StatusToaster } from "../../components";
-
 import { customAxios } from "../../http-common";
 import { getUserDetail } from "../../store/actions/user.action";
 
