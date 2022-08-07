@@ -31,15 +31,17 @@ const ProductListLayout = (props: { products: any }) => {
         {currentItems.map((product: IProduct) => {
           return (
 
-            <ProductCard
+            <ProductCard 
               key={product._id}
-              name = {product.name}
+              name={product.name}
               // brand={product.brand}
               // image={product.image[0]}
               rentalCost={product.rentalCost}
               // description={product.description}
-              rentalCostType={product.rentalCostType}
-            />
+              rentalCostType={product.rentalCostType} 
+              _id={""} 
+              brand={""}            
+              />
           );
         })}
       </div>
