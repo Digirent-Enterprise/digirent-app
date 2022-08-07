@@ -16,6 +16,7 @@ import {
   ProductManagement,
   UserFavorite,
   UserManagement,
+  TransactionManagement,
 } from "./pages";
 import PrivateRoute from "./components/PrivateRoute";
 import { AdminPermission } from "./utils/constants/permission.constants";
@@ -80,7 +81,13 @@ const AppRouter = () => {
         <Route path="admin/products/:id/edit" />
         <Route path="admin/products/:id/delete" />
         {/* Transaction management */}
-        <Route path="admin/transactions" />
+        <Route
+          path="admin/transactions"
+          element={
+            // <PrivateRoute permission={AdminPermission}>
+            <TransactionManagement />
+          }
+        />
         <Route path="admin/transactions/:id/edit" />
         <Route path="admin/transactions/:id/delete" />
         {/* Chat */}
