@@ -19,7 +19,7 @@ import {
 import { customAxios } from "../../../http-common";
 
 import { StatusToaster, Transition } from "../../../components";
-import DefaultLayout from "../DefaultLayout";
+import DefaultLayout from "../DefaultAdminLayout";
 // import { AiOutlineCloudUpload } from "react-icons/ai";
 
 type FormValues = {
