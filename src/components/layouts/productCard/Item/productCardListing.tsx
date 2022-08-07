@@ -11,6 +11,7 @@ interface Props {
   rentalCostType?: string;
 }
 
+const ProductCard: React.FC<Props> = (props) => {
   const { name, image, rentalCost, rentalCostType } = props;
   const [like, setLike] = useState(false);
 
@@ -45,3 +46,4 @@ interface Props {
   );
 };
 
+export default ProductCard;
