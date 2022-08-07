@@ -13,7 +13,7 @@ export const setTransactions = (payload: ITransaction[]) => {
   return {
     type: SET_TRANSACTIONS,
     payload: {
-      products: payload,
+      transactions: payload,
       error: null,
     },
   };
