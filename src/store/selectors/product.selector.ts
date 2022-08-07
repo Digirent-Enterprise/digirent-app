@@ -12,4 +12,4 @@ export const getProductErrorSelector = createSelector(
 export const getAllProducts = (state: AppState) => state.product.products;
 
 export const getFavoriteProducts = (state: AppState) =>
-  state.favoritesReducer.favorites;
+  state.favorites.favorites;
