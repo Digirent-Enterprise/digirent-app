@@ -4,7 +4,7 @@ import { ClickDelete, ClickEdit } from "../HandleActionClick";
 export const TransactionColumns: Array<Column> = [
   {
     Header: "Transaction ID",
-    accessor: "transaction_id",
+    accessor: "_id",
   },
   {
     Header: "User Email",
