@@ -13,6 +13,7 @@ import ProductManagement from "./Admin/Management/ProductManagement";
 import UserFavorite from "./User/UserFavorite";
 import UserManagement from "./Admin/Management/UserManagement";
 import TransactionManagement from "./Admin/Management/TransactionManagement";
+import EmailSentPage from "./Auth/EmailSentPage";
 
 export {
   Home,
@@ -29,5 +30,6 @@ export {
   NotFound,
   ResetPasswordPage,
   ForgotPasswordPage,
+  EmailSentPage,
   ChatViewPage,
 };
