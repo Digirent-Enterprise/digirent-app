@@ -9,16 +9,18 @@ interface INavButton {
 
 const NavButton = ({ navItem, directUrl }: INavButton) => {
   return (
-    <Box pr="3">
-      <Button
-        colorScheme="blackAlpha"
-        variant="ghost"
-        alignItems="center"
-        color="white"
-      >
-        <Link to={directUrl}>{navItem}</Link>
-      </Button>
-    </Box>
+    <li>
+      <Box pr="3">
+        <Button
+          colorScheme="blackAlpha"
+          variant="ghost"
+          alignItems="center"
+          color="white"
+        >
+          <Link to={directUrl}>{navItem}</Link>
+        </Button>
+      </Box>
+    </li>
   );
 };
 
