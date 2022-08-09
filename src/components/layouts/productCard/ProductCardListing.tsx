@@ -1,10 +1,11 @@
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect, useMemo } from "react";
+import { Suspense, useEffect, useMemo } from "react";
 
-import ProductListLayout from "./productListLayout/productListLayout";
+import ProductListLayout from "./ProductListLayout/ProductListLayout";
 
 import { getAllProducts } from "../../../store/selectors/product.selector";
 import { getProducts } from "../../../store/actions/product.action";
+import { Spinner } from "../../elements";
 
 const ProductsListing = () => {
   const dispatch = useDispatch();
@@ -17,7 +18,11 @@ const ProductsListing = () => {
 
   const productData = useMemo(() => productFetchData, [productFetchData]);
 
-  return <ProductListLayout products={productData} />;
+  return (
+    <Suspense fallback={<Spinner />}>
+      <ProductListLayout products={productData} />
+    </Suspense>
+  );
 };
 
 export default ProductsListing;

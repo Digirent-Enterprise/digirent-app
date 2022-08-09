@@ -1,4 +1,4 @@
-import React, { useMemo, useEffect } from "react";
+import React, { useMemo, useEffect, Suspense } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import { getAllProducts } from "../../../store/selectors/product.selector";
@@ -8,6 +8,7 @@ import { getUserDetail } from "../../../store/actions/user.action";
 import DefaultManagement from "./DefaultManagement";
 
 import { ProductColumns } from "./Columns";
+import { Spinner } from "../../../components";
 
 const ProductManagement = () => {
   const dispatch = useDispatch();
@@ -35,13 +36,15 @@ const ProductManagement = () => {
   ];
 
   return (
-    <DefaultManagement
-      title="Product Management"
-      filename="Products.csv"
-      headers={headers}
-      columnProps={productColumns}
-      dataProps={productData}
-    />
+    <Suspense fallback={<Spinner />}>
+      <DefaultManagement
+        title="Product Management"
+        filename="Products.csv"
+        headers={headers}
+        columnProps={productColumns}
+        dataProps={productData}
+      />
+    </Suspense>
   );
 };
 

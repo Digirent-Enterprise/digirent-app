@@ -1,7 +1,9 @@
 import { useSelector } from "react-redux";
+import { getEmailFromState } from "../../store/selectors/user.selector";
 
 const EmailSentPage = () => {
-  const email = useSelector();
+  const emailState = useSelector(getEmailFromState);
+
   return (
     <div className="relative flex flex-col items-center justify-center min-h-screen py-6 overflow-hidden bg-white sm:py-12">
       <div className="max-w-xl px-5 text-center">
@@ -9,7 +11,7 @@ const EmailSentPage = () => {
         <p className="mb-2 text-lg">
           We are glad, that you’re with us ? We’ve sent you a reset link to the
           email address{" "}
-          <span className="font-medium text-[#6366f1]">{email}</span>.
+          <span className="font-medium text-[#6366f1]">{emailState}</span>.
         </p>
         <a
           href="/login"

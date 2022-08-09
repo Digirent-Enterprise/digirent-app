@@ -17,6 +17,7 @@ import {
   UserFavorite,
   UserManagement,
   TransactionManagement,
+  EmailSentPage,
 } from "./pages";
 import PrivateRoute from "./components/PrivateRoute";
 
@@ -24,9 +25,9 @@ import AddProduct from "./pages/Admin/AddProduct/AddProduct";
 
 import { AdminPermission } from "./utils/constants/permission.constants";
 
-
 const AppRouter = () => {
   const location = useLocation();
+
   return (
     <AnimatePresence exitBeforeEnter>
       <Routes key={location.pathname} location={location}>
@@ -35,7 +36,7 @@ const AppRouter = () => {
         <Route path="logout" />
         <Route path="register" element={<RegisterPage />} />
         <Route path="reset-password" element={<ResetPasswordPage />} />
-        <Route path="send-email" />
+        <Route path="email-sent" element={<EmailSentPage />} />
         <Route path="forgot-password" element={<ForgotPasswordPage />} />
         {/* Product */}
         <Route path="products" element={<ProductSearchPage />} />
@@ -73,7 +74,6 @@ const AppRouter = () => {
         <Route path="admin/users/:id/edit" />
         <Route path="admin/users/:id/delete" />
         {/* Product management */}
-        
         <Route
           path="admin/products"
           element={
@@ -81,8 +81,7 @@ const AppRouter = () => {
             <ProductManagement />
           }
         />
-        <Route path="admin/add-product" element={<AddProduct />}/>
-
+        <Route path="admin/add-product" element={<AddProduct />} />
         <Route path="admin/product/:id" />
         <Route path="admin/products/:id/edit" />
         <Route path="admin/products/:id/delete" />
@@ -100,9 +99,8 @@ const AppRouter = () => {
         <Route
           path="admin/chat"
           element={
-            <PrivateRoute permission={AdminPermission}>
-              <ChatViewPage />
-            </PrivateRoute>
+            // <PrivateRoute permission={AdminPermission}>
+            <ChatViewPage />
           }
         />
         <Route path="admin/chat/:id" />

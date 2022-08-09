@@ -1,13 +1,5 @@
 import React from "react";
-import {
-  Tabs,
-  TabList,
-  TabPanels,
-  Tab,
-  TabPanel,
-  Box,
-  Flex,
-} from "@chakra-ui/react";
+import { Tab } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 
 interface ITabButton {

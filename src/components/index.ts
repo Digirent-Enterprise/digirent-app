@@ -3,7 +3,7 @@ import {
   Banner,
   CustomTooltip,
   Transition,
-  CustomSpinner,
+  Spinner,
   CTA,
 } from "./elements";
 import {
@@ -36,7 +36,7 @@ export {
   CustomBreadcrumb,
   Banner,
   CustomTooltip,
-  CustomSpinner,
+  Spinner,
   Transition,
   StatusToaster,
   AuthFormGrid,
