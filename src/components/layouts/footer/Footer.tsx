@@ -50,16 +50,19 @@ const Footer = () => {
       bgColor="#222"
       px={7}
       py={3}
-      h="90px"
       color="white"
-      position="relative"
-      mt="45em"
+      // position="absolute"
+      width="100%"
+      bottom="0"
+      left="0"
+      className="p-2.5 h-40 md:h-24"
     >
       <Flex
         h={16}
         alignItems="center"
         justifyContent="space-between"
         direction={{ base: "column", md: "row" }}
+        className="p-4 rounded-lg shadow md:flex md:items-center md:justify-between md:p-6"
       >
         <Logo />
         <Stack direction="row" spacing={6}>
