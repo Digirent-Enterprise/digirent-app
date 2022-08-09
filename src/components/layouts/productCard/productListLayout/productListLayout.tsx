@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import ReactPaginate from "react-paginate";
+
 import ProductCard from "../Item/ProductCard";
+
 import "../../../../index.css";
 import { IProduct } from "../../../../store/types/product.types";
 
@@ -29,11 +31,14 @@ const ProductListLayout = (props: { products: any }) => {
           return (
             <ProductCard
               key={product._id}
-              _id={product._id}
-              brand={product.brand}
-              // image={product.images[0]}
+              name={product.name}
+              // brand={product.brand}
+              // image={product.image[0]}
               rentalCost={product.rentalCost}
+              // description={product.description}
               rentalCostType={product.rentalCostType}
+              _id=""
+              brand=""
             />
           );
         })}

@@ -24,6 +24,7 @@ const UserFavorite = () => {
                 rentalCost={favorite.rentalCost}
                 rentalCostType={favorite.rentalCostType}
                 theme={productFav}
+                name=""
               />
             ))}
           </div>
