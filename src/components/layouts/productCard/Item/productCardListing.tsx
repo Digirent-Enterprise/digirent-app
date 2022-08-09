@@ -36,7 +36,7 @@ const ProductCard: React.FC<Props> = (props) => {
         <p className="font-bold text-lg text-transform: uppercase">{name}</p>
         <h4 className="font-bold">
           {/* Type: Day, Month, Year */}
-          {rentalCost}$/{rentalCostType} 
+          {rentalCost}$/{rentalCostType}
         </h4>
         <div className="rating flex items-center mt-1">
           <Rating />

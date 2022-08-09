@@ -24,7 +24,6 @@ import AddProduct from "./pages/Admin/AddProduct/AddProduct";
 
 import { AdminPermission } from "./utils/constants/permission.constants";
 
-
 const AppRouter = () => {
   const location = useLocation();
   return (
@@ -73,7 +72,7 @@ const AppRouter = () => {
         <Route path="admin/users/:id/edit" />
         <Route path="admin/users/:id/delete" />
         {/* Product management */}
-        
+
         <Route
           path="admin/products"
           element={
@@ -81,7 +80,7 @@ const AppRouter = () => {
             <ProductManagement />
           }
         />
-        <Route path="admin/add-product" element={<AddProduct />}/>
+        <Route path="admin/add-product" element={<AddProduct />} />
 
         <Route path="admin/product/:id" />
         <Route path="admin/products/:id/edit" />
