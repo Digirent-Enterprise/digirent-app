@@ -4,7 +4,7 @@ import DefaultLayout from "../DefaultLayout";
 import { getProducts } from "../../store/actions/product.action";
 import { getAllProducts } from "../../store/selectors/product.selector";
 import { getUserDetail } from "../../store/actions/user.action";
-import { Banner } from "../../components";
+import { Banner, CTA } from "../../components";
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -19,6 +19,7 @@ const Home = () => {
   return (
     <DefaultLayout>
       <Banner />
+      <CTA />
     </DefaultLayout>
   );
 };
