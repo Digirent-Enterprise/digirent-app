@@ -23,8 +23,15 @@ interface IFormInputs {
 }
 
 const schema = yup.object().shape({
-  pw1: yup.string().min(4).max(15).required(),
-  pw2: yup.string().oneOf([yup.ref("pw1"), null], "Passwords do not match!"),
+  pw1: yup
+    .string()
+    .min(8, "Your password must be at least 8 characters!")
+    .max(15)
+    .required(),
+  pw2: yup
+    .string()
+    .oneOf([yup.ref("pw1"), null], "Passwords do not match!")
+    .required(),
 });
 
 const ResetPasswordPage = () => {
@@ -75,7 +82,7 @@ const ResetPasswordPage = () => {
                     pr="4.5rem"
                     type="password"
                     placeholder="Enter password"
-                    name="Password"
+                    name="pw1"
                   />
                   <FormErrorMessage>
                     {" "}

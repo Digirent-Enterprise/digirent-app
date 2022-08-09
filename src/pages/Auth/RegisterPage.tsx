@@ -29,18 +29,25 @@ interface IFormInputs {
 
 const schema = yup.object().shape({
   name: yup.string().required("Your name is required!"),
-  email: yup.string().email().required(),
+  email: yup.string().email().required("Your email is required!"),
   phone: yup
     .string()
     .matches(
       /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/,
-      "Phone number is not valid",
+      "Phone number is not valid!",
     ),
-  pw1: yup.string().min(4).max(15).required(),
-  pw2: yup.string().oneOf([yup.ref("pw1"), null], "Passwords do not match!"),
+  pw1: yup
+    .string()
+    .min(8, "Your password must be at least 8 characters!")
+    .max(15)
+    .required("Please enter your password!"),
+  pw2: yup
+    .string()
+    .oneOf([yup.ref("pw1"), null], "Your passwords do not match!")
+    .required("Please retype your password!"),
 });
 
-const LoginPage = () => {
+const RegisterPage = () => {
   const {
     register,
     handleSubmit,
@@ -53,7 +60,7 @@ const LoginPage = () => {
 
   const onSubmit = (data: IFormInputs) => {
     return customAxios("application/json")
-      .post("api/auth/register", qs.stringify(data))
+      .post("auth/register", qs.stringify(data))
       .then((res) => {
         if (res.status === 201) {
           <StatusToaster
@@ -78,7 +85,7 @@ const LoginPage = () => {
         childTitle="Register your account"
         childCompForm={
           <Box textAlign="center">
-            <form onSubmit={handleSubmit(onSubmit)}>
+            <form onSubmit={handleSubmit(onSubmit)} autoComplete="new-password">
               <Stack spacing={2} p="1rem" backgroundColor="whiteAlpha.900">
                 <FormControl isInvalid={!!errors?.name?.message} isRequired>
                   <FormLabel>Name</FormLabel>
@@ -127,7 +134,7 @@ const LoginPage = () => {
                     pr="4.5rem"
                     type="password"
                     placeholder="Enter password"
-                    name="Password"
+                    name="pw1"
                   />
                   <FormErrorMessage>
                     {" "}
@@ -166,7 +173,7 @@ const LoginPage = () => {
                     !!errors.pw2
                   }
                 >
-                  Log In
+                  Register
                 </Button>
 
                 <Box>
@@ -186,4 +193,4 @@ const LoginPage = () => {
   );
 };
 
-export default LoginPage;
+export default RegisterPage;

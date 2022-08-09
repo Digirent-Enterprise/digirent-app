@@ -3,7 +3,8 @@ import {
   Banner,
   CustomTooltip,
   Transition,
-  CustomSpinner,
+  Spinner,
+  CTA,
 } from "./elements";
 import {
   AuthFormGrid,
@@ -31,10 +32,11 @@ import {
 export {
   NavBar,
   Footer,
+  CTA,
   CustomBreadcrumb,
   Banner,
   CustomTooltip,
-  CustomSpinner,
+  Spinner,
   Transition,
   StatusToaster,
   AuthFormGrid,

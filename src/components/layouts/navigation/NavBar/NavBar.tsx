@@ -17,7 +17,7 @@ const NavBar = () => {
       px={7}
       py={3}
       mb={3}
-      // className=" relative flex flex-wrap"
+      // className="relative flex flex-wrap "
     >
       <Flex
         alignItems="center"
@@ -28,11 +28,11 @@ const NavBar = () => {
       >
         <Flex
           justifyContent="space-between"
-          className="w-full relative flex lg:w-auto lg:static lg:block lg:justify-start"
+          className="relative flex w-full lg:w-auto lg:static lg:block lg:justify-start"
         >
           <Logo />
           <button
-            className="text-white leading-none px-3 py-1 border border-solid border-transparent rounded bg-transparent block lg:hidden outline-none focus:outline-none"
+            className="block px-3 py-1 leading-none text-white bg-transparent border border-transparent border-solid rounded outline-none lg:hidden focus:outline-none"
             type="button"
             onClick={() => setNavbarOpen(!navbarOpen)}
           >
@@ -47,13 +47,12 @@ const NavBar = () => {
           </button>
         </Flex>
         <div
-          className={
-            "lg:flex flex-grow items-center justify-center" +
-            (navbarOpen ? " flex" : " hidden")
-          }
+          className={`lg:flex flex-grow items-center justify-center${
+            navbarOpen ? " flex" : " hidden"
+          }`}
           id="example-navbar-danger"
         >
-          <ul className="flex flex-col lg:flex-row list-none lg:ml-auto">
+          <ul className="flex flex-col list-none lg:flex-row lg:ml-auto">
             <NavButton navItem="Home" directUrl="/" />
             <NavButton navItem="Contact" directUrl="/contact" />
             {!currentUser.email ? (
