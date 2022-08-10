@@ -1,3 +1,5 @@
+import { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
@@ -16,6 +18,8 @@ import {
 } from "@chakra-ui/react";
 // import { customAxios } from "../../http-common";
 import { AuthFormGrid, Transition } from "../../components";
+import { getEmailFromState } from "../../store/selectors/user.selector";
+import { saveEmail } from "../../store/actions/user.action";
 
 interface IFormInputs {
   email: string;
@@ -26,7 +30,7 @@ const schema = yup.object().shape({
   email: yup.string().email().required(),
 });
 
-const LoginPage = () => {
+const ForgotPasswordPage = () => {
   const {
     register,
     handleSubmit,
@@ -35,12 +39,26 @@ const LoginPage = () => {
     resolver: yupResolver(schema),
     mode: "onBlur",
   });
+
+  const dispatch = useDispatch();
+
+  const emailState = useSelector(getEmailFromState);
+
+  const [email, setEmail] = useState("");
+
+  useEffect(() => {
+    if (email) {
+      dispatch(saveEmail());
+      setEmail(email);
+      console.log("email", email);
+    }
+  }, []);
   // const navigate = useNavigate();
 
   const onSubmit = (data: IFormInputs) => {
     // axios("application/x-www-form-urlencoded")
     //   .post("auth/login", data)
-    //   .then((res) => {
+    //   .then((res) => {s
     //     if (res.status === 201) {
     //       <StatusToaster
     //         childCompToasterTitle="Welcome back!"
@@ -57,7 +75,7 @@ const LoginPage = () => {
     //       />;
     //     }
     //   });
-    alert(data);
+    alert(data.email);
   };
 
   return (
@@ -76,6 +94,8 @@ const LoginPage = () => {
                     name="email"
                     placeholder="Enter your email"
                     size="md"
+                    value={emailState}
+                    onChange={(e) => setEmail(e.target.value)}
                   />
                   <FormErrorMessage>{errors?.email?.message}</FormErrorMessage>
                 </FormControl>
@@ -109,4 +129,4 @@ const LoginPage = () => {
   );
 };
 
-export default LoginPage;
+export default ForgotPasswordPage;
