@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
 import { getProducts } from "../../store/actions/product.action";
 import { getAllProducts } from "../../store/selectors/product.selector";
 import { getUserDetail } from "../../store/actions/user.action";
@@ -19,12 +18,10 @@ const Home = () => {
   }, []);
 
   return (
-    <Suspense fallback={<Spinner />}>
-      <DefaultLayout>
-        <Banner />
-        <CTA />
-      </DefaultLayout>
-    </Suspense>
+    <DefaultLayout>
+      <Banner />
+      <CTA />
+    </DefaultLayout>
   );
 };
 
