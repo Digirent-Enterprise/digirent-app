@@ -19,11 +19,12 @@ const Home = () => {
   }, []);
 
   return (
-    <DefaultLayout>
-      <Link to="/admin">Home</Link>
-      <Banner />
-      <CTA />
-    </DefaultLayout>
+    <Suspense fallback={<Spinner />}>
+      <DefaultLayout>
+        <Banner />
+        <CTA />
+      </DefaultLayout>
+    </Suspense>
   );
 };
 
