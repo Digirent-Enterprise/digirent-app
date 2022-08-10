@@ -1,4 +1,5 @@
 import ProductSearchPage from "./Product/ProductSearchPage";
+import ProductDetailsPage from "./Product/ProductDetailsPage";
 import LoginPage from "./Auth/LoginPage";
 import RegisterPage from "./Auth/RegisterPage";
 import Maintain from "./Maintain/Maintain";
@@ -26,6 +27,7 @@ export {
   UserProfile,
   UserFavorite,
   ProductSearchPage,
+  ProductDetailsPage,
   LoginPage,
   RegisterPage,
   Maintain,

@@ -15,6 +15,7 @@ import {
   EditTransactionModal,
   EditUserModal,
   FavoriteContainer,
+  GalleryDisplay,
   StatusToaster,
 } from "./modules";
 import {
@@ -54,4 +55,5 @@ export {
   UserTab,
   ProductCardListing,
   FavoriteContainer,
+  GalleryDisplay,
 };

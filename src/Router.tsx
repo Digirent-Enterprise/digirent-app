@@ -28,6 +28,10 @@ const ProductSearchPage = lazy(
 );
 const AddProduct = lazy(() => import("./pages/Admin/AddProduct/AddProduct"));
 
+const ProductDetailsPage = lazy(
+  () => import("./pages/Product/ProductDetailsPage"),
+);
+
 const AppRouter = () => {
   const location = useLocation();
 
@@ -42,7 +46,7 @@ const AppRouter = () => {
         <Route path="forgot-password" element={<ForgotPasswordPage />} />
         {/* Product */}
         <Route path="products" element={<ProductSearchPage />} />
-        <Route path="product/:id" />
+        <Route path="product/:id/details" element={<ProductDetailsPage />} />
         {/* Payment */}
         <Route path="checkout/:id" />
         <Route path="checkout-success/:id" />
