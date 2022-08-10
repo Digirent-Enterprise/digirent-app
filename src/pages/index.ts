@@ -12,7 +12,8 @@ import UserProfile from "./User/UserProfile";
 import ProductManagement from "./Admin/Management/ProductManagement";
 import UserFavorite from "./User/UserFavorite";
 import UserManagement from "./Admin/Management/UserManagement";
-import TransactionManagement from "./Admin/Management/TransactionManagement";
+import TransactionManagement from "./Admin/Management/UserManagement";
+import CheckoutPage from "./Checkout/CheckoutPage";
 
 export {
   Home,
@@ -30,4 +31,5 @@ export {
   ResetPasswordPage,
   ForgotPasswordPage,
   ChatViewPage,
+  CheckoutPage,
 };

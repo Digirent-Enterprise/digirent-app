@@ -17,13 +17,13 @@ import {
   UserFavorite,
   UserManagement,
   TransactionManagement,
+  CheckoutPage,
 } from "./pages";
 import PrivateRoute from "./components/PrivateRoute";
 
 import AddProduct from "./pages/Admin/AddProduct/AddProduct";
 
 import { AdminPermission } from "./utils/constants/permission.constants";
-
 
 const AppRouter = () => {
   const location = useLocation();
@@ -41,7 +41,7 @@ const AppRouter = () => {
         <Route path="products" element={<ProductSearchPage />} />
         <Route path="products/:id" />
         {/* Payment */}
-        <Route path="checkout/:id" />
+        <Route path="checkout/:id" element={<CheckoutPage />} />
         <Route path="checkout-success/:id" />
         {/* Users */}
         <Route path="users" />
@@ -73,7 +73,7 @@ const AppRouter = () => {
         <Route path="admin/users/:id/edit" />
         <Route path="admin/users/:id/delete" />
         {/* Product management */}
-        
+
         <Route
           path="admin/products"
           element={
@@ -81,7 +81,7 @@ const AppRouter = () => {
             <ProductManagement />
           }
         />
-        <Route path="admin/add-product" element={<AddProduct />}/>
+        <Route path="admin/add-product" element={<AddProduct />} />
 
         <Route path="admin/product/:id" />
         <Route path="admin/products/:id/edit" />
