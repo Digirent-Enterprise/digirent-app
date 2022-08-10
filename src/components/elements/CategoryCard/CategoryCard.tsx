@@ -5,34 +5,29 @@ interface ICategoryCard {
   categoryName: string;
 }
 
-export const CategoryCard = ({
-  categoryImage,
-  categoryName,
-}: ICategoryCard) => {
+const CategoryCard = ({ categoryImage, categoryName }: ICategoryCard) => {
   return (
     <div
-      className="
-    overflow-hidden 
+      className="overflow-hidden
     h-[179px]
     w-[266px]
-    shadow-md 
+    shadow-md
     rounded-md
-    flex 
-    flex-col 
+    flex
+    flex-col
     justify-center
-    items-center 
-    cursor-pointer 
+    items-center
+    cursor-pointer
     transition-transform
     hover:scale-105
-     bg-gray-100
-    "
+    bg-gray-100"
     >
       <img
         src={categoryImage}
-        alt="category image"
+        alt="category"
         className="
         w-[120px]
-        h-[120px]      
+        h-[120px]
         object-cover
       "
       />
