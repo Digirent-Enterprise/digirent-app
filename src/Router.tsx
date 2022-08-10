@@ -69,8 +69,9 @@ const AppRouter = () => {
         <Route
           path="admin/users"
           element={
-            // <PrivateRoute permission={AdminPermission}>
-            <UserManagement />
+            <PrivateRoute permission={AdminPermission}>
+              <UserManagement />
+            </PrivateRoute>
           }
         />
         <Route path="admin/users/:id/edit" />
@@ -79,11 +80,19 @@ const AppRouter = () => {
         <Route
           path="admin/products"
           element={
-            // <PrivateRoute permission={AdminPermission}>
-            <ProductManagement />
+            <PrivateRoute permission={AdminPermission}>
+              <ProductManagement />
+            </PrivateRoute>
           }
         />
-        <Route path="admin/add-product" element={<AddProduct />} />
+        <Route
+          path="admin/add-product"
+          element={
+            <PrivateRoute permission={AdminPermission}>
+              <AddProduct />
+            </PrivateRoute>
+          }
+        />
         <Route path="admin/product/:id" />
         <Route path="admin/products/:id/edit" />
         <Route path="admin/products/:id/delete" />
@@ -91,8 +100,9 @@ const AppRouter = () => {
         <Route
           path="admin/transactions"
           element={
-            // <PrivateRoute permission={AdminPermission}>
-            <TransactionManagement />
+            <PrivateRoute permission={AdminPermission}>
+              <TransactionManagement />
+            </PrivateRoute>
           }
         />
         <Route path="admin/transactions/:id/edit" />
