@@ -1,13 +1,5 @@
 import React from "react";
-import {
-  Tabs,
-  TabList,
-  TabPanels,
-  Tab,
-  TabPanel,
-  Box,
-  Flex,
-} from "@chakra-ui/react";
+import { Tabs, TabList, Box, Flex } from "@chakra-ui/react";
 import TabButton from "./TabButton";
 import { UserProfile } from "../../../../pages";
 
