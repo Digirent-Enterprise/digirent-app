@@ -44,12 +44,13 @@ const ForgotPasswordPage = () => {
 
   const emailState = useSelector(getEmailFromState);
 
-  const [email, setEmail] = useState(emailState);
+  const [email, setEmail] = useState("");
 
   useEffect(() => {
     if (email) {
       dispatch(saveEmail());
       setEmail(email);
+      console.log("email", email);
     }
   }, []);
   // const navigate = useNavigate();
@@ -74,7 +75,7 @@ const ForgotPasswordPage = () => {
     //       />;
     //     }
     //   });
-    alert(data);
+    alert(data.email);
   };
 
   return (
@@ -93,7 +94,7 @@ const ForgotPasswordPage = () => {
                     name="email"
                     placeholder="Enter your email"
                     size="md"
-                    value={email}
+                    value={emailState}
                     onChange={(e) => setEmail(e.target.value)}
                   />
                   <FormErrorMessage>{errors?.email?.message}</FormErrorMessage>

@@ -33,14 +33,13 @@ const AppRouter = () => {
       <Routes key={location.pathname} location={location}>
         <Route path="/" element={<Home />} />
         <Route path="login" element={<LoginPage />} />
-        <Route path="logout" />
         <Route path="register" element={<RegisterPage />} />
         <Route path="reset-password" element={<ResetPasswordPage />} />
         <Route path="email-sent" element={<EmailSentPage />} />
         <Route path="forgot-password" element={<ForgotPasswordPage />} />
         {/* Product */}
         <Route path="products" element={<ProductSearchPage />} />
-        <Route path="products/:id" />
+        <Route path="product/:id" />
         {/* Payment */}
         <Route path="checkout/:id" />
         <Route path="checkout-success/:id" />
