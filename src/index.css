@@ -61,3 +61,19 @@ html {
 .swiper-pagination-bullet-active {
   background-color: #222 !important;
 }
+.swiper-pagination{
+  bottom: 0 !important;
+  position: relative !important;
+}
+
+.swiper-pagination-progressbar-fill {
+  background-color: #222 !important;
+}
+button.rent-button:hover>span {
+  color: #222;
+  text-decoration: none;
+}
+
+button.rent-button:hover>div {
+  color: #222;
+}

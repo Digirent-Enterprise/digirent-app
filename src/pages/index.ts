@@ -16,9 +16,11 @@ import TransactionManagement from "./Admin/Management/TransactionManagement";
 import EmailSentPage from "./Auth/EmailSentPage";
 import AddProduct from "./Admin/AddProduct/AddProduct";
 import UserEdit from "./User/UserEdit";
+import About from "./About/About";
 
 export {
   Home,
+  About,
   AdminHome,
   AddProduct,
   ProductManagement,

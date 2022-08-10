@@ -1,29 +1,61 @@
-import { Link } from "react-router-dom";
-
 const NotFound = () => {
   return (
-    <section className="flex items-center h-full p-16 dark:bg-gray-900 dark:text-gray-100">
-      <div className="container flex flex-col items-center justify-center px-5 mx-auto my-8">
-        <div className="max-w-md text-center">
-          <h2 className="mb-8 font-extrabold text-9xl dark:text-gray-600">
-            <span className="sr-only">Error</span>404
-          </h2>
-          <p className="text-2xl font-semibold md:text-3xl">
-            Sorry, we couldn't find this page.
-          </p>
-          <p className="mt-4 mb-8 dark:text-gray-400">
-            But do not worry, you can find plenty of other things on our
-            homepage.
-          </p>
-          <Link
-            to="/"
-            className="px-8 py-3 font-semibold rounded dark:bg-violet-400 dark:text-gray-900"
-          >
-            Back to homepage
-          </Link>
+    <div className="bg-white py-6 sm:py-8 lg:py-12">
+      <div className="max-w-screen-lg px-4 md:px-8 mx-auto">
+        <div className="grid sm:grid-cols-2 gap-8">
+          <div className="h-80 md:h-auto bg-gray-100 overflow-hidden shadow-lg rounded-lg">
+            <img
+              src="https://images.unsplash.com/photo-1626790680787-de5e9a07bcf2?auto=format&q=75&fit=crop&w=600"
+              loading="lazy"
+              alt="banner"
+              className="w-full h-full object-cover object-center"
+            />
+          </div>
+
+          <div className="flex flex-col justify-center items-center sm:items-start md:py-24 lg:py-32">
+            <p className="text-indigo-500 text-sm md:text-base font-semibold uppercase mb-4">
+              Error 404
+            </p>
+            <h1 className="text-gray-800 text-2xl md:text-3xl font-bold text-center sm:text-left mb-2">
+              Page not found
+            </h1>
+
+            <p className="text-gray-500 md:text-lg text-center sm:text-left mb-4 md:mb-8">
+              The page you’re looking for doesn’t exist.
+            </p>
+
+            <nav className="flex sm:block gap-4 sm:space-y-1 md:space-y-2">
+              <div>
+                <a
+                  href="/"
+                  className="inline-block text-indigo-500 hover:text-indigo-600 active:text-indigo-700 text-sm md:text-base transition duration-100"
+                >
+                  Home
+                </a>
+              </div>
+
+              <div>
+                <a
+                  href="/products"
+                  className="inline-block text-indigo-500 hover:text-indigo-600 active:text-indigo-700 text-sm md:text-base transition duration-100"
+                >
+                  Search
+                </a>
+              </div>
+
+              <div>
+                <a
+                  href="/contact"
+                  className="inline-block text-indigo-500 hover:text-indigo-600 active:text-indigo-700 text-sm md:text-base transition duration-100"
+                >
+                  Help
+                </a>
+              </div>
+            </nav>
+          </div>
         </div>
       </div>
-    </section>
+    </div>
   );
 };
 
