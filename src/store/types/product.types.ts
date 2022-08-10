@@ -1,15 +1,15 @@
 import { FETCH_PRODUCTS_ERROR } from "./action.types";
 
 export interface IProduct {
-  id: string;
+  _id: string;
   name: string;
   serial: string;
   brand: string;
   description: string;
   status: boolean;
-  rentalCost: String;
+  rentalCost: string;
   rentalCostType: string;
-  imagePath: string[];
+  images: string[];
 }
 
 export interface ProductState {

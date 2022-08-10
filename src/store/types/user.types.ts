@@ -6,17 +6,16 @@ export interface IUser {
   email: string;
   phone: string;
   role: string;
-  pw1: string;
   avatar: string;
 }
 
 export interface IUserDetail {
   role: string;
-  isEmailVerified: boolean;
   id: string;
   name: string;
   email: string;
   phone: string;
+  avatar: string;
 }
 
 export interface UserState {
@@ -35,6 +34,11 @@ export type SetUser = {
   payload: SetUserPayload;
 };
 
+export type SaveUserInfo = {
+  type: string;
+  value: IUser;
+};
+
 export interface FetchUserErrorPayload {
   error: string;
 }
@@ -44,3 +48,5 @@ export type FetchUserError = {
 };
 
 export type UserActions = FetchUserError | SetUser;
+
+export type SaveUserAction = SaveUserInfo;

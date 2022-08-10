@@ -1,20 +1,20 @@
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-import { useNavigate } from "react-router-dom";
-import qs from "qs";
+// import { useNavigate } from "react-router-dom";
+// import qs from "qs";
 import {
   Box,
   Button,
   FormControl,
+  FormErrorMessage,
   FormLabel,
   Input,
   Stack,
-  FormErrorMessage,
 } from "@chakra-ui/react";
 import { WarningTwoIcon } from "@chakra-ui/icons";
-import { customAxios } from "../../http-common";
-import { AuthFormGrid, Transition, StatusToaster } from "../../components";
+// import { customAxios } from "../../http-common";
+import { AuthFormGrid, Transition } from "../../components";
 
 interface IFormInputs {
   pw1: string;
@@ -23,11 +23,18 @@ interface IFormInputs {
 }
 
 const schema = yup.object().shape({
-  pw1: yup.string().min(4).max(15).required(),
-  pw2: yup.string().oneOf([yup.ref("pw1"), null], "Passwords do not match!"),
+  pw1: yup
+    .string()
+    .min(8, "Your password must be at least 8 characters!")
+    .max(15)
+    .required(),
+  pw2: yup
+    .string()
+    .oneOf([yup.ref("pw1"), null], "Passwords do not match!")
+    .required(),
 });
 
-const LoginPage = () => {
+const ResetPasswordPage = () => {
   const {
     register,
     handleSubmit,
@@ -36,7 +43,7 @@ const LoginPage = () => {
     mode: "onBlur",
     resolver: yupResolver(schema),
   });
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   const onSubmit = (data: IFormInputs) => {
     // return axios("application/x-www-form-urlencoded")
@@ -67,12 +74,7 @@ const LoginPage = () => {
         childCompForm={
           <Box textAlign="center">
             <form onSubmit={handleSubmit(onSubmit)}>
-              <Stack
-                spacing={2}
-                p="1rem"
-                backgroundColor="whiteAlpha.900"
-                boxShadow="lg"
-              >
+              <Stack spacing={2} p="1rem" backgroundColor="whiteAlpha.900">
                 <FormControl isInvalid={!!errors.pw1?.message}>
                   <FormLabel>New Password</FormLabel>
                   <Input
@@ -80,7 +82,7 @@ const LoginPage = () => {
                     pr="4.5rem"
                     type="password"
                     placeholder="Enter password"
-                    name="Password"
+                    name="pw1"
                   />
                   <FormErrorMessage>
                     {" "}
@@ -123,4 +125,4 @@ const LoginPage = () => {
   );
 };
 
-export default LoginPage;
+export default ResetPasswordPage;

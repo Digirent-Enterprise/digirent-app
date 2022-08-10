@@ -11,12 +11,28 @@ import {
   Stack,
   Center,
 } from "@chakra-ui/react";
+import { useSelector } from "react-redux";
+
+import { useNavigate } from "react-router-dom";
+import { getCurrentUser } from "../../../../store/selectors/user.selector";
+import IMAGES from "../../../../utils/constants/image.constant";
+import { customAxios } from "../../../../http-common";
+import { clearUserSession } from "../../../../helpers/authHelpers";
 
 const AvatarMenu = () => {
+  const navigate = useNavigate();
+  const currentUser = useSelector(getCurrentUser);
+
+  const logOut = () => {
+    customAxios().post("auth/logout");
+    clearUserSession();
+    navigate(0);
+  };
+
   return (
     <Flex alignItems="right">
       <Stack direction="row" spacing={7}>
-        <Menu>
+        <Menu isLazy>
           <MenuButton
             as={Button}
             rounded="full"
@@ -25,27 +41,43 @@ const AvatarMenu = () => {
             minW={0}
             p="2"
           >
-            <Avatar
-              size="sm"
-              src="https://avatars.dicebear.com/api/male/username.svg"
-            />
+            {!currentUser.avatar ? (
+              <Avatar
+                size="sm"
+                src={window.location.origin + IMAGES.defaultAvatar}
+              />
+            ) : (
+              <Avatar size="sm" src={currentUser.avatar} />
+            )}
           </MenuButton>
           <MenuList alignItems="center">
             <br />
             <Center>
-              <Avatar
-                size="2xl"
-                src="https://avatars.dicebear.com/api/male/username.svg"
-              />
+              {!currentUser.avatar ? (
+                <Avatar
+                  size="2xl"
+                  src={window.location.origin + IMAGES.defaultAvatar}
+                />
+              ) : (
+                <Avatar size="2xl" src={currentUser.avatar} />
+              )}
             </Center>
             <br />
             <Center>
-              <p>Joe Mama</p>
+              <p>{currentUser.name}</p>
             </Center>
             <br />
             <MenuDivider />
-            <MenuItem>Account Settings</MenuItem>
-            <MenuItem>Logout</MenuItem>
+            <MenuItem onClick={() => navigate("/user/profile")}>
+              Account Settings
+            </MenuItem>
+            <MenuItem onClick={() => navigate("/user/transactions")}>
+              Transaction History
+            </MenuItem>
+            <MenuItem onClick={() => navigate("/user/favorites")}>
+              Favorite Products
+            </MenuItem>
+            <MenuItem onClick={() => logOut()}>Logout</MenuItem>
           </MenuList>
         </Menu>
       </Stack>

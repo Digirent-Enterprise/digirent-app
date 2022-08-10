@@ -1,23 +1,27 @@
-import { useEffect } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { NavBar, Footer } from "../../components";
-import { Transition } from "../../components/elements";
-import { getAllUsers } from "../../store/selectors/user.selector";
-import { getUsers } from "../../store/actions/user.action";
+import { getProducts } from "../../store/actions/product.action";
+import { getAllProducts } from "../../store/selectors/product.selector";
+import { getUserDetail } from "../../store/actions/user.action";
+import { Banner, CTA } from "../../components";
+import DefaultLayout from "../DefaultLayout";
 
 const Home = () => {
-  const userData = useSelector(getAllUsers);
   const dispatch = useDispatch();
+
+  const data = useSelector(getAllProducts);
+
   useEffect(() => {
-    console.log("userdata", userData);
-    dispatch(getUsers());
+    dispatch(getProducts());
+    dispatch(getUserDetail());
+    console.log("data", data);
   }, []);
 
   return (
-    <Transition>
-      <NavBar />
-      <Footer />
-    </Transition>
+    <DefaultLayout>
+      <Banner />
+      <CTA />
+    </DefaultLayout>
   );
 };
 

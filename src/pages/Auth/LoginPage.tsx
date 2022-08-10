@@ -1,4 +1,6 @@
 import { useForm } from "react-hook-form";
+import { useDispatch } from "react-redux";
+
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { useNavigate } from "react-router-dom";
@@ -13,14 +15,11 @@ import {
   Link,
   FormErrorMessage,
 } from "@chakra-ui/react";
-import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
+
 import { storeUserSession } from "../../helpers/authHelpers";
 import { AuthFormGrid, Transition, StatusToaster } from "../../components";
-
-import { getCurrentUser } from "../../store/selectors/user.selector";
-import { getUserDetail } from "../../store/actions/user.action";
 import { customAxios } from "../../http-common";
+import { getUserDetail } from "../../store/actions/user.action";
 
 interface IFormInputs {
   email: string;
@@ -43,21 +42,14 @@ const LoginPage = () => {
     mode: "onBlur",
   });
   const navigate = useNavigate();
-
   const dispatch = useDispatch();
-  const getDetail = useSelector(getCurrentUser);
-
-  useEffect(() => {
-    dispatch(getUserDetail());
-    console.log("getDetail", getDetail);
-  }, []);
-
   const onSubmit = (data: IFormInputs) => {
     customAxios("application/json")
       .post("auth/login", data)
       .then((res: any) => {
         if (res.status === 200 || res.status === 201) {
           storeUserSession(res.data.accessToken);
+          dispatch(getUserDetail());
           <StatusToaster
             childCompToasterTitle="Welcome back!"
             childCompStatusColor="success"
@@ -81,12 +73,7 @@ const LoginPage = () => {
         childCompForm={
           <Box textAlign="center">
             <form onSubmit={handleSubmit(onSubmit)}>
-              <Stack
-                spacing={4}
-                p="1rem"
-                backgroundColor="whiteAlpha.900"
-                boxShadow="md"
-              >
+              <Stack spacing={4} p="1rem" backgroundColor="whiteAlpha.900">
                 <FormControl isInvalid={!!errors?.email?.message} isRequired>
                   <FormLabel>Email</FormLabel>
                   <Input

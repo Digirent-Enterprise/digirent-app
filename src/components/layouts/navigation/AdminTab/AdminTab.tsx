@@ -10,16 +10,16 @@ const AdminTab = () => {
           </a>
         </li>
         <li className="mr-6">
+          <a className="text-black hover:text-blue-100 link" href="/admin/chat">
+            Chat
+          </a>
+        </li>
+        <li className="mr-6">
           <a
             className="text-black hover:text-blue-100 link"
             href="/admin/users"
           >
             Users
-          </a>
-        </li>
-        <li className="mr-6">
-          <a className="text-black hover:text-blue-100 link" href="/admin/chat">
-            Chat
           </a>
         </li>
         <li className="mr-6">
@@ -41,7 +41,7 @@ const AdminTab = () => {
         <li className="mr-6">
           <a
             className="text-black hover:text-blue-100 link"
-            href="/admin/products"
+            href="/admin/add-product"
           >
             Add Product
           </a>

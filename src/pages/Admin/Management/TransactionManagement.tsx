@@ -1,50 +1,48 @@
-import React, { useMemo } from "react";
+import React, { useMemo, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
-import DefaultManagementLayout from "./DefaultManagementLayout";
+import { getAllTransactions } from "../../../store/selectors/transaction.selector";
+import { getTransactions } from "../../../store/actions/transaction.action";
+import { getCurrentUser } from "../../../store/selectors/user.selector";
+import { getUserDetail } from "../../../store/actions/user.action";
+import DefaultManagement from "./DefaultManagement";
+
+import { TransactionColumns } from "./Columns";
 
 const TransactionManagement = () => {
-  const columnsHeader = useMemo(
-    () => [
-      {
-        id: 1,
-        header: "Transaction ID",
-      },
-      {
-        id: 2,
-        header: "User Name",
-      },
-      {
-        id: 3,
-        header: "Total Rental Cost",
-      },
-      {
-        id: 4,
-        header: "Borrowed Date",
-      },
-      {
-        id: 5,
-        header: "Return Date",
-      },
-      {
-        id: 6,
-        header: "Status",
-      },
-      {
-        id: 7,
-        header: "Product Serial",
-      },
-      {
-        id: 8,
-        header: "Action",
-      },
-    ],
-    [],
+  const dispatch = useDispatch();
+
+  const transactionFetchData = useSelector(getAllTransactions);
+  const currentUser = useSelector(getCurrentUser);
+
+  useEffect(() => {
+    dispatch(getUserDetail());
+    dispatch(getTransactions());
+    console.log("currentUser", currentUser);
+  }, []);
+
+  const transactionColumns = useMemo(() => TransactionColumns, []);
+  const transactionData = useMemo(
+    () => transactionFetchData,
+    [transactionFetchData],
   );
+
+  const headers = [
+    { label: "Transaction ID", key: "_id" },
+    { label: "User email", key: "userEmail" },
+    { label: "Borrowed Date", key: "from" },
+    { label: "Return Date", key: "to" },
+    { label: "Product ID", key: "productId" },
+    { label: "Status", key: "status" },
+  ];
+
   return (
-    <DefaultManagementLayout
+    <DefaultManagement
       title="Transaction Management"
-      columnsHeader={columnsHeader}
-      pageType="transaction"
+      filename="Transactions.csv"
+      headers={headers}
+      columnProps={transactionColumns}
+      dataProps={transactionData}
     />
   );
 };

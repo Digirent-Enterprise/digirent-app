@@ -1,12 +1,12 @@
 import React from "react";
-import image from "../../../utils/constants/image.constant";
+import IMAGES from "../../../utils/constants/image.constant";
 
 const Banner = () => {
   return (
     <div className="relative w-full h-full pb-10">
       <div className="container relative items-center gap-8 px-4 mx-auto xl:px-0 md:flex">
         <div className="w-full pt-16 pl-20 text-color md:w-1/3 lg:pt-32 xl:pt-12">
-          <h1 className="w-11/12 text-4xl font-extrabold text-gray-900 md:text-4xl lg:text-6xl lg:w-11/12 xl:w-full xl:text-6xl f-f-l">
+          <h1 className="w-11/12 text-4xl font-extrabold text-gray-900 md:text-4xl lg:text-6xl lg:w-11/12 xl:w-full xl:text-6xl">
             Mini is mighty
           </h1>
           <div className="pt-10 pb-20 text-base lg:text-base sm:pb-0 xl:pt-6">
@@ -25,7 +25,7 @@ const Banner = () => {
         <div>
           <img
             className="object-fill w-full mt-8 md:mt-0 md:w-2/3 md:-ml-4 lg:-ml-4 xl:ml-0"
-            src={image.bannerImg}
+            src={window.location.origin + IMAGES.bannerImg}
             alt="banner"
           />
         </div>

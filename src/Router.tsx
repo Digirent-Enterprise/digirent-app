@@ -1,13 +1,8 @@
-import React from "react";
+import React, { lazy } from "react";
 import { Routes, Route, useLocation } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
 import {
-  Home,
   UserProfile,
-  UserManagement,
-  ProductManagement,
-  TransactionManagement,
-  ProductSearchPage,
   Maintain,
   NotFound,
   RegisterPage,
@@ -16,25 +11,38 @@ import {
   ForgotPasswordPage,
   ChatViewPage,
   AdminHome,
+  ProductManagement,
+  UserFavorite,
+  UserManagement,
+  TransactionManagement,
+  EmailSentPage,
 } from "./pages";
+
 import PrivateRoute from "./components/PrivateRoute";
+
+import { AdminPermission } from "./utils/constants/permission.constants";
+
+const Home = lazy(() => import("./pages/Home/Home"));
+const ProductSearchPage = lazy(
+  () => import("./pages/Product/ProductSearchPage"),
+);
+const AddProduct = lazy(() => import("./pages/Admin/AddProduct/AddProduct"));
 
 const AppRouter = () => {
   const location = useLocation();
+
   return (
     <AnimatePresence exitBeforeEnter>
       <Routes key={location.pathname} location={location}>
         <Route path="/" element={<Home />} />
         <Route path="login" element={<LoginPage />} />
-        <Route path="logout" />
         <Route path="register" element={<RegisterPage />} />
         <Route path="reset-password" element={<ResetPasswordPage />} />
-        <Route path="send-email" />
+        <Route path="email-sent" element={<EmailSentPage />} />
         <Route path="forgot-password" element={<ForgotPasswordPage />} />
         {/* Product */}
         <Route path="products" element={<ProductSearchPage />} />
-        <Route path="products/?category=phone" />
-        <Route path="products/:id" />
+        <Route path="product/:id" />
         {/* Payment */}
         <Route path="checkout/:id" />
         <Route path="checkout-success/:id" />
@@ -42,37 +50,61 @@ const AppRouter = () => {
         <Route path="users" />
         <Route path="users/:id" />
         <Route path="user/profile" element={<UserProfile />} />
-        <Route path="users/:id/favorite-products" />
-        <Route path="users/:id/edit" />
-        <Route path="users/:id/deactivate" />
-        <Route path="users/:id/change-password" />
+        <Route path="user/favorite" element={<UserFavorite />} />
+        <Route path="user/:id/edit" />
+        <Route path="user/:id/deactivate" />
+        <Route path="user/:id/change-password" />
         {/* Maintain */}
         <Route path="maintain" element={<Maintain />} />
         {/* Admin */}
-        <Route path="admin" element={<AdminHome />} />
+        <Route
+          path="admin"
+          element={
+            <PrivateRoute permission={AdminPermission}>
+              <AdminHome />
+            </PrivateRoute>
+          }
+        />
         {/* User management */}
         <Route
           path="admin/users"
           element={
-            <PrivateRoute>
-              <UserManagement />
-            </PrivateRoute>
+            // <PrivateRoute permission={AdminPermission}>
+            <UserManagement />
           }
         />
         <Route path="admin/users/:id/edit" />
         <Route path="admin/users/:id/delete" />
         {/* Product management */}
-        <Route path="admin/products" element={<ProductManagement />} />
-        <Route path="admin/add-product" />
+        <Route
+          path="admin/products"
+          element={
+            // <PrivateRoute permission={AdminPermission}>
+            <ProductManagement />
+          }
+        />
+        <Route path="admin/add-product" element={<AddProduct />} />
         <Route path="admin/product/:id" />
         <Route path="admin/products/:id/edit" />
         <Route path="admin/products/:id/delete" />
         {/* Transaction management */}
-        <Route path="admin/transactions" element={<TransactionManagement />} />
+        <Route
+          path="admin/transactions"
+          element={
+            // <PrivateRoute permission={AdminPermission}>
+            <TransactionManagement />
+          }
+        />
         <Route path="admin/transactions/:id/edit" />
         <Route path="admin/transactions/:id/delete" />
         {/* Chat */}
-        <Route path="admin/chat" element={<ChatViewPage />} />
+        <Route
+          path="admin/chat"
+          element={
+            // <PrivateRoute permission={AdminPermission}>
+            <ChatViewPage />
+          }
+        />
         <Route path="admin/chat/:id" />
         {/* 404 Not Found Route */}
         <Route path="*" element={<NotFound />} />
