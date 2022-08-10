@@ -79,7 +79,10 @@ const Footer = () => {
             <FaInstagram />
           </SocialButton>
         </Stack>
-        <Text>@2022 Digirent. All Right Reserved</Text>
+        <Text>
+          {" "}
+          Digirent • &copy; {new Date().getFullYear()} • All right reserved{" "}
+        </Text>
       </Flex>
     </Box>
   );

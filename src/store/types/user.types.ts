@@ -34,6 +34,11 @@ export type SetUser = {
   payload: SetUserPayload;
 };
 
+export type SaveUserInfo = {
+  type: string;
+  value: IUser;
+};
+
 export interface FetchUserErrorPayload {
   error: string;
 }
@@ -43,3 +48,5 @@ export type FetchUserError = {
 };
 
 export type UserActions = FetchUserError | SetUser;
+
+export type SaveUserAction = SaveUserInfo;

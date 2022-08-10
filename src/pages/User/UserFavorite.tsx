@@ -1,7 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import classNames from "classnames";
-import { FavoriteContainer } from "../../components";
+import { FavoriteContainer, UserTab } from "../../components";
 import ProductCard from "../../components/layouts/productCard/Item/ProductCard";
 import { getFavoriteProducts } from "../../store/selectors/product.selector";
 import DefaultLayout from "../DefaultLayout";
@@ -12,6 +12,7 @@ const UserFavorite = () => {
   const productFav = classNames("flex-col p-6");
   return (
     <DefaultLayout>
+      <UserTab />
       <FavoriteContainer favorites={favorites}>
         <div className="container mx-auto">
           <div className="grid grid-cols-4 gap-6">
@@ -23,7 +24,9 @@ const UserFavorite = () => {
                 image={favorite.images[0]}
                 rentalCost={favorite.rentalCost}
                 rentalCostType={favorite.rentalCostType}
-                theme={productFav} name={""}              />
+                theme={productFav}
+                name=""
+              />
             ))}
           </div>
         </div>

@@ -3,8 +3,8 @@ import { ADD_TO_FAVORITES, REMOVE_FROM_FAVORITES } from "../types/action.types";
 const checkLocalStorage = () => {
   return Object.assign(
     {},
-    ...Object.entries(localStorage).map(([_id, value]) => ({
-      [_id]: JSON.parse(JSON.stringify(value)),
+    ...Object.entries(localStorage).map(([id, value]) => ({
+      [id]: JSON.parse(JSON.stringify(value)),
     })),
   );
 };
