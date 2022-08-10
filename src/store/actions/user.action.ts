@@ -4,6 +4,7 @@ import {
   IUser,
   IUserDetail,
 } from "../types/user.types";
+
 import {
   GET_USERS,
   GET_USER_DETAIL,

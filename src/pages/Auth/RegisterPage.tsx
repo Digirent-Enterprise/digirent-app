@@ -2,7 +2,6 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { useNavigate } from "react-router-dom";
-import qs from "qs";
 import {
   Box,
   Button,
@@ -60,7 +59,7 @@ const RegisterPage = () => {
 
   const onSubmit = (data: IFormInputs) => {
     return customAxios("application/json")
-      .post("auth/register", qs.stringify(data))
+      .post("auth/register", data)
       .then((res) => {
         if (res.status === 201) {
           <StatusToaster
