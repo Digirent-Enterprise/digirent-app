@@ -157,35 +157,11 @@ const AddProduct = () => {
                 </InputGroup>
               </FormControl>
 
-              <FormControl className="pb-5" isRequired>
+              <FormControl isRequired>
                 <FormLabel>Serial</FormLabel>
                 <Input {...register("serial")} type="text" name="serial" />
               </FormControl>
-            </GridItem>
-
-            <GridItem className="pb-5" colSpan={{ base: 6, sm: 3 }}>
-              <FormControl>
-                <FormLabel>Product Images</FormLabel>
-                <div
-                  className="border-dashed border-4 text-center justify-center p-[20%]"
-                  {...getRootProps()}
-                >
-                  <input {...getInputProps()} />
-                  {isDragActive ? (
-                    <p>Drop the files here ...</p>
-                  ) : (
-                    <p>
-                      Drag 'n' drop some files here, or click to select files
-                    </p>
-                  )}
-                </div>
-                {/* <div className="border-2 border-dashed text-blue-100 text-center p-8 m-5">
-                    <label htmlFor="images" className="cursor-pointer ">
-                      Choose images
-                    </label>
-                  </div> */}
-              </FormControl>
-              <aside className="flex flex-row">{thumbs}</aside>
+>>>>>>> ebe732e3166c450fd9fc1e371b15ca879bfefc45
 
               <Grid templateColumns="repeat(4, 1fr)" gap={4}>
                 <GridItem colSpan={2}>

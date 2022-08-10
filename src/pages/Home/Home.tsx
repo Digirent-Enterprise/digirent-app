@@ -1,10 +1,11 @@
-import { useEffect } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import DefaultLayout from "../DefaultLayout";
+import { Link } from "react-router-dom";
 import { getProducts } from "../../store/actions/product.action";
 import { getAllProducts } from "../../store/selectors/product.selector";
 import { getUserDetail } from "../../store/actions/user.action";
-import { Banner } from "../../components";
+import { Banner, CTA } from "../../components";
+import DefaultLayout from "../DefaultLayout";
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -16,9 +17,11 @@ const Home = () => {
     dispatch(getUserDetail());
     console.log("data", data);
   }, []);
+
   return (
     <DefaultLayout>
       <Banner />
+      <CTA />
     </DefaultLayout>
   );
 };
