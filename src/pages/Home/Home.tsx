@@ -20,7 +20,6 @@ const Home = () => {
 
   return (
     <DefaultLayout>
-      <Link to="/admin">Home</Link>
       <Banner />
       <CTA />
     </DefaultLayout>
