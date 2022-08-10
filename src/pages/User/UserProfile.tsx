@@ -9,7 +9,6 @@ import {
   Button,
   useColorModeValue,
 } from "@chakra-ui/react";
-import { Transition } from "../../components/elements";
 import { UserTab } from "../../components";
 import DefaultLayout from "../DefaultLayout";
 

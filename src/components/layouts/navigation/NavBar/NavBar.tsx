@@ -41,10 +41,9 @@ const NavBar = () => {
           </button>
         </Flex>
         <div
-          className={
-            "lg:flex flex-grow items-center justify-center" +
-            (navbarOpen ? " flex" : " hidden")
-          }
+          className={`lg:flex flex-grow items-center justify-center${
+            navbarOpen ? " flex" : " hidden"
+          }`}
           id="example-navbar-danger"
         >
           <ul className="flex flex-col lg:flex-row list-none lg:ml-auto">

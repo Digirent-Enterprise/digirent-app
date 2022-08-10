@@ -5,6 +5,7 @@ import {
   Transition,
   Spinner,
   CTA,
+  CategoryCard,
 } from "./elements";
 import {
   AuthFormGrid,
@@ -33,6 +34,7 @@ export {
   NavBar,
   Footer,
   CTA,
+  CategoryCard,
   CustomBreadcrumb,
   Banner,
   CustomTooltip,
