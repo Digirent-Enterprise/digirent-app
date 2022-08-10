@@ -23,6 +23,7 @@ import PrivateRoute from "./components/PrivateRoute";
 import { AdminPermission } from "./utils/constants/permission.constants";
 
 const Home = lazy(() => import("./pages/Home/Home"));
+const About = lazy(() => import("./pages/About/About"));
 const ProductSearchPage = lazy(
   () => import("./pages/Product/ProductSearchPage"),
 );
@@ -35,6 +36,7 @@ const AppRouter = () => {
     <AnimatePresence exitBeforeEnter>
       <Routes key={location.pathname} location={location}>
         <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
         <Route path="login" element={<LoginPage />} />
         <Route path="register" element={<RegisterPage />} />
         <Route path="reset-password" element={<ResetPasswordPage />} />

@@ -48,6 +48,7 @@ const NavBar = () => {
         >
           <ul className="flex flex-col lg:flex-row list-none lg:ml-auto">
             <NavButton navItem="Home" directUrl="/" />
+            <NavButton navItem="About" directUrl="/about" />
             <NavButton navItem="Contact" directUrl="/contact" />
             {!currentUser.email ? (
               <NavButton navItem="Login" directUrl="/login" />
