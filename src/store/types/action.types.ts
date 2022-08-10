@@ -21,3 +21,6 @@ export const REMOVE_FROM_FAVORITES = "REMOVE_FROM_FAVORITES";
 export const SAVE_NAME = "SAVE_NAME";
 export const SAVE_PHONE = "SAVE_PHONE";
 export const SAVE_EMAIL = "SAVE_EMAIL";
+
+export const GET_APP_LOADING= 'APP/GET_APP_LOADING';
+export const SET_APP_LOADING= 'APP/SET_APP_LOADING';

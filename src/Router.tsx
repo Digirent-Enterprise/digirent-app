@@ -17,12 +17,11 @@ import {
   TransactionManagement,
   EmailSentPage,
 } from "./pages";
-
+import Home from './pages/Home/Home'
 import PrivateRoute from "./components/PrivateRoute";
 
-import { AdminPermission } from "./utils/constants/permission.constants";
+import {AdminPermission, FullPermission} from "./utils/constants/permission.constants";
 
-const Home = lazy(() => import("./pages/Home/Home"));
 const ProductSearchPage = lazy(
   () => import("./pages/Product/ProductSearchPage"),
 );
@@ -32,7 +31,7 @@ const AppRouter = () => {
   const location = useLocation();
 
   return (
-    <AnimatePresence exitBeforeEnter>
+    <AnimatePresence>
       <Routes key={location.pathname} location={location}>
         <Route path="/" element={<Home />} />
         <Route path="login" element={<LoginPage />} />
@@ -49,7 +48,9 @@ const AppRouter = () => {
         {/* Users */}
         <Route path="users" />
         <Route path="users/:id" />
-        <Route path="user/profile" element={<UserProfile />} />
+        <Route
+            path="user/profile"
+            element={<PrivateRoute permission={FullPermission}> <UserProfile /> </PrivateRoute> } />
         <Route path="user/favorite" element={<UserFavorite />} />
         <Route path="user/:id/edit" />
         <Route path="user/:id/deactivate" />
