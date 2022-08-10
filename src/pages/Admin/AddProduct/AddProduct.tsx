@@ -2,7 +2,7 @@ import React from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 // import { yupResolver } from "@hookform/resolvers/yup";
 // import * as yup from "yup";
-import qs from "qs";
+// import qs from "qs";
 
 import {
   FormControl,
@@ -18,7 +18,7 @@ import {
 
 import { customAxios } from "../../../http-common";
 
-import { StatusToaster, Transition } from "../../../components";
+// import { StatusToaster } from "../../../components";
 import DefaultLayout from "../DefaultAdminLayout";
 // import { AiOutlineCloudUpload } from "react-icons/ai";
 
@@ -47,7 +47,7 @@ type FormValues = {
 const AddProduct = () => {
   const { register, handleSubmit } = useForm<FormValues>();
 
-  const _onConvertData = (data: FormValues, fd: FormData) => {
+  const onConvertData = (data: FormValues, fd: FormData) => {
     fd.append("name", data.name);
     fd.append("category", data.category);
     fd.append("brand", data.brand);
@@ -62,7 +62,7 @@ const AddProduct = () => {
   const onSubmit: SubmitHandler<FormValues> = (data) => {
     let fd = new FormData();
     console.log("data", data);
-    fd = _onConvertData(data, fd);
+    fd = onConvertData(data, fd);
     console.log("fd", fd);
     return (
       customAxios("multipart/form-data").post("/product", fd),
@@ -119,6 +119,7 @@ const AddProduct = () => {
                   id="images"
                 />
                 {/* <div className="border-2 border-dashed text-blue-100 text-center p-8 m-5">
+                {/* <div className="p-8 m-5 text-center text-blue-100 border-2 border-dashed">
                     <label htmlFor="images" className="cursor-pointer ">
                       Choose images
                     </label>
@@ -154,7 +155,7 @@ const AddProduct = () => {
               <Grid templateColumns="repeat(4, 1fr)" gap={4}>
                 <GridItem colSpan={2}>
                   <button
-                    className="bg-blue-200 p-2 my-5 text-white rounded hover:bg-blue-100 w-full"
+                    className="w-full p-2 my-5 text-white bg-blue-200 rounded hover:bg-blue-100"
                     type="submit"
                   >
                     Submit
@@ -162,7 +163,7 @@ const AddProduct = () => {
                 </GridItem>
                 <GridItem colSpan={2}>
                   <button
-                    className="bg-blue-200 p-2 my-5 text-white rounded hover:bg-blue-100 w-full"
+                    className="w-full p-2 my-5 text-white bg-blue-200 rounded hover:bg-blue-100"
                     type="reset"
                   >
                     Clear

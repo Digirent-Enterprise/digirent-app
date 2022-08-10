@@ -1,10 +1,8 @@
-import React from "react";
+import React, { lazy } from "react";
 import { Routes, Route, useLocation } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
 import {
-  Home,
   UserProfile,
-  ProductSearchPage,
   Maintain,
   NotFound,
   RegisterPage,
@@ -18,28 +16,34 @@ import {
   UserManagement,
   TransactionManagement,
   CheckoutPage,
+  EmailSentPage,
 } from "./pages";
-import PrivateRoute from "./components/PrivateRoute";
 
-import AddProduct from "./pages/Admin/AddProduct/AddProduct";
+import PrivateRoute from "./components/PrivateRoute";
 
 import { AdminPermission } from "./utils/constants/permission.constants";
 
+const Home = lazy(() => import("./pages/Home/Home"));
+const ProductSearchPage = lazy(
+  () => import("./pages/Product/ProductSearchPage"),
+);
+const AddProduct = lazy(() => import("./pages/Admin/AddProduct/AddProduct"));
+
 const AppRouter = () => {
   const location = useLocation();
+
   return (
     <AnimatePresence exitBeforeEnter>
       <Routes key={location.pathname} location={location}>
         <Route path="/" element={<Home />} />
         <Route path="login" element={<LoginPage />} />
-        <Route path="logout" />
         <Route path="register" element={<RegisterPage />} />
         <Route path="reset-password" element={<ResetPasswordPage />} />
-        <Route path="send-email" />
+        <Route path="email-sent" element={<EmailSentPage />} />
         <Route path="forgot-password" element={<ForgotPasswordPage />} />
         {/* Product */}
         <Route path="products" element={<ProductSearchPage />} />
-        <Route path="products/:id" />
+        <Route path="product/:id" />
         {/* Payment */}
         <Route path="checkout/:id" element={<CheckoutPage />} />
         <Route path="checkout-success/:id" />
@@ -66,23 +70,30 @@ const AppRouter = () => {
         <Route
           path="admin/users"
           element={
-            // <PrivateRoute permission={AdminPermission}>
-            <UserManagement />
+            <PrivateRoute permission={AdminPermission}>
+              <UserManagement />
+            </PrivateRoute>
           }
         />
         <Route path="admin/users/:id/edit" />
         <Route path="admin/users/:id/delete" />
         {/* Product management */}
-
         <Route
           path="admin/products"
           element={
-            // <PrivateRoute permission={AdminPermission}>
-            <ProductManagement />
+            <PrivateRoute permission={AdminPermission}>
+              <ProductManagement />
+            </PrivateRoute>
           }
         />
-        <Route path="admin/add-product" element={<AddProduct />} />
-
+        <Route
+          path="admin/add-product"
+          element={
+            <PrivateRoute permission={AdminPermission}>
+              <AddProduct />
+            </PrivateRoute>
+          }
+        />
         <Route path="admin/product/:id" />
         <Route path="admin/products/:id/edit" />
         <Route path="admin/products/:id/delete" />
@@ -90,8 +101,9 @@ const AppRouter = () => {
         <Route
           path="admin/transactions"
           element={
-            // <PrivateRoute permission={AdminPermission}>
-            <TransactionManagement />
+            <PrivateRoute permission={AdminPermission}>
+              <TransactionManagement />
+            </PrivateRoute>
           }
         />
         <Route path="admin/transactions/:id/edit" />
@@ -100,9 +112,8 @@ const AppRouter = () => {
         <Route
           path="admin/chat"
           element={
-            <PrivateRoute permission={AdminPermission}>
-              <ChatViewPage />
-            </PrivateRoute>
+            // <PrivateRoute permission={AdminPermission}>
+            <ChatViewPage />
           }
         />
         <Route path="admin/chat/:id" />

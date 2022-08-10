@@ -1,3 +1,4 @@
+import React from "react";
 import { Footer, NavBar, Transition } from "../components";
 
 const DefaultLayout = ({ children }: any) => {
