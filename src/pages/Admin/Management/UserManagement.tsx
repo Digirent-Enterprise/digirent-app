@@ -1,4 +1,4 @@
-import React, { useMemo, useEffect, Suspense } from "react";
+import React, { useMemo, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import {
@@ -10,7 +10,6 @@ import { getUsers, getUserDetail } from "../../../store/actions/user.action";
 import DefaultManagement from "./DefaultManagement";
 
 import { UserColumns } from "./Columns";
-import { Spinner } from "../../../components";
 
 const UserManagement = () => {
   const dispatch = useDispatch();
@@ -38,15 +37,13 @@ const UserManagement = () => {
   ];
 
   return (
-    <Suspense fallback={<Spinner />}>
-      <DefaultManagement
-        title="User Management"
-        filename="Users.csv"
-        headers={headers}
-        columnProps={userColumns}
-        dataProps={userData}
-      />
-    </Suspense>
+    <DefaultManagement
+      title="User Management"
+      filename="Users.csv"
+      headers={headers}
+      columnProps={userColumns}
+      dataProps={userData}
+    />
   );
 };
 

@@ -1,10 +1,8 @@
-import React from "react";
+import React, { lazy } from "react";
 import { Routes, Route, useLocation } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
 import {
-  Home,
   UserProfile,
-  ProductSearchPage,
   Maintain,
   NotFound,
   RegisterPage,
@@ -19,11 +17,16 @@ import {
   TransactionManagement,
   EmailSentPage,
 } from "./pages";
+
 import PrivateRoute from "./components/PrivateRoute";
 
-import AddProduct from "./pages/Admin/AddProduct/AddProduct";
-
 import { AdminPermission } from "./utils/constants/permission.constants";
+
+const Home = lazy(() => import("./pages/Home/Home"));
+const ProductSearchPage = lazy(
+  () => import("./pages/Product/ProductSearchPage"),
+);
+const AddProduct = lazy(() => import("./pages/Admin/AddProduct/AddProduct"));
 
 const AppRouter = () => {
   const location = useLocation();

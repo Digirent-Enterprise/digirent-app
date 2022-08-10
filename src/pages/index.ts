@@ -14,10 +14,12 @@ import UserFavorite from "./User/UserFavorite";
 import UserManagement from "./Admin/Management/UserManagement";
 import TransactionManagement from "./Admin/Management/TransactionManagement";
 import EmailSentPage from "./Auth/EmailSentPage";
+import AddProduct from "./Admin/AddProduct/AddProduct";
 
 export {
   Home,
   AdminHome,
+  AddProduct,
   ProductManagement,
   UserManagement,
   TransactionManagement,

@@ -1,4 +1,4 @@
-import React, { useMemo, useEffect, Suspense } from "react";
+import React, { useMemo, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import { getAllTransactions } from "../../../store/selectors/transaction.selector";
@@ -8,7 +8,6 @@ import { getUserDetail } from "../../../store/actions/user.action";
 import DefaultManagement from "./DefaultManagement";
 
 import { TransactionColumns } from "./Columns";
-import { Spinner } from "../../../components";
 
 const TransactionManagement = () => {
   const dispatch = useDispatch();
@@ -38,15 +37,13 @@ const TransactionManagement = () => {
   ];
 
   return (
-    <Suspense fallback={<Spinner />}>
-      <DefaultManagement
-        title="Transaction Management"
-        filename="Transactions.csv"
-        headers={headers}
-        columnProps={transactionColumns}
-        dataProps={transactionData}
-      />
-    </Suspense>
+    <DefaultManagement
+      title="Transaction Management"
+      filename="Transactions.csv"
+      headers={headers}
+      columnProps={transactionColumns}
+      dataProps={transactionData}
+    />
   );
 };
 
