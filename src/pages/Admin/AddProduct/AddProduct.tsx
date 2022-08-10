@@ -20,6 +20,7 @@ import {
 import { customAxios } from "../../../http-common";
 import { StatusToaster, Transition } from "../../../components";
 import DefaultLayout from "../DefaultAdminLayout";
+import axios from "axios";
 
 type FormValues = {
   name: string;
@@ -53,8 +54,11 @@ const AddProduct = () => {
       accept: {
         "image/*": [],
       },
-      maxFiles: 5,
+      maxFiles: 10,
       onDrop: (acceptedFiles: any) => {
+        acceptedFiles.map((file) =>
+          customAxios("multipart/form-data").post(() => {}),
+        );
         setImages(
           acceptedFiles.map((image: any) =>
             Object.assign(image, {
@@ -67,11 +71,11 @@ const AddProduct = () => {
 
   const thumbs = images.map((image: any) => (
     <div className="flex flex-row flex-wrap" key={image.name}>
+      {console.log("image", images)}
       <div className="flex overflow-hidden">
         <img
           className="p-4 w-full"
           src={image.preview}
-          // Revoke data uri after image is loaded
           onLoad={() => {
             URL.revokeObjectURL(image.preview);
           }}
