@@ -1,13 +1,14 @@
-import { teamsMember } from "../../../utils/constants/helper.constant";
-import TeamsMember from "./TeamsMember";
+import TechnologyCard from "./TechnologyCard";
 
-const Teams = () => {
+import { techStack } from "../../../utils/constants/helper.constant";
+
+const Technology = () => {
   return (
-    <div className="bg-white py-6 sm:py-8 lg:py-12">
-      <div className="max-w-screen-xl px-4 md:px-8 mx-auto">
+    <section>
+      <div className="relative items-center w-full px-5 py-12 mx-auto md:px-12 lg:px-24 max-w-7xl">
         <div className="mb-10 md:mb-16">
           <h2 className="text-gray-800 text-2xl lg:text-3xl font-bold text-center mb-4 md:mb-6">
-            Meet our Team
+            Technology
           </h2>
 
           <p className="max-w-screen-md text-gray-500 md:text-lg text-center mx-auto">
@@ -16,20 +17,20 @@ const Teams = () => {
             text but is random or otherwise generated.
           </p>
         </div>
-
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-x-4 lg:gap-x-8 gap-y-8 lg:gap-y-12">
-          {teamsMember.map((value) => (
-            <TeamsMember
-              name={value.name}
-              position={value.position}
+        <div className="grid w-full grid-cols-1 gap-6 mx-auto lg:grid-cols-3">
+          {techStack.map((value) => (
+            <TechnologyCard
+              title={value.title}
               alt={value.alt}
               imageUrl={value.imageUrl}
+              description={value.description}
+              detailUrl={value.detailUrl}
             />
           ))}
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 
-export default Teams;
+export default Technology;

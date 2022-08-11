@@ -35,7 +35,6 @@ const Banner = () => {
       <SwiperSlide>Slide 6</SwiperSlide>
       <SwiperSlide>Slide 7</SwiperSlide>
       <SwiperSlide>Slide 8</SwiperSlide>
-      <SwiperSlide>Slide 9</SwiperSlide>
     </Swiper>
   );
 };

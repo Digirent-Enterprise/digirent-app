@@ -12,6 +12,9 @@ import {
   ProductProgressBar,
   Content,
   Teams,
+  Technology,
+  BackToTop,
+  CategoryCardListing,
 } from "./elements";
 import {
   AuthFormGrid,
@@ -34,6 +37,7 @@ import {
   SearchHeaderSection,
   SearchResultsSection,
   ProductCardListing,
+  UserStatusPieChart,
 } from "./layouts";
 
 export {
@@ -41,6 +45,8 @@ export {
   Footer,
   CTA,
   CategoryCard,
+  Technology,
+  BackToTop,
   Content,
   Teams,
   Testimonial,
@@ -68,4 +74,6 @@ export {
   UserTab,
   ProductCardListing,
   FavoriteContainer,
+  UserStatusPieChart,
+  CategoryCardListing,
 };

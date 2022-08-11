@@ -375,7 +375,7 @@ const ProductProgressBar = () => {
                     <button
                       name="add"
                       type="button"
-                      className="flex items-center justify-center w-full px-8 py-4 mt-4 bg-black rounded-sm transition duration-700 hover:-translate-y-1 hover:bg-[#f3f4f6] hover:text-black"
+                      className="flex items-center justify-center w-full px-8 py-4 mt-4 bg-black rounded-sm transition duration-700 hover:-translate-y-1 hover:bg-[#f3f4f6] rent-button"
                     >
                       <span className="text-sm font-medium text-white">
                         Rent now
