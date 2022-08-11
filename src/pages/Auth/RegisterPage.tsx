@@ -16,6 +16,7 @@ import {
 import { WarningTwoIcon } from "@chakra-ui/icons";
 import { customAxios } from "../../http-common";
 import { AuthFormGrid, Transition, StatusToaster } from "../../components";
+import Helmet from "../../Helmet";
 
 interface IFormInputs {
   name: string;
@@ -80,6 +81,11 @@ const RegisterPage = () => {
 
   return (
     <Transition>
+      <Helmet
+        title="Register"
+        addPostfixTitle
+        description="Register new account at Digirent"
+      />
       <AuthFormGrid
         childTitle="Register your account"
         childCompForm={

@@ -20,6 +20,7 @@ import { storeUserSession } from "../../helpers/authHelpers";
 import { AuthFormGrid, Transition, StatusToaster } from "../../components";
 import { customAxios } from "../../http-common";
 import { getUserDetail } from "../../store/actions/user.action";
+import Helmet from "../../Helmet";
 
 interface IFormInputs {
   email: string;
@@ -68,6 +69,11 @@ const LoginPage = () => {
 
   return (
     <Transition>
+      <Helmet
+        title="Login"
+        addPostfixTitle
+        description="Login to your existing account at Digirent"
+      />
       <AuthFormGrid
         childTitle="Log in to your account"
         childCompForm={
