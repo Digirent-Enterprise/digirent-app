@@ -17,6 +17,7 @@ import { useNavigate } from "react-router-dom";
 import { getCurrentUser } from "../../../../store/selectors/user.selector";
 import IMAGES from "../../../../utils/constants/image.constant";
 import { customAxios } from "../../../../http-common";
+import { clearUserSession } from "../../../../helpers/authHelpers";
 
 const AvatarMenu = () => {
   const navigate = useNavigate();
@@ -24,6 +25,7 @@ const AvatarMenu = () => {
 
   const logOut = () => {
     customAxios().post("auth/logout");
+    clearUserSession();
     navigate(0);
   };
 
@@ -71,6 +73,9 @@ const AvatarMenu = () => {
             </MenuItem>
             <MenuItem onClick={() => navigate("/user/transactions")}>
               Transaction History
+            </MenuItem>
+            <MenuItem onClick={() => navigate("/user/favorites")}>
+              Favorite Products
             </MenuItem>
             <MenuItem onClick={() => logOut()}>Logout</MenuItem>
           </MenuList>

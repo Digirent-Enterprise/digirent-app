@@ -12,12 +12,21 @@ import UserProfile from "./User/UserProfile";
 import ProductManagement from "./Admin/Management/ProductManagement";
 import UserFavorite from "./User/UserFavorite";
 import UserManagement from "./Admin/Management/UserManagement";
+import TransactionManagement from "./Admin/Management/TransactionManagement";
+import EmailSentPage from "./Auth/EmailSentPage";
+import AddProduct from "./Admin/AddProduct/AddProduct";
+import UserEdit from "./User/UserEdit";
+import About from "./About/About";
 
 export {
   Home,
+  About,
   AdminHome,
+  AddProduct,
   ProductManagement,
   UserManagement,
+  UserEdit,
+  TransactionManagement,
   UserProfile,
   UserFavorite,
   ProductSearchPage,
@@ -27,5 +36,6 @@ export {
   NotFound,
   ResetPasswordPage,
   ForgotPasswordPage,
+  EmailSentPage,
   ChatViewPage,
 };

@@ -3,10 +3,10 @@
 import React, { createContext, useState, useMemo, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
-
   SearchHeaderSection,
   SearchResultsSection,
   ProductCardListing,
+  Transition,
 } from "../../components";
 
 import { getProducts, setProducts } from "../../store/actions/product.action";
@@ -136,7 +136,6 @@ const ProductSearchPage = ({
   };
 
   return (
-
     <Transition>
       <DefaultLayout>
         <SearchSectionContext.Provider value={contextValues}>
@@ -146,13 +145,14 @@ const ProductSearchPage = ({
           />
           {/* <div className="pb-10 mx-auto max-w-7xl lg:py-12 lg:px-8 lg:grid lg:grid-cols-12 lg:gap-x-5"> */}
           {/* <div
+
             data-triggerSearch={triggerSearch}
             data-setRentalCostFrom={setRentalCostFrom}
             data-setRentalCostTo={setRentalCostTo}
             data-addFilterCategory={addFilterCategory}
             data-removeFilterCategory={removeFilterCategory}
           /> */}
-        {/* <SearchResultsSection
+          {/* <SearchResultsSection
 
               triggerSearch={triggerSearch}
               setIsSearching={setIsSearching}
@@ -160,22 +160,22 @@ const ProductSearchPage = ({
               setPageNumber={setPageNumber}
             />
           </div> */}
-      </SearchSectionContext.Provider>
-      
-      <div className="grid grid-cols-5 pb-10 mx-auto max-w-7xl lg:py-12 lg:px-8">
-        <div className="col-span-1">Filter Panel</div>
-        <div className="col-span-4">
-          <SearchResultsSection
-            triggerSearch={triggerSearch}
-            setIsSearching={setIsSearching}
-            setOrderBy={setOrderBy}
-            setPageNumber={setPageNumber}
-          />
-          <ProductCardListing />
+        </SearchSectionContext.Provider>
+
+        <div className="grid grid-cols-5 pb-10 mx-auto max-w-7xl lg:py-12 lg:px-8">
+          <div className="col-span-1">Filter Panel</div>
+          <div className="col-span-4">
+            <SearchResultsSection
+              triggerSearch={triggerSearch}
+              setIsSearching={setIsSearching}
+              setOrderBy={setOrderBy}
+              setPageNumber={setPageNumber}
+            />
+            <ProductCardListing />
+          </div>
         </div>
-      </div>
-    </DefaultLayout>
-  </Transition>
+      </DefaultLayout>
+    </Transition>
   );
 };
 
