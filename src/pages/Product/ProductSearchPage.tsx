@@ -8,6 +8,7 @@ import {
   ProductCardListing,
   Transition,
 } from "../../components";
+import PriceSlider from "../../components/layouts/filters/PriceSlider";
 
 import { getProducts, setProducts } from "../../store/actions/product.action";
 import { getAllProducts } from "../../store/selectors/product.selector";
@@ -163,7 +164,9 @@ const ProductSearchPage = ({
         </SearchSectionContext.Provider>
 
         <div className="grid grid-cols-5 pb-10 mx-auto max-w-7xl lg:py-12 lg:px-8">
-          <div className="col-span-1">Filter Panel</div>
+          <div className="col-span-1">
+            <PriceSlider />
+          </div>
           <div className="col-span-4">
             <SearchResultsSection
               triggerSearch={triggerSearch}
