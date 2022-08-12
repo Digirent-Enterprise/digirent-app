@@ -1,9 +1,15 @@
 import { Link } from "react-router-dom";
 import { Transition } from "../../components";
+import Helmet from "../../Helmet";
 
 const Maintain = () => {
   return (
     <Transition>
+      <Helmet
+        title="Maintain"
+        addPostfixTitle
+        description="Feature still be in development"
+      />
       <section className="flex items-center h-full p-16 dark:bg-gray-900 dark:text-gray-100">
         <div className="container flex flex-col items-center justify-center px-5 mx-auto my-8">
           <div className="max-w-md text-center">

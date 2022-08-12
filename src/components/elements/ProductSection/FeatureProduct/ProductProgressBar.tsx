@@ -61,7 +61,7 @@ const ProductProgressBar = () => {
               <SwiperSlide>
                 <a
                   href="/product/build-your-own-drone"
-                  className="relative block border border-gray-100 transition duration-700 hover:-translate-y-5"
+                  className="relative block transition duration-700 border border-gray-100 hover:-translate-y-5"
                 >
                   <button
                     type="button"
@@ -92,7 +92,7 @@ const ProductProgressBar = () => {
                   />
 
                   <div className="p-6">
-                    <span className="inline-block px-3 py-1 text-xs font-medium bg-black text-white">
+                    <span className="inline-block px-3 py-1 text-xs font-medium text-white bg-black">
                       Featured
                     </span>
 
@@ -128,7 +128,7 @@ const ProductProgressBar = () => {
               <SwiperSlide>
                 <a
                   href="/product/build-your-own-drone"
-                  className="relative block border border-gray-100 transition duration-700 hover:-translate-y-5"
+                  className="relative block transition duration-700 border border-gray-100 hover:-translate-y-5"
                 >
                   <button
                     type="button"
@@ -159,7 +159,7 @@ const ProductProgressBar = () => {
                   />
 
                   <div className="p-6">
-                    <span className="inline-block px-3 py-1 text-xs font-medium bg-black text-white">
+                    <span className="inline-block px-3 py-1 text-xs font-medium text-white bg-black">
                       Featured
                     </span>
 
@@ -195,7 +195,7 @@ const ProductProgressBar = () => {
               <SwiperSlide>
                 <a
                   href="/product/build-your-own-drone"
-                  className="relative block border border-gray-100 transition duration-700 hover:-translate-y-5"
+                  className="relative block transition duration-700 border border-gray-100 hover:-translate-y-5"
                 >
                   <button
                     type="button"
@@ -226,7 +226,7 @@ const ProductProgressBar = () => {
                   />
 
                   <div className="p-6">
-                    <span className="inline-block px-3 py-1 text-xs font-medium bg-black text-white">
+                    <span className="inline-block px-3 py-1 text-xs font-medium text-white bg-black">
                       Featured
                     </span>
 
@@ -262,7 +262,7 @@ const ProductProgressBar = () => {
               <SwiperSlide>
                 <a
                   href="/product/build-your-own-drone"
-                  className="relative block border border-gray-100 transition duration-700 hover:-translate-y-5"
+                  className="relative block transition duration-700 border border-gray-100 hover:-translate-y-5"
                 >
                   <button
                     type="button"
@@ -293,7 +293,7 @@ const ProductProgressBar = () => {
                   />
 
                   <div className="p-6">
-                    <span className="inline-block px-3 py-1 text-xs font-medium bg-black text-white">
+                    <span className="inline-block px-3 py-1 text-xs font-medium text-white bg-black">
                       Featured
                     </span>
 
@@ -329,7 +329,7 @@ const ProductProgressBar = () => {
               <SwiperSlide>
                 <a
                   href="/product/build-your-own-drone"
-                  className="relative block border border-gray-100 transition duration-700 hover:-translate-y-5"
+                  className="relative block transition duration-700 border border-gray-100 hover:-translate-y-5"
                 >
                   <button
                     type="button"
@@ -360,7 +360,7 @@ const ProductProgressBar = () => {
                   />
 
                   <div className="p-6">
-                    <span className="inline-block px-3 py-1 text-xs font-medium bg-black text-white">
+                    <span className="inline-block px-3 py-1 text-xs font-medium text-white bg-black">
                       Featured
                     </span>
 
@@ -375,7 +375,7 @@ const ProductProgressBar = () => {
                     <button
                       name="add"
                       type="button"
-                      className="flex items-center justify-center w-full px-8 py-4 mt-4 bg-black rounded-sm transition duration-700 hover:-translate-y-1 hover:bg-[#f3f4f6] hover:text-black"
+                      className="flex items-center justify-center w-full px-8 py-4 mt-4 bg-black rounded-sm transition duration-700 hover:-translate-y-1 hover:bg-[#f3f4f6] rent-button"
                     >
                       <span className="text-sm font-medium text-white">
                         Rent now

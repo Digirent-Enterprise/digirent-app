@@ -1,4 +1,4 @@
-import IMAGES from "../../../../utils/constants/image.constant";
+import { IMAGES } from "../../../../utils/constants/image.constant";
 
 const PhoneCategoryBanner = () => {
   return (

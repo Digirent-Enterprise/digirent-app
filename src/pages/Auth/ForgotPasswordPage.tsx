@@ -20,6 +20,7 @@ import {
 import { AuthFormGrid, Transition } from "../../components";
 import { getEmailFromState } from "../../store/selectors/user.selector";
 import { saveEmail } from "../../store/actions/user.action";
+import Helmet from "../../Helmet";
 
 interface IFormInputs {
   email: string;
@@ -80,6 +81,11 @@ const ForgotPasswordPage = () => {
 
   return (
     <Transition>
+      <Helmet
+        title="Forgot Password"
+        addPostfixTitle
+        description="Enter email to reset password"
+      />
       <AuthFormGrid
         childTitle="Forgot Password"
         childCompForm={

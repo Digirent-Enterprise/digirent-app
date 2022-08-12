@@ -11,13 +11,18 @@ import NewProduct from "./ProductSection/NewProduct/NewProductLayout";
 import ProductProgressBar from "./ProductSection/FeatureProduct/ProductProgressBar";
 import Content from "./Content/Content";
 import Teams from "./Teams/Teams";
+import Technology from "./Technology/Technology";
+import BackToTop from "./BackToTop/BackToTop";
+import CategoryCardListing from "./Category/CategoryCard/CategoryCardListing";
 
 export {
   CustomBreadcrumb,
   Banner,
   CustomTooltip,
+  BackToTop,
   Content,
   Teams,
+  Technology,
   Transition,
   Spinner,
   CTA,
@@ -26,4 +31,5 @@ export {
   ProductProgressBar,
   Testimonial,
   NewProduct,
+  CategoryCardListing,
 };

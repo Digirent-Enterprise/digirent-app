@@ -11,10 +11,16 @@ import {
 } from "@chakra-ui/react";
 import { UserTab } from "../../components";
 import DefaultLayout from "../DefaultLayout";
+import Helmet from "../../Helmet";
 
 const UserProfile = () => {
   return (
     <DefaultLayout>
+      <Helmet
+        title="User Profile"
+        addPostfixTitle
+        description="View and edit your account information"
+      />
       <Box>
         <UserTab />
         <Center py={6}>
