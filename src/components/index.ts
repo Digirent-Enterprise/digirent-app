@@ -40,6 +40,7 @@ import {
   ProductCardListing,
 } from "./layouts";
 import LanguageSwitcher from "./modules/language/LanguageSwitcher";
+import BackToPreviousPage from "./modules/BackToPreviousPage";
 
 export {
   NavBar,
