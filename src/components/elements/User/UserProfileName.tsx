@@ -1,14 +1,5 @@
 import React from "react";
-import {
-  Heading,
-  Avatar,
-  Box,
-  Center,
-  Text,
-  Stack,
-  Button,
-  useColorModeValue,
-} from "@chakra-ui/react";
+import { Heading } from "@chakra-ui/react";
 
 interface IUserProfileName {
   userName: string;

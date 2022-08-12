@@ -6,7 +6,7 @@ import {
   addToFavorites,
   removeFromFavorites,
 } from "../../../../store/actions/product.action";
-import { getFavoriteProducts } from "../../../../store/selectors/product.selector";
+import { getFavoriteProductsSelector } from "../../../../store/selectors/product.selector";
 import Rating from "../Rating/Rating";
 
 interface ProductCardProps {
@@ -31,7 +31,7 @@ const ProductCard = ({
   theme = productListing,
 }: ProductCardProps) => {
   const dispatch = useDispatch();
-  const favorites = useSelector(getFavoriteProducts);
+  const favorites = useSelector(getFavoriteProductsSelector);
 
   console.log("favorites", favorites);
 

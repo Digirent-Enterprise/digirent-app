@@ -1,9 +1,9 @@
 import React, { useMemo, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import { getAllTransactions } from "../../../store/selectors/transaction.selector";
+import { getAllTransactionsSelector } from "../../../store/selectors/transaction.selector";
 import { getTransactions } from "../../../store/actions/transaction.action";
-import { getCurrentUser } from "../../../store/selectors/user.selector";
+import { getCurrentUserSelector } from "../../../store/selectors/user.selector";
 import { getUserDetail } from "../../../store/actions/user.action";
 import DefaultManagement from "./DefaultManagement";
 
@@ -12,8 +12,8 @@ import { TransactionColumns } from "./Columns";
 const TransactionManagement = () => {
   const dispatch = useDispatch();
 
-  const transactionFetchData = useSelector(getAllTransactions);
-  const currentUser = useSelector(getCurrentUser);
+  const transactionFetchData = useSelector(getAllTransactionsSelector);
+  const currentUser = useSelector(getCurrentUserSelector);
 
   useEffect(() => {
     dispatch(getUserDetail());

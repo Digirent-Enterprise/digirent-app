@@ -3,11 +3,11 @@ import { useSelector } from "react-redux";
 import classNames from "classnames";
 import { FavoriteContainer, UserTab } from "../../components";
 import ProductCard from "../../components/layouts/productCard/Item/ProductCard";
-import { getFavoriteProducts } from "../../store/selectors/product.selector";
+import { getFavoriteProductsSelector } from "../../store/selectors/product.selector";
 import DefaultLayout from "../DefaultLayout";
 
 const UserFavorite = () => {
-  const favorites = useSelector(getFavoriteProducts);
+  const favorites = useSelector(getFavoriteProductsSelector);
 
   const productFav = classNames("flex-col p-6");
   return (

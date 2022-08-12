@@ -1,40 +1,31 @@
-import Reacts from "react";
-import { UserTab } from "../../components";
-import { Transition } from "../../components";
-import { useState } from "react";
+import React from "react";
 import {
   Button,
   Flex,
   FormControl,
   FormLabel,
-  Heading,
   Input,
   Stack,
   useColorModeValue,
-  HStack,
-  Avatar,
-  AvatarBadge,
-  IconButton,
-  Center,
 } from "@chakra-ui/react";
-import { SmallCloseIcon } from "@chakra-ui/icons";
+import { UserTab, Transition } from "../../components";
 
 const UserEdit = () => {
   return (
     <Transition>
       <UserTab />
       <Flex
-        minH={"78vh"}
-        align={"center"}
-        justify={"center"}
+        minH="78vh"
+        align="center"
+        justify="center"
         bg={useColorModeValue("gray.50", "gray.500")}
       >
         <Stack
           spacing={4}
-          w={"full"}
-          maxW={"md"}
+          w="full"
+          maxW="md"
           bg={useColorModeValue("white", "gray.700")}
-          rounded={"xl"}
+          rounded="xl"
           p={6}
           my={12}
         >
@@ -67,8 +58,8 @@ const UserEdit = () => {
           </FormControl>
           <Stack spacing={6} direction={["column", "row"]}>
             <Button
-              bg={"red.400"}
-              color={"white"}
+              bg="red.400"
+              color="white"
               w="full"
               _hover={{
                 bg: "red.500",
@@ -77,8 +68,8 @@ const UserEdit = () => {
               Cancel
             </Button>
             <Button
-              bg={"blue.400"}
-              color={"white"}
+              bg="blue.400"
+              color="white"
               w="full"
               _hover={{
                 bg: "blue.500",
