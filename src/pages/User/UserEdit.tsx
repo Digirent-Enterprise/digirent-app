@@ -10,7 +10,6 @@ import {
 } from "@chakra-ui/react";
 import { UserTab, Transition } from "../../components";
 
-
 const UserEdit = () => {
   return (
     <Transition>
