@@ -89,6 +89,7 @@ button:hover {
 
 .swiper-pagination-bullet-active {
   background-color: #222 !important;
+}
 
 .swiper-pagination {
   bottom: 0 !important;

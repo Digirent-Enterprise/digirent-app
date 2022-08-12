@@ -1,15 +1,16 @@
 import { teamsMember } from "../../../utils/constants/helper.constant";
 import TeamsMember from "./TeamsMember";
+
 const Teams = () => {
   return (
-    <div className="bg-white py-6 sm:py-8 lg:py-12">
-      <div className="max-w-screen-xl px-4 md:px-8 mx-auto">
+    <div className="py-6 bg-white sm:py-8 lg:py-12">
+      <div className="max-w-screen-xl px-4 mx-auto md:px-8">
         <div className="mb-10 md:mb-16">
-          <h2 className="text-gray-800 text-2xl lg:text-3xl font-bold text-center mb-4 md:mb-6">
+          <h2 className="mb-4 text-2xl font-bold text-center text-gray-800 lg:text-3xl md:mb-6">
             Meet our Team
           </h2>
 
-          <p className="max-w-screen-md text-gray-500 md:text-lg text-center mx-auto">
+          <p className="max-w-screen-md mx-auto text-center text-gray-500 md:text-lg">
             This is a section of some simple filler text, also known as
             placeholder text. It shares some characteristics of a real written
             text but is random or otherwise generated.
