@@ -1,7 +1,7 @@
 import { FC } from "react";
 import { useSelector } from "react-redux";
 import { getCurrentUser } from "../../../store/selectors/user.selector";
-import IMAGES from "../../../utils/constants/image.constant";
+import { IMAGES } from "../../../utils/constants/image.constant";
 
 interface IAvatarFromIdProps {
   // uid: string;

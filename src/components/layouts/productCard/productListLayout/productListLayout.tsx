@@ -32,13 +32,11 @@ const ProductListLayout = (props: { products: any }) => {
             <ProductCard
               key={product._id}
               name={product.name}
-              // brand={product.brand}
-              // image={product.image[0]}
+              brand={product.brand}
+              image={product.images[0]}
               rentalCost={product.rentalCost}
-              // description={product.description}
               rentalCostType={product.rentalCostType}
               _id=""
-              brand=""
             />
           );
         })}

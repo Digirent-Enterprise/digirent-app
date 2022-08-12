@@ -15,6 +15,7 @@ import {
 import { WarningTwoIcon } from "@chakra-ui/icons";
 // import { customAxios } from "../../http-common";
 import { AuthFormGrid, Transition } from "../../components";
+import Helmet from "../../Helmet";
 
 interface IFormInputs {
   pw1: string;
@@ -69,6 +70,11 @@ const ResetPasswordPage = () => {
 
   return (
     <Transition>
+      <Helmet
+        title="Rest Password"
+        addPostfixTitle
+        description="Enter new password in order to reset new ones"
+      />
       <AuthFormGrid
         childTitle="Reset Password"
         childCompForm={

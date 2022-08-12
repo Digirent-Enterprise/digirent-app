@@ -16,6 +16,7 @@ import {
 import { WarningTwoIcon } from "@chakra-ui/icons";
 import { customAxios } from "../../http-common";
 import { AuthFormGrid, Transition, StatusToaster } from "../../components";
+import Helmet from "../../Helmet";
 
 interface IFormInputs {
   name: string;
@@ -80,8 +81,13 @@ const RegisterPage = () => {
 
   return (
     <Transition>
+      <Helmet
+        title="Register"
+        addPostfixTitle
+        description="Register new account at Digirent"
+      />
       <AuthFormGrid
-        childTitle="Register your account"
+        childTitle="Join us now"
         childCompForm={
           <Box textAlign="center">
             <form onSubmit={handleSubmit(onSubmit)} autoComplete="new-password">
@@ -178,7 +184,8 @@ const RegisterPage = () => {
                 <Box>
                   Already had an account?
                   <Link color="brand.500" href="/login">
-                    Sign In
+                    {" "}
+                    Login
                   </Link>
                 </Box>
               </Stack>
@@ -186,7 +193,7 @@ const RegisterPage = () => {
           </Box>
         }
         childCompSideContent="https://i.pinimg.com/originals/a5/92/23/a59223a81638be37d096fcfa72d7dd48.jpg"
-        childOAuthButtonsVisibility
+        childOAuthButtonsVisibility={false}
       />
     </Transition>
   );

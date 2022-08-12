@@ -15,7 +15,7 @@ import { useSelector } from "react-redux";
 
 import { useNavigate } from "react-router-dom";
 import { getCurrentUser } from "../../../../store/selectors/user.selector";
-import IMAGES from "../../../../utils/constants/image.constant";
+import { IMAGES } from "../../../../utils/constants/image.constant";
 import { customAxios } from "../../../../http-common";
 import { clearUserSession } from "../../../../helpers/authHelpers";
 
@@ -72,7 +72,7 @@ const AvatarMenu = () => {
               Account Settings
             </MenuItem>
             <MenuItem onClick={() => navigate("/user/transactions")}>
-              Transaction History
+              Order History
             </MenuItem>
             <MenuItem onClick={() => navigate("/user/favorites")}>
               Favorite Products

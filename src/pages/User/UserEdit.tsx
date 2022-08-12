@@ -19,6 +19,7 @@ import {
 } from "@chakra-ui/react";
 import { SmallCloseIcon } from "@chakra-ui/icons";
 
+
 const UserEdit = () => {
   return (
     <Transition>
@@ -77,6 +78,7 @@ const UserEdit = () => {
               Cancel
             </Button>
             <Button
+
               bg={"blue.400"}
               color={"white"}
               w="full"

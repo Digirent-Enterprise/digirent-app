@@ -5,6 +5,16 @@ import {
   Transition,
   Spinner,
   CTA,
+  CategoryCard,
+  FeatureProduct,
+  Testimonial,
+  NewProduct,
+  ProductProgressBar,
+  Content,
+  Teams,
+  Technology,
+  BackToTop,
+  CategoryCardListing,
 } from "./elements";
 import {
   AuthFormGrid,
@@ -28,15 +38,26 @@ import {
   SearchResultsSection,
   ProductCardListing,
 } from "./layouts";
+import BackToPreviousPage from "./modules/BackToPreviousPage";
 
 export {
   NavBar,
   Footer,
   CTA,
+  CategoryCard,
+  Technology,
+  BackToTop,
+  Content,
+  Teams,
+  Testimonial,
   CustomBreadcrumb,
   Banner,
+  FeatureProduct,
+  ProductProgressBar,
+  NewProduct,
   CustomTooltip,
   Spinner,
+  BackToPreviousPage,
   Transition,
   StatusToaster,
   AuthFormGrid,
@@ -54,4 +75,5 @@ export {
   UserTab,
   ProductCardListing,
   FavoriteContainer,
+  CategoryCardListing,
 };
