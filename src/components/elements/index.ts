@@ -5,4 +5,22 @@ import Spinner from "./Spinner/Spinner";
 import CustomTooltip from "./Tooltip/CustomTooltip";
 import Transition from "./Transition/Transition";
 
-export { CustomBreadcrumb, Banner, CustomTooltip, Transition, Spinner, CTA };
+import UserProfileAddress from "./User/UserProfileAddress";
+import UserProfileAvatar from "./User/UserProfileAvatar";
+import UserProfileButton from "./User/UserProfileButton";
+import UserProfileEmail from "./User/UserProfileEmail";
+import UserProfileName from "./User/UserProfileName";
+
+export {
+  CustomBreadcrumb,
+  Banner,
+  CustomTooltip,
+  Transition,
+  Spinner,
+  CTA,
+  UserProfileAddress,
+  UserProfileAvatar,
+  UserProfileButton,
+  UserProfileEmail,
+  UserProfileName,
+};
