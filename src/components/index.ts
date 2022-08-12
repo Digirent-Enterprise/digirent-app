@@ -26,6 +26,7 @@ import {
   EditTransactionModal,
   EditUserModal,
   FavoriteContainer,
+  LanguageSwitcher,
   StatusToaster,
 } from "./modules";
 import {
@@ -39,7 +40,6 @@ import {
   SearchResultsSection,
   ProductCardListing,
 } from "./layouts";
-import LanguageSwitcher from "./modules/language/LanguageSwitcher";
 
 export {
   NavBar,
