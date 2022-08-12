@@ -75,7 +75,7 @@ const LoginPage = () => {
         description="Login to your existing account at Digirent"
       />
       <AuthFormGrid
-        childTitle="Log in to your account"
+        childTitle="Login to your account"
         childCompForm={
           <Box textAlign="center">
             <form onSubmit={handleSubmit(onSubmit)}>
@@ -123,7 +123,7 @@ const LoginPage = () => {
                   New to us?
                   <Link color="brand.500" href="/register">
                     {" "}
-                    Sign Up
+                    Register
                   </Link>
                 </Box>
               </Stack>
