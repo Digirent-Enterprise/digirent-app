@@ -8,10 +8,12 @@ import {
   ProductCardListing,
   Transition,
 } from "../../components";
+import CategoriesFilter from "../../components/layouts/filters/CategoriesFilter";
 import PriceSlider from "../../components/layouts/filters/PriceSlider";
 
 import { getProducts, setProducts } from "../../store/actions/product.action";
 import { getAllProducts } from "../../store/selectors/product.selector";
+import { IProduct } from "../../store/types/product.types";
 import DefaultLayout from "../DefaultLayout";
 
 export const sortByOptions = [
@@ -135,7 +137,7 @@ const ProductSearchPage = ({
   const triggerSearch = () => {
     setIsSearching(true);
   };
-
+  
   return (
     <Transition>
       <DefaultLayout>
@@ -165,6 +167,7 @@ const ProductSearchPage = ({
 
         <div className="grid grid-cols-5 pb-10 mx-auto max-w-7xl lg:py-12 lg:px-8">
           <div className="col-span-1">
+            <CategoriesFilter />
             <PriceSlider />
           </div>
           <div className="col-span-4">

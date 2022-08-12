@@ -1,16 +1,24 @@
-import React, { Dispatch, SetStateAction, useContext } from "react";
+import React, { Dispatch, SetStateAction, useContext, useEffect, useState } from "react";
 import { SearchSectionContext } from "../../../pages/Product/ProductSearchPage";
 
 interface SearchHeaderSectionProps {
   setSearchQuery: Dispatch<SetStateAction<string>>;
   setIsSearching: Dispatch<SetStateAction<boolean>>;
+  onInputUpdate: (test: string) => void;
 }
 
 const SearchHeaderSection = ({
   setSearchQuery,
   setIsSearching,
+  onInputUpdate,
 }: SearchHeaderSectionProps) => {
   const searchContext = useContext(SearchSectionContext);
+
+  const [searchValue, setSearchValue] = useState<string>('');
+
+  useEffect(() => {
+    onInputUpdate(searchValue);
+  }, [searchValue])
 
   return (
     <div>
@@ -27,7 +35,8 @@ const SearchHeaderSection = ({
                 placeholder="Search for an item"
                 className="block w-full px-4 py-3 text-base text-gray-900 placeholder-gray-500 border-2 rounded-md border-black/30 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-300 focus:ring-offset-gray-900"
                 value={searchContext.searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
+                // onChange={(e) => setSearchQuery(e.target.value)}
+                onChange={(e) => setSearchValue(e.target.value)}
               />
             </div>
             <div className="mt-3 sm:mt-0 sm:ml-3">

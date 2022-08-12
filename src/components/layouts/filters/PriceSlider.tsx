@@ -6,6 +6,8 @@ import {
   RangeSliderFilledTrack,
   RangeSliderThumb,
   Tooltip,
+  FormControl,
+  FormLabel,
 } from "@chakra-ui/react";
 
 const PriceSlider = () => {
@@ -18,44 +20,48 @@ const PriceSlider = () => {
 
   return (
     <div>
-      <h1 className="my-5 text-bold">Rental cost</h1>
-      <Box marginTop={30} width={200}>
-        <RangeSlider
-          min={0}
-          max={5000}
-          aria-label={["min", "max"]}
-          defaultValue={[500, 1500]}
-          onChangeEnd={(val) => setValue(val)}
-          focusThumbOnChange={false}
-          onMouseEnter={() => setShowTooltip(true)}
-          onMouseLeave={() => setShowTooltip(false)}
-        >
-          <RangeSliderTrack>
-            <RangeSliderFilledTrack />
-          </RangeSliderTrack>
+      <Box  marginTop={10}>
+        <FormControl>
+          <FormLabel>Rental Cost</FormLabel>
 
-          <Tooltip
-            hasArrow
-            bg="teal.500"
-            color="white"
-            placement="top"
-            isOpen={showTooltip}
-            label={`${value[0]}$`}
+          <RangeSlider
+            min={0}
+            max={5000}
+            aria-label={["min", "max"]}
+            defaultValue={[500, 1500]}
+            onChangeEnd={(val) => setValue(val)}
+            focusThumbOnChange={false}
+            onMouseEnter={() => setShowTooltip(true)}
+            onMouseLeave={() => setShowTooltip(false)}
+            marginTop={30}
           >
-            <RangeSliderThumb index={0} />
-          </Tooltip>
+            <RangeSliderTrack>
+              <RangeSliderFilledTrack />
+            </RangeSliderTrack>
 
-          <Tooltip
-            hasArrow
-            bg="teal.500"
-            color="white"
-            placement="top"
-            isOpen={showTooltip}
-            label={`${value[1]}$`}
-          >
-            <RangeSliderThumb index={1} />
-          </Tooltip>
-        </RangeSlider>
+            <Tooltip
+              hasArrow
+              bg="teal.500"
+              color="white"
+              placement="top"
+              isOpen={showTooltip}
+              label={`${value[0]}$`}
+            >
+              <RangeSliderThumb index={0} />
+            </Tooltip>
+
+            <Tooltip
+              hasArrow
+              bg="teal.500"
+              color="white"
+              placement="top"
+              isOpen={showTooltip}
+              label={`${value[1]}$`}
+            >
+              <RangeSliderThumb index={1} />
+            </Tooltip>
+          </RangeSlider>
+        </FormControl>
       </Box>
     </div>
   );
