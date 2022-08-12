@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import { Button } from "@chakra-ui/react";
-import { useState } from "react";
+
 import { Link } from "react-router-dom";
 
 // interface IUserButton {

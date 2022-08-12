@@ -1,15 +1,11 @@
 import React from "react";
 import {
-  Heading,
-  Avatar,
   Box,
   Center,
-  Text,
   Stack,
   Button,
   useColorModeValue,
 } from "@chakra-ui/react";
-import { Transition } from "../../components/elements";
 import { UserTab } from "../../components";
 import {
   UserProfileAddress,
