@@ -16,10 +16,12 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 import { IconContext } from "react-icons";
+import { useTranslation } from "react-i18next";
 
 SwiperCore.use([Navigation, Pagination, Scrollbar, A11y, Autoplay]);
 
 const ProductProgressBar = () => {
+  const { t } = useTranslation();
   return (
     <section>
       <div className="max-w-screen-xl px-4 py-12 mx-auto sm:px-6 lg:px-8">
@@ -27,7 +29,7 @@ const ProductProgressBar = () => {
           <span className="inline-block w-12 h-1 bg-[#b91c1c]" />
 
           <h2 className="mt-1 text-2xl font-extrabold tracking-wide uppercase lg:text-3xl">
-            Featured Products
+            {t("featuredProduct")}
           </h2>
         </div>
 
