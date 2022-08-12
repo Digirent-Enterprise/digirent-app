@@ -14,14 +14,11 @@ import Teams from "./Teams/Teams";
 import Technology from "./Technology/Technology";
 import BackToTop from "./BackToTop/BackToTop";
 import CategoryCardListing from "./Category/CategoryCard/CategoryCardListing";
-
-
 import UserProfileAddress from "./User/UserProfileAddress";
 import UserProfileAvatar from "./User/UserProfileAvatar";
 import UserProfileButton from "./User/UserProfileButton";
 import UserProfileEmail from "./User/UserProfileEmail";
 import UserProfileName from "./User/UserProfileName";
-
 
 export {
   CustomBreadcrumb,
@@ -39,14 +36,10 @@ export {
   Content,
   Teams,
   Technology,
-  Transition,
-  Spinner,
-  CTA,
   CategoryCard,
   FeatureProduct,
   ProductProgressBar,
   Testimonial,
   NewProduct,
   CategoryCardListing,
-
 };

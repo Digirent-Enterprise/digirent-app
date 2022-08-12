@@ -10,22 +10,8 @@ import {
 
 import { getProducts, setProducts } from "../../store/actions/product.action";
 import { getAllProducts } from "../../store/selectors/product.selector";
+import { sortByOptions } from "../../utils/constants/helper.constant";
 import DefaultLayout from "../DefaultLayout";
-
-export const sortByOptions = [
-  {
-    id: "time",
-    name: "Recently updated",
-  },
-  {
-    id: "rents",
-    name: "Most rents",
-  },
-  {
-    id: "views",
-    name: "Most Popular",
-  },
-];
 
 interface SearchSectionContextValue {
   searchQuery: string;

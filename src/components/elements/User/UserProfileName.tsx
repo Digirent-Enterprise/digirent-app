@@ -11,7 +11,7 @@ import {
 } from "@chakra-ui/react";
 
 interface IUserProfileName {
-    userName: string;
+  userName: string;
 }
 
 const UserProfileName = ({ userName }: IUserProfileName) => {

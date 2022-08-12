@@ -65,7 +65,7 @@ export const teamsMember = [
     name: "Vo Khai Minh",
     position: "Frontend Developer",
     imageUrl:
-      "https://discloud-storage.herokuapp.com/file/311de5d244bd1409d77bd270873ab78f/luan.jpg",
+      "https://discloud-storage.herokuapp.com/file/cd405a63f3f53e7c9b1b1d6c547866b2/minh.jpg",
     alt: "minh",
   },
   {
@@ -88,5 +88,20 @@ export const teamsMember = [
     imageUrl:
       "https://discloud-storage.herokuapp.com/file/c5f340248f9d3a1682dc5e7ced169d2c/duc.png",
     alt: "duc",
+  },
+];
+
+export const sortByOptions = [
+  {
+    id: "time",
+    name: "Recently updated",
+  },
+  {
+    id: "rents",
+    name: "Most rents",
+  },
+  {
+    id: "views",
+    name: "Most Popular",
   },
 ];

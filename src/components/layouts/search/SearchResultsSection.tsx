@@ -1,9 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useState, useContext, Dispatch, SetStateAction } from "react";
-import {
-  SearchSectionContext,
-  sortByOptions,
-} from "../../../pages/Product/ProductSearchPage";
+import { SearchSectionContext } from "../../../pages/Product/ProductSearchPage";
+import { sortByOptions } from "../../../utils/constants/helper.constant";
 
 type SearchResultsSectionProps = {
   setIsSearching: Dispatch<SetStateAction<boolean>>;

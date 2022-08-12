@@ -1,11 +1,11 @@
 import React from "react";
 import { Text, useColorModeValue } from "@chakra-ui/react";
 
-interface IUserProfileAddress{
-    userAddress: string;
+interface IUserProfileAddress {
+  userAddress: string;
 }
 
-const UserProfileAddress = ({userAddress}: IUserProfileAddress) => {
+const UserProfileAddress = ({ userAddress }: IUserProfileAddress) => {
   return (
     <Text
       textAlign="center"
