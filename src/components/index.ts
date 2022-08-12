@@ -37,8 +37,8 @@ import {
   SearchHeaderSection,
   SearchResultsSection,
   ProductCardListing,
-  UserStatusPieChart,
 } from "./layouts";
+import BackToPreviousPage from "./modules/BackToPreviousPage";
 
 export {
   NavBar,
@@ -57,6 +57,7 @@ export {
   NewProduct,
   CustomTooltip,
   Spinner,
+  BackToPreviousPage,
   Transition,
   StatusToaster,
   AuthFormGrid,
@@ -74,6 +75,5 @@ export {
   UserTab,
   ProductCardListing,
   FavoriteContainer,
-  UserStatusPieChart,
   CategoryCardListing,
 };

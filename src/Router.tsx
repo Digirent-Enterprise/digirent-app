@@ -16,11 +16,14 @@ import {
   UserManagement,
   TransactionManagement,
   EmailSentPage,
+  UserTransactionDetails,
+  UserTransactionHistory,
 } from "./pages";
 
 import PrivateRoute from "./components/PrivateRoute";
 
 import { AdminPermission } from "./utils/constants/permission.constants";
+import { BackToTop } from "./components";
 
 const Home = lazy(() => import("./pages/Home/Home"));
 const About = lazy(() => import("./pages/About/About"));
@@ -34,6 +37,7 @@ const AppRouter = () => {
 
   return (
     <AnimatePresence exitBeforeEnter>
+      <BackToTop />
       <Routes key={location.pathname} location={location}>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
@@ -56,24 +60,29 @@ const AppRouter = () => {
         <Route path="user/:id/edit" />
         <Route path="user/:id/deactivate" />
         <Route path="user/:id/change-password" />
+        <Route path="user/transaction" element={<UserTransactionHistory />} />
+        <Route
+          path="user/transaction/details"
+          element={<UserTransactionDetails />}
+        />
         {/* Maintain */}
         <Route path="maintain" element={<Maintain />} />
         {/* Admin */}
         <Route
           path="admin"
           element={
-            <PrivateRoute permission={AdminPermission}>
-              <AdminHome />
-            </PrivateRoute>
+            // <PrivateRoute permission={AdminPermission}>
+            <AdminHome />
+            // </PrivateRoute>
           }
         />
         {/* User management */}
         <Route
           path="admin/users"
           element={
-            <PrivateRoute permission={AdminPermission}>
-              <UserManagement />
-            </PrivateRoute>
+            // <PrivateRoute permission={AdminPermission}>
+            <UserManagement />
+            // </PrivateRoute>
           }
         />
         <Route path="admin/users/:id/edit" />

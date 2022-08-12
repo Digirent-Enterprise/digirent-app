@@ -17,6 +17,8 @@ import EmailSentPage from "./Auth/EmailSentPage";
 import AddProduct from "./Admin/AddProduct/AddProduct";
 import UserEdit from "./User/UserEdit";
 import About from "./About/About";
+import UserTransactionDetails from "./User/UserTransactionDetail";
+import UserTransactionHistory from "./User/UserTransactionHistory";
 
 export {
   Home,
@@ -38,4 +40,6 @@ export {
   ForgotPasswordPage,
   EmailSentPage,
   ChatViewPage,
+  UserTransactionHistory,
+  UserTransactionDetails,
 };
