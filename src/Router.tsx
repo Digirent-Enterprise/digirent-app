@@ -18,11 +18,12 @@ import {
   EmailSentPage,
   UserTransactionDetails,
   UserTransactionHistory,
+  UserEdit,
 } from "./pages";
 
-import PrivateRoute from "./components/PrivateRoute";
+// import PrivateRoute from "./components/PrivateRoute";
 
-import { AdminPermission } from "./utils/constants/permission.constants";
+// import { AdminPermission } from "./utils/constants/permission.constants";
 import { BackToTop } from "./components";
 
 const Home = lazy(() => import("./pages/Home/Home"));
@@ -57,7 +58,7 @@ const AppRouter = () => {
         <Route path="users/:id" />
         <Route path="user/profile" element={<UserProfile />} />
         <Route path="user/favorite" element={<UserFavorite />} />
-        <Route path="user/:id/edit" />
+        <Route path="user/edit" element={<UserEdit />} />
         <Route path="user/:id/deactivate" />
         <Route path="user/:id/change-password" />
         <Route path="user/transaction" element={<UserTransactionHistory />} />
@@ -91,17 +92,17 @@ const AppRouter = () => {
         <Route
           path="admin/products"
           element={
-            <PrivateRoute permission={AdminPermission}>
-              <ProductManagement />
-            </PrivateRoute>
+            // <PrivateRoute permission={AdminPermission}>
+            <ProductManagement />
+            // </PrivateRoute>
           }
         />
         <Route
           path="admin/add-product"
           element={
-            <PrivateRoute permission={AdminPermission}>
-              <AddProduct />
-            </PrivateRoute>
+            // <PrivateRoute permission={AdminPermission}>
+            <AddProduct />
+            // </PrivateRoute>
           }
         />
         <Route path="admin/product/:id" />
@@ -111,9 +112,9 @@ const AppRouter = () => {
         <Route
           path="admin/transactions"
           element={
-            <PrivateRoute permission={AdminPermission}>
-              <TransactionManagement />
-            </PrivateRoute>
+            // <PrivateRoute permission={AdminPermission}>
+            <TransactionManagement />
+            // </PrivateRoute>
           }
         />
         <Route path="admin/transactions/:id/edit" />
