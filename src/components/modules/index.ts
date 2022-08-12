@@ -1,3 +1,4 @@
+import BackToPreviousPage from "./button/BackToPreviousPage";
 import FavoriteContainer from "./container/FavoriteContainer";
 import { AuthFormGrid } from "./form";
 import DeleteProductModal from "./modal/Product/DeleteProductModal";
@@ -18,4 +19,5 @@ export {
   StatusToaster,
   AuthFormGrid,
   FavoriteContainer,
+  BackToPreviousPage,
 };
