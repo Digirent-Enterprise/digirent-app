@@ -1,7 +1,7 @@
 import React from "react";
 import { Avatar } from "@chakra-ui/react";
 
-interface IUserProfileAvatar{}
+interface IUserProfileAvatar {}
 
 const UserProfileAvatar = () => {
   return (
