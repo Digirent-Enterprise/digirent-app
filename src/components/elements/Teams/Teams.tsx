@@ -1,6 +1,5 @@
 import { teamsMember } from "../../../utils/constants/helper.constant";
 import TeamsMember from "./TeamsMember";
-
 const Teams = () => {
   return (
     <div className="bg-white py-6 sm:py-8 lg:py-12">
