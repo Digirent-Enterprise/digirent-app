@@ -9,6 +9,11 @@
 body,
 html {
   font-family: Roboto, Poppins, sans-serif;
+  height: 100%;
+}
+
+#root {
+  height: 100%;
 }
 
 /* 2. Global styles */
@@ -33,6 +38,10 @@ html {
   border-radius: 10px;
   box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
   background-color: #555;
+}
+
+button:hover {
+  text-decoration: none;
 }
 
 /* Swiper */
