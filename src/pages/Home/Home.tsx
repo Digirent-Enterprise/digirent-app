@@ -18,8 +18,8 @@ const Home = () => {
         addPostfixTitle
         description="Digirent marketplace"
       />
-      <CategoryCardListing />
       <Banner />
+      <CategoryCardListing />
       <NewProduct />
       <FeatureProduct />
       <ProductProgressBar />

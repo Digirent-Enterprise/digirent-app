@@ -1,11 +1,11 @@
 import React from "react";
 
-interface ICategoryCard {
+interface CategoryCardProps {
   categoryImage: string;
   categoryName: string;
 }
 
-const CategoryCard = ({ categoryImage, categoryName }: ICategoryCard) => {
+const CategoryCard = ({ categoryImage, categoryName }: CategoryCardProps) => {
   return (
     <div
       className="overflow-hidden
@@ -31,7 +31,7 @@ const CategoryCard = ({ categoryImage, categoryName }: ICategoryCard) => {
         object-cover
       "
       />
-      <div className="text-center py-5 text-xl">{categoryName}</div>
+      <div className="py-5 text-xl text-center">{categoryName}</div>
     </div>
   );
 };

@@ -1,12 +1,14 @@
 import { SET_CATEGORY } from "../types/action.types";
 
-const initialState = {
+import { CategoryActions, CategoryState } from "../types/category.types";
+
+const initialState: CategoryState = {
   pending: false,
   categories: [],
   error: null,
 };
 
-const CategoryReducer = (state = initialState, action: any) => {
+const CategoryReducer = (state = initialState, action: CategoryActions) => {
   switch (action.type) {
     case SET_CATEGORY:
       return {

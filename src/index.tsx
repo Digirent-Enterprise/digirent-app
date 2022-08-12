@@ -6,6 +6,8 @@ import { ChakraProvider, extendTheme } from "@chakra-ui/react";
 import App from "./App";
 import store from "./store";
 
+import "./i18n/config";
+
 const theme = extendTheme({
   styles: {
     global: {

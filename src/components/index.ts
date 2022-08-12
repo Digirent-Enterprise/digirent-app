@@ -18,6 +18,7 @@ import {
 } from "./elements";
 import {
   AuthFormGrid,
+  BackToPreviousPage,
   DeleteProductModal,
   DeleteTransactionModal,
   DeleteUserModal,
@@ -38,7 +39,7 @@ import {
   SearchResultsSection,
   ProductCardListing,
 } from "./layouts";
-import BackToPreviousPage from "./modules/BackToPreviousPage";
+import LanguageSwitcher from "./modules/language/LanguageSwitcher";
 
 export {
   NavBar,
@@ -58,6 +59,7 @@ export {
   CustomTooltip,
   Spinner,
   BackToPreviousPage,
+  LanguageSwitcher,
   Transition,
   StatusToaster,
   AuthFormGrid,
