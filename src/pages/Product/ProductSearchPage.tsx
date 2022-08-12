@@ -9,7 +9,7 @@ import {
 } from "../../components";
 
 import { getProducts, setProducts } from "../../store/actions/product.action";
-import { getAllProducts } from "../../store/selectors/product.selector";
+import { getAllProductsSelector } from "../../store/selectors/product.selector";
 import { sortByOptions } from "../../utils/constants/helper.constant";
 import DefaultLayout from "../DefaultLayout";
 
@@ -76,7 +76,7 @@ const ProductSearchPage = ({
   const [pageLimit, setPageLimit] = useState(requestPageLimit);
   const [isSearching, setIsSearching] = useState(true);
 
-  const productData = useSelector(getAllProducts);
+  const productData = useSelector(getAllProductsSelector);
   const dispatch = useDispatch();
 
   useEffect(() => {

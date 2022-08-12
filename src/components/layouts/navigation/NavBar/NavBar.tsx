@@ -4,10 +4,10 @@ import { Box, Flex, Text } from "@chakra-ui/react";
 import Logo from "./Logo";
 import NavButton from "./NavButton";
 import AvatarMenu from "./AvatarMenu";
-import { getCurrentUser } from "../../../../store/selectors/user.selector";
+import { getCurrentUserSelector } from "../../../../store/selectors/user.selector";
 
 const NavBar = () => {
-  const currentUser = useSelector(getCurrentUser);
+  const currentUser = useSelector(getCurrentUserSelector);
   const [navbarOpen, setNavbarOpen] = React.useState(false);
   return (
     <Box
