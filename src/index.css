@@ -40,10 +40,6 @@ html {
   background-color: #555;
 }
 
-button:hover {
-  text-decoration: none;
-}
-
 /* Swiper */
 
 .swiper {
