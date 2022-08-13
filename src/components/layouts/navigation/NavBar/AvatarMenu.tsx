@@ -31,7 +31,7 @@ const AvatarMenu = () => {
 
   return (
     <Flex alignItems="right">
-      <Stack direction="row" spacing={7}>
+      <Stack direction="row" spacing={7} className="z-50">
         <Menu isLazy>
           <MenuButton
             as={Button}
