@@ -12,9 +12,11 @@ import UserProfile from "./User/UserProfile";
 import ProductManagement from "./Admin/Management/ProductManagement";
 import UserFavorite from "./User/UserFavorite";
 import UserManagement from "./Admin/Management/UserManagement";
+import CheckoutPage from "./Checkout/CheckoutPage";
 import TransactionManagement from "./Admin/Management/TransactionManagement";
 import EmailSentPage from "./Auth/EmailSentPage";
 import AddProduct from "./Admin/AddProduct/AddProduct";
+import ContactUsPage from "./Contact/ContactUsPage";
 import UserEdit from "./User/UserEdit";
 import About from "./About/About";
 import UserTransactionDetails from "./User/UserTransactionDetail";
@@ -40,6 +42,8 @@ export {
   ForgotPasswordPage,
   EmailSentPage,
   ChatViewPage,
-  UserTransactionHistory,
+  CheckoutPage,
+  ContactUsPage,
   UserTransactionDetails,
+  UserTransactionHistory
 };
