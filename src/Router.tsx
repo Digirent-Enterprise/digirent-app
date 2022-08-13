@@ -17,6 +17,7 @@ import {
   TransactionManagement,
   CheckoutPage,
   EmailSentPage,
+  ContactUsPage,
 } from "./pages";
 
 import PrivateRoute from "./components/PrivateRoute";
@@ -57,6 +58,8 @@ const AppRouter = () => {
         <Route path="user/:id/change-password" />
         {/* Maintain */}
         <Route path="maintain" element={<Maintain />} />
+        {/* Contact */}
+        <Route path="contact" element={<ContactUsPage />} />
         {/* Admin */}
         <Route
           path="admin"

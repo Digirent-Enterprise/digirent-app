@@ -1,10 +1,8 @@
 import React, { ReactNode, useState } from "react";
-import { DatePicker as ChakraDatePicker } from "@orange_digital/chakra-datepicker";
 import RentPeriodDatetimePicker from "./RentPeriodDatetimePicker";
 
 const OrderSummaryContent = () => {
   const [endDate, setEndDate] = useState("");
-  console.log("endDate", endDate);
   const today = `${new Date().toLocaleString()}`;
   return (
     <div>
@@ -29,7 +27,10 @@ const OrderSummaryContent = () => {
                     {today} - {endDate}
                   </div>
                   <div>
-                    <RentPeriodDatetimePicker setEndDate={setEndDate} />
+                    <RentPeriodDatetimePicker
+                      setEndDate={setEndDate}
+                      endDate={endDate}
+                    />
                   </div>
                 </div>
               </div>

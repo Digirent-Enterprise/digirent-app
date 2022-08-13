@@ -16,6 +16,7 @@ import CheckoutPage from "./Checkout/CheckoutPage";
 import TransactionManagement from "./Admin/Management/TransactionManagement";
 import EmailSentPage from "./Auth/EmailSentPage";
 import AddProduct from "./Admin/AddProduct/AddProduct";
+import { ContactUsPage } from "./Contact/ContactUsPage";
 
 export {
   Home,
@@ -36,4 +37,5 @@ export {
   EmailSentPage,
   ChatViewPage,
   CheckoutPage,
+  ContactUsPage,
 };

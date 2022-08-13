@@ -1,16 +1,19 @@
 import React, { ReactNode } from "react";
-import { DatePicker } from "chakra-ui-date-input";
+import DatePicker from "react-datepicker";
 
 interface IDateTimeProps {
   setEndDate: React.Dispatch<React.SetStateAction<string>>;
+  endDate: string;
 }
 
-const RentPeriodDatetimePicker: React.FC<IDateTimeProps> = ({ setEndDate }) => {
+const RentPeriodDatetimePicker: React.FC<IDateTimeProps> = ({
+  setEndDate,
+  endDate,
+}) => {
   return (
     <DatePicker
-      placeholder="Date picker placeholder"
-      name="date"
-      onChange={(date: string) => setEndDate(date)}
+      selected={new Date(endDate)}
+      onChange={(date: Date) => setEndDate(`${date}`)}
     />
   );
 };
