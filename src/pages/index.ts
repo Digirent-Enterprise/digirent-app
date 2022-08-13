@@ -16,14 +16,20 @@ import CheckoutPage from "./Checkout/CheckoutPage";
 import TransactionManagement from "./Admin/Management/TransactionManagement";
 import EmailSentPage from "./Auth/EmailSentPage";
 import AddProduct from "./Admin/AddProduct/AddProduct";
-import { ContactUsPage } from "./Contact/ContactUsPage";
+import ContactUsPage from "./Contact/ContactUsPage";
+import UserEdit from "./User/UserEdit";
+import About from "./About/About";
+import UserTransactionDetails from "./User/UserTransactionDetail";
+import UserTransactionHistory from "./User/UserTransactionHistory";
 
 export {
   Home,
+  About,
   AdminHome,
   AddProduct,
   ProductManagement,
   UserManagement,
+  UserEdit,
   TransactionManagement,
   UserProfile,
   UserFavorite,
@@ -38,4 +44,6 @@ export {
   ChatViewPage,
   CheckoutPage,
   ContactUsPage,
+  UserTransactionDetails,
+  UserTransactionHistory
 };

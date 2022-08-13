@@ -6,7 +6,7 @@ function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(" ");
 }
 
-export const ContactUsPage = () => {
+ const ContactUsPage = () => {
   const [agreed, setAgreed] = useState(false);
 
   return (
@@ -267,3 +267,5 @@ export const ContactUsPage = () => {
     </DefaultLayout>
   );
 };
+
+export default ContactUsPage;

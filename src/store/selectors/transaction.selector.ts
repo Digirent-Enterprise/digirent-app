@@ -1,8 +1,12 @@
 import { createSelector } from "@reduxjs/toolkit";
 import { AppState } from "../rootReducer";
 
-export const getAllTransactions = (state: AppState) =>
-  state.transaction.transactions;
+const getAllTransactions = (state: AppState) => state.transaction.transactions;
+
+export const getAllTransactionsSelector = createSelector(
+  getAllTransactions,
+  (error) => error,
+);
 
 export const getTransactionError = (state: AppState) => state.transaction.error;
 

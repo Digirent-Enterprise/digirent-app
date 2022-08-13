@@ -1,29 +1,43 @@
-import { Link } from "react-router-dom";
+import Helmet from "../../Helmet";
 
 const NotFound = () => {
   return (
-    <section className="flex items-center h-full p-16 dark:bg-gray-900 dark:text-gray-100">
-      <div className="container flex flex-col items-center justify-center px-5 mx-auto my-8">
-        <div className="max-w-md text-center">
-          <h2 className="mb-8 font-extrabold text-9xl dark:text-gray-600">
-            <span className="sr-only">Error</span>404
-          </h2>
-          <p className="text-2xl font-semibold md:text-3xl">
-            Sorry, we couldn't find this page.
-          </p>
-          <p className="mt-4 mb-8 dark:text-gray-400">
-            But do not worry, you can find plenty of other things on our
-            homepage.
-          </p>
-          <Link
-            to="/"
-            className="px-8 py-3 font-semibold rounded dark:bg-violet-400 dark:text-gray-900"
-          >
-            Back to homepage
-          </Link>
+    <>
+      <Helmet title="Not Found" addPostfixTitle description="Not Found Page" />
+      <div className="min-h-full px-4 py-16 bg-white sm:px-6 sm:py-24 md:grid md:place-items-center lg:px-8">
+        <div className="mx-auto max-w-max">
+          <main className="sm:flex">
+            <p className="text-4xl font-extrabold text-[#4F46E5] sm:text-5xl">
+              404
+            </p>
+            <div className="sm:ml-6">
+              <div className="sm:border-l sm:border-[#E5E7EB] sm:pl-6">
+                <h1 className="text-4xl font-extrabold tracking-tight text-gray-900 sm:text-5xl">
+                  Page not found
+                </h1>
+                <p className="mt-1 text-base text-[#6B7280]">
+                  Please check the URL in the address bar and try again.
+                </p>
+              </div>
+              <div className="flex mt-10 space-x-3 sm:border-l sm:border-transparent sm:pl-6">
+                <a
+                  href="/"
+                  className="inline-flex items-center px-4 py-2 text-sm font-medium text-white bg-[#4F46E5] border border-transparent rounded-md shadow-sm hover:bg-[#4338CA] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#6366F1]"
+                >
+                  Go back home
+                </a>
+                <a
+                  href="/contact"
+                  className="inline-flex items-center px-4 py-2 text-sm font-medium text-[#4338CA] bg-[#E0E7FF] border border-transparent rounded-md hover:bg-[#C7D2FE] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#6366F1]"
+                >
+                  Contact support
+                </a>
+              </div>
+            </div>
+          </main>
         </div>
       </div>
-    </section>
+    </>
   );
 };
 

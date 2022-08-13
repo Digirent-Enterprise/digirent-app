@@ -1,9 +1,9 @@
 import { useSelector } from "react-redux";
 import { Navigate } from "react-router-dom";
-import { getCurrentUser } from "../store/selectors/user.selector";
+import { getCurrentUserSelector } from "../store/selectors/user.selector";
 
 const PrivateRoute = ({ children, permission = [] }: any) => {
-  const currentUser = useSelector(getCurrentUser);
+  const currentUser = useSelector(getCurrentUserSelector);
   const isAllow = permission.includes(currentUser.role) || !permission;
   if (!isAllow) return <Navigate to="/" />;
 

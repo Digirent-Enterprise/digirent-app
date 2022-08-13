@@ -4,10 +4,10 @@ import { Box, Flex, Text } from "@chakra-ui/react";
 import Logo from "./Logo";
 import NavButton from "./NavButton";
 import AvatarMenu from "./AvatarMenu";
-import { getCurrentUser } from "../../../../store/selectors/user.selector";
+import { getCurrentUserSelector } from "../../../../store/selectors/user.selector";
 
 const NavBar = () => {
-  const currentUser = useSelector(getCurrentUser);
+  const currentUser = useSelector(getCurrentUserSelector);
   const [navbarOpen, setNavbarOpen] = React.useState(false);
   return (
     <Box
@@ -35,11 +35,6 @@ const NavBar = () => {
             type="button"
             onClick={() => setNavbarOpen(!navbarOpen)}
           >
-            {/* <img
-              src="../../../../../public/images/plus-5-xxl.png"
-              alt=""
-            /> */}
-
             <Text fontSize="5xl" color="white">
               +
             </Text>
@@ -53,6 +48,7 @@ const NavBar = () => {
         >
           <ul className="flex flex-col lg:flex-row list-none lg:ml-auto">
             <NavButton navItem="Home" directUrl="/" />
+            <NavButton navItem="About" directUrl="/about" />
             <NavButton navItem="Contact" directUrl="/contact" />
             {!currentUser.email ? (
               <NavButton navItem="Login" directUrl="/login" />

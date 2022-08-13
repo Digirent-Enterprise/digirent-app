@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import ReactPaginate from "react-paginate";
 
 import ProductCard from "../Item/ProductCard";
@@ -27,21 +28,19 @@ const ProductListLayout = (props: { products: any }) => {
   return (
     <>
       <div className="grid grid-cols-1 gap-y-10 sm:grid-cols-2 gap-x-6 lg:grid-cols-2 xl:grid-cols-3 xl:gap-x-8">
-        {currentItems.map((product: IProduct) => {
-          return (
+        {currentItems.map((product: IProduct) => (
+          <Link to={`/product/${product._id}`}>
             <ProductCard
               key={product._id}
               name={product.name}
-              // brand={product.brand}
-              // image={product.image[0]}
+              brand={product.brand}
+              image={product.images[0]}
               rentalCost={product.rentalCost}
-              // description={product.description}
               rentalCostType={product.rentalCostType}
               _id=""
-              brand=""
             />
-          );
-        })}
+          </Link>
+        ))}
       </div>
       <ReactPaginate
         breakLabel="..."
