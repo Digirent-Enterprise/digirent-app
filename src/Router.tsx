@@ -15,7 +15,9 @@ import {
   UserFavorite,
   UserManagement,
   TransactionManagement,
+  CheckoutPage,
   EmailSentPage,
+  ContactUsPage,
   UserTransactionDetails,
   UserTransactionHistory,
   UserEdit,
@@ -51,7 +53,7 @@ const AppRouter = () => {
         <Route path="products" element={<ProductSearchPage />} />
         <Route path="product/:id" />
         {/* Payment */}
-        <Route path="checkout/:id" />
+        <Route path="checkout/:id" element={<CheckoutPage />} />
         <Route path="checkout-success/:id" />
         {/* Users */}
         <Route path="users" />
@@ -68,6 +70,8 @@ const AppRouter = () => {
         />
         {/* Maintain */}
         <Route path="maintain" element={<Maintain />} />
+        {/* Contact */}
+        <Route path="contact" element={<ContactUsPage />} />
         {/* Admin */}
         <Route
           path="admin"

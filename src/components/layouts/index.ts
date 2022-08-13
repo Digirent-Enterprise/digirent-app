@@ -7,6 +7,8 @@ import Footer from "./footer/Footer";
 import SearchHeaderSection from "./search/SearchHeaderSection";
 import SearchResultsSection from "./search/SearchResultsSection";
 import ProductCardListing from "./productCard/ProductCardListing";
+import OrderSummaryContent from "./checkout/OrderSummaryContent";
+import CheckoutDetailsCard from "./checkout/CheckoutDetailsCard";
 
 export {
   NavBar,
@@ -18,4 +20,6 @@ export {
   ChatLeftSide,
   ChatRightSide,
   ProductCardListing,
+  OrderSummaryContent,
+  CheckoutDetailsCard,
 };

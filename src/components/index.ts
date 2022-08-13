@@ -39,6 +39,8 @@ import {
   SearchHeaderSection,
   SearchResultsSection,
   ProductCardListing,
+  OrderSummaryContent,
+  CheckoutDetailsCard,
 } from "./layouts";
 
 export {
@@ -77,5 +79,7 @@ export {
   UserTab,
   ProductCardListing,
   FavoriteContainer,
-  CategoryCardListing,
+  OrderSummaryContent,
+  CheckoutDetailsCard,
+  CategoryCardListing
 };
