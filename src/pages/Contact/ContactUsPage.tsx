@@ -248,21 +248,10 @@ const ContactUsPage = () => {
                     <Switch
                       checked={agreed}
                       onChange={() => setAgreed(!agreed)}
-                      variant="unstyled"
                       className={classNames(
-                        agreed ? "bg-[#4F46E5]" : "bg-[#E5E7EB]",
                         "relative inline-flex flex-shrink-0 h-6 w-11 border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#6366F1]",
                       )}
-                    >
-                      <span className="sr-only">Agree to policies</span>
-                      <span
-                        aria-hidden="true"
-                        className={classNames(
-                          agreed ? "translate-x-5" : "translate-x-0",
-                          "inline-block h-5 w-5 rounded-full bg-white shadow transform ring-0 transition ease-in-out duration-200",
-                        )}
-                      />
-                    </Switch>
+                    />
                   </div>
                   <div className="ml-3">
                     <p className="text-base text-gray-500">
