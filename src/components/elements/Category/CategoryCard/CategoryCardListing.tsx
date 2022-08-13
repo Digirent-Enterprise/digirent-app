@@ -10,8 +10,6 @@ const CategoryCardListing = () => {
   const dispatch = useDispatch();
   const categoryFetchData = useSelector(getAllCategoriesSelector);
 
-  console.log(categoryFetchData, "run");
-
   useEffect(() => {
     dispatch(getCategories());
   }, []);
