@@ -74,7 +74,7 @@ const AddProduct = () => {
     <DefaultLayout>
       <form encType="multipart/form-data" onSubmit={handleSubmit(onSubmit)}>
         <div className="pb-10 mx-auto max-w-7xl lg:py-12 lg:px-8">
-          <div className="text-center title">
+          <div className="title text-center">
             <h1>Add Product</h1>
           </div>
 
@@ -118,6 +118,7 @@ const AddProduct = () => {
                   multiple
                   id="images"
                 />
+                {/* <div className="border-2 border-dashed text-blue-100 text-center p-8 m-5">
                 {/* <div className="p-8 m-5 text-center text-blue-100 border-2 border-dashed">
                     <label htmlFor="images" className="cursor-pointer ">
                       Choose images
