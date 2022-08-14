@@ -7,6 +7,8 @@
 *** Thanks again! Now go create something AMAZING! :D
 -->
 
+
+
 <!-- PROJECT SHIELDS -->
 <!--
 *** I'm using markdown "reference style" links for readability.
@@ -15,13 +17,14 @@
 *** for contributors-url, forks-url, etc. This is an optional, concise syntax you may use.
 *** https://www.markdownguide.org/basic-syntax/#reference-style-links
 -->
-
 [![Contributors][contributors-shield]][contributors-url]
 [![Forks][forks-shield]][forks-url]
 [![Stargazers][stars-shield]][stars-url]
 [![Issues][issues-shield]][issues-url]
 [![MIT License][license-shield]][license-url]
 [![LinkedIn][linkedin-shield]][linkedin-url]
+
+
 
 <!-- PROJECT LOGO -->
 <br />
@@ -46,6 +49,8 @@
   </p>
 </div>
 
+
+
 <!-- TABLE OF CONTENTS -->
 <details>
   <summary>Table of Contents</summary>
@@ -65,65 +70,67 @@
   </ol>
 </details>
 
-<!-- ABOUT THE PROJECT -->
 
+
+<!-- ABOUT THE PROJECT -->
 ## About The Project
 
 [![Product Name Screen Shot][product-screenshot]](https://example.com)
 
 In a 4.0 technology world, using electronic devices has been a lifestyle for everyone. However, you do not always have the necessary tools for what you are doing. Maybe becasue you have finacial problesm or just simply, you do not use that device often. Understand this, our team decided to create a website where customers can rent any digital devices that they needed.
 Here is why you wanted to choose our service:
+*  Wide-range of products and models: We have up to 1 million devices at service at anytime.
+*  Simple and friendly UI/UX: Our web design follow the simplicity principle targetting new-users.
+*  Easy and fast transactions: We provide a wide-range of transaction methods.
+*  Our products are always in great conditions.
+*  We provide 24/7 support so contact us when needed.
 
-- Wide-range of products and models: We have up to 1 million devices at service at anytime.
-- Simple and friendly UI/UX: Our web design follow the simplicity principle targetting new-users.
-- Easy and fast transactions: We provide a wide-range of transaction methods.
-- Our products are always in great conditions.
-- We provide 24/7 support so contact us when needed.
+
 
 <p align="right">(<a href="#top">back to top</a>)</p>
+
+
 
 ### Built With
 
-- [![Next][next.js]][next-url]
-- [![React][react.js]][react-url]
-- [![Vue][vue.js]][vue-url]
-- [![Angular][angular.io]][angular-url]
-- [![Svelte][svelte.dev]][svelte-url]
-- [![Laravel][laravel.com]][laravel-url]
-- [![Bootstrap][bootstrap.com]][bootstrap-url]
-- [![JQuery][jquery.com]][jquery-url]
+* [![Next][Next.js]][Next-url]
+* [![React][React.js]][React-url]
+* [![Vue][Vue.js]][Vue-url]
+* [![Angular][Angular.io]][Angular-url]
+* [![Svelte][Svelte.dev]][Svelte-url]
+* [![Laravel][Laravel.com]][Laravel-url]
+* [![Bootstrap][Bootstrap.com]][Bootstrap-url]
+* [![JQuery][JQuery.com]][JQuery-url]
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
-<!-- GETTING STARTED -->
 
+
+<!-- GETTING STARTED -->
 ## Getting Started
 
-Website URL:
+Website URL: 
 
 To contribute to our project:
-
-- Fork the repository
-- Clone the repository to your computer
-- Install the necessary framework and prequisites
-- Start your coding
-- After finish coding, commit the changes
-- Create Pull Request and wait for the approval to merge
-
+* Fork the repository
+* Clone the repository to your computer
+* Install the necessary framework and prequisites
+* Start your coding
+* After finish coding, commit the changes
+* Create Pull Request and wait for the approval to merge
 ### Prerequisites
 
 This is all the framework and prequisites for the website:
-
-- npm
+* npm
   ```sh
   npm install npm@latest -g
   ```
-- Tailwind CSS
+* Tailwind CSS
   ```sh
   npm install -D tailwindcss
-  npx tailwindcss init
-  ```
-- NodeJS  
+  npx tailwindcss init  
+  ``` 
+* NodeJS  
   Download NodeJS via: https://nodejs.org/en/download/
 
 ### Installation
@@ -141,10 +148,10 @@ This is all the framework and prequisites for the website:
    Link: https://nodejs.org/en/download/
    ```
 4. Install TailwindCSS
-   ```sh
-   npm install -D tailwindcss
-   npx tailwindcss init
-   ```
+    ```sh
+    npm install -D tailwindcss
+    npx tailwindcss init  
+    ```
 5. Include TailwindCSS by following the instructions provided in the TailwindCSS's website.
 6. Use this command in terminal to initiate the website:
    ```sh
@@ -153,8 +160,9 @@ This is all the framework and prequisites for the website:
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
-<!-- USAGE EXAMPLES -->
 
+
+<!-- USAGE EXAMPLES -->
 ## Usage
 
 Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
@@ -163,21 +171,23 @@ _For more examples, please refer to the [Documentation](https://example.com)_
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
-<!-- ROADMAP -->
 
+
+<!-- ROADMAP -->
 ## Roadmap
 
 - [ ] Feature 1
 - [ ] Feature 2
 - [ ] Feature 3
-  - [ ] Nested Feature
+    - [ ] Nested Feature
 
 See the [open issues](https://github.com/Digirent-Enterprise/digirent-app/issues) for a full list of proposed features (and known issues).
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
-<!-- CONTRIBUTING -->
 
+
+<!-- CONTRIBUTING -->
 ## Contributing
 
 Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
@@ -193,16 +203,18 @@ Don't forget to give the project a star! Thanks again!
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
-<!-- LICENSE -->
 
+
+<!-- LICENSE -->
 ## License
 
 Distributed under the MIT License. See `LICENSE.txt` for more information.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
-<!-- CONTACT -->
 
+
+<!-- CONTACT -->
 ## Contact
 
 Your Name - [@twitter_handle](https://twitter.com/twitter_handle) - email@email_client.com
@@ -211,22 +223,24 @@ Project Link: [https://github.com/Digirent-Enterprise/digirent-app](https://gith
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
-<!-- ACKNOWLEDGMENTS -->
 
+
+<!-- ACKNOWLEDGMENTS -->
 ## Acknowledgments
 
-- [Vo Thanh Luan - s3822042]()
-- [Nguyen Thi Ha Giang - s3914108]()
-- [Nguyen Thi Quynh Giang - s3866617]()
-- [Vo Khai Minh - s3879953]()
-- [Vo Gia Bao - s3823477]()
-- [Tran Khanh Duc-s3907087]()
+* [Vo Thanh Luan - s3822042]()
+* [Nguyen Thi Ha Giang - s3914108]()
+* [Nguyen Thi Quynh Giang - s3866617]()
+* [Vo Khai Minh - s3879953]()
+* [Vo Gia Bao - s3823477]()
+* [Tran Khanh Duc-s3907087]()
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
+
+
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-
 [contributors-shield]: https://img.shields.io/github/contributors/Digirent-Enterprise/digirent-app.svg?style=for-the-badge
 [contributors-url]: https://github.com/Digirent-Enterprise/digirent-app/graphs/contributors
 [forks-shield]: https://img.shields.io/github/forks/Digirent-Enterprise/digirent-app.svg?style=for-the-badge
@@ -240,20 +254,20 @@ Project Link: [https://github.com/Digirent-Enterprise/digirent-app](https://gith
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/linkedin_username
 [product-screenshot]: images/unknown.png
-[next.js]: https://img.shields.io/badge/next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white
-[next-url]: https://nextjs.org/
-[react.js]: https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
-[react-url]: https://reactjs.org/
-[vue.js]: https://img.shields.io/badge/Vue.js-35495E?style=for-the-badge&logo=vuedotjs&logoColor=4FC08D
-[vue-url]: https://vuejs.org/
-[angular.io]: https://img.shields.io/badge/Angular-DD0031?style=for-the-badge&logo=angular&logoColor=white
-[angular-url]: https://angular.io/
-[svelte.dev]: https://img.shields.io/badge/Svelte-4A4A55?style=for-the-badge&logo=svelte&logoColor=FF3E00
-[svelte-url]: https://svelte.dev/
-[laravel.com]: https://img.shields.io/badge/Laravel-FF2D20?style=for-the-badge&logo=laravel&logoColor=white
-[laravel-url]: https://laravel.com
-[bootstrap.com]: https://img.shields.io/badge/Bootstrap-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white
-[bootstrap-url]: https://getbootstrap.com
-[jquery.com]: https://img.shields.io/badge/jQuery-0769AD?style=for-the-badge&logo=jquery&logoColor=white
-[jquery-url]: https://jquery.com
-[license-shield]: https://img.shields.io/github/license/othneildrew/Best-README-Template.svg?style=for-the-badge
+[Next.js]: https://img.shields.io/badge/next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white
+[Next-url]: https://nextjs.org/
+[React.js]: https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
+[React-url]: https://reactjs.org/
+[Vue.js]: https://img.shields.io/badge/Vue.js-35495E?style=for-the-badge&logo=vuedotjs&logoColor=4FC08D
+[Vue-url]: https://vuejs.org/
+[Angular.io]: https://img.shields.io/badge/Angular-DD0031?style=for-the-badge&logo=angular&logoColor=white
+[Angular-url]: https://angular.io/
+[Svelte.dev]: https://img.shields.io/badge/Svelte-4A4A55?style=for-the-badge&logo=svelte&logoColor=FF3E00
+[Svelte-url]: https://svelte.dev/
+[Laravel.com]: https://img.shields.io/badge/Laravel-FF2D20?style=for-the-badge&logo=laravel&logoColor=white
+[Laravel-url]: https://laravel.com
+[Bootstrap.com]: https://img.shields.io/badge/Bootstrap-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white
+[Bootstrap-url]: https://getbootstrap.com
+[JQuery.com]: https://img.shields.io/badge/jQuery-0769AD?style=for-the-badge&logo=jquery&logoColor=white
+[JQuery-url]: https://jquery.com
+[license-shield]: https://img.shields.io/github/license/othneildrew/Best-README-Template.svg?style=for-the-badge 
