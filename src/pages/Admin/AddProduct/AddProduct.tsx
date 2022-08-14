@@ -1,10 +1,7 @@
-import React, { useCallback, useEffect, useState } from "react";
-import { SubmitHandler, useForm } from "react-hook-form";
+import React, { useState } from "react";
+import { useForm } from "react-hook-form";
 import { useDropzone } from "react-dropzone";
-import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-import qs from "qs";
-
 import {
   FormControl,
   FormLabel,
@@ -14,14 +11,10 @@ import {
   InputGroup,
   InputRightAddon,
   Select,
-  Stack,
-  Textarea,
 } from "@chakra-ui/react";
 import { customAxios } from "../../../http-common";
-import { StatusToaster, Transition } from "../../../components";
 import DefaultLayout from "../DefaultAdminLayout";
-import axios from "axios";
-
+import qs from 'qs'
 type FormValues = {
   name: string;
   category: string;
@@ -44,11 +37,16 @@ const schema = yup.object().shape({
 });
 
 const AddProduct = () => {
-  const [images, setImages] = useState([]);
-  const { register, handleSubmit } = useForm<FormValues>({
-    resolver: yupResolver(schema),
-    mode: "onChange",
-  });
+  const [images, setImages] = useState<string[]>([]);
+  const { register, handleSubmit } = useForm<FormValues>({});
+
+  const handleUploadFiles = async (file: any) => {
+    const fd = new FormData();
+    fd.append('images', file)
+    const response = await customAxios('multipart/form-data').post('product/upload-single-image', fd);
+    setImages([...images, response.data.url]);
+  };
+
   const { getRootProps, getInputProps, isDragActive, acceptedFiles } =
     useDropzone({
       accept: {
@@ -56,33 +54,31 @@ const AddProduct = () => {
       },
       maxFiles: 10,
       onDrop: (acceptedFiles: any) => {
-        acceptedFiles.map((file) =>
-          customAxios("multipart/form-data").post(() => {}),
+        acceptedFiles.map((file: any) =>
+            handleUploadFiles(file)
         );
         setImages(
           acceptedFiles.map((image: any) =>
             Object.assign(image, {
-              preview: URL.createObjectURL(image),
+              preview: image,
             }),
           ),
         );
       },
     });
 
-  const thumbs = images.map((image: any) => (
-    <div className="flex flex-row flex-wrap" key={image.name}>
-      {console.log("image", images)}
-      <div className="flex overflow-hidden">
-        <img
-          className="p-4 w-full"
-          src={image.preview}
-          onLoad={() => {
-            URL.revokeObjectURL(image.preview);
-          }}
-        />
-      </div>
-    </div>
-  ));
+  const thumbs = images.map((image: any) => {
+        return (
+            <div className="flex flex-row flex-wrap" key={image.name}>
+          <div className="flex overflow-hidden">
+            <img
+                className="p-4 w-full"
+                src={image}
+            />
+          </div>
+        </div>)
+      }
+  );
 
   // useEffect(() => {
   //   // Make sure to revoke the data uris to avoid memory leaks, will run on unmount
@@ -90,12 +86,9 @@ const AddProduct = () => {
   //     acceptedFiles.forEach((image) => URL.revokeObjectURL(image.path));
   // }, []);
 
-  const onSubmit = (data: FormValues) => {
-    const fd = new FormData();
-    console.log("data", data);
-    console.log("fd", fd);
-    // customAxios("multipart/form-data").post("/product", fd),
-    alert({ ...data, images: "hi" });
+  const onSubmit = async (data: FormValues) => {
+    const response = await customAxios().post("/product", qs.stringify(Object.assign(data, {images})));
+    if (response.status === 200) alert('success');
   };
 
   return (
@@ -137,7 +130,7 @@ const AddProduct = () => {
 
               <FormControl className="pb-5" isRequired>
                 <FormLabel>Product Description</FormLabel>
-                <Textarea {...register("description")} name="description" />
+                <Input {...register("description")} name="description" />
               </FormControl>
               <FormControl className="pb-5" isRequired>
                 <FormLabel>Rental Cost</FormLabel>
@@ -204,6 +197,7 @@ const AddProduct = () => {
                   <button
                     className="bg-blue-200 p-2 my-5 text-white rounded hover:bg-blue-100 w-full"
                     type="reset"
+                    onClick={() => setImages([])}
                   >
                     Clear
                   </button>
