@@ -81,5 +81,5 @@ export {
   FavoriteContainer,
   OrderSummaryContent,
   CheckoutDetailsCard,
-  CategoryCardListing
+  CategoryCardListing,
 };

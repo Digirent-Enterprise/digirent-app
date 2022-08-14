@@ -6,7 +6,7 @@ function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(" ");
 }
 
- const ContactUsPage = () => {
+const ContactUsPage = () => {
   const [agreed, setAgreed] = useState(false);
 
   return (
