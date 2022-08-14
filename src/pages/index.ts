@@ -45,5 +45,5 @@ export {
   CheckoutPage,
   ContactUsPage,
   UserTransactionDetails,
-  UserTransactionHistory
+  UserTransactionHistory,
 };
