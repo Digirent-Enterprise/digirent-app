@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Flex, Grid, GridItem } from "@chakra-ui/react";
+import { Button, Grid, GridItem } from "@chakra-ui/react";
 import {
   CheckoutDetailsCard,
   OrderSummaryContent,
@@ -48,12 +48,12 @@ const CheckoutPage = () => {
           }}
           className="flex flex-col justify-between"
         >
-            <OrderSummaryContent />
-            <div className="flex flex-row justify-center float-down">
-              <Button width="max-content" colorScheme="red" size="lg">
-                Confirm and Pay
-              </Button>
-            </div>
+          <OrderSummaryContent />
+          <div className="flex flex-row justify-center float-down">
+            <Button width="max-content" colorScheme="red" size="lg">
+              Confirm and Pay
+            </Button>
+          </div>
         </GridItem>
       </Grid>
     </DefaultLayout>
