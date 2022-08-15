@@ -22,4 +22,9 @@ export const getUserErrorSelector = createSelector(
   (error) => error,
 );
 
-export const getEmailFromState = (state: AppState) => state.saveUser.email;
+const getUserInfo = (state: AppState) => state.saveUser;
+
+export const getUserInfoSelector = createSelector(
+  getUserInfo,
+  (error) => error,
+);

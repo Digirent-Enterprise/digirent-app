@@ -21,6 +21,7 @@ import UserEdit from "./User/UserEdit";
 import About from "./About/About";
 import UserTransactionDetails from "./User/UserTransactionDetail";
 import UserTransactionHistory from "./User/UserTransactionHistory";
+import PrivacyPolicy from "./PrivacyPolicy/PrivacyPolicy";
 
 export {
   Home,
@@ -46,4 +47,5 @@ export {
   ContactUsPage,
   UserTransactionDetails,
   UserTransactionHistory,
+  PrivacyPolicy,
 };

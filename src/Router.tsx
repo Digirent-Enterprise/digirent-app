@@ -35,6 +35,8 @@ const ProductSearchPage = lazy(
 );
 const AddProduct = lazy(() => import("./pages/Admin/AddProduct/AddProduct"));
 
+const PrivacyPolicy = lazy(() => import("./pages/PrivacyPolicy/PrivacyPolicy"));
+
 const AppRouter = () => {
   const location = useLocation();
 
@@ -68,6 +70,7 @@ const AppRouter = () => {
           path="user/transaction/details"
           element={<UserTransactionDetails />}
         />
+        <Route path="/privacy" element={<PrivacyPolicy />} />
         {/* Maintain */}
         <Route path="maintain" element={<Maintain />} />
         {/* Contact */}
