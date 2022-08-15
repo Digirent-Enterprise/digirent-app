@@ -42,9 +42,10 @@ html {
 
 /* Swiper */
 
-.swiper {
+.mySwiper {
   width: 100%;
-  height: 100%;
+  height: 600px;
+  margin-top: -12px;
 }
 
 .swiper-slide {
@@ -80,7 +81,7 @@ html {
 
 .swiper-button-prev,
 .swiper-button-next {
-  color: #222 !important;
+  color: #fff !important;
 }
 
 .swiper-pagination-bullet-active {

@@ -7,7 +7,9 @@ import { Pagination, Navigation } from "swiper";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
-import PhoneCategoryBanner from "./CategoryBanner/PhoneCategoryBanner";
+import PhoneCategoryBanner from "./BannerSlide/PhoneBanner";
+import OurStory from "./BannerSlide/OurStory";
+import BannerHero from "./BannerSlide/BannerHero";
 
 const Banner = () => {
   return (
@@ -26,10 +28,14 @@ const Banner = () => {
       className="mySwiper"
     >
       <SwiperSlide>
+        <BannerHero />
+      </SwiperSlide>
+      <SwiperSlide>
+        <OurStory />
+      </SwiperSlide>
+      <SwiperSlide>
         <PhoneCategoryBanner />
       </SwiperSlide>
-      <SwiperSlide>Slide 2</SwiperSlide>
-      <SwiperSlide>Slide 3</SwiperSlide>
     </Swiper>
   );
 };
