@@ -22,11 +22,30 @@ interface Props {
   changeCost: (value: any) => void;
 }
 
+interface CheckboxProps {
+  category: any;
+  checkedCategory: any;
+}
+
+const CategoryCheckbox: React.FC<CheckboxProps> = ({
+  checkedCategory,
+  category,
+}) => {
+  const { id, value, checked } = category;
+  return (
+    <CheckboxGroup colorScheme="green">
+      <Checkbox width={200} isChecked={checked} onChange={() => checkedCategory(id)}>
+        {value}
+      </Checkbox>
+    </CheckboxGroup>
+  );
+};
+
 const FilterPanel: React.FC<Props> = ({
   categories,
   selectedCost,
-  changeChecked,
   changeCost,
+  changeChecked,
 }) => {
   const [showTooltip, setShowTooltip] = useState(false);
 
@@ -34,17 +53,16 @@ const FilterPanel: React.FC<Props> = ({
     <div>
       <Box marginTop={10}>
         {/* Category filter */}
-        <FormControl>
+        <FormControl marginBottom={10}> 
           <FormLabel>Categories</FormLabel>
 
-              <CheckboxGroup colorScheme="green">
-                {categories.map((category: any) => (
-                  <Checkbox key={category.label} onChange={changeChecked} width={200}>
-                    {category.value}
-                  </Checkbox>
-                  
-                ))}
-              </CheckboxGroup>
+          {categories.map((category: any) => (
+            <CategoryCheckbox
+              key={category.id}
+              category={category}
+              checkedCategory={changeChecked}
+            />
+          ))}
         </FormControl>
 
         {/* RentalCost filter */}
