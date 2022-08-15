@@ -15,7 +15,7 @@ const GreetingCard = () => {
           "relative block overflow-hidden bg-center bg-no-repeat bg-cover rounded-xl",
           convertTime < "12:00:00"
             ? "bg-morning"
-            : convertTime < "16:00:00"
+            : convertTime < "19:00:00"
             ? "bg-afternoon"
             : "bg-evening",
         )}

@@ -1,9 +1,4 @@
-import {
-  MostRentalProduct,
-  GreetingCard,
-  Stat,
-  ManageCategory,
-} from "../../../components";
+import { MostRentalProduct, GreetingCard, Stat } from "../../../components";
 import Helmet from "../../../Helmet";
 import DefaultAdminLayout from "../DefaultAdminLayout";
 
@@ -19,7 +14,6 @@ const AdminHome = () => {
       <GreetingCard />
       <Stat />
       <MostRentalProduct />
-      <ManageCategory />
     </DefaultAdminLayout>
   );
 };
