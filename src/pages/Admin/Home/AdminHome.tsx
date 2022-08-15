@@ -1,3 +1,9 @@
+import {
+  MostRentalProduct,
+  GreetingCard,
+  Stat,
+  ManageCategory,
+} from "../../../components";
 import Helmet from "../../../Helmet";
 import DefaultAdminLayout from "../DefaultAdminLayout";
 
@@ -9,7 +15,11 @@ const AdminHome = () => {
         addPostfixTitle
         description="Dashboard for administrator"
       />
-      <div>Hi</div>
+      {/* Greeting */}
+      <GreetingCard />
+      <Stat />
+      <MostRentalProduct />
+      <ManageCategory />
     </DefaultAdminLayout>
   );
 };
