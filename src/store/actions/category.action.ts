@@ -4,7 +4,7 @@ export const setCategories = (payload: any) => {
   return {
     type: SET_CATEGORY,
     payload: {
-      products: payload,
+      categories: payload,
       error: null,
     },
   };

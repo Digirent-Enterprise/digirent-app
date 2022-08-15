@@ -1,3 +1,4 @@
+import React from "react";
 import {
   Button,
   Flex,
@@ -7,7 +8,6 @@ import {
   Stack,
   useColorModeValue,
 } from "@chakra-ui/react";
-// import { SmallCloseIcon } from "@chakra-ui/icons";
 import { UserTab, Transition } from "../../components";
 
 const UserEdit = () => {

@@ -6,6 +6,7 @@ module.exports = {
       current: "currentColor",
       black: "#222",
       white: "#fff",
+      gray: "#777",
       blue: {
         100: "#4169E1",
         200: "#1010AE",
@@ -13,6 +14,7 @@ module.exports = {
       },
       red: "#AE1010",
       green: "#11995B",
+      pink: "#FF385C",
     },
 
     extend: {
@@ -21,5 +23,5 @@ module.exports = {
       }),
     },
   },
-  plugins: [],
+  plugins: [require("@tailwindcss/forms")],
 };

@@ -2,8 +2,8 @@ import React, { useMemo, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import {
-  getAllUsers,
-  getCurrentUser,
+  getAllUsersSelector,
+  getCurrentUserSelector,
 } from "../../../store/selectors/user.selector";
 import { getUsers, getUserDetail } from "../../../store/actions/user.action";
 
@@ -14,8 +14,8 @@ import { UserColumns } from "./Columns";
 const UserManagement = () => {
   const dispatch = useDispatch();
 
-  const userFetchData = useSelector(getAllUsers);
-  const currentUser = useSelector(getCurrentUser);
+  const userFetchData = useSelector(getAllUsersSelector);
+  const currentUser = useSelector(getCurrentUserSelector);
 
   useEffect(() => {
     dispatch(getUserDetail());

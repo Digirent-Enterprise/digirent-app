@@ -13,24 +13,12 @@ import PriceSlider from "../../components/layouts/filters/PriceSlider";
 import ProductListLayout from "../../components/layouts/productCard/productListLayout/productListLayout";
 
 import { getProducts, setProducts } from "../../store/actions/product.action";
-import { getAllProducts } from "../../store/selectors/product.selector";
-import { IProduct } from "../../store/types/product.types";
-import DefaultLayout from "../DefaultLayout";
 
-export const sortByOptions = [
-  {
-    id: "time",
-    name: "Recently updated",
-  },
-  {
-    id: "rents",
-    name: "Most rents",
-  },
-  {
-    id: "views",
-    name: "Most Popular",
-  },
-];
+import { IProduct } from "../../store/types/product.types";
+import { getAllProductsSelector } from "../../store/selectors/product.selector";
+import { sortByOptions } from "../../utils/constants/helper.constant";
+
+import DefaultLayout from "../DefaultLayout";
 
 interface SearchSectionContextValue {
   searchQuery: string;
@@ -97,6 +85,7 @@ const ProductSearchPage = ({
 
   const productFetchData = useSelector(getAllProducts);
   const dispatch = useDispatch();
+
 
   useEffect(() => {
     dispatch(getProducts());

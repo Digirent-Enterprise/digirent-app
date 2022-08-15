@@ -1,9 +1,19 @@
 import { createSelector } from "@reduxjs/toolkit";
 import { AppState } from "../rootReducer";
 
-export const getAllUsers = (state: AppState) => state.user.users;
+const getAllUsers = (state: AppState) => state.user.users;
 
-export const getCurrentUser = (state: AppState) => state.currentUser;
+export const getAllUsersSelector = createSelector(
+  getAllUsers,
+  (error) => error,
+);
+
+const getCurrentUser = (state: AppState) => state.currentUser;
+
+export const getCurrentUserSelector = createSelector(
+  getCurrentUser,
+  (error) => error,
+);
 
 const getUserError = (state: AppState) => state.user.error;
 
