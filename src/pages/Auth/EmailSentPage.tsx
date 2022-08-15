@@ -1,13 +1,17 @@
+// import { useEffect } from "react";
 import { useSelector } from "react-redux";
-import { getEmailFromState } from "../../store/selectors/user.selector";
+import { Transition } from "../../components";
 
 import Helmet from "../../Helmet";
+import { getUserInfoSelector } from "../../store/selectors/user.selector";
 
 const EmailSentPage = () => {
-  const emailState = useSelector(getEmailFromState);
+  const userInfo = useSelector(getUserInfoSelector);
+
+  console.log(userInfo);
 
   return (
-    <>
+    <Transition>
       <Helmet
         title="Email sent"
         addPostfixTitle
@@ -19,7 +23,7 @@ const EmailSentPage = () => {
           <p className="mb-2 text-lg">
             We are glad, that you’re with us ? We’ve sent you a reset link to
             the email address{" "}
-            <span className="font-medium text-[#6366f1]">{emailState}</span>.
+            <span className="font-medium text-[#6366f1]">{userInfo.email}</span>
           </p>
           <a
             href="/login"
@@ -29,7 +33,7 @@ const EmailSentPage = () => {
           </a>
         </div>
       </div>
-    </>
+    </Transition>
   );
 };
 

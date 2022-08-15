@@ -1,26 +1,16 @@
+import { ChakraProvider, extendTheme } from "@chakra-ui/react";
 import React from "react";
 import ReactDOM from "react-dom/client";
-import "./index.css";
 import { Provider } from "react-redux";
-import { ChakraProvider, extendTheme } from "@chakra-ui/react";
 import App from "./App";
-import * as serviceWorkerRegistration from "./serviceWorkerRegistration";
-import reportWebVitals from "./reportWebVitals";
-import store from "./store";
 
 import "./i18n/config";
+import "./index.css";
+import reportWebVitals from "./reportWebVitals";
+import * as serviceWorkerRegistration from "./serviceWorkerRegistration";
+import store from "./store";
 
 const theme = extendTheme({
-  styles: {
-    global: {
-      button: {
-        color: "blue",
-        _hover: {
-          textDecoration: "underline",
-        },
-      },
-    },
-  },
   colors: {
     brand: {
       500: "#4169E1",

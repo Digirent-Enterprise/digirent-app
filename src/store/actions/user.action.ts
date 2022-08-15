@@ -11,9 +11,7 @@ import {
   SET_USER_DETAIL,
   SET_USERS,
   FETCH_USERS_ERROR,
-  SAVE_EMAIL,
-  SAVE_NAME,
-  SAVE_PHONE,
+  SAVE_USER_INFO,
 } from "../types/action.types";
 
 export const setUsers = (payload: IUser[]) => {
@@ -45,21 +43,12 @@ export const getUserDetail = () => {
   };
 };
 
-export const saveName = () => {
+export const saveUserInfo = (payload: string) => {
   return {
-    type: SAVE_NAME,
-  };
-};
-
-export const savePhone = () => {
-  return {
-    type: SAVE_PHONE,
-  };
-};
-
-export const saveEmail = () => {
-  return {
-    type: SAVE_EMAIL,
+    type: SAVE_USER_INFO,
+    payload: {
+      email: payload,
+    },
   };
 };
 

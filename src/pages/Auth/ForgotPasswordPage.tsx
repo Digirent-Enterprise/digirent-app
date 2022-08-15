@@ -1,9 +1,9 @@
-import { useState, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useState } from "react";
+import { useDispatch } from "react-redux";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-// import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import {
   Box,
@@ -18,8 +18,7 @@ import {
 } from "@chakra-ui/react";
 // import { customAxios } from "../../http-common";
 import { AuthFormGrid, Transition } from "../../components";
-import { getEmailFromState } from "../../store/selectors/user.selector";
-import { saveEmail } from "../../store/actions/user.action";
+import { saveUserInfo } from "../../store/actions/user.action";
 import Helmet from "../../Helmet";
 
 interface IFormInputs {
@@ -43,20 +42,18 @@ const ForgotPasswordPage = () => {
 
   const dispatch = useDispatch();
 
-  const emailState = useSelector(getEmailFromState);
-
   const [email, setEmail] = useState("");
 
-  useEffect(() => {
-    if (email) {
-      dispatch(saveEmail());
-      setEmail(email);
-      console.log("email", email);
-    }
-  }, []);
-  // const navigate = useNavigate();
+  // useEffect(() => {
+  //   if (email) {
+  //     dispatch(saveEmail(email));
+  //   }
+  // }, []);
+  const navigate = useNavigate();
 
   const onSubmit = (data: IFormInputs) => {
+    dispatch(saveUserInfo(data.email));
+    navigate("/email-sent");
     // axios("application/x-www-form-urlencoded")
     //   .post("auth/login", data)
     //   .then((res) => {s
@@ -76,7 +73,10 @@ const ForgotPasswordPage = () => {
     //       />;
     //     }
     //   });
-    alert(data.email);
+  };
+
+  const handleSaveEmail = (data: any) => {
+    setEmail(data);
   };
 
   return (
@@ -100,8 +100,8 @@ const ForgotPasswordPage = () => {
                     name="email"
                     placeholder="Enter your email"
                     size="md"
-                    value={emailState}
-                    onChange={(e) => setEmail(e.target.value)}
+                    value={email}
+                    onChange={(e) => handleSaveEmail(e.target.value)}
                   />
                   <FormErrorMessage>{errors?.email?.message}</FormErrorMessage>
                 </FormControl>
@@ -110,7 +110,7 @@ const ForgotPasswordPage = () => {
                   borderRadius={0}
                   type="submit"
                   variant="solid"
-                  colorScheme="brand"
+                  colorScheme="blue"
                   width="full"
                   disabled={!!errors.email}
                 >
