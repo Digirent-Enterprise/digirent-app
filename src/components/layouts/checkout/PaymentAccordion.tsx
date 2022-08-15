@@ -15,15 +15,13 @@ const PaymentAccordion = () => {
         <AccordionItem>
           <h2>
             <AccordionButton>
-              <Box flex="1" textAlign="left" >
+              <Box flex="1" textAlign="left">
                 Transfer through bank account
               </Box>
               <AccordionIcon />
             </AccordionButton>
           </h2>
-          <AccordionPanel pb={4}>
-            Please transfer the cost to
-          </AccordionPanel>
+          <AccordionPanel pb={4}>Please transfer the cost to</AccordionPanel>
         </AccordionItem>
 
         <AccordionItem>
@@ -36,8 +34,10 @@ const PaymentAccordion = () => {
             </AccordionButton>
           </h2>
           <AccordionPanel pb={4}>
-           Please scan this QR to pay
-           <img src="/public/images/momoQR.jpg" alt="" />
+            <div className="flex flex-row justify-between">
+              <div>Please scan this QR to pay</div>
+              <img className="w-1/3" src="/images/momoQR.jpg" alt="" />
+            </div>
           </AccordionPanel>
         </AccordionItem>
       </Accordion>
