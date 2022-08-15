@@ -3,9 +3,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { getProductByID } from "../../../store/actions/product.action";
 import { getProductByID as getProductByIDSel } from "../../../store/selectors/product.selector";
-import GalleryLayout from "./Layout/GalleryLayout";
+import ProductSumaryLayout from "./layout/ProductSumaryLayout";
 
-const GalleryDisplay = () => {
+const ProductSummaryDisplay = () => {
   const dispatch = useDispatch();
   const { id } = useParams();
   console.log(id, "runhere");
@@ -18,7 +18,7 @@ const GalleryDisplay = () => {
     [productByIDFetchData],
   );
 
-  return <GalleryLayout productData={productDataById} />;
+  return <ProductSumaryLayout productData={productDataById} />;
 };
 
-export default GalleryDisplay;
+export default ProductSummaryDisplay;

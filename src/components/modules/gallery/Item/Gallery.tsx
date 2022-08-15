@@ -24,13 +24,16 @@ interface GalleryProps {
   fifthImages?: string;
   images: string[];
 }
+interface ShowAllButtonProps {
+  Images: string[];
+}
 
-const ShowAllButton = (images: string[]) => {
+const ShowAllButton = ({ Images }: ShowAllButtonProps) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   return (
     <Box>
       <Button
-        className=" w-9/12 h-12 relative left-16 bottom-16 rounded-md border-2 border-black bg-white bg-opacity-90 hover:scale-[1.02]"
+        className=" lg:w-11/12 h-12 lg:left-0 lg:bottom-16 sm:right-44 sm:top-48 rounded-md border-2 border-black bg-white bg-opacity-90 hover:scale-[1.02]"
         onClick={onOpen}
       >
         Show all images
@@ -48,13 +51,15 @@ const ShowAllButton = (images: string[]) => {
               modules={[Pagination, Navigation]}
               className="mySwiper"
             >
-              <SwiperSlide>
-                <img
-                  src="https://rukminim1.flixcart.com/image/612/612/kx9as280/tv-entertainment-unit/h/w/v/-original-imag9r2y3n6jzfrz.jpeg?q=70"
-                  alt=""
-                />
-              </SwiperSlide>
-              <SwiperSlide>{images}</SwiperSlide>
+              <div>
+                {Images.map((image, index) => {
+                  return (
+                    <SwiperSlide className="w-full h-full" key={index}>
+                      <img src={image} alt="image slide" />
+                    </SwiperSlide>
+                  );
+                })}
+              </div>
             </Swiper>
           </ModalBody>
         </ModalContent>
@@ -69,20 +74,23 @@ const Gallery = ({
   thirdImages,
   fourthImages,
   fifthImages,
-  images: [],
+  images,
 }: GalleryProps) => {
   return (
-    <div className="w-full flex justify-center">
-      <div className="flex gap-2 w-4/5  ml-52 ">
-        <div className="w-2/4 h-[508px] flex justify-center items-center ">
+    <div className=" w-full flex flex-col justify-center ">
+      <div className=" lg:flex gap-2 w-4/5 h-full lg:ml-52 md:ml-40 sm:ml-40">
+        <div className="lg:w-2/4 h-[500px] flex justify-center items-center ">
           <img
-            className="h-full w-full rounded-l-2xl"
+            className="h-full w-full lg:rounded-l-2xl sm:w-[800px] "
             src={firstImages}
             alt="firstImage"
           />
+          <div className="lg:hidden">
+            <ShowAllButton Images={images} />
+          </div>
         </div>
-        <div className=" w-1/4 h-[500px] gap-2 flex flex-col">
-          <div className=" bg-red-100 h-3/6 ">
+        <div className="w-1/4 sm:hidden h-[500px] lg:flex lg:flex-col gap-2">
+          <div className=" bg-red h-3/6">
             <img
               className="h-full w-full"
               src={secondImages}
@@ -93,25 +101,21 @@ const Gallery = ({
             <img className="h-full w-full" src={thirdImages} alt="thirdImage" />
           </div>
         </div>
-        <div className=" w-1/4 h-[500px] gap-2 flex flex-col">
-          <div className=" bg-yellow-100 h-3/6 rounded-tr-2xl">
+        <div className="w-1/4 sm:hidden lg:visible h-[500px] lg:flex lg:flex-col gap-2">
+          <div className=" bg-blue-100 h-3/6 rounded-tr-2xl ">
             <img
               className="h-full w-full rounded-tr-2xl "
               src={fourthImages}
               alt="fourthImage"
             />
           </div>
-          <div className=" bg-green-100 h-3/6 rounded-br-2xl">
+          <div className=" bg-green h-3/6 rounded-br-2xl flex">
             <img
               className="h-full w-full rounded-br-2xl "
               src={fifthImages}
               alt="fifthImage"
             />
-          </div>
-          <div className="flex flex-col">
-            {/* <ShowAllButton
-                images={images}
-              /> */}
+            <ShowAllButton Images={images} />
           </div>
         </div>
       </div>

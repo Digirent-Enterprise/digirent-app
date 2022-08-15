@@ -1,1 +1,1 @@
-export * from "./BookingBox";
+export * from "./item/BookingBox";

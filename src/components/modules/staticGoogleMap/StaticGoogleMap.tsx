@@ -28,11 +28,11 @@ const StaticGoogleMap = () => {
   }, []);
 
   return isLoaded ? (
-    <div>
+    <div className=" w-full flex justify-center items-center top-10">
       <GoogleMap
         mapContainerStyle={containerStyle}
         center={center}
-        zoom={12}
+        zoom={10}
         onLoad={onLoad}
         onUnmount={onUnmount}
       >

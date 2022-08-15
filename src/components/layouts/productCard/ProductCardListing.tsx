@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { Suspense, useEffect, useMemo } from "react";
 
-import ProductListLayout from "./ProductListLayout/ProductListLayout";
+import ProductListLayout from "./productListLayout/productListLayout";
 
 import { getAllProducts } from "../../../store/selectors/product.selector";
 import { getProducts } from "../../../store/actions/product.action";

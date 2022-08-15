@@ -30,7 +30,7 @@ const ProductListLayout = (props: { products: any }) => {
         {currentItems.map((product: IProduct) => {
           return (
             <ProductCard
-              key={product._id}
+              key={product.id}
               name={product.name}
               // brand={product.brand}
               // image={product.image[0]}
