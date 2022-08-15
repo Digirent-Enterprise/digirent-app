@@ -17,7 +17,6 @@ import {
   CategoryCardListing,
   Stat,
   MostRentalProduct,
-  ManageCategory,
 } from "./elements";
 import {
   AuthFormGrid,
@@ -89,5 +88,4 @@ export {
   GreetingCard,
   Stat,
   MostRentalProduct,
-  ManageCategory,
 };
