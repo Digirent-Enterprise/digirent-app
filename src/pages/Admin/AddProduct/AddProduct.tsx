@@ -11,6 +11,7 @@ import {
   InputGroup,
   InputRightAddon,
   Select,
+  Textarea,
 } from "@chakra-ui/react";
 import qs from "qs";
 import { customAxios } from "../../../http-common";
@@ -100,7 +101,7 @@ const AddProduct = () => {
     <DefaultLayout>
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="pb-10 mx-auto max-w-7xl lg:py-12 lg:px-8">
-          <div className="title text-center">
+          <div className="text-center title">
             <h1>Add Product</h1>
           </div>
 

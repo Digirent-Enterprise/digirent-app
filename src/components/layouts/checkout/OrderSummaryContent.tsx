@@ -1,12 +1,12 @@
-import React, { ReactNode, useState } from "react";
+import React from "react";
 import PaymentAccordion from "./PaymentAccordion";
 
 const OrderSummaryContent = () => {
   const today = `${new Date().toLocaleString()}`;
   return (
     <div className="container flex flex-col grow">
-      <h5 className="text-2xl pb-4">Order Summary</h5>
-      <div className="flex flex-col shrink w-full px-0">
+      <h5 className="pb-4 text-2xl">Order Summary</h5>
+      <div className="flex flex-col w-full px-0 shrink">
         <div className="flex flex-col">
           <div className="md:pt-0 2xl:ps-4">
             <div className="flex flex-col space-y-4">

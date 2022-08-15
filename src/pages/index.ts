@@ -47,4 +47,5 @@ export {
   ContactUsPage,
   UserTransactionDetails,
   UserTransactionHistory,
+  PrivacyPolicy,
 };
