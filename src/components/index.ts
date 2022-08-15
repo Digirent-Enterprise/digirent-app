@@ -44,6 +44,7 @@ import {
   OrderSummaryContent,
   CheckoutDetailsCard,
   GreetingCard,
+  ProductListingCategory,
 } from "./layouts";
 
 export {
@@ -88,4 +89,5 @@ export {
   GreetingCard,
   Stat,
   MostRentalProduct,
+  ProductListingCategory,
 };

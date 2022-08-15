@@ -4,7 +4,7 @@ export const techStack = [
     alt: "react",
     description: "UI Library",
     imageUrl:
-      "https://i.pinimg.com/originals/5c/7b/53/5c7b53a7be1dd267f24f7559584d1345.jpg",
+      "https://discloud-storage.herokuapp.com/file/2857b923fbc13ab9eff245f2200861a7/react.jpg",
     detailUrl: "https://reactjs.org",
   },
   {
@@ -12,21 +12,23 @@ export const techStack = [
     alt: "redux-toolkit",
     description: "State Management",
     imageUrl:
-      "https://bs-uploads.toptal.io/blackfish-uploads/components/blog_post_page/content/cover_image_file/cover_image/885885/retina_1708x683_cover-hot-module-replacement-in-redux-bf1ed2a3c69bd5b7e807c8377070c64d.png",
+      "https://discloud-storage.herokuapp.com/file/5b3edf1dedebbff78432e0438465200b/redux-toolkit.png",
     detailUrl: "https://redux-toolkit.js.org/",
   },
   {
     title: "Redux Saga",
     alt: "redux-saga",
     description: "Redux Middleware",
-    imageUrl: "https://i.morioh.com/00865fc17e.png",
+    imageUrl:
+      "https://discloud-storage.herokuapp.com/file/b6446d87cf3fe21dbc5af328976eb228/saga.jpg",
     detailUrl: "https://redux-saga.js.org/",
   },
   {
     title: "TypeScript",
     alt: "typescript",
     description: "JavaScript with syntax for types",
-    imageUrl: "https://wallpaperaccess.com/full/7990045.png",
+    imageUrl:
+      "https://discloud-storage.herokuapp.com/file/5984a4a8514bd9873f683d2ac739d044/typescript.webp",
     detailUrl: "https://www.typescriptlang.org/",
   },
   {
@@ -34,14 +36,15 @@ export const techStack = [
     alt: "tailwind",
     description: "CSS Framework",
     imageUrl:
-      "https://tailwindcss.com/_next/static/media/tailwindui-small@75.e707dc98eae0f49783f685614470492f.jpg",
+      "https://discloud-storage.herokuapp.com/file/5eb4af998c1ed16d961b5219f63a091a/tailwind.jpg",
     detailUrl: "https://tailwindcss.com",
   },
   {
     title: "Charka UI",
     alt: "charka-ui",
     description: "Component Library",
-    imageUrl: "https://chakra-ui.com/og-image.png",
+    imageUrl:
+      "https://discloud-storage.herokuapp.com/file/8ebb07bbec2c9fa1e76004de66876038/charka.png",
     detailUrl: "https://chakra-ui.com/",
   },
 ];
