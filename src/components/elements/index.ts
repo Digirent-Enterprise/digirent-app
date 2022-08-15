@@ -19,6 +19,9 @@ import UserProfileAvatar from "./User/UserProfileAvatar";
 import UserProfileButton from "./User/UserProfileButton";
 import UserProfileEmail from "./User/UserProfileEmail";
 import UserProfileName from "./User/UserProfileName";
+import Stat from "./Stat/Stat";
+import MostRentalProduct from "./ProductSection/MostRentalProduct/MostRentalProduct";
+import ManageCategory from "./Category/ManageCategory";
 
 export {
   CustomBreadcrumb,
@@ -42,4 +45,7 @@ export {
   Testimonial,
   NewProduct,
   CategoryCardListing,
+  Stat,
+  MostRentalProduct,
+  ManageCategory,
 };
