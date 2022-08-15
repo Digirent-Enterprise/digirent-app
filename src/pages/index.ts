@@ -10,7 +10,6 @@ import ChatViewPage from "./Admin/Chat/ChatViewPage";
 import AdminHome from "./Admin/Home/AdminHome";
 import UserProfile from "./User/UserProfile";
 import ProductManagement from "./Admin/Management/ProductManagement";
-import UserFavorite from "./User/UserFavorite";
 import UserManagement from "./Admin/Management/UserManagement";
 import CheckoutPage from "./Checkout/CheckoutPage";
 import TransactionManagement from "./Admin/Management/TransactionManagement";
@@ -33,7 +32,6 @@ export {
   UserEdit,
   TransactionManagement,
   UserProfile,
-  UserFavorite,
   ProductSearchPage,
   LoginPage,
   RegisterPage,

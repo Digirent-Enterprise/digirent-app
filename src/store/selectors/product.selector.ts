@@ -15,10 +15,3 @@ export const getAllProductsSelector = createSelector(
   getAllProducts,
   (error) => error,
 );
-
-const getFavoriteProducts = (state: AppState) => state.favorites.favorites;
-
-export const getFavoriteProductsSelector = createSelector(
-  getFavoriteProducts,
-  (error) => error,
-);

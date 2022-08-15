@@ -2,8 +2,6 @@ import {
   SET_PRODUCTS,
   GET_PRODUCTS,
   FETCH_PRODUCTS_ERROR,
-  REMOVE_FROM_FAVORITES,
-  ADD_TO_FAVORITES,
 } from "../types/action.types";
 
 import {
@@ -25,22 +23,6 @@ export const setProducts = (payload: IProduct[]) => {
 export const getProducts = () => {
   return {
     type: GET_PRODUCTS,
-  };
-};
-
-export const addToFavorites = (product: any) => {
-  const jsonProduct = JSON.stringify(product);
-  localStorage.setItem(product._id, jsonProduct);
-
-  return { type: ADD_TO_FAVORITES, payload: product };
-};
-
-export const removeFromFavorites = (product: any) => {
-  localStorage.removeItem(product._id);
-
-  return {
-    type: REMOVE_FROM_FAVORITES,
-    payload: product._id,
   };
 };
 
