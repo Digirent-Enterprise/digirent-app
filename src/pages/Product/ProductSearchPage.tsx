@@ -8,13 +8,11 @@ import {
   ProductCardListing,
   Transition,
 } from "../../components";
-import CategoriesFilter from "../../components/layouts/filters/CategoriesFilter";
-import PriceSlider from "../../components/layouts/filters/PriceSlider";
-import ProductListLayout from "../../components/layouts/productCard/productListLayout/productListLayout";
+import FilterPanel from "../../components/layouts/filters/FilterPanel";
+import ProductListLayout from "../../components/layouts/productCard/ProductLayoutList/ProductLayoutList";
 
 import { getProducts, setProducts } from "../../store/actions/product.action";
 
-import { IProduct } from "../../store/types/product.types";
 import { getAllProductsSelector } from "../../store/selectors/product.selector";
 import { sortByOptions } from "../../utils/constants/helper.constant";
 
@@ -83,7 +81,7 @@ const ProductSearchPage = ({
   const [pageLimit, setPageLimit] = useState(requestPageLimit);
   const [isSearching, setIsSearching] = useState(true);
 
-  const productFetchData = useSelector(getAllProducts);
+  const productFetchData = useSelector(getAllProductsSelector);
   const dispatch = useDispatch();
 
 
@@ -95,7 +93,52 @@ const ProductSearchPage = ({
 
   const [productList, setProductList] = useState(productData);
   const [foundProduct, setFoundProduct] = useState(true);
-  const [searchInput, setSearchInput] = useState(""); 
+  const [searchInput, setSearchInput] = useState("");
+
+  const [categories, setCategories] = useState([
+    {
+      value: "Tablets and Cellphones",
+      label: "Tablets and Cellphones",
+      checked: false
+    },
+    {
+      value: "Laptops",
+      label: "Laptops",
+      checked: false
+    },
+    {
+      value: "Cameras",
+      label: "Cameras",
+      checked: false
+    },
+    {
+      value: "Audio",
+      label: "Audio",
+      checked: false
+    },
+    {
+      value: "Gaming and VR",
+      label: "Gaming and VR",
+      checked: false
+    },
+    {
+      value: "E-Mobility",
+      label: "E-Mobility",
+      checked: false
+    },
+    {
+      value: "Wearables",
+      label: "Wearables",
+      checked: false
+    },
+    {
+      value: "Home Entertainment",
+      label: "Home Entertainment",
+      checked: false
+    },
+  ])
+  
+  const [selectedCost, setSelectedCost] = useState([100, 5000])
 
 
   const contextValues = useMemo(
@@ -135,6 +178,18 @@ const ProductSearchPage = ({
     setIsSearching(true);
   };
 
+  const handleChangeChecked = (category: string) => {
+    const categoriesList = categories;
+    const changeChecked = categoriesList.map((item) =>
+      item.value === category ? {...item, checked: !item.checked} : item
+    );
+    setCategories(changeChecked)
+  }
+
+  const handleChangeCost = (value: any) => {
+    setSelectedCost(value);
+  }
+
   // Filter 
   const filters = () => {
     let updatedList = productData;
@@ -145,13 +200,30 @@ const ProductSearchPage = ({
       );
     }
 
+    // Category
+    const categoriesChecked = categories.filter((item) => item.checked).map((item) => item.value.toLowerCase())
+
+    if (categoriesChecked.length) {
+      updatedList = updatedList.filter((item) => 
+        categoriesChecked.includes(item.category)
+      )
+    }
+
+    // Rental Cost
+    const min = selectedCost[0];
+    const max = selectedCost[1];
+
+    updatedList = updatedList.filter((item) => 
+      item.rentalCost >= min && item.rentalCost <= max
+    ) 
+
     setProductList(updatedList);
     !updatedList.length ? setFoundProduct(false) : setFoundProduct(true);
   }
 
   useEffect(() => {
     filters();
-  }, [searchInput])
+  }, [searchInput, categories, selectedCost])
   
   return (
     <Transition>
@@ -184,8 +256,12 @@ const ProductSearchPage = ({
 
         <div className="grid grid-cols-5 pb-10 mx-auto max-w-7xl lg:py-12 lg:px-8">
           <div className="col-span-1">
-            <CategoriesFilter />
-            <PriceSlider />
+            <FilterPanel 
+            selectedCost={selectedCost} 
+            changeCost={handleChangeCost}
+            categories={categories}
+            changeChecked={handleChangeChecked}
+            />
           </div>
           <div className="col-span-4">
             {/* <SearchResultsSection

@@ -8,31 +8,57 @@ import {
   Tooltip,
   FormControl,
   FormLabel,
+  CheckboxGroup,
+  Checkbox,
+  Stack,
 } from "@chakra-ui/react";
 
-const PriceSlider = () => {
-  const [value, setValue] = useState<number[]>([10, 30]);
-  const [showTooltip, setShowTooltip] = useState(false);
+interface Props {
+  // Category Props
+  categories: any;
+  changeChecked: (value: any) => void;
+  // RentalCost Props
+  selectedCost: any;
+  changeCost: (value: any) => void;
+}
 
-  //   const handleChange = (event: Event, newValue: number | number[]) => {
-  //     setValue(newValue as number[]);
-  //   };
+const FilterPanel: React.FC<Props> = ({
+  categories,
+  selectedCost,
+  changeChecked,
+  changeCost,
+}) => {
+  const [showTooltip, setShowTooltip] = useState(false);
 
   return (
     <div>
-      <Box  marginTop={10}>
+      <Box marginTop={10}>
+        {/* Category filter */}
+        <FormControl>
+          <FormLabel>Categories</FormLabel>
+
+              <CheckboxGroup colorScheme="green">
+                {categories.map((category: any) => (
+                  <Checkbox key={category.label} onChange={changeChecked} width={200}>
+                    {category.value}
+                  </Checkbox>
+                  
+                ))}
+              </CheckboxGroup>
+        </FormControl>
+
+        {/* RentalCost filter */}
         <FormControl>
           <FormLabel>Rental Cost</FormLabel>
 
           <RangeSlider
-            min={0}
+            min={100}
             max={5000}
-            aria-label={["min", "max"]}
-            defaultValue={[500, 1500]}
-            onChangeEnd={(val) => setValue(val)}
             focusThumbOnChange={false}
             onMouseEnter={() => setShowTooltip(true)}
             onMouseLeave={() => setShowTooltip(false)}
+            value={selectedCost}
+            onChange={changeCost}
             marginTop={30}
           >
             <RangeSliderTrack>
@@ -45,7 +71,7 @@ const PriceSlider = () => {
               color="white"
               placement="top"
               isOpen={showTooltip}
-              label={`${value[0]}$`}
+              label={`${selectedCost[0]}$`}
             >
               <RangeSliderThumb index={0} />
             </Tooltip>
@@ -56,7 +82,7 @@ const PriceSlider = () => {
               color="white"
               placement="top"
               isOpen={showTooltip}
-              label={`${value[1]}$`}
+              label={`${selectedCost[1]}$`}
             >
               <RangeSliderThumb index={1} />
             </Tooltip>
@@ -67,4 +93,4 @@ const PriceSlider = () => {
   );
 };
 
-export default PriceSlider;
+export default FilterPanel;

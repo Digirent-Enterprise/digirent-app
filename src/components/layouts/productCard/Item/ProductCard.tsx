@@ -14,7 +14,7 @@ interface ProductCardProps {
   name: string;
   brand: string;
   image?: string;
-  rentalCost: string;
+  rentalCost: number;
   rentalCostType?: string;
   theme?: any;
 }

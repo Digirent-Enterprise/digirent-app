@@ -5,9 +5,10 @@ export interface IProduct {
   name: string;
   serial: string;
   brand: string;
+  category: string;
   description: string;
   status: boolean;
-  rentalCost: string;
+  rentalCost: number;
   rentalCostType: string;
   images: string[];
 }
