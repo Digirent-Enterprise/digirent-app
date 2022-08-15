@@ -10,6 +10,7 @@ import {
 } from "../../components";
 import CategoriesFilter from "../../components/layouts/filters/CategoriesFilter";
 import PriceSlider from "../../components/layouts/filters/PriceSlider";
+import ProductListLayout from "../../components/layouts/productCard/productListLayout/productListLayout";
 
 import { getProducts, setProducts } from "../../store/actions/product.action";
 import { getAllProducts } from "../../store/selectors/product.selector";
@@ -94,12 +95,19 @@ const ProductSearchPage = ({
   const [pageLimit, setPageLimit] = useState(requestPageLimit);
   const [isSearching, setIsSearching] = useState(true);
 
-  const productData = useSelector(getAllProducts);
+  const productFetchData = useSelector(getAllProducts);
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getProducts());
   }, []);
+
+  const productData = useMemo(() => productFetchData, [productFetchData]);
+
+  const [productList, setProductList] = useState(productData);
+  const [foundProduct, setFoundProduct] = useState(true);
+  const [searchInput, setSearchInput] = useState(""); 
+
 
   const contextValues = useMemo(
     () => ({
@@ -137,14 +145,34 @@ const ProductSearchPage = ({
   const triggerSearch = () => {
     setIsSearching(true);
   };
+
+  // Filter 
+  const filters = () => {
+    let updatedList = productData;
+    // Search
+    if(searchInput) {
+      updatedList = updatedList.filter(
+        (item) => item.name.toLowerCase().search(searchInput.toLowerCase().trim()) !== -1
+      );
+    }
+
+    setProductList(updatedList);
+    !updatedList.length ? setFoundProduct(false) : setFoundProduct(true);
+  }
+
+  useEffect(() => {
+    filters();
+  }, [searchInput])
   
   return (
     <Transition>
       <DefaultLayout>
         <SearchSectionContext.Provider value={contextValues}>
           <SearchHeaderSection
-            setSearchQuery={setSearchQuery}
-            setIsSearching={setIsSearching}
+            // setSearchQuery={setSearchQuery}
+            // setIsSearching={setIsSearching}
+            searchInput= {searchInput}
+            onChangeInput={(e: any) => setSearchInput(e.target.value)}
           />
           {/* <div className="pb-10 mx-auto max-w-7xl lg:py-12 lg:px-8 lg:grid lg:grid-cols-12 lg:gap-x-5"> */}
           {/* <div
@@ -171,13 +199,13 @@ const ProductSearchPage = ({
             <PriceSlider />
           </div>
           <div className="col-span-4">
-            <SearchResultsSection
+            {/* <SearchResultsSection
               triggerSearch={triggerSearch}
               setIsSearching={setIsSearching}
               setOrderBy={setOrderBy}
               setPageNumber={setPageNumber}
-            />
-            <ProductCardListing />
+            /> */}
+            {foundProduct ? <ProductListLayout products={productList}/> : <p>Failed</p>}
           </div>
         </div>
       </DefaultLayout>
