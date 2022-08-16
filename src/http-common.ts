@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const devURL = "http://localhost:8000/v1/api/";
+const devURL = "https://backend-digirent-rmit-app.herokuapp.com/v1/api/";
 
 export const customAxios = (
   contentType: string = "application/x-www-form-urlencoded",

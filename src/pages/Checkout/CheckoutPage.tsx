@@ -3,7 +3,7 @@ import { Button, Grid, GridItem } from "@chakra-ui/react";
 import {
   CheckoutDetailsCard,
   OrderSummaryContent,
-} from "../../components/index";
+} from "../../components";
 import DefaultLayout from "../DefaultLayout";
 
 const CheckoutPage = () => {

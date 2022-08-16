@@ -8,6 +8,7 @@ import EditTransactionModal from "./modal/Transaction/EditTransactionModal";
 import DeleteUserModal from "./modal/User/DeleteUserModal";
 import EditUserModal from "./modal/User/EditUserModal";
 import { StatusToaster } from "./toaster";
+import { GalleryDisplay } from "./gallery";
 
 export {
   DeleteUserModal,
@@ -20,4 +21,5 @@ export {
   AuthFormGrid,
   BackToPreviousPage,
   LanguageSwitcher,
+  GalleryDisplay,
 };
