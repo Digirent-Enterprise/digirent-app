@@ -12,6 +12,7 @@ interface ProductCardProps {
 const ProductCard = ({
   name,
   image,
+  brand,
   rentalCost,
   rentalCostType,
 }: ProductCardProps) => {

@@ -44,8 +44,11 @@ const UserProfile = () => {
               alignContent="center"
               justifyContent="center"
             >
-              <UserProfileButton directUrl="/" userButtonItem="Hello" />
-              <UserProfileButton directUrl="/" userButtonItem="Edit" />
+              <UserProfileButton
+                directUrl="/"
+                userButtonItem="Change your password"
+              />
+              <UserProfileButton directUrl="/user/:id/edit" userButtonItem="Edit" />
             </Stack>
             <Stack
               mt={8}
@@ -73,14 +76,11 @@ const UserProfile = () => {
                 fontSize="sm"
                 rounded="full"
                 alignItems="center"
-                bg="red.400"
+                bg="#FF385C"
                 color="white"
                 boxShadow="0px 1px 25px -5px rgb(66 153 225 / 48%), 0 10px 10px -5px rgb(66 153 225 / 43%)"
                 _hover={{
-                  bg: "red.500",
-                }}
-                _focus={{
-                  bg: "blue.500",
+                  bg: "#AE1010",
                 }}
               >
                 Deactivate account
