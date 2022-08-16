@@ -1,4 +1,5 @@
 import ProductSearchPage from "./Product/ProductSearchPage";
+import ProductDetailsPage from "./Product/ProductDetailsPage";
 import LoginPage from "./Auth/LoginPage";
 import RegisterPage from "./Auth/RegisterPage";
 import Maintain from "./Maintain/Maintain";
@@ -34,6 +35,7 @@ export {
   TransactionManagement,
   UserProfile,
   ProductSearchPage,
+  ProductDetailsPage,
   LoginPage,
   RegisterPage,
   Maintain,

@@ -1,8 +1,19 @@
-import { SET_PRODUCTS } from "../types/action.types";
+import { SET_PRODUCTS, SET_PRODUCT_BY_ID } from "../types/action.types";
 
 import { ProductActions, ProductState } from "../types/product.types";
 
 const initialState: ProductState = {
+  product: {
+    id: "",
+    name: "",
+    serial: "",
+    brand: "",
+    description: "",
+    status: false,
+    rentalCost: "",
+    rentalCostType: "",
+    images: [],
+  },
   pending: false,
   products: [],
   error: null,
@@ -15,6 +26,12 @@ const ProductReducer = (state = initialState, action: ProductActions) => {
         ...state,
         pending: false,
         products: action.payload.products,
+      };
+    case SET_PRODUCT_BY_ID:
+      return {
+        ...state,
+        pending: false,
+        product: action.payload.product,
       };
     default:
       return state;

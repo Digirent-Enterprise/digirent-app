@@ -19,6 +19,8 @@ import {
   UserTransactionDetails,
   UserTransactionHistory,
   UserEdit,
+  ProductDetailsPage,
+  PrivacyPolicy,
   UserViewInfo,
 } from "./pages";
 
@@ -52,8 +54,8 @@ const AppRouter = () => {
         <Route path="email-sent" element={<EmailSentPage />} />
         <Route path="forgot-password" element={<ForgotPasswordPage />} />
         {/* Product */}
-        <Route path="products" element={<ProductSearchPage />} />
-        <Route path="product/:id" />
+        <Route path="products" />
+        <Route path="product/:id" element={<ProductDetailsPage />} />
         {/* Payment */}
         <Route path="checkout/:id" element={<CheckoutPage />} />
         <Route path="checkout-success/:id" />

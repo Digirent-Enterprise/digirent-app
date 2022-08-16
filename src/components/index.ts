@@ -28,6 +28,7 @@ import {
   EditTransactionModal,
   EditUserModal,
   LanguageSwitcher,
+  GalleryDisplay,
   StatusToaster,
 } from "./modules";
 import {
@@ -83,6 +84,7 @@ export {
   ProductCardListing,
   OrderSummaryContent,
   CheckoutDetailsCard,
+  GalleryDisplay,
   CategoryCardListing,
   GreetingCard,
   Stat,
