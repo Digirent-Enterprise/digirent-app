@@ -8,6 +8,7 @@ import {
   ProductCardListing,
   Transition,
 } from "../../components";
+import NotFoundProduct from "../../components/layouts/NotFoundResult/NotFoundProduct";
 import FilterPanel from "../../components/layouts/filters/FilterPanel";
 import ProductsListing from "../../components/layouts/productCard/ProductCardListing";
 import ProductListLayout from "../../components/layouts/productCard/ProductLayoutList/ProductLayoutList";
@@ -281,7 +282,9 @@ const ProductSearchPage = () =>
               {foundProduct ? (
                 <ProductListLayout products={productList} />
               ) : (
-                <p>Failed</p>
+                <div className="flex justify-center text-center font-bold text-5xl">
+                  <NotFoundProduct />
+                </div>
               )}
             </div>
           </div>
