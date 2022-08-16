@@ -10,7 +10,6 @@
     "@emotion/styled": "^11.10.0",
     "@hookform/error-message": "^2.0.0",
     "@hookform/resolvers": "^2.9.7",
-    "@ionic/react": "^6.2.2",
     "@react-google-maps/api": "^2.12.1",
     "@reduxjs/toolkit": "^1.8.3",
     "@tailwindcss/forms": "^0.5.2",
