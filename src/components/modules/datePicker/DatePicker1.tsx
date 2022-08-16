@@ -18,7 +18,7 @@ export const DatePicker1: React.FC<IDatePickerProps> = ({
   const [shownDate1, setShownDate1] = useState(selectedDate1.clone());
 
   return (
-    <div className=" shadow-[0px_3px_8px_rgba(0,0,0,0.24)] p-[8px] rounded-lg w-[18%] min-w-[220px]">
+    <div className=" shadow-[0px_3px_8px_rgba(0,0,0,0.24)] p-[8px] rounded-lg min-w-[220px]">
       <DatePickerSelector1
         shownDate={shownDate1}
         setShownDate={setShownDate1}

@@ -2,7 +2,7 @@ import Gallery from "../Item/Gallery";
 
 const GalleryLayout = ({ productData }: any) => {
   return (
-    <div>
+    <div className="w-full">
       <Gallery
         firstImages={productData.images[0]}
         secondImages={productData.images[1]}

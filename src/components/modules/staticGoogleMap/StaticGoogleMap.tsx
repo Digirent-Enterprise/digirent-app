@@ -2,7 +2,7 @@ import React from "react";
 import { GoogleMap, useJsApiLoader, Marker } from "@react-google-maps/api";
 
 const containerStyle = {
-  width: "1000px",
+  width: "1500px",
   height: "500px",
 };
 
@@ -14,7 +14,7 @@ const center = {
 const StaticGoogleMap = () => {
   const { isLoaded } = useJsApiLoader({
     id: "google-map-script",
-    googleMapsApiKey: "AIzaSyBo6VnpvDsGMociDgEQ4FE6R5CTVfRR9p4",
+    googleMapsApiKey: "AIzaSyAQmnKgfgBXhdrGOYZcitzuHusg2RH-zxw",
   });
   const [map, setMap] = React.useState(null);
   const onLoad = React.useCallback(function callback(map: any) {
@@ -28,7 +28,7 @@ const StaticGoogleMap = () => {
   }, []);
 
   return isLoaded ? (
-    <div className=" w-full flex justify-center items-center top-10">
+    <div className="flex justify-center items-center top-10">
       <GoogleMap
         mapContainerStyle={containerStyle}
         center={center}

@@ -21,6 +21,8 @@ import {
   UserTransactionDetails,
   UserTransactionHistory,
   UserEdit,
+  ProductDetailsPage,
+  PrivacyPolicy,
 } from "./pages";
 
 // import PrivateRoute from "./components/PrivateRoute";

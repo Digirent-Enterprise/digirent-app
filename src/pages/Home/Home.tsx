@@ -1,12 +1,12 @@
 import {
   Banner,
-  CategoryCardListing,
   CTA,
   FeatureProduct,
   NewProduct,
   ProductProgressBar,
   Testimonial,
 } from "../../components";
+import { CategoryCardListing } from "../../components/elements";
 import Helmet from "../../Helmet";
 import DefaultLayout from "../DefaultLayout";
 

@@ -45,21 +45,21 @@ const ShowAllButton = ({ Images }: ShowAllButtonProps) => {
           <ModalBody>
             <Swiper
               pagination={{
+                enabled: true,
                 type: "fraction",
               }}
+              loop
               navigation
               modules={[Pagination, Navigation]}
-              className="mySwiper"
+              className="mt-10 w-full"
             >
-              <div>
-                {Images.map((image, index) => {
-                  return (
-                    <SwiperSlide className="w-full h-full" key={index}>
-                      <img src={image} alt="image slide" />
-                    </SwiperSlide>
-                  );
-                })}
-              </div>
+              {Images.map((image, index) => {
+                return (
+                  <SwiperSlide className="lg:h-[800px] w-screen " key={index}>
+                    <img src={image} alt="image slide" />
+                  </SwiperSlide>
+                );
+              })}
             </Swiper>
           </ModalBody>
         </ModalContent>
@@ -77,19 +77,19 @@ const Gallery = ({
   images,
 }: GalleryProps) => {
   return (
-    <div className=" w-full flex flex-col justify-center ">
-      <div className=" lg:flex gap-2 w-4/5 h-full lg:ml-52 md:ml-40 sm:ml-40">
-        <div className="lg:w-2/4 h-[500px] flex justify-center items-center ">
+    <div className="w-full flex flex-col justify-center lg:items-center ">
+      <div className="lg:flex gap-2 w-4/5 h-full ">
+        <div className="lg:w-2/4 sm:w-screen flex items-center">
           <img
-            className="h-full w-full lg:rounded-l-2xl sm:w-[800px] "
+            className="w-full h-full lg:rounded-l-2xl "
             src={firstImages}
             alt="firstImage"
           />
-          <div className="lg:hidden">
+          <div className="sm:mb-20 md:mt-28 lg:hidden">
             <ShowAllButton Images={images} />
           </div>
         </div>
-        <div className="w-1/4 sm:hidden h-[500px] lg:flex lg:flex-col gap-2">
+        <div className="w-1/4 sm:hidden md:hidden h-[500px] lg:flex lg:flex-col gap-2">
           <div className=" bg-red h-3/6">
             <img
               className="h-full w-full"
@@ -101,7 +101,7 @@ const Gallery = ({
             <img className="h-full w-full" src={thirdImages} alt="thirdImage" />
           </div>
         </div>
-        <div className="w-1/4 sm:hidden lg:visible h-[500px] lg:flex lg:flex-col gap-2">
+        <div className="w-1/4 sm:hidden md:hidden lg:visible h-[500px] lg:flex lg:flex-col gap-2">
           <div className=" bg-blue-100 h-3/6 rounded-tr-2xl ">
             <img
               className="h-full w-full rounded-tr-2xl "
@@ -119,6 +119,7 @@ const Gallery = ({
           </div>
         </div>
       </div>
+      
     </div>
   );
 };

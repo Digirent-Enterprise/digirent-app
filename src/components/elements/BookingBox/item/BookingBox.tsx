@@ -1,4 +1,12 @@
 import React from "react";
+import {
+  Accordion,
+  AccordionItem,
+  AccordionButton,
+  AccordionPanel,
+  AccordionIcon,
+  Box,
+} from '@chakra-ui/react'
 
 interface BookingBoxProps {
   price: number;
@@ -11,17 +19,19 @@ const BookingBox: React.FC<BookingBoxProps> = ({
   price,
   borrow,
   returnDate,
-  totalPrice,
   rentalCost,
+  totalPrice,
+  
 }) => {
+  
   return (
-    <div className="flex flex-col">
-      <div className="lg:h-[350px] w-[300px] rounded-3xl bg-white flex flex-col drop-shadow-[0px_10px_10px_rgba(0,0,0,0.25)]">
+    <div className="flex flex-col ">
+      <div className=" w-[300px] rounded-3xl bg-white flex flex-col drop-shadow-[0px_10px_10px_rgba(0,0,0,0.25)]">
         <div className="w-[150px]] flex justify-left ml-7 mt-5 mb-4 gap-1 text-lg ">
           <b>{price}</b>
           <b>VND</b>/month
         </div>
-        <div className="flex justify-center w-[90%]">
+        <div className="flex w-[90%] justify-center items-center ml-4">
           <div className="bg-white w-[50%] h-[60px] flex flex-col rounded-l-xl text-center justify-center border-[1px] border-black ">
             <div>
               <b>Borrow Date:</b>
@@ -40,24 +50,26 @@ const BookingBox: React.FC<BookingBoxProps> = ({
             Rent
           </button>
         </div>
-        <div className="mt-8 ml-7">
-          <label
-            htmlFor="costSelect"
-            className="font-bold underline float-none"
-          >
-            Show cost details
-          </label>
-          <select name="" id="costSelect" className="h-[25px] float-none w-5">
-            <option value="1" disabled>
-              {"Rental: " + rentalCost}
-            </option>
-            <option value="2" disabled>
-              {"Price: " + price}
-            </option>
-          </select>
+        <div className="mt-8">
+          <Accordion defaultIndex={[0]} allowMultiple>
+            <AccordionItem>
+              <h2>
+                <AccordionButton>
+                  <Box flex='1' textAlign='left'>
+                    <b>Show cost details</b>
+                  </Box>
+                  <AccordionIcon />
+                </AccordionButton>
+              </h2>
+              <AccordionPanel pb={4}>
+                    Deposit: VND
+                    <br/>
+                    Rental: {rentalCost}VND
+              </AccordionPanel>
+            </AccordionItem>
+          </Accordion>
         </div>
-        <hr className="w-full mt-10 " />
-        <div className=" mt-3">
+        <div className=" mt-3 mb-3">
           <div className="float-left ml-6 font-bold">Total cost</div>
           <div className="float-right mr-6 font-bold">{totalPrice} VND</div>
         </div>
