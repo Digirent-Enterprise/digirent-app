@@ -4,12 +4,14 @@ export const SET_PRODUCT_BY_ID = "SET_PRODUCT_BY_ID";
 export const SET_USERS = "SET_USERS";
 export const SET_TRANSACTIONS = "SET_TRANSACTIONS";
 export const SET_USER_DETAIL = "SET_USER_DETAIL";
+export const SET_CATEGORY = "SET_CATEGORY";
 
 // getters
 export const GET_PRODUCTS = "GET_PRODUCTS";
 export const GET_USERS = "GET_USERS";
 export const GET_TRANSACTIONS = "GET_TRANSACTIONS";
 export const GET_USER_DETAIL = "GET_USER_DETAIL";
+export const GET_CATEGORY = "GET_CATEGORY";
 export const GET_PRODUCT_BY_ID = "GET_PRODUCT_BY_ID";
 
 // errors
@@ -20,8 +22,6 @@ export const FETCH_TRANSACTIONS_ERROR = "FETCH_TRANSACTIONS_ERROR";
 export const ADD_TO_FAVORITES = "ADD_FAVORITE";
 export const REMOVE_FROM_FAVORITES = "REMOVE_FROM_FAVORITES";
 
-export const SAVE_NAME = "SAVE_NAME";
-export const SAVE_PHONE = "SAVE_PHONE";
-export const SAVE_EMAIL = "SAVE_EMAIL";
+export const SAVE_USER_INFO = "SAVE_USER_INFO";
 
 export const FETCH_PRODUCT_BY_ID_ERROR = "FETCH_PRODUCT_BY_ID_ERROR";

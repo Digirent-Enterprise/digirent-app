@@ -107,9 +107,15 @@ const DefaultManagement = ({
       </h1>
       <div className="flex justify-between">
         <div className="p-2">
-          <Button leftIcon={<BiExport />}>
+          <Button
+            leftIcon={
+              <div className="text-black">
+                <BiExport />
+              </div>
+            }
+          >
             <CSVLink data={dataProps} headers={headers} filename={filename}>
-              Export CSV
+              <span className="text-black">Export CSV</span>
             </CSVLink>
           </Button>
         </div>

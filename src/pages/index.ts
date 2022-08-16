@@ -13,16 +13,25 @@ import UserProfile from "./User/UserProfile";
 import ProductManagement from "./Admin/Management/ProductManagement";
 import UserFavorite from "./User/UserFavorite";
 import UserManagement from "./Admin/Management/UserManagement";
+import CheckoutPage from "./Checkout/CheckoutPage";
 import TransactionManagement from "./Admin/Management/TransactionManagement";
 import EmailSentPage from "./Auth/EmailSentPage";
 import AddProduct from "./Admin/AddProduct/AddProduct";
+import ContactUsPage from "./Contact/ContactUsPage";
+import UserEdit from "./User/UserEdit";
+import About from "./About/About";
+import UserTransactionDetails from "./User/UserTransactionDetail";
+import UserTransactionHistory from "./User/UserTransactionHistory";
+import PrivacyPolicy from "./PrivacyPolicy/PrivacyPolicy";
 
 export {
   Home,
+  About,
   AdminHome,
   AddProduct,
   ProductManagement,
   UserManagement,
+  UserEdit,
   TransactionManagement,
   UserProfile,
   UserFavorite,
@@ -36,4 +45,9 @@ export {
   ForgotPasswordPage,
   EmailSentPage,
   ChatViewPage,
+  CheckoutPage,
+  ContactUsPage,
+  UserTransactionDetails,
+  UserTransactionHistory,
+  PrivacyPolicy,
 };

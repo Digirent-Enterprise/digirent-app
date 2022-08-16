@@ -10,7 +10,6 @@ export const getProductErrorSelector = createSelector(
 );
 
 export const getAllProducts = (state: AppState) => state.product.products;
-export const getProductByID = (state: AppState) => state.product.product;
 
 export const getFavoriteProducts = (state: AppState) =>
   state.favorites.favorites;

@@ -15,30 +15,35 @@ import {
   UserFavorite,
   UserManagement,
   TransactionManagement,
+  CheckoutPage,
   EmailSentPage,
+  ContactUsPage,
+  UserTransactionDetails,
+  UserTransactionHistory,
+  UserEdit,
 } from "./pages";
 
-import PrivateRoute from "./components/PrivateRoute";
+// import PrivateRoute from "./components/PrivateRoute";
 
-import { AdminPermission } from "./utils/constants/permission.constants";
+// import { AdminPermission } from "./utils/constants/permission.constants";
+import { BackToTop } from "./components";
 
 const Home = lazy(() => import("./pages/Home/Home"));
+const About = lazy(() => import("./pages/About/About"));
 const ProductSearchPage = lazy(
   () => import("./pages/Product/ProductSearchPage"),
 );
 const AddProduct = lazy(() => import("./pages/Admin/AddProduct/AddProduct"));
-
-const ProductDetailsPage = lazy(
-  () => import("./pages/Product/ProductDetailsPage"),
-);
 
 const AppRouter = () => {
   const location = useLocation();
 
   return (
     <AnimatePresence exitBeforeEnter>
+      <BackToTop />
       <Routes key={location.pathname} location={location}>
         <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
         <Route path="login" element={<LoginPage />} />
         <Route path="register" element={<RegisterPage />} />
         <Route path="reset-password" element={<ResetPasswordPage />} />
@@ -48,25 +53,33 @@ const AppRouter = () => {
         <Route path="products" />
         <Route path="product/:id" element={<ProductDetailsPage />} />
         {/* Payment */}
-        <Route path="checkout/:id" />
+        <Route path="checkout/:id" element={<CheckoutPage />} />
         <Route path="checkout-success/:id" />
         {/* Users */}
         <Route path="users" />
         <Route path="users/:id" />
         <Route path="user/profile" element={<UserProfile />} />
         <Route path="user/favorite" element={<UserFavorite />} />
-        <Route path="user/:id/edit" />
+        <Route path="user/edit" element={<UserEdit />} />
         <Route path="user/:id/deactivate" />
         <Route path="user/:id/change-password" />
+        <Route path="user/transaction" element={<UserTransactionHistory />} />
+        <Route
+          path="user/transaction/details"
+          element={<UserTransactionDetails />}
+        />
+        <Route path="/privacy" element={<PrivacyPolicy />} />
         {/* Maintain */}
         <Route path="maintain" element={<Maintain />} />
+        {/* Contact */}
+        <Route path="contact" element={<ContactUsPage />} />
         {/* Admin */}
         <Route
           path="admin"
           element={
-            <PrivateRoute permission={AdminPermission}>
-              <AdminHome />
-            </PrivateRoute>
+            // <PrivateRoute permission={AdminPermission}>
+            <AdminHome />
+            // </PrivateRoute>
           }
         />
         {/* User management */}
@@ -75,6 +88,7 @@ const AppRouter = () => {
           element={
             // <PrivateRoute permission={AdminPermission}>
             <UserManagement />
+            // </PrivateRoute>
           }
         />
         <Route path="admin/users/:id/edit" />
@@ -85,9 +99,17 @@ const AppRouter = () => {
           element={
             // <PrivateRoute permission={AdminPermission}>
             <ProductManagement />
+            // </PrivateRoute>
           }
         />
-        <Route path="admin/add-product" element={<AddProduct />} />
+        <Route
+          path="admin/add-product"
+          element={
+            // <PrivateRoute permission={AdminPermission}>
+            <AddProduct />
+            // </PrivateRoute>
+          }
+        />
         <Route path="admin/product/:id" />
         <Route path="admin/products/:id/edit" />
         <Route path="admin/products/:id/delete" />
@@ -97,6 +119,7 @@ const AppRouter = () => {
           element={
             // <PrivateRoute permission={AdminPermission}>
             <TransactionManagement />
+            // </PrivateRoute>
           }
         />
         <Route path="admin/transactions/:id/edit" />
