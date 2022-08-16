@@ -30,7 +30,6 @@ import {
   EditUserModal,
   LanguageSwitcher,
   GalleryDisplay,
-  StatusToaster,
   StaticGoogleMap,
   ProductSummaryDisplay,
 } from "./modules";
@@ -70,7 +69,6 @@ export {
   BackToPreviousPage,
   LanguageSwitcher,
   Transition,
-  StatusToaster,
   AuthFormGrid,
   DeleteProductModal,
   DeleteTransactionModal,
