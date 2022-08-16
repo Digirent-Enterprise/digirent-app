@@ -1,6 +1,6 @@
 const BannerHero = () => {
   return (
-    <section className="w-full h-full text-white bg-banner">
+    <section className="w-full h-full text-white bg-banner bg-no-repeat bg-cover">
       <div className="max-w-screen-xl px-4 py-32 mx-auto lg:items-center lg:flex">
         <div className="max-w-3xl mx-auto text-center">
           <h1 className="text-3xl font-extrabold text-transparent sm:text-5xl bg-clip-text bg-gradient-to-r from-[#86efac] via-blue-200 to-[#9333ea]">
