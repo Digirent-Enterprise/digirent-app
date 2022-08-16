@@ -21,6 +21,7 @@ import About from "./About/About";
 import UserTransactionDetails from "./User/UserTransactionDetail";
 import UserTransactionHistory from "./User/UserTransactionHistory";
 import PrivacyPolicy from "./PrivacyPolicy/PrivacyPolicy";
+import UserViewInfo from "./User/UserViewInfo";
 
 export {
   Home,
@@ -46,4 +47,5 @@ export {
   UserTransactionDetails,
   UserTransactionHistory,
   PrivacyPolicy,
+  UserViewInfo,
 };
