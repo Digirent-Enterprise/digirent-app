@@ -53,30 +53,22 @@ const UserEdit = () => {
         <UserTab />
         <Flex minH="70vh" align="center" justify="center" bg="#fff">
           <Box
-    
             w="full"
             maxW="700px"
             bg={useColorModeValue("#fff", "#777")}
             rounded="xl"
             p={6}
             my={12}
-          
           >
             <form onSubmit={handleSubmit(onSubmit)}>
-              <FormControl className="flex justify-center items-center">
-                <FormLabel fontSize="3xl" mb="30px" className="p-auto">
-                  <Text>Edit Your Profile</Text>
-                </FormLabel>
-              </FormControl>
-
               <Link to="/user/:id/profile">
                 <div className="flex">
                   <AiOutlineArrowLeft
                     color="#4169E1"
                     className="mx-2 text-3xl"
                   />
-                  <Text color="#4169E1" className="mb-1 mx-2 text-lg">
-                    Return to profile infos
+                  <Text color="#4169E1" className="mb-10 mx-2 text-lg">
+                    Return to profile info
                   </Text>
                 </div>
               </Link>
@@ -136,7 +128,7 @@ const UserEdit = () => {
                 spacing={6}
                 direction={["column", "row"]}
                 py="20px"
-                className="flex justify-center items-center"
+                className="flex"
               >
                 <Button
                   bg="#4169E1"
@@ -147,7 +139,7 @@ const UserEdit = () => {
                   }}
                   type="submit"
                 >
-                  Submit
+                  Edit
                 </Button>
               </Stack>
             </form>
