@@ -8,7 +8,6 @@ import GalleryLayout from "./Layout/GalleryLayout";
 const GalleryDisplay = () => {
   const dispatch = useDispatch();
   const { id } = useParams();
-  console.log(id, "runhere");
   const productByIDFetchData = useSelector(getProductByIDSel);
   useEffect(() => {
     if (id) dispatch(getProductByID(id));

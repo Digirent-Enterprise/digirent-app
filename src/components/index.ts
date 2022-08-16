@@ -17,6 +17,7 @@ import {
   CategoryCardListing,
   Stat,
   MostRentalProduct,
+  BookingBoxDisplay,
 } from "./elements";
 import {
   AuthFormGrid,
@@ -30,6 +31,8 @@ import {
   LanguageSwitcher,
   GalleryDisplay,
   StatusToaster,
+  StaticGoogleMap,
+  ProductSummaryDisplay,
 } from "./modules";
 import {
   NavBar,
@@ -90,4 +93,7 @@ export {
   Stat,
   MostRentalProduct,
   ProductListingCategory,
+  StaticGoogleMap,
+  BookingBoxDisplay,
+  ProductSummaryDisplay,
 };

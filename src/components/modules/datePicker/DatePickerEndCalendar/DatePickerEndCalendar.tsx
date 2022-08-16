@@ -3,15 +3,15 @@ import { Dayjs } from "dayjs";
 import clsx from "clsx";
 
 import { getCalendarRows } from "../../../../utils/formatCalendar";
-import "./DatePickerCalendar.css";
+import "./DatePickerEndCalendar.css";
 
-export interface IDatePickerCalendarProps {
+interface IDatePickerCalendarProps {
   shownDate: Dayjs;
   selectedDate: Dayjs;
   onChange: (newDate: Dayjs) => void;
 }
 
-export const DatePickerCalendar2 = ({
+const DatePickerEndCalendar = ({
   shownDate,
   selectedDate,
   onChange,
@@ -46,6 +46,7 @@ export const DatePickerCalendar2 = ({
                 },
               )}
               onClick={handleSelectDate(value)}
+              aria-hidden="true"
             >
               {text}
             </div>
@@ -55,3 +56,5 @@ export const DatePickerCalendar2 = ({
     </>
   );
 };
+
+export default DatePickerEndCalendar;

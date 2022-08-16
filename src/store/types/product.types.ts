@@ -1,5 +1,7 @@
-import { FETCH_PRODUCTS_ERROR } from "./action.types";
-import { FETCH_PRODUCT_BY_ID_ERROR } from "./action.types";
+import {
+  FETCH_PRODUCTS_ERROR,
+  FETCH_PRODUCT_BY_ID_ERROR,
+} from "./action.types";
 
 export interface IProduct {
   id: string;

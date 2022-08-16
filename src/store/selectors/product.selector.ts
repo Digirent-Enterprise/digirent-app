@@ -16,4 +16,3 @@ export const getAllProductsSelector = createSelector(
   getAllProducts,
   (error) => error,
 );
-<<<<<<< HEAD

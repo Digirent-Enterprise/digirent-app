@@ -3,15 +3,15 @@ import { Dayjs } from "dayjs";
 import clsx from "clsx";
 
 import { getCalendarRows } from "../../../../utils/formatCalendar";
-import "./DatePickerCalendar.css";
+import "./DatePickerStartCalendar.css";
 
-export interface IDatePickerCalendarProps {
+interface IDatePickerCalendarProps {
   shownDate: Dayjs;
   selectedDate: Dayjs;
   onChange: (newDate: Dayjs) => void;
 }
 
-export const DatePickerCalendar1 = ({
+const DatePickerStartCalendar = ({
   shownDate,
   selectedDate,
   onChange,
@@ -31,7 +31,6 @@ export const DatePickerCalendar1 = ({
           </div>
         ))}
       </div>
-
       {rows.map((cells, rowIndex) => (
         <div key={rowIndex} className="DatePickerCalendar__row">
           {cells.map(({ text, value }, i) => (
@@ -46,6 +45,7 @@ export const DatePickerCalendar1 = ({
                 },
               )}
               onClick={handleSelectDate(value)}
+              aria-hidden="true"
             >
               {text}
             </div>
@@ -55,3 +55,5 @@ export const DatePickerCalendar1 = ({
     </>
   );
 };
+
+export default DatePickerStartCalendar;

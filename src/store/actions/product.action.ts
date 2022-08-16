@@ -48,22 +48,6 @@ export const getProductByID = (id: string) => {
   };
 };
 
-export const addToFavorites = (product: any) => {
-  const jsonProduct = JSON.stringify(product);
-  localStorage.setItem(product._id, jsonProduct);
-
-  return { type: ADD_TO_FAVORITES, payload: product };
-};
-
-export const removeFromFavorites = (product: any) => {
-  localStorage.removeItem(product._id);
-
-  return {
-    type: REMOVE_FROM_FAVORITES,
-    payload: product._id,
-  };
-};
-
 export const fetchProductsError = (
   payload: FetchProductErrorPayload,
 ): FetchProductError => ({

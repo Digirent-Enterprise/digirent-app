@@ -12,7 +12,6 @@ interface ProductCardProps {
 const ProductCard = ({
   name,
   image,
-  brand,
   rentalCost,
   rentalCostType,
 }: ProductCardProps) => {
@@ -23,11 +22,11 @@ const ProductCard = ({
   };
 
   return (
-    <div className="card overflow-hidden w-full aspect-w-1 aspect-h-1 shadow-md rounded-lg flex-col col-span-1 cursor-pointer transition-transform hover:scale-105 my-5 mx-5 xl:aspect-w-7 xl:aspect-h-8">
-      <img src={image} alt="pictures" className="h-52 w-64 object-cover" />
+    <div className="flex-col w-full col-span-1 mx-5 my-5 overflow-hidden transition-transform rounded-lg shadow-md cursor-pointer card aspect-w-1 aspect-h-1 hover:scale-105 xl:aspect-w-7 xl:aspect-h-8">
+      <img src={image} alt="pictures" className="object-cover w-64 h-52" />
       <button
         type="submit"
-        className="text-black bg-white float-right relative bottom-52 right-0 flex justify-center p-3"
+        className="relative right-0 flex justify-center float-right p-3 text-black bg-white bottom-52"
         onClick={handleAddToFavourite}
       >
         {!like ? (
@@ -36,13 +35,13 @@ const ProductCard = ({
           <AiFillHeart size="30" fill="red" />
         )}
       </button>
-      <div className="card-content p-5">
-        <p className="font-bold text-lg text-transform: uppercase">{name}</p>
+      <div className="p-5 card-content">
+        <p className="text-lg font-bold uppercase text-transform:">{name}</p>
         <h4 className="font-bold">
           {/* Type: Day, Month, Year */}
           {rentalCost}$/{rentalCostType}
         </h4>
-        <div className="rating flex items-center mt-1">
+        <div className="flex items-center mt-1 rating">
           <Rating />
         </div>
       </div>
