@@ -30,7 +30,7 @@ const StaticGoogleMap = () => {
   return isLoaded ? (
     <div className="flex flex-col mt-10">
       <h1 className="mb-5 ml-40 font-extrabold">Rental location</h1>
-      <div className="flex items-center justify-center pl-10">
+      <div className="flex items-center justify-center lg:pl-10">
         <GoogleMap
           mapContainerStyle={containerStyle}
           center={center}
