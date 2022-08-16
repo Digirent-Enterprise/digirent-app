@@ -5,14 +5,14 @@ import clsx from "clsx";
 import { BsChevronDown } from "react-icons/bs";
 import { changeDateMonth } from "../../../../utils/formatCalendar";
 
-import "./DatePickerSelector.css";
+import "./DatePickerEndSelector.css";
 
-export interface IDatePickerSelectorProps {
+interface IDatePickerSelectorProps {
   shownDate: Dayjs;
   setShownDate: React.Dispatch<React.SetStateAction<Dayjs>>;
 }
 
-export const DatePickerSelector2 = ({
+const DatePickerEndSelector = ({
   shownDate,
   setShownDate,
 }: IDatePickerSelectorProps) => {
@@ -30,6 +30,7 @@ export const DatePickerSelector2 = ({
           "DatePickerSelector__iconLeft",
         )}
         onClick={handleIconClick(false)}
+        aria-hidden="true"
       >
         <BsChevronDown />
       </div>
@@ -44,9 +45,12 @@ export const DatePickerSelector2 = ({
           "DatePickerSelector__iconRight",
         )}
         onClick={handleIconClick(true)}
+        aria-hidden="true"
       >
         <BsChevronDown />
       </div>
     </div>
   );
 };
+
+export default DatePickerEndSelector;

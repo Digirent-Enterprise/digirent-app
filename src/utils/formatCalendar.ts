@@ -21,10 +21,10 @@ function getCalendarCells(date: Dayjs): ICalendarCell[] {
   const daysArray = new Array(date.daysInMonth()).fill(1);
   const calendarCells: ICalendarCell[] = [];
 
-  const prepareCell = (date: Dayjs, dayNumber: number) => {
+  const prepareCell = (day: Dayjs, dayNumber: number) => {
     return {
       text: String(dayNumber),
-      value: date.clone().set("date", dayNumber),
+      value: day.clone().set("date", dayNumber),
     };
   };
   daysArray.forEach((_, i) => {
@@ -34,12 +34,12 @@ function getCalendarCells(date: Dayjs): ICalendarCell[] {
   const cellsToAdd = 35 - daysArray.length;
 
   const lastMonth = date.subtract(1, "month");
-  for (let i = 0; i < Math.floor(cellsToAdd / 2); i++) {
+  for (let i = 0; i < Math.floor(cellsToAdd / 2); i += 1) {
     calendarCells.unshift(prepareCell(lastMonth, lastMonth.daysInMonth() - i));
   }
 
   const nextMonth = date.add(1, "month");
-  for (let i = 0; i < Math.round(cellsToAdd / 2); i++) {
+  for (let i = 0; i < Math.round(cellsToAdd / 2); i += 1) {
     calendarCells.push(prepareCell(nextMonth, i + 1));
   }
 

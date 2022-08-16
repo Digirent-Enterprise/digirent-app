@@ -4,10 +4,10 @@ import { useParams } from "react-router-dom";
 import { getProductByID } from "../../../store/actions/product.action";
 import { getProductByID as getProductByIDSel } from "../../../store/selectors/product.selector";
 import BookingBoxLayout from "./layout/BookingBoxLayout";
+
 const BookingBoxDisplay = () => {
   const dispatch = useDispatch();
   const { id } = useParams();
-  console.log(id, "runhere");
   const productByIDFetchData = useSelector(getProductByIDSel);
   useEffect(() => {
     if (id) dispatch(getProductByID(id));
