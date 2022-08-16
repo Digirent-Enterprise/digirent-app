@@ -15,10 +15,10 @@ import {
 import { WarningTwoIcon } from "@chakra-ui/icons";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import DefaultLayout from "../DefaultLayout";
-import { UserTab, Transition } from "../../components";
 import { Link } from "react-router-dom";
 import { AiOutlineArrowLeft } from "react-icons/ai";
+import { UserTab, Transition } from "../../components";
+import DefaultLayout from "../DefaultLayout";
 
 interface IFormInputs {
   name: string;
@@ -32,7 +32,7 @@ const schema = yup.object().shape({
     .string()
     .matches(
       /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/,
-      "Phone number is not valid!"
+      "Phone number is not valid!",
     ),
   address: yup.string().required("Your address is required!"),
 });
@@ -67,7 +67,7 @@ const UserEdit = () => {
                     color="#4169E1"
                     className="mx-2 text-3xl"
                   />
-                  <Text color="#4169E1" className="mb-10 mx-2 text-lg">
+                  <Text color="#4169E1" className="mx-2 mb-10 text-lg">
                     Return to profile info
                   </Text>
                 </div>

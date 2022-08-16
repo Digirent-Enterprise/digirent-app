@@ -19,6 +19,7 @@ import {
   UserTransactionDetails,
   UserTransactionHistory,
   UserEdit,
+  UserViewInfo,
 } from "./pages";
 
 // import PrivateRoute from "./components/PrivateRoute";
@@ -63,6 +64,7 @@ const AppRouter = () => {
         <Route path="user/edit" element={<UserEdit />} />
         <Route path="user/:id/deactivate" />
         <Route path="user/:id/change-password" />
+        <Route path="user/:id/view" element={<UserViewInfo />} />
         <Route path="user/transaction" element={<UserTransactionHistory />} />
         <Route
           path="user/transaction/details"

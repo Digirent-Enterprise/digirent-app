@@ -48,7 +48,10 @@ const UserProfile = () => {
                 directUrl="/"
                 userButtonItem="Change your password"
               />
-              <UserProfileButton directUrl="/user/:id/edit" userButtonItem="Edit" />
+              <UserProfileButton
+                directUrl="/user/:id/edit"
+                userButtonItem="Edit"
+              />
             </Stack>
             <Stack
               mt={8}
@@ -58,8 +61,8 @@ const UserProfile = () => {
               justifyContent="center"
             >
               <UserProfileButton
-                directUrl="/"
-                userButtonItem="View your Information"
+                directUrl="/user/:id/view"
+                userButtonItem="View your information"
               />
             </Stack>
             <Stack
