@@ -39,7 +39,6 @@ const ProductListLayout = (props: { products: any }) => {
               image={product.images[0]}
               rentalCost={product.rentalCost}
               rentalCostType={product.rentalCostType}
-              _id=""
             />
           </Link>
         ))}

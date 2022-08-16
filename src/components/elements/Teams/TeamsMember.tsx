@@ -9,7 +9,7 @@ interface IMember {
 
 const TeamsMember = ({ imageUrl, alt, name, position }: IMember) => {
   return (
-    <>
+    <div>
       <div className="h-48 sm:h-60 md:h-80 bg-[#F3F4F6] overflow-hidden rounded-lg shadow-lg mb-2 sm:mb-4 cursor-pointer group relative">
         <img
           src={imageUrl}
@@ -63,7 +63,7 @@ const TeamsMember = ({ imageUrl, alt, name, position }: IMember) => {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

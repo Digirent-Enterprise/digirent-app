@@ -1,5 +1,3 @@
-/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
-/* eslint-disable jsx-a11y/click-events-have-key-events */
 import React, { useState } from "react";
 import { Alert, AlertIcon, Switch } from "@chakra-ui/react";
 import DefaultLayout from "../DefaultLayout";
@@ -114,7 +112,7 @@ const ContactUsPage = () => {
           </div>
           <div className="mt-12">
             <form
-              onClick={handleSubmit}
+              onSubmit={handleSubmit}
               className="grid grid-cols-1 gap-y-6 sm:grid-cols-2 sm:gap-x-8"
             >
               <div>
@@ -257,14 +255,14 @@ const ContactUsPage = () => {
                     <p className="text-base text-gray-500">
                       By selecting this, you agree to the{" "}
                       <a
-                        href="/maintain"
+                        href="/privacy"
                         className="font-medium text-gray-700 underline"
                       >
                         Privacy Policy
                       </a>{" "}
                       and{" "}
                       <a
-                        href="/maintain"
+                        href="/privacy"
                         className="font-medium text-gray-700 underline"
                       >
                         Cookie Policy

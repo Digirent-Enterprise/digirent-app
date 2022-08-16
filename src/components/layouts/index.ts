@@ -9,6 +9,8 @@ import SearchResultsSection from "./search/SearchResultsSection";
 import ProductCardListing from "./productCard/ProductCardListing";
 import OrderSummaryContent from "./checkout/OrderSummaryContent";
 import CheckoutDetailsCard from "./checkout/CheckoutDetailsCard";
+import GreetingCard from "./greeting/GreetingCard";
+import ProductListingCategory from "./productListing/ProductListingCategory";
 
 export {
   NavBar,
@@ -20,6 +22,8 @@ export {
   ChatLeftSide,
   ChatRightSide,
   ProductCardListing,
+  ProductListingCategory,
   OrderSummaryContent,
   CheckoutDetailsCard,
+  GreetingCard,
 };

@@ -12,12 +12,10 @@ import {
   ChatViewPage,
   AdminHome,
   ProductManagement,
-  UserFavorite,
   UserManagement,
   TransactionManagement,
   CheckoutPage,
   EmailSentPage,
-  ContactUsPage,
   UserTransactionDetails,
   UserTransactionHistory,
   UserEdit,
@@ -30,10 +28,13 @@ import { BackToTop } from "./components";
 
 const Home = lazy(() => import("./pages/Home/Home"));
 const About = lazy(() => import("./pages/About/About"));
+const ContactUsPage = lazy(() => import("./pages/Contact/ContactUsPage"));
 const ProductSearchPage = lazy(
   () => import("./pages/Product/ProductSearchPage"),
 );
 const AddProduct = lazy(() => import("./pages/Admin/AddProduct/AddProduct"));
+const CategoryPage = lazy(() => import("./pages/Category/CategoryPage"));
+const PrivacyPolicy = lazy(() => import("./pages/PrivacyPolicy/PrivacyPolicy"));
 
 const AppRouter = () => {
   const location = useLocation();
@@ -59,7 +60,6 @@ const AppRouter = () => {
         <Route path="users" />
         <Route path="users/:id" />
         <Route path="user/profile" element={<UserProfile />} />
-        <Route path="user/favorite" element={<UserFavorite />} />
         <Route path="user/edit" element={<UserEdit />} />
         <Route path="user/:id/deactivate" />
         <Route path="user/:id/change-password" />
@@ -68,10 +68,13 @@ const AppRouter = () => {
           path="user/transaction/details"
           element={<UserTransactionDetails />}
         />
+        <Route path="/privacy" element={<PrivacyPolicy />} />
         {/* Maintain */}
         <Route path="maintain" element={<Maintain />} />
         {/* Contact */}
         <Route path="contact" element={<ContactUsPage />} />
+        {/* Category */}
+        <Route path="categories/:id" element={<CategoryPage />} />
         {/* Admin */}
         <Route
           path="admin"
