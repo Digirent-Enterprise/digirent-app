@@ -27,7 +27,6 @@ import {
   EditProductModal,
   EditTransactionModal,
   EditUserModal,
-  FavoriteContainer,
   LanguageSwitcher,
   StatusToaster,
 } from "./modules";
@@ -82,7 +81,6 @@ export {
   AdminTab,
   UserTab,
   ProductCardListing,
-  FavoriteContainer,
   OrderSummaryContent,
   CheckoutDetailsCard,
   CategoryCardListing,

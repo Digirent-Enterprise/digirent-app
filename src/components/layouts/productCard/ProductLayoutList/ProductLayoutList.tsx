@@ -33,7 +33,6 @@ const ProductListLayout = (props: { products: any }) => {
             <ProductCard
               key={product._id}
               name={product.name}
-              brand={product.brand}
               image={product.images[0]}
               rentalCost={product.rentalCost}
               rentalCostType={product.rentalCostType}
