@@ -20,10 +20,19 @@ module.exports = {
     extend: {
       backgroundImage: (theme) => ({
         auth: "url('https://discloud-storage.herokuapp.com/file/59382cf8fe3ed58ceee5c861ed202e29/auth-bg.png')",
+        morning:
+          "url('https://discloud-storage.herokuapp.com/file/2e8bbfe3b132c030a5a74587f90e34b0/dawid-zawila-g-3-rw-6-y-02-d-0-unsplash.jpg')",
+        afternoon:
+          "url('https://discloud-storage.herokuapp.com/file/170da580769674d3af9295790eef604c/mufid-majnun-l-ux-l-1-ft-4-uyw-unsplash.jpg')",
+        evening:
+          "url('https://discloud-storage.herokuapp.com/file/a91a2f601da639fc619f9f947a5b4d9e/jaanus-jagomagi-m-gxe-lz-izlq-0-unsplash.jpg')",
         banner:
-          "url('https://discloud-storage.herokuapp.com/file/a211e4ea3bfac9fff6ca45c6e86cc42f/nasa-1-lf-i-7-wk-gwz-4-unsplash.jpg')",
+          "url('https://discloud-storage.herokuapp.com/file/67c468b32ac3b2872fe00813a9022e80/maxresdefault.jpg')",
       }),
     },
   },
-  plugins: [require("@tailwindcss/forms")],
+  plugins: [
+    require("@tailwindcss/forms"),
+    require("@tailwindcss/aspect-ratio"),
+  ],
 };

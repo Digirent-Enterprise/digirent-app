@@ -1,5 +1,4 @@
 import BackToPreviousPage from "./button/BackToPreviousPage";
-import FavoriteContainer from "./container/FavoriteContainer";
 import { AuthFormGrid } from "./form";
 import LanguageSwitcher from "./language/LanguageSwitcher";
 import DeleteProductModal from "./modal/Product/DeleteProductModal";
@@ -20,7 +19,6 @@ export {
   EditTransactionModal,
   StatusToaster,
   AuthFormGrid,
-  FavoriteContainer,
   BackToPreviousPage,
   LanguageSwitcher,
   GalleryDisplay,

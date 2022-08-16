@@ -15,7 +15,8 @@ import {
   Technology,
   BackToTop,
   CategoryCardListing,
-  
+  Stat,
+  MostRentalProduct,
 } from "./elements";
 import {
   AuthFormGrid,
@@ -26,7 +27,6 @@ import {
   EditProductModal,
   EditTransactionModal,
   EditUserModal,
-  FavoriteContainer,
   LanguageSwitcher,
   GalleryDisplay,
   StatusToaster,
@@ -43,6 +43,8 @@ import {
   ProductCardListing,
   OrderSummaryContent,
   CheckoutDetailsCard,
+  GreetingCard,
+  ProductListingCategory,
 } from "./layouts";
 
 export {
@@ -80,9 +82,12 @@ export {
   AdminTab,
   UserTab,
   ProductCardListing,
-  FavoriteContainer,
   OrderSummaryContent,
   CheckoutDetailsCard,
   GalleryDisplay,
   CategoryCardListing,
+  GreetingCard,
+  Stat,
+  MostRentalProduct,
+  ProductListingCategory,
 };
