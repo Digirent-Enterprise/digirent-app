@@ -10,7 +10,6 @@ import DeleteUserModal from "./modal/User/DeleteUserModal";
 import EditUserModal from "./modal/User/EditUserModal";
 import ProductSummaryDisplay from "./productSummary/ProductSummaryDisplay";
 import StaticGoogleMap from "./staticGoogleMap/StaticGoogleMap";
-import { StatusToaster } from "./toaster";
 
 export {
   DeleteUserModal,
@@ -19,7 +18,6 @@ export {
   EditUserModal,
   EditProductModal,
   EditTransactionModal,
-  StatusToaster,
   AuthFormGrid,
   BackToPreviousPage,
   LanguageSwitcher,
