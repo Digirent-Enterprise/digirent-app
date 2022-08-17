@@ -32,6 +32,7 @@ function* getUsers(): any {
 }
 
 function* getUserDetail(): any {
+  if (!localStorage.getItem('currentUser')) return;
   try {
     const response = yield call(fetchUserDetails);
     yield put(setUserDetail(response.data));
