@@ -18,6 +18,12 @@ export interface IUserDetail {
   avatar: string;
 }
 
+export interface ISaveUser {
+  email: string;
+  phone: string;
+  name: string;
+}
+
 export interface UserState {
   pending: boolean;
   users: IUser[];
@@ -25,6 +31,8 @@ export interface UserState {
 }
 
 export interface CurrentUserState extends IUserDetail {}
+export interface SaveUserState extends ISaveUser {}
+
 export interface SetUserPayload {
   users: IUser[];
 }
@@ -32,11 +40,6 @@ export interface SetUserPayload {
 export type SetUser = {
   type: string;
   payload: SetUserPayload;
-};
-
-export type SaveUserInfo = {
-  type: string;
-  value: IUser;
 };
 
 export interface FetchUserErrorPayload {
@@ -48,5 +51,3 @@ export type FetchUserError = {
 };
 
 export type UserActions = FetchUserError | SetUser;
-
-export type SaveUserAction = SaveUserInfo;

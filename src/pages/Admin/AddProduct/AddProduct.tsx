@@ -17,9 +17,12 @@ import {
   Stack,
   Textarea,
 } from "@chakra-ui/react";
+import qs from "qs";
 import { customAxios } from "../../../http-common";
-import { StatusToaster, Transition } from "../../../components";
+
+// import { StatusToaster } from "../../../components";
 import DefaultLayout from "../DefaultAdminLayout";
+// import { AiOutlineCloudUpload } from "react-icons/ai";
 
 type FormValues = {
   name: string;
@@ -43,42 +46,49 @@ const schema = yup.object().shape({
 });
 
 const AddProduct = () => {
-  const [images, setImages] = useState([]);
-  const { register, handleSubmit } = useForm<FormValues>({
-    resolver: yupResolver(schema),
-    mode: "onChange",
-  });
+  const [images, setImages] = useState<string[]>([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const { register, handleSubmit } = useForm<FormValues>({});
+
+  const handleUploadFiles = async (file: any) => {
+    const fd = new FormData();
+    fd.append("images", file);
+    const response = await customAxios("multipart/form-data").post(
+      "product/upload-single-image",
+      fd,
+    );
+    setImages([...images, response.data.url]);
+  };
+
   const { getRootProps, getInputProps, isDragActive, acceptedFiles } =
     useDropzone({
       accept: {
         "image/*": [],
       },
-      maxFiles: 5,
-      onDrop: (acceptedFiles: any) => {
+      maxFiles: 10,
+      onDrop: async (acceptedFiles: any) => {
+        setIsLoading(true);
+        await acceptedFiles.map((file: any) => handleUploadFiles(file));
+        setIsLoading(false);
         setImages(
           acceptedFiles.map((image: any) =>
             Object.assign(image, {
-              preview: URL.createObjectURL(image),
+              preview: image,
             }),
           ),
         );
       },
     });
 
-  const thumbs = images.map((image: any) => (
-    <div className="flex flex-row flex-wrap" key={image.name}>
-      <div className="flex overflow-hidden">
-        <img
-          className="p-4 w-full"
-          src={image.preview}
-          // Revoke data uri after image is loaded
-          onLoad={() => {
-            URL.revokeObjectURL(image.preview);
-          }}
-        />
+  const thumbs = images.map((image: any) => {
+    return (
+      <div className="flex flex-row flex-wrap" key={image.name}>
+        <div className="flex overflow-hidden">
+          <img className="w-full p-4" src={image} alt="thumbs" />
+        </div>
       </div>
-    </div>
-  ));
+    );
+  });
 
   // useEffect(() => {
   //   // Make sure to revoke the data uris to avoid memory leaks, will run on unmount
@@ -86,12 +96,12 @@ const AddProduct = () => {
   //     acceptedFiles.forEach((image) => URL.revokeObjectURL(image.path));
   // }, []);
 
-  const onSubmit = (data: FormValues) => {
-    const fd = new FormData();
-    console.log("data", data);
-    console.log("fd", fd);
-    // customAxios("multipart/form-data").post("/product", fd),
-    alert({ ...data, images: "hi" });
+  const onSubmit = async (data: FormValues) => {
+    const response = await customAxios().post(
+      "/product",
+      qs.stringify(Object.assign(data, { images })),
+    );
+    if (response.status === 200) alert("success");
   };
 
   return (
@@ -114,7 +124,7 @@ const AddProduct = () => {
                 <Input {...register("name")} type="text" name="name" />
               </FormControl>
 
-              <FormControl className="pb-5" isRequired>
+              <FormControl className="pb-5" className="pb-5" isRequired>
                 <FormLabel>Category</FormLabel>
                 <Select
                   {...register("category")}
@@ -126,12 +136,12 @@ const AddProduct = () => {
                 </Select>
               </FormControl>
 
-              <FormControl className="pb-5" isRequired>
+              <FormControl className="pb-5" className="pb-5" isRequired>
                 <FormLabel>Brand</FormLabel>
                 <Input {...register("brand")} type="text" name="brand" />
               </FormControl>
 
-              <FormControl className="pb-5" isRequired>
+              <FormControl className="pb-5" className="pb-5" isRequired>
                 <FormLabel>Product Description</FormLabel>
                 <Textarea {...register("description")} name="description" />
               </FormControl>
@@ -157,17 +167,42 @@ const AddProduct = () => {
                 </InputGroup>
               </FormControl>
 
-              <FormControl isRequired>
+              <FormControl className="pb-5" isRequired>
                 <FormLabel>Serial</FormLabel>
                 <Input {...register("serial")} type="text" name="serial" />
               </FormControl>
->>>>>>> ebe732e3166c450fd9fc1e371b15ca879bfefc45
+            </GridItem>
+
+            <GridItem className="pb-5" colSpan={{ base: 6, sm: 3 }}>
+              <FormControl>
+                <FormLabel>Product Images</FormLabel>
+                <div
+                  className="border-dashed border-4 text-center justify-center p-[20%]"
+                  {...getRootProps()}
+                >
+                  <input {...getInputProps()} />
+                  {isDragActive ? (
+                    <p>Drop the files here ...</p>
+                  ) : (
+                    <p>
+                      Drag 'n' drop some files here, or click to select files
+                    </p>
+                  )}
+                </div>
+                {/* <div className="p-8 m-5 text-center text-blue-100 border-2 border-dashed">
+                    <label htmlFor="images" className="cursor-pointer ">
+                      Choose images
+                    </label>
+                  </div> */}
+              </FormControl>
+              <aside className="flex flex-row">{thumbs}</aside>
 
               <Grid templateColumns="repeat(4, 1fr)" gap={4}>
                 <GridItem colSpan={2}>
                   <button
                     className="bg-blue-200 p-2 my-5 text-white rounded hover:bg-blue-100 w-full"
                     type="submit"
+                    disabled={isLoading}
                   >
                     Submit
                   </button>
@@ -176,6 +211,7 @@ const AddProduct = () => {
                   <button
                     className="bg-blue-200 p-2 my-5 text-white rounded hover:bg-blue-100 w-full"
                     type="reset"
+                    onClick={() => setImages([])}
                   >
                     Clear
                   </button>

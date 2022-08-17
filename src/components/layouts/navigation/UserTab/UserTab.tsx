@@ -9,7 +9,7 @@ const UserTab = () => {
         <Tabs alignItems="center">
           <TabList>
             <TabButton directUrl="/user/profile" tabItem="General" />
-            <TabButton directUrl="/user/transactions" tabItem="Transaction " />
+            <TabButton directUrl="/user/transactions" tabItem="Order" />
             <TabButton directUrl="/user/favorite" tabItem="Favorite" />
           </TabList>
         </Tabs>

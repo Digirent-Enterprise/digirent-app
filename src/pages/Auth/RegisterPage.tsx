@@ -14,8 +14,11 @@ import {
   FormErrorMessage,
 } from "@chakra-ui/react";
 import { WarningTwoIcon } from "@chakra-ui/icons";
+import { toast } from "react-toastify";
+
 import { customAxios } from "../../http-common";
-import { AuthFormGrid, Transition, StatusToaster } from "../../components";
+import { AuthFormGrid, Transition } from "../../components";
+import Helmet from "../../Helmet";
 
 interface IFormInputs {
   name: string;
@@ -62,26 +65,35 @@ const RegisterPage = () => {
       .post("auth/register", data)
       .then((res) => {
         if (res.status === 201) {
-          <StatusToaster
-            childCompStatusColor="success"
-            childCompToasterTitle="Account created!"
-            childCompToasterDescription="Your information has been registered successfully with us!"
-          />;
+          toast.success(
+            "Your information has been registered successfully with us!",
+            {
+              theme: "dark",
+              icon: "🚀",
+            },
+          );
           navigate("/login");
-        } else {
-          <StatusToaster
-            childCompStatusColor="warning"
-            childCompToasterTitle={`Failed to register, error code ${res.status}`}
-            childCompToasterDescription={`${res.statusText} error has happened while creating your account!`}
-          />;
         }
+      })
+      .catch((error: any) => {
+        toast.warning(
+          `${error.statusText} error has happened while creating your account!`,
+          {
+            theme: "dark",
+          },
+        );
       });
   };
 
   return (
     <Transition>
+      <Helmet
+        title="Register"
+        addPostfixTitle
+        description="Register new account at Digirent"
+      />
       <AuthFormGrid
-        childTitle="Register your account"
+        childTitle="Join us now"
         childCompForm={
           <Box textAlign="center">
             <form onSubmit={handleSubmit(onSubmit)} autoComplete="new-password">
@@ -178,7 +190,8 @@ const RegisterPage = () => {
                 <Box>
                   Already had an account?
                   <Link color="brand.500" href="/login">
-                    Sign In
+                    {" "}
+                    Login
                   </Link>
                 </Box>
               </Stack>
@@ -186,7 +199,7 @@ const RegisterPage = () => {
           </Box>
         }
         childCompSideContent="https://i.pinimg.com/originals/a5/92/23/a59223a81638be37d096fcfa72d7dd48.jpg"
-        childOAuthButtonsVisibility
+        childOAuthButtonsVisibility={false}
       />
     </Transition>
   );

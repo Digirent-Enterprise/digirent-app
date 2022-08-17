@@ -1,26 +1,29 @@
-import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
-import { getProducts } from "../../store/actions/product.action";
-import { getAllProducts } from "../../store/selectors/product.selector";
-import { getUserDetail } from "../../store/actions/user.action";
-import { Banner, CTA } from "../../components";
+import {
+  Banner,
+  CTA,
+  FeatureProduct,
+  NewProduct,
+  ProductProgressBar,
+  Testimonial,
+} from "../../components";
+import { CategoryCardListing } from "../../components/elements";
+import Helmet from "../../Helmet";
 import DefaultLayout from "../DefaultLayout";
 
 const Home = () => {
-  const dispatch = useDispatch();
-
-  const data = useSelector(getAllProducts);
-
-  useEffect(() => {
-    dispatch(getProducts());
-    dispatch(getUserDetail());
-    console.log("data", data);
-  }, []);
-
   return (
     <DefaultLayout>
+      <Helmet
+        title="Homepage"
+        addPostfixTitle
+        description="Digirent marketplace"
+      />
       <Banner />
+      <CategoryCardListing />
+      <NewProduct />
+      <FeatureProduct />
+      <ProductProgressBar />
+      <Testimonial />
       <CTA />
     </DefaultLayout>
   );

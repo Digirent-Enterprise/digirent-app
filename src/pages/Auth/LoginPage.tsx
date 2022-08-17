@@ -16,10 +16,13 @@ import {
   FormErrorMessage,
 } from "@chakra-ui/react";
 
+import { toast } from "react-toastify";
+
 import { storeUserSession } from "../../helpers/authHelpers";
-import { AuthFormGrid, Transition, StatusToaster } from "../../components";
+import { AuthFormGrid, Transition } from "../../components";
 import { customAxios } from "../../http-common";
 import { getUserDetail } from "../../store/actions/user.action";
+import Helmet from "../../Helmet";
 
 interface IFormInputs {
   email: string;
@@ -43,33 +46,37 @@ const LoginPage = () => {
   });
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const onSubmit = (data: IFormInputs) => {
+  const onSubmit = (data: IFormInputs, event: any) => {
+    event.preventDefault();
     customAxios("application/json")
       .post("auth/login", data)
       .then((res: any) => {
         if (res.status === 200 || res.status === 201) {
           storeUserSession(res.data.accessToken);
           dispatch(getUserDetail());
-          <StatusToaster
-            childCompToasterTitle="Welcome back!"
-            childCompStatusColor="success"
-            childCompToasterDescription="You have successfully logged in!"
-          />;
+          toast.success("You have successfully logged in!", {
+            theme: "dark",
+            icon: "🚀",
+          });
           navigate("/");
-        } else {
-          <StatusToaster
-            childCompStatusColor="warning"
-            childCompToasterTitle={`Fail to log you in, error ${res.status}.`}
-            childCompToasterDescription={`${res.statusText}`}
-          />;
         }
+      })
+      .catch((error: any) => {
+        toast.warning(`${error.response.data} error, failed to login!`, {
+          theme: "dark",
+        });
       });
   };
 
   return (
     <Transition>
+      <Helmet
+        title="Login"
+        addPostfixTitle
+        description="Login to your existing account at Digirent"
+      />
       <AuthFormGrid
-        childTitle="Log in to your account"
+        childTitle="Login to your account"
         childCompForm={
           <Box textAlign="center">
             <form onSubmit={handleSubmit(onSubmit)}>
@@ -117,7 +124,7 @@ const LoginPage = () => {
                   New to us?
                   <Link color="brand.500" href="/register">
                     {" "}
-                    Sign Up
+                    Register
                   </Link>
                 </Box>
               </Stack>

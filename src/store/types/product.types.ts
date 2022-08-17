@@ -1,7 +1,10 @@
-import { FETCH_PRODUCTS_ERROR } from "./action.types";
+import {
+  FETCH_PRODUCTS_ERROR,
+  FETCH_PRODUCT_BY_ID_ERROR,
+} from "./action.types";
 
 export interface IProduct {
-  _id: string;
+  id: string;
   name: string;
   serial: string;
   brand: string;
@@ -15,9 +18,11 @@ export interface IProduct {
 export interface ProductState {
   pending: boolean;
   products: IProduct[];
+  product: IProduct;
   error: string | null;
 }
 export interface SetProductPayload {
+  product: IProduct;
   products: IProduct[];
 }
 
@@ -32,6 +37,14 @@ export interface FetchProductErrorPayload {
 export type FetchProductError = {
   type: typeof FETCH_PRODUCTS_ERROR;
   payload: FetchProductErrorPayload;
+};
+
+export interface FetchProductByIDErrorPayload {
+  error: string;
+}
+export type FetchProductByIDError = {
+  type: typeof FETCH_PRODUCT_BY_ID_ERROR;
+  payload: FetchProductByIDErrorPayload;
 };
 
 export type ProductActions = FetchProductError | SetProduct;

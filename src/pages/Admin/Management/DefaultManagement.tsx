@@ -107,9 +107,15 @@ const DefaultManagement = ({
       </h1>
       <div className="flex justify-between">
         <div className="p-2">
-          <Button leftIcon={<BiExport />}>
+          <Button
+            leftIcon={
+              <div className="text-black">
+                <BiExport />
+              </div>
+            }
+          >
             <CSVLink data={dataProps} headers={headers} filename={filename}>
-              Export CSV
+              <span className="text-black">Export CSV</span>
             </CSVLink>
           </Button>
         </div>
@@ -326,7 +332,7 @@ const DefaultManagement = ({
             mx="5px"
             alignSelf="center"
             borderColor="gray.600"
-            onChange={(e) => {
+            onChange={(e: any) => {
               const pageNumber = e.target.value
                 ? Number(e.target.value) - 1
                 : 0;
