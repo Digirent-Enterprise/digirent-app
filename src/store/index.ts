@@ -4,7 +4,6 @@ import logger from "redux-logger";
 
 import rootReducer from "./rootReducer";
 import { rootSaga } from "./rootSaga";
-import appSaga from "./sagas/app.saga";
 
 // disable thunk and add redux-saga middleware
 const sagaMiddleware = createSagaMiddleware();
@@ -23,4 +22,5 @@ export type RootState = ReturnType<typeof store.getState>;
 
 // Run the saga
 sagaMiddleware.run(rootSaga);
+
 export default store;
