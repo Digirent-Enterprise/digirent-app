@@ -11,7 +11,7 @@ import {
   SET_USER_DETAIL,
   SET_USERS,
   FETCH_USERS_ERROR,
-  SAVE_USER_INFO,
+  SAVE_USER_INFO, DELETE_USER_SESSION,
 } from "../types/action.types";
 
 export const setUsers = (payload: IUser[]) => {
@@ -58,3 +58,9 @@ export const fetchUsersError = (
   type: FETCH_USERS_ERROR,
   payload,
 });
+
+export const deleteUserSession = () => {
+  return {
+    type: DELETE_USER_SESSION
+  }
+}

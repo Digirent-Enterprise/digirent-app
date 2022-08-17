@@ -1,4 +1,4 @@
-import { all, call, put, takeLatest } from "redux-saga/effects";
+import {all, call, put, delay, takeEvery, fork, takeLatest} from "redux-saga/effects";
 import { ICategory } from "../types/category.types";
 import { customAxios } from "../../http-common";
 import { API_BASE_URL } from "../../utils/constants/api.constants";
@@ -11,10 +11,13 @@ const fetchCategory = () =>
 function* getCategory(): any {
   const response = yield call(fetchCategory);
   yield put(setCategories(response.data));
+  yield delay(1000)
 }
 
+
+
 function* categorySaga() {
-  yield all([takeLatest(GET_CATEGORY, getCategory)]);
+  yield  all([ takeLatest(GET_CATEGORY, getCategory)] );
 }
 
 export default categorySaga;

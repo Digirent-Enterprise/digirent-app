@@ -23,6 +23,7 @@ import { AuthFormGrid, Transition } from "../../components";
 import { customAxios } from "../../http-common";
 import { getUserDetail } from "../../store/actions/user.action";
 import Helmet from "../../Helmet";
+import {useState} from "react";
 
 interface IFormInputs {
   email: string;
@@ -36,6 +37,7 @@ const schema = yup.object().shape({
 });
 
 const LoginPage = () => {
+  const [disable, setDisable] = useState(false);
   const {
     register,
     handleSubmit,
@@ -47,6 +49,7 @@ const LoginPage = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const onSubmit = (data: IFormInputs, event: any) => {
+    setDisable(true);
     event.preventDefault();
     customAxios("application/json")
       .post("auth/login", data)
@@ -60,8 +63,15 @@ const LoginPage = () => {
           });
           navigate("/");
         }
+        else {
+          toast.warning(`error, failed to login!`, {
+            theme: "dark",
+          });
+          setDisable(false);
+        }
       })
       .catch((error: any) => {
+        setDisable(false)
         toast.warning(`${error.response.data} error, failed to login!`, {
           theme: "dark",
         });
@@ -115,7 +125,7 @@ const LoginPage = () => {
                   variant="solid"
                   colorScheme="brand"
                   width="full"
-                  disabled={!!errors.email || !!errors.password}
+                  disabled={!!errors.email || !!errors.password || disable}
                 >
                   Login
                 </Button>

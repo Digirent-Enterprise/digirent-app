@@ -1,4 +1,4 @@
-import { SET_USER_DETAIL } from "../types/action.types";
+import {DELETE_USER_SESSION, SET_USER_DETAIL} from "../types/action.types";
 import { CurrentUserState } from "../types/user.types";
 
 const initialState: CurrentUserState = {
@@ -16,6 +16,10 @@ const CurrentUserReducer = (state = initialState, action: any) => {
       return {
         ...action.payload,
       };
+    case DELETE_USER_SESSION:
+      return {
+        ...initialState
+      }
     default:
       return state;
   }
