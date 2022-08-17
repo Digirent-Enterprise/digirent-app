@@ -23,13 +23,11 @@ const root = ReactDOM.createRoot(
 );
 
 root.render(
-  <React.StrictMode>
     <Provider store={store}>
       <ChakraProvider theme={theme}>
         <App />
       </ChakraProvider>
     </Provider>
-  </React.StrictMode>,
 );
 
 // If you want your app to work offline and load faster, you can change

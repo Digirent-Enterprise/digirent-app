@@ -1,4 +1,4 @@
-import React, { lazy } from "react";
+import React, {lazy, useEffect} from "react";
 import { Routes, Route, useLocation } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
 import {
@@ -22,11 +22,14 @@ import {
   ProductDetailsPage,
   UserViewInfo,
 } from "./pages";
+import PrivateRoute from "./components/PrivateRoute";
 
-// import PrivateRoute from "./components/PrivateRoute";
-
-// import { AdminPermission } from "./utils/constants/permission.constants";
+import { AdminPermission } from "./utils/constants/permission.constants";
 import { BackToTop } from "./components";
+import {useDispatch, useSelector} from "react-redux";
+import {selectAppLoading} from "./store/selectors/app.selector";
+import {initApp, setAppAuth} from "./store/actions/app.action";
+import {getCurrentUserSelector} from "./store/selectors/user.selector";
 
 const Home = lazy(() => import("./pages/Home/Home"));
 const About = lazy(() => import("./pages/About/About"));
@@ -40,6 +43,21 @@ const PrivacyPolicy = lazy(() => import("./pages/PrivacyPolicy/PrivacyPolicy"));
 
 const AppRouter = () => {
   const location = useLocation();
+  const currentUser = useSelector(getCurrentUserSelector);
+  const appLoading = useSelector(selectAppLoading);
+  const dispatch = useDispatch()
+  useEffect(() => {
+    if (!appLoading){
+        dispatch(initApp());
+    }
+  }, [])
+  useEffect(() => {
+     if (!currentUser.role) {
+         dispatch(setAppAuth('guest'))
+         return;
+     }
+     dispatch(setAppAuth(currentUser.role));
+  }, [currentUser])
 
   return (
     <AnimatePresence exitBeforeEnter>
@@ -82,18 +100,18 @@ const AppRouter = () => {
         <Route
           path="admin"
           element={
-            // <PrivateRoute permission={AdminPermission}>
+            <PrivateRoute permission={AdminPermission}>
             <AdminHome />
-            // </PrivateRoute>
+            </PrivateRoute>
           }
         />
         {/* User management */}
         <Route
           path="admin/users"
           element={
-            // <PrivateRoute permission={AdminPermission}>
+            <PrivateRoute permission={AdminPermission}>
             <UserManagement />
-            // </PrivateRoute>
+            </PrivateRoute>
           }
         />
         <Route path="admin/users/:id/edit" />
@@ -102,17 +120,17 @@ const AppRouter = () => {
         <Route
           path="admin/products"
           element={
-            // <PrivateRoute permission={AdminPermission}>
+            <PrivateRoute permission={AdminPermission}>
             <ProductManagement />
-            // </PrivateRoute>
+            </PrivateRoute>
           }
         />
         <Route
           path="admin/add-product"
           element={
-            // <PrivateRoute permission={AdminPermission}>
+            <PrivateRoute permission={AdminPermission}>
             <AddProduct />
-            // </PrivateRoute>
+            </PrivateRoute>
           }
         />
         <Route path="admin/product/:id" />
@@ -122,9 +140,9 @@ const AppRouter = () => {
         <Route
           path="admin/transactions"
           element={
-            // <PrivateRoute permission={AdminPermission}>
+            <PrivateRoute permission={AdminPermission}>
             <TransactionManagement />
-            // </PrivateRoute>
+            </PrivateRoute>
           }
         />
         <Route path="admin/transactions/:id/edit" />
@@ -133,8 +151,9 @@ const AppRouter = () => {
         <Route
           path="admin/chat"
           element={
-            // <PrivateRoute permission={AdminPermission}>
+            <PrivateRoute permission={AdminPermission}>
             <ChatViewPage />
+            </PrivateRoute>
           }
         />
         <Route path="admin/chat/:id" />
