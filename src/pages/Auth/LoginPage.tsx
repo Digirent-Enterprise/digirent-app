@@ -18,12 +18,12 @@ import {
 
 import { toast } from "react-toastify";
 
+import { useState } from "react";
 import { storeUserSession } from "../../helpers/authHelpers";
 import { AuthFormGrid, Transition } from "../../components";
 import { customAxios } from "../../http-common";
 import { getUserDetail } from "../../store/actions/user.action";
 import Helmet from "../../Helmet";
-import { useState } from "react";
 
 interface IFormInputs {
   email: string;

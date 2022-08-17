@@ -1,5 +1,6 @@
 import React, { lazy, useEffect } from "react";
 import { Routes, Route, useLocation } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 import { AnimatePresence } from "framer-motion";
 import {
   UserProfile,
@@ -26,7 +27,6 @@ import PrivateRoute from "./components/PrivateRoute";
 
 import { AdminPermission } from "./utils/constants/permission.constants";
 import { BackToTop } from "./components";
-import { useDispatch, useSelector } from "react-redux";
 import { selectAppLoading } from "./store/selectors/app.selector";
 import { initApp, setAppAuth } from "./store/actions/app.action";
 import { getCurrentUserSelector } from "./store/selectors/user.selector";

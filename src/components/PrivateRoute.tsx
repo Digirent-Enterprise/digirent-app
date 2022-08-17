@@ -1,14 +1,13 @@
 import { useDispatch, useSelector } from "react-redux";
-import { Navigate, useNavigate } from "react-router-dom";
-import { getCurrentUserSelector } from "../store/selectors/user.selector";
+import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
+import { getCurrentUserSelector } from "../store/selectors/user.selector";
 import {
   selectAppAuth,
   selectAppLoading,
 } from "../store/selectors/app.selector";
 import { Spinner } from "./elements";
 import { initApp } from "../store/actions/app.action";
-import { debounce } from "lodash";
 
 const PrivateRoute = ({ children, permission = [] }: any) => {
   const currentUser = useSelector(getCurrentUserSelector);
@@ -24,7 +23,6 @@ const PrivateRoute = ({ children, permission = [] }: any) => {
     }
     if (!localStorage.getItem("currentUser")) {
       setIsAllow(false);
-      return;
     }
   }, []);
 
