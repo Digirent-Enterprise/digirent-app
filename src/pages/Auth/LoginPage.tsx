@@ -18,12 +18,12 @@ import {
 
 import { toast } from "react-toastify";
 
+import { useState } from "react";
 import { storeUserSession } from "../../helpers/authHelpers";
 import { AuthFormGrid, Transition } from "../../components";
 import { customAxios } from "../../http-common";
 import { getUserDetail } from "../../store/actions/user.action";
 import Helmet from "../../Helmet";
-import {useState} from "react";
 
 interface IFormInputs {
   email: string;
@@ -62,8 +62,7 @@ const LoginPage = () => {
             icon: "🚀",
           });
           navigate("/");
-        }
-        else {
+        } else {
           toast.warning(`error, failed to login!`, {
             theme: "dark",
           });
@@ -71,7 +70,7 @@ const LoginPage = () => {
         }
       })
       .catch((error: any) => {
-        setDisable(false)
+        setDisable(false);
         toast.warning(`${error.response.data} error, failed to login!`, {
           theme: "dark",
         });

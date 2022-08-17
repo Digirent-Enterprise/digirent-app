@@ -12,6 +12,6 @@ export function* rootSaga() {
     fork(userSaga),
     fork(transactionSaga),
     fork(categorySaga),
-    fork(appSaga)
+    fork(appSaga),
   ]);
 }
