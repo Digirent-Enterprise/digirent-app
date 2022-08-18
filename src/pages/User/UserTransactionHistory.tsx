@@ -8,10 +8,8 @@ const orders = [
     status: "out-for-delivery",
     productName: "Kicks Carrier",
     href: "#",
-    imageSrc:
+    imageUrl:
       "https://tailwindui.com/img/ecommerce-images/order-history-page-05-product-01.jpg",
-    imageAlt:
-      "Black fabric shoe bag with zipper around 3 sides, holding pair of white sneakers.",
   },
   {
     id: 2,
@@ -20,10 +18,8 @@ const orders = [
     status: "delivered",
     productName: "Micro Backpack",
     href: "#",
-    imageSrc:
+    imageUrl:
       "https://tailwindui.com/img/ecommerce-images/order-history-page-05-product-02.jpg",
-    imageAlt:
-      "Light grey canvas backpack with black handle, zipper, and edge details.",
   },
   {
     id: 3,
@@ -32,10 +28,8 @@ const orders = [
     status: "cancelled",
     productName: "Drawtop Canister",
     href: "#",
-    imageSrc:
+    imageUrl:
       "https://tailwindui.com/img/ecommerce-images/order-history-page-05-product-03.jpg",
-    imageAlt:
-      "Orange canvas cylindrical bag with drawstring top, front zipper pouch, and black shoulder strap.",
   },
   {
     id: 4,
@@ -44,10 +38,8 @@ const orders = [
     status: "delivered",
     productName: "High Wall Tote",
     href: "#",
-    imageSrc:
+    imageUrl:
       "https://tailwindui.com/img/ecommerce-images/order-history-page-05-product-04.jpg",
-    imageAlt:
-      "White canvas tote bag with black drawstring liner and white handle.",
   },
 ];
 
@@ -63,7 +55,7 @@ const UserTransactionHistory = () => {
             id="order-history-heading"
             className="text-3xl font-extrabold tracking-tight text-gray-900"
           >
-            Order history
+            Transaction history
           </h1>
           <p className="mt-2 text-sm text-gray-500">
             Check the status of recent orders, manage returns, and discover
@@ -76,8 +68,8 @@ const UserTransactionHistory = () => {
             <div key={order.id} className="relative group">
               <div className="overflow-hidden bg-gray-200 rounded-md aspect-w-1 aspect-h-1 group-hover:opacity-75">
                 <img
-                  src={order.imageSrc}
-                  alt={order.imageAlt}
+                  src={order.imageUrl}
+                  alt="product"
                   className="object-cover object-center"
                 />
               </div>
