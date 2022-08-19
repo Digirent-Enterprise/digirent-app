@@ -26,7 +26,7 @@ const ProductCard = ({
       <button
         type="submit"
         className="relative right-0 flex justify-end float-right p-3 text-black bg-white bottom-52"
-        onClick={handleLike}
+        onClick={handleAddToFavourite}
       >
         {!like ? (
           <AiOutlineHeart size="30" fill="red" />
