@@ -10,7 +10,6 @@ import {
   FormLabel,
   CheckboxGroup,
   Checkbox,
-  Stack,
 } from "@chakra-ui/react";
 
 interface Props {

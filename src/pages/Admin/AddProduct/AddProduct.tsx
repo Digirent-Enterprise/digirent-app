@@ -1,4 +1,7 @@
 import React, { useEffect, useMemo, useState } from "react";
+
+import { useDispatch, useSelector } from "react-redux";
+
 import { useForm } from "react-hook-form";
 import { useDropzone } from "react-dropzone";
 import * as yup from "yup";
@@ -16,7 +19,6 @@ import {
 import qs from "qs";
 import { customAxios } from "../../../http-common";
 import DefaultLayout from "../DefaultAdminLayout";
-import { useDispatch, useSelector } from "react-redux";
 import { getAllCategoriesSelector } from "../../../store/selectors/category.selector";
 import { getCategories } from "../../../store/actions/category.action";
 
@@ -134,7 +136,9 @@ const AddProduct = () => {
                 >
                   {categoryData.map((category) => (
                     <option value={category.name}>{category.name}</option>
-                  )) }
+
+                  ))}
+
                 </Select>
               </FormControl>
 
