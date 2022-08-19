@@ -14,7 +14,6 @@ const ProductListLayout = (props: { products: any }) => {
   const [itemOffset, setItemOffset] = useState(0);
   const itemsPerPage = 6;
 
-
   useEffect(() => {
     const endOffset = itemOffset + itemsPerPage;
     setCurrentItems(products.slice(itemOffset, endOffset));
@@ -29,7 +28,6 @@ const ProductListLayout = (props: { products: any }) => {
   return (
     <>
       <div className="grid grid-cols-1 gap-y-10 sm:grid-cols-2 gap-x-6 lg:grid-cols-2 xl:grid-cols-3 xl:gap-x-8">
-
         {currentItems.map((product: IProduct) => (
           <Link to={`/product/${product.id}`}>
             <ProductCard
@@ -49,7 +47,6 @@ const ProductListLayout = (props: { products: any }) => {
         pageRangeDisplayed={5}
         pageCount={pageCount}
         previousLabel="< previous"
-
         containerClassName="pagination container flex justify-center mx-auto py-10"
         pageLinkClassName="age-num z-10 border-black relative inline-flex items-center px-4 py-2 border text-sm font-medium border-r-0 hover:bg-blue-100 hover:text-white"
         previousLinkClassName="age-num z-10 border-black text-black relative inline-flex items-center px-4 py-2 border text-sm font-medium border-r-0 hover:bg-blue-100 hover:text-white"

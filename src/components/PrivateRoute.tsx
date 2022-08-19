@@ -23,6 +23,7 @@ const PrivateRoute = ({ children, permission = [] }: any) => {
     }
     if (!localStorage.getItem("currentUser")) {
       setIsAllow(false);
+      navigate("/");
     }
   }, []);
 
