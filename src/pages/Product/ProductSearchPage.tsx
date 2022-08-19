@@ -26,6 +26,7 @@ import { IProduct } from "../../store/types/product.types";
 import { sortByOptions } from "../../utils/constants/helper.constant";
 
 import DefaultLayout from "../DefaultLayout";
+import SortOptions from "../../components/layouts/search/SortOptions";
 
 interface SearchSectionContextValue {
   searchQuery: string;
@@ -282,7 +283,9 @@ const ProductSearchPage = () =>
             searchInput={searchInput}
             onChangeInput={(e: any) => setSearchInput(e.target.value)}
           />
-          {/* <div className="pb-10 mx-auto max-w-7xl lg:py-12 lg:px-8 lg:grid lg:grid-cols-12 lg:gap-x-5"> */}
+          <div className="pb-10 mx-auto max-w-7xl lg:py-12 lg:px-8 lg:grid lg:grid-cols-12 lg:gap-x-5">
+            <SortOptions />
+          </div>
           {/* <div
 
             data-triggerSearch={triggerSearch}
