@@ -22,6 +22,8 @@ import UserProfileName from "./User/UserProfileName";
 import Stat from "./Stat/Stat";
 import MostRentalProduct from "./ProductSection/MostRentalProduct/MostRentalProduct";
 import BookingBoxDisplay from "./BookingBox/BookingBoxDisplay";
+import ChatBox from "./ChatBox/ChatBox";
+import StripePayment from "./Stripe/StripePayment";
 
 export {
   CustomBreadcrumb,
@@ -48,4 +50,6 @@ export {
   Stat,
   MostRentalProduct,
   BookingBoxDisplay,
+  ChatBox,
+  StripePayment,
 };
