@@ -1,13 +1,44 @@
-import { useSelector } from "react-redux";
-import { Navigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
 import { getCurrentUserSelector } from "../store/selectors/user.selector";
+import {
+  selectAppAuth,
+  selectAppLoading,
+} from "../store/selectors/app.selector";
+import { Spinner } from "./elements";
+import { initApp } from "../store/actions/app.action";
 
 const PrivateRoute = ({ children, permission = [] }: any) => {
   const currentUser = useSelector(getCurrentUserSelector);
-  const isAllow = permission.includes(currentUser.role) || !permission;
-  if (!isAllow) return <Navigate to="/" />;
+  const [isAllow, setIsAllow] = useState(false);
+  const appLoading = useSelector(selectAppLoading);
+  const appAuth = useSelector(selectAppAuth);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
-  return children;
+  useEffect(() => {
+    if (!appLoading) {
+      dispatch(initApp());
+    }
+    if (!localStorage.getItem("currentUser")) {
+      setIsAllow(false);
+    }
+  }, []);
+
+  useEffect(() => {
+    setIsAllow(permission.includes(appAuth));
+  }, [currentUser, appAuth]);
+
+  useEffect(() => {
+    setTimeout(() => {
+      if (!permission.includes(appAuth) && appLoading) {
+        navigate("/");
+      }
+    }, 3000);
+  }, [appAuth]);
+
+  return !appLoading ? <Spinner /> : isAllow ? children : <Spinner />;
 };
 
 export default PrivateRoute;

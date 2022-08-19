@@ -4,7 +4,6 @@ import Rating from "../Rating/Rating";
 
 interface ProductCardProps {
   name: string;
-  brand: string;
   image?: string;
   rentalCost: number;
   rentalCostType?: string;
@@ -13,14 +12,13 @@ interface ProductCardProps {
 const ProductCard = ({
   name,
   image,
-  brand,
   rentalCost,
   rentalCostType,
 }: ProductCardProps) => {
   const [like, setLike] = useState(false);
 
-  const handleLike = () => {
-    setLike(true);
+  const handleAddToFavourite = () => {
+    setLike(!like);
   };
 
   return (
@@ -40,7 +38,8 @@ const ProductCard = ({
         <img src={image} alt="pictures" className="object-cover w-64 h-52" />
         <p className="text-lg font-bold uppercase text-transform:">{name}</p>
         <h4 className="font-bold">
-          {rentalCost}$/ {rentalCostType}
+          {/* Type: Day, Month, Year */}
+          {rentalCost}$/{rentalCostType}
         </h4>
         <div className="flex items-center mt-1 rating">
           <Rating />

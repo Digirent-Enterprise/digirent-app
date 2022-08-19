@@ -1,4 +1,5 @@
 import ProductSearchPage from "./Product/ProductSearchPage";
+import ProductDetailsPage from "./Product/ProductDetailsPage";
 import LoginPage from "./Auth/LoginPage";
 import RegisterPage from "./Auth/RegisterPage";
 import Maintain from "./Maintain/Maintain";
@@ -21,6 +22,7 @@ import About from "./About/About";
 import UserTransactionDetails from "./User/UserTransactionDetail";
 import UserTransactionHistory from "./User/UserTransactionHistory";
 import PrivacyPolicy from "./PrivacyPolicy/PrivacyPolicy";
+import UserViewInfo from "./User/UserViewInfo";
 
 export {
   Home,
@@ -33,6 +35,7 @@ export {
   TransactionManagement,
   UserProfile,
   ProductSearchPage,
+  ProductDetailsPage,
   LoginPage,
   RegisterPage,
   Maintain,
@@ -46,4 +49,5 @@ export {
   UserTransactionDetails,
   UserTransactionHistory,
   PrivacyPolicy,
+  UserViewInfo,
 };

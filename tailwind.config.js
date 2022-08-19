@@ -27,7 +27,7 @@ module.exports = {
         evening:
           "url('https://discloud-storage.herokuapp.com/file/a91a2f601da639fc619f9f947a5b4d9e/jaanus-jagomagi-m-gxe-lz-izlq-0-unsplash.jpg')",
         banner:
-          "url('https://discloud-storage.herokuapp.com/file/a211e4ea3bfac9fff6ca45c6e86cc42f/nasa-1-lf-i-7-wk-gwz-4-unsplash.jpg')",
+          "url('https://discloud-storage.herokuapp.com/file/67c468b32ac3b2872fe00813a9022e80/maxresdefault.jpg')",
       }),
     },
   },

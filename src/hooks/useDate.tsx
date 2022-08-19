@@ -20,7 +20,7 @@ export const useDate = () => {
 
   const hour = today.getHours();
   const wish = `Good ${
-    (hour < 12 && "Morning") || (hour < 17 && "Afternoon") || "Evening"
+    (hour < 12 && "Morning") || (hour < 19 && "Afternoon") || "Evening"
   }, `;
 
   const time = today.toLocaleTimeString(locale, {

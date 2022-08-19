@@ -1,12 +1,15 @@
 import {
   Banner,
-  CategoryCardListing,
   CTA,
   FeatureProduct,
   NewProduct,
   ProductProgressBar,
   Testimonial,
+  CategoryCardListing,
+  ChatBox,
+  StripePayment,
 } from "../../components";
+
 import Helmet from "../../Helmet";
 import DefaultLayout from "../DefaultLayout";
 
@@ -25,6 +28,8 @@ const Home = () => {
       <ProductProgressBar />
       <Testimonial />
       <CTA />
+      <StripePayment />
+      <ChatBox />
     </DefaultLayout>
   );
 };

@@ -1,9 +1,6 @@
 import React from "react";
 import { Button, Grid, GridItem } from "@chakra-ui/react";
-import {
-  CheckoutDetailsCard,
-  OrderSummaryContent,
-} from "../../components/index";
+import { CheckoutDetailsCard, OrderSummaryContent } from "../../components";
 import DefaultLayout from "../DefaultLayout";
 
 const CheckoutPage = () => {

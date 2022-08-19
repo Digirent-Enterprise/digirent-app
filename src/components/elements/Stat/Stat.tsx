@@ -1,3 +1,4 @@
+import { useSelector, useDispatch } from "react-redux";
 import { IconContext } from "react-icons";
 import {
   AiOutlineArrowDown,
@@ -6,42 +7,62 @@ import {
   AiOutlineTranslation,
 } from "react-icons/ai";
 import { MdProductionQuantityLimits } from "react-icons/md";
-
-const stats = [
-  {
-    id: 1,
-    name: "Total Users",
-    stat: "4",
-    icon: AiOutlineUser,
-    change: "2",
-    changeType: "increase",
-    url: "/admin/users",
-  },
-  {
-    id: 2,
-    name: "Total Products",
-    stat: "8",
-    icon: MdProductionQuantityLimits,
-    change: "2",
-    changeType: "increase",
-    url: "/admin/products",
-  },
-  {
-    id: 3,
-    name: "Total Transactions",
-    stat: "10",
-    icon: AiOutlineTranslation,
-    change: "3  ",
-    changeType: "increase",
-    url: "/admin/transactions",
-  },
-];
+import { useEffect } from "react";
+import { getAllProductsSelector } from "../../../store/selectors/product.selector";
+import { getAllTransactionsSelector } from "../../../store/selectors/transaction.selector";
+import { getAllUsersSelector } from "../../../store/selectors/user.selector";
+import { getTransactions } from "../../../store/actions/transaction.action";
+import { getUsers } from "../../../store/actions/user.action";
 
 function classNames(...classes: any) {
   return classes.filter(Boolean).join(" ");
 }
 
 const Stat = () => {
+  const dispatch = useDispatch();
+  const userData = useSelector(getAllUsersSelector);
+  const productData = useSelector(getAllProductsSelector);
+  const transactionData = useSelector(getAllTransactionsSelector);
+
+  useEffect(() => {
+    dispatch(getUsers());
+    dispatch(getTransactions());
+  }, []);
+
+  const totalUser = userData.length;
+  const totalProduct = productData.length;
+  const totalTransaction = transactionData.length;
+
+  const stats = [
+    {
+      id: 1,
+      name: "Total Users",
+      stat: totalUser,
+      icon: AiOutlineUser,
+      change: "2",
+      changeType: "increase",
+      url: "/admin/users",
+    },
+    {
+      id: 2,
+      name: "Total Products",
+      stat: totalProduct,
+      icon: MdProductionQuantityLimits,
+      change: "2",
+      changeType: "increase",
+      url: "/admin/products",
+    },
+    {
+      id: 3,
+      name: "Total Transactions",
+      stat: totalTransaction,
+      icon: AiOutlineTranslation,
+      change: "3",
+      changeType: "increase",
+      url: "/admin/transactions",
+    },
+  ];
+
   return (
     <div className="px-8 py-6">
       <h3 className="text-lg leading-6 font-medium text-[#111827]">
