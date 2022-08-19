@@ -1,7 +1,7 @@
 import React from "react";
 import { BackToPreviousPage } from "../../modules";
 
-const CheckoutDetailsCard: React.FC<any> = () =>
+const CheckoutDetailsCard = ({ transactionData, productDataById }: any) =>
   // props?: IProduct
   {
     return (

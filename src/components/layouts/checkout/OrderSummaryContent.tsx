@@ -1,8 +1,8 @@
-import React from "react";
 import PaymentAccordion from "./PaymentAccordion";
+import { ITransaction } from "../../../store/types/transaction.types";
 
-const OrderSummaryContent = () => {
-  const today = `${new Date().toLocaleString()}`;
+const OrderSummaryContent = ({ transactionData, productDataById }: any) => {
+  console.log("transactionData :>> ", transactionData);
   return (
     <div className="container flex flex-col grow">
       <h5 className="pb-4 text-2xl">Order Summary</h5>
@@ -14,15 +14,27 @@ const OrderSummaryContent = () => {
                 <p className="text-xl">Product</p>
                 <div className="flex flex-row justify-between">
                   <div className="text-md justify-left">
-                    MacBoock Ultra Max Pro Superlight 2025
+                    {productDataById.name}
                   </div>
-                  <span className="text-red-600">$20</span>
+                  <span className="text-red-600">
+                    $ {transactionData.totalPrice}
+                  </span>
                 </div>
               </div>
               <div className="flex flex-row justify-between">
                 <p className="text-xl">Date</p>
                 <div className="flex flex-row justify-between">
-                  <div className="text-md justify-right">{today}</div>
+                  <div className="text-md justify-right">
+                    {transactionData.from
+                      .format("DD/MM/YYYY")
+                      .toString()
+                      .subString(5, 14)}{" "}
+                    -{" "}
+                    {transactionData.to
+                      .format("DD/MM/YYYY")
+                      .toString()
+                      .subString(5, 14)}
+                  </div>
                   <div />
                 </div>
               </div>

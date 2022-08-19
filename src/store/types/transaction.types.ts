@@ -11,15 +11,18 @@ export interface ITransaction {
   currency: string;
   from: Date;
   to: Date;
+  productImageUrl: string;
 }
 
 export interface TransactionState {
+  transaction: ITransaction;
   pending: boolean;
   transactions: ITransaction[];
   error: string | null;
 }
 export interface SetTransactionPayload {
   transactions: ITransaction[];
+  transaction: ITransaction;
 }
 
 export type SetTransaction = {

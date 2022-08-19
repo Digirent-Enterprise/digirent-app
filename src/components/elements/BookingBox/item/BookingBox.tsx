@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import {
   Accordion,
   AccordionItem,
@@ -7,6 +8,11 @@ import {
   AccordionIcon,
   Box,
 } from "@chakra-ui/react";
+import dayjs from "dayjs";
+import { useNavigate } from "react-router-dom";
+import { IProduct } from "../../../../store/types/product.types";
+import { setTransaction } from "../../../../store/actions/transaction.action";
+import { getCurrentUserSelector } from "../../../../store/selectors/user.selector";
 
 interface BookingBoxProps {
   price: number;
@@ -14,14 +20,41 @@ interface BookingBoxProps {
   returnDate: string;
   rentalCost: number;
   totalPrice: number;
+  product: IProduct;
 }
+
 const BookingBox: React.FC<BookingBoxProps> = ({
   price,
   borrow,
   returnDate,
   rentalCost,
   totalPrice,
+  product,
 }) => {
+  const navigate = useNavigate();
+  const userData = useSelector(getCurrentUserSelector);
+  const formatDate = (dateString: string) => {
+    return new Date(dayjs(dateString).format());
+  };
+  const handleRent = () => {
+    dispatch(
+      setTransaction({
+        productId: product._id,
+        _id: "",
+        userEmail: userData.email,
+        rentalCost: totalPrice,
+        deposit: 0,
+        status: "pending",
+        latePenalty: 0,
+        currency: "VND",
+        from: formatDate(borrow),
+        to: formatDate(returnDate),
+        productImageUrl: product.images[0],
+      }),
+    );
+    navigate(`/checkout/${product._id}`);
+  };
+  const dispatch = useDispatch();
   return (
     <div className="flex flex-col">
       <div className=" w-[300px] rounded-3xl bg-white flex flex-col drop-shadow-[0px_10px_10px_rgba(0,0,0,0.25)]">
@@ -44,7 +77,10 @@ const BookingBox: React.FC<BookingBoxProps> = ({
           </div>
         </div>
         <div className="flex justify-center mt-7">
-          <button className="bg-[#1010AE] w-[90%] h-[50px] rounded-xl hover:scale-[1.02] text-white text-lg">
+          <button
+            onClick={handleRent}
+            className="bg-[#1010AE] w-[90%] h-[50px] rounded-xl hover:scale-[1.02] text-white text-lg"
+          >
             Rent
           </button>
         </div>

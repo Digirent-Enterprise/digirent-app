@@ -3,13 +3,13 @@ import { useEffect, useMemo } from "react";
 
 import ProductListLayout from "./ProductLayoutList/ProductLayoutList";
 
-import { getAllProducts } from "../../../store/selectors/product.selector";
+import { getAllProductsSelector } from "../../../store/selectors/product.selector";
 import { getProducts } from "../../../store/actions/product.action";
 
 const ProductsListing = () => {
   const dispatch = useDispatch();
 
-  const productFetchData = useSelector(getAllProducts);
+  const productFetchData = useSelector(getAllProductsSelector);
 
   useEffect(() => {
     dispatch(getProducts());

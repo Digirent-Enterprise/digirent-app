@@ -31,7 +31,7 @@ function* getProducts(): any {
 
 function* getProductByID(payload: IProduct): any {
   try {
-    const response = yield call(fetchProductByID, payload.id);
+    const response = yield call(fetchProductByID, payload._id);
     yield put(setProductByID(response.data));
   } catch (e: any) {
     yield put(

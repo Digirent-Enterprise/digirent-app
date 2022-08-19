@@ -17,7 +17,6 @@ import {
   Stack,
   Textarea,
 } from "@chakra-ui/react";
-import qs from "qs";
 import { customAxios } from "../../../http-common";
 
 // import { StatusToaster } from "../../../components";
@@ -124,7 +123,7 @@ const AddProduct = () => {
                 <Input {...register("name")} type="text" name="name" />
               </FormControl>
 
-              <FormControl className="pb-5" className="pb-5" isRequired>
+              <FormControl className="pb-5" isRequired>
                 <FormLabel>Category</FormLabel>
                 <Select
                   {...register("category")}
@@ -136,12 +135,12 @@ const AddProduct = () => {
                 </Select>
               </FormControl>
 
-              <FormControl className="pb-5" className="pb-5" isRequired>
+              <FormControl className="pb-5" isRequired>
                 <FormLabel>Brand</FormLabel>
                 <Input {...register("brand")} type="text" name="brand" />
               </FormControl>
 
-              <FormControl className="pb-5" className="pb-5" isRequired>
+              <FormControl className="pb-5" isRequired>
                 <FormLabel>Product Description</FormLabel>
                 <Textarea {...register("description")} name="description" />
               </FormControl>
