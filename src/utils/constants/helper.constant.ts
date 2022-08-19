@@ -98,13 +98,16 @@ export const sortByOptions = [
   {
     id: "time",
     name: "Recently updated",
+    selected: false,
   },
   {
     id: "rents",
     name: "Most rents",
+    selected: false,
   },
   {
     id: "views",
     name: "Most Popular",
+    selected: false,
   },
 ];
