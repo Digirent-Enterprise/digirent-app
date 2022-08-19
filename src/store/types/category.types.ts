@@ -2,6 +2,7 @@ export interface ICategory {
   _id: string;
   name: string;
   image: string;
+  checked: boolean;
 }
 
 export interface CategoryState {
