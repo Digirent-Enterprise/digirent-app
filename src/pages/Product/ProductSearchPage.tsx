@@ -1,6 +1,12 @@
 /* eslint-disable react/no-unused-prop-types */
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import React, { createContext, useState, useMemo, useEffect } from "react";
+import React, {
+  createContext,
+  useState,
+  useMemo,
+  useEffect,
+  ChangeEvent,
+} from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   SearchHeaderSection,
@@ -79,7 +85,8 @@ const ProductSearchPage = () =>
     // );
     // const [rentalCostFrom, setRentalCostFrom] = useState(requestRentalCostFrom);
     // const [rentalCostTo, setRentalCostTo] = useState(requestRentalCostTo);
-    // const [orderBy, setOrderBy] = useState(sortByOptions[0].id);
+    // const [orderBy, setOrderBy] = useState(null);
+    const [selected, setSelected] = useState<String>("");
     // const [pageNumber, setPageNumber] = useState(requestPageNumber);
     // const [pageLimit, setPageLimit] = useState(requestPageLimit);
     // const [isSearching, setIsSearching] = useState(true);
@@ -181,6 +188,12 @@ const ProductSearchPage = () =>
     //   setIsSearching(true);
     // };
 
+    const handleSelected = (e: React.ChangeEvent<HTMLSelectElement>) => {
+      const value = e.target.value;
+      setSelected(value);
+      console.log(selected);
+    };
+
     const handleChangeChecked = (id: any) => {
       const categoriesList = categories;
       const changeChecked = categoriesList.map((item) =>
@@ -196,6 +209,30 @@ const ProductSearchPage = () =>
     // Filter
     const filters = () => {
       let updatedList = productData;
+      updatedList = updatedList.sort((productA, productB) =>
+        productA.name.localeCompare(productB.name),
+      );
+
+      // Sort
+      if (selected) {
+        // default
+        if (selected == "default") {
+          updatedList = updatedList.sort((productA, productB) =>
+            productA.name.localeCompare(productB.name),
+          );
+        }
+
+        // by date
+        if (selected == "time") {
+          updatedList = updatedList.sort((productA, productB) => {
+            productA.createdDate = new Date(productA.createdDate);
+            productB.createdDate = new Date(productB.createdDate);
+            return (
+              productB.createdDate.getTime() - productA.createdDate.getTime()
+            );
+          });
+        }
+      }
 
       // Search
       if (searchInput) {
@@ -229,9 +266,11 @@ const ProductSearchPage = () =>
       !updatedList.length ? setFoundProduct(false) : setFoundProduct(true);
     };
 
+    // Count result(s)
+
     useEffect(() => {
       filters();
-    }, [productData, searchInput, categories, selectedCost]);
+    }, [productData, searchInput, categories, selectedCost, selected]);
 
     return (
       <Transition>
@@ -272,12 +311,16 @@ const ProductSearchPage = () =>
               />
             </div>
             <div className="col-span-4">
-              {/* <SearchResultsSection
-              triggerSearch={triggerSearch}
-              setIsSearching={setIsSearching}
-              setOrderBy={setOrderBy}
-              setPageNumber={setPageNumber}
-            /> */}
+              <div className="flex items-center px-5 text-base font-medium text-gray-400">
+                {foundProduct ? (
+                  <p>Found {productList.length} results</p>
+                ) : null}
+              </div>
+
+              <SearchResultsSection
+                selectChange={handleSelected}
+                selectedOption={selected}
+              />
 
               {foundProduct ? (
                 <ProductListLayout products={productList} />

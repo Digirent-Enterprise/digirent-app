@@ -11,6 +11,7 @@ export interface IProduct {
   rentalCost: number;
   rentalCostType: string;
   images: string[];
+  createdDate: Date;
 }
 
 export interface ProductState {

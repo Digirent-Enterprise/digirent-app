@@ -34,7 +34,11 @@ const CategoryCheckbox: React.FC<CheckboxProps> = ({
   const { id, value, checked } = category;
   return (
     <CheckboxGroup colorScheme="green">
-      <Checkbox width={200} isChecked={checked} onChange={() => checkedCategory(id)}>
+      <Checkbox
+        w={[50, 100, 200]}
+        isChecked={checked}
+        onChange={() => checkedCategory(id)}
+      >
         {value}
       </Checkbox>
     </CheckboxGroup>
@@ -51,9 +55,9 @@ const FilterPanel: React.FC<Props> = ({
 
   return (
     <div>
-      <Box marginTop={10}>
+      <Box marginTop={10} w={[50, 100, 200]}>
         {/* Category filter */}
-        <FormControl marginBottom={10}> 
+        <FormControl marginBottom={10}>
           <FormLabel>Categories</FormLabel>
 
           {categories.map((category: any) => (
@@ -105,6 +109,19 @@ const FilterPanel: React.FC<Props> = ({
               <RangeSliderThumb index={1} />
             </Tooltip>
           </RangeSlider>
+
+          <div className="grid grid-cols-2">
+            <div className="col-span-1">
+              <Box>
+                <span>Min: {selectedCost[0]}$</span>
+              </Box>
+            </div>
+            <div className="col-span-1">
+              <Box>
+                <span>Max: {selectedCost[1]}$</span>
+              </Box>
+            </div>
+          </div>
         </FormControl>
       </Box>
     </div>
