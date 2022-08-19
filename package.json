@@ -23,6 +23,7 @@
     "@types/redux-logger": "^3.0.9",
     "@types/redux-saga": "^0.10.5",
     "axios": "^0.27.2",
+    "chakra-react-select": "^4.1.4",
     "classnames": "^2.3.1",
     "clsx": "^1.2.1",
     "dayjs": "^1.11.4",
