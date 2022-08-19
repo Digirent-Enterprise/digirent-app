@@ -56,7 +56,7 @@ export const ClickDelete = ({ pageType }: HandleProps) => {
       tabIndex={0}
       className="font-medium text-red dark:text-red-500 hover:underline"
     >
-      Remove
+      Delete
       {pageType === "user" && (
         <DeleteUserModal isOpen={isDeleteOpen} onClose={onDeleteClose} />
       )}

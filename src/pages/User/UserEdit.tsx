@@ -1,86 +1,152 @@
 import React from "react";
+import * as yup from "yup";
 import {
+  Box,
   Button,
   Flex,
+  Text,
   FormControl,
   FormLabel,
   Input,
   Stack,
   useColorModeValue,
+  FormErrorMessage,
 } from "@chakra-ui/react";
+import { WarningTwoIcon } from "@chakra-ui/icons";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { Link } from "react-router-dom";
+import { AiOutlineArrowLeft } from "react-icons/ai";
 import { UserTab, Transition } from "../../components";
+import DefaultLayout from "../DefaultLayout";
+
+interface IFormInputs {
+  name: string;
+  phone: string;
+  address: string;
+}
+
+const schema = yup.object().shape({
+  name: yup.string().required("Your name is required!"),
+  phone: yup
+    .string()
+    .matches(
+      /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/,
+      "Phone number is not valid!",
+    ),
+  address: yup.string().required("Your address is required!"),
+});
 
 const UserEdit = () => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<IFormInputs>({
+    mode: "onBlur",
+    resolver: yupResolver(schema),
+  });
+  const onSubmit = (data: IFormInputs) => console.log(data);
   return (
-    <Transition>
-      <UserTab />
-      <Flex
-        minH="78vh"
-        align="center"
-        justify="center"
-        bg={useColorModeValue("gray.50", "gray.500")}
-      >
-        <Stack
-          spacing={4}
-          w="full"
-          maxW="md"
-          bg={useColorModeValue("white", "gray.700")}
-          rounded="xl"
-          p={6}
-          my={12}
-        >
-          <FormControl>
-            <FormLabel fontSize="3xl">Your Infos</FormLabel>
-          </FormControl>
-          <FormControl id="userName" isRequired>
-            <FormLabel>User name</FormLabel>
-            <Input
-              placeholder="UserName"
-              _placeholder={{ color: "gray.500" }}
-              type="text"
-            />
-          </FormControl>
-          <FormControl id="phone" isRequired>
-            <FormLabel>Phone Number</FormLabel>
-            <Input
-              placeholder="Phone Number"
-              _placeholder={{ color: "gray.500" }}
-              type="phone"
-            />
-          </FormControl>
-          <FormControl id="address" isRequired>
-            <FormLabel>Address</FormLabel>
-            <Input
-              placeholder="address"
-              _placeholder={{ color: "gray.500" }}
-              type="address"
-            />
-          </FormControl>
-          <Stack spacing={6} direction={["column", "row"]}>
-            <Button
-              bg="red.400"
-              color="white"
-              w="full"
-              _hover={{
-                bg: "red.500",
-              }}
-            >
-              Cancel
-            </Button>
-            <Button
-              bg="blue.400"
-              color="white"
-              w="full"
-              _hover={{
-                bg: "blue.500",
-              }}
-            >
-              Submit
-            </Button>
-          </Stack>
-        </Stack>
-      </Flex>
-    </Transition>
+    <DefaultLayout>
+      <Transition>
+        <UserTab />
+        <Flex minH="70vh" align="center" justify="center" bg="#fff">
+          <Box
+            w="full"
+            maxW="700px"
+            bg={useColorModeValue("#fff", "#777")}
+            rounded="xl"
+            p={6}
+            my={12}
+          >
+            <form onSubmit={handleSubmit(onSubmit)}>
+              <Link to="/user/:id/profile">
+                <div className="flex">
+                  <AiOutlineArrowLeft
+                    color="#4169E1"
+                    className="mx-2 text-3xl"
+                  />
+                  <Text color="#4169E1" className="mx-2 mb-10 text-lg">
+                    Return to profile info
+                  </Text>
+                </div>
+              </Link>
+
+              <FormControl
+                isInvalid={!!errors?.name?.message}
+                isRequired
+                py="10px"
+              >
+                <FormLabel>User name</FormLabel>
+                <Input
+                  {...register("name")}
+                  placeholder="User Name"
+                  _placeholder={{ color: "#777" }}
+                  type="text"
+                  bg={useColorModeValue("gray.50", "gray.500")}
+                />
+                <FormErrorMessage>
+                  <WarningTwoIcon /> {errors?.name?.message}
+                </FormErrorMessage>
+              </FormControl>
+              <FormControl
+                isInvalid={!!errors?.phone?.message}
+                isRequired
+                py="10px"
+              >
+                <FormLabel>Phone Number</FormLabel>
+                <Input
+                  {...register("phone")}
+                  placeholder="Phone Number"
+                  _placeholder={{ color: "#777" }}
+                  type="phone"
+                  bg={useColorModeValue("gray.50", "gray.500")}
+                />
+                <FormErrorMessage>
+                  <WarningTwoIcon /> {errors?.phone?.message}
+                </FormErrorMessage>
+              </FormControl>
+              <FormControl
+                isInvalid={!!errors?.address?.message}
+                isRequired
+                py="10px"
+              >
+                <FormLabel>Address</FormLabel>
+                <Input
+                  {...register("address")}
+                  placeholder="Your address"
+                  _placeholder={{ color: "#777" }}
+                  type="address"
+                  bg={useColorModeValue("gray.50", "gray.500")}
+                />
+                <FormErrorMessage>
+                  <WarningTwoIcon /> {errors?.address?.message}
+                </FormErrorMessage>
+              </FormControl>
+              <Stack
+                spacing={6}
+                direction={["column", "row"]}
+                py="20px"
+                className="flex"
+              >
+                <Button
+                  bg="#4169E1"
+                  color="white"
+                  w="50%"
+                  _hover={{
+                    bg: "#153289",
+                  }}
+                  type="submit"
+                >
+                  Edit
+                </Button>
+              </Stack>
+            </form>
+          </Box>
+        </Flex>
+      </Transition>
+    </DefaultLayout>
   );
 };
 

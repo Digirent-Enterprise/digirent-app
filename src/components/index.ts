@@ -15,6 +15,11 @@ import {
   Technology,
   BackToTop,
   CategoryCardListing,
+  Stat,
+  MostRentalProduct,
+  BookingBoxDisplay,
+  ChatBox,
+  StripePayment,
 } from "./elements";
 import {
   AuthFormGrid,
@@ -25,9 +30,10 @@ import {
   EditProductModal,
   EditTransactionModal,
   EditUserModal,
-  FavoriteContainer,
   LanguageSwitcher,
-  StatusToaster,
+  GalleryDisplay,
+  StaticGoogleMap,
+  ProductSummaryDisplay,
 } from "./modules";
 import {
   NavBar,
@@ -41,6 +47,8 @@ import {
   ProductCardListing,
   OrderSummaryContent,
   CheckoutDetailsCard,
+  GreetingCard,
+  ProductListingCategory,
 } from "./layouts";
 
 export {
@@ -63,7 +71,6 @@ export {
   BackToPreviousPage,
   LanguageSwitcher,
   Transition,
-  StatusToaster,
   AuthFormGrid,
   DeleteProductModal,
   DeleteTransactionModal,
@@ -78,8 +85,17 @@ export {
   AdminTab,
   UserTab,
   ProductCardListing,
-  FavoriteContainer,
   OrderSummaryContent,
   CheckoutDetailsCard,
-  CategoryCardListing
+  GalleryDisplay,
+  CategoryCardListing,
+  GreetingCard,
+  Stat,
+  MostRentalProduct,
+  ProductListingCategory,
+  StaticGoogleMap,
+  BookingBoxDisplay,
+  ProductSummaryDisplay,
+  ChatBox,
+  StripePayment,
 };

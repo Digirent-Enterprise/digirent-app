@@ -332,7 +332,7 @@ const DefaultManagement = ({
             mx="5px"
             alignSelf="center"
             borderColor="gray.600"
-            onChange={(e) => {
+            onChange={(e: any) => {
               const pageNumber = e.target.value
                 ? Number(e.target.value) - 1
                 : 0;

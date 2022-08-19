@@ -16,8 +16,11 @@ import {
   FormErrorMessage,
 } from "@chakra-ui/react";
 
+import { toast } from "react-toastify";
+
+import { useState } from "react";
 import { storeUserSession } from "../../helpers/authHelpers";
-import { AuthFormGrid, Transition, StatusToaster } from "../../components";
+import { AuthFormGrid, Transition } from "../../components";
 import { customAxios } from "../../http-common";
 import { getUserDetail } from "../../store/actions/user.action";
 import Helmet from "../../Helmet";
@@ -34,6 +37,7 @@ const schema = yup.object().shape({
 });
 
 const LoginPage = () => {
+  const [disable, setDisable] = useState(false);
   const {
     register,
     handleSubmit,
@@ -44,26 +48,32 @@ const LoginPage = () => {
   });
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const onSubmit = (data: IFormInputs) => {
+  const onSubmit = (data: IFormInputs, event: any) => {
+    setDisable(true);
+    event.preventDefault();
     customAxios("application/json")
       .post("auth/login", data)
       .then((res: any) => {
         if (res.status === 200 || res.status === 201) {
           storeUserSession(res.data.accessToken);
           dispatch(getUserDetail());
-          <StatusToaster
-            childCompToasterTitle="Welcome back!"
-            childCompStatusColor="success"
-            childCompToasterDescription="You have successfully logged in!"
-          />;
+          toast.success("You have successfully logged in!", {
+            theme: "dark",
+            icon: "🚀",
+          });
           navigate("/");
         } else {
-          <StatusToaster
-            childCompStatusColor="warning"
-            childCompToasterTitle={`Fail to log you in, error ${res.status}.`}
-            childCompToasterDescription={`${res.statusText}`}
-          />;
+          toast.warning(`error, failed to login!`, {
+            theme: "dark",
+          });
+          setDisable(false);
         }
+      })
+      .catch((error: any) => {
+        setDisable(false);
+        toast.warning(`${error.response.data} error, failed to login!`, {
+          theme: "dark",
+        });
       });
   };
 
@@ -114,7 +124,7 @@ const LoginPage = () => {
                   variant="solid"
                   colorScheme="brand"
                   width="full"
-                  disabled={!!errors.email || !!errors.password}
+                  disabled={!!errors.email || !!errors.password || disable}
                 >
                   Login
                 </Button>

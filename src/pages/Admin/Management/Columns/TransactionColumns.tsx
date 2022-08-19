@@ -1,4 +1,6 @@
 import { Column } from "react-table";
+import { Badge } from "@chakra-ui/react";
+
 import { ClickDelete, ClickEdit } from "../HandleActionClick";
 
 export const TransactionColumns: Array<Column> = [
@@ -14,7 +16,7 @@ export const TransactionColumns: Array<Column> = [
     id: "total",
     Header: "Total Rental Cost",
     accessor: (d: any) => {
-      return d.rentalCost + d.deposit + d.latePenalty;
+      return `${d.rentalCost + d.deposit + d.latePenalty} USD`;
     },
   },
   {
@@ -26,8 +28,15 @@ export const TransactionColumns: Array<Column> = [
     accessor: "to",
   },
   {
+    id: "status",
     Header: "Status",
-    accessor: "status",
+    accessor: (d: any) => {
+      return d.status ? (
+        <Badge colorScheme="green">Available</Badge>
+      ) : (
+        <Badge colorScheme="yellow">Pending</Badge>
+      );
+    },
   },
   {
     Header: "Product ID",

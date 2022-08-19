@@ -1,13 +1,15 @@
 import React from "react";
-import { IProduct } from "../../../store/types/product.types";
+import { BackToPreviousPage } from "../../modules";
 
 const CheckoutDetailsCard: React.FC<any> = () =>
   // props?: IProduct
   {
     return (
       <div>
-        <h5 className="text-2xl pb-4">Order Details</h5>
-        <div className="container p-6 border-solid rounded-2xl border-2 border-gray">
+        <div className="pb-4">
+          <BackToPreviousPage page="product" />
+        </div>
+        <div className="container p-6 border-2 border-solid rounded-2xl border-gray">
           <div className="flex flex-col px-0 md:flex-row">
             <div className="flex flex-col">
               <div className="md:pt-0 2xl:ps-4">
@@ -15,7 +17,7 @@ const CheckoutDetailsCard: React.FC<any> = () =>
                   <div className="flex space-x-4">
                     <img
                       src="https://source.unsplash.com/user/erondu/1600x900"
-                      alt="image"
+                      alt="order"
                       className="w-[40%] h-40 rounded-2xl border border-gray shadow-sm"
                     />
                     <div>
@@ -30,16 +32,16 @@ const CheckoutDetailsCard: React.FC<any> = () =>
                       Price Details
                     </h2>
                     <div className="flex flex-row justify-between">
-                      <p className="text-md pt-4 text-gray">$150 x 1 month</p>
-                      <p className="text-md pt-4 text-gray">$150 </p>
+                      <p className="pt-4 text-md text-gray">$150 x 1 month</p>
+                      <p className="pt-4 text-md text-gray">$150 </p>
                     </div>
                     <div className="flex flex-row justify-between">
-                      <p className="text-md pt-4 text-gray">Taxes</p>
-                      <p className="text-md pt-4 text-gray">$5</p>
+                      <p className="pt-4 text-md text-gray">Taxes</p>
+                      <p className="pt-4 text-md text-gray">$5</p>
                     </div>
                     <div className="flex flex-row justify-between">
-                      <p className="text-md pt-4 text-gray">Service Fee</p>
-                      <p className="text-md pt-4 text-gray">$10</p>
+                      <p className="pt-4 text-md text-gray">Service Fee</p>
+                      <p className="pt-4 text-md text-gray">$10</p>
                     </div>
                   </div>
                   <span className="h-0.5 w-full bg-gray" />
