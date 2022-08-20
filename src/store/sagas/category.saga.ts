@@ -17,6 +17,7 @@ const fetchCategorybyID = (name:string) => {
 function* getCategory(): any {
   const response = yield call(fetchCategory);
   yield put(setCategories(response.data));
+  yield delay(1000);
 }
 
 function* getCategoryByID(payload: ICategory): any {

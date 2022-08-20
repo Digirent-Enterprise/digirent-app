@@ -5,6 +5,7 @@ import SaveUserReducer from "./reducers/saveUser.reducer";
 import CurrentUserReducer from "./reducers/currentUser.reducer";
 import TransactionReducer from "./reducers/transaction.reducer";
 import CategoryReducer from "./reducers/category.reducer";
+import AppReducer from "./reducers/app.reducer";
 
 const rootReducer = combineReducers({
   product: ProductReducer,
@@ -13,6 +14,7 @@ const rootReducer = combineReducers({
   currentUser: CurrentUserReducer,
   transaction: TransactionReducer,
   category: CategoryReducer,
+  app: AppReducer,
 });
 
 export type AppState = ReturnType<typeof rootReducer>;

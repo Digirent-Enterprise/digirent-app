@@ -16,7 +16,7 @@ export const TransactionColumns: Array<Column> = [
     id: "total",
     Header: "Total Rental Cost",
     accessor: (d: any) => {
-      return `${d.rentalCost + d.deposit + d.latePenalty} VND`;
+      return `${d.rentalCost + d.deposit + d.latePenalty} USD`;
     },
   },
   {
