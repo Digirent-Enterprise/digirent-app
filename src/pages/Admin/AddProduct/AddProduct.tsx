@@ -1,5 +1,6 @@
-import React, { useCallback, useEffect, useState } from "react";
-import { SubmitHandler, useForm } from "react-hook-form";
+import React, { useEffect, useMemo, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useForm } from "react-hook-form";
 import { useDropzone } from "react-dropzone";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
@@ -21,7 +22,8 @@ import { customAxios } from "../../../http-common";
 
 // import { StatusToaster } from "../../../components";
 import DefaultLayout from "../DefaultAdminLayout";
-// import { AiOutlineCloudUpload } from "react-icons/ai";
+import { getAllCategoriesSelector } from "../../../store/selectors/category.selector";
+import { getCategories } from "../../../store/actions/category.action";
 
 type FormValues = {
   name: string;
@@ -103,6 +105,16 @@ const AddProduct = () => {
     if (response.status === 200) alert("success");
   };
 
+  // Category Data
+  const dispatch = useDispatch();
+  const categoryFetchData = useSelector(getAllCategoriesSelector);
+
+  useEffect(() => {
+    dispatch(getCategories());
+  }, []);
+
+  const categoryData = useMemo(() => categoryFetchData, [categoryFetchData]);
+
   return (
     <DefaultLayout>
       <form onSubmit={handleSubmit(onSubmit)}>
@@ -130,8 +142,9 @@ const AddProduct = () => {
                   name="category"
                   placeholder="Select category"
                 >
-                  <option>Laptops</option>
-                  <option>Cellphones</option>
+                  {categoryData.map((category) => (
+                    <option value={category.name}>{category.name}</option>
+                  ))}
                 </Select>
               </FormControl>
 
@@ -199,7 +212,7 @@ const AddProduct = () => {
               <Grid templateColumns="repeat(4, 1fr)" gap={4}>
                 <GridItem colSpan={2}>
                   <button
-                    className="bg-blue-200 p-2 my-5 text-white rounded hover:bg-blue-100 w-full"
+                    className="w-full p-2 my-5 text-white bg-blue-200 rounded hover:bg-blue-100"
                     type="submit"
                     disabled={isLoading}
                   >
@@ -208,7 +221,7 @@ const AddProduct = () => {
                 </GridItem>
                 <GridItem colSpan={2}>
                   <button
-                    className="bg-blue-200 p-2 my-5 text-white rounded hover:bg-blue-100 w-full"
+                    className="w-full p-2 my-5 text-white bg-blue-200 rounded hover:bg-blue-100"
                     type="reset"
                     onClick={() => setImages([])}
                   >

@@ -29,6 +29,10 @@ module.exports = {
         banner:
           "url('https://discloud-storage.herokuapp.com/file/67c468b32ac3b2872fe00813a9022e80/maxresdefault.jpg')",
       }),
+      transitionProperty: {
+        width: "width",
+        height: "height",
+      },
     },
   },
   plugins: [
