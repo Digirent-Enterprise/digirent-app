@@ -56,25 +56,24 @@ const AddProduct = () => {
     setImages([...images, response.data.url]);
   };
 
-  const { getRootProps, getInputProps, isDragActive, acceptedFiles } =
-    useDropzone({
-      accept: {
-        "image/*": [],
-      },
-      maxFiles: 10,
-      onDrop: async (acceptedFiles: any) => {
-        setIsLoading(true);
-        await acceptedFiles.map((file: any) => handleUploadFiles(file));
-        setIsLoading(false);
-        setImages(
-          acceptedFiles.map((image: any) =>
-            Object.assign(image, {
-              preview: image,
-            }),
-          ),
-        );
-      },
-    });
+  const { getRootProps, getInputProps, isDragActive } = useDropzone({
+    accept: {
+      "image/*": [],
+    },
+    maxFiles: 10,
+    onDrop: async (acceptedFiles: File[]) => {
+      setIsLoading(true);
+      await acceptedFiles.map((file: any) => handleUploadFiles(file));
+      setIsLoading(false);
+      setImages(
+        acceptedFiles.map((image: any) =>
+          Object.assign(image, {
+            preview: image,
+          }),
+        ),
+      );
+    },
+  });
 
   const thumbs = images.map((image: any) => {
     return (
@@ -94,7 +93,7 @@ const AddProduct = () => {
 
   const onSubmit = async (data: FormValues) => {
     const response = await customAxios().post(
-      "/product",
+      "product",
       qs.stringify(Object.assign(data, { images })),
     );
     if (response.status === 200) alert("success");
