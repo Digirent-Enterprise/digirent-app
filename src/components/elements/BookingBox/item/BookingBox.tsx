@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   Accordion,
@@ -36,6 +36,8 @@ const BookingBox: React.FC<BookingBoxProps> = ({
   const formatDate = (dateString: string) => {
     return new Date(dayjs(dateString).format());
   };
+  const dispatch = useDispatch();
+
   const handleRent = () => {
     dispatch(
       setTransaction({
@@ -54,7 +56,6 @@ const BookingBox: React.FC<BookingBoxProps> = ({
     );
     navigate(`/checkout/${product._id}`);
   };
-  const dispatch = useDispatch();
   return (
     <div className="flex flex-col">
       <div className=" w-[300px] rounded-3xl bg-white flex flex-col drop-shadow-[0px_10px_10px_rgba(0,0,0,0.25)]">

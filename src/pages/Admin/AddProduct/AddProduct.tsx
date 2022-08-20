@@ -19,7 +19,6 @@ import {
 import { toast } from "react-toastify";
 import { customAxios } from "../../../http-common";
 
-// import { StatusToaster } from "../../../components";
 import DefaultLayout from "../DefaultAdminLayout";
 import { getAllCategoriesSelector } from "../../../store/selectors/category.selector";
 import { getCategories } from "../../../store/actions/category.action";

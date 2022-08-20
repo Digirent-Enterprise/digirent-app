@@ -9,7 +9,7 @@ import { toast } from "react-toastify";
 import "./Stripe.css";
 import { customAxios } from "../../../http-common";
 
-const StripeCheckoutForm = ({transactionData}:any) => {
+const StripeCheckoutForm = ({ transactionData }: any) => {
   const stripe = useStripe();
   const elements = useElements();
 
@@ -83,8 +83,10 @@ const StripeCheckoutForm = ({transactionData}:any) => {
         },
       })
       .then(async function () {
-        const res = await customAxios("application/json")
-          .post("transaction/create-transaction", transactionData);
+        const res = await customAxios("application/json").post(
+          "transaction/create-transaction",
+          transactionData,
+        );
         return console.log("res.status :>> ", res.status);
       });
     // This point will only be reached if there is an immediate error when

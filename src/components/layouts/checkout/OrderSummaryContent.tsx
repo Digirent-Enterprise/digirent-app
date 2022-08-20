@@ -33,7 +33,7 @@ const OrderSummaryContent = ({ transactionData, productDataById }: any) => {
               <div>
                 <h2 className="text-2xl font-bold text-gray">Payment Method</h2>
               </div>
-              <StripePayment />
+              <StripePayment transactionData={transactionData} />
             </div>
           </div>
         </div>
