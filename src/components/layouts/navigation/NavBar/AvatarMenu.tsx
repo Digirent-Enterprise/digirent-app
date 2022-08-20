@@ -11,27 +11,29 @@ import {
   Stack,
   Center,
 } from "@chakra-ui/react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import { useNavigate } from "react-router-dom";
 import { getCurrentUserSelector } from "../../../../store/selectors/user.selector";
 import { IMAGES } from "../../../../utils/constants/image.constant";
 import { customAxios } from "../../../../http-common";
 import { clearUserSession } from "../../../../helpers/authHelpers";
+import { deleteUserSession } from "../../../../store/actions/user.action";
 
 const AvatarMenu = () => {
   const navigate = useNavigate();
   const currentUser = useSelector(getCurrentUserSelector);
-
+  const dispatch = useDispatch();
   const logOut = () => {
+    dispatch(deleteUserSession());
     customAxios().post("auth/logout");
     clearUserSession();
-    navigate(0);
+    navigate("/");
   };
 
   return (
     <Flex alignItems="right">
-      <Stack direction="row" spacing={7}>
+      <Stack direction="row" spacing={7} className="z-50">
         <Menu isLazy>
           <MenuButton
             as={Button}

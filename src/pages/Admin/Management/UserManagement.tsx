@@ -1,11 +1,8 @@
 import React, { useMemo, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import {
-  getAllUsersSelector,
-  getCurrentUserSelector,
-} from "../../../store/selectors/user.selector";
-import { getUsers, getUserDetail } from "../../../store/actions/user.action";
+import { getAllUsersSelector } from "../../../store/selectors/user.selector";
+import { getUsers } from "../../../store/actions/user.action";
 
 import DefaultManagement from "./DefaultManagement";
 
@@ -15,12 +12,9 @@ const UserManagement = () => {
   const dispatch = useDispatch();
 
   const userFetchData = useSelector(getAllUsersSelector);
-  const currentUser = useSelector(getCurrentUserSelector);
 
   useEffect(() => {
-    dispatch(getUserDetail());
     dispatch(getUsers());
-    console.log("currentUser", currentUser);
   }, []);
 
   const userColumns = useMemo(() => UserColumns, []);

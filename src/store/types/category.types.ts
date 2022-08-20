@@ -4,6 +4,7 @@ export interface ICategory {
   id: string;
   name: string;
   image: string;
+  checked: boolean;
 }
 
 export interface CategoryState {
