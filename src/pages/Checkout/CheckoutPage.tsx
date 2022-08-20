@@ -2,7 +2,11 @@ import React, { useEffect, useMemo } from "react";
 import { Button, Grid, GridItem } from "@chakra-ui/react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import { CheckoutDetailsCard, OrderSummaryContent } from "../../components";
+import {
+  CheckoutDetailsCard,
+  OrderSummaryContent,
+  StripePayment,
+} from "../../components";
 import DefaultLayout from "../DefaultLayout";
 import { getTransactionSelector } from "../../store/selectors/transaction.selector";
 import { customAxios } from "../../http-common";
@@ -34,6 +38,8 @@ const CheckoutPage = () => {
           base: "repeat(2, 1fr)",
           lg: "repeat(6, 1fr)",
         }}
+        templateRows={{ base: "repeat(2, 1fr)", lg: "repeat(1, 1fr)" }}
+        h="max-content"
         gap={6}
         m={6}
       >
@@ -50,6 +56,11 @@ const CheckoutPage = () => {
             base: 3,
             lg: 4,
           }}
+          rowSpan={{
+            base: 1,
+            lg: 1,
+          }}
+          className="flex flex-col justify-between"
         >
           <CheckoutDetailsCard
             transactionData={transactionData}
@@ -68,6 +79,10 @@ const CheckoutPage = () => {
           colEnd={{
             base: 3,
             lg: 6,
+          }}
+          rowSpan={{
+            base: 1,
+            lg: 1,
           }}
           className="flex flex-col justify-between"
         >

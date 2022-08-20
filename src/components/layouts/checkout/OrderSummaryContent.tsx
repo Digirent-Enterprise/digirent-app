@@ -1,5 +1,4 @@
-import PaymentAccordion from "./PaymentAccordion";
-import { ITransaction } from "../../../store/types/transaction.types";
+import { StripePayment } from "../../elements";
 
 const OrderSummaryContent = ({ transactionData, productDataById }: any) => {
   console.log("transactionData :>> ", transactionData);
@@ -25,25 +24,16 @@ const OrderSummaryContent = ({ transactionData, productDataById }: any) => {
                 <p className="text-xl">Date</p>
                 <div className="flex flex-row justify-between">
                   <div className="text-md justify-right">
-                    {transactionData.from
-                      .format("DD/MM/YYYY")
-                      .toString()
-                      .subString(5, 14)}{" "}
-                    -{" "}
-                    {transactionData.to
-                      .format("DD/MM/YYYY")
-                      .toString()
-                      .subString(5, 14)}
+                    {transactionData.from.toString().slice(4, 15)} -{" "}
+                    {transactionData.to.toString().slice(4, 15)}
                   </div>
                   <div />
                 </div>
               </div>
-              <span className="h-0.5 w-full bg-gray" />
               <div>
                 <h2 className="text-2xl font-bold text-gray">Payment Method</h2>
               </div>
-              <PaymentAccordion />
-              <span className="h-0.5 w-full bg-gray" />
+              <StripePayment />
             </div>
           </div>
         </div>
