@@ -20,7 +20,6 @@ import {
   UserTransactionHistory,
   UserEdit,
   ProductDetailsPage,
-  PrivacyPolicy,
   UserViewInfo,
 } from "./pages";
 
@@ -45,7 +44,7 @@ const AppRouter = () => {
   return (
     <AnimatePresence exitBeforeEnter>
       <BackToTop />
-      <Routes key={location.pathname} location={location}>
+      <Routes location={location}>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route path="login" element={<LoginPage />} />
@@ -54,7 +53,7 @@ const AppRouter = () => {
         <Route path="email-sent" element={<EmailSentPage />} />
         <Route path="forgot-password" element={<ForgotPasswordPage />} />
         {/* Product */}
-        <Route path="products" />
+        <Route path="products" element={<ProductSearchPage />} />
         <Route path="product/:id" element={<ProductDetailsPage />} />
         {/* Payment */}
         <Route path="checkout/:id" element={<CheckoutPage />} />
@@ -78,7 +77,7 @@ const AppRouter = () => {
         {/* Contact */}
         <Route path="contact" element={<ContactUsPage />} />
         {/* Category */}
-        <Route path="categories/:id" element={<CategoryPage />} />
+        <Route path="categories/:name" element={<CategoryPage />} />
         {/* Admin */}
         <Route
           path="admin"

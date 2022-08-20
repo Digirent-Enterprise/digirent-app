@@ -19,7 +19,7 @@ const Home = () => {
         description="Digirent marketplace"
       />
       <Banner />
-      <CategoryCardListing />
+      {/* <CategoryCardListing /> */}
       <NewProduct />
       <FeatureProduct />
       <ProductProgressBar />

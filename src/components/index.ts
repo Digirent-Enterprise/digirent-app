@@ -28,8 +28,8 @@ import {
   EditTransactionModal,
   EditUserModal,
   LanguageSwitcher,
-  GalleryDisplay,
-  StatusToaster,
+  StaticGoogleMap,
+  CategoryBannerDisplay
 } from "./modules";
 import {
   NavBar,
@@ -67,7 +67,6 @@ export {
   BackToPreviousPage,
   LanguageSwitcher,
   Transition,
-  StatusToaster,
   AuthFormGrid,
   DeleteProductModal,
   DeleteTransactionModal,
@@ -84,10 +83,11 @@ export {
   ProductCardListing,
   OrderSummaryContent,
   CheckoutDetailsCard,
-  GalleryDisplay,
   CategoryCardListing,
   GreetingCard,
   Stat,
   MostRentalProduct,
   ProductListingCategory,
+  StaticGoogleMap,
+  CategoryBannerDisplay
 };

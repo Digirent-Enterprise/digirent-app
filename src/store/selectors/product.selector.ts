@@ -9,11 +9,10 @@ export const getProductErrorSelector = createSelector(
   (error) => error,
 );
 
-export const getAllProducts = (state: AppState) => state.product.products;
+export const getAllProducts = (state: AppState) => state.product;
 export const getProductByID = (state: AppState) => state.product.product;
 
 export const getAllProductsSelector = createSelector(
   getAllProducts,
   (error) => error,
 );
-<<<<<<< HEAD

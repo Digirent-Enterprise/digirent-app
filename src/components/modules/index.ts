@@ -7,8 +7,8 @@ import DeleteTransactionModal from "./modal/Transaction/DeleteTransactionModal";
 import EditTransactionModal from "./modal/Transaction/EditTransactionModal";
 import DeleteUserModal from "./modal/User/DeleteUserModal";
 import EditUserModal from "./modal/User/EditUserModal";
-import { StatusToaster } from "./toaster";
-import { GalleryDisplay } from "./gallery";
+import StaticGoogleMap from "./staticGoogleMap/StaticGoogleMap";
+import CategoryBannerDisplay from "../layouts/productListing/CategoryBannerDisplay";
 
 export {
   DeleteUserModal,
@@ -17,9 +17,9 @@ export {
   EditUserModal,
   EditProductModal,
   EditTransactionModal,
-  StatusToaster,
   AuthFormGrid,
   BackToPreviousPage,
   LanguageSwitcher,
-  GalleryDisplay,
+  CategoryBannerDisplay,
+  StaticGoogleMap,
 };

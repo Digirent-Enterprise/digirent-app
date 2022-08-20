@@ -14,8 +14,10 @@ import {
   FormErrorMessage,
 } from "@chakra-ui/react";
 import { WarningTwoIcon } from "@chakra-ui/icons";
+import { toast } from "react-toastify";
+
 import { customAxios } from "../../http-common";
-import { AuthFormGrid, Transition, StatusToaster } from "../../components";
+import { AuthFormGrid, Transition } from "../../components";
 import Helmet from "../../Helmet";
 
 interface IFormInputs {
@@ -63,19 +65,23 @@ const RegisterPage = () => {
       .post("auth/register", data)
       .then((res) => {
         if (res.status === 201) {
-          <StatusToaster
-            childCompStatusColor="success"
-            childCompToasterTitle="Account created!"
-            childCompToasterDescription="Your information has been registered successfully with us!"
-          />;
+          toast.success(
+            "Your information has been registered successfully with us!",
+            {
+              theme: "dark",
+              icon: "🚀",
+            },
+          );
           navigate("/login");
-        } else {
-          <StatusToaster
-            childCompStatusColor="warning"
-            childCompToasterTitle={`Failed to register, error code ${res.status}`}
-            childCompToasterDescription={`${res.statusText} error has happened while creating your account!`}
-          />;
         }
+      })
+      .catch((error: any) => {
+        toast.warning(
+          `${error.statusText} error has happened while creating your account!`,
+          {
+            theme: "dark",
+          },
+        );
       });
   };
 

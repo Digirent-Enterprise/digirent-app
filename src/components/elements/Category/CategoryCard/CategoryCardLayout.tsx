@@ -17,9 +17,8 @@ const CategoryCardLayout = ({ categories }: any) => {
       <div className="grid grid-cols-2 mt-8 lg:grid-cols-4 gap-x-4 gap-y-8">
         {currentItems.map((category: ICategory) => {
           return (
-            <Link to={category._id}>
+            <Link to={category.id} key={category.id + Math.random()}>
               <CategoryCard
-                key={category._id}
                 categoryName={category.name}
                 categoryImage={category.image}
               />

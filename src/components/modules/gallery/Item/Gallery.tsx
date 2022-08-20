@@ -25,10 +25,10 @@ interface GalleryProps {
   images: string[];
 }
 interface ShowAllButtonProps {
-  Images: string[];
+  images: string[];
 }
 
-const ShowAllButton = ({ Images }: ShowAllButtonProps) => {
+const ShowAllButton = ({ images }: ShowAllButtonProps) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   return (
     <Box>
@@ -51,12 +51,12 @@ const ShowAllButton = ({ Images }: ShowAllButtonProps) => {
               loop
               navigation
               modules={[Pagination, Navigation]}
-              className="mt-10 w-full"
+              className="w-full mt-10"
             >
-              {Images.map((image, index) => {
+              {images.map((image, index) => {
                 return (
                   <SwiperSlide className="lg:h-[800px] w-screen " key={index}>
-                    <img src={image} alt="image slide" />
+                    <img src={image} alt="slide" />
                   </SwiperSlide>
                 );
               })}
@@ -77,49 +77,48 @@ const Gallery = ({
   images,
 }: GalleryProps) => {
   return (
-    <div className="w-full flex flex-col justify-center lg:items-center ">
-      <div className="lg:flex gap-2 w-4/5 h-full ">
-        <div className="lg:w-2/4 sm:w-screen flex items-center">
+    <div className="flex flex-col justify-center w-full lg:items-center ">
+      <div className="w-4/5 h-full gap-2 lg:flex ">
+        <div className="flex items-center lg:w-2/4 sm:w-screen">
           <img
             className="w-full h-full lg:rounded-l-2xl "
             src={firstImages}
             alt="firstImage"
           />
           <div className="sm:mb-20 md:mt-28 lg:hidden">
-            <ShowAllButton Images={images} />
+            <ShowAllButton images={images} />
           </div>
         </div>
         <div className="w-1/4 sm:hidden md:hidden h-[500px] lg:flex lg:flex-col gap-2">
           <div className=" bg-red h-3/6">
             <img
-              className="h-full w-full"
+              className="w-full h-full"
               src={secondImages}
               alt="secondImage"
             />
           </div>
-          <div className=" bg-blue-100 h-3/6">
-            <img className="h-full w-full" src={thirdImages} alt="thirdImage" />
+          <div className="bg-blue-100 h-3/6">
+            <img className="w-full h-full" src={thirdImages} alt="thirdImage" />
           </div>
         </div>
         <div className="w-1/4 sm:hidden md:hidden lg:visible h-[500px] lg:flex lg:flex-col gap-2">
-          <div className=" bg-blue-100 h-3/6 rounded-tr-2xl ">
+          <div className="bg-blue-100 h-3/6 rounded-tr-2xl">
             <img
-              className="h-full w-full rounded-tr-2xl "
+              className="w-full h-full rounded-tr-2xl "
               src={fourthImages}
               alt="fourthImage"
             />
           </div>
-          <div className=" bg-green h-3/6 rounded-br-2xl flex">
+          <div className="flex bg-green h-3/6 rounded-br-2xl">
             <img
-              className="h-full w-full rounded-br-2xl "
+              className="w-full h-full rounded-br-2xl "
               src={fifthImages}
               alt="fifthImage"
             />
-            <ShowAllButton Images={images} />
+            <ShowAllButton images={images} />
           </div>
         </div>
       </div>
-      
     </div>
   );
 };
