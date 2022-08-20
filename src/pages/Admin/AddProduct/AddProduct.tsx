@@ -2,7 +2,6 @@ import React, { useEffect, useMemo, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useForm } from "react-hook-form";
 import { useDropzone } from "react-dropzone";
-import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import qs from "qs";
 
@@ -15,9 +14,9 @@ import {
   InputGroup,
   InputRightAddon,
   Select,
-  Stack,
   Textarea,
 } from "@chakra-ui/react";
+import { toast } from "react-toastify";
 import { customAxios } from "../../../http-common";
 
 // import { StatusToaster } from "../../../components";
@@ -98,11 +97,15 @@ const AddProduct = () => {
   // }, []);
 
   const onSubmit = async (data: FormValues) => {
-    const response = await customAxios().post(
-      "/product",
+    const response = await customAxios("application/json").post(
+      "product",
       qs.stringify(Object.assign(data, { images })),
     );
-    if (response.status === 200) alert("success");
+    if (response.status === 200) {
+      toast.success("Product is added successfully", {
+        theme: "dark",
+      });
+    }
   };
 
   // Category Data
@@ -216,7 +219,7 @@ const AddProduct = () => {
                     type="submit"
                     disabled={isLoading}
                   >
-                    Submit
+                    Add
                   </button>
                 </GridItem>
                 <GridItem colSpan={2}>
