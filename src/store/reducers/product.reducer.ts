@@ -4,7 +4,7 @@ import { ProductActions, ProductState } from "../types/product.types";
 
 const initialState: ProductState = {
   product: {
-    id: "",
+    _id: "",
     name: "",
     serial: "",
     brand: "",

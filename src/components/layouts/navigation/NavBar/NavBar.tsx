@@ -10,7 +10,7 @@ const NavBar = () => {
   const currentUser = useSelector(getCurrentUserSelector);
   const [toggle, toggleNav] = useState(false);
   return (
-    <Box className="z-500">
+    <Box className="z-50">
       <Flex
         pt="0px"
         pr="20px"
@@ -22,7 +22,7 @@ const NavBar = () => {
       >
         <Logo />
         <Show above="md">
-          <ul className="list-none flex">
+          <ul className="flex list-none">
             <NavButton navItem="Home" directUrl="/" />
             <NavButton navItem="About" directUrl="/about" />
             <NavButton navItem="Contact" directUrl="/contact" />
@@ -35,23 +35,23 @@ const NavBar = () => {
         </Show>
         <Show below="md">
           <button
-            className="bg-transparent cursor-pointer border-none outline-none"
+            className="bg-transparent border-none outline-none cursor-pointer"
             onClick={() => toggleNav(!toggle)}
           >
             <span
-              className="transition duration-300 ease-in-out block rounded-3xl w-6 h-1 m-2 pr-3 bg-white"
+              className="block w-6 h-1 pr-3 m-2 transition duration-300 ease-in-out bg-white rounded-3xl"
               style={{
                 width: toggle ? "100%" : "100%",
               }}
             />
             <span
-              className="transition-width duration-700 ease-in-out block rounded-3xl w-6 h-1 m-2 pr-3 bg-white "
+              className="block w-6 h-1 pr-3 m-2 duration-700 ease-in-out bg-white transition-width rounded-3xl "
               style={{
                 width: toggle ? "40%" : "100%",
               }}
             />
             <span
-              className="transition duration-300 ease-in-out block rounded-3xl w-6 h-1 m-2 pr-3 bg-white"
+              className="block w-6 h-1 pr-3 m-2 transition duration-300 ease-in-out bg-white rounded-3xl"
               style={{
                 width: toggle ? "100%" : "100%",
               }}
@@ -61,23 +61,23 @@ const NavBar = () => {
       </Flex>
       <Show below="md">
         <div
-          className="transition-height duration-300 ease-in-out z-50 w-full bg-black"
+          className="z-50 w-full duration-300 ease-in-out bg-black transition-height"
           style={{ height: toggle ? "400px" : 0 }}
         >
           <ul
-            className="transition-opacity duration-300 ease-in-out list-none absolute z-500 left-1/3 translate-x-1/2"
+            className="absolute list-none transition-opacity duration-300 ease-in-out translate-x-1/2 z-500 left-1/3"
             style={{ opacity: toggle ? 1 : 0 }}
           >
-            <div className="text-2xl mt-10 pl-3 pt-2">
+            <div className="pt-2 pl-3 mt-10 text-2xl">
               <NavButton navItem="Home" directUrl="/" />
             </div>
-            <div className="text-2xl mt-10 pl-3 pt-2">
+            <div className="pt-2 pl-3 mt-10 text-2xl">
               <NavButton navItem="About" directUrl="/about" />
             </div>
-            <div className="text-2xl mt-10 pl-2 pt-2">
+            <div className="pt-2 pl-2 mt-10 text-2xl">
               <NavButton navItem="Contact" directUrl="/contact" />
             </div>
-            <div className="text-2xl mt-10 pl-6">
+            <div className="pl-6 mt-10 text-2xl">
               {" "}
               {!currentUser.email ? (
                 <NavButton navItem="Login" directUrl="/login" />
