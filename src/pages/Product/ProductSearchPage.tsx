@@ -16,6 +16,7 @@ import {
 } from "../../components";
 import NotFoundProduct from "../../components/layouts/NotFoundResult/NotFoundProduct";
 import FilterPanel from "../../components/layouts/filters/FilterPanel";
+
 import ProductListLayout from "../../components/layouts/productCard/ProductLayoutList/ProductLayoutList";
 
 import { getProducts, setProducts } from "../../store/actions/product.action";
@@ -23,6 +24,7 @@ import { getProducts, setProducts } from "../../store/actions/product.action";
 import { getAllProductsSelector } from "../../store/selectors/product.selector";
 
 import DefaultLayout from "../DefaultLayout";
+// import SortOptions from "../../components/layouts/search/SortOptions";
 
 interface SearchSectionContextValue {
   searchQuery: string;
@@ -68,6 +70,7 @@ interface ProductSearchPageProps {
   requestPageLimit?: number;
 }
 
+
 const ProductSearchPage = () => {
   const [selected, setSelected] = useState<String>("");
 
@@ -75,9 +78,9 @@ const ProductSearchPage = () => {
 
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(getProducts());
-  }, []);
+
+    // const productData = useMemo(() => productFetchData, [productFetchData]);
+
 
   const [productList, setProductList] = useState(productData);
 
@@ -203,10 +206,12 @@ const ProductSearchPage = () => {
     );
 
     setProductList(updatedList);
+
     if (!updatedList.length) {
       setFoundProduct(false);
+    } else {
+      setFoundProduct(true);
     }
-    setFoundProduct(true);
   };
 
   // Count result(s)
@@ -231,6 +236,7 @@ const ProductSearchPage = () => {
               categories={categories}
               changeChecked={handleChangeChecked}
             />
+
           </div>
           <div className="col-span-4">
             <div className="flex items-center px-5 text-base font-medium text-gray-400">

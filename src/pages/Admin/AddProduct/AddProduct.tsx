@@ -1,5 +1,7 @@
 import React, { useEffect, useMemo, useState } from "react";
+
 import { useDispatch, useSelector } from "react-redux";
+
 import { useForm } from "react-hook-form";
 import { useDropzone } from "react-dropzone";
 import * as yup from "yup";
@@ -135,7 +137,9 @@ const AddProduct = () => {
                 >
                   {categoryData.map((category) => (
                     <option value={category.name}>{category.name}</option>
+
                   ))}
+
                 </Select>
               </FormControl>
 
