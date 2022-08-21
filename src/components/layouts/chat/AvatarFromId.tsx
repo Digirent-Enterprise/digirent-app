@@ -10,7 +10,6 @@ interface IAvatarFromIdProps {
 
 const AvatarFromId: FC<IAvatarFromIdProps> = ({ size = 40 }) => {
   const currentUser = useSelector(getCurrentUserSelector);
-  console.log(currentUser);
   return (
     <img
       className="object-cover rounded-full"

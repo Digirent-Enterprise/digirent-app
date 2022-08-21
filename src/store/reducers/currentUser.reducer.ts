@@ -2,7 +2,7 @@ import { DELETE_USER_SESSION, SET_USER_DETAIL } from "../types/action.types";
 import { CurrentUserState } from "../types/user.types";
 
 const initialState: CurrentUserState = {
-  id: "",
+  _id: "",
   role: "",
   name: "",
   email: "",
