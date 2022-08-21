@@ -1,4 +1,5 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import {
   Box,
   Center,
@@ -16,8 +17,10 @@ import {
   UserProfileName,
 } from "../../components/elements";
 import DefaultLayout from "../DefaultLayout";
+import { getCurrentUserSelector } from "../../store/selectors/user.selector";
 
 const UserProfile = () => {
+  const currentUser = useSelector(getCurrentUserSelector);
   return (
     <DefaultLayout>
       <Box>
@@ -34,9 +37,9 @@ const UserProfile = () => {
             textAlign="center"
           >
             <UserProfileAvatar />
-            <UserProfileName userName="Vo Thanh Luan" />
-            <UserProfileEmail userEmail="vothanhluan0811@gmail.com" />
-            <UserProfileAddress userAddress="166 Ngo Si lien st." />
+            <UserProfileName userName={currentUser.name} />
+            <UserProfileEmail userEmail={currentUser.email} />
+            <UserProfileAddress userAddress="Ho Chi Minh city" />
             <Stack
               mt={8}
               direction="row"
@@ -45,7 +48,7 @@ const UserProfile = () => {
               justifyContent="center"
             >
               <UserProfileButton
-                directUrl="/"
+                directUrl="/user/:id/change-password"
                 userButtonItem="Change your password"
               />
               <UserProfileButton
