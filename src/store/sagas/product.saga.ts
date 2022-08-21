@@ -13,8 +13,8 @@ import { customAxios } from "../../http-common";
 const fetchProducts = () =>
   customAxios().get<IProduct[]>(`${API_BASE_URL}/v1/api/product`);
 
-const fetchProductByID = (id: string) => {
-  return customAxios().get<IProduct>(`${API_BASE_URL}/v1/api/product/${id}`);
+const fetchProductByID = (_id: string) => {
+  return customAxios().get<IProduct>(`${API_BASE_URL}/v1/api/product/${_id}`);
 };
 function* getProducts(): any {
   try {
@@ -31,7 +31,7 @@ function* getProducts(): any {
 
 function* getProductByID(payload: IProduct): any {
   try {
-    const response = yield call(fetchProductByID, payload.id);
+    const response = yield call(fetchProductByID, payload._id);
     yield put(setProductByID(response.data));
   } catch (e: any) {
     yield put(
