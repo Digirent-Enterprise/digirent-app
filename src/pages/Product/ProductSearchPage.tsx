@@ -24,7 +24,7 @@ import { getProducts, setProducts } from "../../store/actions/product.action";
 import { getAllProductsSelector } from "../../store/selectors/product.selector";
 
 import DefaultLayout from "../DefaultLayout";
-import SortOptions from "../../components/layouts/search/SortOptions";
+// import SortOptions from "../../components/layouts/search/SortOptions";
 
 interface SearchSectionContextValue {
   searchQuery: string;
@@ -206,10 +206,12 @@ const ProductSearchPage = () => {
     );
 
     setProductList(updatedList);
+
     if (!updatedList.length) {
       setFoundProduct(false);
+    } else {
+      setFoundProduct(true);
     }
-    setFoundProduct(true);
   };
 
   // Count result(s)
