@@ -1,2 +1,2 @@
 export const DEFAULT_IMAGE =
-  "https://foodhub.vn/assets/images/product-default.png";
+  "https://discountseries.com/wp-content/uploads/2017/09/default.jpg";

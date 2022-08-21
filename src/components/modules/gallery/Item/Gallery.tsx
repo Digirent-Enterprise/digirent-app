@@ -33,7 +33,7 @@ const ShowAllButton = ({ images }: ShowAllButtonProps) => {
   return (
     <Box>
       <Button
-        className=" lg:w-11/12 h-12 lg:left-0 lg:bottom-16 sm:right-44 sm:top-48 rounded-md border-2 border-black bg-white bg-opacity-90 hover:scale-[1.02]"
+        className="lg:w-11/12 h-12 lg:left-0 lg:bottom-16 sm:right-44 sm:top-48 rounded-md border-2 border-black bg-white bg-opacity-90 hover:scale-[1.02]"
         onClick={onOpen}
       >
         Show all images
@@ -78,10 +78,10 @@ const Gallery = ({
 }: GalleryProps) => {
   return (
     <div className="flex flex-col justify-center w-full lg:items-center ">
-      <div className="w-4/5 h-full gap-2 lg:flex ">
+      <div className="w-4/5 h-full gap-2 lg:flex">
         <div className="flex items-center lg:w-2/4 sm:w-screen">
           <img
-            className="w-full h-[30vh] lg:rounded-l-2xl "
+            className="w-full h-full lg:rounded-l-2xl "
             src={firstImages}
             alt="firstImage"
           />
@@ -90,26 +90,26 @@ const Gallery = ({
           </div>
         </div>
         <div className="w-1/4 sm:hidden md:hidden h-[500px] lg:flex lg:flex-col gap-2">
-          <div className=" bg-red h-3/6">
+          <div className="h-3/6">
             <img
               className="w-full h-full"
               src={secondImages}
               alt="secondImage"
             />
           </div>
-          <div className="bg-blue-100 h-3/6">
+          <div className="h-3/6">
             <img className="w-full h-full" src={thirdImages} alt="thirdImage" />
           </div>
         </div>
         <div className="w-1/4 sm:hidden md:hidden lg:visible h-[500px] lg:flex lg:flex-col gap-2">
-          <div className="bg-blue-100 h-3/6 rounded-tr-2xl">
+          <div className="h-3/6 rounded-tr-2xl">
             <img
               className="w-full h-full rounded-tr-2xl "
               src={fourthImages}
               alt="fourthImage"
             />
           </div>
-          <div className="flex bg-green h-3/6 rounded-br-2xl">
+          <div className="flex h-3/6 rounded-br-2xl">
             <img
               className="w-full h-full rounded-br-2xl "
               src={fifthImages}
