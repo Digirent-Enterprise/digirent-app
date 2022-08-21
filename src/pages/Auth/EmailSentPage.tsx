@@ -8,8 +8,6 @@ import { getUserInfoSelector } from "../../store/selectors/user.selector";
 const EmailSentPage = () => {
   const userInfo = useSelector(getUserInfoSelector);
 
-  console.log(userInfo);
-
   return (
     <Transition>
       <Helmet

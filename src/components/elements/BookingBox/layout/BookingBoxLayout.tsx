@@ -37,10 +37,10 @@ const BookingBoxLayout = ({ productData }: any) => {
             price={productData.rentalCost}
             borrow={startDate.format("DD/MM/YYYY")}
             returnDate={endDate.format("DD/MM/YYYY")}
+            startDate={new Date(startDate.toString())}
+            endDate={new Date(endDate.toString())}
             rentalCost={productData.rentalCost}
-            totalPrice={
-              Number(productData.rentalCost) + Number(productData.rentalCost)
-            }
+            rentalCostType={productData.rentalCostType}
           />
         </div>
       </div>

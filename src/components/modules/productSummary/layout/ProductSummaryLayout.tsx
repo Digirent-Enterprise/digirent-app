@@ -1,9 +1,12 @@
 import React from "react";
 import ProductSummary from "../item/ProductSummary";
 
-const ProductSummaryLayout = ({ productData }: any) => {
+type ProductSummaryLayoutProps = {
+  name: string
+}
+const ProductSummaryLayout = ({name} : ProductSummaryLayoutProps) => {
   return (
-    <ProductSummary productName={productData.name} address="Ho Chi Minh city" />
+    <ProductSummary productName={name} address="Ho Chi Minh city" />
   );
 };
 
