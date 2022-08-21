@@ -3,8 +3,8 @@ import React from "react";
 import ProductSummaryLayout from "./layout/ProductSummaryLayout";
 
 type ProductSummaryProps = {
-  name: string
-}
+  name: string;
+};
 const ProductSummaryDisplay = ({ name }: ProductSummaryProps) => {
   return <ProductSummaryLayout name={name} />;
 };

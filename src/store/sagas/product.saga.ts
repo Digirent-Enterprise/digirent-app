@@ -13,7 +13,6 @@ import { customAxios } from "../../http-common";
 const fetchProducts = () =>
   customAxios().get<IProduct[]>(`${API_BASE_URL}/v1/api/product`);
 
-
 const fetchProductByID = (_id: string) => {
   return customAxios().get<IProduct>(`${API_BASE_URL}/v1/api/product/${_id}`);
 };
@@ -30,7 +29,10 @@ function* getProducts(): any {
   }
 }
 
-function* getProductByID(action: {type: string, payload: {_id: string}}): any {
+function* getProductByID(action: {
+  type: string;
+  payload: { _id: string };
+}): any {
   try {
     const response = yield call(fetchProductByID, action.payload._id);
     yield put(setProductByID(response.data));

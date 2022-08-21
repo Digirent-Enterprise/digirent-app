@@ -137,9 +137,7 @@ const AddProduct = () => {
                 >
                   {categoryData.map((category) => (
                     <option value={category.name}>{category.name}</option>
-
                   ))}
-
                 </Select>
               </FormControl>
 

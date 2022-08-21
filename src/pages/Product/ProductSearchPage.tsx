@@ -70,7 +70,6 @@ interface ProductSearchPageProps {
   requestPageLimit?: number;
 }
 
-
 const ProductSearchPage = () => {
   const [selected, setSelected] = useState<String>("");
 
@@ -78,9 +77,7 @@ const ProductSearchPage = () => {
 
   const dispatch = useDispatch();
 
-
-    // const productData = useMemo(() => productFetchData, [productFetchData]);
-
+  // const productData = useMemo(() => productFetchData, [productFetchData]);
 
   const [productList, setProductList] = useState(productData);
 
@@ -236,7 +233,6 @@ const ProductSearchPage = () => {
               categories={categories}
               changeChecked={handleChangeChecked}
             />
-
           </div>
           <div className="col-span-4">
             <div className="flex items-center px-5 text-base font-medium text-gray-400">

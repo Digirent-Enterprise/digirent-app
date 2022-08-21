@@ -7,7 +7,7 @@ import Spinner from "./Spinner/Spinner";
 import Testimonial from "./Testimonial/Testimonial";
 import CustomTooltip from "./Tooltip/CustomTooltip";
 import Transition from "./Transition/Transition";
-import NewProduct from "./ProductSection/NewProduct/NewProductLayout";
+import NewProduct from "./ProductSection/NewProduct/NewProduct";
 import ProductProgressBar from "./ProductSection/FeatureProduct/ProductProgressBar";
 import Content from "./Content/Content";
 import Teams from "./Teams/Teams";

@@ -45,7 +45,7 @@ export const getProductByID = (_id: string) => {
   return {
     type: GET_PRODUCT_BY_ID,
     payload: {
-    _id
+      _id,
     },
   };
 };
