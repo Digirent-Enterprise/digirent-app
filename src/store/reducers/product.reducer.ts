@@ -2,20 +2,22 @@ import { SET_PRODUCTS, SET_PRODUCT_BY_ID } from "../types/action.types";
 
 import { ProductActions, ProductState } from "../types/product.types";
 
+export const initialProduct = {
+  _id: "",
+  name: "",
+  serial: "",
+  brand: "",
+  description: "",
+  status: false,
+  rentalCost: 0,
+  rentalCostType: "",
+  images: [],
+  category: "",
+  createdDate: new Date(),
+}
+
 const initialState: ProductState = {
-  product: {
-    _id: "",
-    name: "",
-    serial: "",
-    brand: "",
-    description: "",
-    status: false,
-    rentalCost: 0,
-    rentalCostType: "",
-    images: [],
-    category: "",
-    createdDate: new Date(),
-  },
+  product: initialProduct,
   pending: false,
   products: [],
   error: null,

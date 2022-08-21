@@ -81,7 +81,7 @@ const Gallery = ({
       <div className="w-4/5 h-full gap-2 lg:flex ">
         <div className="flex items-center lg:w-2/4 sm:w-screen">
           <img
-            className="w-full h-full lg:rounded-l-2xl "
+            className="w-full h-[30vh] lg:rounded-l-2xl "
             src={firstImages}
             alt="firstImage"
           />
