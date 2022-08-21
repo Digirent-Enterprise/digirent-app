@@ -66,7 +66,7 @@ const SearchHeaderSection: React.FC<Props> = ({
     <div className="px-20 py-10">
       <form action="#" className="w-full sm:mx-auto lg:mx-0">
         <div className="sm:flex">
-          <div className="flex-1 min-w-0">
+          <div className="flex-1 min-w-0 border-2 border-black rounded-md">
             <label htmlFor="search" className="sr-only">
               Search
             </label>
@@ -74,7 +74,7 @@ const SearchHeaderSection: React.FC<Props> = ({
               id="search"
               type="search"
               placeholder="Search for an item"
-              className="block w-full px-4 py-3 text-base text-gray-900 placeholder-gray-500 border-2 rounded-md border-black/30 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-300 focus:ring-offset-gray-900"
+              className="block w-full px-4 py-3 text-base text-[#111827] placeholder-[#6B7280]  focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#A5B4FC] focus:ring-offset-[#111827]"
               value={searchInput}
               onChange={onChangeInput}
             />
