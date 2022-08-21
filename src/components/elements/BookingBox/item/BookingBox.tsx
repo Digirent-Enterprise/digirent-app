@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import {
   Accordion,
   AccordionItem,
@@ -14,8 +14,8 @@ interface BookingBoxProps {
   returnDate: string;
   rentalCost: number;
   rentalCostType: string;
-  startDate: Date,
-  endDate: Date
+  startDate: Date;
+  endDate: Date;
 }
 const BookingBox: React.FC<BookingBoxProps> = ({
   price,
@@ -24,16 +24,19 @@ const BookingBox: React.FC<BookingBoxProps> = ({
   rentalCost,
   startDate,
   endDate,
-  rentalCostType='day'
+  rentalCostType = "day",
 }) => {
   const [totalPrice, setTotalPrice] = useState(0);
   useEffect(() => {
     if (price) {
       const diff: number = Math.abs(startDate.getTime() - endDate.getTime());
-      const numDateDiff = diff/1000/60/60/24 >= 1 ? Math.ceil(diff/1000/60/60/24) : 1;
-      setTotalPrice(price*numDateDiff)
+      const numDateDiff =
+        diff / 1000 / 60 / 60 / 24 >= 1
+          ? Math.ceil(diff / 1000 / 60 / 60 / 24)
+          : 1;
+      setTotalPrice(price * numDateDiff);
     }
-  }, [borrow, returnDate])
+  }, [borrow, returnDate]);
   return (
     <div className="flex flex-col">
       <div className=" w-[300px] rounded-3xl bg-white flex flex-col drop-shadow-[0px_10px_10px_rgba(0,0,0,0.25)]">
@@ -72,7 +75,7 @@ const BookingBox: React.FC<BookingBoxProps> = ({
                 </AccordionButton>
               </h2>
               <AccordionPanel pb={4}>
-                Deposit: Unknown
+                Deposit: None
                 <br />
                 Rental: ${rentalCost}
               </AccordionPanel>

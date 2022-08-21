@@ -14,7 +14,7 @@ export const initialProduct = {
   images: [],
   category: "",
   createdDate: new Date(),
-}
+};
 
 const initialState: ProductState = {
   product: initialProduct,
