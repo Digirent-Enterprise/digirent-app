@@ -26,7 +26,7 @@ import {
 import PrivateRoute from "./components/PrivateRoute";
 
 import {
-  AdminPermission,
+  AdminPermission, FullPermission,
   UserPermission,
 } from "./utils/constants/permission.constants";
 import { BackToTop } from "./components";
@@ -81,17 +81,17 @@ const AppRouter = () => {
         <Route path="checkout-success/:id" />
         {/* Users */}
         <Route
-          path="user/:id/profile"
+          path="user/my-profile"
           element={
-            <PrivateRoute permission={UserPermission}>
+            <PrivateRoute permission={FullPermission}>
               <UserProfile />
             </PrivateRoute>
           }
         />
         <Route
-          path="user/:id/edit"
+          path="user/edit-my-profile"
           element={
-            <PrivateRoute permission={UserPermission}>
+            <PrivateRoute permission={FullPermission}>
               <UserEdit />
             </PrivateRoute>
           }
@@ -101,23 +101,23 @@ const AppRouter = () => {
         <Route
           path="user/:id/view"
           element={
-            <PrivateRoute permission={UserPermission}>
+            <PrivateRoute permission={FullPermission}>
               <UserViewInfo />
             </PrivateRoute>
           }
         />
         <Route
-          path="user/:id/transaction"
+          path="transaction/transaction-history"
           element={
-            <PrivateRoute permission={UserPermission}>
+            <PrivateRoute permission={FullPermission}>
               <UserTransactionHistory />
             </PrivateRoute>
           }
         />
         <Route
-          path="user/:id/transaction/:id"
+          path="transaction/:id"
           element={
-            <PrivateRoute permission={UserPermission}>
+            <PrivateRoute permission={FullPermission}>
               <UserTransactionDetails />
             </PrivateRoute>
           }

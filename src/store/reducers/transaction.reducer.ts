@@ -1,4 +1,4 @@
-import { SET_TRANSACTIONS } from "../types/action.types";
+import {SET_TRANSACTION_LOADING, SET_TRANSACTIONS} from "../types/action.types";
 
 import {
   TransactionActions,
@@ -6,7 +6,7 @@ import {
 } from "../types/transaction.types";
 
 const initialState: TransactionState = {
-  pending: false,
+  loading: '',
   transactions: [],
   error: null,
 };
@@ -19,9 +19,13 @@ const TransactionReducer = (
     case SET_TRANSACTIONS:
       return {
         ...state,
-        pending: false,
-        transactions: action.payload.transactions,
+        transactions: action.payload.transactions!,
       };
+    case SET_TRANSACTION_LOADING:
+      return {
+        ...state,
+        loading: action.payload.loading!
+      }
     default:
       return state;
   }

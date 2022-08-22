@@ -1,7 +1,7 @@
 import React, { ReactNode, useState } from "react";
 import { Button } from "@chakra-ui/react";
 import { BsKey } from "react-icons/bs";
-import { Link } from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 
 // interface IUserButton {
 //   userItem: string;
@@ -21,7 +21,8 @@ const UserProfileButton = ({
   leftIcon,
 }: IUserButton) => {
   const [isHovering, setIsHovering] = useState(false);
-
+  const navigate = useNavigate();
+  const onClick = () => navigate(directUrl)
   const handleMouseEnter = () => {
     setIsHovering(true);
   };
@@ -31,6 +32,7 @@ const UserProfileButton = ({
   };
   return (
     <Button
+      onClick={onClick}
       flex={1}
       fontSize="sm"
       maxW="250px"
@@ -44,7 +46,7 @@ const UserProfileButton = ({
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
-      <Link to={directUrl}>{userButtonItem}</Link>
+      {userButtonItem}
     </Button>
   );
 };

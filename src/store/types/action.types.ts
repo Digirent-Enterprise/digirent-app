@@ -5,7 +5,7 @@ export const SET_USERS = "SET_USERS";
 export const SET_TRANSACTIONS = "SET_TRANSACTIONS";
 export const SET_USER_DETAIL = "SET_USER_DETAIL";
 export const SET_CATEGORY = "SET_CATEGORY";
-
+export const SET_TRANSACTION_LOADING = "TRANSACTION/SET_TRANSACTION_LOADING"
 // getters
 export const GET_PRODUCTS = "GET_PRODUCTS";
 export const GET_USERS = "GET_USERS";
