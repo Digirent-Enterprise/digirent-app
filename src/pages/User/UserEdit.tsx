@@ -116,11 +116,11 @@ const UserEdit = () => {
                 </Button>
               </FormLabel>
               <div
-                className="z-50 w-full duration-300 ease-in-out bg-white transition-height"
+                className="z-50 w-full mt-5 duration-300 ease-in-out bg-white transition-height"
                 style={{ height: toggleName ? "60px" : 0 }}
               >
                 <ul
-                  className="absolute list-none transition-opacity duration-300 ease-in-out z-500"
+                  className="absolute z-50 list-none transition-opacity duration-300 ease-in-out"
                   style={{ opacity: toggleName ? 1 : 0 }}
                 >
                   {" "}
@@ -158,11 +158,11 @@ const UserEdit = () => {
                 </Button>
               </FormLabel>
               <div
-                className="z-50 w-full duration-300 ease-in-out bg-white transition-height"
+                className="z-50 w-full mt-5 duration-300 ease-in-out bg-white transition-height"
                 style={{ height: toggleEmail ? "60px" : 0 }}
               >
                 <ul
-                  className="absolute list-none transition-opacity duration-300 ease-in-out z-500"
+                  className="absolute z-50 list-none transition-opacity duration-300 ease-in-out"
                   style={{ opacity: toggleEmail ? 1 : 0 }}
                 >
                   {" "}
@@ -199,11 +199,11 @@ const UserEdit = () => {
                 </Button>
               </FormLabel>
               <div
-                className="z-50 w-full duration-300 ease-in-out bg-white transition-height"
+                className="z-50 w-full mt-5 duration-300 ease-in-out bg-white transition-height"
                 style={{ height: togglePhone ? "60px" : 0 }}
               >
                 <ul
-                  className="absolute list-none transition-opacity duration-300 ease-in-out z-500"
+                  className="absolute z-50 list-none transition-opacity duration-300 ease-in-out"
                   style={{ opacity: togglePhone ? 1 : 0 }}
                 >
                   {" "}
@@ -240,18 +240,18 @@ const UserEdit = () => {
                 </Button>
               </FormLabel>
               <div
-                className="z-50 w-full duration-300 ease-in-out bg-white transition-height"
+                className="z-50 w-full mt-5 duration-300 ease-in-out bg-white transition-height"
                 style={{ height: toggleAddress ? "60px" : 0 }}
               >
                 <ul
-                  className="absolute list-none transition-opacity duration-300 ease-in-out z-500"
+                  className="absolute z-50 list-none transition-opacity duration-300 ease-in-out"
                   style={{ opacity: toggleAddress ? 1 : 0 }}
                 >
                   {" "}
                   <Input
                     defaultValue={currentUser.location}
                     {...register("address")}
-                    placeholder="Adress"
+                    placeholder="Address"
                     _placeholder={{ color: "#777" }}
                     type="text"
                     bg={useColorModeValue("gray.50", "gray.500")}
