@@ -8,7 +8,7 @@ const initialState: CurrentUserState = {
   email: "",
   phone: "",
   profileImage: "",
-  location: ""
+  location: "",
 };
 
 const CurrentUserReducer = (state = initialState, action: any) => {

@@ -1,5 +1,6 @@
 import React from "react";
-import { BackToPreviousPage } from "../../modules";
+import { AiOutlineArrowLeft } from "react-icons/ai";
+import { Link } from "react-router-dom";
 
 const CheckoutDetailsCard: React.FC<any> = () =>
   // props?: IProduct
@@ -7,7 +8,14 @@ const CheckoutDetailsCard: React.FC<any> = () =>
     return (
       <div>
         <div className="pb-4">
-          <BackToPreviousPage page="product" />
+          <Link to="/">
+            <div className="flex">
+              <AiOutlineArrowLeft color="#4169E1" className="mx-2 text-3xl" />
+              <p className="mx-2 mb-10 text-lg text-[#4169E1]">
+                Return to product page
+              </p>
+            </div>
+          </Link>
         </div>
         <div className="container p-6 border-2 border-solid rounded-2xl border-gray">
           <div className="flex flex-col px-0 md:flex-row">

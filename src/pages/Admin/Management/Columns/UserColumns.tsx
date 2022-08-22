@@ -18,8 +18,8 @@ export const UserColumns: Array<Column> = [
   {
     id: "role",
     Header: "Role",
-    accessor: (d: any) => {
-      return d.role === "user" ? (
+    accessor: (e: any) => {
+      return e.role === "user" ? (
         <Badge colorScheme="green">User</Badge>
       ) : (
         <Badge colorScheme="yellow">Admin</Badge>
@@ -37,11 +37,11 @@ export const UserColumns: Array<Column> = [
   {
     id: "status",
     Header: "Status",
-    accessor: (d: any) => {
-      return d.status ? (
+    accessor: (e: any) => {
+      return e.status ? (
         <Badge colorScheme="green">Active</Badge>
       ) : (
-        <Badge colorScheme="red">Disabled</Badge>
+        <Badge colorScheme="red">Deactivate</Badge>
       );
     },
   },

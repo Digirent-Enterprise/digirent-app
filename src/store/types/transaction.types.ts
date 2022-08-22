@@ -1,5 +1,5 @@
 import { FETCH_TRANSACTIONS_ERROR } from "./action.types";
-import {IProduct} from "./product.types";
+import { IProduct } from "./product.types";
 
 export interface ITransaction {
   _id: string;
@@ -10,16 +10,17 @@ export interface ITransaction {
   status: string;
   latePenalty: number;
   currency: string;
-  from: string;
-  to: string;
-  imageUrl: string;
+  from: Date;
+  to: Date;
+  step: number;
 }
 
-export type TransactionLoading = "" | "loading"| "success" | "fail"
+export type TransactionLoading = "" | "loading" | "success" | "fail";
 
 export interface TransactionState {
   loading: TransactionLoading;
   transactions: ITransaction[];
+  transaction: ITransaction;
   error: string | null;
 }
 export interface SetTransactionPayload {
@@ -34,10 +35,11 @@ export type SetTransaction = {
 export type TransactionAction = {
   type: string;
   payload: {
-    loading?: TransactionLoading
-    transactions?: ITransaction[]
-  }
-}
+    loading?: TransactionLoading;
+    transactions?: ITransaction[];
+    transaction?: ITransaction;
+  };
+};
 
 export interface FetchTransactionErrorPayload {
   error: string;
