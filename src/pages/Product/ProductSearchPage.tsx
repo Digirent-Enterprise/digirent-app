@@ -8,6 +8,7 @@ import React, {
   ChangeEvent,
 } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import {
   SearchHeaderSection,
   SearchResultsSection,
@@ -70,7 +71,7 @@ interface ProductSearchPageProps {
 
 const ProductSearchPage = () => {
   const [selected, setSelected] = useState<String>("");
-
+  const navigate = useNavigate();
   const productData = useSelector(getAllProductsSelector);
 
   const dispatch = useDispatch();
@@ -164,7 +165,7 @@ const ProductSearchPage = () => {
 
       // by date
       if (selected === "time") {
-        updatedList = updatedList.sort((productA, productB) => {
+        updatedList = updatedList.products.sort((productA, productB) => {
           productA.createdDate = new Date(productA.createdDate);
           productB.createdDate = new Date(productB.createdDate);
           return (

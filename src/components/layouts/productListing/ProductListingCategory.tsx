@@ -7,9 +7,7 @@ import { CustomBreadcrumb } from "../../elements";
 const ProductListingCategory = () => {
   return (
     <div className="px-8 py-6">
-      <CustomBreadcrumb/>
-      <CategoryBannerDisplay/>
-      <ProductsCardListingCategory/>
+      <ProductsCardListingCategory />
     </div>
   );
 };

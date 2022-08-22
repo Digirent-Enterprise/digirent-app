@@ -6,22 +6,24 @@ import "react-datepicker/dist/react-datepicker.css";
 const BookingBoxLayout = ({ productData }: any) => {
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date());
-  const onChange = (dates:any) => {
+  const onChange = (dates: any) => {
     const start = dates;
     setStartDate(start);
   };
-  const onChange2 = (dates:any) => {
+  const onChange2 = (dates: any) => {
     const end = dates;
     setEndDate(end);
   };
   const formatDate = (date: any) => {
-    const d = new Date(date)
-    function pad(s:any) { return (s < 10) ? '0' + s : s; }
-    return [pad(d.getDate()), pad(d.getMonth()+1), d.getFullYear()].join('/')
-  }
-  if (startDate > endDate){
-    alert('Please choose valid dates')
-    setEndDate(startDate)
+    const d = new Date(date);
+    function pad(s: any) {
+      return s < 10 ? "0" + s : s;
+    }
+    return [pad(d.getDate()), pad(d.getMonth() + 1), d.getFullYear()].join("/");
+  };
+  if (startDate > endDate) {
+    alert("Please choose valid dates");
+    setEndDate(startDate);
   }
   return (
     <div className="flex flex-col w-full gap-2">
@@ -35,7 +37,7 @@ const BookingBoxLayout = ({ productData }: any) => {
             <div className="font-extrabold">Rental period: </div>
             <div className="">
               <div className=" min-w-[220px]">
-                {formatDate(startDate)} -{" "}{formatDate(endDate)}
+                {formatDate(startDate)} - {formatDate(endDate)}
               </div>
             </div>
           </div>

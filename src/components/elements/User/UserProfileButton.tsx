@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { Button } from "@chakra-ui/react";
 
 import { Link } from "react-router-dom";
+import categorySaga from "../../../store/sagas/category.saga";
+import CategoryBanner from "../../layouts/productListing/Items/CategoryBanner";
 
 // interface IUserButton {
 //   userItem: string;
@@ -44,3 +46,4 @@ const UserProfileButton = ({ userButtonItem, directUrl }: IUserButton) => {
 };
 
 export default UserProfileButton;
+

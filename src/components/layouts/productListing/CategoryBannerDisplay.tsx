@@ -6,16 +6,20 @@ import { getCategoryByID } from "../../../store/actions/category.action";
 import CategoryBannerLayout from "./Layout/CategoryBannerLayout";
 
 const CategoryBannerDisplay = () => {
-    const dispatch = useDispatch();
-    const { id } = useParams();
-    const productFetchData = useSelector(getCategoriesByIDSel);
-    useEffect(() => {
-      if (id) dispatch(getCategoryByID(id));
-    }, [id]);
-  
-    const productData = useMemo(() => productFetchData, [productFetchData]);
+  const dispatch = useDispatch();
+  const { queryName } = useParams();
+  const productFetchData = useSelector(getCategoriesByIDSel);
+  useEffect(() => {
+    if (queryName) dispatch(getCategoryByID(queryName));
+  }, [queryName]);
 
-  return <CategoryBannerLayout productData={productData} />
+  const productData = useMemo(() => productFetchData, [productFetchData]);
+  if (productData.length > 0){
+    
+    return <CategoryBannerLayout productData={productData[0]}/>;
+
+  }
+  return <CategoryBannerLayout productData={[]}/>;
 };
 
 export default CategoryBannerDisplay;

@@ -5,31 +5,23 @@ import ProductListLayout from "./ProductLayoutList/ProductLayoutList";
 import { getCategoriesByID as getCategoriesByIDSel } from "../../../store/selectors/category.selector";
 import { getCategoryByID } from "../../../store/actions/category.action";
 import { getProductByID } from "../../../store/actions/product.action";
-import { getProductByID as getProductByIDSel } from "../../../store/selectors/product.selector";
+import { getProductByIDSelector } from "../../../store/selectors/product.selector";
 
 const ProductsCardListingCategory = () => {
   const dispatch = useDispatch();
-  const { name } = useParams();
+  const { queryName } = useParams();
   const productFetchData = useSelector(getCategoriesByIDSel);
   useEffect(() => {
-    if (name) dispatch(getCategoryByID(name));
-  }, [name]);
+    if (queryName) dispatch(getCategoryByID(queryName));
+  }, [queryName]);
 
   const productData = useMemo(() => productFetchData, [productFetchData]);
-  console.log('category', productData)
+  if (productData.length > 0){
+    
+    return <ProductListLayout products={productData[0].products}/>;
 
-  const productByIDFetchData = useSelector(getProductByIDSel);
-  useEffect(() => {
-    if (productData.products) dispatch(getProductByID(productData.products));
-  }, [productData.products]);
-  const productDataById = useMemo(
-    () => productByIDFetchData,
-    [productByIDFetchData],
-  );
-  console.log('products', productDataById)
-
-
-  return <ProductListLayout products={productData.products} />;
+  }
+  return <ProductListLayout products={[]}/>;
 };
 
 export default ProductsCardListingCategory;

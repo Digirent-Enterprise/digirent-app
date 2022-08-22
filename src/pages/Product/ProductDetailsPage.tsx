@@ -1,12 +1,13 @@
 import { useEffect, useMemo } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  StaticGoogleMap,
-} from "../../components";
+import { StaticGoogleMap } from "../../components";
 import DefaultLayout from "../DefaultLayout";
 import { getProductByID } from "../../store/actions/product.action";
-import { getProductByID as getProductByIDSel, getProductError } from "../../store/selectors/product.selector";
+import {
+  getProductError,
+  getProductByIDSelector
+} from "../../store/selectors/product.selector";
 import ProductSummaryLayout from "../../components/modules/productSummary/layout/ProductSummaryLayout";
 import GalleryLayout from "../../components/modules/gallery/Layout/GalleryLayout";
 import BookingBoxLayout from "../../components/elements/BookingBox/layout/BookingBoxLayout";
@@ -15,8 +16,8 @@ const ProductDetailsPage = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { id } = useParams();
-  const productByIDFetchData = useSelector(getProductByIDSel);
-  const productByIDError = useSelector(getProductError);
+  const productByIDFetchData = useSelector(getProductByIDSelector);
+  // const productByIDError = useSelector(getProductError);
 
   useEffect(() => {
     if (id) {
@@ -24,11 +25,9 @@ const ProductDetailsPage = () => {
     }
   }, [id]);
 
-  useEffect(() => {
-    if (productByIDError){
-      navigate("../../404")
-    }
-  }, [productByIDError])
+    // if (productByIDError) {
+    //   navigate("../../404");
+    // }
 
   const productDataById = useMemo(
     () => productByIDFetchData,
@@ -36,7 +35,7 @@ const ProductDetailsPage = () => {
   );
   return (
     <DefaultLayout>
-      <ProductSummaryLayout productData={productDataById}/>
+      <ProductSummaryLayout productData={productDataById} />
       <GalleryLayout productData={productDataById} />
       <div className="w-full">
         <BookingBoxLayout productData={productDataById} />

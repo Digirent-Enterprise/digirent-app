@@ -1,10 +1,10 @@
 import { IProduct } from "./product.types";
 export interface ICategory {
-  products: string[];
-  id: string;
+  products: IProduct[];
+  _id: string;
   name: string;
   image: string;
-  checked: boolean;
+  queryName: string;
 }
 
 export interface CategoryState {

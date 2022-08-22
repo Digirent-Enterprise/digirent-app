@@ -10,8 +10,8 @@ import {
 
 interface BookingBoxProps {
   price: number;
-  borrow?: Date|null;
-  returnDate?: Date|null;
+  borrow?: Date | null;
+  returnDate?: Date | null;
   rentalCost: number;
   totalPrice: number;
 }
@@ -23,10 +23,12 @@ const BookingBox: React.FC<BookingBoxProps> = ({
   totalPrice,
 }) => {
   const formatDate = (date: any) => {
-    const d = new Date(date)
-    function pad(s:any) { return (s < 10) ? '0' + s : s; }
-    return [pad(d.getDate()), pad(d.getMonth()+1), d.getFullYear()].join('/')
-  }
+    const d = new Date(date);
+    function pad(s: any) {
+      return s < 10 ? "0" + s : s;
+    }
+    return [pad(d.getDate()), pad(d.getMonth() + 1), d.getFullYear()].join("/");
+  };
   return (
     <div className="flex flex-col">
       <div className=" w-[300px] rounded-3xl bg-white flex flex-col drop-shadow-[0px_10px_10px_rgba(0,0,0,0.25)]">

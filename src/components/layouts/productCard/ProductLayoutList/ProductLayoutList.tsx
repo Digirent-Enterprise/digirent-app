@@ -3,8 +3,6 @@ import { Link } from "react-router-dom";
 import ReactPaginate from "react-paginate";
 
 import ProductCard from "../Item/ProductCard";
-
-import "../../../../index.css";
 import { IProduct } from "../../../../store/types/product.types";
 
 const ProductListLayout = (props: { products: any }) => {
@@ -29,9 +27,9 @@ const ProductListLayout = (props: { products: any }) => {
     <>
       <div className="grid grid-cols-1 gap-y-10 sm:grid-cols-2 gap-x-6 lg:grid-cols-2 xl:grid-cols-3 xl:gap-x-8">
         {currentItems.map((product: IProduct) => (
-          <Link to={`/product/${product.id}`}>
+          <Link to={`/product/${product._id}`}>
             <ProductCard
-              key={product.id}
+              key={product._id}
               name={product.name}
               image={product.images[0]}
               rentalCost={product.rentalCost}

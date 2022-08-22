@@ -5,14 +5,13 @@ import { API_BASE_URL } from "../../utils/constants/api.constants";
 import { setCategories, setCategoryByID } from "../actions/category.action";
 import { GET_CATEGORY, GET_CATEGORY_BY_ID } from "../types/action.types";
 
-
-const TakeLatest: any = Eff.takeLatest;
-
 const fetchCategory = () =>
   customAxios().get<ICategory[]>(`${API_BASE_URL}/v1/api/category`);
 
-const fetchCategorybyID = (name:string) => {
-  return customAxios().get<ICategory>(`${API_BASE_URL}/v1/api/category/${name}`)
+const fetchCategorybyID = (queryName: string) => {
+  return customAxios().get<ICategory[]>(
+    `${API_BASE_URL}/v1/api/category/get-category-products?queryName=${queryName}`,
+  );
 };
 function* getCategory(): any {
   const response = yield call(fetchCategory);
@@ -21,13 +20,17 @@ function* getCategory(): any {
 }
 
 function* getCategoryByID(payload: ICategory): any {
-  const response = yield call(fetchCategorybyID, payload.name);
-  console.log("herehere", response.data)
+  const response = yield call(fetchCategorybyID, payload.queryName);
+  console.log("herehere", response.data);
   yield put(setCategoryByID(response.data));
 }
 
 function* categorySaga() {
-  yield all([TakeLatest(GET_CATEGORY, getCategory), TakeLatest(GET_CATEGORY_BY_ID, getCategoryByID)]);
+  yield all([
+    takeLatest(GET_CATEGORY, getCategory),
+    //@ts-ignore
+    takeLatest(GET_CATEGORY_BY_ID, getCategoryByID),
+  ]);
 }
 
 export default categorySaga;

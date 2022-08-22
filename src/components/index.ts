@@ -17,7 +17,6 @@ import {
   CategoryCardListing,
   Stat,
   MostRentalProduct,
-  BookingBoxDisplay,
   ChatBox,
   StripePayment,
 } from "./elements";
@@ -32,7 +31,7 @@ import {
   EditUserModal,
   LanguageSwitcher,
   StaticGoogleMap,
-  CategoryBannerDisplay
+  CategoryBannerDisplay,
 } from "./modules";
 import {
   NavBar,
@@ -92,7 +91,7 @@ export {
   MostRentalProduct,
   ProductListingCategory,
   StaticGoogleMap,
-  CategoryBannerDisplay
+  CategoryBannerDisplay,
   ChatBox,
   StripePayment,
 };

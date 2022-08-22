@@ -1,10 +1,14 @@
-import { SET_PRODUCTS, SET_PRODUCT_BY_ID, FETCH_PRODUCT_BY_ID_ERROR} from "../types/action.types";
+import {
+  SET_PRODUCTS,
+  SET_PRODUCT_BY_ID,
+  FETCH_PRODUCT_BY_ID_ERROR,
+} from "../types/action.types";
 
 import { ProductActions, ProductState } from "../types/product.types";
 
 const initialState: ProductState = {
   product: {
-    id: "",
+    _id: "",
     name: "",
     serial: "",
     brand: "",
@@ -21,7 +25,7 @@ const initialState: ProductState = {
   error: null,
 };
 
-const ProductReducer = (state = initialState, action: any ) => {
+const ProductReducer = (state = initialState, action: any) => {
   switch (action.type) {
     case SET_PRODUCTS:
       return {

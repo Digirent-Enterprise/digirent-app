@@ -48,7 +48,6 @@ export {
   CategoryCardListing,
   Stat,
   MostRentalProduct,
-  BookingBoxDisplay,
   ChatBox,
   StripePayment,
 };
