@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React, { ReactNode, useState } from "react";
 import { Button } from "@chakra-ui/react";
-
-import { Link } from "react-router-dom";
+import { BsKey } from "react-icons/bs";
+import {Link, useNavigate} from "react-router-dom";
 
 // interface IUserButton {
 //   userItem: string;
@@ -12,11 +12,17 @@ import { Link } from "react-router-dom";
 interface IUserButton {
   userButtonItem: string;
   directUrl: string;
+  leftIcon: any;
 }
 
-const UserProfileButton = ({ userButtonItem, directUrl }: IUserButton) => {
+const UserProfileButton = ({
+  userButtonItem,
+  directUrl,
+  leftIcon,
+}: IUserButton) => {
   const [isHovering, setIsHovering] = useState(false);
-
+  const navigate = useNavigate();
+  const onClick = () => navigate(directUrl)
   const handleMouseEnter = () => {
     setIsHovering(true);
   };
@@ -26,6 +32,7 @@ const UserProfileButton = ({ userButtonItem, directUrl }: IUserButton) => {
   };
   return (
     <Button
+      onClick={onClick}
       flex={1}
       fontSize="sm"
       maxW="250px"
@@ -35,10 +42,11 @@ const UserProfileButton = ({ userButtonItem, directUrl }: IUserButton) => {
         backgroundColor: isHovering ? "#153289" : "#4169E1",
         color: isHovering ? "#fff" : "",
       }}
+      leftIcon={leftIcon}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
-      <Link to={directUrl}>{userButtonItem}</Link>
+      {userButtonItem}
     </Button>
   );
 };

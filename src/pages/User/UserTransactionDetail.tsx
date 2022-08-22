@@ -1,5 +1,13 @@
 import { BackToPreviousPage } from "../../components";
 import DefaultLayout from "../DefaultLayout";
+import {useEffect, useState} from "react";
+import {ITransaction} from "../../store/types/transaction.types";
+import {customAxios} from "../../http-common";
+import {useParams} from "react-router-dom";
+import {IProduct} from "../../store/types/product.types";
+import {useSelector} from "react-redux";
+import {getUserDetail} from "../../store/actions/user.action";
+import {getCurrentUserSelector} from "../../store/selectors/user.selector";
 
 const products = [
   {
@@ -24,6 +32,15 @@ function classNames(...classes: any) {
   return classes.filter(Boolean).join(" ");
 }
 const UserTransactionDetails = () => {
+  const [transaction, setTransaction] = useState<ITransaction>();
+  const currentUser = useSelector(getCurrentUserSelector);
+  const {id} = useParams();
+  useEffect(() => {
+    customAxios('').get("transaction/transaction-detail", {params: {id}})
+  }, [])
+
+  const product = transaction?.productId as IProduct
+
   return (
     <DefaultLayout>
       <main className="max-w-2xl pt-8 pb-24 mx-auto sm:pt-16 sm:px-6 lg:max-w-7xl lg:px-8">
@@ -33,7 +50,7 @@ const UserTransactionDetails = () => {
         <div className="px-4 space-y-2 sm:px-0 sm:flex sm:items-baseline sm:justify-between sm:space-y-0">
           <div className="flex sm:items-baseline sm:space-x-4">
             <h1 className="text-2xl font-extrabold tracking-tight text-[#111827] sm:text-3xl">
-              Order #54879
+              Order #{transaction?._id.substring(0,5)}
             </h1>
             <a
               href="/"
@@ -45,7 +62,7 @@ const UserTransactionDetails = () => {
           <p className="text-sm text-[#4B5563]">
             Order placed{" "}
             <time dateTime="2021-03-22" className="font-medium text-[#111827]">
-              March 22, 2021
+              {transaction?.from}
             </time>
           </p>
           <a
@@ -61,18 +78,15 @@ const UserTransactionDetails = () => {
           <h2 id="products-heading" className="sr-only">
             Products purchased
           </h2>
-
           <div className="space-y-8">
-            {products.map((product) => (
               <div
-                key={product.id}
                 className="bg-white border-t border-b border-[#E5E7EB] shadow-sm sm:border sm:rounded-lg"
               >
                 <div className="px-4 py-6 sm:px-6 lg:grid lg:grid-cols-12 lg:gap-x-8 lg:p-8">
                   <div className="sm:flex lg:col-span-7">
                     <div className="flex-shrink-0 w-full overflow-hidden rounded-lg aspect-w-1 aspect-h-1 sm:aspect-none sm:w-40 sm:h-40">
                       <img
-                        src={product.imageUrl}
+                        src={product?.images[0]}
                         alt="product"
                         className="object-cover object-center w-full h-full sm:w-full sm:h-full"
                       />
@@ -80,13 +94,13 @@ const UserTransactionDetails = () => {
 
                     <div className="mt-6 sm:mt-0 sm:ml-6">
                       <h3 className="text-base font-medium text-[#111827]">
-                        <a href={product.href}>{product.name}</a>
+                        <a href={`product/${product?._id}`}>{product?.name}</a>
                       </h3>
                       <p className="mt-2 text-sm font-medium text-[#111827]">
-                        ${product.price}
+                        ${product?.rentalCost}
                       </p>
                       <p className="mt-3 text-sm text-[#6B7280]">
-                        {product.description}
+                        {product?.description}
                       </p>
                     </div>
                   </div>
@@ -98,9 +112,7 @@ const UserTransactionDetails = () => {
                           Delivery address
                         </dt>
                         <dd className="mt-3 text-[#6B7280]">
-                          <span className="block">{product.address[0]}</span>
-                          <span className="block">{product.address[1]}</span>
-                          <span className="block">{product.address[2]}</span>
+                          <span className="block">{currentUser.location}</span>
                         </dd>
                       </div>
                       <div>
@@ -108,8 +120,8 @@ const UserTransactionDetails = () => {
                           Shipping updates
                         </dt>
                         <dd className="mt-3 space-y-3 text-[#6B7280]">
-                          <p>{product.email}</p>
-                          <p>{product.phone}</p>
+                          <p>{currentUser.email}</p>
+                          <p>{currentUser.phone}</p>
                         </dd>
                       </div>
                     </dl>
@@ -119,15 +131,15 @@ const UserTransactionDetails = () => {
                 <div className="px-4 py-6 border-t border-[#E5E7EB] sm:px-6 lg:p-8">
                   <h4 className="sr-only">Status</h4>
                   <p className="text-sm font-medium text-[#111827]">
-                    {product.status} on{" "}
-                    <time dateTime={product.datetime}>{product.date}</time>
+                    {transaction?.status} on{" "}
+                    {/*<time dateTime={product.datetime}>{product.f}</time>*/}
                   </p>
                   <div className="mt-6" aria-hidden="true">
                     <div className="overflow-hidden bg-[#E5E7EB] rounded-full">
                       <div
                         className="h-2 bg-blue-100 rounded-full"
                         style={{
-                          width: `calc((${product.step} * 2 + 1) / 8 * 100%)`,
+                          width: `calc((1 * 2 + 1) / 8 * 100%)`,
                         }}
                       />
                     </div>
@@ -135,7 +147,7 @@ const UserTransactionDetails = () => {
                       <div className="text-blue-100">Order placed</div>
                       <div
                         className={classNames(
-                          product.step > 0 ? "text-blue-100" : "",
+                          1 ? "text-blue-100" : "",
                           "text-center",
                         )}
                       >
@@ -143,7 +155,7 @@ const UserTransactionDetails = () => {
                       </div>
                       <div
                         className={classNames(
-                          product.step > 1 ? "text-blue-100" : "",
+                          1 > 1 ? "text-blue-100" : "",
                           "text-center",
                         )}
                       >
@@ -151,7 +163,7 @@ const UserTransactionDetails = () => {
                       </div>
                       <div
                         className={classNames(
-                          product.step > 2 ? "text-blue-100" : "",
+                          1 > 2 ? "text-blue-100" : "",
                           "text-right",
                         )}
                       >
@@ -161,7 +173,7 @@ const UserTransactionDetails = () => {
                   </div>
                 </div>
               </div>
-            ))}
+            )
           </div>
         </section>
 

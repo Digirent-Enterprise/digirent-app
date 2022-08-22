@@ -79,10 +79,10 @@ const AvatarMenu = () => {
             </Center>
             <br />
             <MenuDivider />
-            <MenuItem onClick={() => navigate("/user/:id/profile")}>
+            <MenuItem onClick={() => navigate("/user/my-profile")}>
               Account Settings
             </MenuItem>
-            <MenuItem onClick={() => navigate("/user/:id/transaction")}>
+            <MenuItem onClick={() => navigate("/transaction/transaction-history")}>
               Order History
             </MenuItem>
             <MenuItem onClick={() => navigate("/user/:id/favorites")}>

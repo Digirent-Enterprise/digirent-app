@@ -6,7 +6,8 @@ export interface IUser {
   email: string;
   phone: string;
   role: string;
-  avatar: string;
+  profileImage: string;
+  location: string;
 }
 
 export interface IUserDetail {
@@ -15,7 +16,8 @@ export interface IUserDetail {
   name: string;
   email: string;
   phone: string;
-  avatar: string;
+  profileImage: string;
+  location: string;
 }
 
 export interface ISaveUser {
