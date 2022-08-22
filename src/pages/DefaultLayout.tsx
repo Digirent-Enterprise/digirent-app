@@ -4,10 +4,12 @@ import { Footer, LanguageSwitcher, NavBar, Transition } from "../components";
 const DefaultLayout = ({ children }: any) => {
   return (
     <Transition>
-      <NavBar />
-      {children}
-      <LanguageSwitcher />
-      <Footer />
+      <div className="h-screen">
+        <NavBar />
+        {children}
+        <LanguageSwitcher />
+        <Footer />
+      </div>
     </Transition>
   );
 };

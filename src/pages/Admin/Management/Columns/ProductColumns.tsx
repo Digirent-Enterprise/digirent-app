@@ -6,7 +6,9 @@ import { ClickDelete, ClickEdit } from "../HandleActionClick";
 export const ProductColumns: Array<Column> = [
   {
     Header: "Product ID",
-    accessor: "_id",
+    accessor: (e: any) => {
+      return e._id.toUpperCase();
+    },
   },
   {
     Header: "Product Name",

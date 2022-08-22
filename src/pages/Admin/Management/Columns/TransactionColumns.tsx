@@ -6,7 +6,9 @@ import { ClickDelete, ClickEdit } from "../HandleActionClick";
 export const TransactionColumns: Array<Column> = [
   {
     Header: "Transaction ID",
-    accessor: "_id",
+    accessor: (e: any) => {
+      return e._id.toUpperCase();
+    },
   },
   {
     Header: "User Email",
@@ -31,8 +33,8 @@ export const TransactionColumns: Array<Column> = [
     id: "status",
     Header: "Status",
     accessor: (d: any) => {
-      return d.status ? (
-        <Badge colorScheme="green">Available</Badge>
+      return d.status === "paid" ? (
+        <Badge colorScheme="green">Paid</Badge>
       ) : (
         <Badge colorScheme="yellow">Pending</Badge>
       );
@@ -40,7 +42,7 @@ export const TransactionColumns: Array<Column> = [
   },
   {
     Header: "Product ID",
-    accessor: "productId",
+    accessor: "productId._id",
   },
   {
     Header: "Action",

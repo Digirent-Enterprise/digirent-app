@@ -1,7 +1,9 @@
 import React, { useMemo, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-
-import { getAllTransactionsSelector } from "../../../store/selectors/transaction.selector";
+import {
+  getAllTransactionsSelector,
+  selectTransactionLoading,
+} from "../../../store/selectors/transaction.selector";
 import { getTransactions } from "../../../store/actions/transaction.action";
 import DefaultManagement from "./DefaultManagement";
 
@@ -11,8 +13,10 @@ const TransactionManagement = () => {
   const dispatch = useDispatch();
 
   const transactionFetchData = useSelector(getAllTransactionsSelector);
+  const transactionLoading = useSelector(selectTransactionLoading);
 
   useEffect(() => {
+    if (transactionLoading === "success") return;
     dispatch(getTransactions());
   }, []);
 

@@ -82,7 +82,9 @@ const AvatarMenu = () => {
             <MenuItem onClick={() => navigate("/user/my-profile")}>
               Account Settings
             </MenuItem>
-            <MenuItem onClick={() => navigate("/transaction/transaction-history")}>
+            <MenuItem
+              onClick={() => navigate("/transaction/transaction-history")}
+            >
               Order History
             </MenuItem>
             <MenuItem onClick={() => navigate("/user/:id/favorites")}>

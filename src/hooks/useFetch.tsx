@@ -18,8 +18,7 @@ export function useFetch<T>(
         setLoading(false);
         setError(false);
       })
-      .catch((err) => {
-        console.log(err);
+      .catch(() => {
         setData(null);
         setLoading(false);
         setError(true);

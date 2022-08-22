@@ -2,14 +2,13 @@ import { createSelector } from "@reduxjs/toolkit";
 
 import { AppState } from "../rootReducer";
 
-export const getProductError = (state: AppState) => state.product.error;
+const getAllProducts = (state: AppState) => state.product.products;
 
-export const getProductErrorSelector = createSelector(
-  getProductError,
+export const getAllProductsSelector = createSelector(
+  getAllProducts,
   (error) => error,
 );
 
-const getAllProducts = (state: AppState) => state.product.products;
 const getProductByID = (state: AppState) => state.product.product;
 
 export const getProductByIDSelector = createSelector(
@@ -17,7 +16,9 @@ export const getProductByIDSelector = createSelector(
   (error) => error,
 );
 
-export const getAllProductsSelector = createSelector(
-  getAllProducts,
+const getProductError = (state: AppState) => state.product.error;
+
+export const getProductErrorSelector = createSelector(
+  getProductError,
   (error) => error,
 );

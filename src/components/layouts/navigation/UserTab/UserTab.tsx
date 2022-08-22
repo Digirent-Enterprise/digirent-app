@@ -8,9 +8,9 @@ const UserTab = () => {
       <Flex alignContent="center" justifyContent="center">
         <Tabs alignItems="center">
           <TabList>
-            <TabButton directUrl="/user/:id/profile" tabItem="General" />
-            <TabButton directUrl="/user/:id/transaction" tabItem="Order" />
-            <TabButton directUrl="/user/:id/favorite" tabItem="Favorite" />
+            <TabButton directUrl="/user/profile" tabItem="Profile" />
+            <TabButton directUrl="/user/transaction" tabItem="Order" />
+            <TabButton directUrl="/user/favorite" tabItem="Favorite" />
           </TabList>
         </Tabs>
       </Flex>

@@ -23,7 +23,6 @@ import {
 } from "./elements";
 import {
   AuthFormGrid,
-  BackToPreviousPage,
   DeleteProductModal,
   DeleteTransactionModal,
   DeleteUserModal,
@@ -68,7 +67,6 @@ export {
   NewProduct,
   CustomTooltip,
   Spinner,
-  BackToPreviousPage,
   LanguageSwitcher,
   Transition,
   AuthFormGrid,

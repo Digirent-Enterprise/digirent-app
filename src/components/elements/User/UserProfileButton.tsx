@@ -1,14 +1,7 @@
-import React, { ReactNode, useState } from "react";
+import React, { useState } from "react";
 import { Button } from "@chakra-ui/react";
-import { BsKey } from "react-icons/bs";
-import {Link, useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
-// interface IUserButton {
-//   userItem: string;
-//   directUrl: string;
-//   hoverBackgroundColor: string;
-//   focusBackgroundColor: string;
-// }
 interface IUserButton {
   userButtonItem: string;
   directUrl: string;
@@ -22,7 +15,7 @@ const UserProfileButton = ({
 }: IUserButton) => {
   const [isHovering, setIsHovering] = useState(false);
   const navigate = useNavigate();
-  const onClick = () => navigate(directUrl)
+  const onClick = () => navigate(directUrl);
   const handleMouseEnter = () => {
     setIsHovering(true);
   };
