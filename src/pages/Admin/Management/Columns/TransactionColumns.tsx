@@ -17,8 +17,8 @@ export const TransactionColumns: Array<Column> = [
   {
     id: "total",
     Header: "Total Rental Cost",
-    accessor: (d: any) => {
-      return `${d.rentalCost + d.deposit + d.latePenalty} USD`;
+    accessor: (e: any) => {
+      return `${e.rentalCost + e.deposit + e.latePenalty} USD`;
     },
   },
   {
@@ -32,9 +32,11 @@ export const TransactionColumns: Array<Column> = [
   {
     id: "status",
     Header: "Status",
-    accessor: (d: any) => {
-      return d.status === "paid" ? (
-        <Badge colorScheme="green">Paid</Badge>
+    accessor: (e: any) => {
+      return e.status === "paid" ? (
+        <Badge colorScheme="gray">Paid</Badge>
+      ) : e.status === "shipped" ? (
+        <Badge colorScheme="green">Shipped</Badge>
       ) : (
         <Badge colorScheme="yellow">Pending</Badge>
       );
@@ -42,7 +44,9 @@ export const TransactionColumns: Array<Column> = [
   },
   {
     Header: "Product ID",
-    accessor: "productId._id",
+    accessor: (e: any) => {
+      return e.productId._id.toUpperCase();
+    },
   },
   {
     Header: "Action",

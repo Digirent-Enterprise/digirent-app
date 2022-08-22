@@ -33,8 +33,8 @@ export const ProductColumns: Array<Column> = [
   {
     id: "status",
     Header: "Status",
-    accessor: (d: any) => {
-      return d.status ? (
+    accessor: (e: any) => {
+      return e.status ? (
         <Badge colorScheme="green">Available</Badge>
       ) : (
         <Badge colorScheme="yellow">Pending</Badge>
