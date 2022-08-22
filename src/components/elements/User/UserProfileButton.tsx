@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { ReactNode, useState } from "react";
 import { Button } from "@chakra-ui/react";
-
+import { BsKey } from "react-icons/bs";
 import { Link } from "react-router-dom";
 
 // interface IUserButton {
@@ -12,9 +12,14 @@ import { Link } from "react-router-dom";
 interface IUserButton {
   userButtonItem: string;
   directUrl: string;
+  leftIcon: any;
 }
 
-const UserProfileButton = ({ userButtonItem, directUrl }: IUserButton) => {
+const UserProfileButton = ({
+  userButtonItem,
+  directUrl,
+  leftIcon,
+}: IUserButton) => {
   const [isHovering, setIsHovering] = useState(false);
 
   const handleMouseEnter = () => {
@@ -35,6 +40,7 @@ const UserProfileButton = ({ userButtonItem, directUrl }: IUserButton) => {
         backgroundColor: isHovering ? "#153289" : "#4169E1",
         color: isHovering ? "#fff" : "",
       }}
+      leftIcon={leftIcon}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >

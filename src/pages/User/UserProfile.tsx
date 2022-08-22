@@ -7,7 +7,9 @@ import {
   Button,
   useColorModeValue,
 } from "@chakra-ui/react";
-
+import { BsKey } from "react-icons/bs";
+import { AiOutlineEdit, AiOutlineProfile } from "react-icons/ai";
+import { TbHeartOff } from "react-icons/tb";
 import { UserTab } from "../../components";
 import {
   UserProfileAddress,
@@ -50,10 +52,12 @@ const UserProfile = () => {
               <UserProfileButton
                 directUrl="/user/:id/change-password"
                 userButtonItem="Change your password"
+                leftIcon={<BsKey />}
               />
               <UserProfileButton
                 directUrl="/user/:id/edit"
                 userButtonItem="Edit"
+                leftIcon={<AiOutlineEdit />}
               />
             </Stack>
             <Stack
@@ -66,6 +70,7 @@ const UserProfile = () => {
               <UserProfileButton
                 directUrl="/user/:id/view"
                 userButtonItem="View your information"
+                leftIcon={<AiOutlineProfile />}
               />
             </Stack>
             <Stack
@@ -88,6 +93,7 @@ const UserProfile = () => {
                 _hover={{
                   bg: "#AE1010",
                 }}
+                leftIcon={<TbHeartOff />}
               >
                 Deactivate account
               </Button>
