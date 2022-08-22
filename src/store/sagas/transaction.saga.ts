@@ -2,7 +2,7 @@ import { all, call, put, takeLatest } from "redux-saga/effects";
 import { customAxios } from "../../http-common";
 import { API_BASE_URL } from "../../utils/constants/api.constants";
 import {
-  fetchTransactionsError,
+  fetchTransactionsError, setTransactionLoading,
   setTransactions,
 } from "../actions/transaction.action";
 import { GET_TRANSACTIONS } from "../types/action.types";
@@ -13,9 +13,12 @@ const fetchTransactions = () =>
 
 function* getTransactions(): any {
   try {
+    yield put(setTransactionLoading('loading'))
     const response = yield call(fetchTransactions);
     yield put(setTransactions(response.data));
+    yield put(setTransactionLoading('success'))
   } catch (e: any) {
+    yield put(setTransactionLoading('fail'))
     yield put(
       fetchTransactionsError({
         error: e.message,

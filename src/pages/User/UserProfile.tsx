@@ -55,7 +55,7 @@ const UserProfile = () => {
                 leftIcon={<BsKey />}
               />
               <UserProfileButton
-                directUrl="/user/:id/edit"
+                directUrl="/user/edit-my-profile"
                 userButtonItem="Edit"
                 leftIcon={<AiOutlineEdit />}
               />
