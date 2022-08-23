@@ -17,7 +17,6 @@ import {
   CheckoutPage,
   EmailSentPage,
   ProductDetailsPage,
-  UserChangePassword,
 } from "./pages";
 import PrivateRoute from "./components/PrivateRoute";
 
@@ -48,6 +47,12 @@ const UserTransactionHistory = lazy(
 const UserEdit = lazy(() => import("./pages/User/UserEdit"));
 const UserProfile = lazy(() => import("./pages/User/UserProfile"));
 const UserViewInfo = lazy(() => import("./pages/User/UserViewInfo"));
+const UserChangePassword = lazy(
+  () => import("./pages/User/UserChangePassword"),
+);
+const UserFavoriteProduct = lazy(
+  () => import("./pages/User/UserFavoriteProduct"),
+);
 
 const AppRouter = () => {
   const location = useLocation();
@@ -114,6 +119,14 @@ const AppRouter = () => {
           element={
             <PrivateRoute permission={FullPermission}>
               <UserViewInfo />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="user/favorite-product"
+          element={
+            <PrivateRoute permission={FullPermission}>
+              <UserFavoriteProduct />
             </PrivateRoute>
           }
         />

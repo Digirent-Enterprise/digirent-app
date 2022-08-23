@@ -38,7 +38,7 @@ const UserProfileAvatar = () => {
     accept: {
       "image/*": [],
     },
-    maxFiles: 10,
+    maxFiles: 1,
     onDrop: async (acceptedFiles: File[]) => {
       setIsLoading(true);
       await acceptedFiles.map((file: any) => handleUploadFiles(file));
@@ -77,7 +77,7 @@ const UserProfileAvatar = () => {
         <ModalContent>
           <GridItem className="pb-5 p-5" colSpan={{ base: 6, sm: 3 }}>
             <FormControl>
-              <FormLabel>Add your avatar</FormLabel>
+              <FormLabel>Change your avatar</FormLabel>
               <div className="border-dashed border-4 text-center justify-center p-[20%]">
                 <input />
                 {isDragActive ? (
