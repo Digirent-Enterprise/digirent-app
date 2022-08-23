@@ -29,8 +29,6 @@ const UserTransactionDetails = () => {
 
   const steps = ["placed", "pending", "shipped", "paid"];
 
-  console.log(steps.indexOf(transaction.status), "ass");
-
   return (
     <DefaultLayout>
       <Helmet

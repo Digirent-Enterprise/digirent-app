@@ -56,7 +56,7 @@ const UserProfile = () => {
                 leftIcon={<BsKey />}
               />
               <UserProfileButton
-                directUrl="/user/:id/edit"
+                directUrl="/user/edit-my-profile"
                 userButtonItem="Edit"
                 leftIcon={<AiOutlineEdit />}
               />
@@ -69,7 +69,7 @@ const UserProfile = () => {
               justifyContent="center"
             >
               <UserProfileButton
-                directUrl="/user/:id/view"
+                directUrl="/user/view-my-profile"
                 userButtonItem="View your information"
                 leftIcon={<AiOutlineProfile />}
               />

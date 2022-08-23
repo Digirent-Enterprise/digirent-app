@@ -24,6 +24,7 @@ import UserTransactionHistory from "./User/UserTransactionHistory";
 import PrivacyPolicy from "./PrivacyPolicy/PrivacyPolicy";
 import UserViewInfo from "./User/UserViewInfo";
 import UserChangePassword from "./User/UserChangePassword";
+import UserFavoriteProduct from "./User/UserFavoriteProduct";
 
 export {
   Home,
@@ -52,4 +53,5 @@ export {
   UserTransactionHistory,
   PrivacyPolicy,
   UserViewInfo,
+  UserFavoriteProduct,
 };
