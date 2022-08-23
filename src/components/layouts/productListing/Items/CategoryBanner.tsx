@@ -12,10 +12,14 @@ const CategoryBanner = ({
   return (
     <div className="flex flex-col gap-5">
       <h1 className=" text-lg font-bold ml-10">
-        {bannerAlt}({amount})
+        {bannerAlt} ({amount})
       </h1>
-      <div className="flex justify-center items-center w-full h-[400px]">
-        <img className="w-[95%] h-full object-fit overflow-hidden" src={bannerUrl} alt={bannerAlt} />
+      <div className="flex justify-center items-center w-full h-[300px]">
+        <img
+          className="w-[95%] h-full object-cover overflow-hidden"
+          src={bannerUrl}
+          alt={bannerAlt}
+        />
       </div>
     </div>
   );

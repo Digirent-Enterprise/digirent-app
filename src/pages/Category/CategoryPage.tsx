@@ -1,12 +1,12 @@
 import DefaultLayout from "../DefaultLayout";
-import {ProductListingCategory} from "../../components";
+import { ProductListingCategory } from "../../components";
 
 const CategoryPage = () => {
   return (
-      <DefaultLayout>
-        <ProductListingCategory/>
-      </DefaultLayout>
-  )
+    <DefaultLayout>
+      <ProductListingCategory />
+    </DefaultLayout>
+  );
 };
 
 export default CategoryPage;

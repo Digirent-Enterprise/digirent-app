@@ -1,10 +1,11 @@
 import { IProduct } from "./product.types";
 export interface ICategory {
-  products: IProduct[];
+  products: IProduct | string;
   _id: string;
   name: string;
   image: string;
   queryName: string;
+  bannerUrl: string;
 }
 
 export interface CategoryState {
@@ -14,14 +15,13 @@ export interface CategoryState {
   error: string | null;
 }
 
-export interface SetCategoryPayload {
-  categories: ICategory[];
-  category: ICategory;
-}
-
-export type SetCategory = {
+export type CategoryAction = {
   type: string;
-  payload: SetCategoryPayload;
+  payload: {
+    categories?: ICategory[];
+    category?: ICategory;
+  };
 };
 
-export type CategoryActions = SetCategory;
+
+export type CategoryActions = CategoryAction;

@@ -94,8 +94,8 @@ export {
   MostRentalProduct,
   ProductListingCategory,
   StaticGoogleMap,
-  BookingBoxDisplay,
-  ProductSummaryDisplay,
   ChatBox,
   StripePayment,
+  ProductSummaryDisplay,
+  BookingBoxDisplay,
 };

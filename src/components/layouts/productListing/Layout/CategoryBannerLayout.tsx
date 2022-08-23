@@ -4,7 +4,7 @@ const CategoryBannerLayout = ({ productData }: any) => {
   return (
     <div className="w-full">
       <CategoryBanner
-        bannerUrl={productData.image}
+        bannerUrl={productData.bannerUrl}
         bannerAlt={productData.name}
         amount={productData.products?.length}
       />

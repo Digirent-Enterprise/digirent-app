@@ -33,6 +33,6 @@ const CategoryCard = ({ categoryImage, categoryName }: CategoryCardProps) => {
       />
       <div className="py-5 text-xl text-center">{categoryName}</div>
     </div>
-    );
+  );
 };
-export default CategoryCard
+export default CategoryCard;

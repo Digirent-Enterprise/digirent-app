@@ -67,7 +67,6 @@ const ShowAllButton = ({ images }: ShowAllButtonProps) => {
     </Box>
   );
 };
-
 const Gallery = ({
   firstImages,
   secondImages,
@@ -76,51 +75,63 @@ const Gallery = ({
   fifthImages,
   images,
 }: GalleryProps) => {
-    return (
-      <div className="flex flex-col justify-center w-full h-full items-center ">
-        <div className="w-4/5 gap-2 lg:flex h-auto">
-          <div className="relative flex items-center lg:w-2/4 sm:w-auto">
+  return (
+    <div className="flex flex-col justify-center w-full h-full items-center">
+      {/* <div className="w-4/5 gap-2 lg:flex h-auto max-h-[500px]">
+        {images.slice(0,6).map((image, index)=>{
+          return(
+            <div 
+            key={index}>
+              <img src={image} alt="images" />
+            </div>
+          );
+        })}
+        </div> */}
+      <div className="w-4/5 gap-2 lg:flex h-auto max-h-[500px]">
+        <div className="relative flex items-center lg:w-2/4 max-h-[500px]">
+          <img
+            className="w-full h-full lg:rounded-l-2xl sm:p-16"
+            src={firstImages}
+            alt="firstImage"
+          />
+          <div className="absolute top-[85%] left-[77%] lg:hidden w-[20%]">
+            <ShowAllButton images={images} />
+          </div>
+        </div>
+        <div className="w-1/4 sm:hidden md:hidden lg:flex lg:flex-col gap-2">
+          <div className="h-3/6">
             <img
-              className="w-full h-full lg:rounded-l-2xl "
-              src={firstImages}
-              alt="firstImage"
+              className="w-full h-full"
+              src={secondImages}
+              alt="secondImage"
             />
-            <div className="absolute top-[85%] left-[77%] lg:hidden w-[20%]">
+          </div>
+          <div className="h-3/6">
+            <img className="w-full h-full" src={thirdImages} alt="thirdImage" />
+          </div>
+        </div>
+        <div className="w-1/4 sm:hidden md:hidden lg:visible lg:flex lg:flex-col gap-2">
+          <div className="h-3/6 rounded-tr-2xl">
+            <img
+              className="w-full h-full rounded-tr-2xl "
+              src={fourthImages}
+              alt="fourthImage"
+            />
+          </div>
+          <div className="relative flex h-3/6 w-full rounded-br-2xl">
+            <img
+              className="w-full h-full rounded-br-2xl "
+              src={fifthImages}
+              alt="fifthImage"
+            />
+            <div className="relative top-[77%] right-[45%] w-[40%]">
               <ShowAllButton images={images} />
-            </div>
-          </div>
-          <div className="w-1/4 sm:hidden md:hidden lg:flex lg:flex-col gap-2">
-            <div className="h-3/6">
-              <img
-                className="w-full h-full"
-                src={secondImages}
-                alt="secondImage"
-              />
-            </div>
-            <div className="h-3/6">
-              <img className="w-full h-full" src={thirdImages} alt="thirdImage" />
-            </div>
-          </div>
-          <div className="w-1/4 sm:hidden md:hidden lg:visible lg:flex lg:flex-col gap-2">
-            <div className="h-3/6 rounded-tr-2xl">
-              <img
-                className="w-full h-full rounded-tr-2xl "
-                src={fourthImages}
-                alt="fourthImage"
-              />
-            </div>
-            <div className="relative flex h-3/6 w-full rounded-br-2xl">
-              <img
-                className="w-full h-full rounded-br-2xl "
-                src={fifthImages}
-                alt="fifthImage"
-              />
-              <div className="relative top-[77%] right-[45%] w-[40%]"><ShowAllButton images={images}/></div>
             </div>
           </div>
         </div>
       </div>
-    );
-}
+    </div>
+  );
+};
 
 export default Gallery;
