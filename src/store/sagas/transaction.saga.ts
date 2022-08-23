@@ -40,9 +40,7 @@ function* getTransactionById(action: {
   payload: { _id: string };
 }): any {
   try {
-    console.log("adasdas");
     const response = yield call(fetchTransactionById, action.payload._id);
-    console.log(response, "response");
     yield put(setTransactionByID(response.data));
   } catch (e: any) {
     yield put(

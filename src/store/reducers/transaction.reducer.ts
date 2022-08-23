@@ -20,7 +20,6 @@ export const initialTransaction = {
   currency: "",
   from: new Date(),
   to: new Date(),
-  step: 1,
 };
 
 const initialState: TransactionState = {
