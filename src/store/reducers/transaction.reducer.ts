@@ -1,12 +1,30 @@
-import { SET_TRANSACTIONS } from "../types/action.types";
+import {
+  SET_TRANSACTION_LOADING,
+  SET_TRANSACTIONS,
+  SET_TRANSACTION_BY_ID,
+} from "../types/action.types";
 
 import {
   TransactionActions,
   TransactionState,
 } from "../types/transaction.types";
 
+export const initialTransaction = {
+  _id: "",
+  productId: "",
+  userEmail: "",
+  rentalCost: 0,
+  deposit: 0,
+  status: "",
+  latePenalty: 0,
+  currency: "",
+  from: new Date(),
+  to: new Date(),
+};
+
 const initialState: TransactionState = {
-  pending: false,
+  transaction: initialTransaction,
+  loading: "",
   transactions: [],
   error: null,
 };
@@ -19,8 +37,17 @@ const TransactionReducer = (
     case SET_TRANSACTIONS:
       return {
         ...state,
-        pending: false,
-        transactions: action.payload.transactions,
+        transactions: action.payload.transactions!,
+      };
+    case SET_TRANSACTION_BY_ID:
+      return {
+        ...state,
+        transaction: action.payload.transaction!,
+      };
+    case SET_TRANSACTION_LOADING:
+      return {
+        ...state,
+        loading: action.payload.loading!,
       };
     default:
       return state;

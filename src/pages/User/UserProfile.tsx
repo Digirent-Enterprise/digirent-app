@@ -7,7 +7,9 @@ import {
   Button,
   useColorModeValue,
 } from "@chakra-ui/react";
-
+import { BsKey } from "react-icons/bs";
+import { AiOutlineEdit, AiOutlineProfile } from "react-icons/ai";
+import { TbHeartOff } from "react-icons/tb";
 import { UserTab } from "../../components";
 import {
   UserProfileAddress,
@@ -37,9 +39,9 @@ const UserProfile = () => {
             textAlign="center"
           >
             <UserProfileAvatar />
-            <UserProfileName userName="Vo Thanh Luan" />
-            <UserProfileEmail userEmail="vothanhluan0811@gmail.com" />
-            <UserProfileAddress userAddress="166 Ngo Si lien st." />
+            <UserProfileName userName={currentUser.name} />
+            <UserProfileEmail userEmail={currentUser.email} />
+            <UserProfileAddress userAddress="Ho Chi Minh city" />
             <Stack
               mt={8}
               direction="row"
@@ -48,12 +50,14 @@ const UserProfile = () => {
               justifyContent="center"
             >
               <UserProfileButton
-                directUrl="/"
+                directUrl="/user/:id/change-password"
                 userButtonItem="Change your password"
+                leftIcon={<BsKey />}
               />
               <UserProfileButton
-                directUrl="/user/:id/edit"
+                directUrl="/user/edit-my-profile"
                 userButtonItem="Edit"
+                leftIcon={<AiOutlineEdit />}
               />
             </Stack>
             <Stack
@@ -66,6 +70,7 @@ const UserProfile = () => {
               <UserProfileButton
                 directUrl="/user/:id/view"
                 userButtonItem="View your information"
+                leftIcon={<AiOutlineProfile />}
               />
             </Stack>
             <Stack
@@ -88,6 +93,7 @@ const UserProfile = () => {
                 _hover={{
                   bg: "#AE1010",
                 }}
+                leftIcon={<TbHeartOff />}
               >
                 Deactivate account
               </Button>

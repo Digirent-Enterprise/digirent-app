@@ -66,7 +66,7 @@ const UserViewInfo = () => {
                 </h3>
                 <div className="mt-0 mb-2 text-sm font-bold leading-normal text-[#6B7280] uppercase">
                   <i className="mr-2 text-lg text-[#6B7280] fas fa-map-marker-alt" />{" "}
-                  Ho Chi Minh city
+                  {currentUser.location}
                 </div>
               </div>
               <div className="py-10 mt-10 text-center border-t border-[#D1D5DB]">

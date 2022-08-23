@@ -33,7 +33,7 @@ const ShowAllButton = ({ images }: ShowAllButtonProps) => {
   return (
     <Box>
       <Button
-        className="w-full h-full rounded-md border-2 border-black bg-white bg-opacity-90 hover:scale-[1.02] text-[1rem]"
+        className="lg:w-11/12 h-12 lg:left-0 lg:bottom-16 sm:right-44 sm:top-48 rounded-md border-2 border-black bg-white bg-opacity-90 hover:scale-[1.02]"
         onClick={onOpen}
       >
         Show all images
@@ -98,7 +98,7 @@ const Gallery = ({
             <ShowAllButton images={images} />
           </div>
         </div>
-        <div className="w-1/4 sm:hidden md:hidden lg:flex lg:flex-col gap-2">
+        <div className="w-1/4 sm:hidden md:hidden h-[500px] lg:flex lg:flex-col gap-2">
           <div className="h-3/6">
             <img
               className="w-full h-full"
@@ -110,7 +110,7 @@ const Gallery = ({
             <img className="w-full h-full" src={thirdImages} alt="thirdImage" />
           </div>
         </div>
-        <div className="w-1/4 sm:hidden md:hidden lg:visible lg:flex lg:flex-col gap-2">
+        <div className="w-1/4 sm:hidden md:hidden lg:visible h-[500px] lg:flex lg:flex-col gap-2">
           <div className="h-3/6 rounded-tr-2xl">
             <img
               className="w-full h-full rounded-tr-2xl "
@@ -118,7 +118,7 @@ const Gallery = ({
               alt="fourthImage"
             />
           </div>
-          <div className="relative flex h-3/6 w-full rounded-br-2xl">
+          <div className="flex h-3/6 rounded-br-2xl">
             <img
               className="w-full h-full rounded-br-2xl "
               src={fifthImages}
