@@ -44,9 +44,12 @@ export const getProducts = () => {
 export const getProductByID = (_id: string) => {
   return {
     type: GET_PRODUCT_BY_ID,
-    _id,
+    payload: {
+      _id,
+    },
   };
 };
+
 export const fetchProductsError = (
   payload: FetchProductErrorPayload,
 ): FetchProductError => ({

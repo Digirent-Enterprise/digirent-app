@@ -25,7 +25,10 @@ import {
 } from "./pages";
 import PrivateRoute from "./components/PrivateRoute";
 
-import { AdminPermission } from "./utils/constants/permission.constants";
+import {
+  AdminPermission,
+  UserPermission,
+} from "./utils/constants/permission.constants";
 import { BackToTop } from "./components";
 import { selectAppLoading } from "./store/selectors/app.selector";
 import { initApp, setAppAuth } from "./store/actions/app.action";
@@ -62,7 +65,7 @@ const AppRouter = () => {
   return (
     <AnimatePresence exitBeforeEnter>
       <BackToTop />
-      <Routes location={location}>
+      <Routes key={location.pathname} location={location}>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route path="login" element={<LoginPage />} />
@@ -77,25 +80,55 @@ const AppRouter = () => {
         <Route path="checkout/:id" element={<CheckoutPage />} />
         <Route path="checkout-success/:id" />
         {/* Users */}
-        <Route path="users" />
-        <Route path="users/:id" />
-        <Route path="user/profile" element={<UserProfile />} />
-        <Route path="user/edit" element={<UserEdit />} />
+        <Route
+          path="user/:id/profile"
+          element={
+            <PrivateRoute permission={UserPermission}>
+              <UserProfile />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="user/:id/edit"
+          element={
+            <PrivateRoute permission={UserPermission}>
+              <UserEdit />
+            </PrivateRoute>
+          }
+        />
         <Route path="user/:id/deactivate" />
         <Route path="user/:id/change-password" />
-        <Route path="user/:id/view" element={<UserViewInfo />} />
-        <Route path="user/transaction" element={<UserTransactionHistory />} />
         <Route
-          path="user/transaction/details"
-          element={<UserTransactionDetails />}
+          path="user/:id/view"
+          element={
+            <PrivateRoute permission={UserPermission}>
+              <UserViewInfo />
+            </PrivateRoute>
+          }
         />
-        <Route path="/privacy" element={<PrivacyPolicy />} />
+        <Route
+          path="user/:id/transaction"
+          element={
+            <PrivateRoute permission={UserPermission}>
+              <UserTransactionHistory />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="user/:id/transaction/:id"
+          element={
+            <PrivateRoute permission={UserPermission}>
+              <UserTransactionDetails />
+            </PrivateRoute>
+          }
+        />
+        <Route path="privacy" element={<PrivacyPolicy />} />
         {/* Maintain */}
         <Route path="maintain" element={<Maintain />} />
         {/* Contact */}
         <Route path="contact" element={<ContactUsPage />} />
         {/* Category */}
-        <Route path="/category/:queryName" element={<CategoryPage />} />
+        <Route path="categories" element={<CategoryPage />} />
         {/* Admin */}
         <Route
           path="admin"
@@ -133,7 +166,6 @@ const AppRouter = () => {
             </PrivateRoute>
           }
         />
-        <Route path="admin/product/:id" />
         <Route path="admin/products/:id/edit" />
         <Route path="admin/products/:id/delete" />
         {/* Transaction management */}

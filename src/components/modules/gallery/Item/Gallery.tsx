@@ -33,7 +33,7 @@ const ShowAllButton = ({ images }: ShowAllButtonProps) => {
   return (
     <Box>
       <Button
-        className=" lg:w-11/12 h-12 lg:left-0 lg:bottom-16 sm:right-44 sm:top-48 rounded-md border-2 border-black bg-white bg-opacity-90 hover:scale-[1.02]"
+        className="w-full h-full rounded-md border-2 border-black bg-white bg-opacity-90 hover:scale-[1.02] text-[1rem]"
         onClick={onOpen}
       >
         Show all images
@@ -55,7 +55,7 @@ const ShowAllButton = ({ images }: ShowAllButtonProps) => {
             >
               {images.map((image, index) => {
                 return (
-                  <SwiperSlide className="lg:h-[800px] w-screen " key={index}>
+                  <SwiperSlide className="h-auto w-auto " key={index}>
                     <img src={image} alt="slide" />
                   </SwiperSlide>
                 );
@@ -76,51 +76,51 @@ const Gallery = ({
   fifthImages,
   images,
 }: GalleryProps) => {
-  return (
-    <div className="flex flex-col justify-center w-full lg:items-center ">
-      <div className="w-4/5 h-full gap-2 lg:flex ">
-        <div className="flex items-center lg:w-2/4 sm:w-screen">
-          <img
-            className="w-full h-full lg:rounded-l-2xl "
-            src={firstImages}
-            alt="firstImage"
-          />
-          <div className="sm:mb-20 md:mt-28 lg:hidden">
-            <ShowAllButton images={images} />
-          </div>
-        </div>
-        <div className="w-1/4 sm:hidden md:hidden h-[500px] lg:flex lg:flex-col gap-2">
-          <div className=" bg-red h-3/6">
+    return (
+      <div className="flex flex-col justify-center w-full h-full items-center ">
+        <div className="w-4/5 gap-2 lg:flex h-auto">
+          <div className="relative flex items-center lg:w-2/4 sm:w-auto">
             <img
-              className="w-full h-full"
-              src={secondImages}
-              alt="secondImage"
+              className="w-full h-full lg:rounded-l-2xl "
+              src={firstImages}
+              alt="firstImage"
             />
+            <div className="absolute top-[85%] left-[77%] lg:hidden w-[20%]">
+              <ShowAllButton images={images} />
+            </div>
           </div>
-          <div className="bg-blue-100 h-3/6">
-            <img className="w-full h-full" src={thirdImages} alt="thirdImage" />
+          <div className="w-1/4 sm:hidden md:hidden lg:flex lg:flex-col gap-2">
+            <div className="h-3/6">
+              <img
+                className="w-full h-full"
+                src={secondImages}
+                alt="secondImage"
+              />
+            </div>
+            <div className="h-3/6">
+              <img className="w-full h-full" src={thirdImages} alt="thirdImage" />
+            </div>
           </div>
-        </div>
-        <div className="w-1/4 sm:hidden md:hidden lg:visible h-[500px] lg:flex lg:flex-col gap-2">
-          <div className="bg-blue-100 h-3/6 rounded-tr-2xl">
-            <img
-              className="w-full h-full rounded-tr-2xl "
-              src={fourthImages}
-              alt="fourthImage"
-            />
-          </div>
-          <div className="flex bg-green h-3/6 rounded-br-2xl">
-            <img
-              className="w-full h-full rounded-br-2xl "
-              src={fifthImages}
-              alt="fifthImage"
-            />
-            <ShowAllButton images={images} />
+          <div className="w-1/4 sm:hidden md:hidden lg:visible lg:flex lg:flex-col gap-2">
+            <div className="h-3/6 rounded-tr-2xl">
+              <img
+                className="w-full h-full rounded-tr-2xl "
+                src={fourthImages}
+                alt="fourthImage"
+              />
+            </div>
+            <div className="relative flex h-3/6 w-full rounded-br-2xl">
+              <img
+                className="w-full h-full rounded-br-2xl "
+                src={fifthImages}
+                alt="fifthImage"
+              />
+              <div className="relative top-[77%] right-[45%] w-[40%]"><ShowAllButton images={images}/></div>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  );
-};
+    );
+}
 
 export default Gallery;

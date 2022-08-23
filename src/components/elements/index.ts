@@ -7,7 +7,7 @@ import Spinner from "./Spinner/Spinner";
 import Testimonial from "./Testimonial/Testimonial";
 import CustomTooltip from "./Tooltip/CustomTooltip";
 import Transition from "./Transition/Transition";
-import NewProduct from "./ProductSection/NewProduct/NewProductLayout";
+import NewProduct from "./ProductSection/NewProduct/NewProduct";
 import ProductProgressBar from "./ProductSection/FeatureProduct/ProductProgressBar";
 import Content from "./Content/Content";
 import Teams from "./Teams/Teams";
@@ -21,6 +21,7 @@ import UserProfileEmail from "./User/UserProfileEmail";
 import UserProfileName from "./User/UserProfileName";
 import Stat from "./Stat/Stat";
 import MostRentalProduct from "./ProductSection/MostRentalProduct/MostRentalProduct";
+import BookingBoxDisplay from "./BookingBox/BookingBoxDisplay";
 import ChatBox from "./ChatBox/ChatBox";
 import StripePayment from "./Stripe/StripePayment";
 
@@ -48,6 +49,7 @@ export {
   CategoryCardListing,
   Stat,
   MostRentalProduct,
+  BookingBoxDisplay,
   ChatBox,
   StripePayment,
 };

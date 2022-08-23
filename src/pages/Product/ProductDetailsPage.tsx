@@ -1,48 +1,39 @@
-import { useEffect, useMemo } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { StaticGoogleMap } from "../../components";
-import DefaultLayout from "../DefaultLayout";
-import { getProductByID } from "../../store/actions/product.action";
+import { useParams } from "react-router-dom";
 import {
-  getProductError,
-  getProductByIDSelector
-} from "../../store/selectors/product.selector";
-import ProductSummaryLayout from "../../components/modules/productSummary/layout/ProductSummaryLayout";
-import GalleryLayout from "../../components/modules/gallery/Layout/GalleryLayout";
-import BookingBoxLayout from "../../components/elements/BookingBox/layout/BookingBoxLayout";
+  BookingBoxDisplay,
+  GalleryDisplay,
+  ProductSummaryDisplay,
+  StaticGoogleMap,
+} from "../../components";
+import DefaultLayout from "../DefaultLayout";
+import { getProductByIDSelector } from "../../store/selectors/product.selector";
+import { getProductByID } from "../../store/actions/product.action";
 
 const ProductDetailsPage = () => {
-  const navigate = useNavigate();
-  const dispatch = useDispatch();
   const { id } = useParams();
-  const productByIDFetchData = useSelector(getProductByIDSelector);
-  // const productByIDError = useSelector(getProductError);
-
+  const selectedProduct = useSelector(getProductByIDSelector);
+  const dispatch = useDispatch();
   useEffect(() => {
     if (id) {
       dispatch(getProductByID(id));
     }
   }, [id]);
-
-    // if (productByIDError) {
-    //   navigate("../../404");
-    // }
-
-  const productDataById = useMemo(
-    () => productByIDFetchData,
-    [productByIDFetchData],
-  );
   return (
     <DefaultLayout>
-      <ProductSummaryLayout productData={productDataById} />
-      <GalleryLayout productData={productDataById} />
-      <div className="w-full">
-        <BookingBoxLayout productData={productDataById} />
-      </div>
-      <div className="mt-10">
-        <StaticGoogleMap />
-      </div>
+      {selectedProduct && (
+        <>
+          <ProductSummaryDisplay name={selectedProduct.name} />
+          <GalleryDisplay productData={{ images: selectedProduct.images }} />
+          <div className="w-full">
+            <BookingBoxDisplay {...selectedProduct} />
+          </div>
+          <div className="mt-10">
+            <StaticGoogleMap />
+          </div>
+        </>
+      )}
     </DefaultLayout>
   );
 };

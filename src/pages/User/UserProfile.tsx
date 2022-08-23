@@ -1,4 +1,5 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import {
   Box,
   Center,
@@ -16,8 +17,10 @@ import {
   UserProfileName,
 } from "../../components/elements";
 import DefaultLayout from "../DefaultLayout";
+import { getCurrentUserSelector } from "../../store/selectors/user.selector";
 
 const UserProfile = () => {
+  const currentUser = useSelector(getCurrentUserSelector);
   return (
     <DefaultLayout>
       <Box>

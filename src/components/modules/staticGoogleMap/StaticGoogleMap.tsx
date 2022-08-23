@@ -16,11 +16,11 @@ const StaticGoogleMap = () => {
     id: "google-map-script",
     googleMapsApiKey: process.env.REACT_APP_MAPS_API_KEY as string,
   });
-  const [Map, setMap] = useState(null);
+  const [map, setMap] = useState(null);
   const onLoad = useCallback(function callback(map: any) {
     const bounds = new window.google.maps.LatLngBounds(center);
     map.fitBounds(bounds);
-    setMap(Map);
+    setMap(map);
   }, []);
 
   const onUnmount = useCallback(function callback() {

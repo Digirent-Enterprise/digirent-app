@@ -8,7 +8,6 @@ import React, {
   ChangeEvent,
 } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
 import {
   SearchHeaderSection,
   SearchResultsSection,
@@ -17,6 +16,7 @@ import {
 } from "../../components";
 import NotFoundProduct from "../../components/layouts/NotFoundResult/NotFoundProduct";
 import FilterPanel from "../../components/layouts/filters/FilterPanel";
+
 import ProductListLayout from "../../components/layouts/productCard/ProductLayoutList/ProductLayoutList";
 
 import { getProducts, setProducts } from "../../store/actions/product.action";
@@ -24,6 +24,7 @@ import { getProducts, setProducts } from "../../store/actions/product.action";
 import { getAllProductsSelector } from "../../store/selectors/product.selector";
 
 import DefaultLayout from "../DefaultLayout";
+// import SortOptions from "../../components/layouts/search/SortOptions";
 
 interface SearchSectionContextValue {
   searchQuery: string;
@@ -71,14 +72,12 @@ interface ProductSearchPageProps {
 
 const ProductSearchPage = () => {
   const [selected, setSelected] = useState<String>("");
-  const navigate = useNavigate();
+
   const productData = useSelector(getAllProductsSelector);
 
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(getProducts());
-  }, []);
+  // const productData = useMemo(() => productFetchData, [productFetchData]);
 
   const [productList, setProductList] = useState(productData);
 
@@ -165,7 +164,7 @@ const ProductSearchPage = () => {
 
       // by date
       if (selected === "time") {
-        updatedList = updatedList.products.sort((productA, productB) => {
+        updatedList = updatedList.sort((productA, productB) => {
           productA.createdDate = new Date(productA.createdDate);
           productB.createdDate = new Date(productB.createdDate);
           return (
@@ -204,10 +203,12 @@ const ProductSearchPage = () => {
     );
 
     setProductList(updatedList);
+
     if (!updatedList.length) {
       setFoundProduct(false);
+    } else {
+      setFoundProduct(true);
     }
-    setFoundProduct(true);
   };
 
   // Count result(s)

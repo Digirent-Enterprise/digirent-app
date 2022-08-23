@@ -7,7 +7,6 @@ import CategoryCard from "./CategoryCard";
 
 const CategoryCardLayout = ({ categories }: any) => {
   const [currentItems, setCurrentItems] = useState([]);
-
   useEffect(() => {
     setCurrentItems(categories);
   }, [categories]);
@@ -17,11 +16,11 @@ const CategoryCardLayout = ({ categories }: any) => {
       <div className="grid grid-cols-2 mt-8 lg:grid-cols-4 gap-x-4 gap-y-8">
         {currentItems.map((category: ICategory) => {
           return (
-            <Link to={category._id} key={category._id + Math.random()}>
+            <Link to={`/categories?queryName=${category.queryName}`}>
               <CategoryCard
+                key={category._id}
                 categoryName={category.name}
                 categoryImage={category.image}
-                queryName={category.queryName}
               />
             </Link>
           );

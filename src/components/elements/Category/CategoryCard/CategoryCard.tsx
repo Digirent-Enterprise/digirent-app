@@ -1,17 +1,11 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
 
 interface CategoryCardProps {
   categoryImage: string;
   categoryName: string;
-  queryName: string;
 }
 
-const CategoryCard = ({ categoryImage, categoryName, queryName }: CategoryCardProps) => {
-  const navigate = useNavigate()
-  const clickHandler =((queryName: string) => {
-    navigate(`../products?queryName=${queryName}`);
-  })
+const CategoryCard = ({ categoryImage, categoryName }: CategoryCardProps) => {
   return (
     <div
       className="overflow-hidden
@@ -27,19 +21,18 @@ const CategoryCard = ({ categoryImage, categoryName, queryName }: CategoryCardPr
     transition-transform
     hover:scale-105
     bg-gray-100"
-    onClick={() => clickHandler(categoryName)}
     >
       <img
         src={categoryImage}
         alt="category"
         className="
-        w-[120px]
+        w-[140px]
         h-[120px]
         object-cover
       "
       />
-      <div className="py-5 text-xl text-center" >{categoryName}</div>
+      <div className="py-5 text-xl text-center">{categoryName}</div>
     </div>
-  );
+    );
 };
-export default CategoryCard;
+export default CategoryCard

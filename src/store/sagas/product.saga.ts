@@ -29,19 +29,13 @@ function* getProducts(): any {
   }
 }
 
-function* getProductByID(payload: IProduct): any {
+function* getProductByID(action: {
+  type: string;
+  payload: { _id: string };
+}): any {
   try {
-    const response = yield call(fetchProductByID, payload._id);
-    console.log("herehere", response.data);
-    if (response.data) {
-      yield put(setProductByID(response.data));
-    } else {
-      yield put(
-        fetchProductByIDError({
-          error: "Product not found",
-        }),
-      );
-    }
+    const response = yield call(fetchProductByID, action.payload._id);
+    yield put(setProductByID(response.data));
   } catch (e: any) {
     yield put(
       fetchProductByIDError({
@@ -54,7 +48,6 @@ function* getProductByID(payload: IProduct): any {
 function* productSaga() {
   yield all([
     takeLatest(GET_PRODUCTS, getProducts),
-    //@ts-ignore
     takeLatest(GET_PRODUCT_BY_ID, getProductByID),
   ]);
 }

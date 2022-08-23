@@ -1,31 +1,29 @@
-import {
-  SET_PRODUCTS,
-  SET_PRODUCT_BY_ID,
-  FETCH_PRODUCT_BY_ID_ERROR,
-} from "../types/action.types";
+import { SET_PRODUCTS, SET_PRODUCT_BY_ID } from "../types/action.types";
 
 import { ProductActions, ProductState } from "../types/product.types";
 
+export const initialProduct = {
+  _id: "",
+  name: "",
+  serial: "",
+  brand: "",
+  description: "",
+  status: false,
+  rentalCost: 0,
+  rentalCostType: "",
+  images: [],
+  category: "",
+  createdDate: new Date(),
+};
+
 const initialState: ProductState = {
-  product: {
-    _id: "",
-    name: "",
-    serial: "",
-    brand: "",
-    description: "",
-    status: false,
-    rentalCost: 0,
-    rentalCostType: "",
-    images: [],
-    category: "",
-    createdDate: new Date(),
-  },
+  product: initialProduct,
   pending: false,
   products: [],
   error: null,
 };
 
-const ProductReducer = (state = initialState, action: any) => {
+const ProductReducer = (state = initialState, action: ProductActions) => {
   switch (action.type) {
     case SET_PRODUCTS:
       return {
@@ -38,11 +36,6 @@ const ProductReducer = (state = initialState, action: any) => {
         ...state,
         pending: false,
         product: action.payload.product,
-      };
-    case FETCH_PRODUCT_BY_ID_ERROR:
-      return {
-        ...state,
-        error: action.payload.error,
       };
     default:
       return state;

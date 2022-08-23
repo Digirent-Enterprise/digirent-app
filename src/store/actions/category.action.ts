@@ -1,12 +1,12 @@
-import {
+import { 
   GET_CATEGORY,
-  SET_CATEGORY,
-  GET_CATEGORY_BY_ID,
-  SET_CATEGORY_BY_ID,
+  SET_CATEGORY, 
+  SET_CATEGORY_BY_ID, 
+  GET_CATEGORY_BY_ID 
 } from "../types/action.types";
 import { ICategory } from "../types/category.types";
 
-export const setCategories = (payload: ICategory[]) => {
+export const setCategories = (payload: any) => {
   return {
     type: SET_CATEGORY,
     payload: {

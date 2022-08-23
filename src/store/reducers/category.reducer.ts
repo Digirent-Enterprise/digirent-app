@@ -32,6 +32,7 @@ const CategoryReducer = (state = initialState, action: any) => {
     default:
       return state;
   }
-};
-
-export default CategoryReducer;
+  };
+  
+  export default CategoryReducer;
+  

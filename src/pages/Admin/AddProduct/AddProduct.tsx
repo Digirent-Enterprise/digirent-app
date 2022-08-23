@@ -1,5 +1,7 @@
 import React, { useEffect, useMemo, useState } from "react";
+
 import { useDispatch, useSelector } from "react-redux";
+
 import { useForm } from "react-hook-form";
 import { useDropzone } from "react-dropzone";
 import * as yup from "yup";
@@ -15,6 +17,7 @@ import {
   Textarea,
 } from "@chakra-ui/react";
 import qs from "qs";
+import { toast } from "react-toastify";
 import { customAxios } from "../../../http-common";
 import DefaultLayout from "../DefaultAdminLayout";
 import { getAllCategoriesSelector } from "../../../store/selectors/category.selector";
@@ -56,25 +59,24 @@ const AddProduct = () => {
     setImages([...images, response.data.url]);
   };
 
-  const { getRootProps, getInputProps, isDragActive, acceptedFiles } =
-    useDropzone({
-      accept: {
-        "image/*": [],
-      },
-      maxFiles: 10,
-      onDrop: async (acceptedFiles: any) => {
-        setIsLoading(true);
-        await acceptedFiles.map((file: any) => handleUploadFiles(file));
-        setIsLoading(false);
-        setImages(
-          acceptedFiles.map((image: any) =>
-            Object.assign(image, {
-              preview: image,
-            }),
-          ),
-        );
-      },
-    });
+  const { getRootProps, getInputProps, isDragActive } = useDropzone({
+    accept: {
+      "image/*": [],
+    },
+    maxFiles: 10,
+    onDrop: async (acceptedFiles: File[]) => {
+      setIsLoading(true);
+      await acceptedFiles.map((file: any) => handleUploadFiles(file));
+      setIsLoading(false);
+      setImages(
+        acceptedFiles.map((image: any) =>
+          Object.assign(image, {
+            preview: image,
+          }),
+        ),
+      );
+    },
+  });
 
   const thumbs = images.map((image: any) => {
     return (
@@ -94,10 +96,15 @@ const AddProduct = () => {
 
   const onSubmit = async (data: FormValues) => {
     const response = await customAxios().post(
-      "/product",
+      "product",
       qs.stringify(Object.assign(data, { images })),
     );
-    if (response.status === 200) alert("success");
+    if (response.status === 200) {
+      toast.success("Product is added successfully!", {
+        theme: "dark",
+        icon: "🚀",
+      });
+    }
   };
 
   // Category Data
@@ -114,10 +121,6 @@ const AddProduct = () => {
     <DefaultLayout>
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="pb-10 mx-auto max-w-7xl lg:py-12 lg:px-8">
-          <div className="text-center title">
-            <h1>Add Product</h1>
-          </div>
-
           <Grid templateColumns="repeat(5, 1fr)" gap={5}>
             <GridItem colSpan={2}>
               <FormControl isRequired>
@@ -147,25 +150,6 @@ const AddProduct = () => {
                 <FormLabel>Product Description</FormLabel>
                 <Textarea {...register("description")} name="description" />
               </FormControl>
-            </GridItem>
-
-            <GridItem colSpan={3}>
-              <FormControl>
-                <FormLabel>Product Images</FormLabel>
-                <Input
-                  {...register("images")}
-                  name="images"
-                  type="file"
-                  multiple
-                  id="images"
-                />
-                {/* <div className="p-8 m-5 text-center text-blue-100 border-2 border-dashed">
-                    <label htmlFor="images" className="cursor-pointer ">
-                      Choose images
-                    </label>
-                  </div> */}
-              </FormControl>
-
               <FormControl isRequired>
                 <FormLabel>Rental Cost</FormLabel>
                 <InputGroup>
@@ -210,11 +194,6 @@ const AddProduct = () => {
                     </p>
                   )}
                 </div>
-                {/* <div className="p-8 m-5 text-center text-blue-100 border-2 border-dashed">
-                    <label htmlFor="images" className="cursor-pointer ">
-                      Choose images
-                    </label>
-                  </div> */}
               </FormControl>
               <aside className="flex flex-row">{thumbs}</aside>
 
@@ -225,7 +204,7 @@ const AddProduct = () => {
                     type="submit"
                     disabled={isLoading}
                   >
-                    Submit
+                    Add
                   </button>
                 </GridItem>
                 <GridItem colSpan={2}>
