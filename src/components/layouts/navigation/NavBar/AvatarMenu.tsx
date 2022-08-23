@@ -87,7 +87,7 @@ const AvatarMenu = () => {
             >
               Order History
             </MenuItem>
-            <MenuItem onClick={() => navigate("/user/:id/favorites")}>
+            <MenuItem onClick={() => navigate("/user/favorites-product")}>
               Favorite Products
             </MenuItem>
             <MenuItem onClick={() => logOut()}>Logout</MenuItem>

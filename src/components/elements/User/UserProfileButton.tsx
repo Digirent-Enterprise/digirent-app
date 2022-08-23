@@ -1,15 +1,8 @@
-import React, { ReactNode, useState } from "react";
-import { Button } from "@chakra-ui/react";
+import React from "react";
 import { Link } from "react-router-dom";
 import { Text } from "@chakra-ui/react";
 import { IconContext } from "react-icons";
 
-// interface IUserButton {
-//   userItem: string;
-//   directUrl: string;
-//   hoverBackgroundColor: string;
-//   focusBackgroundColor: string;
-// }
 interface IUserButton {
   userButtonItem: string;
   directUrl: string;

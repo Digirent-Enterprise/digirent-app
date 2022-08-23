@@ -34,16 +34,16 @@ const Home = lazy(() => import("./pages/Home/Home"));
 const About = lazy(() => import("./pages/About/About"));
 const ContactUsPage = lazy(() => import("./pages/Contact/ContactUsPage"));
 const ProductSearchPage = lazy(
-  () => import("./pages/Product/ProductSearchPage")
+  () => import("./pages/Product/ProductSearchPage"),
 );
 const AddProduct = lazy(() => import("./pages/Admin/AddProduct/AddProduct"));
 const CategoryPage = lazy(() => import("./pages/Category/CategoryPage"));
 const PrivacyPolicy = lazy(() => import("./pages/PrivacyPolicy/PrivacyPolicy"));
 const UserTransactionDetails = lazy(
-  () => import("./pages/User/UserTransactionDetail")
+  () => import("./pages/User/UserTransactionDetail"),
 );
 const UserTransactionHistory = lazy(
-  () => import("./pages/User/UserTransactionHistory")
+  () => import("./pages/User/UserTransactionHistory"),
 );
 const UserEdit = lazy(() => import("./pages/User/UserEdit"));
 const UserProfile = lazy(() => import("./pages/User/UserProfile"));

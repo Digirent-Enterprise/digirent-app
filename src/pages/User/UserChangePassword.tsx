@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-import { useSelector } from "react-redux";
+import React from "react";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import {
@@ -22,7 +21,6 @@ import qs from "qs";
 import { toast } from "react-toastify";
 import { UserTab } from "../../components";
 import DefaultLayout from "../DefaultLayout";
-import { getCurrentUserSelector } from "../../store/selectors/user.selector";
 import { customAxios } from "../../http-common";
 
 interface IFormInputs {
@@ -45,8 +43,6 @@ const schema = yup.object().shape({
 });
 
 const UserChangePassword = () => {
-  const currentUser = useSelector(getCurrentUserSelector);
-
   const {
     register,
     handleSubmit,
@@ -65,10 +61,13 @@ const UserChangePassword = () => {
   const onSubmit = async (data: IFormInputs) => {
     const update = await customAxios().put(
       "user/edit-user",
-      qs.stringify(data)
+      qs.stringify(data),
     );
     if (update.data) {
-      toast.success("Update user successfully", { theme: "dark", icon: "🚀" });
+      toast.success("Change password successfully!", {
+        theme: "dark",
+        icon: "🚀",
+      });
     }
   };
 
@@ -95,12 +94,12 @@ const UserChangePassword = () => {
             </Link>
 
             <FormControl isInvalid={!!errors?.password?.message} py="10px">
-              <FormLabel>Enter your current password:</FormLabel>
+              <FormLabel>Current password</FormLabel>
               <Input
                 {...register("password")}
                 placeholder="Current password"
                 _placeholder={{ color: "#777" }}
-                type="text"
+                type="password"
                 bg={useColorModeValue("gray.50", "gray.500")}
                 width="650px"
               />
@@ -113,12 +112,12 @@ const UserChangePassword = () => {
               isInvalid={!!errors?.changePassword?.message}
               py="10px"
             >
-              <FormLabel>Enter your new password:</FormLabel>
+              <FormLabel>New password</FormLabel>
               <Input
                 {...register("changePassword")}
-                placeholder="New"
+                placeholder="New password"
                 _placeholder={{ color: "#777" }}
-                type="text"
+                type="password"
                 bg={useColorModeValue("gray.50", "gray.500")}
                 width="650px"
               />
@@ -131,12 +130,12 @@ const UserChangePassword = () => {
               isInvalid={!!errors?.retypeChangePassword?.message}
               py="10px"
             >
-              <FormLabel>Retype your new password:</FormLabel>
+              <FormLabel>Retype new password</FormLabel>
               <Input
                 {...register("retypeChangePassword")}
-                placeholder="Retype your password"
+                placeholder="Retype new password"
                 _placeholder={{ color: "#777" }}
-                type="text"
+                type="password"
                 bg={useColorModeValue("gray.50", "gray.500")}
                 width="650px"
               />
