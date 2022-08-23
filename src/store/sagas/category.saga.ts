@@ -20,16 +20,20 @@ function* getCategory(): any {
   yield delay(1000);
 }
 
-function* getCategoryByID(payload: ICategory): any {
-  const response = yield call(fetchCategorybyID, payload.queryName);
-  console.log("herehere", response.data);
+function* getCategoryByID(action: {
+  type: string;
+  payload: {
+    queryName: string;
+  };
+}): any {
+  const response = yield call(fetchCategorybyID, action.payload.queryName);
   yield put(setCategoryByID(response.data));
+  console.log(response.data, "what");
 }
 
 function* categorySaga() {
   yield all([
     takeLatest(GET_CATEGORY, getCategory),
-    //@ts-ignore
     takeLatest(GET_CATEGORY_BY_ID, getCategoryByID),
   ]);
 }

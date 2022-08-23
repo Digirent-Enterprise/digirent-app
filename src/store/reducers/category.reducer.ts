@@ -1,10 +1,24 @@
 import { SET_CATEGORY, SET_CATEGORY_BY_ID } from "../types/action.types";
-
-import { CategoryActions, CategoryState } from "../types/category.types";
+import {
+  CategoryActions,
+  CategoryState,
+} from "../types/category.types";
 
 const initialCategory = {
   _id: "",
-  products: "",
+  products: {
+    _id: "",
+    name: "",
+    serial: "",
+    brand: "",
+    description: "",
+    status: false,
+    rentalCost: 0,
+    rentalCostType: "",
+    images: [],
+    category: "",
+    createdDate: new Date(),
+  },
   name: "",
   image: "",
   queryName: "",
@@ -12,7 +26,7 @@ const initialCategory = {
 };
 
 const initialState: CategoryState = {
-  category: initialCategory,
+  category: [initialCategory],
   pending: false,
   categories: [],
   error: null,

@@ -1,12 +1,12 @@
 import CategoryBanner from "../Items/CategoryBanner";
 
-const CategoryBannerLayout = ({ productData }: any) => {
+const CategoryBannerLayout = ({ categoryData }: any) => {
   return (
     <div className="w-full">
       <CategoryBanner
-        bannerUrl={productData.bannerUrl}
-        bannerAlt={productData.name}
-        amount={productData.products?.length}
+        bannerUrl={categoryData[0]?.bannerUrl}
+        bannerAlt={categoryData[0]?.name}
+        amount={categoryData[0]?.products?.length}
       />
     </div>
   );
