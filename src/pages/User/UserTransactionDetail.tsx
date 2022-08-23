@@ -27,6 +27,10 @@ const UserTransactionDetails = () => {
 
   const product = transaction.productId as IProduct;
 
+  const steps = ["placed", "pending", "shipped", "paid"];
+
+  console.log(steps.indexOf(transaction.status), "ass");
+
   return (
     <DefaultLayout>
       <Helmet
@@ -127,7 +131,9 @@ const UserTransactionDetails = () => {
                       <div
                         className="h-2 bg-[#4F46E5] rounded-full"
                         style={{
-                          width: `calc((${transaction.step}* 2 + 1) / 8 * 100%)`,
+                          width: `calc((
+                            ${steps.indexOf(transaction.status)}
+                          * 2 + 1) / 7 * 100%)`,
                         }}
                       />
                     </div>
@@ -135,7 +141,9 @@ const UserTransactionDetails = () => {
                       <div className="text-[#4F46E5]">Order placed</div>
                       <div
                         className={classNames(
-                          transaction.step > 0 ? "text-[#4F46E5]" : "",
+                          steps.indexOf(transaction.status) > 0
+                            ? "text-[#4F46E5]"
+                            : "",
                           "text-center",
                         )}
                       >
@@ -143,7 +151,9 @@ const UserTransactionDetails = () => {
                       </div>
                       <div
                         className={classNames(
-                          transaction.step > 1 ? "text-[#4F46E5]" : "",
+                          steps.indexOf(transaction.status) > 1
+                            ? "text-[#4F46E5]"
+                            : "",
                           "text-center",
                         )}
                       >
@@ -151,7 +161,9 @@ const UserTransactionDetails = () => {
                       </div>
                       <div
                         className={classNames(
-                          transaction.step > 2 ? "text-[#4F46E5]" : "",
+                          steps.indexOf(transaction.status) > 2
+                            ? "text-[#4F46E5]"
+                            : "",
                           "text-right",
                         )}
                       >
