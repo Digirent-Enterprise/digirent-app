@@ -28,7 +28,6 @@ function* getCategoryByID(action: {
 }): any {
   const response = yield call(fetchCategorybyID, action.payload.queryName);
   yield put(setCategoryByID(response.data));
-  console.log(response.data, "what");
 }
 
 function* categorySaga() {

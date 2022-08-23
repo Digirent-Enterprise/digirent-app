@@ -21,6 +21,11 @@ const BookingBoxLayout = ({ productData }: any) => {
     }
     return [pad(d.getDate()), pad(d.getMonth() + 1), d.getFullYear()].join("/");
   };
+
+  if (startDate > endDate) {
+    alert("Please choose valid dates");
+    setEndDate(startDate);
+  }
   return (
     <div className="flex flex-col w-full gap-2">
       <div className="flex flex-col justify-center mt-10 ml-[32px] lg:flex-row md:flex-row">

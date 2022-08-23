@@ -25,7 +25,7 @@ const ProductListingCategory = () => {
   }, [queryName]);
   const categoryData = useMemo(() => categoryFetchData, [categoryFetchData]);
 
-  const { products }: any = categoryData[0].products;
+  const products: any = categoryData[0].products;
   const [currentItems, setCurrentItems] = useState([]);
   const [pageCount, setPageCount] = useState(0);
   const [itemOffset, setItemOffset] = useState(0);
@@ -33,9 +33,9 @@ const ProductListingCategory = () => {
 
   useEffect(() => {
     const endOffset = itemOffset + itemsPerPage;
-    if (products && products.length > 0)
+    if (products && products?.length > 0)
       setCurrentItems(products.slice(itemOffset, endOffset));
-    setPageCount(Math.ceil(products.length / itemsPerPage));
+    setPageCount(Math.ceil(products?.length / itemsPerPage));
   }, [itemOffset, itemsPerPage, products]);
 
   const handlePageClick = (event: { selected: number }) => {
@@ -47,7 +47,6 @@ const ProductListingCategory = () => {
     const { value } = e.target;
     setSelectedOpt(value);
   };
-
   return (
     <>
       {categoryData && Object.keys(categoryData) && (
