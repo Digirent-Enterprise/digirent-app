@@ -2,7 +2,7 @@ import {
   SET_TRANSACTION_LOADING,
   SET_TRANSACTIONS,
   SET_TRANSACTION_BY_ID,
-  SET_TRANSACTION
+  SET_TRANSACTION,
 } from "../types/action.types";
 
 import {
@@ -21,7 +21,6 @@ export const initialTransaction = {
   currency: "",
   from: new Date(),
   to: new Date(),
-  productImageUrl: ""
 };
 
 const initialState: TransactionState = {
@@ -54,8 +53,7 @@ const TransactionReducer = (
     case SET_TRANSACTION:
       return {
         ...state,
-        pending: false,
-        transaction: action.payload.transaction,
+        transaction: action.payload.transaction!,
       };
 
     default:

@@ -12,7 +12,6 @@ export interface ITransaction {
   currency: string;
   from: Date;
   to: Date;
-  productImageUrl: string;
 }
 
 export type TransactionLoading = "" | "loading" | "success" | "fail";

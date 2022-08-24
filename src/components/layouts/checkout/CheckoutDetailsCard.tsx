@@ -1,15 +1,10 @@
 import React from "react";
-import { BackToPreviousPage } from "../../modules";
 
-const CheckoutDetailsCard = ({ transactionData, productDataById }: any) => {
-  const { name, description } = productDataById;
-  const { currency, rentalCost, productImageUrl } = transactionData;
+const CheckoutDetailsCard = ({ transactionData }: any) => {
+  const { currency, rentalCost, productId} = transactionData;
 
   return (
     <div>
-      <div className="pb-4">
-        <BackToPreviousPage page="product" />
-      </div>
       <div className="flex flex-col justify-between p-6 border-2 border-solid rounded-2xl border-gray">
         <div className="flex flex-col px-0 md:flex-row">
           <div className="flex flex-col">
@@ -18,16 +13,16 @@ const CheckoutDetailsCard = ({ transactionData, productDataById }: any) => {
                 <div className="flex space-x-4">
                   <img
                     src={
-                      productImageUrl == null
+                      productId.images == null
                         ? "https://via.placeholder.com/150"
-                        : productImageUrl
+                        : productId.images[0]
                     }
                     alt="order"
                     className="w-[40%] h-40 rounded-2xl border border-gray shadow-sm"
                   />
                   <div>
-                    <h2 className="text-xl">{name}</h2>
-                    <p className="text-md">{description}</p>
+                    <h2 className="text-xl">{productId.name}</h2>
+                    <p className="text-md">{productId.description}</p>
                     <span className="text-red-600">Price</span> {currency}
                     {rentalCost}
                   </div>

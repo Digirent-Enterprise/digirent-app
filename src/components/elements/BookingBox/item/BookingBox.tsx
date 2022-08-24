@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
 import {
   Accordion,
   AccordionItem,
@@ -8,44 +7,38 @@ import {
   AccordionIcon,
   Box,
 } from "@chakra-ui/react";
-import dayjs from "dayjs";
-import { useNavigate } from "react-router-dom";
-import { IProduct } from "../../../../store/types/product.types";
+import { useDispatch, useSelector } from "react-redux";
 import { setTransaction } from "../../../../store/actions/transaction.action";
 import { getCurrentUserSelector } from "../../../../store/selectors/user.selector";
+import { useNavigate } from "react-router-dom";
+import { IProduct } from "../../../../store/types/product.types";
+import dayjs from "dayjs";
 
 interface BookingBoxProps {
   price: number;
-  borrow: string;
-  returnDate: string;
   rentalCost: number;
   rentalCostType: string;
   startDate: Date;
   endDate: Date;
-  product: IProduct;
+  productData: IProduct;
 }
-
 const BookingBox: React.FC<BookingBoxProps> = ({
   price,
-  borrow,
-  returnDate,
   rentalCost,
   startDate,
   endDate,
   rentalCostType = "day",
-  product,
+  productData,
 }) => {
+  const [totalPrice, setTotalPrice] = useState(0);
   const navigate = useNavigate();
   const userData = useSelector(getCurrentUserSelector);
-  const formatDate = (dateString: string) => {
-    return new Date(dayjs(dateString).format());
-  };
   const dispatch = useDispatch();
 
   const handleRent = () => {
     dispatch(
       setTransaction({
-        productId: product._id,
+        productId: productData,
         _id: "",
         userEmail: userData.email,
         rentalCost: totalPrice,
@@ -53,14 +46,13 @@ const BookingBox: React.FC<BookingBoxProps> = ({
         status: "pending",
         latePenalty: 0,
         currency: "VND",
-        from: formatDate(borrow),
-        to: formatDate(returnDate),
-        productImageUrl: product.images[0],
+        from: startDate,
+        to: endDate,
       }),
     );
-    navigate(`/checkout/${product._id}`);
+    navigate(`/checkout/${productData._id}`);
   };
-  const [totalPrice, setTotalPrice] = useState(0);
+
   useEffect(() => {
     if (price) {
       const diff: number = Math.abs(startDate.getTime() - endDate.getTime());
@@ -70,7 +62,7 @@ const BookingBox: React.FC<BookingBoxProps> = ({
           : 1;
       setTotalPrice(price * numDateDiff);
     }
-  }, [borrow, returnDate]);
+  }, [startDate, endDate]);
   return (
     <div className="flex flex-col">
       <div className=" w-[300px] rounded-3xl bg-white flex flex-col drop-shadow-[0px_10px_10px_rgba(0,0,0,0.25)]">
@@ -83,13 +75,13 @@ const BookingBox: React.FC<BookingBoxProps> = ({
             <div>
               <b>Borrow Date:</b>
             </div>
-            <div>{borrow}</div>
+            <div>{dayjs(startDate).format("DD/MM/YYYY")}</div>
           </div>
           <div className="bg-white w-[50%] h-[60px] flex flex-col rounded-r-xl text-center justify-center border-[1px] border-black">
             <div>
               <b>Return Date:</b>
             </div>
-            <div>{returnDate}</div>
+            <div>{dayjs(endDate).format("DD/MM/YYYY")}</div>
           </div>
         </div>
         <div className="flex justify-center mt-7">

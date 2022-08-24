@@ -5,25 +5,17 @@ import { useParams } from "react-router-dom";
 import {
   CheckoutDetailsCard,
   OrderSummaryContent,
-  StripePayment,
 } from "../../components";
 import DefaultLayout from "../DefaultLayout";
 import { getTransactionSelector } from "../../store/selectors/transaction.selector";
 import { customAxios } from "../../http-common";
 import { getProductByID } from "../../store/actions/product.action";
-import { getProductByIdSelector } from "../../store/selectors/product.selector";
+import { getProductByIDSelector } from "../../store/selectors/product.selector";
 
 const CheckoutPage = () => {
   const dispatch = useDispatch();
-  const { id } = useParams();
-  const productByIDFetchData = useSelector(getProductByIdSelector);
-  useEffect(() => {
-    if (id) dispatch(getProductByID(id));
-  }, [id]);
-  const productDataById = useMemo(
-    () => productByIDFetchData,
-    [productByIDFetchData],
-  );
+  
+
   const transactionData = useSelector(getTransactionSelector);
   console.log("transactionData :>> ", transactionData);
   const handleCheckout = () => {
@@ -64,7 +56,6 @@ const CheckoutPage = () => {
         >
           <CheckoutDetailsCard
             transactionData={transactionData}
-            productDataById={productDataById}
           />
         </GridItem>
         <GridItem
@@ -88,7 +79,6 @@ const CheckoutPage = () => {
         >
           <OrderSummaryContent
             transactionData={transactionData}
-            productDataById={productDataById}
           />
           <div className="flex flex-row justify-center float-down">
             <Button

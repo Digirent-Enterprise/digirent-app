@@ -9,7 +9,7 @@ const StripePayment = ({ transactionData }: any) => {
 
   useEffect(() => {
     // Create PaymentIntent as soon as the page loads
-    fetch(`${API_BASE_URL}/create-payment-intent"`, {
+    fetch(`${API_BASE_URL}/create-payment-intent`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
     })

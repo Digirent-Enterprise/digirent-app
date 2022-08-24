@@ -1,7 +1,7 @@
+import dayjs from "dayjs";
 import { StripePayment } from "../../elements";
 
-const OrderSummaryContent = ({ transactionData, productDataById }: any) => {
-  console.log("transactionData :>> ", transactionData);
+const OrderSummaryContent = ({ transactionData }: any) => {
   return (
     <div className="container flex flex-col grow">
       <h5 className="pb-4 text-2xl">Order Summary</h5>
@@ -13,7 +13,7 @@ const OrderSummaryContent = ({ transactionData, productDataById }: any) => {
                 <p className="text-xl">Product</p>
                 <div className="flex flex-row justify-between">
                   <div className="text-md justify-left">
-                    {productDataById.name}
+                    {transactionData.productId.name}
                   </div>
                   <span className="text-red-600">
                     $ {transactionData.totalPrice}
@@ -24,8 +24,8 @@ const OrderSummaryContent = ({ transactionData, productDataById }: any) => {
                 <p className="text-xl">Date</p>
                 <div className="flex flex-row justify-between">
                   <div className="text-md justify-right">
-                    {transactionData.from.toString().slice(4, 15)} -{" "}
-                    {transactionData.to.toString().slice(4, 15)}
+                    {dayjs(transactionData.from).format("DD/MM/YYYY")} -{" "}
+                    {dayjs(transactionData.to).format("DD/MM/YYYY")}
                   </div>
                   <div />
                 </div>

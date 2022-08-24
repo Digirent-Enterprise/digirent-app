@@ -73,21 +73,19 @@ const StripeCheckoutForm = ({ transactionData }: any) => {
     }
 
     setIsLoading(true);
-    //@ts-ignore
+    // @ts-ignore
     const { error: stripeError } = await stripe
       .confirmPayment({
         elements,
         confirmParams: {
           // Make sure to change this to your payment completion page
-          return_url: "http://localhost:3000/checkout/complete",
+          return_url: "http://localhost:3000/",
         },
       })
-      .then(async function () {
-        const res = await customAxios("application/json").post(
-          "transaction/create-transaction",
-          transactionData,
-        );
-        return console.log("res.status :>> ", res.status);
+      .then(function () {
+        return customAxios()
+          .post("transaction/create-transaction", transactionData)
+          .then((res) => console.log("res.status :>> ", res.status));
       });
     // This point will only be reached if there is an immediate error when
     // confirming the payment. Otherwise, your customer will be redirected to
