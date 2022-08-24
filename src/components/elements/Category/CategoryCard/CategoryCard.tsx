@@ -26,7 +26,7 @@ const CategoryCard = ({ categoryImage, categoryName }: CategoryCardProps) => {
         src={categoryImage}
         alt="category"
         className="
-        w-[120px]
+        w-[140px]
         h-[120px]
         object-cover
       "

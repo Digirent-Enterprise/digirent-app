@@ -1,7 +1,10 @@
+import { useSelector } from "react-redux";
+import { getCurrentUserSelector } from "../../store/selectors/user.selector";
 import { IMAGES } from "../../utils/constants/image.constant";
 import DefaultLayout from "../DefaultLayout";
 
 const UserViewInfo = () => {
+  const currentUser = useSelector(getCurrentUserSelector);
   return (
     <DefaultLayout>
       <section className="relative block h-[500px] -mt-5">
@@ -45,8 +48,12 @@ const UserViewInfo = () => {
                 <div className="flex justify-center w-full px-4 lg:w-3/12 lg:order-2">
                   <div className="relative">
                     <img
-                      alt="..."
-                      src={IMAGES.defaultAvatar}
+                      alt="avatar"
+                      src={
+                        currentUser.avatar
+                          ? currentUser.avatar
+                          : IMAGES.defaultAvatar
+                      }
                       className="absolute h-auto -m-16 -ml-20 align-middle border-none rounded-full shadow-xl lg:-ml-16"
                       style={{ maxWidth: "150px" }}
                     />
@@ -55,11 +62,11 @@ const UserViewInfo = () => {
               </div>
               <div className="mt-20 text-center">
                 <h3 className="mb-2 text-4xl font-semibold leading-normal text-[#1F2937]">
-                  Vo Thanh Luan
+                  {currentUser.name}
                 </h3>
                 <div className="mt-0 mb-2 text-sm font-bold leading-normal text-[#6B7280] uppercase">
                   <i className="mr-2 text-lg text-[#6B7280] fas fa-map-marker-alt" />{" "}
-                  Ho Chi Minh city
+                  {currentUser.location}
                 </div>
               </div>
               <div className="py-10 mt-10 text-center border-t border-[#D1D5DB]">

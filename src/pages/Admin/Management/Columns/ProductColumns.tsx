@@ -6,7 +6,9 @@ import { ClickDelete, ClickEdit } from "../HandleActionClick";
 export const ProductColumns: Array<Column> = [
   {
     Header: "Product ID",
-    accessor: "_id",
+    accessor: (e: any) => {
+      return e._id.toUpperCase();
+    },
   },
   {
     Header: "Product Name",
@@ -31,8 +33,8 @@ export const ProductColumns: Array<Column> = [
   {
     id: "status",
     Header: "Status",
-    accessor: (d: any) => {
-      return d.status ? (
+    accessor: (e: any) => {
+      return e.status ? (
         <Badge colorScheme="green">Available</Badge>
       ) : (
         <Badge colorScheme="yellow">Pending</Badge>

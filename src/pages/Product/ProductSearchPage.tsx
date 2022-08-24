@@ -16,6 +16,7 @@ import {
 } from "../../components";
 import NotFoundProduct from "../../components/layouts/NotFoundResult/NotFoundProduct";
 import FilterPanel from "../../components/layouts/filters/FilterPanel";
+
 import ProductListLayout from "../../components/layouts/productCard/ProductLayoutList/ProductLayoutList";
 
 import { getProducts, setProducts } from "../../store/actions/product.action";
@@ -23,6 +24,7 @@ import { getProducts, setProducts } from "../../store/actions/product.action";
 import { getAllProductsSelector } from "../../store/selectors/product.selector";
 
 import DefaultLayout from "../DefaultLayout";
+// import SortOptions from "../../components/layouts/search/SortOptions";
 
 interface SearchSectionContextValue {
   searchQuery: string;
@@ -75,9 +77,7 @@ const ProductSearchPage = () => {
 
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(getProducts());
-  }, []);
+  // const productData = useMemo(() => productFetchData, [productFetchData]);
 
   const [productList, setProductList] = useState(productData);
 
@@ -203,10 +203,12 @@ const ProductSearchPage = () => {
     );
 
     setProductList(updatedList);
+
     if (!updatedList.length) {
       setFoundProduct(false);
+    } else {
+      setFoundProduct(true);
     }
-    setFoundProduct(true);
   };
 
   // Count result(s)

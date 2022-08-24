@@ -14,6 +14,7 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 import { getCurrentUserSelector } from "../../../../store/selectors/user.selector";
 import { IMAGES } from "../../../../utils/constants/image.constant";
 import { customAxios } from "../../../../http-common";
@@ -26,9 +27,17 @@ const AvatarMenu = () => {
   const dispatch = useDispatch();
   const logOut = () => {
     dispatch(deleteUserSession());
-    customAxios().post("auth/logout");
-    clearUserSession();
-    navigate("/");
+    customAxios()
+      .post("auth/logout")
+      .then((res: any) => {
+        if (res.status === 200) {
+          toast.success("You have successfully logged out!", {
+            theme: "dark",
+          });
+          clearUserSession();
+          navigate("/");
+        }
+      });
   };
 
   return (
@@ -70,13 +79,15 @@ const AvatarMenu = () => {
             </Center>
             <br />
             <MenuDivider />
-            <MenuItem onClick={() => navigate("/user/profile")}>
+            <MenuItem onClick={() => navigate("/user/my-profile")}>
               Account Settings
             </MenuItem>
-            <MenuItem onClick={() => navigate("/user/transactions")}>
+            <MenuItem
+              onClick={() => navigate("/transaction/transaction-history")}
+            >
               Order History
             </MenuItem>
-            <MenuItem onClick={() => navigate("/user/favorites")}>
+            <MenuItem onClick={() => navigate("/user/:id/favorites")}>
               Favorite Products
             </MenuItem>
             <MenuItem onClick={() => logOut()}>Logout</MenuItem>

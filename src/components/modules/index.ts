@@ -1,4 +1,3 @@
-import BackToPreviousPage from "./button/BackToPreviousPage";
 import { AuthFormGrid } from "./form";
 import GalleryDisplay from "./gallery/GalleryDisplay";
 import LanguageSwitcher from "./language/LanguageSwitcher";
@@ -19,7 +18,6 @@ export {
   EditProductModal,
   EditTransactionModal,
   AuthFormGrid,
-  BackToPreviousPage,
   LanguageSwitcher,
   GalleryDisplay,
   StaticGoogleMap,

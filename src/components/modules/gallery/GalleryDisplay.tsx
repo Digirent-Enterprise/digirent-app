@@ -1,23 +1,14 @@
-import React, { useEffect, useMemo } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
-import { getProductByID } from "../../../store/actions/product.action";
-import { getProductByIdSelector } from "../../../store/selectors/product.selector";
+import React from "react";
+
 import GalleryLayout from "./Layout/GalleryLayout";
 
-const GalleryDisplay = () => {
-  const dispatch = useDispatch();
-  const { id } = useParams();
-  const productByIDFetchData = useSelector(getProductByIdSelector);
-  useEffect(() => {
-    if (id) dispatch(getProductByID(id));
-  }, [id]);
-  const productDataById = useMemo(
-    () => productByIDFetchData,
-    [productByIDFetchData],
-  );
-
-  return <GalleryLayout productData={productDataById} />;
+type GalleryDisplayProps = {
+  productData: {
+    images: string[];
+  };
+};
+const GalleryDisplay = ({ productData }: GalleryDisplayProps) => {
+  return <GalleryLayout productData={productData} />;
 };
 
 export default GalleryDisplay;

@@ -1,8 +1,9 @@
 import { FETCH_TRANSACTIONS_ERROR } from "./action.types";
+import { IProduct } from "./product.types";
 
 export interface ITransaction {
   _id: string;
-  productId: string;
+  productId: IProduct | string;
   userEmail: string;
   rentalCost: number;
   deposit: number;
@@ -14,10 +15,12 @@ export interface ITransaction {
   productImageUrl: string;
 }
 
+export type TransactionLoading = "" | "loading" | "success" | "fail";
+
 export interface TransactionState {
-  transaction: ITransaction;
-  pending: boolean;
+  loading: TransactionLoading;
   transactions: ITransaction[];
+  transaction: ITransaction;
   error: string | null;
 }
 export interface SetTransactionPayload {
@@ -30,6 +33,15 @@ export type SetTransaction = {
   payload: SetTransactionPayload;
 };
 
+export type TransactionAction = {
+  type: string;
+  payload: {
+    loading?: TransactionLoading;
+    transactions?: ITransaction[];
+    transaction?: ITransaction;
+  };
+};
+
 export interface FetchTransactionErrorPayload {
   error: string;
 }
@@ -38,4 +50,4 @@ export type FetchTransactionError = {
   payload: FetchTransactionErrorPayload;
 };
 
-export type TransactionActions = FetchTransactionError | SetTransaction;
+export type TransactionActions = TransactionAction;

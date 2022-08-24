@@ -3,7 +3,6 @@ import { Routes, Route, useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { AnimatePresence } from "framer-motion";
 import {
-  UserProfile,
   Maintain,
   NotFound,
   RegisterPage,
@@ -17,15 +16,14 @@ import {
   TransactionManagement,
   CheckoutPage,
   EmailSentPage,
-  UserTransactionDetails,
-  UserTransactionHistory,
-  UserEdit,
   ProductDetailsPage,
-  UserViewInfo,
 } from "./pages";
 import PrivateRoute from "./components/PrivateRoute";
 
-import { AdminPermission } from "./utils/constants/permission.constants";
+import {
+  AdminPermission,
+  FullPermission,
+} from "./utils/constants/permission.constants";
 import { BackToTop } from "./components";
 import { selectAppLoading } from "./store/selectors/app.selector";
 import { initApp, setAppAuth } from "./store/actions/app.action";
@@ -40,6 +38,15 @@ const ProductSearchPage = lazy(
 const AddProduct = lazy(() => import("./pages/Admin/AddProduct/AddProduct"));
 const CategoryPage = lazy(() => import("./pages/Category/CategoryPage"));
 const PrivacyPolicy = lazy(() => import("./pages/PrivacyPolicy/PrivacyPolicy"));
+const UserTransactionDetails = lazy(
+  () => import("./pages/User/UserTransactionDetail"),
+);
+const UserTransactionHistory = lazy(
+  () => import("./pages/User/UserTransactionHistory"),
+);
+const UserEdit = lazy(() => import("./pages/User/UserEdit"));
+const UserProfile = lazy(() => import("./pages/User/UserProfile"));
+const UserViewInfo = lazy(() => import("./pages/User/UserViewInfo"));
 
 const AppRouter = () => {
   const location = useLocation();
@@ -64,7 +71,7 @@ const AppRouter = () => {
       <BackToTop />
       <Routes key={location.pathname} location={location}>
         <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
+        <Route path="about" element={<About />} />
         <Route path="login" element={<LoginPage />} />
         <Route path="register" element={<RegisterPage />} />
         <Route path="reset-password" element={<ResetPasswordPage />} />
@@ -77,19 +84,48 @@ const AppRouter = () => {
         <Route path="checkout/:id" element={<CheckoutPage />} />
         <Route path="checkout-success/:id" />
         {/* Users */}
-        <Route path="users" />
-        <Route path="users/:id" />
-        <Route path="user/profile" element={<UserProfile />} />
-        <Route path="user/edit" element={<UserEdit />} />
-        <Route path="user/:id/deactivate" />
-        <Route path="user/:id/change-password" />
-        <Route path="user/:id/view" element={<UserViewInfo />} />
-        <Route path="user/transaction" element={<UserTransactionHistory />} />
         <Route
-          path="user/transaction/details"
-          element={<UserTransactionDetails />}
+          path="user/my-profile"
+          element={
+            <PrivateRoute permission={FullPermission}>
+              <UserProfile />
+            </PrivateRoute>
+          }
         />
-        <Route path="/privacy" element={<PrivacyPolicy />} />
+        <Route
+          path="user/edit-my-profile"
+          element={
+            <PrivateRoute permission={FullPermission}>
+              <UserEdit />
+            </PrivateRoute>
+          }
+        />
+        <Route path="user/change-password" />
+        <Route
+          path="user/view-my-profile"
+          element={
+            <PrivateRoute permission={FullPermission}>
+              <UserViewInfo />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="transaction/transaction-history"
+          element={
+            <PrivateRoute permission={FullPermission}>
+              <UserTransactionHistory />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="transaction/:id"
+          element={
+            <PrivateRoute permission={FullPermission}>
+              <UserTransactionDetails />
+            </PrivateRoute>
+          }
+        />
+        <Route path="privacy" element={<PrivacyPolicy />} />
         {/* Maintain */}
         <Route path="maintain" element={<Maintain />} />
         {/* Contact */}
@@ -114,8 +150,6 @@ const AppRouter = () => {
             </PrivateRoute>
           }
         />
-        <Route path="admin/users/:id/edit" />
-        <Route path="admin/users/:id/delete" />
         {/* Product management */}
 
         <Route
@@ -134,9 +168,6 @@ const AppRouter = () => {
             </PrivateRoute>
           }
         />
-        <Route path="admin/product/:id" />
-        <Route path="admin/products/:id/edit" />
-        <Route path="admin/products/:id/delete" />
         {/* Transaction management */}
         <Route
           path="admin/transactions"
@@ -146,8 +177,6 @@ const AppRouter = () => {
             </PrivateRoute>
           }
         />
-        <Route path="admin/transactions/:id/edit" />
-        <Route path="admin/transactions/:id/delete" />
         {/* Chat */}
         <Route
           path="admin/chat"
