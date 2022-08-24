@@ -1,6 +1,7 @@
-import React, { useState } from "react";
-import { Button } from "@chakra-ui/react";
-import { useNavigate } from "react-router-dom";
+import React from "react";
+import { Link } from "react-router-dom";
+import { Text } from "@chakra-ui/react";
+import { IconContext } from "react-icons";
 
 interface IUserButton {
   userButtonItem: string;
@@ -13,34 +14,25 @@ const UserProfileButton = ({
   directUrl,
   leftIcon,
 }: IUserButton) => {
-  const [isHovering, setIsHovering] = useState(false);
-  const navigate = useNavigate();
-  const onClick = () => navigate(directUrl);
-  const handleMouseEnter = () => {
-    setIsHovering(true);
-  };
-
-  const handleMouseLeave = () => {
-    setIsHovering(false);
-  };
   return (
-    <Button
-      onClick={onClick}
-      flex={1}
-      fontSize="sm"
-      maxW="250px"
-      rounded="full"
-      color="white"
-      style={{
-        backgroundColor: isHovering ? "#153289" : "#4169E1",
-        color: isHovering ? "#fff" : "",
-      }}
-      leftIcon={leftIcon}
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
-    >
-      {userButtonItem}
-    </Button>
+    <form action="">
+      <Link to={directUrl}>
+        <div className="flex">
+          <IconContext.Provider
+            value={{
+              style: { verticalAlign: "middle", color: "#4169E1" },
+              size: "30px",
+              className: "global-class-name",
+            }}
+          >
+            <div>{leftIcon}</div>
+          </IconContext.Provider>
+          <Text color="#4169E1" className="mx-2 mb-10 text-lg">
+            {userButtonItem}
+          </Text>
+        </div>
+      </Link>
+    </form>
   );
 };
 

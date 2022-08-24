@@ -6,8 +6,9 @@ import {
   ProductProgressBar,
   Testimonial,
   CategoryCardListing,
-  ChatBox,
-  StripePayment,
+  FAQ,
+  Partner,
+  Search,
 } from "../../components";
 
 import Helmet from "../../Helmet";
@@ -23,13 +24,14 @@ const Home = () => {
       />
       <Banner />
       <CategoryCardListing />
+      <Search />
       <NewProduct />
       <FeatureProduct />
       <ProductProgressBar />
+      <Partner />
       <Testimonial />
+      <FAQ />
       <CTA />
-      <StripePayment />
-      <ChatBox />
     </DefaultLayout>
   );
 };

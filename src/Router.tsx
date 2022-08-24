@@ -47,6 +47,12 @@ const UserTransactionHistory = lazy(
 const UserEdit = lazy(() => import("./pages/User/UserEdit"));
 const UserProfile = lazy(() => import("./pages/User/UserProfile"));
 const UserViewInfo = lazy(() => import("./pages/User/UserViewInfo"));
+const UserChangePassword = lazy(
+  () => import("./pages/User/UserChangePassword"),
+);
+const UserFavoriteProduct = lazy(
+  () => import("./pages/User/UserFavoriteProduct"),
+);
 
 const AppRouter = () => {
   const location = useLocation();
@@ -100,12 +106,27 @@ const AppRouter = () => {
             </PrivateRoute>
           }
         />
-        <Route path="user/change-password" />
+        <Route
+          path="user/change-password"
+          element={
+            <PrivateRoute permission={FullPermission}>
+              <UserChangePassword />
+            </PrivateRoute>
+          }
+        />
         <Route
           path="user/view-my-profile"
           element={
             <PrivateRoute permission={FullPermission}>
               <UserViewInfo />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="user/favorite-product"
+          element={
+            <PrivateRoute permission={FullPermission}>
+              <UserFavoriteProduct />
             </PrivateRoute>
           }
         />
@@ -131,7 +152,7 @@ const AppRouter = () => {
         {/* Contact */}
         <Route path="contact" element={<ContactUsPage />} />
         {/* Category */}
-        <Route path="categories/:id" element={<CategoryPage />} />
+        <Route path="category" element={<CategoryPage />} />
         {/* Admin */}
         <Route
           path="admin"
