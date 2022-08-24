@@ -1,26 +1,20 @@
-import React, { useEffect, useMemo } from "react";
 import { Button, Grid, GridItem } from "@chakra-ui/react";
-import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
-import {
-  CheckoutDetailsCard,
-  OrderSummaryContent,
-} from "../../components";
+import { useSelector } from "react-redux";
+import qs from "qs";
+import { CheckoutDetailsCard, OrderSummaryContent } from "../../components";
 import DefaultLayout from "../DefaultLayout";
 import { getTransactionSelector } from "../../store/selectors/transaction.selector";
 import { customAxios } from "../../http-common";
-import { getProductByID } from "../../store/actions/product.action";
-import { getProductByIDSelector } from "../../store/selectors/product.selector";
 
 const CheckoutPage = () => {
-  const dispatch = useDispatch();
-  
-
-  const transactionData = useSelector(getTransactionSelector);
-  console.log("transactionData :>> ", transactionData);
+  const transactionData: any = useSelector(getTransactionSelector);
+  const transaction = {
+    ...transactionData,
+    productId: transactionData.productId._id,
+  };
   const handleCheckout = () => {
-    return customAxios("application/json")
-      .post("transaction/create-transaction", transactionData)
+    return customAxios()
+      .post("transaction/create-transaction", qs.stringify(transaction))
       .then((res) => console.log("res.status :>> ", res.status));
   };
   return (
@@ -54,9 +48,7 @@ const CheckoutPage = () => {
           }}
           className="flex flex-col justify-between"
         >
-          <CheckoutDetailsCard
-            transactionData={transactionData}
-          />
+          <CheckoutDetailsCard transactionData={transactionData} />
         </GridItem>
         <GridItem
           colSpan={{
@@ -77,9 +69,7 @@ const CheckoutPage = () => {
           }}
           className="flex flex-col justify-between"
         >
-          <OrderSummaryContent
-            transactionData={transactionData}
-          />
+          <OrderSummaryContent transactionData={transactionData} />
           <div className="flex flex-row justify-center float-down">
             <Button
               onClick={handleCheckout}
@@ -97,3 +87,6 @@ const CheckoutPage = () => {
 };
 
 export default CheckoutPage;
+function productId(productId: any, _id: any) {
+  throw new Error("Function not implemented.");
+}

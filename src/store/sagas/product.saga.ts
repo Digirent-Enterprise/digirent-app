@@ -35,7 +35,6 @@ function* getProductByID(action: {
 }): any {
   try {
     const response = yield call(fetchProductByID, action.payload._id);
-    console.log('response :>> ', response);
     yield put(setProductByID(response.data));
   } catch (e: any) {
     yield put(

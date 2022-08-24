@@ -1,7 +1,7 @@
 import React from "react";
 
 const CheckoutDetailsCard = ({ transactionData }: any) => {
-  const { currency, rentalCost, productId} = transactionData;
+  const { currency, rentalCost, productId } = transactionData;
 
   return (
     <div>
@@ -35,9 +35,9 @@ const CheckoutDetailsCard = ({ transactionData }: any) => {
                   <div className="flex flex-row justify-between">
                     <p className="pt-4 text-md text-gray">
                       {currency}
-                      {rentalCost} x 1 month
+                      {productId.rentalCost} x 1 month
                     </p>
-                    <p className="pt-4 text-md text-gray">$150 </p>
+                    <p className="pt-4 text-md text-gray">{rentalCost} </p>
                   </div>
                   <div className="flex flex-row justify-between">
                     <p className="pt-4 text-md text-gray">Taxes</p>

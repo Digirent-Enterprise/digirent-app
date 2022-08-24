@@ -16,7 +16,7 @@ const OrderSummaryContent = ({ transactionData }: any) => {
                     {transactionData.productId.name}
                   </div>
                   <span className="text-red-600">
-                    $ {transactionData.totalPrice}
+                    $ {transactionData.rentalCost}
                   </span>
                 </div>
               </div>

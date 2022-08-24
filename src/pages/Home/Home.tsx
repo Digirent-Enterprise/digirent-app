@@ -30,7 +30,6 @@ const Home = () => {
       <CTA />
       <StripePayment />
       <ChatBox />
-      
     </DefaultLayout>
   );
 };

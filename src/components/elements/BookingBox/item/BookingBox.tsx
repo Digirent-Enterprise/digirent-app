@@ -8,11 +8,11 @@ import {
   Box,
 } from "@chakra-ui/react";
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import dayjs from "dayjs";
 import { setTransaction } from "../../../../store/actions/transaction.action";
 import { getCurrentUserSelector } from "../../../../store/selectors/user.selector";
-import { useNavigate } from "react-router-dom";
 import { IProduct } from "../../../../store/types/product.types";
-import dayjs from "dayjs";
 
 interface BookingBoxProps {
   price: number;
@@ -39,13 +39,12 @@ const BookingBox: React.FC<BookingBoxProps> = ({
     dispatch(
       setTransaction({
         productId: productData,
-        _id: "",
         userEmail: userData.email,
         rentalCost: totalPrice,
         deposit: 0,
         status: "pending",
         latePenalty: 0,
-        currency: "VND",
+        currency: "$",
         from: startDate,
         to: endDate,
       }),

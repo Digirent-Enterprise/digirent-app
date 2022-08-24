@@ -6,9 +6,14 @@ import { API_BASE_URL } from "../../../utils/constants/api.constants";
 
 const StripePayment = ({ transactionData }: any) => {
   const [clientSecret, setClientSecret] = useState("");
+  const transaction = {
+    ...transactionData,
+    productId: transactionData.productId._id,
+  };
 
   useEffect(() => {
     // Create PaymentIntent as soon as the page loads
+    console.log("transaction :>> ", transaction);
     fetch(`${API_BASE_URL}/create-payment-intent`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -25,7 +30,7 @@ const StripePayment = ({ transactionData }: any) => {
     <div>
       {clientSecret && (
         <Elements options={options} stripe={stripePromise}>
-          <StripeCheckoutForm transactionData={transactionData} />
+          <StripeCheckoutForm transactionData={transaction} />
         </Elements>
       )}
     </div>

@@ -34,7 +34,7 @@ const BookingBoxLayout = ({ productData }: any) => {
         </div>
         <div className="sm:mt-10">
           <BookingBox
-          productData={productData}
+            productData={productData}
             price={productData.rentalCost}
             startDate={new Date(startDate.toString())}
             endDate={new Date(endDate.toString())}
