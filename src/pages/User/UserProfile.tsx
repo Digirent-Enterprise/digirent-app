@@ -7,6 +7,7 @@ import {
   Button,
   useColorModeValue,
 } from "@chakra-ui/react";
+import { IconContext } from "react-icons";
 import { BsKey } from "react-icons/bs";
 import { AiOutlineEdit, AiOutlineProfile } from "react-icons/ai";
 import { TbHeartOff } from "react-icons/tb";
@@ -27,9 +28,9 @@ const UserProfile = () => {
     <DefaultLayout>
       <Box>
         <UserTab />
+
         <Center py={6}>
           <Box
-            maxW="1400px"
             w="full"
             maxH="900px"
             h="full"
@@ -50,7 +51,7 @@ const UserProfile = () => {
               justifyContent="center"
             >
               <UserProfileButton
-                directUrl="/user/:id/change-password"
+                directUrl="/user/change-password"
                 userButtonItem="Change your password"
                 leftIcon={<BsKey />}
               />
@@ -61,20 +62,20 @@ const UserProfile = () => {
               />
             </Stack>
             <Stack
-              mt={8}
+              mt={1}
               direction="row"
               spacing={4}
               alignContent="center"
               justifyContent="center"
             >
               <UserProfileButton
-                directUrl="/user/:id/view"
+                directUrl="/user/view-my-profile"
                 userButtonItem="View your information"
                 leftIcon={<AiOutlineProfile />}
               />
             </Stack>
             <Stack
-              mt={8}
+              mt={4}
               direction="row"
               spacing={4}
               alignContent="center"
@@ -83,18 +84,27 @@ const UserProfile = () => {
             >
               <Button
                 flex={1}
-                maxW="450px"
+                maxW="300px"
                 fontSize="sm"
                 rounded="full"
                 alignItems="center"
                 bg="#FF385C"
                 color="white"
-                boxShadow="0px 1px 25px -5px rgb(66 153 225 / 48%), 0 10px 10px -5px rgb(66 153 225 / 43%)"
                 _hover={{
                   bg: "#AE1010",
                 }}
-                leftIcon={<TbHeartOff />}
               >
+                <IconContext.Provider
+                  value={{
+                    style: { verticalAlign: "middle", color: "white" },
+                    size: "25px",
+                    className: "global-class-name",
+                  }}
+                >
+                  <div className="pr-2">
+                    <TbHeartOff />
+                  </div>
+                </IconContext.Provider>
                 Deactivate account
               </Button>
             </Stack>
