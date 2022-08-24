@@ -45,23 +45,36 @@ const UserProfileDeactivateButton = () => {
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
         <ModalContent>
-          <div className="text-center justify-center p-[10%]">
-            <div className="flex align-center justify-center color-[#FF385C] pb-8">
-              <TbHeartOff size="60" color="#FF385C" />
-            </div>
+          <div className="text-center justify-center p-[8%]">
+            <svg
+              aria-hidden="true"
+              className="mx-auto mb-4 w-14 h-14 text-gray-400 dark:text-gray-200"
+              fill="none"
+              stroke="#11995B"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+              ></path>
+            </svg>
+            <p className="text-2xl font-bold pb-3">Deactivate account</p>
             <p>Are you sure you want to deactivate your account?</p>
           </div>
 
           <ModalFooter>
-            <Button colorScheme="blue" mr={3} onClick={onClose}>
+            <Button
+              colorScheme="blue"
+              mr={3}
+              onClick={onClose}
+              className="w-1/2"
+            >
               Close
             </Button>
-            <Button
-              type="submit"
-              mr={3}
-              colorScheme="red"
-              className="color-[#FF385C]"
-            >
+            <Button type="submit" colorScheme="red" mr={3} className="w-1/2">
               Deactivate
             </Button>
           </ModalFooter>

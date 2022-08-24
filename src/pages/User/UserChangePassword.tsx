@@ -13,6 +13,11 @@ import {
   Stack,
   useColorModeValue,
   FormErrorMessage,
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalFooter,
+  useDisclosure,
 } from "@chakra-ui/react";
 import { WarningTwoIcon } from "@chakra-ui/icons";
 import { useForm } from "react-hook-form";
@@ -46,7 +51,7 @@ const schema = yup.object().shape({
 
 const UserChangePassword = () => {
   const currentUser = useSelector(getCurrentUserSelector);
-
+  const { isOpen, onOpen, onClose } = useDisclosure();
   const {
     register,
     handleSubmit,
@@ -85,7 +90,7 @@ const UserChangePassword = () => {
           my={12}
         >
           <form onSubmit={handleSubmit(onSubmit)}>
-            <Link to="/user/my-profile">
+            <Link to="/user/change-password/" onClick={onOpen}>
               <div className="flex">
                 <AiOutlineArrowLeft color="#4169E1" className="mx-2 text-3xl" />
                 <Text color="#4169E1" className="mx-2 mb-10 text-lg">
@@ -152,17 +157,6 @@ const UserChangePassword = () => {
               className="flex"
             >
               <Button
-                bg="grey"
-                color="white"
-                w="50%"
-                _hover={{
-                  bg: "#153289",
-                }}
-                onClick={onCancel}
-              >
-                Cancel
-              </Button>
-              <Button
                 bg="#4169E1"
                 color="white"
                 w="50%"
@@ -176,6 +170,28 @@ const UserChangePassword = () => {
             </Stack>
           </form>
         </Box>
+        <Modal isOpen={isOpen} onClose={onClose}>
+          <ModalOverlay />
+          <ModalContent>
+            <div className="text-center justify-center p-[10%]">
+              <p className="text-3xl font-bold pb-8">You have unsaved changes</p>
+              <p>Are you sure you want to leave</p>
+            </div>
+            <ModalFooter className="flex text-center align-center">
+              <Button
+                colorScheme="blue"
+                mr={3}
+                onClick={onClose}
+                className="w-1/2"
+              >
+                Stay
+              </Button>
+              <Button type="submit" colorScheme="red" mr={3} className="w-1/2">
+                Leave
+              </Button>
+            </ModalFooter>
+          </ModalContent>
+        </Modal>
       </Flex>
     </DefaultLayout>
   );
