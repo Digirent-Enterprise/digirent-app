@@ -16,7 +16,9 @@ const StaticGoogleMap = () => {
     id: "google-map-script",
     googleMapsApiKey: process.env.REACT_APP_MAPS_API_KEY as string,
   });
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [map, setMap] = useState(null);
+  // eslint-disable-next-line @typescript-eslint/no-shadow
   const onLoad = useCallback(function callback(map: any) {
     const bounds = new window.google.maps.LatLngBounds(center);
     map.fitBounds(bounds);
