@@ -24,6 +24,9 @@ import MostRentalProduct from "./ProductSection/MostRentalProduct/MostRentalProd
 import BookingBoxDisplay from "./BookingBox/BookingBoxDisplay";
 import ChatBox from "./ChatBox/ChatBox";
 import StripePayment from "./Stripe/StripePayment";
+import FAQ from "./FAQ/FAQ";
+import Partner from "./Partner/Partner";
+import Search from "./CTA/Search";
 
 export {
   CustomBreadcrumb,
@@ -52,4 +55,7 @@ export {
   BookingBoxDisplay,
   ChatBox,
   StripePayment,
+  FAQ,
+  Partner,
+  Search,
 };
