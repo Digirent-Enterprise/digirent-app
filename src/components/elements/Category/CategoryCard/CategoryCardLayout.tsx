@@ -20,17 +20,18 @@ const CategoryCardLayout = ({ categories }: any) => {
   return (
     <div className="max-w-screen-xl px-4 py-16 mx-auto sm:px-6 lg:px-8">
       <div className="grid grid-cols-2 mt-8 lg:grid-cols-4 gap-x-4 gap-y-8">
-        {category && currentItems.map((category: ICategory) => {
-          return (
-            <Link to={`/category?queryName=${category.queryName}`}>
-              <CategoryCard
-                key={category._id}
-                categoryName={category.name}
-                categoryImage={category.image}
-              />
-            </Link>
-          );
-        })}
+        {category &&
+          currentItems.map((cate: ICategory) => {
+            return (
+              <Link to={`/category?queryName=${cate.queryName}`}>
+                <CategoryCard
+                  key={cate._id}
+                  categoryName={cate.name}
+                  categoryImage={cate.image}
+                />
+              </Link>
+            );
+          })}
       </div>
     </div>
   );

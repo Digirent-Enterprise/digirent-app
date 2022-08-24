@@ -18,7 +18,7 @@ export const initialProduct = {
 
 const initialState: ProductState = {
   product: initialProduct,
-  pending: false,
+  loading: false,
   products: [],
   error: null,
 };
@@ -28,13 +28,13 @@ const ProductReducer = (state = initialState, action: ProductActions) => {
     case SET_PRODUCTS:
       return {
         ...state,
-        pending: false,
+        loading: false,
         products: action.payload.products,
       };
     case SET_PRODUCT_BY_ID:
       return {
         ...state,
-        pending: false,
+        loading: false,
         product: action.payload.product,
       };
     default:

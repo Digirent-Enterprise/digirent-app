@@ -18,7 +18,7 @@ export interface IProduct {
 }
 
 export interface ProductState {
-  pending: boolean;
+  loading: boolean;
   products: IProduct[];
   product: IProduct;
   error: string | null;
