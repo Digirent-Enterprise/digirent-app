@@ -7,7 +7,7 @@ const UserViewInfo = () => {
   const currentUser = useSelector(getCurrentUserSelector);
   return (
     <DefaultLayout>
-      <section className="relative block h-[500px] -mt-5">
+      <section className="relative block h-[500px]">
         <div
           className="absolute top-0 w-full h-full bg-center bg-cover"
           style={{
