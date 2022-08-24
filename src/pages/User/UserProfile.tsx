@@ -16,6 +16,7 @@ import {
   UserProfileAddress,
   UserProfileAvatar,
   UserProfileButton,
+  UserProfileDeactivateButton,
   UserProfileEmail,
   UserProfileName,
 } from "../../components/elements";
@@ -82,31 +83,7 @@ const UserProfile = () => {
               justifyContent="center"
               pt="15px"
             >
-              <Button
-                flex={1}
-                maxW="300px"
-                fontSize="sm"
-                rounded="full"
-                alignItems="center"
-                bg="#FF385C"
-                color="white"
-                _hover={{
-                  bg: "#AE1010",
-                }}
-              >
-                <IconContext.Provider
-                  value={{
-                    style: { verticalAlign: "middle", color: "white" },
-                    size: "25px",
-                    className: "global-class-name",
-                  }}
-                >
-                  <div className="pr-2">
-                    <TbHeartOff />
-                  </div>
-                </IconContext.Provider>
-                Deactivate account
-              </Button>
+              <UserProfileDeactivateButton />
             </Stack>
           </Box>
         </Center>

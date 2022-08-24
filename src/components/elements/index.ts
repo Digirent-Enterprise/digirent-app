@@ -17,6 +17,7 @@ import CategoryCardListing from "./Category/CategoryCard/CategoryCardListing";
 import UserProfileAddress from "./User/UserProfileAddress";
 import UserProfileAvatar from "./User/UserProfileAvatar";
 import UserProfileButton from "./User/UserProfileButton";
+import UserProfileDeactivateButton from "./User/UserProfileDeactivateButton";
 import UserProfileEmail from "./User/UserProfileEmail";
 import UserProfileName from "./User/UserProfileName";
 import Stat from "./Stat/Stat";
@@ -35,6 +36,7 @@ export {
   UserProfileAddress,
   UserProfileAvatar,
   UserProfileButton,
+  UserProfileDeactivateButton,
   UserProfileEmail,
   UserProfileName,
   BackToTop,

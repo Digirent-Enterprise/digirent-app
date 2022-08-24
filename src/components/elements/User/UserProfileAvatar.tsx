@@ -1,9 +1,8 @@
 import React from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { Avatar, Text } from "@chakra-ui/react";
+import { useSelector } from "react-redux";
+import { Avatar} from "@chakra-ui/react";
 import { getCurrentUserSelector } from "../../../store/selectors/user.selector";
 import { IMAGES } from "../../../utils/constants/image.constant";
-import AiOutlineCamera from "react-icons/ai";
 
 import {
   Modal,
