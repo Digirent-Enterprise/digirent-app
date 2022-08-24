@@ -152,7 +152,7 @@ const AppRouter = () => {
         {/* Contact */}
         <Route path="contact" element={<ContactUsPage />} />
         {/* Category */}
-        <Route path="categories/:id" element={<CategoryPage />} />
+        <Route path="category" element={<CategoryPage />} />
         {/* Admin */}
         <Route
           path="admin"
