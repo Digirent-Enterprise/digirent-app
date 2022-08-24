@@ -1,23 +1,26 @@
+import { IProduct } from "./product.types";
 export interface ICategory {
   _id: string;
+  products: IProduct;
   name: string;
   image: string;
-  checked: boolean;
+  queryName: string;
+  bannerUrl: string;
 }
 
 export interface CategoryState {
   pending: boolean;
   categories: ICategory[];
+  category: ICategory[];
   error: string | null;
 }
 
-export interface SetCategoryPayload {
-  categories: ICategory[];
-}
-
-export type SetCategory = {
+export type CategoryAction = {
   type: string;
-  payload: SetCategoryPayload;
+  payload: {
+    categories?: ICategory[];
+    category?: ICategory[];
+  };
 };
 
-export type CategoryActions = SetCategory;
+export type CategoryActions = CategoryAction;

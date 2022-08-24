@@ -10,8 +10,8 @@ import {
 
 interface BookingBoxProps {
   price: number;
-  borrow: string;
-  returnDate: string;
+  borrow: Date;
+  returnDate: Date | undefined;
   rentalCost: number;
   rentalCostType: string;
   startDate: Date;
@@ -37,6 +37,13 @@ const BookingBox: React.FC<BookingBoxProps> = ({
       setTotalPrice(price * numDateDiff);
     }
   }, [borrow, returnDate]);
+  const formatDate = (date: any) => {
+    const d = new Date(date);
+    function pad(s: any) {
+      return (s < 10 ? "0" + s : s)
+    }
+    return [pad(d.getDate()), pad(d.getMonth() + 1), d.getFullYear()].join("/");
+  };
   return (
     <div className="flex flex-col">
       <div className=" w-[300px] rounded-3xl bg-white flex flex-col drop-shadow-[0px_10px_10px_rgba(0,0,0,0.25)]">
@@ -49,13 +56,13 @@ const BookingBox: React.FC<BookingBoxProps> = ({
             <div>
               <b>Borrow Date:</b>
             </div>
-            <div>{borrow}</div>
+            <div>{formatDate(borrow)}</div>
           </div>
           <div className="bg-white w-[50%] h-[60px] flex flex-col rounded-r-xl text-center justify-center border-[1px] border-black">
             <div>
               <b>Return Date:</b>
             </div>
-            <div>{returnDate}</div>
+            <div>{formatDate(returnDate)}</div>
           </div>
         </div>
         <div className="flex justify-center mt-7">
