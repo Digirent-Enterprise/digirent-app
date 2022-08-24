@@ -1,8 +1,5 @@
 import { SET_CATEGORY, SET_CATEGORY_BY_ID } from "../types/action.types";
-import {
-  CategoryActions,
-  CategoryState,
-} from "../types/category.types";
+import { CategoryActions, CategoryState } from "../types/category.types";
 
 const initialCategory = {
   _id: "",

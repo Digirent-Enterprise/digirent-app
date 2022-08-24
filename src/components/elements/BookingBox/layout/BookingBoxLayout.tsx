@@ -17,7 +17,7 @@ const BookingBoxLayout = ({ productData }: any) => {
   const formatDate = (date: any) => {
     const d = new Date(date);
     function pad(s: any) {
-      return s < 10 ? "0" + s : s;
+      return s < 10 ? `0${s}` : s;
     }
     return [pad(d.getDate()), pad(d.getMonth() + 1), d.getFullYear()].join("/");
   };

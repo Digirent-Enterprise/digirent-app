@@ -25,7 +25,7 @@ const ProductListingCategory = () => {
   }, [queryName]);
   const categoryData = useMemo(() => categoryFetchData, [categoryFetchData]);
 
-  const products: any = categoryData[0].products;
+  const { products } = categoryData[0];
   const [currentItems, setCurrentItems] = useState([]);
   const [pageCount, setPageCount] = useState(0);
   const [itemOffset, setItemOffset] = useState(0);

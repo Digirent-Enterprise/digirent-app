@@ -1,4 +1,5 @@
 import { IProduct } from "./product.types";
+
 export interface ICategory {
   _id: string;
   products: IProduct;
