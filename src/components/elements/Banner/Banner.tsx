@@ -7,6 +7,7 @@ import { Pagination, Navigation } from "swiper";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
+import "./Banner.css";
 import PhoneCategoryBanner from "./BannerSlide/PhoneBanner";
 import OurStory from "./BannerSlide/OurStory";
 import BannerHero from "./BannerSlide/BannerHero";

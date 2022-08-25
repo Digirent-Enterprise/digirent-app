@@ -1,4 +1,5 @@
 import { IProduct } from "./product.types";
+
 export interface ICategory {
   _id: string;
   products: IProduct;
@@ -9,7 +10,7 @@ export interface ICategory {
 }
 
 export interface CategoryState {
-  pending: boolean;
+  loading: boolean;
   categories: ICategory[];
   category: ICategory[];
   error: string | null;

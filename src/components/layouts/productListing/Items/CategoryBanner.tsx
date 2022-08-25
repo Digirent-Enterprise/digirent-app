@@ -11,12 +11,12 @@ const CategoryBanner = ({
 }: CategoryBannerProps) => {
   return (
     <div className="flex flex-col gap-5">
-      <h1 className=" text-xl font-bold ml-11">
+      <h1 className=" text-xl font-bold">
         {bannerAlt} ({amount})
       </h1>
-      <div className="flex justify-center items-center w-full h-[300px]">
+      <div className="flex justify-center items-center w-full h-[280px]">
         <img
-          className=" w-[95%] h-full object-cover overflow-hidden rounded-md"
+          className=" w-[100%] h-full object-cover overflow-hidden rounded-md"
           src={bannerUrl}
           alt={bannerAlt}
         />

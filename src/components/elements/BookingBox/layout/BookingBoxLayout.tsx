@@ -1,7 +1,10 @@
 import React, { useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import { toast } from "react-toastify";
 import BookingBox from "../item/BookingBox";
+
+import "./Datepicker.css";
 
 const BookingBoxLayout = ({ productData }: any) => {
   const [startDate, setStartDate] = useState(new Date());
@@ -17,13 +20,15 @@ const BookingBoxLayout = ({ productData }: any) => {
   const formatDate = (date: any) => {
     const d = new Date(date);
     function pad(s: any) {
-      return s < 10 ? "0" + s : s;
+      return s < 10 ? `0${s}` : s;
     }
     return [pad(d.getDate()), pad(d.getMonth() + 1), d.getFullYear()].join("/");
   };
 
   if (startDate > endDate) {
-    alert("Please choose valid dates");
+    toast.warning("Please choose valid rental period", {
+      theme: "dark",
+    });
     setEndDate(startDate);
   }
   return (
@@ -36,18 +41,18 @@ const BookingBoxLayout = ({ productData }: any) => {
           </div>
           <div className="flex flex-col gap-2 mt-10">
             <div className="font-extrabold">Rental period: </div>
-            <div className="">
-              <div className=" min-w-[220px]">
-                {formatDate(startDate)} - {formatDate(endDate)}
-              </div>
-              <div className="flex gap-x-2">
+            <div className=" min-w-[220px]">
+              {formatDate(startDate)} - {formatDate(endDate)}
+              <div className="flex gap-x-2 mt-5">
                 <DatePicker
+                  wrapperClassName="date-picker"
                   selected={startDate}
                   onChange={onChange}
                   minDate={new Date()}
                   inline
                 />
                 <DatePicker
+                  wrapperClassName="date-picker"
                   selected={endDate}
                   onChange={onChange2}
                   minDate={startDate}
