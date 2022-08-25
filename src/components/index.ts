@@ -20,6 +20,9 @@ import {
   BookingBoxDisplay,
   ChatBox,
   StripePayment,
+  FAQ,
+  Partner,
+  Search,
 } from "./elements";
 import {
   AuthFormGrid,
@@ -92,8 +95,11 @@ export {
   MostRentalProduct,
   ProductListingCategory,
   StaticGoogleMap,
-  BookingBoxDisplay,
-  ProductSummaryDisplay,
   ChatBox,
   StripePayment,
+  ProductSummaryDisplay,
+  BookingBoxDisplay,
+  FAQ,
+  Partner,
+  Search,
 };

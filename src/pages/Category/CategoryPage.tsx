@@ -1,5 +1,5 @@
-import { ProductListingCategory } from "../../components";
 import DefaultLayout from "../DefaultLayout";
+import { ProductListingCategory } from "../../components";
 
 const CategoryPage = () => {
   return (

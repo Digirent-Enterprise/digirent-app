@@ -70,7 +70,7 @@ const UserProfile = () => {
               justifyContent="center"
             >
               <UserProfileButton
-                directUrl="/user/:id/view"
+                directUrl="/user/view-my-profile"
                 userButtonItem="View your information"
                 leftIcon={<AiOutlineProfile />}
               />

@@ -1,30 +1,44 @@
-import React from "react";
+import React, { useState } from "react";
 import { useSelector } from "react-redux";
-import { Avatar} from "@chakra-ui/react";
-import { getCurrentUserSelector } from "../../../store/selectors/user.selector";
-import { IMAGES } from "../../../utils/constants/image.constant";
-
 import {
+  Avatar,
   Modal,
   ModalOverlay,
   ModalContent,
   ModalFooter,
   Button,
-  useDisclosure,
+  FormControl,
+  FormLabel,
+  GridItem,
 } from "@chakra-ui/react";
 
+import { useDisclosure } from "@chakra-ui/hooks";
 import { useDropzone } from "react-dropzone";
-
-import { FormControl, FormLabel, GridItem } from "@chakra-ui/react";
+import { getCurrentUserSelector } from "../../../store/selectors/user.selector";
+import { IMAGES } from "../../../utils/constants/image.constant";
+import { customAxios } from "../../../http-common";
 
 const UserProfileAvatar = () => {
   const currentUser = useSelector(getCurrentUserSelector);
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const [images, setImages] = useState<string[]>([]);
+  const [isLoading, setIsLoading] = useState(false);
+
+  const handleUploadFiles = async (file: any) => {
+    const fd = new FormData();
+    fd.append("images", file);
+    const response = await customAxios("multipart/form-data").post(
+      "product/upload-single-image",
+      fd,
+    );
+    setImages([...images, response.data.url]);
+  };
+
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
     accept: {
       "image/*": [],
     },
-    maxFiles: 10,
+    maxFiles: 1,
     onDrop: async (acceptedFiles: File[]) => {
       setIsLoading(true);
       await acceptedFiles.map((file: any) => handleUploadFiles(file));
@@ -33,8 +47,8 @@ const UserProfileAvatar = () => {
         acceptedFiles.map((image: any) =>
           Object.assign(image, {
             preview: image,
-          })
-        )
+          }),
+        ),
       );
     },
   });
@@ -63,7 +77,7 @@ const UserProfileAvatar = () => {
         <ModalContent>
           <GridItem className="pb-5 p-5" colSpan={{ base: 6, sm: 3 }}>
             <FormControl>
-              <FormLabel>Add your avatar</FormLabel>
+              <FormLabel>Change your avatar</FormLabel>
               <div className="border-dashed border-4 text-center justify-center p-[20%]">
                 <input />
                 {isDragActive ? (
@@ -73,7 +87,7 @@ const UserProfileAvatar = () => {
                 )}
               </div>
             </FormControl>
-            <aside className="flex flex-row"></aside>
+            <aside className="flex flex-row" />
           </GridItem>
 
           <ModalFooter>
@@ -84,7 +98,7 @@ const UserProfileAvatar = () => {
               Reset
             </Button>
             <Button type="submit" mr={3}>
-              Change
+              Change password
             </Button>
           </ModalFooter>
         </ModalContent>

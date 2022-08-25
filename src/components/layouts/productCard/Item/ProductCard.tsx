@@ -21,8 +21,13 @@ const ProductCard = ({
     setLike(!like);
   };
 
+  const productShadow = "shadow-[0px_0px_5px_2px_rgba(0,0,0,0.15)]";
+
   return (
-    <div className="flex-col col-span-1 w-full mx-5 my-5 overflow-hidden transition-transform rounded-lg shadow-md cursor-pointer card aspect-w-1 aspect-h-1 hover:scale-105 xl:aspect-w-7 xl:aspect-h-8">
+    <div
+      className={`${productShadow} flex-col col-span-1 w-full mx-5 my-5 overflow-hidden transition-transform rounded-lg
+ cursor-pointer card aspect-w-1 aspect-h-1 hover:scale-105 xl:aspect-w-7 xl:aspect-h-8`}
+    >
       <button
         type="submit"
         className="relative right-0 flex justify-end float-right p-3 text-black bg-white bottom-52"
