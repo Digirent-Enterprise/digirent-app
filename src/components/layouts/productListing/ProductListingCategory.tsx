@@ -68,15 +68,14 @@ const ProductListingCategory = () => {
             <div className="col-span-5 gap-24 w-full">
               <div className=" border-black grid justify-center items-center pr-8 grid-cols-1 gap-y-10 sm:grid-cols-2 md:grid-cols-3 gap-x-6 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
                 {currentItems.map((product: IProduct) => (
-                  <Link to={`/product/${product._id}`} key={product._id}>
-                    <ProductCard
-                      key={product._id}
-                      name={product.name}
-                      image={product.images[0]}
-                      rentalCost={product.rentalCost}
-                      rentalCostType={product.rentalCostType}
-                    />
-                  </Link>
+                  <ProductCard
+                    id={product._id}
+                    key={product._id}
+                    name={product.name}
+                    image={product.images[0]}
+                    rentalCost={product.rentalCost}
+                    rentalCostType={product.rentalCostType}
+                  />
                 ))}
               </div>
             </div>

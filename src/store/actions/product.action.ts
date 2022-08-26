@@ -42,6 +42,7 @@ export const getProducts = () => {
 };
 
 export const getProductByID = (_id: string) => {
+  console.log("id always run", _id);
   return {
     type: GET_PRODUCT_BY_ID,
     payload: {
@@ -51,14 +52,14 @@ export const getProductByID = (_id: string) => {
 };
 
 export const fetchProductsError = (
-  payload: FetchProductErrorPayload,
+  payload: FetchProductErrorPayload
 ): FetchProductError => ({
   type: FETCH_PRODUCTS_ERROR,
   payload,
 });
 
 export const fetchProductByIDError = (
-  payload: FetchProductByIDErrorPayload,
+  payload: FetchProductByIDErrorPayload
 ): FetchProductByIDError => ({
   type: FETCH_PRODUCT_BY_ID_ERROR,
   payload,

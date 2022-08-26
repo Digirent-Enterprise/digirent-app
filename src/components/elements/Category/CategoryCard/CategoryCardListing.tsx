@@ -14,8 +14,7 @@ const CategoryCardListing = () => {
     dispatch(getCategories());
   }, []);
 
-  const categoryData = useMemo(() => categoryFetchData, [categoryFetchData]);
-  return <CategoryCardLayout categories={categoryData} />;
+  return <CategoryCardLayout categories={categoryFetchData} />;
 };
 
 export default CategoryCardListing;

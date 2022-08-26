@@ -1,5 +1,5 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { IconContext } from "react-icons";
 import { TbHeartOff } from "react-icons/tb";
 import {
@@ -10,9 +10,34 @@ import {
   Button,
   useDisclosure,
 } from "@chakra-ui/react";
+import { customAxios } from "../../../http-common";
+import { toast } from "react-toastify";
+import { deleteUserSession } from "../../../store/actions/user.action";
+import { clearUserSession } from "../../../helpers/authHelpers";
+import { useNavigate } from "react-router-dom";
+import qs from "qs";
 
 const UserProfileDeactivateButton = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const logOut = () => {
+    dispatch(deleteUserSession());
+    clearUserSession();
+    navigate("/");
+  };
+
+  const _handleDeactivated = async () => {
+    const response: any = await customAxios()
+      .put("user/edit-user", qs.stringify({ status: false }))
+      .catch((e) => toast.error("Error when deactivating your account"));
+    if (response && (response.status === 200 || response.status === 201)) {
+      toast.success("Deactivate Successfully");
+      setTimeout(() => logOut(), 3000);
+    }
+  };
+
   return (
     <form>
       {" "}
@@ -74,7 +99,13 @@ const UserProfileDeactivateButton = () => {
             >
               Close
             </Button>
-            <Button type="submit" colorScheme="red" mr={3} className="w-1/2">
+            <Button
+              onClick={_handleDeactivated}
+              type="submit"
+              colorScheme="red"
+              mr={3}
+              className="w-1/2"
+            >
               Deactivate
             </Button>
           </ModalFooter>

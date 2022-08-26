@@ -10,14 +10,13 @@ const fetchCategory = () =>
 
 const fetchCategorybyID = (queryName: string) => {
   return customAxios().get<ICategory[]>(
-    `${API_BASE_URL}/v1/api/category/get-category-products?queryName=${queryName}`,
+    `${API_BASE_URL}/v1/api/category/get-category-products?queryName=${queryName}`
   );
 };
 
 function* getCategory(): any {
   const response = yield call(fetchCategory);
   yield put(setCategories(response.data));
-  yield delay(1000);
 }
 
 function* getCategoryByID(action: {

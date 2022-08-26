@@ -49,7 +49,7 @@ const defaultSearchSectionContextValue: SearchSectionContextValue = {
 };
 
 export const SearchSectionContext = createContext<SearchSectionContextValue>(
-  defaultSearchSectionContextValue,
+  defaultSearchSectionContextValue
 );
 
 interface SearchSectionProps {
@@ -74,10 +74,6 @@ const ProductSearchPage = () => {
   const [selected, setSelected] = useState<String>("");
 
   const productData = useSelector(getAllProductsSelector);
-
-  const dispatch = useDispatch();
-
-  // const productData = useMemo(() => productFetchData, [productFetchData]);
 
   const [productList, setProductList] = useState(productData);
 
@@ -137,7 +133,7 @@ const ProductSearchPage = () => {
   const handleChangeChecked = (id: any) => {
     const categoriesList = categories;
     const changeChecked = categoriesList.map((item) =>
-      item.id === id ? { ...item, checked: !item.checked } : item,
+      item.id === id ? { ...item, checked: !item.checked } : item
     );
     setCategories(changeChecked);
   };
@@ -150,7 +146,7 @@ const ProductSearchPage = () => {
   const filters = () => {
     let updatedList = productData;
     updatedList = updatedList.sort((productA, productB) =>
-      productA.name.localeCompare(productB.name),
+      productA.name.localeCompare(productB.name)
     );
 
     // Sort
@@ -158,7 +154,7 @@ const ProductSearchPage = () => {
       // default
       if (selected === "default") {
         updatedList = updatedList.sort((productA, productB) =>
-          productA.name.localeCompare(productB.name),
+          productA.name.localeCompare(productB.name)
         );
       }
 
@@ -179,7 +175,7 @@ const ProductSearchPage = () => {
       updatedList = updatedList.filter(
         (item) =>
           item.name.toLowerCase().search(searchInput.toLowerCase().trim()) !==
-          -1,
+          -1
       );
     }
 
@@ -199,7 +195,7 @@ const ProductSearchPage = () => {
     const max = selectedCost[1];
 
     updatedList = updatedList.filter(
-      (item) => item.rentalCost >= min && item.rentalCost <= max,
+      (item) => item.rentalCost >= min && item.rentalCost <= max
     );
 
     setProductList(updatedList);
