@@ -41,5 +41,3 @@ const PrivateRoute = ({ children, permission = [] }: any) => {
 
   return !appLoading ? <Spinner /> : isAllow ? children : <Spinner />;
 };
-
-export default PrivateRoute;
