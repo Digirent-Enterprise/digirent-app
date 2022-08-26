@@ -20,8 +20,6 @@ const UserManagement = () => {
   const userColumns = useMemo(() => UserColumns, []);
   const userData = useMemo(() => userFetchData, [userFetchData]);
 
-  console.log("userData", userData);
-
   const headers = [
     { label: "User", key: "name" },
     { label: "Email", key: "email" },
