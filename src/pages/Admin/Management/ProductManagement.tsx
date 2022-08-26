@@ -1,50 +1,41 @@
-import React, { useMemo } from "react";
+import React, { useMemo, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
-import DefaultManagementLayout from "./DefaultManagementLayout";
+import { getAllProductsSelector } from "../../../store/selectors/product.selector";
+import { getProducts } from "../../../store/actions/product.action";
+import DefaultManagement from "./DefaultManagement";
+
+import { ProductColumns } from "./Columns";
 
 const ProductManagement = () => {
-  const columnsHeader = useMemo(
-    () => [
-      {
-        id: 1,
-        header: "Product ID",
-      },
-      {
-        id: 2,
-        header: "Product Name",
-      },
-      {
-        id: 3,
-        header: "Product Serial",
-      },
-      {
-        id: 4,
-        header: "brand",
-      },
-      {
-        id: 5,
-        header: "Category",
-      },
-      {
-        id: 6,
-        header: "Description",
-      },
-      {
-        id: 7,
-        header: "Status",
-      },
-      {
-        id: 8,
-        header: "Action",
-      },
-    ],
-    [],
-  );
+  const dispatch = useDispatch();
+
+  const productFetchData = useSelector(getAllProductsSelector);
+
+  useEffect(() => {
+    dispatch(getProducts());
+  }, []);
+
+  const productColumns = useMemo(() => ProductColumns, []);
+  const productData = useMemo(() => productFetchData, [productFetchData]);
+
+  const headers = [
+    { label: "Product ID", key: "_id" },
+    { label: "Product Name", key: "name" },
+    { label: "Product Serial", key: "serial" },
+    { label: "Brand", key: "brand" },
+    { label: "Category", key: "category" },
+    { label: "Description", key: "description" },
+    { label: "Status", key: "status" },
+  ];
+
   return (
-    <DefaultManagementLayout
+    <DefaultManagement
       title="Product Management"
-      columnsHeader={columnsHeader}
-      pageType="product"
+      filename="Products.csv"
+      headers={headers}
+      columnProps={productColumns}
+      dataProps={productData}
     />
   );
 };

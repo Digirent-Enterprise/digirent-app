@@ -15,6 +15,7 @@ import {
 import { WarningTwoIcon } from "@chakra-ui/icons";
 // import { customAxios } from "../../http-common";
 import { AuthFormGrid, Transition } from "../../components";
+import Helmet from "../../Helmet";
 
 interface IFormInputs {
   pw1: string;
@@ -23,8 +24,15 @@ interface IFormInputs {
 }
 
 const schema = yup.object().shape({
-  pw1: yup.string().min(4).max(15).required(),
-  pw2: yup.string().oneOf([yup.ref("pw1"), null], "Passwords do not match!"),
+  pw1: yup
+    .string()
+    .min(8, "Your password must be at least 8 characters!")
+    .max(15)
+    .required(),
+  pw2: yup
+    .string()
+    .oneOf([yup.ref("pw1"), null], "Passwords do not match!")
+    .required(),
 });
 
 const ResetPasswordPage = () => {
@@ -62,17 +70,17 @@ const ResetPasswordPage = () => {
 
   return (
     <Transition>
+      <Helmet
+        title="Rest Password"
+        addPostfixTitle
+        description="Enter new password in order to reset new ones"
+      />
       <AuthFormGrid
         childTitle="Reset Password"
         childCompForm={
           <Box textAlign="center">
             <form onSubmit={handleSubmit(onSubmit)}>
-              <Stack
-                spacing={2}
-                p="1rem"
-                backgroundColor="whiteAlpha.900"
-                boxShadow="lg"
-              >
+              <Stack spacing={2} p="1rem" backgroundColor="whiteAlpha.900">
                 <FormControl isInvalid={!!errors.pw1?.message}>
                   <FormLabel>New Password</FormLabel>
                   <Input
@@ -80,7 +88,7 @@ const ResetPasswordPage = () => {
                     pr="4.5rem"
                     type="password"
                     placeholder="Enter password"
-                    name="Password"
+                    name="pw1"
                   />
                   <FormErrorMessage>
                     {" "}

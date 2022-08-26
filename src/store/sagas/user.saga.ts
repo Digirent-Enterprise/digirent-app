@@ -1,4 +1,3 @@
-import axios from "axios";
 import { all, call, put, takeLatest } from "redux-saga/effects";
 import { customAxios } from "../../http-common";
 import { GET_USERS, GET_USER_DETAIL } from "../types/action.types";
@@ -11,7 +10,8 @@ import {
 
 import { API_BASE_URL } from "../../utils/constants/api.constants";
 
-const fetchUsers = () => axios.get<IUser[]>(`${API_BASE_URL}/v1/api/user/`);
+const fetchUsers = () =>
+  customAxios().get<IUser[]>(`${API_BASE_URL}/v1/api/user/users`);
 const fetchUserDetails = () => {
   return customAxios().get<IUserDetail>(
     `${API_BASE_URL}/v1/api/user/user-detail`,
@@ -32,6 +32,7 @@ function* getUsers(): any {
 }
 
 function* getUserDetail(): any {
+  if (!localStorage.getItem("currentUser")) return;
   try {
     const response = yield call(fetchUserDetails);
     yield put(setUserDetail(response.data));

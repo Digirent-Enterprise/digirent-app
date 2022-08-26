@@ -1,4 +1,6 @@
 import { useForm } from "react-hook-form";
+import { useDispatch } from "react-redux";
+
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { useNavigate } from "react-router-dom";
@@ -13,14 +15,15 @@ import {
   Link,
   FormErrorMessage,
 } from "@chakra-ui/react";
-import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
-import { storeUserSession } from "../../helpers/authHelpers";
-import { AuthFormGrid, Transition, StatusToaster } from "../../components";
 
-import { getCurrentUser } from "../../store/selectors/user.selector";
-import { getUserDetail } from "../../store/actions/user.action";
+import { toast } from "react-toastify";
+
+import { useState } from "react";
+import { storeUserSession } from "../../helpers/authHelpers";
+import { AuthFormGrid, Transition } from "../../components";
 import { customAxios } from "../../http-common";
+import { getUserDetail } from "../../store/actions/user.action";
+import Helmet from "../../Helmet";
 
 interface IFormInputs {
   email: string;
@@ -34,6 +37,7 @@ const schema = yup.object().shape({
 });
 
 const LoginPage = () => {
+  const [disable, setDisable] = useState(false);
   const {
     register,
     handleSubmit,
@@ -43,50 +47,49 @@ const LoginPage = () => {
     mode: "onBlur",
   });
   const navigate = useNavigate();
-
   const dispatch = useDispatch();
-  const getDetail = useSelector(getCurrentUser);
-
-  useEffect(() => {
-    dispatch(getUserDetail());
-    console.log("getDetail", getDetail);
-  }, []);
-
-  const onSubmit = (data: IFormInputs) => {
+  const onSubmit = (data: IFormInputs, event: any) => {
+    setDisable(true);
+    event.preventDefault();
     customAxios("application/json")
       .post("auth/login", data)
       .then((res: any) => {
         if (res.status === 200 || res.status === 201) {
           storeUserSession(res.data.accessToken);
-          <StatusToaster
-            childCompToasterTitle="Welcome back!"
-            childCompStatusColor="success"
-            childCompToasterDescription="You have successfully logged in!"
-          />;
+          dispatch(getUserDetail());
+          toast.success("You have successfully logged in!", {
+            theme: "dark",
+            icon: "🚀",
+          });
           navigate("/");
         } else {
-          <StatusToaster
-            childCompStatusColor="warning"
-            childCompToasterTitle={`Fail to log you in, error ${res.status}.`}
-            childCompToasterDescription={`${res.statusText}`}
-          />;
+          toast.warning(`error, failed to login!`, {
+            theme: "dark",
+          });
+          setDisable(false);
         }
+      })
+      .catch((error: any) => {
+        setDisable(false);
+        toast.warning(`${error.response.data} error, failed to login!`, {
+          theme: "dark",
+        });
       });
   };
 
   return (
     <Transition>
+      <Helmet
+        title="Login"
+        addPostfixTitle
+        description="Login to your existing account at Digirent"
+      />
       <AuthFormGrid
-        childTitle="Log in to your account"
+        childTitle="Login to your account"
         childCompForm={
           <Box textAlign="center">
             <form onSubmit={handleSubmit(onSubmit)}>
-              <Stack
-                spacing={4}
-                p="1rem"
-                backgroundColor="whiteAlpha.900"
-                boxShadow="md"
-              >
+              <Stack spacing={4} p="1rem" backgroundColor="whiteAlpha.900">
                 <FormControl isInvalid={!!errors?.email?.message} isRequired>
                   <FormLabel>Email</FormLabel>
                   <Input
@@ -121,7 +124,7 @@ const LoginPage = () => {
                   variant="solid"
                   colorScheme="brand"
                   width="full"
-                  disabled={!!errors.email || !!errors.password}
+                  disabled={!!errors.email || !!errors.password || disable}
                 >
                   Login
                 </Button>
@@ -130,7 +133,7 @@ const LoginPage = () => {
                   New to us?
                   <Link color="brand.500" href="/register">
                     {" "}
-                    Sign Up
+                    Register
                   </Link>
                 </Box>
               </Stack>

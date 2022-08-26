@@ -1,50 +1,47 @@
-import React, { useMemo } from "react";
+import React, { useMemo, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  getAllTransactionsSelector,
+  selectTransactionLoading,
+} from "../../../store/selectors/transaction.selector";
+import { getTransactions } from "../../../store/actions/transaction.action";
+import DefaultManagement from "./DefaultManagement";
 
-import DefaultManagementLayout from "./DefaultManagementLayout";
+import { TransactionColumns } from "./Columns";
 
 const TransactionManagement = () => {
-  const columnsHeader = useMemo(
-    () => [
-      {
-        id: 1,
-        header: "Transaction ID",
-      },
-      {
-        id: 2,
-        header: "User Name",
-      },
-      {
-        id: 3,
-        header: "Total Rental Cost",
-      },
-      {
-        id: 4,
-        header: "Borrowed Date",
-      },
-      {
-        id: 5,
-        header: "Return Date",
-      },
-      {
-        id: 6,
-        header: "Status",
-      },
-      {
-        id: 7,
-        header: "Product Serial",
-      },
-      {
-        id: 8,
-        header: "Action",
-      },
-    ],
-    [],
+  const dispatch = useDispatch();
+
+  const transactionFetchData = useSelector(getAllTransactionsSelector);
+  const transactionLoading = useSelector(selectTransactionLoading);
+
+  useEffect(() => {
+    if (transactionLoading === "success") return;
+    dispatch(getTransactions());
+  }, []);
+
+  const transactionColumns = useMemo(() => TransactionColumns, []);
+  const transactionData = useMemo(
+    () => transactionFetchData,
+    [transactionFetchData],
   );
+
+  const headers = [
+    { label: "Transaction ID", key: "_id" },
+    { label: "User email", key: "userEmail" },
+    { label: "Borrowed Date", key: "from" },
+    { label: "Return Date", key: "to" },
+    { label: "Product ID", key: "productId" },
+    { label: "Status", key: "status" },
+  ];
+
   return (
-    <DefaultManagementLayout
+    <DefaultManagement
       title="Transaction Management"
-      columnsHeader={columnsHeader}
-      pageType="transaction"
+      filename="Transactions.csv"
+      headers={headers}
+      columnProps={transactionColumns}
+      dataProps={transactionData}
     />
   );
 };

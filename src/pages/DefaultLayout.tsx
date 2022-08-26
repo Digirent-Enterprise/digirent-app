@@ -1,12 +1,16 @@
-import { Footer, NavBar } from "../components";
+import React from "react";
+import { Footer, LanguageSwitcher, NavBar, Transition } from "../components";
 
 const DefaultLayout = ({ children }: any) => {
   return (
-    <>
-      <NavBar />
-      {children}
-      <Footer />
-    </>
+    <Transition>
+      <div className="flex flex-col h-screen">
+        <NavBar />
+        <div className="flex-grow">{children}</div>
+        <LanguageSwitcher />
+        <Footer />
+      </div>
+    </Transition>
   );
 };
 

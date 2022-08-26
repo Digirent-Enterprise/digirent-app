@@ -1,22 +1,29 @@
 import { FETCH_USERS_ERROR } from "./action.types";
 
 export interface IUser {
-  id: string;
+  _id: string;
   name: string;
   email: string;
   phone: string;
   role: string;
-  pw1: string;
-  avatar: string;
+  profileImage: string;
+  location: string;
 }
 
 export interface IUserDetail {
   role: string;
-  isEmailVerified: boolean;
-  id: string;
+  _id: string;
   name: string;
   email: string;
   phone: string;
+  profileImage: string;
+  location: string;
+}
+
+export interface ISaveUser {
+  email: string;
+  phone: string;
+  name: string;
 }
 
 export interface UserState {
@@ -26,6 +33,8 @@ export interface UserState {
 }
 
 export interface CurrentUserState extends IUserDetail {}
+export interface SaveUserState extends ISaveUser {}
+
 export interface SetUserPayload {
   users: IUser[];
 }

@@ -1,13 +1,6 @@
 import React from "react";
-import {
-  Tabs,
-  TabList,
-  TabPanels,
-  Tab,
-  TabPanel,
-  Box,
-  Flex,
-} from "@chakra-ui/react";
+import { Tabs, TabList, Box, Flex } from "@chakra-ui/react";
+import TabButton from "./TabButton";
 
 const UserTab = () => {
   return (
@@ -15,22 +8,13 @@ const UserTab = () => {
       <Flex alignContent="center" justifyContent="center">
         <Tabs alignItems="center">
           <TabList>
-            <Tab>One</Tab>
-            <Tab>Two</Tab>
-            <Tab>Three</Tab>
+            <TabButton directUrl="/user/my-profile" tabItem="Profile" />
+            <TabButton
+              directUrl="/transaction/transaction-history"
+              tabItem="Order"
+            />
+            <TabButton directUrl="/user/favorite-product" tabItem="Favorite" />
           </TabList>
-
-          <TabPanels>
-            <TabPanel>
-              <p>User Profile view</p>
-            </TabPanel>
-            <TabPanel>
-              <p>two!</p>
-            </TabPanel>
-            <TabPanel>
-              <p>three!</p>
-            </TabPanel>
-          </TabPanels>
         </Tabs>
       </Flex>
     </Box>

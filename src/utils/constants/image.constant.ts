@@ -1,9 +1,8 @@
-const bannerImg = "../../assets/images/banner.png";
-const defaultAvatar = "../../assets/images/default-avatar.png";
+const phoneBannerImg =
+  "https://discloud-storage.herokuapp.com/file/ee22f84e45c430e3affb08481234cee7/phone-banner.png";
+const defaultAvatar = "/images/default-avatar.svg";
 
-const image = {
-  bannerImg,
+export const IMAGES = {
+  phoneBannerImg,
   defaultAvatar,
 };
-
-export default image;

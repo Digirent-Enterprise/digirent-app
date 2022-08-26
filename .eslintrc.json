@@ -24,15 +24,22 @@
   "rules": {
     "react/react-in-jsx-scope": ["off"],
     "react/jsx-uses-react": ["off"],
-    "react/jsx-props-no-spreading": ["warn"],
+    "react/jsx-props-no-spreading": ["off"],
     "react/no-unescaped-entities": ["off"],
     "import/prefer-default-export": ["off"],
     "default-param-last": "off",
     "@typescript-eslint/default-param-last": ["off"],
+    "react/jsx-no-constructed-context-values": ["off"],
     "react/require-default-props": ["off"],
     "jsx-a11y/label-has-associated-control": ["off"],
     "import/no-cycle": ["off"],
     "react/button-has-type": ["off"],
+    "no-nested-ternary": ["off"],
+    "react/no-array-index-key": ["off"],
+    "no-unneeded-ternary": ["off"],
+    "no-underscore-dangle": ["off"],
+    "react-hooks/exhaustive-deps": ["off"],
+    "jsx-a11y/no-static-element-interactions": ["off"],
     "react/function-component-definition": [
       2,
       {

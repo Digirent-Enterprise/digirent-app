@@ -2,7 +2,6 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { useNavigate } from "react-router-dom";
-import qs from "qs";
 import {
   Box,
   Button,
@@ -15,8 +14,11 @@ import {
   FormErrorMessage,
 } from "@chakra-ui/react";
 import { WarningTwoIcon } from "@chakra-ui/icons";
+import { toast } from "react-toastify";
+
 import { customAxios } from "../../http-common";
-import { AuthFormGrid, Transition, StatusToaster } from "../../components";
+import { AuthFormGrid, Transition } from "../../components";
+import Helmet from "../../Helmet";
 
 interface IFormInputs {
   name: string;
@@ -29,18 +31,25 @@ interface IFormInputs {
 
 const schema = yup.object().shape({
   name: yup.string().required("Your name is required!"),
-  email: yup.string().email().required(),
+  email: yup.string().email().required("Your email is required!"),
   phone: yup
     .string()
     .matches(
       /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/,
-      "Phone number is not valid",
+      "Phone number is not valid!",
     ),
-  pw1: yup.string().min(4).max(15).required(),
-  pw2: yup.string().oneOf([yup.ref("pw1"), null], "Passwords do not match!"),
+  pw1: yup
+    .string()
+    .min(8, "Your password must be at least 8 characters!")
+    .max(15)
+    .required("Please enter your password!"),
+  pw2: yup
+    .string()
+    .oneOf([yup.ref("pw1"), null], "Your passwords do not match!")
+    .required("Please retype your password!"),
 });
 
-const LoginPage = () => {
+const RegisterPage = () => {
   const {
     register,
     handleSubmit,
@@ -53,38 +62,42 @@ const LoginPage = () => {
 
   const onSubmit = (data: IFormInputs) => {
     return customAxios("application/json")
-      .post("api/auth/register", qs.stringify(data))
+      .post("auth/register", data)
       .then((res) => {
         if (res.status === 201) {
-          <StatusToaster
-            childCompStatusColor="success"
-            childCompToasterTitle="Account created!"
-            childCompToasterDescription="Your information has been registered successfully with us!"
-          />;
+          toast.success(
+            "Your information has been registered successfully with us!",
+            {
+              theme: "dark",
+              icon: "🚀",
+            },
+          );
           navigate("/login");
-        } else {
-          <StatusToaster
-            childCompStatusColor="warning"
-            childCompToasterTitle={`Failed to register, error code ${res.status}`}
-            childCompToasterDescription={`${res.statusText} error has happened while creating your account!`}
-          />;
         }
+      })
+      .catch((error: any) => {
+        toast.warning(
+          `${error.statusText} error has happened while creating your account!`,
+          {
+            theme: "dark",
+          },
+        );
       });
   };
 
   return (
     <Transition>
+      <Helmet
+        title="Register"
+        addPostfixTitle
+        description="Register new account at Digirent"
+      />
       <AuthFormGrid
-        childTitle="Register your account"
+        childTitle="Join us now"
         childCompForm={
           <Box textAlign="center">
-            <form onSubmit={handleSubmit(onSubmit)}>
-              <Stack
-                spacing={2}
-                p="1rem"
-                backgroundColor="whiteAlpha.900"
-                boxShadow="lg"
-              >
+            <form onSubmit={handleSubmit(onSubmit)} autoComplete="new-password">
+              <Stack spacing={2} p="1rem" backgroundColor="whiteAlpha.900">
                 <FormControl isInvalid={!!errors?.name?.message} isRequired>
                   <FormLabel>Name</FormLabel>
                   <Input
@@ -132,7 +145,7 @@ const LoginPage = () => {
                     pr="4.5rem"
                     type="password"
                     placeholder="Enter password"
-                    name="Password"
+                    name="pw1"
                   />
                   <FormErrorMessage>
                     {" "}
@@ -171,13 +184,14 @@ const LoginPage = () => {
                     !!errors.pw2
                   }
                 >
-                  Log In
+                  Register
                 </Button>
 
                 <Box>
                   Already had an account?
                   <Link color="brand.500" href="/login">
-                    Sign In
+                    {" "}
+                    Login
                   </Link>
                 </Box>
               </Stack>
@@ -185,10 +199,10 @@ const LoginPage = () => {
           </Box>
         }
         childCompSideContent="https://i.pinimg.com/originals/a5/92/23/a59223a81638be37d096fcfa72d7dd48.jpg"
-        childOAuthButtonsVisibility
+        childOAuthButtonsVisibility={false}
       />
     </Transition>
   );
 };
 
-export default LoginPage;
+export default RegisterPage;
