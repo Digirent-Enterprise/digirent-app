@@ -7,10 +7,11 @@ const initialInquiry = {
   email: "",
   image: "",
   inquiryDescription: "",
-  createdDate: null,
+  createdDate: new Date(),
 };
 
 const initialState: InquiryState = {
+  inquiry: initialInquiry,
   inquiries: [],
   loading: false,
   error: null,

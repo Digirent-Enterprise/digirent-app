@@ -1,12 +1,6 @@
-import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { getCategories } from "../../../../store/actions/category.action";
-import { getAllCategoriesSelector } from "../../../../store/selectors/category.selector";
 import { ICategory } from "../../../../store/types/category.types";
 import CategoryCard from "./CategoryCard";
-
-// import CategoryCard from "./CategoryCard";
 
 const CategoryCardLayout = ({ categories }: any) => {
   return (

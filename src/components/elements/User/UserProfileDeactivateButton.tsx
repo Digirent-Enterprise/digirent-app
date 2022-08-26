@@ -1,5 +1,5 @@
 import React from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { IconContext } from "react-icons";
 import { TbHeartOff } from "react-icons/tb";
 import {
@@ -10,12 +10,12 @@ import {
   Button,
   useDisclosure,
 } from "@chakra-ui/react";
-import { customAxios } from "../../../http-common";
 import { toast } from "react-toastify";
-import { deleteUserSession } from "../../../store/actions/user.action";
-import { clearUserSession } from "../../../helpers/authHelpers";
 import { useNavigate } from "react-router-dom";
 import qs from "qs";
+import { customAxios } from "../../../http-common";
+import { deleteUserSession } from "../../../store/actions/user.action";
+import { clearUserSession } from "../../../helpers/authHelpers";
 
 const UserProfileDeactivateButton = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -28,12 +28,14 @@ const UserProfileDeactivateButton = () => {
     navigate("/");
   };
 
-  const _handleDeactivated = async () => {
+  const handleDeactivated = async () => {
     const response: any = await customAxios()
       .put("user/edit-user", qs.stringify({ status: false }))
-      .catch((e) => toast.error("Error when deactivating your account"));
+      .catch(() =>
+        toast.error("Error when deactivating your account", { theme: "dark" }),
+      );
     if (response && (response.status === 200 || response.status === 201)) {
-      toast.success("Deactivate Successfully");
+      toast.success("Deactivate account successfully", { theme: "dark" });
       setTimeout(() => logOut(), 3000);
     }
   };
@@ -73,20 +75,20 @@ const UserProfileDeactivateButton = () => {
           <div className="text-center justify-center p-[8%]">
             <svg
               aria-hidden="true"
-              className="mx-auto mb-4 w-14 h-14 text-gray-400 dark:text-gray-200"
+              className="mx-auto mb-4 text-gray-400 w-14 h-14 dark:text-gray-200"
               fill="none"
               stroke="#11995B"
               viewBox="0 0 24 24"
               xmlns="http://www.w3.org/2000/svg"
             >
               <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
                 d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-              ></path>
+              />
             </svg>
-            <p className="text-2xl font-bold pb-3">Deactivate account</p>
+            <p className="pb-3 text-2xl font-bold">Deactivate account</p>
             <p>Are you sure you want to deactivate your account?</p>
           </div>
 
@@ -100,7 +102,7 @@ const UserProfileDeactivateButton = () => {
               Close
             </Button>
             <Button
-              onClick={_handleDeactivated}
+              onClick={handleDeactivated}
               type="submit"
               colorScheme="red"
               mr={3}

@@ -1,17 +1,8 @@
-/* eslint-disable react/no-unused-prop-types */
-/* eslint-disable @typescript-eslint/no-unused-vars */
-import React, {
-  createContext,
-  useState,
-  useMemo,
-  useEffect,
-  ChangeEvent,
-} from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React, { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
 import {
   SearchHeaderSection,
   SearchResultsSection,
-  ProductCardListing,
   Transition,
 } from "../../components";
 import NotFoundProduct from "../../components/layouts/NotFoundResult/NotFoundProduct";
@@ -19,56 +10,9 @@ import FilterPanel from "../../components/layouts/filters/FilterPanel";
 
 import ProductListLayout from "../../components/layouts/productCard/ProductLayoutList/ProductLayoutList";
 
-import { getProducts, setProducts } from "../../store/actions/product.action";
-
 import { getAllProductsSelector } from "../../store/selectors/product.selector";
 
 import DefaultLayout from "../DefaultLayout";
-// import SortOptions from "../../components/layouts/search/SortOptions";
-
-interface SearchSectionContextValue {
-  searchQuery: string;
-  filterCategories: string[];
-  rentalCostFrom: number;
-  rentalCostTo: number;
-  orderBy: string;
-  pageNumber: number;
-  pageLimit: number;
-  isSearching: boolean;
-}
-
-const defaultSearchSectionContextValue: SearchSectionContextValue = {
-  searchQuery: "",
-  filterCategories: [],
-  rentalCostFrom: 0,
-  rentalCostTo: 100,
-  orderBy: "views",
-  pageNumber: 1,
-  pageLimit: 6,
-  isSearching: false,
-};
-
-export const SearchSectionContext = createContext<SearchSectionContextValue>(
-  defaultSearchSectionContextValue
-);
-
-interface SearchSectionProps {
-  setIsSearching: boolean;
-  setOrderBy: string;
-  setPageNumber: number;
-  triggerSearch: any;
-  setSearchQuery: string;
-}
-
-interface ProductSearchPageProps {
-  requestSearchQuery?: string;
-  requestRentalCostFrom?: number;
-  requestRentalCostTo?: number;
-  requestOrderBy?: string;
-  requestFilterCategories?: string[];
-  requestPageNumber?: number;
-  requestPageLimit?: number;
-}
 
 const ProductSearchPage = () => {
   const [selected, setSelected] = useState<String>("");
@@ -133,7 +77,7 @@ const ProductSearchPage = () => {
   const handleChangeChecked = (id: any) => {
     const categoriesList = categories;
     const changeChecked = categoriesList.map((item) =>
-      item.id === id ? { ...item, checked: !item.checked } : item
+      item.id === id ? { ...item, checked: !item.checked } : item,
     );
     setCategories(changeChecked);
   };
@@ -146,7 +90,7 @@ const ProductSearchPage = () => {
   const filters = () => {
     let updatedList = productData;
     updatedList = updatedList.sort((productA, productB) =>
-      productA.name.localeCompare(productB.name)
+      productA.name.localeCompare(productB.name),
     );
 
     // Sort
@@ -154,17 +98,20 @@ const ProductSearchPage = () => {
       // default
       if (selected === "default") {
         updatedList = updatedList.sort((productA, productB) =>
-          productA.name.localeCompare(productB.name)
+          productA.name.localeCompare(productB.name),
         );
       }
 
       // by date
       if (selected === "time") {
         updatedList = updatedList.sort((productA, productB) => {
-          productA.createdDate = new Date(productA.createdDate);
-          productB.createdDate = new Date(productB.createdDate);
+          const productStart = productA;
+          const productEnd = productB;
+          productStart.createdDate = new Date(productStart.createdDate);
+          productEnd.createdDate = new Date(productEnd.createdDate);
           return (
-            productB.createdDate.getTime() - productA.createdDate.getTime()
+            productEnd.createdDate.getTime() -
+            productStart.createdDate.getTime()
           );
         });
       }
@@ -175,7 +122,7 @@ const ProductSearchPage = () => {
       updatedList = updatedList.filter(
         (item) =>
           item.name.toLowerCase().search(searchInput.toLowerCase().trim()) !==
-          -1
+          -1,
       );
     }
 
@@ -195,7 +142,7 @@ const ProductSearchPage = () => {
     const max = selectedCost[1];
 
     updatedList = updatedList.filter(
-      (item) => item.rentalCost >= min && item.rentalCost <= max
+      (item) => item.rentalCost >= min && item.rentalCost <= max,
     );
 
     setProductList(updatedList);
