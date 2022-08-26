@@ -6,7 +6,6 @@ import {
   Alert,
   AlertIcon,
   Switch,
-  Box,
   Button,
   FormControl,
   FormLabel,
@@ -53,16 +52,14 @@ const CustomerInquiry = () => {
     mode: "onBlur",
   });
 
-  const onSubmit = (data: IFormInputs, event: any) => {
+  const onSubmit = (data: IFormInputs) => {
     setLoading(true);
     if (agreed) {
       // submit form
-      console.log("first", { ...data, image: "no data" });
-      console.log(agreed);
       customAxios()
         .post("inquiry", qs.stringify({ ...data, image: "no data" }))
         .then((res) => {
-          if (res.status === 200 || 201) {
+          if (res.status === 200 || res.status === 201) {
             toast.success("We've got your inquiry!", {
               theme: "dark",
               icon: "🚀",

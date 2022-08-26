@@ -14,17 +14,18 @@ import {
 
 import { useDisclosure } from "@chakra-ui/hooks";
 import { useDropzone } from "react-dropzone";
+import { toast } from "react-toastify";
+import qs from "qs";
 import { getCurrentUserSelector } from "../../../store/selectors/user.selector";
 import { IMAGES } from "../../../utils/constants/image.constant";
 import { customAxios } from "../../../http-common";
-import { toast } from "react-toastify";
 import { getUserDetail } from "../../../store/actions/user.action";
-import qs from "qs";
 
 const UserProfileAvatar = () => {
   const currentUser = useSelector(getCurrentUserSelector);
   const { isOpen, onOpen, onClose } = useDisclosure();
   const dispatch = useDispatch();
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [isLoading, setIsLoading] = useState(false);
   const [img, setImg] = useState("");
   const handleUploadFiles = async (file: any) => {
@@ -32,14 +33,14 @@ const UserProfileAvatar = () => {
     fd.append("images", file);
     const response = await customAxios("multipart/form-data").post(
       "product/upload-single-image",
-      fd
+      fd,
     );
     if (response.data) {
       setImg(response.data.url!);
     }
   };
 
-  const { getRootProps, getInputProps, isDragActive } = useDropzone({
+  const { getRootProps, getInputProps } = useDropzone({
     accept: {
       "image/*": [],
     },
@@ -51,19 +52,19 @@ const UserProfileAvatar = () => {
     },
   });
 
-  const _handleChangeAvt = async () => {
+  const handleChangeAvatar = async () => {
     const response = await customAxios()
       .put(
         "user/edit-user",
         qs.stringify({
           profileImage: img,
-        })
+        }),
       )
-      .catch((e) => {
-        toast.error("Error when upload your avatar");
+      .catch(() => {
+        toast.error("Error when upload your avatar", { theme: "dark" });
       });
     if (response && (response.status === 200 || response.status === 201)) {
-      toast.success("Change avatar successfully");
+      toast.success("Change avatar successfully!", { theme: "dark" });
       dispatch(getUserDetail());
     }
   };
@@ -95,16 +96,22 @@ const UserProfileAvatar = () => {
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
         <ModalContent>
-          <GridItem className="pb-5 p-5" colSpan={{ base: 6, sm: 3 }}>
+          <GridItem className="p-5 pb-5" colSpan={{ base: 6, sm: 3 }}>
             <FormControl>
               <FormLabel>Change your avatar</FormLabel>
               <div
-                style={{
-                  background: img ? `url('${img}')` : "none",
-                  backgroundPosition: "center center",
-                  backgroundRepeat: "no-repeat",
-                  backgroundSize: "cover",
-                }}
+                style={
+                  img
+                    ? {
+                        backgroundImage: `url('${img}')`,
+                        backgroundPosition: "center center",
+                        backgroundRepeat: "no-repeat",
+                        backgroundSize: "cover",
+                      }
+                    : {
+                        background: "none",
+                      }
+                }
                 className={
                   img
                     ? "border-4 cursor-pointer text-center justify-center p-[20%]"
@@ -113,9 +120,7 @@ const UserProfileAvatar = () => {
                 {...getRootProps()}
               >
                 <input {...getInputProps()} />
-                {img ? (
-                  <></>
-                ) : (
+                {img ? null : (
                   <p>Drag 'n' drop some files here, or click to select files</p>
                 )}
               </div>
@@ -134,7 +139,7 @@ const UserProfileAvatar = () => {
               disabled={!img}
               type="submit"
               mr={3}
-              onClick={_handleChangeAvt}
+              onClick={handleChangeAvatar}
             >
               Change Avatar
             </Button>

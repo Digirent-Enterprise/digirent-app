@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useLocation, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import {
   BookingBoxDisplay,
   GalleryDisplay,
@@ -10,7 +10,6 @@ import {
 import DefaultLayout from "../DefaultLayout";
 import { getProductByIDSelector } from "../../store/selectors/product.selector";
 import { getProductByID } from "../../store/actions/product.action";
-import Spinner from "../../components/elements/Spinner/Spinner";
 
 const ProductDetailsPage = () => {
   const { id } = useParams();

@@ -26,7 +26,6 @@ import qs from "qs";
 import { toast } from "react-toastify";
 import { UserTab } from "../../components";
 import DefaultLayout from "../DefaultLayout";
-import { getCurrentUserSelector } from "../../store/selectors/user.selector";
 import { customAxios } from "../../http-common";
 
 interface IFormInputs {
@@ -67,10 +66,13 @@ const UserChangePassword = () => {
     const update = await customAxios()
       .put("auth/reset-password", qs.stringify(newMappingObj))
       .catch((e) => {
-        toast.error(`Error: ${e}`, { theme: "dark", icon: "🚀" });
+        toast.error(`Error: ${e.response.data}`, { theme: "dark" });
       });
     if (update && update.data) {
-      toast.success("Update user successfully", { theme: "dark", icon: "🚀" });
+      toast.success("Change password successfully!", {
+        theme: "dark",
+        icon: "🚀",
+      });
     }
   };
 
@@ -171,7 +173,7 @@ const UserChangePassword = () => {
           <ModalOverlay />
           <ModalContent>
             <div className="text-center justify-center p-[10%]">
-              <p className="text-3xl font-bold pb-8">
+              <p className="pb-8 text-3xl font-bold">
                 You have unsaved changes
               </p>
               <p>Are you sure you want to leave</p>
