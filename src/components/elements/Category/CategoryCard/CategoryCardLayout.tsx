@@ -9,19 +9,11 @@ import CategoryCard from "./CategoryCard";
 // import CategoryCard from "./CategoryCard";
 
 const CategoryCardLayout = ({ categories }: any) => {
-  const [currentItems, setCurrentItems] = useState([]);
-  const category = useSelector(getAllCategoriesSelector);
-  const dispatch = useDispatch();
-  useEffect(() => {
-    setCurrentItems(categories);
-    dispatch(getCategories());
-  }, [categories]);
-
   return (
     <div className="max-w-screen-xl px-4 py-16 mx-auto sm:px-6 lg:px-8">
       <div className="grid grid-cols-2 mt-8 lg:grid-cols-4 gap-x-4 gap-y-8">
-        {category &&
-          currentItems.map((cate: ICategory) => {
+        {categories &&
+          categories.map((cate: ICategory) => {
             return (
               <Link to={`/category?queryName=${cate.queryName}`}>
                 <CategoryCard

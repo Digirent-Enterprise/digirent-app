@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import {
   Avatar,
   Modal,
@@ -17,45 +17,65 @@ import { useDropzone } from "react-dropzone";
 import { getCurrentUserSelector } from "../../../store/selectors/user.selector";
 import { IMAGES } from "../../../utils/constants/image.constant";
 import { customAxios } from "../../../http-common";
+import { toast } from "react-toastify";
+import { getUserDetail } from "../../../store/actions/user.action";
+import qs from "qs";
 
 const UserProfileAvatar = () => {
   const currentUser = useSelector(getCurrentUserSelector);
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const [images, setImages] = useState<string[]>([]);
+  const dispatch = useDispatch();
   const [isLoading, setIsLoading] = useState(false);
-
+  const [img, setImg] = useState("");
   const handleUploadFiles = async (file: any) => {
     const fd = new FormData();
     fd.append("images", file);
     const response = await customAxios("multipart/form-data").post(
       "product/upload-single-image",
-      fd,
+      fd
     );
-    setImages([...images, response.data.url]);
+    if (response.data) {
+      setImg(response.data.url!);
+    }
   };
 
-  const { isDragActive } = useDropzone({
+  const { getRootProps, getInputProps, isDragActive } = useDropzone({
     accept: {
       "image/*": [],
     },
     maxFiles: 1,
     onDrop: async (acceptedFiles: File[]) => {
       setIsLoading(true);
-      await acceptedFiles.map((file: any) => handleUploadFiles(file));
+      await handleUploadFiles(acceptedFiles[0]);
       setIsLoading(false);
-      setImages(
-        acceptedFiles.map((image: any) =>
-          Object.assign(image, {
-            preview: image,
-          }),
-        ),
-      );
     },
   });
+
+  const _handleChangeAvt = async () => {
+    const response = await customAxios()
+      .put(
+        "user/edit-user",
+        qs.stringify({
+          profileImage: img,
+        })
+      )
+      .catch((e) => {
+        toast.error("Error when upload your avatar");
+      });
+    if (response && (response.status === 200 || response.status === 201)) {
+      toast.success("Change avatar successfully");
+      dispatch(getUserDetail());
+    }
+  };
+
   return (
     <Avatar
       boxSize="350px"
-      src={currentUser.avatar ? currentUser.avatar : IMAGES.defaultAvatar}
+      src={
+        currentUser.profileImage
+          ? currentUser.profileImage
+          : IMAGES.defaultAvatar
+      }
       mb={4}
       pos="relative"
       className="overflow-hidden"
@@ -78,10 +98,23 @@ const UserProfileAvatar = () => {
           <GridItem className="pb-5 p-5" colSpan={{ base: 6, sm: 3 }}>
             <FormControl>
               <FormLabel>Change your avatar</FormLabel>
-              <div className="border-dashed border-4 text-center justify-center p-[20%]">
-                <input />
-                {isDragActive ? (
-                  <p>Drop the files here ...</p>
+              <div
+                style={{
+                  background: img ? `url('${img}')` : "none",
+                  backgroundPosition: "center center",
+                  backgroundRepeat: "no-repeat",
+                  backgroundSize: "cover",
+                }}
+                className={
+                  img
+                    ? "border-4 cursor-pointer text-center justify-center p-[20%]"
+                    : "border-dashed border-4 cursor-pointer text-center justify-center p-[20%]"
+                }
+                {...getRootProps()}
+              >
+                <input {...getInputProps()} />
+                {img ? (
+                  <></>
                 ) : (
                   <p>Drag 'n' drop some files here, or click to select files</p>
                 )}
@@ -94,11 +127,16 @@ const UserProfileAvatar = () => {
             <Button colorScheme="blue" mr={3} onClick={onClose}>
               Close
             </Button>
-            <Button type="reset" mr={3}>
+            <Button type="reset" mr={3} onClick={() => setImg("")}>
               Reset
             </Button>
-            <Button type="submit" mr={3}>
-              Change password
+            <Button
+              disabled={!img}
+              type="submit"
+              mr={3}
+              onClick={_handleChangeAvt}
+            >
+              Change Avatar
             </Button>
           </ModalFooter>
         </ModalContent>

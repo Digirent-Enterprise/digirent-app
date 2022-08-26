@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-import { useSelector } from "react-redux";
+import React from "react";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import {
@@ -21,7 +20,7 @@ import {
 } from "@chakra-ui/react";
 import { WarningTwoIcon } from "@chakra-ui/icons";
 import { useForm } from "react-hook-form";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { AiOutlineArrowLeft } from "react-icons/ai";
 import qs from "qs";
 import { toast } from "react-toastify";
@@ -50,7 +49,6 @@ const schema = yup.object().shape({
 });
 
 const UserChangePassword = () => {
-  const currentUser = useSelector(getCurrentUserSelector);
   const { isOpen, onOpen, onClose } = useDisclosure();
   const {
     register,
@@ -61,18 +59,17 @@ const UserChangePassword = () => {
     mode: "onBlur",
   });
 
-  const navigate = useNavigate();
-
-  const onCancel = () => {
-    navigate("/user/my-profile");
-  };
-
   const onSubmit = async (data: IFormInputs) => {
-    const update = await customAxios().put(
-      "user/edit-user",
-      qs.stringify(data)
-    );
-    if (update.data) {
+    const newMappingObj = {
+      currentPassword: data.password,
+      newPassword: data.changePassword,
+    };
+    const update = await customAxios()
+      .put("auth/reset-password", qs.stringify(newMappingObj))
+      .catch((e) => {
+        toast.error(`Error: ${e}`, { theme: "dark", icon: "🚀" });
+      });
+    if (update && update.data) {
       toast.success("Update user successfully", { theme: "dark", icon: "🚀" });
     }
   };
@@ -105,7 +102,7 @@ const UserChangePassword = () => {
                 {...register("password")}
                 placeholder="Current password"
                 _placeholder={{ color: "#777" }}
-                type="text"
+                type="password"
                 bg={useColorModeValue("gray.50", "gray.500")}
                 width="650px"
               />
@@ -123,7 +120,7 @@ const UserChangePassword = () => {
                 {...register("changePassword")}
                 placeholder="New"
                 _placeholder={{ color: "#777" }}
-                type="text"
+                type="password"
                 bg={useColorModeValue("gray.50", "gray.500")}
                 width="650px"
               />
@@ -141,7 +138,7 @@ const UserChangePassword = () => {
                 {...register("retypeChangePassword")}
                 placeholder="Retype your password"
                 _placeholder={{ color: "#777" }}
-                type="text"
+                type="password"
                 bg={useColorModeValue("gray.50", "gray.500")}
                 width="650px"
               />
@@ -174,7 +171,9 @@ const UserChangePassword = () => {
           <ModalOverlay />
           <ModalContent>
             <div className="text-center justify-center p-[10%]">
-              <p className="text-3xl font-bold pb-8">You have unsaved changes</p>
+              <p className="text-3xl font-bold pb-8">
+                You have unsaved changes
+              </p>
               <p>Are you sure you want to leave</p>
             </div>
             <ModalFooter className="flex text-center align-center">

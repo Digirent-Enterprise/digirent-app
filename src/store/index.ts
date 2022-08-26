@@ -13,8 +13,7 @@ const middleware = [sagaMiddleware];
 const store = configureStore({
   reducer: rootReducer,
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat(middleware).concat(logger),
-  devTools: process.env.NODE_ENV !== "production",
+    getDefaultMiddleware().concat(middleware),
 });
 
 export type AppDispatch = typeof store.dispatch;
