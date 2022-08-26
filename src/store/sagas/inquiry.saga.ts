@@ -1,4 +1,4 @@
-import { all, call, delay, put, takeLatest } from "redux-saga/effects";
+import { all, call, put, takeLatest } from "redux-saga/effects";
 
 import { GET_INQUIRIES } from "../types/action.types";
 import { API_BASE_URL } from "../../utils/constants/api.constants";
@@ -11,9 +11,7 @@ const fetchInquiries = () =>
 
 function* getInquiries(): any {
   const response = yield call(fetchInquiries);
-  console.log("response", response);
   yield put(setInquiries(response.data));
-  yield delay(1000);
 }
 
 function* inquirySaga() {
