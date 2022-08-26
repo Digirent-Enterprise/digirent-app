@@ -34,7 +34,7 @@ const UserProfileAvatar = () => {
     setImages([...images, response.data.url]);
   };
 
-  const { getRootProps, getInputProps, isDragActive } = useDropzone({
+  const { isDragActive } = useDropzone({
     accept: {
       "image/*": [],
     },
