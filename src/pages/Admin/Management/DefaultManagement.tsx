@@ -241,8 +241,6 @@ const DefaultManagement = ({
                         <Td
                           className="td1"
                           color="gray.600"
-                          maxWidth="md"
-                          overflowWrap="break-word"
                           {...cell.getCellProps()}
                         >
                           {cell.render("Cell")}{" "}

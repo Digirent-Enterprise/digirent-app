@@ -36,7 +36,7 @@ export const getCategoryByID = (queryName: string) => {
   return {
     type: GET_CATEGORY_BY_ID,
     payload: {
-      queryName,
+      queryName: queryName,
     },
   };
 };

@@ -51,7 +51,9 @@ const Footer = () => {
       px={7}
       py={3}
       color="white"
+      // position="absolute"
       width="100%"
+      bottom="0"
       left="0"
       className="p-2.5 h-40 md:h-24"
     >

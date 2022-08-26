@@ -49,7 +49,6 @@ const ChatBox = () => {
 
   useEffect(() => {
     if (messageEl) {
-      // @ts-ignore
       messageEl.current.addEventListener("DOMNodeInserted", (event) => {
         const { currentTarget: target } = event;
         target.scroll({ top: target.scrollHeight, behavior: "smooth" });
@@ -60,7 +59,6 @@ const ChatBox = () => {
   useEffect(() => {
     const generateDummyMessage = () => {
       setInterval(() => {
-        // @ts-ignore
         setMessages((prevMsg) => [...prevMsg, generateMessage()]);
       }, 2000);
     };

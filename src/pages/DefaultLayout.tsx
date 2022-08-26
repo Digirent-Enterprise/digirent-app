@@ -4,9 +4,9 @@ import { Footer, LanguageSwitcher, NavBar, Transition } from "../components";
 const DefaultLayout = ({ children }: any) => {
   return (
     <Transition>
-      <div className="flex flex-col h-screen">
+      <div className="h-screen">
         <NavBar />
-        <div className="flex-grow">{children}</div>
+        {children}
         <LanguageSwitcher />
         <Footer />
       </div>

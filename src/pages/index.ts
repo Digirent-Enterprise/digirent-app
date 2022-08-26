@@ -16,7 +16,7 @@ import CheckoutPage from "./Checkout/CheckoutPage";
 import TransactionManagement from "./Admin/Management/TransactionManagement";
 import EmailSentPage from "./Auth/EmailSentPage";
 import AddProduct from "./Admin/AddProduct/AddProduct";
-import ContactUsPage from "./CustomerInquiry/CustomerInquiry";
+import ContactUsPage from "./Contact/ContactUsPage";
 import UserEdit from "./User/UserEdit";
 import About from "./About/About";
 import UserTransactionDetails from "./User/UserTransactionDetail";
@@ -25,7 +25,6 @@ import PrivacyPolicy from "./PrivacyPolicy/PrivacyPolicy";
 import UserViewInfo from "./User/UserViewInfo";
 import UserChangePassword from "./User/UserChangePassword";
 import UserFavoriteProduct from "./User/UserFavoriteProduct";
-import CustomerInquiryManagement from "./Admin/Management/CustomerInquiryManagement";
 
 export {
   Home,
@@ -55,5 +54,4 @@ export {
   PrivacyPolicy,
   UserViewInfo,
   UserFavoriteProduct,
-  CustomerInquiryManagement
 };
