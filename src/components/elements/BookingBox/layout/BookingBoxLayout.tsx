@@ -1,7 +1,10 @@
 import React, { useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import { toast } from "react-toastify";
 import BookingBox from "../item/BookingBox";
+
+import "./Datepicker.css";
 
 const BookingBoxLayout = ({ productData }: any) => {
   const [startDate, setStartDate] = useState(new Date());
@@ -23,31 +26,33 @@ const BookingBoxLayout = ({ productData }: any) => {
   };
 
   if (startDate > endDate) {
-    alert("Please choose valid dates");
+    toast.warning("Please choose valid rental period", {
+      theme: "dark",
+    });
     setEndDate(startDate);
   }
   return (
-    <div className="flex flex-col w-full gap-2">
-      <div className="flex flex-col justify-center mt-10 ml-[32px] lg:flex-row md:flex-row">
-        <div className="lg:mr-48 min-w-[50%] flex flex-col">
+    <div className="flex flex-col justify-center w-full gap-2">
+      <div className="flex flex-col justify-center mt-10 lg:flex-row">
+        <div className="ml-[35px] lg:ml-0 lg:mr-64 min-w-[50%] flex flex-col">
           <div className="font-extrabold">Description</div>
           <div className="text-justify min-w-[220px]">
             {productData.description}
           </div>
           <div className="flex flex-col gap-2 mt-10">
             <div className="font-extrabold">Rental period: </div>
-            <div className="">
-              <div className=" min-w-[220px]">
-                {formatDate(startDate)} - {formatDate(endDate)}
-              </div>
-              <div className="flex gap-x-2">
+            <div className=" min-w-[220px]">
+              {formatDate(startDate)} - {formatDate(endDate)}
+              <div className="flex gap-x-2 mt-5 flex-col md:flex-row lg:flex-row">
                 <DatePicker
+                  wrapperClassName="date-picker"
                   selected={startDate}
                   onChange={onChange}
                   minDate={new Date()}
                   inline
                 />
                 <DatePicker
+                  wrapperClassName="date-picker"
                   selected={endDate}
                   onChange={onChange2}
                   minDate={startDate}
@@ -57,7 +62,7 @@ const BookingBoxLayout = ({ productData }: any) => {
             </div>
           </div>
         </div>
-        <div className="sm:mt-10">
+        <div className="sm:mt-10 ml-[35px] lg:ml-0">
           <BookingBox
             productData={productData}
             price={productData.rentalCost}

@@ -10,7 +10,7 @@ export interface ICategory {
 }
 
 export interface CategoryState {
-  pending: boolean;
+  loading: boolean;
   categories: ICategory[];
   category: ICategory[];
   error: string | null;

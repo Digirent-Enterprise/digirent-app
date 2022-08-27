@@ -17,6 +17,7 @@ import {
   CheckoutPage,
   EmailSentPage,
   ProductDetailsPage,
+  CustomerInquiryManagement,
 } from "./pages";
 import PrivateRoute from "./components/PrivateRoute";
 
@@ -31,7 +32,9 @@ import { getCurrentUserSelector } from "./store/selectors/user.selector";
 
 const Home = lazy(() => import("./pages/Home/Home"));
 const About = lazy(() => import("./pages/About/About"));
-const ContactUsPage = lazy(() => import("./pages/Contact/ContactUsPage"));
+const ContactUsPage = lazy(
+  () => import("./pages/CustomerInquiry/CustomerInquiry"),
+);
 const ProductSearchPage = lazy(
   () => import("./pages/Product/ProductSearchPage"),
 );
@@ -181,6 +184,17 @@ const AppRouter = () => {
             </PrivateRoute>
           }
         />
+
+        {/* Product management */}
+        <Route
+          path="admin/inquiries"
+          element={
+            <PrivateRoute permission={AdminPermission}>
+              <CustomerInquiryManagement />
+            </PrivateRoute>
+          }
+        />
+
         <Route
           path="admin/add-product"
           element={

@@ -92,7 +92,7 @@ const BookingBox: React.FC<BookingBoxProps> = ({
           </button>
         </div>
         <div className="mt-8">
-          <Accordion defaultIndex={[0]} allowMultiple>
+          <Accordion allowToggle>
             <AccordionItem>
               <h2>
                 <AccordionButton>
@@ -112,7 +112,9 @@ const BookingBox: React.FC<BookingBoxProps> = ({
         </div>
         <div className="mt-3 mb-3 ">
           <div className="float-left ml-6 font-bold">Estimated cost</div>
-          <div className="float-right mr-6 font-bold">${totalPrice}</div>
+          <div className="float-right mr-6 font-bold">
+            ${totalPrice || rentalCost}
+          </div>
         </div>
       </div>
       <div className="ml-10 mt-7">

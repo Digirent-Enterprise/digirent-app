@@ -38,8 +38,8 @@ const generateMessage = () => {
     "burn",
   ];
   const text = [];
-  let x = 7;
-  while (--x) text.push(words[Math.floor(Math.random() * words.length)]);
+  const x = 7;
+  while (x - 1) text.push(words[Math.floor(Math.random() * words.length)]);
   return text.join(" ");
 };
 
@@ -50,7 +50,7 @@ const ChatBox = () => {
   useEffect(() => {
     if (messageEl) {
       // @ts-ignore
-      messageEl.current.addEventListener("DOMNodeInserted", (event: any) => {
+      messageEl.current.addEventListener("DOMNodeInserted", (event) => {
         const { currentTarget: target } = event;
         target.scroll({ top: target.scrollHeight, behavior: "smooth" });
       });
@@ -60,7 +60,7 @@ const ChatBox = () => {
   useEffect(() => {
     const generateDummyMessage = () => {
       setInterval(() => {
-        //@ts-ignore
+        // @ts-ignore
         setMessages((prevMsg) => [...prevMsg, generateMessage()]);
       }, 2000);
     };
