@@ -17,28 +17,42 @@
   "searchAllProducts": "Search all products",
   "newProduct": "New products",
   "AdTitle": "National Independence Day special offer for all products",
-  "AdBody": "From September 1st, 2022 to September 14th, 2022, when using our products, you can get discount up to 50% for all products! In this period ò time, you can also enjoy free transaction fees bonus gift from us! Start now!", 
+  "AdBody": "From September 1st, 2022 to September 14th, 2022, when using our products, you can get discount up to 50% for all products! In this period ò time, you can also enjoy free transaction fees bonus gift from us! Start now!",
   "getInTouch": "Get in touch",
   "rentNowBTN": "Rent now",
   "reviewTitle1": "Dont't just take our word for it...",
   "reviewTitle2": "Read reviews from our customers!",
   "reviewBody": "Take a look through the honest reviews from previous satisfied customers that have used our service.",
-  "reviewContentTitle": "Stayin' Alive", 
+  "reviewContentTitle": "Stayin' Alive",
   "reviewContentBody": "I have been a customer of Digirent since their first initiation. From then til nơ, there services remains excellent. The products are always in good condition when I receive it. The transaction methods are flexible and convenient. When ever I needed help, there customer service teams always done the job. Overall, 10 outta 10.",
-  "frequentlyAsked": "Frequently Asked Questions", 
+  "frequentlyAsked": "Frequently Asked Questions",
   "frequentlyAskedBody": "Below are questions that we often received from our customers. Take a look if you run into any problems.",
-  "Q1": "How do I open an account?",
-  "A1": "You can create account simply by clicking the sign up button from the login interface. After that just fill in the required information and verified your email. After that you can start renting.",
-  "Q2": "How much is delivery?",
-  "A2": "The delivery fees variate depends on the distance from our company to your personal address. You can sê the estimated delivery fees when you checkout your cart.",
-  "Q3": "Can I cancel my rental before?",
-  "A3": "You can return the products sooner than your order. However, please noted that we have no refund policy.",
-  "Q4": "What happen if I damage the products?",
-  "A4": "Depends on the damage level, your indemnify will vary from paying just the maintenance fee or the entire products.",
-  "Q5": "What happen if we receive a damaged product?",
-  "A5": "In this case, please contact us immedidately to receive further support.",
-  "Q6": "Pandemic concerns",
-  "A6": "We follow the safety protocols provided by the National Ministry of Health when maintain and handle our products. Learn more at: https://covid19.gov.vn/",
+  "faqs": [
+    {
+      "question": "How do I open an account?",
+      "answer": "You can create account simply by clicking the sign up button from the login interface. After that just fill in the required information and verified your email. After that you can start renting."
+    },
+    {
+      "question": "How much is delivery?",
+      "answer": "The delivery fees variate depends on the distance from our company to your personal address. You can see the estimated delivery fees when you checkout your cart."
+    },
+    {
+      "question": "Can I cancel my rental before return date?",
+      "answer": "You can return the products sooner than your order. However, please noted that we have no refund policy."
+    },
+    {
+      "question": "What happen if I damage the products?",
+      "answer": "Depends on the damage level, your indemnify will vary from paying just the maintenance fee or the entire products."
+    },
+    {
+      "question": "What happen if we receive a damaged product?",
+      "answer": "In this case, please contact us immediately to receive further support."
+    },
+    {
+      "question": "Pandemic concerns",
+      "answer": "We do follow the safety protocols provided by the National Ministry of Health when maintain and handle our products. Learn more at: https://covid19.gov.vn/"
+    }
+  ],
   "AboutTitle": "Our competitive advantage",
   "AboutFirstSect": "Remember when you need a camera but did not have it? Would you buy it if you know you would not use it the second time? At Digirent, we understand what the you need. Now, you can enjoy renting anything you want at a reasonable cost and high quality products."
 }
