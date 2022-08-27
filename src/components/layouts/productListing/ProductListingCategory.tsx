@@ -8,6 +8,7 @@ import { getCategoriesByIdSelector } from "../../../store/selectors/category.sel
 import SearchResultsSection from "../search/SearchResultsSection";
 import ProductCard from "../productCard/Item/ProductCard";
 import { IProduct } from "../../../store/types/product.types";
+import NotFoundCategory from "../NotFoundResult/NotFoundCategory";
 
 const ProductListingCategory = () => {
   const dispatch = useDispatch();
@@ -46,6 +47,9 @@ const ProductListingCategory = () => {
     const { value } = e.target;
     setSelectedOpt(value);
   };
+  console.log(products.length, "here");
+  if (products.length > 0) {
+  }
   return (
     <>
       {categoryData && Object.keys(categoryData) && (
@@ -81,19 +85,25 @@ const ProductListingCategory = () => {
           </div>
         </div>
       )}
-      <ReactPaginate
-        breakLabel="..."
-        nextLabel="next >"
-        onPageChange={handlePageClick}
-        pageRangeDisplayed={5}
-        pageCount={pageCount}
-        previousLabel="< previous"
-        containerClassName="pagination container flex justify-center mx-auto py-10"
-        pageLinkClassName="age-num z-10 border-black relative inline-flex items-center px-4 py-2 border text-sm font-medium border-r-0 hover:bg-blue-100 hover:text-white"
-        previousLinkClassName="age-num z-10 border-black text-black relative inline-flex items-center px-4 py-2 border text-sm font-medium border-r-0 hover:bg-blue-100 hover:text-white"
-        nextLinkClassName="page-num z-10 border-black text-black relative inline-flex items-center px-4 py-2 border text-sm font-medium hover:bg-blue-100 hover:text-white"
-        activeLinkClassName="page-num text-white bg-blue-300"
-      />
+      {products.length > 0 ? (
+        <ReactPaginate
+          breakLabel="..."
+          nextLabel="next >"
+          onPageChange={handlePageClick}
+          pageRangeDisplayed={5}
+          pageCount={pageCount}
+          previousLabel="< previous"
+          containerClassName="pagination container flex justify-center mx-auto py-10"
+          pageLinkClassName="age-num z-10 border-black relative inline-flex items-center px-4 py-2 border text-sm font-medium border-r-0 hover:bg-blue-100 hover:text-white"
+          previousLinkClassName="age-num z-10 border-black text-black relative inline-flex items-center px-4 py-2 border text-sm font-medium border-r-0 hover:bg-blue-100 hover:text-white"
+          nextLinkClassName="page-num z-10 border-black text-black relative inline-flex items-center px-4 py-2 border text-sm font-medium hover:bg-blue-100 hover:text-white"
+          activeLinkClassName="page-num text-white bg-blue-300"
+        />
+      ) : (
+        <div className="flex justify-center text-5xl font-bold text-center">
+          <NotFoundCategory />
+        </div>
+      )}
     </>
   );
 };
