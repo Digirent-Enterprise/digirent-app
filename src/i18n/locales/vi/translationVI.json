@@ -5,9 +5,9 @@
   "emailAddress": "Địa chỉ email",
   "newsletter": "Đăng kí để nhận những thông tin mới nhất",
   "bannerHeroTitle": "Tham gia ngay với chúng tôi",
-  "bannerHeroDes": "Bắt đầu khám phá các sản phẩm của chúng tôi và tận hưởng trải nghiệm dịch vụ tuyệt với và tiện lơi.",
+  "bannerHeroDes": "Bắt đầu khám phá các sản phẩm của chúng tôi và tận hưởng trải nghiệm dịch vụ tuyệt vời và tiện lợi.",
   "ourStoryTitle": "Tại sao phải mua khi bạn có thể thuê ?",
-  "ourStoryDes": "Một vấn đề mà tất cả chúng ta thường gặp đó là cần một thứ gì đó nhưng lại chỉ dùng 1 lần. Chi một số tiền ra cho 1 thứ gì đó chỉ dùng một lần có vẻ lãng phí. Tại Digirent, chúng tôi cung cấp cho khách hàng chính xác thứ họ cần: 1 giải pháp cho thuê.",
+  "ourStoryDes": "Một vấn đề mà tất cả chúng ta thường gặp đó là cần một thứ gì đó nhưng lại chỉ dùng 1 lần. Chi một số tiền ra cho 1 thứ gì đó chỉ dùng trong những trường hợp cụ thể nghe có vẻ rất lãng phí. Tại Digirent, chúng tôi cung cấp cho khách hàng chính xác thứ họ cần: 1 giải pháp cho thuê.",
   "readOurStory": "Câu chuyện của chúng tôi",
   "phoneCategoryBannerTitle": "Nhỏ mà có võ",
   "phoneCategoryBannerDes": "Bước vào kho tàng điện thoại của chúng tôi từ bất kì thương hiệu nào mà bạn có thể thích!",
@@ -17,29 +17,42 @@
   "searchAllProducts": "Tìm tất cả các sản phẩm",
   "newProduct": "Các sản phẩm mới nhất",
   "AdTitle": "Ưu đãi đặc biệt cho tất cả các sản phẩm nhân dịp Quốc Khánh",
-  "AdBody": "Từ ngày 1 tháng 9 năm 2022 đến ngày 14 tháng 9 năm 2022, bạn có thể nhận được ưu đãi lên tới 50% khi sử dụng dịch vụ của chúng tôi. Trong khoảng thời gian này, khách hàng cũng sẽ được ưu đãi miễn phí phí giao dịch. Bắt đầu ngay!", 
+  "AdBody": "Từ ngày 1 tháng 9 năm 2022 đến ngày 14 tháng 9 năm 2022, bạn có thể nhận được ưu đãi lên tới 50% khi sử dụng dịch vụ của chúng tôi. Trong khoảng thời gian này, khách hàng cũng sẽ được ưu đãi miễn phí phí giao dịch. Bắt đầu ngay!",
   "getInTouch": "Liên hệ",
   "rentNowBTN": "Thuê ngay",
-  "reviewTitle1": "Bạn là 1 khách hàng khó tính?",
-  "reviewTitle2": "Hãy xem người khác đánh giá về chúng tôi !",
+  "reviewTitle1": "Bạn là 1 khách hàng khó tính? ",
+  "reviewTitle2": "Hãy xem người khác đánh giá như thế nào về chúng tôi !",
   "reviewBody": "Hãy đọc qua các phản hồi đến từ các khách hàng đã dùng dịch vụ của chúng tôi và cảm thấy hài lòng",
-  "reviewContentTitle": "Rất tuyệt vời", 
+  "reviewContentTitle": "Rất tuyệt vời",
   "reviewContentBody": "Tôi đã là khách hàng của Digirent từ lúc bắt đầu. Và từ lúc đó đến nay, chất lượng dịch vụ của họ chưa bao giờ thay đổi. Tôi luôn nhận được sản phẩm của mình trong tình trạng rất tốt. Hơn thế nữa, phương thức giao dịch của họ đa dạng, linh hoạt và rất tiện lợi. Nói chung, 10 điểm!",
-  "frequentlyAsked": "Các câu hỏi thường gặp", 
+  "frequentlyAsked": "Các câu hỏi thường gặp",
   "frequentlyAskedBody": "Dưới đây là các câu hỏi mà chúng tôi thường gặp đến từ khách hàng. Bạn có thể xem qua nếu gặp bất kì vấn đề gì.",
-  "Q1": "Tôi có thể tạo tài khoản như thế nào ?",
-  "A1": "Bạn có thể tạo tài khoản bằng cách nhấn vào nút đăng kí trong giao giện đăng nhập của chúng tôi. Sau đó chỉ cần điền thông tin và xác thực mail của bạn. Giờ thì bạn có thể bắt đầu thuê đồ!",
-  "Q2": "Giá tiền vận chuyển như thế nào ?",
-  "A2": "Giá tiền vận chuyển giao động dựa trên khoảng cách từ công ty chúng tôi tới địa chỉ cá nhân của bạn. Bạn có thể xem phí ước tính khi bắt đầu thanh toán.",
-  "Q3": "Tôi có thể trả sản phẩm trước không?",
-  "A3": "Bạn có thể trả sản phẩm sớm hơn dự tính. Nhưng hãy nhớ rằng công ty của chúng tôi không có chính sách hoàn trả tiền.",
-  "Q4": "Nếu tôi làm hư sản phẩm ?",
-  "A4": "Tuỳ thuộc vào mức độ hư hại, bạn có thể chỉ cần trả phí bảo trì hoặc bồi thường sản phẩm cho chúng tôi.",
-  "Q5": "Sẽ ra sao nếu tôi nhận được sản phẩm bị hư hại ?",
-  "A5": "Trong trường hợp này, xin hãy liên hệ chúng tôi ngay lập tức để được hỗ trợ.",
-  "Q6": "Các vấn đề liên quan đến dịch bệnh",
-  "A6": "Chúng tôi bảo quản, đóng gói và giao hàng theo giao thức an toàn được đưa ra bởi Bộ Y Tế. Tìm hiểu thêm tại: https://covid19.gov.vn/",
-  "AboutTitle":"Thế mạnh của chúng tôi",
+  "faqs": [
+    {
+      "question": "Tôi có thể tạo tài khoản như thế nào ?",
+      "answer": "Bạn có thể tạo tài khoản bằng cách nhấn vào nút đăng kí trong giao giện đăng nhập của chúng tôi. Sau đó chỉ cần điền thông tin và xác thực mail của bạn. Giờ thì bạn có thể bắt đầu thuê đồ!"
+    },
+    {
+      "question": "Giá tiền vận chuyển được tính như thế nào ?",
+      "answer": "Giá tiền vận chuyển giao động dựa trên khoảng cách từ công ty chúng tôi tới địa chỉ cá nhân của bạn. Bạn có thể xem phí ước tính khi bắt đầu thanh toán."
+    },
+    {
+      "question": "Tôi có thể trả sản phẩm trước thời hạn không?",
+      "answer": "Bạn có thể trả sản phẩm sớm hơn dự tính. Nhưng hãy nhớ rằng công ty của chúng tôi không có chính sách hoàn trả tiền."
+    },
+    {
+      "question": "Nếu tôi làm hư sản phẩm thì như thế nào?",
+      "answer": "Tuỳ thuộc vào mức độ hư hại, bạn có thể chỉ cần trả phí bảo trì hoặc bồi thường sản phẩm cho chúng tôi."
+    },
+    {
+      "question": "Sẽ ra sao nếu tôi nhận được sản phẩm bị hư hại ?",
+      "answer": "Trong trường hợp này, xin hãy liên hệ chúng tôi ngay lập tức để nhận được sự hỗ trợ."
+    },
+    {
+      "question": "Các vấn đề liên quan đến dịch bệnh",
+      "answer": "Chúng tôi cam kết bảo quản, đóng gói và giao hàng theo quy định được ban hành hiện thời của Bộ Y Tế. Tìm hiểu thêm tại: https://covid19.gov.vn/"
+    }
+  ],
+  "AboutTitle": "Thế mạnh của chúng tôi",
   "AboutFirstSect": "Còn nhớ khi bạn cần một chiếc máy ảnh nhưng lại không có ? Bạn có muốn mua một thứ gì đó mà bạn biết bạn sẽ không dùng lần hai ? Với Digirent, bạn có thể thuê với mức giá hấp dẫn và sản phẩm chất lượng!"
-
 }

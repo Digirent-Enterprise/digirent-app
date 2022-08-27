@@ -19,10 +19,15 @@ const UserTransactionHistory = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
+  const defaultTransaction =
+    "https://cdn.dribbble.com/users/1168645/screenshots/3152485/no-orders_2x.png";
+
   useEffect(() => {
     if (transactionLoading === "success") return;
     dispatch(getTransactions());
   }, []);
+
+  console.log("transaction", transactions);
   return (
     <DefaultLayout>
       <Helmet
@@ -48,9 +53,9 @@ const UserTransactionHistory = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 mt-16 gap-x-6 gap-y-10 sm:grid-cols-2 sm:gap-y-16 lg:grid-cols-3 lg:gap-x-8 xl:grid-cols-4">
-          {transactions &&
-            transactions.map((transaction: ITransaction) => (
+        {transactions.length > 0 ? (
+          transactions.map((transaction: ITransaction) => (
+            <div className="grid grid-cols-1 mt-16 gap-x-6 gap-y-10 sm:grid-cols-2 sm:gap-y-16 lg:grid-cols-3 lg:gap-x-8 xl:grid-cols-4">
               <div
                 key={transaction._id}
                 aria-hidden="true"
@@ -84,8 +89,20 @@ const UserTransactionHistory = () => {
                   ) : null}
                 </p>
               </div>
-            ))}
-        </div>
+            </div>
+          ))
+        ) : (
+          <div className="flex justify-center text-5xl font-bold text-center">
+            <div className="mb-10">
+              <img
+                src={defaultTransaction}
+                alt="transaction"
+                className="w-100 h-100"
+              />
+              <h1 className=" text-[#6b7280]">No orders available</h1>
+            </div>
+          </div>
+        )}
       </main>
     </DefaultLayout>
   );

@@ -77,7 +77,7 @@ const UserProfileDeactivateButton = () => {
               aria-hidden="true"
               className="mx-auto mb-4 text-gray-400 w-14 h-14 dark:text-gray-200"
               fill="none"
-              stroke="#11995B"
+              stroke="#AE1010"
               viewBox="0 0 24 24"
               xmlns="http://www.w3.org/2000/svg"
             >
@@ -89,7 +89,7 @@ const UserProfileDeactivateButton = () => {
               />
             </svg>
             <p className="pb-3 text-2xl font-bold">Deactivate account</p>
-            <p>Are you sure you want to deactivate your account?</p>
+            <p>Are you sure you want to deactivate your account ?</p>
           </div>
 
           <ModalFooter>
