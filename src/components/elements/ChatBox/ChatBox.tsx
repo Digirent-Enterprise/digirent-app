@@ -60,7 +60,7 @@ const ChatBox = () => {
   useEffect(() => {
     const generateDummyMessage = () => {
       setInterval(() => {
-        // @ts-ignore
+        //@ts-ignore
         setMessages((prevMsg) => [...prevMsg, generateMessage()]);
       }, 2000);
     };
