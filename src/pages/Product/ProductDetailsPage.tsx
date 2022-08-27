@@ -23,16 +23,12 @@ const ProductDetailsPage = () => {
   return (
     <DefaultLayout>
       {selectedProduct && (
-        <>
+        <div className="w-full ">
           <ProductSummaryDisplay name={selectedProduct.name} />
           <GalleryDisplay productData={{ images: selectedProduct.images }} />
-          <div className="w-full">
-            <BookingBoxDisplay {...selectedProduct} />
-          </div>
-          <div className="mt-10">
-            <StaticGoogleMap />
-          </div>
-        </>
+          <BookingBoxDisplay {...selectedProduct} />
+          <StaticGoogleMap />
+        </div>
       )}
     </DefaultLayout>
   );

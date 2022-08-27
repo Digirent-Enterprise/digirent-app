@@ -7,25 +7,24 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 import { FaStar } from "react-icons/fa";
+import { useTranslation } from "react-i18next";
 
 SwiperCore.use([Navigation, Pagination, Scrollbar, A11y]);
 
 const Testimonial = () => {
+  const { t } = useTranslation();
   return (
     <section className="bg-[#f3f4f6]">
       <div className="px-4 py-16 mx-auto sm:px-6 lg:pl-8 lg:pr-0 lg:mr-0 sm:py-24 max-w-[1340px]">
         <div className="grid grid-cols-1 lg:grid-cols-3 lg:gap-x-16 gap-y-8 lg:items-center">
           <div className="max-w-xl text-center sm:text-left">
             <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
-              Don't just take our word for it...
+              {t("reviewTitle1")}
               <br className="hidden sm:block lg:hidden" />
-              Read reviews from our customers
+              {t("reviewTitle2")}
             </h2>
 
-            <p className="mt-4 text-gray-500">
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptas
-              veritatis illo placeat harum porro optio fugit a culpa sunt id!
-            </p>
+            <p className="mt-4 text-gray-500">{t("reviewBody")}</p>
 
             <div className="hidden lg:mt-8 lg:flex lg:gap-4">
               <button
@@ -111,15 +110,11 @@ const Testimonial = () => {
 
                       <div className="mt-4">
                         <p className="text-2xl font-bold text-black sm:text-3xl">
-                          Stayin' Alive
+                          {t("reviewContentTitle")}
                         </p>
 
                         <p className="mt-4 leading-relaxed text-gray-500">
-                          No, Rose, they are not breathing. And they have no
-                          arms or legs … Where are they? You know what? If we
-                          come across somebody with no arms or legs, do we
-                          bother resuscitating them? I mean, what quality of
-                          life do we have there?
+                          {t("reviewContentBody")}
                         </p>
                       </div>
                     </div>
@@ -143,15 +138,11 @@ const Testimonial = () => {
 
                       <div className="mt-4">
                         <p className="text-2xl font-bold text-black sm:text-3xl">
-                          Stayin' Alive
+                          {t("reviewContentTitle")}
                         </p>
 
                         <p className="mt-4 leading-relaxed text-gray-500">
-                          No, Rose, they are not breathing. And they have no
-                          arms or legs … Where are they? You know what? If we
-                          come across somebody with no arms or legs, do we
-                          bother resuscitating them? I mean, what quality of
-                          life do we have there?
+                          {t("reviewContentBody")}
                         </p>
                       </div>
                     </div>
@@ -175,15 +166,11 @@ const Testimonial = () => {
 
                       <div className="mt-4">
                         <p className="text-2xl font-bold text-black sm:text-3xl">
-                          Stayin' Alive
+                          {t("reviewContentTitle")}
                         </p>
 
                         <p className="mt-4 leading-relaxed text-gray-500">
-                          No, Rose, they are not breathing. And they have no
-                          arms or legs … Where are they? You know what? If we
-                          come across somebody with no arms or legs, do we
-                          bother resuscitating them? I mean, what quality of
-                          life do we have there?
+                          {t("reviewContentBody")}
                         </p>
                       </div>
                     </div>
