@@ -1,5 +1,4 @@
 import { Column } from "react-table";
-import { Badge } from "@chakra-ui/react";
 
 import { ClickDelete, ClickEdit } from "../HandleActionClick";
 

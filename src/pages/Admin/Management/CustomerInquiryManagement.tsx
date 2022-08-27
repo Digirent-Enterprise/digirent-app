@@ -17,7 +17,6 @@ const InquiryManagement = () => {
 
   const inquiryColumns = useMemo(() => InquiryColumns, []);
   const inquiryData = useMemo(() => inquiryFetchData, [inquiryFetchData]);
-  console.log("userData", inquiryData);
 
   const headers = [
     { label: "Created Date", key: "createdDate" },

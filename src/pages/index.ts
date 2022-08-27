@@ -55,5 +55,5 @@ export {
   PrivacyPolicy,
   UserViewInfo,
   UserFavoriteProduct,
-  CustomerInquiryManagement
+  CustomerInquiryManagement,
 };

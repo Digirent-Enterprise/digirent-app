@@ -1,5 +1,6 @@
 export interface IInquiry {
   _id: string;
+  email: string;
   inquiryType: string;
   image: string;
   inquiryDescription: string;
@@ -9,6 +10,7 @@ export interface IInquiry {
 export interface InquiryState {
   loading: boolean;
   inquiries?: IInquiry[];
+  inquiry?: IInquiry;
   error: string | null;
 }
 

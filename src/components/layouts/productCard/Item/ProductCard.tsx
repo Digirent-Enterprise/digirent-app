@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
+import { useNavigate } from "react-router-dom";
 import Rating from "../Rating/Rating";
 
 interface ProductCardProps {
@@ -7,6 +8,7 @@ interface ProductCardProps {
   image?: string;
   rentalCost: number;
   rentalCostType?: string;
+  id: string;
 }
 
 const ProductCard = ({
@@ -14,9 +16,10 @@ const ProductCard = ({
   image,
   rentalCost,
   rentalCostType,
+  id,
 }: ProductCardProps) => {
   const [like, setLike] = useState(false);
-
+  const navigate = useNavigate();
   const handleAddToFavourite = () => {
     setLike(!like);
   };
@@ -25,6 +28,8 @@ const ProductCard = ({
 
   return (
     <div
+      aria-hidden="true"
+      onClick={() => navigate(`/product/${id}`, { replace: true })}
       className={`${productShadow} flex-col col-span-1 w-full mx-5 my-5 overflow-hidden transition-transform rounded-lg
  cursor-pointer card aspect-w-1 aspect-h-1 hover:scale-105 xl:aspect-w-7 xl:aspect-h-8`}
     >

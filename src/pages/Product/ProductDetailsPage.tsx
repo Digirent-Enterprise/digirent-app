@@ -20,9 +20,10 @@ const ProductDetailsPage = () => {
       dispatch(getProductByID(id));
     }
   }, [id]);
+
   return (
     <DefaultLayout>
-      {selectedProduct && (
+      {selectedProduct._id && (
         <>
           <ProductSummaryDisplay name={selectedProduct.name} />
           <GalleryDisplay productData={{ images: selectedProduct.images }} />

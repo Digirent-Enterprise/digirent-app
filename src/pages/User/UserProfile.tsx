@@ -1,16 +1,8 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import {
-  Box,
-  Center,
-  Stack,
-  Button,
-  useColorModeValue,
-} from "@chakra-ui/react";
-import { IconContext } from "react-icons";
+import { Box, Center, Stack, useColorModeValue } from "@chakra-ui/react";
 import { BsKey } from "react-icons/bs";
 import { AiOutlineEdit, AiOutlineProfile } from "react-icons/ai";
-import { TbHeartOff } from "react-icons/tb";
 import { UserTab } from "../../components";
 import {
   UserProfileAddress,
