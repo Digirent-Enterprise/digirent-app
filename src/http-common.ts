@@ -1,10 +1,14 @@
 import axios from "axios";
 
-const devURL = "https://backend-digirent-rmit-app.herokuapp.com/v1/api/";
+const devURL = "http://localhost:8000/v1/api/";
 
 export const customAxios = (
-  contentType: string = "application/x-www-form-urlencoded",
+  contentType: string = "application/x-www-form-urlencoded"
 ) => {
+  console.log(
+    '${localStorage.getItem("currentUser")',
+    localStorage.getItem("currentUser")
+  );
   return axios.create({
     baseURL: devURL,
     headers: {

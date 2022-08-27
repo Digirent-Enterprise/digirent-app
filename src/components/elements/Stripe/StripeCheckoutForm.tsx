@@ -8,6 +8,7 @@ import {
 import { toast } from "react-toastify";
 import "./Stripe.css";
 import { customAxios } from "../../../http-common";
+import { log } from "util";
 
 const StripeCheckoutForm = ({ transaction }: any) => {
   const stripe = useStripe();
@@ -21,7 +22,7 @@ const StripeCheckoutForm = ({ transaction }: any) => {
     }
 
     const clientSecret = new URLSearchParams(window.location.search).get(
-      "payment_intent_client_secret",
+      "payment_intent_client_secret"
     );
 
     if (!clientSecret) {
@@ -47,7 +48,7 @@ const StripeCheckoutForm = ({ transaction }: any) => {
               "Your payment was not successful, please try again.",
               {
                 theme: "dark",
-              },
+              }
             );
             break;
           default:
@@ -67,18 +68,17 @@ const StripeCheckoutForm = ({ transaction }: any) => {
         "Still loading. Please wait a few seconds and then try again.",
         {
           theme: "dark",
-        },
+        }
       );
       return;
     }
 
     setIsLoading(true);
     // @ts-ignore
-    const { error: stripeError } = await stripe.confirmPayment({
+    const response = stripe.confirmPayment({
       elements,
       confirmParams: {
-        // Make sure to change this to your payment completion page
-        return_url: "http://localhost:3000/",
+        return_url: "http://localhost:3000/payment-success",
       },
     });
     // This point will only be reached if there is an immediate error when
@@ -86,25 +86,20 @@ const StripeCheckoutForm = ({ transaction }: any) => {
     // your `return_url`. For some payment methods like iDEAL, your customer will
     // be redirected to an intermediate site first to authorize the payment, then
     // redirected to the `return_url`.
-    if (
-      stripeError.type === "card_error" ||
-      stripeError.type === "validation_error"
-    ) {
-      toast.error(`${stripeError.message}`, {
-        theme: "dark",
-      });
-    } else {
-      toast.error("An unexpected error occurred.", {
-        theme: "dark",
-      });
-    }
-
+    // if (
+    //   stripeError.type === "card_error" ||
+    //   stripeError.type === "validation_error"
+    // ) {
+    //   toast.error(`${stripeError.message}`, {
+    //     theme: "dark",
+    //   });
+    // } else {
+    //   toast.error("An unexpected error occurred.", {
+    //     theme: "dark",
+    //   });
+    // }
+    //
     // if (!stripeError) {
-    //   customAxios().post(
-    //       "transaction/create-transaction",
-    //       transaction,
-    //     ).then(res=>console.log("res.status :>> ", res.status));
-    //   };
     // }
 
     setIsLoading(false);
