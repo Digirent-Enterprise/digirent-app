@@ -1,5 +1,4 @@
-import { Link, useLocation } from "react-router-dom";
-// import { categoryBanner } from "../../../utils/constants/helper.constant";
+import { useLocation } from "react-router-dom";
 import { useEffect, useMemo, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import ReactPaginate from "react-paginate";
@@ -57,7 +56,7 @@ const ProductListingCategory = () => {
         <div className="gap-5">
           <div className="flex flex-col gap-5">
             <div className="flex flex-col gap-5">
-              <div className="w-full flex justify-center">
+              <div className="flex justify-center w-full">
                 <CategoryBannerLayout categoryData={categoryData} />
               </div>
               <div className="w-[97.5%] flex justify-end">
@@ -69,18 +68,17 @@ const ProductListingCategory = () => {
             </div>
           </div>
           <div className="grid grid-cols-3 pb-10 mx-auto lg:py-12 lg:px-8">
-            <div className="col-span-5 gap-24 w-full">
-              <div className=" border-black grid justify-center items-center pr-8 grid-cols-1 gap-y-10 sm:grid-cols-2 md:grid-cols-3 gap-x-6 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
+            <div className="w-full col-span-5 gap-24">
+              <div className="grid items-center justify-center grid-cols-1 pr-8 border-black gap-y-10 sm:grid-cols-2 md:grid-cols-3 gap-x-6 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
                 {currentItems.map((product: IProduct) => (
-                  <Link to={`/product/${product._id}`} key={product._id}>
-                    <ProductCard
-                      key={product._id}
-                      name={product.name}
-                      image={product.images[0]}
-                      rentalCost={product.rentalCost}
-                      rentalCostType={product.rentalCostType}
-                    />
-                  </Link>
+                  <ProductCard
+                    id={product._id}
+                    key={product._id}
+                    name={product.name}
+                    image={product.images[0]}
+                    rentalCost={product.rentalCost}
+                    rentalCostType={product.rentalCostType}
+                  />
                 ))}
               </div>
             </div>

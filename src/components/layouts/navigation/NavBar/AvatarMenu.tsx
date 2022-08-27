@@ -52,25 +52,25 @@ const AvatarMenu = () => {
             minW={0}
             p="2"
           >
-            {!currentUser.avatar ? (
+            {!currentUser.profileImage ? (
               <Avatar
                 size="sm"
                 src={window.location.origin + IMAGES.defaultAvatar}
               />
             ) : (
-              <Avatar size="sm" src={currentUser.avatar} />
+              <Avatar size="sm" src={currentUser.profileImage} />
             )}
           </MenuButton>
           <MenuList alignItems="center">
             <br />
             <Center>
-              {!currentUser.avatar ? (
+              {!currentUser.profileImage ? (
                 <Avatar
                   size="2xl"
                   src={window.location.origin + IMAGES.defaultAvatar}
                 />
               ) : (
-                <Avatar size="2xl" src={currentUser.avatar} />
+                <Avatar size="2xl" src={currentUser.profileImage} />
               )}
             </Center>
             <br />
