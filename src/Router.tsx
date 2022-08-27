@@ -175,6 +175,7 @@ const AppRouter = () => {
           }
         />
         {/* Product management */}
+
         <Route
           path="admin/products"
           element={

@@ -5,6 +5,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { useForm } from "react-hook-form";
 import { useDropzone } from "react-dropzone";
 // import * as yup from "yup";
+import qs from "qs";
+
 import {
   FormControl,
   FormLabel,
@@ -16,7 +18,6 @@ import {
   Select,
   Textarea,
 } from "@chakra-ui/react";
-import qs from "qs";
 import { toast } from "react-toastify";
 import { customAxios } from "../../../http-common";
 import DefaultLayout from "../DefaultAdminLayout";
