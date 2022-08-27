@@ -7,26 +7,51 @@ import {
   AccordionIcon,
   Box,
 } from "@chakra-ui/react";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import dayjs from "dayjs";
+import { setTransaction } from "../../../../store/actions/transaction.action";
+import { getCurrentUserSelector } from "../../../../store/selectors/user.selector";
+import { IProduct } from "../../../../store/types/product.types";
 
 interface BookingBoxProps {
   price: number;
-  borrow: Date;
-  returnDate: Date | undefined;
   rentalCost: number;
   rentalCostType: string;
   startDate: Date;
   endDate: Date;
+  productData: IProduct;
 }
 const BookingBox: React.FC<BookingBoxProps> = ({
   price,
-  borrow,
-  returnDate,
   rentalCost,
   startDate,
   endDate,
   rentalCostType = "day",
+  productData,
 }) => {
   const [totalPrice, setTotalPrice] = useState(0);
+  const navigate = useNavigate();
+  const userData = useSelector(getCurrentUserSelector);
+  const dispatch = useDispatch();
+
+  const handleRent = () => {
+    dispatch(
+      setTransaction({
+        productId: productData,
+        userEmail: userData.email,
+        rentalCost: totalPrice,
+        deposit: 0,
+        status: "pending",
+        latePenalty: 0,
+        currency: "$",
+        from: startDate,
+        to: endDate,
+      }),
+    );
+    navigate(`/checkout/${productData._id}`);
+  };
+
   useEffect(() => {
     if (price) {
       const diff: number = Math.abs(startDate.getTime() - endDate.getTime());
@@ -36,14 +61,7 @@ const BookingBox: React.FC<BookingBoxProps> = ({
           : 1;
       setTotalPrice(price * numDateDiff);
     }
-  }, [borrow, returnDate]);
-  const formatDate = (date: any) => {
-    const d = new Date(date);
-    function pad(s: any) {
-      return s < 10 ? `0${s}` : s;
-    }
-    return [pad(d.getDate()), pad(d.getMonth() + 1), d.getFullYear()].join("/");
-  };
+  }, [startDate, endDate]);
   return (
     <div className="flex flex-col">
       <div className=" w-[300px] rounded-3xl bg-white flex flex-col drop-shadow-[0px_10px_10px_rgba(0,0,0,0.25)]">
@@ -56,17 +74,20 @@ const BookingBox: React.FC<BookingBoxProps> = ({
             <div>
               <b>Borrow Date:</b>
             </div>
-            <div>{formatDate(borrow)}</div>
+            <div>{dayjs(startDate).format("DD/MM/YYYY")}</div>
           </div>
           <div className="bg-white w-[50%] h-[60px] flex flex-col rounded-r-xl text-center justify-center border-[1px] border-black">
             <div>
               <b>Return Date:</b>
             </div>
-            <div>{formatDate(returnDate)}</div>
+            <div>{dayjs(endDate).format("DD/MM/YYYY")}</div>
           </div>
         </div>
         <div className="flex justify-center mt-7">
-          <button className="bg-[#1010AE] w-[90%] h-[50px] rounded-xl hover:scale-[1.02] text-white text-lg">
+          <button
+            onClick={handleRent}
+            className="bg-[#1010AE] w-[90%] h-[50px] rounded-xl hover:scale-[1.02] text-white text-lg"
+          >
             Rent
           </button>
         </div>

@@ -1,7 +1,9 @@
 import {
+  GET_TRANSACTION,
   FETCH_TRANSACTIONS_ERROR,
   GET_TRANSACTIONS,
   SET_TRANSACTION_LOADING,
+  SET_TRANSACTION,
   SET_TRANSACTIONS,
   SET_TRANSACTION_BY_ID,
   GET_TRANSACTION_BY_ID,
@@ -30,6 +32,22 @@ export const setTransactionByID = (payload: ITransaction) => {
       transaction: payload,
       error: null,
     },
+  };
+};
+
+export const setTransaction = (payload: ITransaction) => {
+  return {
+    type: SET_TRANSACTION,
+    payload: {
+      transaction: payload,
+      error: null,
+    },
+  };
+};
+
+export const getTransaction = () => {
+  return {
+    type: GET_TRANSACTION,
   };
 };
 
