@@ -2,6 +2,7 @@ import {
   SET_TRANSACTION_LOADING,
   SET_TRANSACTIONS,
   SET_TRANSACTION_BY_ID,
+  SET_TRANSACTION,
 } from "../types/action.types";
 
 import {
@@ -49,6 +50,12 @@ const TransactionReducer = (
         ...state,
         loading: action.payload.loading!,
       };
+    case SET_TRANSACTION:
+      return {
+        ...state,
+        transaction: action.payload.transaction!,
+      };
+
     default:
       return state;
   }
