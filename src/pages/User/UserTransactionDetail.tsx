@@ -4,7 +4,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { AiOutlineArrowLeft } from "react-icons/ai";
 import dayjs from "dayjs";
 import DefaultLayout from "../DefaultLayout";
-import { IProduct } from "../../store/types/product.types";
 import { getCurrentUserSelector } from "../../store/selectors/user.selector";
 import { getTransactionByIdSelector } from "../../store/selectors/transaction.selector";
 import { getTransactionByID } from "../../store/actions/transaction.action";
@@ -25,7 +24,7 @@ const UserTransactionDetails = () => {
     }
   }, []);
 
-  const product = transaction.productId as IProduct;
+  const product = transaction.productId;
 
   const steps = ["placed", "pending", "paid", "shipped"];
 

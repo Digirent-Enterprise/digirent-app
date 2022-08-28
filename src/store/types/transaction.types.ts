@@ -3,7 +3,7 @@ import { IProduct } from "./product.types";
 
 export interface ITransaction {
   _id?: string;
-  productId: IProduct | string;
+  productId: IProduct;
   userEmail: string;
   rentalCost: number;
   deposit: number;
