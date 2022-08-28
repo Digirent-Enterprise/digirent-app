@@ -24,7 +24,6 @@ const fetchTransactionByUserEmail = () =>
     `${API_BASE_URL}/v1/api/transaction/user-transaction`,
   );
 
-
 const fetchTransactionById = (_id: string) =>
   customAxios().get<ITransaction>(
     `${API_BASE_URL}/v1/api/transaction/transaction-detail?id=${_id}`,

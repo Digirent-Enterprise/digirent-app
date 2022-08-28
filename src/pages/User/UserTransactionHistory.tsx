@@ -27,8 +27,6 @@ const UserTransactionHistory = () => {
     dispatch(getTransactionByUserEmail());
   }, []);
 
-  console.log("transaction", transactions);
-
   return (
     <DefaultLayout>
       <Helmet
