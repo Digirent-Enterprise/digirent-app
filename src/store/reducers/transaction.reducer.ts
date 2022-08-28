@@ -3,6 +3,7 @@ import {
   SET_TRANSACTIONS,
   SET_TRANSACTION_BY_ID,
   SET_TRANSACTION,
+  SET_TRANSACTION_BY_USER_EMAIL,
 } from "../types/action.types";
 
 import {
@@ -44,6 +45,11 @@ const TransactionReducer = (
       return {
         ...state,
         transaction: action.payload.transaction!,
+      };
+    case SET_TRANSACTION_BY_USER_EMAIL:
+      return {
+        ...state,
+        transactions: action.payload.transactions!,
       };
     case SET_TRANSACTION_LOADING:
       return {

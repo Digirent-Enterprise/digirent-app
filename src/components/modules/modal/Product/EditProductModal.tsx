@@ -19,32 +19,28 @@ interface EditProductModalProps {
 }
 const inputs = [
   {
-    label: "Transaction ID",
-    placeHolder: "New Transaction ID",
+    label: "Product Name",
+    placeHolder: "New Product Name",
   },
   {
-    label: "User Email",
-    placeHolder: "New User Email",
+    label: "Product Serial",
+    placeHolder: "New Product Serial",
   },
   {
-    label: "Total Rental",
-    placeHolder: "New Total Rental",
+    label: "Brand",
+    placeHolder: "New Brand",
   },
   {
-    label: "Borrowed Date",
-    placeHolder: "Set new Borrowed Date",
+    label: "Category",
+    placeHolder: "Set new Category",
   },
   {
-    label: "Return Date",
-    placeHolder: "New Return Date",
+    label: "Description",
+    placeHolder: "New Description",
   },
   {
     label: "Status",
     placeHolder: "New Status",
-  },
-  {
-    label: "Product ID",
-    placeHolder: "New Product ID",
   },
 ];
 const EditProductModal = ({ isOpen, onClose }: EditProductModalProps) => {

@@ -31,3 +31,9 @@ export const getTransactionErrorSelector = createSelector(
   getTransactionError,
   (error) => error,
 );
+
+const getTransactionByUserEmail = (state: AppState) => state.transaction.transactions;
+export const getTransactionByUserEmailSelector = createSelector(
+  getTransactionByUserEmail,
+  (error) => error,
+)

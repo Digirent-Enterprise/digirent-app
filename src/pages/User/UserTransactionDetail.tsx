@@ -27,7 +27,7 @@ const UserTransactionDetails = () => {
 
   const product = transaction.productId as IProduct;
 
-  const steps = ["placed", "pending", "shipped", "paid"];
+  const steps = ["placed", "pending", "paid", "shipped"];
 
   return (
     <DefaultLayout>
@@ -155,7 +155,7 @@ const UserTransactionDetails = () => {
                           "text-center",
                         )}
                       >
-                        Shipped
+                        Paid
                       </div>
                       <div
                         className={classNames(
@@ -165,7 +165,7 @@ const UserTransactionDetails = () => {
                           "text-right",
                         )}
                       >
-                        Paid
+                        Shipped
                       </div>
                     </div>
                   </div>
