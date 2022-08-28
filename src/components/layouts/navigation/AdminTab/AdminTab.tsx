@@ -6,23 +6,32 @@ const AdminTab = () => {
       <div className="flex justify-center ">
         <ul className="flex flex-wrap text-sm font-medium text-center text-gray-500 dark:text-gray-400">
           <li className="mr-6">
-            <a className="inline-block p-4 w-full bg-white" href="/admin">
+            <a
+              className="inline-block p-4 w-full bg-white text-black hover:text-blue-100 link"
+              href="/admin"
+            >
               General
             </a>
           </li>
           <li className="mr-6">
-            <a className="inline-block p-4 w-full bg-white" href="/admin/chat">
+            <a
+              className="inline-block p-4 w-full bg-white text-black hover:text-blue-100 link"
+              href="/admin/chat"
+            >
               Chat
             </a>
           </li>
           <li className="mr-6">
-            <a className="inline-block p-4 w-full bg-white" href="/admin/users">
+            <a
+              className="inline-block p-4 w-full bg-white text-black hover:text-blue-100 link"
+              href="/admin/users"
+            >
               Users
             </a>
           </li>
           <li className="mr-6">
             <a
-              className="inline-block p-4 w-full bg-white"
+              className="inline-block p-4 w-full bg-white text-black hover:text-blue-100 link"
               href="/admin/products"
             >
               Products
@@ -30,7 +39,7 @@ const AdminTab = () => {
           </li>
           <li className="mr-6">
             <a
-              className="inline-block p-4 w-full bg-white"
+              className="inline-block p-4 w-full bg-white text-black hover:text-blue-100 link"
               href="/admin/transactions"
             >
               Transactions
@@ -38,7 +47,7 @@ const AdminTab = () => {
           </li>
           <li className="mr-6">
             <a
-              className="inline-block p-4 w-full bg-white"
+              className="inline-block p-4 w-full bg-white text-black hover:text-blue-100 link"
               href="/admin/add-product"
             >
               Add Product
@@ -50,3 +59,4 @@ const AdminTab = () => {
   );
 };
 export default AdminTab;
+
