@@ -12,7 +12,9 @@ import {
 import { ITransaction } from "../types/transaction.types";
 
 const fetchTransactions = () =>
-  customAxios().get<ITransaction[]>(`${API_BASE_URL}/v1/api/transaction`);
+  customAxios().get<ITransaction[]>(
+    `${API_BASE_URL}/v1/api/transaction/user-transaction`,
+  );
 
 const fetchTransactionById = (_id: string) =>
   customAxios().get<ITransaction>(
