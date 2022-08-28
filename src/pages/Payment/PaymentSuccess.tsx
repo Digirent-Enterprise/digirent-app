@@ -1,5 +1,4 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-/* eslint-disable @typescript-eslint/naming-convention */
 import { useEffect, useState } from "react";
 import qs from "qs";
 import { toast } from "react-toastify";
@@ -7,8 +6,8 @@ import { customAxios } from "../../http-common";
 
 const PaymentSuccess = () => {
   const queryParams = new URLSearchParams(window.location.search);
-  const payment_intent = queryParams.get("payment_intent");
-  const payment_intent_client_secret = queryParams.get(
+  const paymentIntent = queryParams.get("payment_intent");
+  const paymentIntentClientSecret = queryParams.get(
     "payment_intent_client_secret",
   );
   const [newTrans, setNewTrans] = useState({});
@@ -19,7 +18,7 @@ const PaymentSuccess = () => {
       "transaction/update-transaction",
       qs.stringify({
         status: "paid",
-        intent: payment_intent_client_secret,
+        intent: paymentIntent,
       }),
     );
   };
@@ -27,14 +26,14 @@ const PaymentSuccess = () => {
   const fetchTransaction = async () => {
     return customAxios().get("transaction/get-transaction-by-intent", {
       params: {
-        intent: payment_intent_client_secret,
+        intent: paymentIntentClientSecret,
       },
     });
   };
 
   const fetchIntent = async () => {
     const response = await customAxios().get("payment-intent", {
-      params: { payment_intent },
+      params: { paymentIntent },
     });
     if (response && response.data) {
       setIntent(response.data);
