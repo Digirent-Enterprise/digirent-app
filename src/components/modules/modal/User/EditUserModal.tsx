@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import {
   Modal,
   ModalOverlay,
@@ -50,7 +50,7 @@ const EditUserModal = ({ isOpen, onClose }: EditUserModalProps) => {
       />
 
       <ModalContent>
-        <ModalHeader>Edit </ModalHeader>
+        <ModalHeader>Edit User</ModalHeader>
         <ul>
           {inputs.map((input) => (
             <div>
