@@ -1,4 +1,6 @@
 import { useDisclosure } from "@chakra-ui/hooks";
+import { useMemo } from "react";
+import { useSelector } from "react-redux";
 import {
   DeleteProductModal,
   DeleteTransactionModal,
@@ -6,7 +8,9 @@ import {
   EditProductModal,
   EditTransactionModal,
   EditUserModal,
+  InquiryModal,
 } from "../../../components";
+import { getCurrentUserSelector } from "../../../store/selectors/user.selector";
 
 interface HandleProps {
   pageType: string;
@@ -67,5 +71,21 @@ export const ClickDelete = ({ pageType }: HandleProps) => {
         <DeleteTransactionModal isOpen={isDeleteOpen} onClose={onDeleteClose} />
       )}
     </div>
+  );
+};
+
+export const ResponseToInquiryAction = ({ rowData }: any) => {
+  const { isOpen: modalOpen, onClose, onOpen } = useDisclosure();
+  const currentUser = useSelector(getCurrentUserSelector);
+  const currentUserData = useMemo(() => currentUser, currentUser);
+
+  return (
+    <InquiryModal
+      isOpen={modalOpen}
+      onClose={onClose}
+      onOpen={onOpen}
+      currentUserData={currentUserData}
+      rowData={rowData.values}
+    />
   );
 };

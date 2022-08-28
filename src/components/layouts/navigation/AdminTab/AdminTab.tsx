@@ -48,6 +48,14 @@ const AdminTab = () => {
           <li className="mr-6">
             <a
               className="inline-block p-4 w-full bg-white text-black hover:text-blue-100 link"
+              href="/admin/inquiries"
+            >
+              Customer Inquiries
+            </a>
+          </li>
+          <li className="mr-6">
+            <a
+              className="text-black hover:text-blue-100 link"
               href="/admin/add-product"
             >
               Add Product
@@ -59,4 +67,3 @@ const AdminTab = () => {
   );
 };
 export default AdminTab;
-

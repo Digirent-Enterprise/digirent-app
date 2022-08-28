@@ -9,6 +9,7 @@ import DeleteUserModal from "./modal/User/DeleteUserModal";
 import EditUserModal from "./modal/User/EditUserModal";
 import ProductSummaryDisplay from "./productSummary/ProductSummaryDisplay";
 import StaticGoogleMap from "./staticGoogleMap/StaticGoogleMap";
+import InquiryModal from "./modal/Inquiry/InquiryModal";
 
 export {
   DeleteUserModal,
@@ -17,6 +18,7 @@ export {
   EditUserModal,
   EditProductModal,
   EditTransactionModal,
+  InquiryModal,
   AuthFormGrid,
   LanguageSwitcher,
   GalleryDisplay,

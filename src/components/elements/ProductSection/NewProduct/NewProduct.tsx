@@ -36,7 +36,7 @@ const ProductItem = (productItemProps: NewProductProps) => {
 };
 
 const NewProduct = () => {
-  const {t} = useTranslation();
+  const { t } = useTranslation();
   const [newProducts, setNewProducts] = useState<IProduct[]>([]);
   const products = useSelector(getAllProductsSelector);
   useEffect(() => {
