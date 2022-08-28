@@ -14,13 +14,14 @@ const StripePayment = ({ transactionData }: any) => {
 
   useEffect(() => {
     // Create PaymentIntent as soon as the page loads
-    customAxios("application/json")
-      .post(`${API_BASE_URL}/create-payment-intent`, { transaction })
-      .then((res) => {
-        console.log("res", res);
-        setClientSecret(res.data.clientSecret);
-        localStorage.setItem("currentPi", clientSecret);
-      });
+    if (transaction.rentalCost) {
+      customAxios("application/json")
+          .post(`${API_BASE_URL}/create-payment-intent`, {transaction})
+          .then((res) => {
+            setClientSecret(res.data.clientSecret);
+            localStorage.setItem("currentPi", res.data.clientSecret);
+          });
+    }
   }, []);
 
   const options = {
@@ -31,7 +32,7 @@ const StripePayment = ({ transactionData }: any) => {
     <div>
       {clientSecret && (
         <Elements options={options} stripe={stripePromise}>
-          <StripeCheckoutForm transactionData={transaction} />
+          <StripeCheckoutForm transactionData={transactionData} />
         </Elements>
       )}
     </div>

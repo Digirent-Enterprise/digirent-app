@@ -8,14 +8,16 @@ import {
 import { toast } from "react-toastify";
 import "./Stripe.css";
 import { customAxios } from "../../../http-common";
-import { log } from "util";
+import {useSelector} from "react-redux";
+import {getProductByIDSelector} from "../../../store/selectors/product.selector";
+import qs from "qs";
+import {getCurrentUserSelector} from "../../../store/selectors/user.selector";
 
-const StripeCheckoutForm = ({ transaction }: any) => {
+const StripeCheckoutForm = ({transactionData}: any) => {
   const stripe = useStripe();
   const elements = useElements();
-
+  const user = useSelector(getCurrentUserSelector);
   const [isLoading, setIsLoading] = useState(false);
-
   useEffect(() => {
     if (!stripe) {
       return;
@@ -62,6 +64,12 @@ const StripeCheckoutForm = ({ transaction }: any) => {
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    const intent = localStorage.getItem('currentPi');
+    await customAxios().post(
+        "transaction/create-transaction",
+        qs.stringify({...transactionData, productId: transactionData.productId._id,
+          intent, userEmail: user.email})
+    );
 
     if (!stripe || !elements) {
       toast.warning(
@@ -81,27 +89,11 @@ const StripeCheckoutForm = ({ transaction }: any) => {
         return_url: "http://localhost:3000/payment-success",
       },
     });
-    // This point will only be reached if there is an immediate error when
-    // confirming the payment. Otherwise, your customer will be redirected to
-    // your `return_url`. For some payment methods like iDEAL, your customer will
-    // be redirected to an intermediate site first to authorize the payment, then
-    // redirected to the `return_url`.
-    // if (
-    //   stripeError.type === "card_error" ||
-    //   stripeError.type === "validation_error"
-    // ) {
-    //   toast.error(`${stripeError.message}`, {
-    //     theme: "dark",
-    //   });
-    // } else {
-    //   toast.error("An unexpected error occurred.", {
-    //     theme: "dark",
-    //   });
-    // }
-    //
-    // if (!stripeError) {
-    // }
-
+    // // This point will only be reached if there is an immediate error when
+    // // confirming the payment. Otherwise, your customer will be redirected to
+    // // your `return_url`. For some payment methods like iDEAL, your customer will
+    // // be redirected to an intermediate site first to authorize the payment, then
+    // // redirected to the `return_url`.
     setIsLoading(false);
   };
 
