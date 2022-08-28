@@ -19,28 +19,32 @@ interface EditTransactionModalProps {
 }
 const inputs = [
   {
+    label: "Transaction ID",
+    placeHolder: "New Product ID",
+  },
+  {
+    label: "User Email",
+    placeHolder: "New User Email",
+  },
+  {
+    label: "Total Cost",
+    placeHolder: "New Total Cost",
+  },
+  {
+    label: "Borrowed Dated",
+    placeHolder: "Set new Borrowed Dated",
+  },
+  {
+    label: "Return Date",
+    placeHolder: "New Return Date",
+  },
+  {
+    label: "Status",
+    placeHolder: "New Status",
+  },
+  {
     label: "Product ID",
     placeHolder: "New Product ID",
-  },
-  {
-    label: "Product Name",
-    placeHolder: "New Product ID",
-  },
-  {
-    label: "Product Serial",
-    placeHolder: "New Product Serial",
-  },
-  {
-    label: "Brand",
-    placeHolder: "Set new Brand",
-  },
-  {
-    label: "Category",
-    placeHolder: "New Category",
-  },
-  {
-    label: "Description",
-    placeHolder: "New Description",
   },
 ];
 const EditTransactionModal = ({
