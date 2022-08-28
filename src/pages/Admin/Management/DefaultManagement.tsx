@@ -85,7 +85,6 @@ const DefaultManagement = ({
     setSortBy([temp]);
   }
 
-
   const typeOfSort = (e: any) => {
     let tempColumn;
     if (e === "0") {

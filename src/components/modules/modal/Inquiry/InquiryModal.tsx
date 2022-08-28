@@ -32,7 +32,7 @@ const InquiryModal = ({ onClose, onOpen, isOpen, rowData }: any) => {
       to_name: rowData.email,
       to_email: rowData.email,
     };
-    
+
     emailJsService(preparedData).then((res) => {
       if (res.status === 200) {
         toast.success("Email sent successfully!", {

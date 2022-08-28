@@ -67,4 +67,3 @@ const AdminTab = () => {
   );
 };
 export default AdminTab;
-
