@@ -9,7 +9,6 @@ import {
   selectTransactionLoading,
 } from "../../store/selectors/transaction.selector";
 import { getTransactionByUserEmail } from "../../store/actions/transaction.action";
-import { IProduct } from "../../store/types/product.types";
 import { ITransaction } from "../../store/types/transaction.types";
 import Helmet from "../../Helmet";
 
@@ -64,14 +63,14 @@ const UserTransactionHistory = () => {
                   >
                     <div className="overflow-hidden bg-[#E5E7EB] rounded-md aspect-w-1 aspect-h-1 group-hover:opacity-75">
                       <img
-                        src={(transaction.productId as IProduct).images[0]}
+                        src=""
                         alt="product"
                         className="object-cover object-center"
                       />
                     </div>
                     <h3 className="mt-4 text-sm text-[#6B7280]">
                       <span className="absolute inset-0" />
-                      {(transaction.productId as IProduct).name}
+                      {transaction.productId.name}
                     </h3>
                     <p className="mt-1 text-lg font-medium">
                       {transaction.status === "shipped" ? (
