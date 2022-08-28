@@ -1,3 +1,4 @@
+import React from "react";
 import {
   Modal,
   ModalOverlay,
@@ -7,13 +8,37 @@ import {
   ModalCloseButton,
   Button,
   ModalHeader,
+  FormControl,
+  FormLabel,
+  Input,
 } from "@chakra-ui/react";
 
 interface EditUserModalProps {
   isOpen: boolean;
   onClose: () => void;
 }
-
+const inputs = [
+  {
+    label: "Username",
+    placeHolder: "New username",
+  },
+  {
+    label: "Email",
+    placeHolder: "New email",
+  },
+  {
+    label: "Phone Number",
+    placeHolder: "New phone number",
+  },
+  {
+    label: "Role",
+    placeHolder: "Set new role",
+  },
+  {
+    label: "Location",
+    placeHolder: "New location",
+  },
+];
 const EditUserModal = ({ isOpen, onClose }: EditUserModalProps) => {
   return (
     <Modal isOpen={isOpen} onClose={onClose} size="xl">
@@ -23,11 +48,27 @@ const EditUserModal = ({ isOpen, onClose }: EditUserModalProps) => {
         // filter="opacity(0.5)"
         filter="blur(20px)"
       />
+
       <ModalContent>
         <ModalHeader>Edit User</ModalHeader>
-        <ModalCloseButton />
-        <ModalBody />
-        <h1>Form</h1>
+        <ul>
+          {inputs.map((input) => (
+            <div>
+              <ModalCloseButton />
+              <ModalBody />
+              <FormControl py="5px" px="20px">
+                <FormLabel className="pb-2">{input.label}</FormLabel>
+                <Input
+                  placeholder={input.placeHolder}
+                  _placeholder={{ color: "#777" }}
+                  type="text"
+                  width="525px"
+                  className="align-center justify-center"
+                />
+              </FormControl>
+            </div>
+          ))}
+        </ul>
         <ModalFooter>
           <Button colorScheme="blue" mr={3} onClick={onClose}>
             Edit
