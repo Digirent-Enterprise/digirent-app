@@ -1,10 +1,15 @@
 import { all, call, put, takeLatest } from "redux-saga/effects";
-import { GET_TRANSACTION_BY_ID, GET_TRANSACTIONS } from "../types/action.types";
+import {
+  GET_TRANSACTION_BY_ID,
+  GET_TRANSACTIONS,
+  GET_TRANSACTION_BY_USER_EMAIL,
+} from "../types/action.types";
 import { customAxios } from "../../http-common";
 import { API_BASE_URL } from "../../utils/constants/api.constants";
 import {
   fetchTransactionsError,
   setTransactionByID,
+  setTransactionByUserEmail,
   setTransactionLoading,
   setTransactions,
 } from "../actions/transaction.action";
@@ -13,6 +18,12 @@ import { ITransaction } from "../types/transaction.types";
 
 const fetchTransactions = () =>
   customAxios().get<ITransaction[]>(`${API_BASE_URL}/v1/api/transaction`);
+
+const fetchTransactionByUserEmail = () =>
+  customAxios().get<ITransaction[]>(
+    `${API_BASE_URL}/v1/api/transaction/user-transaction`,
+  );
+
 
 const fetchTransactionById = (_id: string) =>
   customAxios().get<ITransaction>(
@@ -27,6 +38,20 @@ function* getTransactions(): any {
     yield put(setTransactionLoading("success"));
   } catch (e: any) {
     yield put(setTransactionLoading("fail"));
+    yield put(
+      fetchTransactionsError({
+        error: e.message,
+      }),
+    );
+  }
+}
+
+function* getTransactionByUserEmail(): any {
+  try {
+    const response = yield call(fetchTransactionByUserEmail);
+    console.log(response, "response");
+    yield put(setTransactionByUserEmail(response.data));
+  } catch (e: any) {
     yield put(
       fetchTransactionsError({
         error: e.message,
@@ -54,6 +79,7 @@ function* getTransactionById(action: {
 function* transactionSaga() {
   yield all([
     takeLatest(GET_TRANSACTIONS, getTransactions),
+    takeLatest(GET_TRANSACTION_BY_USER_EMAIL, getTransactionByUserEmail),
     takeLatest(GET_TRANSACTION_BY_ID, getTransactionById),
   ]);
 }
