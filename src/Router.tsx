@@ -18,7 +18,6 @@ import {
   EmailSentPage,
   ProductDetailsPage,
   CustomerInquiryManagement,
-  UserChangePassword,
 } from "./pages";
 import PrivateRoute from "./components/PrivateRoute";
 

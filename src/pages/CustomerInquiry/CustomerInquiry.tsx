@@ -69,9 +69,12 @@ const CustomerInquiry = () => {
         })
         .catch((error: any) => {
           setLoading(false);
-          toast.warning(`${error.response.data} error, failed to login!`, {
-            theme: "dark",
-          });
+          toast.warning(
+            `${error.response.data} error, failed to create your inquiry!`,
+            {
+              theme: "dark",
+            },
+          );
         })
         .finally(() => {
           navigate("/");

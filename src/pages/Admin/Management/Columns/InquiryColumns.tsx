@@ -1,6 +1,6 @@
 import { Column } from "react-table";
 
-import { ClickDelete, ClickEdit } from "../HandleActionClick";
+import { ResponseToInquiryAction } from "../HandleActionClick";
 
 export const InquiryColumns: Array<Column> = [
   {
@@ -30,10 +30,9 @@ export const InquiryColumns: Array<Column> = [
 
   {
     Header: "Action",
-    accessor: () => (
+    Cell: ({ row }) => (
       <div>
-        <ClickEdit pageType="product" />
-        <ClickDelete pageType="product" />
+        <ResponseToInquiryAction rowData={row} />
       </div>
     ),
   },
