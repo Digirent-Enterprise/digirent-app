@@ -7,8 +7,9 @@ import {
 
 import { toast } from "react-toastify";
 import "./Stripe.css";
+import { customAxios } from "../../../http-common";
 
-const StripeCheckoutForm = () => {
+const StripeCheckoutForm = ({ transaction }: any) => {
   const stripe = useStripe();
   const elements = useElements();
 
@@ -72,15 +73,14 @@ const StripeCheckoutForm = () => {
     }
 
     setIsLoading(true);
-
+    // @ts-ignore
     const { error: stripeError } = await stripe.confirmPayment({
       elements,
       confirmParams: {
         // Make sure to change this to your payment completion page
-        return_url: "http://localhost:3000/checkout/complete",
+        return_url: "http://localhost:3000/",
       },
     });
-
     // This point will only be reached if there is an immediate error when
     // confirming the payment. Otherwise, your customer will be redirected to
     // your `return_url`. For some payment methods like iDEAL, your customer will
@@ -98,6 +98,14 @@ const StripeCheckoutForm = () => {
         theme: "dark",
       });
     }
+
+    // if (!stripeError) {
+    //   customAxios().post(
+    //       "transaction/create-transaction",
+    //       transaction,
+    //     ).then(res=>console.log("res.status :>> ", res.status));
+    //   };
+    // }
 
     setIsLoading(false);
   };

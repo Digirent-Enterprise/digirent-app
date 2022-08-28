@@ -1,6 +1,7 @@
 import { useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import { getAllProductsSelector } from "../../../../store/selectors/product.selector";
 import { IProduct } from "../../../../store/types/product.types";
 import { NewProductProps } from "./type";
@@ -35,6 +36,7 @@ const ProductItem = (productItemProps: NewProductProps) => {
 };
 
 const NewProduct = () => {
+  const {t} = useTranslation();
   const [newProducts, setNewProducts] = useState<IProduct[]>([]);
   const products = useSelector(getAllProductsSelector);
   useEffect(() => {
@@ -51,7 +53,7 @@ const NewProduct = () => {
         <span className="inline-block w-12 h-1 bg-[#b91c1c]" />
 
         <h2 className="mt-1 text-2xl font-extrabold tracking-wide uppercase lg:text-3xl">
-          New products
+          {t("newProduct")}
         </h2>
       </div>
 

@@ -5,9 +5,15 @@ import { useDispatch, useSelector } from "react-redux";
 import { useForm } from "react-hook-form";
 import { useDropzone } from "react-dropzone";
 // import * as yup from "yup";
+import qs from "qs";
+
 import {
+  Container,
   FormControl,
   FormLabel,
+  Stack,
+  Flex,
+  Box,
   Grid,
   GridItem,
   Input,
@@ -16,7 +22,6 @@ import {
   Select,
   Textarea,
 } from "@chakra-ui/react";
-import qs from "qs";
 import { toast } from "react-toastify";
 import { customAxios } from "../../../http-common";
 import DefaultLayout from "../DefaultAdminLayout";
@@ -54,7 +59,7 @@ const AddProduct = () => {
     fd.append("images", file);
     const response = await customAxios("multipart/form-data").post(
       "product/upload-single-image",
-      fd,
+      fd
     );
     setImages([...images, response.data.url]);
   };
@@ -72,8 +77,8 @@ const AddProduct = () => {
         acceptedFiles.map((image: any) =>
           Object.assign(image, {
             preview: image,
-          }),
-        ),
+          })
+        )
       );
     },
   });
@@ -97,7 +102,7 @@ const AddProduct = () => {
   const onSubmit = async (data: FormValues) => {
     const response = await customAxios().post(
       "product",
-      qs.stringify(Object.assign(data, { images })),
+      qs.stringify(Object.assign(data, { images }))
     );
     if (response.status === 200) {
       toast.success("Product is added successfully!", {
@@ -120,106 +125,129 @@ const AddProduct = () => {
   return (
     <DefaultLayout>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <div className="pb-10 mx-auto max-w-7xl lg:py-12 lg:px-8">
-          <Grid templateColumns="repeat(5, 1fr)" gap={5}>
-            <GridItem colSpan={2}>
-              <FormControl isRequired>
-                <FormLabel>Product Name</FormLabel>
-                <Input {...register("name")} type="text" name="name" />
-              </FormControl>
+        <Container maxW="7xl">
+          <Stack
+            align="center"
+            spacing={{ base: 8, md: 10 }}
+            py={{ base: 5, md: 7 }}
+            direction={{ base: "column", md: "row" }}
+          >
+            <Stack flex={1} spacing={{ base: 5, md: 10 }}>
+              <GridItem colSpan={2} className="px-4 ">
+                <FormControl isRequired>
+                  <FormLabel>Product Name</FormLabel>
+                  <Input {...register("name")} type="text" name="name" />
+                </FormControl>
 
-              <FormControl className="pb-5" isRequired>
-                <FormLabel>Category</FormLabel>
-                <Select
-                  {...register("category")}
-                  name="category"
-                  placeholder="Select category"
-                >
-                  {categoryData.map((category) => (
-                    <option value={category.name}>{category.name}</option>
-                  ))}
-                </Select>
-              </FormControl>
+                <FormControl className="pb-5" isRequired>
+                  <FormLabel>Category</FormLabel>
+                  <Select
+                    {...register("category")}
+                    name="category"
+                    placeholder="Select category"
+                  >
+                    {categoryData.map((category) => (
+                      <option value={category.name}>{category.name}</option>
+                    ))}
+                  </Select>
+                </FormControl>
 
-              <FormControl className="pb-5" isRequired>
-                <FormLabel>Brand</FormLabel>
-                <Input {...register("brand")} type="text" name="brand" />
-              </FormControl>
+                <FormControl className="pb-5" isRequired>
+                  <FormLabel>Brand</FormLabel>
+                  <Input {...register("brand")} type="text" name="brand" />
+                </FormControl>
 
-              <FormControl className="pb-5" isRequired>
-                <FormLabel>Product Description</FormLabel>
-                <Textarea {...register("description")} name="description" />
-              </FormControl>
-              <FormControl isRequired>
-                <FormLabel>Rental Cost</FormLabel>
-                <InputGroup>
-                  <Input
-                    {...register("rentalCost")}
-                    name="rentalCost"
-                    type="text"
-                  />
-                  <InputRightAddon>
-                    <Select
-                      variant="unstyled"
-                      {...register("rentalCostType")}
-                      placeholder="Select rent period"
+                <FormControl className="pb-5" isRequired>
+                  <FormLabel>Product Description</FormLabel>
+                  <Textarea {...register("description")} name="description" />
+                </FormControl>
+                <FormControl isRequired>
+                  <FormLabel>Rental Cost</FormLabel>
+                  <InputGroup>
+                    <Input
+                      {...register("rentalCost")}
+                      name="rentalCost"
+                      type="text"
+                    />
+                    <InputRightAddon>
+                      <Select
+                        variant="unstyled"
+                        {...register("rentalCostType")}
+                        placeholder="Select rent period"
+                      >
+                        <option>Day</option>
+                        <option>Month</option>
+                        <option>Year</option>
+                      </Select>
+                    </InputRightAddon>
+                  </InputGroup>
+                </FormControl>
+
+                <FormControl className="pb-5" isRequired>
+                  <FormLabel>Serial</FormLabel>
+                  <Input {...register("serial")} type="text" name="serial" />
+                </FormControl>
+              </GridItem>
+            </Stack>
+            <Flex
+              flex={1}
+              justify="center"
+              align="center"
+              position="relative"
+              w="full"
+            >
+              <Box
+                position="relative"
+                height="400px"
+                rounded="2xl"
+                width="full"
+                overflow="hidden"
+              >
+                <GridItem className="pb-5 px-4" colSpan={{ base: 6, sm: 3 }}>
+                  <FormControl className="min-w-4xl w-full">
+                    <FormLabel>Product Images</FormLabel>
+                    <div
+                      className="border-dashed border-4 text-center justify-center p-[20%] "
+                      {...getRootProps()}
                     >
-                      <option>Day</option>
-                      <option>Month</option>
-                      <option>Year</option>
-                    </Select>
-                  </InputRightAddon>
-                </InputGroup>
-              </FormControl>
+                      <input {...getInputProps()} />
+                      {isDragActive ? (
+                        <p>Drop the files here ...</p>
+                      ) : (
+                        <p>
+                          Drag 'n' drop some files here, or click to select
+                          files
+                        </p>
+                      )}
+                    </div>
+                  </FormControl>
+                  <aside className="flex flex-row">{thumbs}</aside>
 
-              <FormControl className="pb-5" isRequired>
-                <FormLabel>Serial</FormLabel>
-                <Input {...register("serial")} type="text" name="serial" />
-              </FormControl>
-            </GridItem>
-
-            <GridItem className="pb-5" colSpan={{ base: 6, sm: 3 }}>
-              <FormControl>
-                <FormLabel>Product Images</FormLabel>
-                <div
-                  className="border-dashed border-4 text-center justify-center p-[20%]"
-                  {...getRootProps()}
-                >
-                  <input {...getInputProps()} />
-                  {isDragActive ? (
-                    <p>Drop the files here ...</p>
-                  ) : (
-                    <p>
-                      Drag 'n' drop some files here, or click to select files
-                    </p>
-                  )}
-                </div>
-              </FormControl>
-              <aside className="flex flex-row">{thumbs}</aside>
-
-              <Grid templateColumns="repeat(4, 1fr)" gap={4}>
-                <GridItem colSpan={2}>
-                  <button
-                    className="w-full p-2 my-5 text-white bg-blue-200 rounded hover:bg-blue-100"
-                    type="submit"
-                    disabled={isLoading}
-                  >
-                    Add
-                  </button>
+                  <Grid templateColumns="repeat(4, 1fr)" gap={4}>
+                    <GridItem colSpan={2}>
+                      <button
+                        className="w-full p-2 my-5 text-white bg-blue-200 rounded hover:bg-blue-100"
+                        type="submit"
+                        disabled={isLoading}
+                      >
+                        Add
+                      </button>
+                    </GridItem>
+                    <GridItem colSpan={2}>
+                      <button
+                        className="w-full p-2 my-5 text-white bg-blue-200 rounded hover:bg-blue-100"
+                        type="reset"
+                        onClick={() => setImages([])}
+                      >
+                        Clear
+                      </button>
+                    </GridItem>
+                  </Grid>
                 </GridItem>
-                <GridItem colSpan={2}>
-                  <button
-                    className="w-full p-2 my-5 text-white bg-blue-200 rounded hover:bg-blue-100"
-                    type="reset"
-                    onClick={() => setImages([])}
-                  >
-                    Clear
-                  </button>
-                </GridItem>
-              </Grid>
-            </GridItem>
-          </Grid>
-        </div>
+              </Box>
+            </Flex>
+          </Stack>
+        </Container>
       </form>
     </DefaultLayout>
   );

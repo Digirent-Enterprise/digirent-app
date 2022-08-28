@@ -18,11 +18,11 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Navigation } from "swiper";
 
 interface GalleryProps {
-  firstImages?: string;
-  secondImages?: string;
-  thirdImages?: string;
-  fourthImages?: string;
-  fifthImages?: string;
+  firstImages: string;
+  secondImages: string;
+  thirdImages: string;
+  fourthImages: string;
+  fifthImages: string;
   images: string[];
 }
 interface ShowAllButtonProps {
@@ -33,9 +33,9 @@ const ShowAllButton = ({ images }: ShowAllButtonProps) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   return (
     <Box>
-      <div className="w-full h-full">
+      <div className="w-auto h-auto">
         <Button
-          className="rounded-md border-2 border-black bg-white bg-opacity-90 hover:scale-[1.02] text-[1rem] -mt-5 ml-20"
+          className="inline-block rounded-md border-2 border-black bg-white bg-opacity-90 hover:scale-[1.02] w-auto h-auto"
           onClick={onOpen}
         >
           Show all images
@@ -82,45 +82,49 @@ const Gallery = ({
   images,
 }: GalleryProps) => {
   return (
-    <div className="gallery flex justify-center w-full h-full items-center">
+    <div className="flex justify-center w-full h-full items-center">
       <div className="w-4/5 gap-2 lg:flex h-auto max-h-[500px]">
-        <div className="relative flex items-center lg:w-2/4 sm:w-auto">
+        <div className="relative flex items-center lg:w-2/4">
           <img
-            className="w-full h-full lg:rounded-l-2xl"
+            className="w-full h-full lg:rounded-l-2xl shadow-[0px_0px_5px_2px_rgba(0,0,0,0.1)]"
             src={firstImages}
             alt="firstImage"
           />
-          <div className="absolute top-[85%] left-[77%] lg:hidden w-[20%]">
+          <div className="absolute bottom-2 right-2 lg:hidden w-auto">
             <ShowAllButton images={images} />
           </div>
         </div>
         <div className="w-1/4 hidden lg:flex lg:flex-col gap-2">
           <div className="h-3/6">
             <img
-              className="w-full h-full"
+              className="w-full h-full shadow-[0px_0px_5px_2px_rgba(0,0,0,0.1)]"
               src={secondImages}
               alt="secondImage"
             />
           </div>
           <div className="h-3/6">
-            <img className="w-full h-full" src={thirdImages} alt="thirdImage" />
+            <img
+              className="w-full h-full shadow-[0px_0px_5px_2px_rgba(0,0,0,0.1)]"
+              src={thirdImages}
+              alt="thirdImage"
+            />
           </div>
         </div>
         <div className="w-1/4 hidden lg:flex lg:flex-col gap-2">
           <div className="h-3/6 rounded-tr-2xl">
             <img
-              className="w-full h-full rounded-tr-2xl "
+              className="w-full h-full rounded-tr-2xl shadow-[0px_0px_5px_2px_rgba(0,0,0,0.1)]"
               src={fourthImages}
               alt="fourthImage"
             />
           </div>
           <div className="relative flex h-3/6 w-full rounded-br-2xl">
             <img
-              className="w-full h-full rounded-br-2xl"
+              className="w-full h-full rounded-br-2xl shadow-[0px_0px_5px_2px_rgba(0,0,0,0.1)]"
               src={fifthImages}
               alt="fifthImage"
             />
-            <div className="absolute top-[77%] right-[45%] w-[40%]">
+            <div className="absolute bottom-2 right-2">
               <ShowAllButton images={images} />
             </div>
           </div>
