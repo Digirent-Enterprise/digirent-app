@@ -1,8 +1,7 @@
-import React from "react";
-import PaymentAccordion from "./PaymentAccordion";
+import dayjs from "dayjs";
+import { StripePayment } from "../../elements";
 
-const OrderSummaryContent = () => {
-  const today = `${new Date().toLocaleString()}`;
+const OrderSummaryContent = ({ transactionData }: any) => {
   return (
     <div className="container flex flex-col grow">
       <h5 className="pb-4 text-2xl">Order Summary</h5>
@@ -14,24 +13,27 @@ const OrderSummaryContent = () => {
                 <p className="text-xl">Product</p>
                 <div className="flex flex-row justify-between">
                   <div className="text-md justify-left">
-                    MacBoock Ultra Max Pro Superlight 2025
+                    {transactionData.productId.name}
                   </div>
-                  <span className="text-red-600">$20</span>
+                  <span className="text-red-600">
+                    $ {transactionData.rentalCost}
+                  </span>
                 </div>
               </div>
               <div className="flex flex-row justify-between">
                 <p className="text-xl">Date</p>
                 <div className="flex flex-row justify-between">
-                  <div className="text-md justify-right">{today}</div>
+                  <div className="text-md justify-right">
+                    {dayjs(transactionData.from).format("DD/MM/YYYY")} -{" "}
+                    {dayjs(transactionData.to).format("DD/MM/YYYY")}
+                  </div>
                   <div />
                 </div>
               </div>
-              <span className="h-0.5 w-full bg-gray" />
               <div>
                 <h2 className="text-2xl font-bold text-gray">Payment Method</h2>
               </div>
-              <PaymentAccordion />
-              <span className="h-0.5 w-full bg-gray" />
+              <StripePayment transactionData={transactionData} />
             </div>
           </div>
         </div>
