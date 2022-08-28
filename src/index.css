@@ -10,10 +10,10 @@ body,
 html {
   font-family: Roboto, Poppins, sans-serif;
   height: 100%;
-  /* width: 100%;
-  /*min-width: 100%;
+  width: 100%;
+  min-width: 100%;
   min-height: 100%;
-  overflow-x: hidden; */
+  overflow-x: hidden;
 }
 
 #root {
