@@ -70,16 +70,6 @@ const CheckoutPage = () => {
           className="flex flex-col justify-between"
         >
           <OrderSummaryContent transactionData={transactionData} />
-          <div className="flex flex-row justify-center float-down">
-            <Button
-              onClick={handleCheckout}
-              width="max-content"
-              colorScheme="red"
-              size="lg"
-            >
-              Confirm and Pay
-            </Button>
-          </div>
         </GridItem>
       </Grid>
     </DefaultLayout>

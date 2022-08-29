@@ -19,6 +19,7 @@ import {
   ProductDetailsPage,
   CustomerInquiryManagement,
 } from "./pages";
+import PaymentSuccess from "./pages/Payment/PaymentSuccess";
 import PrivateRoute from "./components/PrivateRoute";
 
 import {
@@ -33,28 +34,28 @@ import { getCurrentUserSelector } from "./store/selectors/user.selector";
 const Home = lazy(() => import("./pages/Home/Home"));
 const About = lazy(() => import("./pages/About/About"));
 const ContactUsPage = lazy(
-  () => import("./pages/CustomerInquiry/CustomerInquiry"),
+  () => import("./pages/CustomerInquiry/CustomerInquiry")
 );
 const ProductSearchPage = lazy(
-  () => import("./pages/Product/ProductSearchPage"),
+  () => import("./pages/Product/ProductSearchPage")
 );
 const AddProduct = lazy(() => import("./pages/Admin/AddProduct/AddProduct"));
 const CategoryPage = lazy(() => import("./pages/Category/CategoryPage"));
 const PrivacyPolicy = lazy(() => import("./pages/PrivacyPolicy/PrivacyPolicy"));
 const UserTransactionDetails = lazy(
-  () => import("./pages/User/UserTransactionDetail"),
+  () => import("./pages/User/UserTransactionDetail")
 );
 const UserTransactionHistory = lazy(
-  () => import("./pages/User/UserTransactionHistory"),
+  () => import("./pages/User/UserTransactionHistory")
 );
 const UserEdit = lazy(() => import("./pages/User/UserEdit"));
 const UserProfile = lazy(() => import("./pages/User/UserProfile"));
 const UserViewInfo = lazy(() => import("./pages/User/UserViewInfo"));
 const UserChangePassword = lazy(
-  () => import("./pages/User/UserChangePassword"),
+  () => import("./pages/User/UserChangePassword")
 );
 const UserFavoriteProduct = lazy(
-  () => import("./pages/User/UserFavoriteProduct"),
+  () => import("./pages/User/UserFavoriteProduct")
 );
 
 const AppRouter = () => {
@@ -80,6 +81,7 @@ const AppRouter = () => {
       <BackToTop />
       <Routes key={location.pathname} location={location}>
         <Route path="/" element={<Home />} />
+        <Route path="/payment-success" element={<PaymentSuccess />} />
         <Route path="about" element={<About />} />
         <Route path="login" element={<LoginPage />} />
         <Route path="register" element={<RegisterPage />} />

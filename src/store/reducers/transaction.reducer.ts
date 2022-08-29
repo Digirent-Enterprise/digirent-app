@@ -10,10 +10,11 @@ import {
   TransactionActions,
   TransactionState,
 } from "../types/transaction.types";
+import { initialProduct } from "./product.reducer";
 
 export const initialTransaction = {
   _id: "",
-  productId: "",
+  productId: initialProduct,
   userEmail: "",
   rentalCost: 0,
   deposit: 0,
