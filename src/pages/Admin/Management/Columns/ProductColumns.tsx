@@ -6,9 +6,7 @@ import { ClickDelete, ClickEdit } from "../HandleActionClick";
 export const ProductColumns: Array<Column> = [
   {
     Header: "Product ID",
-    accessor: (e: any) => {
-      return e._id.toUpperCase();
-    },
+    accessor: "_id",
   },
   {
     Header: "Product Name",
@@ -43,10 +41,10 @@ export const ProductColumns: Array<Column> = [
   },
   {
     Header: "Action",
-    accessor: () => (
+    Cell: ({ row }: any) => (
       <div>
-        <ClickEdit pageType="product" />
-        <ClickDelete pageType="product" />
+        <ClickEdit pageType="product" rowData={row} />
+        <ClickDelete pageType="product" rowData={row} />
       </div>
     ),
   },

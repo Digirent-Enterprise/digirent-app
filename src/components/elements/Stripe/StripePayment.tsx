@@ -16,11 +16,11 @@ const StripePayment = ({ transactionData }: any) => {
     // Create PaymentIntent as soon as the page loads
     if (transaction.rentalCost) {
       customAxios("application/json")
-          .post(`${API_BASE_URL}/create-payment-intent`, {transaction})
-          .then((res) => {
-            setClientSecret(res.data.clientSecret);
-            localStorage.setItem("currentPi", res.data.clientSecret);
-          });
+        .post(`${API_BASE_URL}/create-payment-intent`, { transaction })
+        .then((res) => {
+          setClientSecret(res.data.clientSecret);
+          localStorage.setItem("currentPi", res.data.clientSecret);
+        });
     }
   }, []);
 

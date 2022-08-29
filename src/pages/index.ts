@@ -26,6 +26,7 @@ import UserViewInfo from "./User/UserViewInfo";
 import UserChangePassword from "./User/UserChangePassword";
 import UserFavoriteProduct from "./User/UserFavoriteProduct";
 import CustomerInquiryManagement from "./Admin/Management/CustomerInquiryManagement";
+import PaymentSuccess from "./Payment/PaymentSuccess";
 
 export {
   Home,
@@ -56,4 +57,5 @@ export {
   UserViewInfo,
   UserFavoriteProduct,
   CustomerInquiryManagement,
+  PaymentSuccess,
 };
