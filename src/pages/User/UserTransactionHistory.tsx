@@ -1,5 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import React, { useEffect } from "react";
+import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 import dayjs from "dayjs";
 import { UserTab } from "../../components";
@@ -14,6 +15,7 @@ import { ITransaction } from "../../store/types/transaction.types";
 import Helmet from "../../Helmet";
 
 const UserTransactionHistory = () => {
+  const { t } = useTranslation();
   const transactions = useSelector(getAllTransactionsSelector);
   const transactionLoading = useSelector(selectTransactionLoading);
   const dispatch = useDispatch();
@@ -26,9 +28,9 @@ const UserTransactionHistory = () => {
   return (
     <DefaultLayout>
       <Helmet
-        title="Order History"
+        title={t("Order History")}
         addPostfixTitle
-        description="View all your orders history"
+        description={t("ViewAllOrderHis")}
       />
       <UserTab />
       <main
@@ -40,11 +42,10 @@ const UserTransactionHistory = () => {
             id="transaction-history-heading"
             className="text-3xl font-extrabold tracking-tight text-gray-900"
           >
-            Transaction history
+            {t("TransactionHis")}
           </h1>
           <p className="mt-2 text-sm text-gray-500">
-            Check the status of recent orders, manage returns, and discover
-            similar products.
+            {t("TransactionHisContent")}
           </p>
         </div>
 
@@ -71,16 +72,18 @@ const UserTransactionHistory = () => {
                 <p className="mt-1 text-lg font-medium">
                   {transaction.status === "paid" ? (
                     <div className="text-[#111827]">
-                      Returned on
+                      {t("ReturnedOn")}
                       <span>
                         {" "}
                         {dayjs(transaction.to).format("DD/MM/YYYY")}{" "}
                       </span>
                     </div>
                   ) : transaction.status === "pending" ? (
-                    <span className="text-[#4F46E5]">Waiting for shipping</span>
+                    <span className="text-[#4F46E5]">
+                      {t("WaitingForShip")}
+                    </span>
                   ) : transaction.status === "shipped" ? (
-                    <span className="text-[#14B8A6]">Shipped</span>
+                    <span className="text-[#14B8A6]">{t("Shipped")}</span>
                   ) : null}
                 </p>
               </div>

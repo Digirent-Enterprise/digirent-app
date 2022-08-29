@@ -1,5 +1,6 @@
 import React, { useState, useCallback } from "react";
 import { GoogleMap, useJsApiLoader, Marker } from "@react-google-maps/api";
+import { useTranslation } from "react-i18next";
 
 const containerStyle = {
   width: "1525px",
@@ -12,6 +13,7 @@ const center = {
 };
 
 const StaticGoogleMap = () => {
+  const {t}=useTranslation();
   const { isLoaded } = useJsApiLoader({
     id: "google-map-script",
     googleMapsApiKey: process.env.REACT_APP_MAPS_API_KEY as string,
@@ -31,7 +33,7 @@ const StaticGoogleMap = () => {
 
   return isLoaded ? (
     <div className="flex flex-col mt-10 mx-[35px]">
-      <h1 className="mb-5 lg:ml-[200px] font-extrabold">Rental location</h1>
+      <h1 className="mb-5 lg:ml-[200px] font-extrabold">{t("RentalLocation")}</h1>
       <div className="flex  items-center justify-center lg:pl-10">
         <GoogleMap
           mapContainerStyle={containerStyle}

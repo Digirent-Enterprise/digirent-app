@@ -1,9 +1,11 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 import { Button, Grid, GridItem } from "@chakra-ui/react";
 import { CheckoutDetailsCard, OrderSummaryContent } from "../../components";
 import DefaultLayout from "../DefaultLayout";
 
 const CheckoutPage = () => {
+  const { t } = useTranslation();
   return (
     <DefaultLayout>
       <Grid
@@ -48,7 +50,7 @@ const CheckoutPage = () => {
           <OrderSummaryContent />
           <div className="flex flex-row justify-center float-down">
             <Button width="max-content" colorScheme="red" size="lg">
-              Confirm and Pay
+              {t("Confirm&Pay")}
             </Button>
           </div>
         </GridItem>

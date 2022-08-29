@@ -1,12 +1,14 @@
 import React, { useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import { useTranslation } from "react-i18next";
 import { toast } from "react-toastify";
 import BookingBox from "../item/BookingBox";
 
 import "./Datepicker.css";
 
 const BookingBoxLayout = ({ productData }: any) => {
+  const { t } = useTranslation();
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date());
   const onChange = (dates: any) => {
@@ -35,12 +37,12 @@ const BookingBoxLayout = ({ productData }: any) => {
     <div className="flex flex-col justify-center w-full gap-2">
       <div className="flex flex-col justify-center mt-10 lg:flex-row">
         <div className="ml-[35px] lg:ml-0 lg:mr-64 min-w-[50%] flex flex-col">
-          <div className="font-extrabold">Description</div>
+          <div className="font-extrabold">{t("Description")}</div>
           <div className="text-justify min-w-[220px]">
             {productData.description}
           </div>
           <div className="flex flex-col gap-2 mt-10">
-            <div className="font-extrabold">Rental period: </div>
+            <div className="font-extrabold">{t("RentalPeriod")}</div>
             <div className=" min-w-[220px]">
               {formatDate(startDate)} - {formatDate(endDate)}
               <div className="flex gap-x-2 mt-5 flex-col md:flex-row lg:flex-row">

@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useState, useContext, Dispatch, SetStateAction } from "react";
+import { useTranslation } from "react-i18next";
 import { SearchSectionContext } from "../../../pages/Product/ProductSearchPage";
 import { sortByOptions } from "../../../utils/constants/helper.constant";
 
@@ -20,6 +21,7 @@ const SearchResultsSection = ({
 }: // setPageNumber,
 // triggerSearch,
 SearchResultsSectionProps) => {
+  const {t} = useTranslation();
   // const searchContext = useContext(SearchSectionContext);
   // const [products, setProducts] = useState([]);
   // const [productsCount, setProductsCount] = useState(0);
@@ -35,7 +37,7 @@ SearchResultsSectionProps) => {
             htmlFor="sort"
             className="inline-block w-auto pr-2 text-base font-medium text-gray-400"
           >
-            Sort by:
+            {t("Sort")}
           </label>
           <select
             defaultValue="default"

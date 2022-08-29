@@ -1,4 +1,5 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import {
@@ -43,6 +44,7 @@ const schema = yup.object().shape({
 });
 
 const UserChangePassword = () => {
+  const { t } = useTranslation();
   const {
     register,
     handleSubmit,
@@ -88,16 +90,16 @@ const UserChangePassword = () => {
               <div className="flex">
                 <AiOutlineArrowLeft color="#4169E1" className="mx-2 text-3xl" />
                 <Text color="#4169E1" className="mx-2 mb-10 text-lg">
-                  Return to profile info
+                  {t("ReturnToProfile")}
                 </Text>
               </div>
             </Link>
 
             <FormControl isInvalid={!!errors?.password?.message} py="10px">
-              <FormLabel>Current password</FormLabel>
+              <FormLabel>{t("CurPass")}</FormLabel>
               <Input
                 {...register("password")}
-                placeholder="Current password"
+                placeholder={t("CurPass")}
                 _placeholder={{ color: "#777" }}
                 type="password"
                 bg={useColorModeValue("gray.50", "gray.500")}
@@ -112,10 +114,10 @@ const UserChangePassword = () => {
               isInvalid={!!errors?.changePassword?.message}
               py="10px"
             >
-              <FormLabel>New password</FormLabel>
+              <FormLabel>{t("NewPass")}</FormLabel>
               <Input
                 {...register("changePassword")}
-                placeholder="New password"
+                placeholder={t("NewPass")}
                 _placeholder={{ color: "#777" }}
                 type="password"
                 bg={useColorModeValue("gray.50", "gray.500")}
@@ -130,10 +132,10 @@ const UserChangePassword = () => {
               isInvalid={!!errors?.retypeChangePassword?.message}
               py="10px"
             >
-              <FormLabel>Retype new password</FormLabel>
+              <FormLabel>{t("ConfirmNewPass")}</FormLabel>
               <Input
                 {...register("retypeChangePassword")}
-                placeholder="Retype new password"
+                placeholder={t("ConfirmNewPass")}
                 _placeholder={{ color: "#777" }}
                 type="password"
                 bg={useColorModeValue("gray.50", "gray.500")}
@@ -159,7 +161,7 @@ const UserChangePassword = () => {
                 }}
                 onClick={onCancel}
               >
-                Cancel
+                {t("Cancel")}
               </Button>
               <Button
                 bg="#4169E1"
@@ -170,7 +172,7 @@ const UserChangePassword = () => {
                 }}
                 type="submit"
               >
-                Confirm
+                {t("Confirm")}
               </Button>
             </Stack>
           </form>

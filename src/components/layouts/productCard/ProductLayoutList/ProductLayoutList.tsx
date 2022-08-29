@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import ReactPaginate from "react-paginate";
 
@@ -8,6 +9,7 @@ import "../../../../index.css";
 import { IProduct } from "../../../../store/types/product.types";
 
 const ProductListLayout = (props: { products: any }) => {
+  const { t } = useTranslation();
   const { products } = props;
   const [currentItems, setCurrentItems] = useState([]);
   const [pageCount, setPageCount] = useState(0);
@@ -42,11 +44,11 @@ const ProductListLayout = (props: { products: any }) => {
       </div>
       <ReactPaginate
         breakLabel="..."
-        nextLabel="next >"
+        nextLabel={t("Next")}
         onPageChange={handlePageClick}
         pageRangeDisplayed={5}
         pageCount={pageCount}
-        previousLabel="< previous"
+        previousLabel={t("Previous")}
         containerClassName="pagination container flex justify-center mx-auto py-10"
         pageLinkClassName="age-num z-10 border-black relative inline-flex items-center px-4 py-2 border text-sm font-medium border-r-0 hover:bg-blue-100 hover:text-white"
         previousLinkClassName="age-num z-10 border-black text-black relative inline-flex items-center px-4 py-2 border text-sm font-medium border-r-0 hover:bg-blue-100 hover:text-white"

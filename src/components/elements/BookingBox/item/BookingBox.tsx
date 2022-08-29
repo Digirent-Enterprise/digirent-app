@@ -7,6 +7,7 @@ import {
   AccordionIcon,
   Box,
 } from "@chakra-ui/react";
+import { useTranslation } from "react-i18next";
 
 interface BookingBoxProps {
   price: number;
@@ -26,6 +27,7 @@ const BookingBox: React.FC<BookingBoxProps> = ({
   endDate,
   rentalCostType = "day",
 }) => {
+  const { t } = useTranslation();
   const [totalPrice, setTotalPrice] = useState(0);
   useEffect(() => {
     if (price) {
@@ -54,20 +56,20 @@ const BookingBox: React.FC<BookingBoxProps> = ({
         <div className="flex w-[90%] justify-center items-center ml-4">
           <div className="bg-white w-[50%] h-[60px] flex flex-col rounded-l-xl text-center justify-center border-[1px] border-black ">
             <div>
-              <b>Borrow Date:</b>
+              <b>{t("BorrowDate")}</b>
             </div>
             <div>{formatDate(borrow)}</div>
           </div>
           <div className="bg-white w-[50%] h-[60px] flex flex-col rounded-r-xl text-center justify-center border-[1px] border-black">
             <div>
-              <b>Return Date:</b>
+              <b>{t("ReturnDate")}</b>
             </div>
             <div>{formatDate(returnDate)}</div>
           </div>
         </div>
         <div className="flex justify-center mt-7">
           <button className="bg-[#1010AE] w-[90%] h-[50px] rounded-xl hover:scale-[1.02] text-white text-lg">
-            Rent
+            {t("Rent")}
           </button>
         </div>
         <div className="mt-8">
@@ -76,30 +78,31 @@ const BookingBox: React.FC<BookingBoxProps> = ({
               <h2>
                 <AccordionButton>
                   <Box flex="1" textAlign="left">
-                    <b>Show cost details</b>
+                    <b>{t("ShowCostDetails")}</b>
                   </Box>
                   <AccordionIcon />
                 </AccordionButton>
               </h2>
               <AccordionPanel pb={4}>
-                Deposit: None
+                {t("DepositNone")}
                 <br />
-                Rental: ${rentalCost}
+                {t("Rental")}
+                {rentalCost}
               </AccordionPanel>
             </AccordionItem>
           </Accordion>
         </div>
         <div className="mt-3 mb-3 ">
-          <div className="float-left ml-6 font-bold">Estimated cost</div>
+          <div className="float-left ml-6 font-bold">{t("EstCost")}</div>
           <div className="float-right mr-6 font-bold">
             ${totalPrice || rentalCost}
           </div>
         </div>
       </div>
       <div className="ml-10 mt-7">
-        Need help ? Chat with us{" "}
+        {t("NeedHelp?")}{" "}
         <a href="/" className="font-bold underline">
-          now
+          {t("Now")}
         </a>
       </div>
     </div>

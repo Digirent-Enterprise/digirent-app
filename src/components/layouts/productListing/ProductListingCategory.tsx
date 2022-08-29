@@ -1,4 +1,5 @@
 import { Link, useLocation } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 // import { categoryBanner } from "../../../utils/constants/helper.constant";
 import { useEffect, useMemo, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -12,6 +13,7 @@ import { IProduct } from "../../../store/types/product.types";
 import NotFoundCategory from "../NotFoundResult/NotFoundCategory";
 
 const ProductListingCategory = () => {
+  const { t } = useTranslation();
   const dispatch = useDispatch();
   const [selectedOpt, setSelectedOpt] = useState<String>("");
   const query = new URLSearchParams(useLocation().search);
@@ -48,9 +50,6 @@ const ProductListingCategory = () => {
     const { value } = e.target;
     setSelectedOpt(value);
   };
-  console.log(products.length, "here");
-  if (products.length > 0) {
-  }
   return (
     <>
       {categoryData && Object.keys(categoryData) && (
@@ -90,11 +89,11 @@ const ProductListingCategory = () => {
       {products.length > 0 ? (
         <ReactPaginate
           breakLabel="..."
-          nextLabel="next >"
+          nextLabel={t("Next")}
           onPageChange={handlePageClick}
           pageRangeDisplayed={5}
           pageCount={pageCount}
-          previousLabel="< previous"
+          previousLabel={t("Previous")}
           containerClassName="pagination container flex justify-center mx-auto py-10"
           pageLinkClassName="age-num z-10 border-black relative inline-flex items-center px-4 py-2 border text-sm font-medium border-r-0 hover:bg-blue-100 hover:text-white"
           previousLinkClassName="age-num z-10 border-black text-black relative inline-flex items-center px-4 py-2 border text-sm font-medium border-r-0 hover:bg-blue-100 hover:text-white"

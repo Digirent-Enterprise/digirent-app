@@ -1,12 +1,14 @@
 import React, { useState } from "react";
 import { Alert, AlertIcon, Switch } from "@chakra-ui/react";
 import DefaultLayout from "../DefaultLayout";
+import { useTranslation } from "react-i18next";
 
 function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(" ");
 }
 
 const ContactUsPage = () => {
+  const { t } = useTranslation();
   const [agreed, setAgreed] = useState(false);
 
   const options = [
@@ -27,7 +29,7 @@ const ContactUsPage = () => {
     } else {
       <Alert status="error">
         <AlertIcon />
-        You need to agree to our policies.
+        {t("YouNeedToAgree")}
       </Alert>;
     }
   };
@@ -104,10 +106,10 @@ const ContactUsPage = () => {
           </svg>
           <div className="text-center">
             <h2 className="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">
-              Contact sales
+              {t("ContactSales")}
             </h2>
             <div className="mt-4 text-lg leading-6 text-gray-500">
-              Ask Us anything
+              {t("AskUs")}
             </div>
           </div>
           <div className="mt-12">
@@ -120,7 +122,7 @@ const ContactUsPage = () => {
                   htmlFor="first-name"
                   className="block text-sm font-medium text-gray-700"
                 >
-                  First name
+                  {t("FirstName")}
                 </label>
                 <div className="mt-1">
                   <input
@@ -137,7 +139,7 @@ const ContactUsPage = () => {
                   htmlFor="last-name"
                   className="block text-sm font-medium text-gray-700"
                 >
-                  Last name
+                  {t("LastName")}
                 </label>
                 <div className="mt-1">
                   <input
@@ -154,7 +156,7 @@ const ContactUsPage = () => {
                   htmlFor="company"
                   className="block text-sm font-medium text-gray-700"
                 >
-                  Company
+                  {t("Company")}
                 </label>
                 <div className="mt-1">
                   <input
@@ -188,12 +190,12 @@ const ContactUsPage = () => {
                   htmlFor="phone-number"
                   className="block text-sm font-medium text-gray-700"
                 >
-                  Phone Number
+                  {t("PhoneNum")}
                 </label>
                 <div className="relative mt-1 rounded-md shadow-sm">
                   <div className="absolute inset-y-0 left-0 flex items-center">
                     <label htmlFor="country" className="sr-only">
-                      Country
+                      {t("Country")}
                     </label>
                     <select
                       id="country"
@@ -228,7 +230,7 @@ const ContactUsPage = () => {
                   htmlFor="message"
                   className="block text-sm font-medium text-[#374151]"
                 >
-                  Message
+                  {t("Message")}
                 </label>
                 <div className="mt-1">
                   <textarea
@@ -253,19 +255,19 @@ const ContactUsPage = () => {
                   </div>
                   <div className="ml-3">
                     <p className="text-base text-gray-500">
-                      By selecting this, you agree to the{" "}
+                      {t("BySelecting")}{" "}
                       <a
                         href="/privacy"
                         className="font-medium text-gray-700 underline"
                       >
-                        Privacy Policy
+                        {t("PrivacyPolicy")}
                       </a>{" "}
-                      and{" "}
+                      {t("And")}{" "}
                       <a
                         href="/privacy"
                         className="font-medium text-gray-700 underline"
                       >
-                        Cookie Policy
+                        {t("CookiePolicy")}
                       </a>
                       .
                     </p>
@@ -277,7 +279,7 @@ const ContactUsPage = () => {
                   type="submit"
                   className="w-full inline-flex items-center justify-center px-6 py-3 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-[#4F46E5] hover:bg-[#4338CA] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#6366F1]"
                 >
-                  Let's talk
+                  {t("LetsTalk")}
                 </button>
               </div>
             </form>

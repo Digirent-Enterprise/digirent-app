@@ -1,4 +1,5 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
 import {
   Box,
@@ -23,6 +24,7 @@ import DefaultLayout from "../DefaultLayout";
 import { getCurrentUserSelector } from "../../store/selectors/user.selector";
 
 const UserProfile = () => {
+  const { t } = useTranslation();
   const currentUser = useSelector(getCurrentUserSelector);
   return (
     <DefaultLayout>
@@ -52,12 +54,12 @@ const UserProfile = () => {
             >
               <UserProfileButton
                 directUrl="/user/change-password"
-                userButtonItem="Change your password"
+                userButtonItem={t("ChangePassword")}
                 leftIcon={<BsKey />}
               />
               <UserProfileButton
                 directUrl="/user/edit-my-profile"
-                userButtonItem="Edit"
+                userButtonItem={t("Edit")}
                 leftIcon={<AiOutlineEdit />}
               />
             </Stack>
@@ -70,7 +72,7 @@ const UserProfile = () => {
             >
               <UserProfileButton
                 directUrl="/user/view-my-profile"
-                userButtonItem="View your information"
+                userButtonItem={t("ViewYourInfo")}
                 leftIcon={<AiOutlineProfile />}
               />
             </Stack>
@@ -105,7 +107,7 @@ const UserProfile = () => {
                     <TbHeartOff />
                   </div>
                 </IconContext.Provider>
-                Deactivate account
+                {t("DeactivateAcc")}
               </Button>
             </Stack>
           </Box>
