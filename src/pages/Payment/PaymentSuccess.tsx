@@ -18,7 +18,7 @@ const PaymentSuccess = () => {
       "transaction/update-transaction",
       qs.stringify({
         status: "paid",
-        intent: paymentIntent,
+        intent: paymentIntentClientSecret,
       }),
     );
   };
@@ -39,7 +39,7 @@ const PaymentSuccess = () => {
       setIntent(response.data);
       if (response.data.charges.data[0].paid) {
         await updateTransactionStatus();
-        toast.success("The order has been paid successfully.", {
+        toast.success("The order has been paid successfully!", {
           theme: "dark",
         });
         const newTransState = await fetchTransaction();

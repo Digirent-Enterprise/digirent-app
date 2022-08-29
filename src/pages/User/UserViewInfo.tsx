@@ -50,8 +50,8 @@ const UserViewInfo = () => {
                     <img
                       alt="avatar"
                       src={
-                        currentUser.avatar
-                          ? currentUser.avatar
+                        currentUser.profileImage
+                          ? currentUser.profileImage
                           : IMAGES.defaultAvatar
                       }
                       className="absolute h-auto -m-16 -ml-20 align-middle border-none rounded-full shadow-xl lg:-ml-16"
