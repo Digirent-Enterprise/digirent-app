@@ -10,7 +10,6 @@ import "./Stripe.css";
 import { useSelector } from "react-redux";
 import qs from "qs";
 import { customAxios } from "../../../http-common";
-import { getProductByIDSelector } from "../../../store/selectors/product.selector";
 import { getCurrentUserSelector } from "../../../store/selectors/user.selector";
 
 const StripeCheckoutForm = ({ transactionData }: any) => {

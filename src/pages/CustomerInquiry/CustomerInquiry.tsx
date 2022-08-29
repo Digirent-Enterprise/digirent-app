@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
+import { useDropzone } from "react-dropzone";
 import {
   Alert,
   AlertIcon,
@@ -41,6 +42,7 @@ const schema = yup.object().shape({
 const CustomerInquiry = () => {
   const [agreed, setAgreed] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [img, setImg] = useState("");
 
   const navigate = useNavigate();
   const {
@@ -52,12 +54,33 @@ const CustomerInquiry = () => {
     mode: "onBlur",
   });
 
+  const handleUploadFiles = async (file: any) => {
+    const fd = new FormData();
+    fd.append("images", file);
+    const response = await customAxios("multipart/form-data").post(
+      "product/upload-single-image",
+      fd,
+    );
+    if (response.data) {
+      setImg(response.data.url!);
+    }
+  };
+
+  const { getRootProps, getInputProps } = useDropzone({
+    accept: {
+      "image/*": [],
+    },
+    maxFiles: 1,
+    onDrop: async (acceptedFiles: File[]) => {
+      await handleUploadFiles(acceptedFiles[0]);
+    },
+  });
+
   const onSubmit = (data: IFormInputs) => {
     setLoading(true);
     if (agreed) {
-      // submit form
       customAxios()
-        .post("inquiry", qs.stringify({ ...data, image: "no data" }))
+        .post("inquiry", qs.stringify({ ...data, image: img }))
         .then((res) => {
           if (res.status === 200 || res.status === 201) {
             toast.success("We've got your inquiry!", {
@@ -224,6 +247,37 @@ const CustomerInquiry = () => {
                     <FormErrorMessage>
                       {errors?.inquiryDescription?.message}
                     </FormErrorMessage>
+                  </FormControl>
+                  <FormControl>
+                    <FormLabel>Attached Image</FormLabel>
+                    <div
+                      style={
+                        img
+                          ? {
+                              backgroundImage: `url('${img}')`,
+                              backgroundPosition: "center center",
+                              backgroundRepeat: "no-repeat",
+                              backgroundSize: "cover",
+                            }
+                          : {
+                              background: "none",
+                            }
+                      }
+                      className={
+                        img
+                          ? "border-4 cursor-pointer text-center justify-center p-[20%]"
+                          : "border-dashed border-4 cursor-pointer text-center justify-center p-[20%]"
+                      }
+                      {...getRootProps()}
+                    >
+                      <input {...getInputProps()} />
+                      {img ? null : (
+                        <p>
+                          Drag 'n' drop some files here, or click to select
+                          files
+                        </p>
+                      )}
+                    </div>
                   </FormControl>
                   <Button
                     borderRadius={0}
