@@ -55,7 +55,7 @@ const AdminTab = () => {
           </li>
           <li className="mr-6">
             <a
-              className="text-black hover:text-blue-100 link"
+              className="inline-block p-4 w-full bg-white text-black hover:text-blue-100 link"
               href="/admin/add-product"
             >
               Add Product

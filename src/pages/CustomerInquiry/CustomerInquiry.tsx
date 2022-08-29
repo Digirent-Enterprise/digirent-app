@@ -4,8 +4,6 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { useDropzone } from "react-dropzone";
 import {
-  Alert,
-  AlertIcon,
   Switch,
   Button,
   FormControl,
@@ -103,10 +101,10 @@ const CustomerInquiry = () => {
           navigate("/");
         });
     } else {
-      <Alert status="error">
-        <AlertIcon />
-        You need to agree to our policies.
-      </Alert>;
+      setTimeout(() => {
+        toast.warning("You need to agree our policy!", { theme: "dark" });
+        setLoading(false);
+      }, 1000);
     }
   };
 
