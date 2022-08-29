@@ -31,11 +31,13 @@ export const ProductColumns: Array<Column> = [
   {
     id: "status",
     Header: "Status",
-    accessor: (e: any) => {
-      return e.status ? (
+    accessor: "status",
+
+    Cell: ({ row }: any) => {
+      return row.values.status ? (
         <Badge colorScheme="green">Available</Badge>
       ) : (
-        <Badge colorScheme="yellow">Pending</Badge>
+        <Badge colorScheme="yellow">Unavailable</Badge>
       );
     },
   },

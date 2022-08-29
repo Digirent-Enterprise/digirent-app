@@ -54,17 +54,17 @@ const EditUserModal = ({ isOpen, onClose, rowData }: EditUserModalProps) => {
   const inputRef = useRef<any>([]);
 
   const handleEdit = async () => {
-    const newUser = {
+    const updateUser = {
       name: inputRef.current[0].value,
       email: inputRef.current[1].value,
       phone: inputRef.current[2].value,
       role: inputRef.current[3].value,
       location: inputRef.current[4].value,
     };
-    console.log(newUser, "newUser");
+    console.log(updateUser, "updateUser");
 
     await customAxios()
-      .put("user/edit-user", qs.stringify(newUser))
+      .put("user/edit-user", qs.stringify(updateUser))
       .then((res) => {
         if (res.status === 200 || res.status === 201) {
           dispatch(getUsers());
