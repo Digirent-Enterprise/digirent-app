@@ -7,13 +7,13 @@ import {
 
 import { toast } from "react-toastify";
 import "./Stripe.css";
-import { customAxios } from "../../../http-common";
-import {useSelector} from "react-redux";
-import {getProductByIDSelector} from "../../../store/selectors/product.selector";
+import { useSelector } from "react-redux";
 import qs from "qs";
-import {getCurrentUserSelector} from "../../../store/selectors/user.selector";
+import { customAxios } from "../../../http-common";
+import { getProductByIDSelector } from "../../../store/selectors/product.selector";
+import { getCurrentUserSelector } from "../../../store/selectors/user.selector";
 
-const StripeCheckoutForm = ({transactionData}: any) => {
+const StripeCheckoutForm = ({ transactionData }: any) => {
   const stripe = useStripe();
   const elements = useElements();
   const user = useSelector(getCurrentUserSelector);
@@ -24,7 +24,7 @@ const StripeCheckoutForm = ({transactionData}: any) => {
     }
 
     const clientSecret = new URLSearchParams(window.location.search).get(
-      "payment_intent_client_secret"
+      "payment_intent_client_secret",
     );
 
     if (!clientSecret) {
@@ -50,7 +50,7 @@ const StripeCheckoutForm = ({transactionData}: any) => {
               "Your payment was not successful, please try again.",
               {
                 theme: "dark",
-              }
+              },
             );
             break;
           default:
@@ -64,11 +64,15 @@ const StripeCheckoutForm = ({transactionData}: any) => {
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const intent = localStorage.getItem('currentPi');
+    const intent = localStorage.getItem("currentPi");
     await customAxios().post(
-        "transaction/create-transaction",
-        qs.stringify({...transactionData, productId: transactionData.productId._id,
-          intent, userEmail: user.email})
+      "transaction/create-transaction",
+      qs.stringify({
+        ...transactionData,
+        productId: transactionData.productId._id,
+        intent,
+        userEmail: user.email,
+      }),
     );
 
     if (!stripe || !elements) {
@@ -76,7 +80,7 @@ const StripeCheckoutForm = ({transactionData}: any) => {
         "Still loading. Please wait a few seconds and then try again.",
         {
           theme: "dark",
-        }
+        },
       );
       return;
     }
