@@ -44,14 +44,14 @@ export const ClickEdit = ({ pageType, rowData }: HandleProps) => {
         <EditProductModal
           isOpen={isEditOpen}
           onClose={onEditClose}
-          // rowData={rowData.values}
+          rowData={rowData.values}
         />
       )}
       {pageType === "transaction" && (
         <EditTransactionModal
           isOpen={isEditOpen}
           onClose={onEditClose}
-          // rowData={rowData.values}
+          rowData={rowData.values}
         />
       )}
     </div>
