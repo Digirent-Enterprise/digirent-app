@@ -30,7 +30,7 @@ export const InquiryColumns: Array<Column> = [
 
   {
     Header: "Action",
-    Cell: ({ row }) => (
+    Cell: ({ row }: any) => (
       <div>
         <ResponseToInquiryAction rowData={row} />
       </div>

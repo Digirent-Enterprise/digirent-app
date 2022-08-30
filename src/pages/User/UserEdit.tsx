@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useSelector } from "react-redux";
+import { useSelector , useDispatch } from "react-redux";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import {
@@ -30,12 +30,14 @@ import { UserTab } from "../../components";
 import DefaultLayout from "../DefaultLayout";
 import { getCurrentUserSelector } from "../../store/selectors/user.selector";
 import { customAxios } from "../../http-common";
+import { getUserDetail } from "../../store/actions/user.action";
+
 
 interface IFormInputs {
   name: string;
   email: string;
   phone: string;
-  address: string;
+  location: string;
 }
 
 const schema = yup.object().shape({
@@ -47,7 +49,7 @@ const schema = yup.object().shape({
       /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/,
       "Phone number is not valid!",
     ),
-  address: yup.string(),
+  location: yup.string(),
 });
 
 const UserEdit = () => {
@@ -55,7 +57,7 @@ const UserEdit = () => {
   const [toggleName, toggleNameButton] = useState(false);
   const [toggleEmail, toggleEmailButton] = useState(false);
   const [togglePhone, togglePhoneButton] = useState(false);
-  const [toggleAddress, toggleAddressButton] = useState(false);
+  const [toggleLocation, toggleLocationButton] = useState(false);
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   const {
@@ -68,19 +70,35 @@ const UserEdit = () => {
   });
 
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const onCancel = () => {
     navigate("/user/my-profile");
   };
 
   const onSubmit = async (data: IFormInputs) => {
-    const update = await customAxios().put(
-      "user/edit-user",
-      qs.stringify(data),
-    );
-    if (update.data) {
-      toast.success("Update user successfully", { theme: "dark", icon: "🚀" });
-    }
+    await customAxios()
+      .put("user/edit-user", qs.stringify(data))
+      .then((res) => {
+        if (res.status === 200 || res.status === 201) {
+          dispatch(getUserDetail());
+          toast.success("Edit account successfully!", {
+            theme: "dark",
+            icon: "🚀",
+          });
+        }
+      })
+      .catch((error: any) => {
+        toast.warning(
+          `${error.response.data} error, failed to edit your account!`,
+          {
+            theme: "dark",
+          },
+        );
+      })
+      .finally(() => {
+        navigate("/user/my-profile");
+      });
   };
 
   return (
@@ -229,11 +247,11 @@ const UserEdit = () => {
                 </ul>
               </div>
             </FormControl>
-            <FormControl isInvalid={!!errors?.address?.message} py="10px">
+            <FormControl isInvalid={!!errors?.location?.message} py="10px">
               <FormLabel>
-                Address: {currentUser.location}
+                Location: {currentUser.location}
                 <Button
-                  onClick={() => toggleAddressButton(!toggleAddress)}
+                  onClick={() => toggleLocationButton(!toggleLocation)}
                   h="30px"
                   mb="9px"
                   className="float-right"
@@ -248,24 +266,24 @@ const UserEdit = () => {
               </FormLabel>
               <div
                 className="z-50 w-full mt-5 duration-300 ease-in-out bg-white transition-height"
-                style={{ height: toggleAddress ? "60px" : 0 }}
+                style={{ height: toggleLocation ? "60px" : 0 }}
               >
                 <ul
                   className="absolute z-50 list-none transition-opacity duration-300 ease-in-out"
-                  style={{ opacity: toggleAddress ? 1 : 0 }}
+                  style={{ opacity: toggleLocation ? 1 : 0 }}
                 >
                   {" "}
                   <Input
                     defaultValue={currentUser.location}
-                    {...register("address")}
-                    placeholder="Address"
+                    {...register("location")}
+                    placeholder="Location"
                     _placeholder={{ color: "#777" }}
                     type="text"
                     bg={useColorModeValue("gray.50", "gray.500")}
                     width="650px"
                   />
                   <FormErrorMessage>
-                    <WarningTwoIcon /> {errors?.address?.message}
+                    <WarningTwoIcon /> {errors?.location?.message}
                   </FormErrorMessage>
                 </ul>
               </div>

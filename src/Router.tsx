@@ -18,8 +18,8 @@ import {
   EmailSentPage,
   ProductDetailsPage,
   CustomerInquiryManagement,
+  PaymentSuccess,
 } from "./pages";
-import PaymentSuccess from "./pages/Payment/PaymentSuccess";
 import PrivateRoute from "./components/PrivateRoute";
 
 import {
@@ -81,7 +81,6 @@ const AppRouter = () => {
       <BackToTop />
       <Routes key={location.pathname} location={location}>
         <Route path="/" element={<Home />} />
-        <Route path="/payment-success" element={<PaymentSuccess />} />
         <Route path="about" element={<About />} />
         <Route path="login" element={<LoginPage />} />
         <Route path="register" element={<RegisterPage />} />
@@ -93,7 +92,7 @@ const AppRouter = () => {
         <Route path="product/:id" element={<ProductDetailsPage />} />
         {/* Payment */}
         <Route path="checkout/:id" element={<CheckoutPage />} />
-        <Route path="checkout-success/:id" />
+        <Route path="/payment-success" element={<PaymentSuccess />} />
         {/* Users */}
         <Route
           path="user/my-profile"
@@ -187,7 +186,7 @@ const AppRouter = () => {
           }
         />
 
-        {/* Product management */}
+        {/* Inquiry management */}
         <Route
           path="admin/inquiries"
           element={
@@ -223,7 +222,6 @@ const AppRouter = () => {
             </PrivateRoute>
           }
         />
-        <Route path="admin/chat/:id" />
         {/* 404 Not Found Route */}
         <Route path="*" element={<NotFound />} />
       </Routes>
