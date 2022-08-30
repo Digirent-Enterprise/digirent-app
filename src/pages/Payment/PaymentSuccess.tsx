@@ -2,12 +2,12 @@
 import { useEffect, useState } from "react";
 import qs from "qs";
 import { toast } from "react-toastify";
-import { customAxios } from "../../http-common";
 import { ITransaction } from "../../store/types/transaction.types";
+import { customAxios } from "../../http-common";
 
 const PaymentSuccess = () => {
   const queryParams = new URLSearchParams(window.location.search);
-  const paymentIntent = queryParams.get("payment_intent");
+  const payment_intent = queryParams.get("payment_intent");
   const paymentIntentClientSecret = queryParams.get(
     "payment_intent_client_secret",
   );
@@ -25,7 +25,7 @@ const PaymentSuccess = () => {
   };
 
   const fetchTransaction = async () => {
-    return customAxios().get("transaction/get-transaction-by-intent", {
+    return await customAxios().get("transaction/get-transaction-by-intent", {
       params: {
         intent: paymentIntentClientSecret,
       },
@@ -34,15 +34,13 @@ const PaymentSuccess = () => {
 
   const fetchIntent = async () => {
     const response = await customAxios().get("payment-intent", {
-      params: { paymentIntent },
+      params: { payment_intent },
     });
     if (response && response.data) {
       setIntent(response.data);
       if (response.data.charges.data[0].paid) {
         await updateTransactionStatus();
-        toast.success("The order has been paid successfully!", {
-          theme: "dark",
-        });
+        toast.success("You have paid your order.");
         const newTransState = await fetchTransaction();
         if (newTransState && newTransState.data) {
           setNewTrans(newTransState.data);
@@ -59,6 +57,7 @@ const PaymentSuccess = () => {
     ? (new Date(newTrans?.to).getTime() - new Date(newTrans?.from).getTime()) /
       (1000 * 3600 * 24)
     : "";
+
   return newTrans ? (
     <main className="relative lg:min-h-full lg:ml-32">
       <div className="h-80 overflow-hidden lg:absolute lg:w-1/2 lg:h-full lg:pr-4 xl:pr-12">
