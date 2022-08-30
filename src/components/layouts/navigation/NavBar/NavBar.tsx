@@ -8,6 +8,7 @@ import { getCurrentUserSelector } from "../../../../store/selectors/user.selecto
 
 const NavBar = () => {
   const currentUser = useSelector(getCurrentUserSelector);
+
   const [toggle, toggleNav] = useState(false);
   return (
     <Box className="z-50">
@@ -23,6 +24,9 @@ const NavBar = () => {
         <Logo />
         <Show above="md">
           <ul className="flex list-none">
+            {currentUser.role === "admin" && (
+              <NavButton navItem="Dashboard" directUrl="/admin" />
+            )}
             <NavButton navItem="Home" directUrl="/" />
             <NavButton navItem="About" directUrl="/about" />
             <NavButton navItem="Contact" directUrl="/contact" />
@@ -68,6 +72,11 @@ const NavBar = () => {
             className="absolute list-none transition-opacity duration-300 ease-in-out translate-x-1/2 z-500 left-1/3"
             style={{ opacity: toggle ? 1 : 0 }}
           >
+            {currentUser.role === "admin" && (
+              <div className="pt-2 pl-3 mt-10 text-2xl">
+                <NavButton navItem="Dashboard" directUrl="/admin" />
+              </div>
+            )}
             <div className="pt-2 pl-3 mt-10 text-2xl">
               <NavButton navItem="Home" directUrl="/" />
             </div>
