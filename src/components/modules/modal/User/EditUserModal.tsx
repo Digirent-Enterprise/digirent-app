@@ -25,7 +25,6 @@ interface EditUserModalProps {
 }
 
 const EditUserModal = ({ isOpen, onClose, rowData }: EditUserModalProps) => {
-  console.log(rowData, "sadas");
   const dispatch = useDispatch();
 
   const inputs = [
@@ -55,16 +54,16 @@ const EditUserModal = ({ isOpen, onClose, rowData }: EditUserModalProps) => {
 
   const handleEdit = async () => {
     const updateUser = {
+      id: rowData._id,
       name: inputRef.current[0].value,
       email: inputRef.current[1].value,
       phone: inputRef.current[2].value,
       role: inputRef.current[3].value,
       location: inputRef.current[4].value,
     };
-    console.log(updateUser, "updateUser");
 
     await customAxios()
-      .put("user/edit-user", qs.stringify(updateUser))
+      .put("user/admin-edit-user", qs.stringify(updateUser))
       .then((res) => {
         if (res.status === 200 || res.status === 201) {
           dispatch(getUsers());
@@ -106,7 +105,7 @@ const EditUserModal = ({ isOpen, onClose, rowData }: EditUserModalProps) => {
                   _placeholder={{ color: "#777" }}
                   type="text"
                   width="525px"
-                  className="align-center justify-center"
+                  className="justify-center align-center"
                 />
               </FormControl>
             </div>

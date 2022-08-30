@@ -62,6 +62,7 @@ const EditProductModal = ({
 
   const handleEdit = async () => {
     const updateProduct = {
+      id: rowData._id,
       name: inputRef.current[0].value,
       serial: inputRef.current[1].value,
       brand: inputRef.current[2].value,
@@ -69,7 +70,6 @@ const EditProductModal = ({
       description: inputRef.current[4].value,
       status: inputRef.current[5].value,
     };
-    console.log(updateProduct, "updateProduct");
 
     await customAxios()
       .put("product/update-product", qs.stringify(updateProduct))
@@ -118,7 +118,7 @@ const EditProductModal = ({
                   _placeholder={{ color: "#777" }}
                   type="text"
                   width="525px"
-                  className="align-center justify-center"
+                  className="justify-center align-center"
                 />
               </FormControl>
             </div>

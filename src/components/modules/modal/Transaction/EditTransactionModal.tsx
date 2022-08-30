@@ -37,18 +37,6 @@ const EditTransactionModal = ({
       defaultValue: rowData.userEmail,
     },
     {
-      label: "Total Cost",
-      defaultValue: rowData.rentalCost,
-    },
-    {
-      label: "Borrowed Dated",
-      defaultValue: rowData.from,
-    },
-    {
-      label: "Return Date",
-      defaultValue: rowData.to,
-    },
-    {
       label: "Status",
       defaultValue: rowData.status,
     },
@@ -58,16 +46,21 @@ const EditTransactionModal = ({
 
   const handleEdit = async () => {
     const updateTransaction = {
+      id: rowData._id,
+      intent: rowData.intent,
       userEmail: inputRef.current[0].value,
-      rentalCost: inputRef.current[1].value,
-      from: inputRef.current[2].value,
-      to: inputRef.current[3].value,
-      status: inputRef.current[5].value,
+      status: inputRef.current[1].value,
     };
-    console.log(updateTransaction, "updateTransaction");
 
     await customAxios()
-      .put("transaction/update-transaction", qs.stringify(updateTransaction))
+      .put(
+        "transaction/update-transaction",
+        qs.stringify({
+            ...updateTransaction,
+            intent: updateTransaction.intent,
+
+        }),
+      )
       .then((res) => {
         if (res.status === 200 || res.status === 201) {
           dispatch(getTransactions());
@@ -114,7 +107,7 @@ const EditTransactionModal = ({
                   _placeholder={{ color: "#777" }}
                   type="text"
                   width="525px"
-                  className="align-center justify-center"
+                  className="justify-center align-center"
                 />
               </FormControl>
             </div>

@@ -28,6 +28,10 @@ export const TransactionColumns: Array<Column> = [
     accessor: "to",
   },
   {
+    Header: "Intent",
+    accessor: "intent",
+  },
+  {
     id: "status",
     Header: "Status",
     accessor: "status",
@@ -42,6 +46,7 @@ export const TransactionColumns: Array<Column> = [
     },
   },
   {
+    id: "productId",
     Header: "Product ID",
     accessor: (e: any) => {
       return e.productId._id;

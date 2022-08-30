@@ -48,7 +48,6 @@ function* getTransactions(): any {
 function* getTransactionByUserEmail(): any {
   try {
     const response = yield call(fetchTransactionByUserEmail);
-    console.log(response, "response");
     yield put(setTransactionByUserEmail(response.data));
   } catch (e: any) {
     yield put(

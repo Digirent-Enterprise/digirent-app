@@ -30,7 +30,7 @@ const DeleteUserModal = ({
   const dispatch = useDispatch();
   const handleDelete = async () => {
     await customAxios()
-      .post("user/delete-user", qs.stringify(rowData.email))
+      .post("user/delete-user", qs.stringify({ email: rowData.email }))
       .then((res) => {
         if (res.status === 200 || res.status === 201) {
           dispatch(getUsers());
