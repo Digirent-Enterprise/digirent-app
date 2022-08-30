@@ -7,7 +7,7 @@ import { customAxios } from "../../http-common";
 
 const PaymentSuccess = () => {
   const queryParams = new URLSearchParams(window.location.search);
-  const payment_intent = queryParams.get("payment_intent");
+  const paymentIntent = queryParams.get("payment_intent");
   const paymentIntentClientSecret = queryParams.get(
     "payment_intent_client_secret",
   );
@@ -25,7 +25,7 @@ const PaymentSuccess = () => {
   };
 
   const fetchTransaction = async () => {
-    return await customAxios().get("transaction/get-transaction-by-intent", {
+    return customAxios().get("transaction/get-transaction-by-intent", {
       params: {
         intent: paymentIntentClientSecret,
       },
@@ -34,7 +34,7 @@ const PaymentSuccess = () => {
 
   const fetchIntent = async () => {
     const response = await customAxios().get("payment-intent", {
-      params: { payment_intent },
+      params: { paymentIntent },
     });
     if (response && response.data) {
       setIntent(response.data);
