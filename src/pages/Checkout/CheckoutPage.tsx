@@ -1,11 +1,14 @@
-import React from "react";
+import { Grid, GridItem } from "@chakra-ui/react";
 import { useTranslation } from "react-i18next";
-import { Button, Grid, GridItem } from "@chakra-ui/react";
+import { useSelector } from "react-redux";
 import { CheckoutDetailsCard, OrderSummaryContent } from "../../components";
 import DefaultLayout from "../DefaultLayout";
+import { getTransactionSelector } from "../../store/selectors/transaction.selector";
 
 const CheckoutPage = () => {
   const { t } = useTranslation();
+  const transactionData: any = useSelector(getTransactionSelector);
+
   return (
     <DefaultLayout>
       <Grid
@@ -13,6 +16,8 @@ const CheckoutPage = () => {
           base: "repeat(2, 1fr)",
           lg: "repeat(6, 1fr)",
         }}
+        templateRows={{ base: "repeat(2, 1fr)", lg: "repeat(1, 1fr)" }}
+        h="max-content"
         gap={6}
         m={6}
       >
@@ -29,8 +34,13 @@ const CheckoutPage = () => {
             base: 3,
             lg: 4,
           }}
+          rowSpan={{
+            base: 1,
+            lg: 1,
+          }}
+          className="flex flex-col justify-between"
         >
-          <CheckoutDetailsCard />
+          <CheckoutDetailsCard transactionData={transactionData} />
         </GridItem>
         <GridItem
           colSpan={{
@@ -45,14 +55,13 @@ const CheckoutPage = () => {
             base: 3,
             lg: 6,
           }}
+          rowSpan={{
+            base: 1,
+            lg: 1,
+          }}
           className="flex flex-col justify-between"
         >
-          <OrderSummaryContent />
-          <div className="flex flex-row justify-center float-down">
-            <Button width="max-content" colorScheme="red" size="lg">
-              {t("Confirm&Pay")}
-            </Button>
-          </div>
+          <OrderSummaryContent transactionData={transactionData} />
         </GridItem>
       </Grid>
     </DefaultLayout>

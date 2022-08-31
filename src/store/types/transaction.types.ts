@@ -2,8 +2,8 @@ import { FETCH_TRANSACTIONS_ERROR } from "./action.types";
 import { IProduct } from "./product.types";
 
 export interface ITransaction {
-  _id: string;
-  productId: IProduct | string;
+  _id?: string;
+  productId: IProduct;
   userEmail: string;
   rentalCost: number;
   deposit: number;
@@ -24,6 +24,7 @@ export interface TransactionState {
 }
 export interface SetTransactionPayload {
   transactions: ITransaction[];
+  transaction: ITransaction;
 }
 
 export type SetTransaction = {

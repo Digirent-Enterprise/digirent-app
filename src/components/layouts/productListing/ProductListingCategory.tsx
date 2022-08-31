@@ -33,10 +33,9 @@ const ProductListingCategory = () => {
 
   useEffect(() => {
     const endOffset = itemOffset + itemsPerPage;
-    if (products && products?.length > 0) {
+    if (products && products.length > 0) {
       setCurrentItems(products.slice(itemOffset, endOffset));
-      // eslint-disable-next-line no-unsafe-optional-chaining
-      setPageCount(Math.ceil(products?.length / itemsPerPage));
+      setPageCount(Math.ceil(products.length / itemsPerPage));
     }
   }, [itemOffset, itemsPerPage, products]);
 
@@ -49,6 +48,7 @@ const ProductListingCategory = () => {
     const { value } = e.target;
     setSelectedOpt(value);
   };
+
   return (
     <>
       {categoryData && Object.keys(categoryData) && (

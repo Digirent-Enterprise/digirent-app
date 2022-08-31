@@ -66,11 +66,10 @@ const BookingBoxLayout = ({ productData }: any) => {
         </div>
         <div className="sm:mt-10 ml-[35px] lg:ml-0">
           <BookingBox
+            productData={productData}
             price={productData.rentalCost}
-            borrow={startDate}
-            returnDate={endDate}
-            startDate={startDate}
-            endDate={endDate}
+            startDate={new Date(startDate.toString())}
+            endDate={new Date(endDate.toString())}
             rentalCost={productData.rentalCost}
             rentalCostType={productData.rentalCostType}
           />

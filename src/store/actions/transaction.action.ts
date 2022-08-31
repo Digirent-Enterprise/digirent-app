@@ -1,10 +1,14 @@
 import {
+  GET_TRANSACTION,
   FETCH_TRANSACTIONS_ERROR,
   GET_TRANSACTIONS,
   SET_TRANSACTION_LOADING,
+  SET_TRANSACTION,
   SET_TRANSACTIONS,
   SET_TRANSACTION_BY_ID,
   GET_TRANSACTION_BY_ID,
+  SET_TRANSACTION_BY_USER_EMAIL,
+  GET_TRANSACTION_BY_USER_EMAIL,
 } from "../types/action.types";
 import {
   FetchTransactionError,
@@ -33,6 +37,32 @@ export const setTransactionByID = (payload: ITransaction) => {
   };
 };
 
+export const setTransactionByUserEmail = (payload: ITransaction[]) => {
+  return {
+    type: SET_TRANSACTION_BY_USER_EMAIL,
+    payload: {
+      transactions: payload,
+      error: null,
+    },
+  };
+};
+
+export const setTransaction = (payload: ITransaction) => {
+  return {
+    type: SET_TRANSACTION,
+    payload: {
+      transaction: payload,
+      error: null,
+    },
+  };
+};
+
+export const getTransaction = () => {
+  return {
+    type: GET_TRANSACTION,
+  };
+};
+
 export const getTransactions = () => {
   return {
     type: GET_TRANSACTIONS,
@@ -45,6 +75,12 @@ export const getTransactionByID = (_id: string) => {
     payload: {
       _id,
     },
+  };
+};
+
+export const getTransactionByUserEmail = () => {
+  return {
+    type: GET_TRANSACTION_BY_USER_EMAIL,
   };
 };
 

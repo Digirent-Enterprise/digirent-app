@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
-import { useSelector } from "react-redux";
+import { useSelector , useDispatch } from "react-redux";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import {
@@ -14,23 +14,31 @@ import {
   Stack,
   useColorModeValue,
   FormErrorMessage,
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalFooter,
 } from "@chakra-ui/react";
-import { WarningTwoIcon } from "@chakra-ui/icons";
+import { useDisclosure } from "@chakra-ui/hooks";
+import { AiOutlineWarning, AiOutlineArrowLeft } from "react-icons/ai";
+import { IconContext } from "react-icons";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
-import { AiOutlineArrowLeft } from "react-icons/ai";
 import qs from "qs";
 import { toast } from "react-toastify";
+import { WarningTwoIcon } from "@chakra-ui/icons";
 import { UserTab } from "../../components";
 import DefaultLayout from "../DefaultLayout";
 import { getCurrentUserSelector } from "../../store/selectors/user.selector";
 import { customAxios } from "../../http-common";
+import { getUserDetail } from "../../store/actions/user.action";
+
 
 interface IFormInputs {
   name: string;
   email: string;
   phone: string;
-  address: string;
+  location: string;
 }
 
 const schema = yup.object().shape({
@@ -42,7 +50,7 @@ const schema = yup.object().shape({
       /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/,
       "Phone number is not valid!",
     ),
-  address: yup.string(),
+  location: yup.string(),
 });
 
 const UserEdit = () => {
@@ -51,7 +59,8 @@ const UserEdit = () => {
   const [toggleName, toggleNameButton] = useState(false);
   const [toggleEmail, toggleEmailButton] = useState(false);
   const [togglePhone, togglePhoneButton] = useState(false);
-  const [toggleAddress, toggleAddressButton] = useState(false);
+  const [toggleLocation, toggleLocationButton] = useState(false);
+  const { isOpen, onOpen, onClose } = useDisclosure();
 
   const {
     register,
@@ -63,19 +72,35 @@ const UserEdit = () => {
   });
 
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const onCancel = () => {
     navigate("/user/my-profile");
   };
 
   const onSubmit = async (data: IFormInputs) => {
-    const update = await customAxios().put(
-      "user/edit-user",
-      qs.stringify(data),
-    );
-    if (update.data) {
-      toast.success("Update user successfully", { theme: "dark", icon: "🚀" });
-    }
+    await customAxios()
+      .put("user/edit-user", qs.stringify(data))
+      .then((res) => {
+        if (res.status === 200 || res.status === 201) {
+          dispatch(getUserDetail());
+          toast.success("Edit account successfully!", {
+            theme: "dark",
+            icon: "🚀",
+          });
+        }
+      })
+      .catch((error: any) => {
+        toast.warning(
+          `${error.response.data} error, failed to edit your account!`,
+          {
+            theme: "dark",
+          },
+        );
+      })
+      .finally(() => {
+        navigate("/user/my-profile");
+      });
   };
 
   return (
@@ -91,7 +116,7 @@ const UserEdit = () => {
           my={12}
         >
           <form onSubmit={handleSubmit(onSubmit)}>
-            <Link to="/user/my-profile">
+            <Link to="/user/my-profile" onClick={onOpen}>
               <div className="flex">
                 <AiOutlineArrowLeft color="#4169E1" className="mx-2 text-3xl" />
                 <Text color="#4169E1" className="mx-2 mb-10 text-lg">
@@ -224,11 +249,11 @@ const UserEdit = () => {
                 </ul>
               </div>
             </FormControl>
-            <FormControl isInvalid={!!errors?.address?.message} py="10px">
+            <FormControl isInvalid={!!errors?.location?.message} py="10px">
               <FormLabel>
                 {t("Address")}: {currentUser.location}
                 <Button
-                  onClick={() => toggleAddressButton(!toggleAddress)}
+                  onClick={() => toggleLocationButton(!toggleLocation)}
                   h="30px"
                   mb="9px"
                   className="float-right"
@@ -243,24 +268,24 @@ const UserEdit = () => {
               </FormLabel>
               <div
                 className="z-50 w-full mt-5 duration-300 ease-in-out bg-white transition-height"
-                style={{ height: toggleAddress ? "60px" : 0 }}
+                style={{ height: toggleLocation ? "60px" : 0 }}
               >
                 <ul
                   className="absolute z-50 list-none transition-opacity duration-300 ease-in-out"
-                  style={{ opacity: toggleAddress ? 1 : 0 }}
+                  style={{ opacity: toggleLocation ? 1 : 0 }}
                 >
                   {" "}
                   <Input
                     defaultValue={currentUser.location}
-                    {...register("address")}
-                    placeholder="Address"
+                    {...register("location")}
+                    placeholder="Location"
                     _placeholder={{ color: "#777" }}
                     type="text"
                     bg={useColorModeValue("gray.50", "gray.500")}
                     width="650px"
                   />
                   <FormErrorMessage>
-                    <WarningTwoIcon /> {errors?.address?.message}
+                    <WarningTwoIcon /> {errors?.location?.message}
                   </FormErrorMessage>
                 </ul>
               </div>
@@ -296,6 +321,35 @@ const UserEdit = () => {
             </Stack>
           </form>
         </Box>
+        <Modal isOpen={isOpen} onClose={onClose}>
+          <ModalOverlay />
+          <ModalContent>
+            <div className="text-center justify-center p-[10%]">
+              <IconContext.Provider value={{ className: "w-10 h-10" }}>
+                <div className="text-[#FACC15] flex justify-center mb-5">
+                  <AiOutlineWarning />
+                </div>
+              </IconContext.Provider>
+              <p className="pb-8 text-3xl font-bold">
+                You have unsaved changes
+              </p>
+              <p>Are you sure you want to leave ?</p>
+            </div>
+            <ModalFooter className="flex text-center align-center">
+              <Button
+                colorScheme="blue"
+                mr={3}
+                onClick={onClose}
+                className="w-1/2"
+              >
+                Stay
+              </Button>
+              <Button type="submit" colorScheme="red" mr={3} className="w-1/2">
+                Leave
+              </Button>
+            </ModalFooter>
+          </ModalContent>
+        </Modal>
       </Flex>
     </DefaultLayout>
   );

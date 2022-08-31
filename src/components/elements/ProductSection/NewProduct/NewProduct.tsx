@@ -1,11 +1,11 @@
 import { useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import { getAllProductsSelector } from "../../../../store/selectors/product.selector";
 import { IProduct } from "../../../../store/types/product.types";
 import { NewProductProps } from "./type";
 import { DEFAULT_IMAGE } from "./constant";
-import { useTranslation } from "react-i18next";
 
 const ProductItem = (productItemProps: NewProductProps) => {
   const { name, images, rentalCost } = productItemProps;
@@ -36,7 +36,7 @@ const ProductItem = (productItemProps: NewProductProps) => {
 };
 
 const NewProduct = () => {
-  const {t} = useTranslation();
+  const { t } = useTranslation();
   const [newProducts, setNewProducts] = useState<IProduct[]>([]);
   const products = useSelector(getAllProductsSelector);
   useEffect(() => {
