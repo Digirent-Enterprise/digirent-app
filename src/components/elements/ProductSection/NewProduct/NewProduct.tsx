@@ -3,11 +3,11 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { getAllProductsSelector } from "../../../../store/selectors/product.selector";
 import { IProduct } from "../../../../store/types/product.types";
-import { newProductProps } from "./type";
+import { NewProductProps } from "./type";
 import { DEFAULT_IMAGE } from "./constant";
 import { useTranslation } from "react-i18next";
 
-const ProductItem = (productItemProps: newProductProps) => {
+const ProductItem = (productItemProps: NewProductProps) => {
   const { name, images, rentalCost } = productItemProps;
   const defaultImage = images![0] || DEFAULT_IMAGE;
 

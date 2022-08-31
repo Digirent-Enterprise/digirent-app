@@ -28,6 +28,12 @@
     "react/no-unescaped-entities": ["off"],
     "import/prefer-default-export": ["off"],
     "default-param-last": "off",
+    "prettier/prettier": [
+      0,
+      {
+        "endOfLine": "auto"
+      }
+    ],
     "@typescript-eslint/default-param-last": ["off"],
     "react/jsx-no-constructed-context-values": ["off"],
     "react/require-default-props": ["off"],

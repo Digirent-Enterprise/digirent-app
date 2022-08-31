@@ -5,32 +5,19 @@ import { SearchSectionContext } from "../../../pages/Product/ProductSearchPage";
 import { sortByOptions } from "../../../utils/constants/helper.constant";
 
 type SearchResultsSectionProps = {
-  // setIsSearching: Dispatch<SetStateAction<boolean>>;
-  // setOrderBy: Dispatch<SetStateAction<string>>;
-  // setPageNumber: Dispatch<SetStateAction<number>>;
-  // triggerSearch: any;
   selectChange: (value: any) => void;
   selectedOption: any;
 };
 
 const SearchResultsSection = ({
-  // setIsSearching,
-  // setOrderBy,
   selectChange,
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   selectedOption,
-}: // setPageNumber,
-// triggerSearch,
-SearchResultsSectionProps) => {
+}: SearchResultsSectionProps) => {
   const {t} = useTranslation();
-  // const searchContext = useContext(SearchSectionContext);
-  // const [products, setProducts] = useState([]);
-  // const [productsCount, setProductsCount] = useState(0);
   return (
     <div className="px-4 space-y-6 sm:px-6 lg:px-0 lg:col-span-10">
       <div className="flex flex-col sm:flex-row sm:flex-wrap sm:space-x-6">
-        {/* <div className="flex items-center px-5 text-base font-medium text-gray-400">
-          Found {productsCount} results
-        </div> */}
         <div className="flex-1" />
         <div className="flex items-center text-sm text-gray-500">
           <label

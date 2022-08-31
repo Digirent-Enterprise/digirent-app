@@ -1,6 +1,5 @@
-import { Link, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-// import { categoryBanner } from "../../../utils/constants/helper.constant";
 import { useEffect, useMemo, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import ReactPaginate from "react-paginate";
@@ -56,7 +55,7 @@ const ProductListingCategory = () => {
         <div className="gap-5">
           <div className="flex flex-col gap-5">
             <div className="flex flex-col gap-5">
-              <div className="w-full flex justify-center">
+              <div className="flex justify-center w-full">
                 <CategoryBannerLayout categoryData={categoryData} />
               </div>
               <div className="w-[97.5%] flex justify-end">
@@ -73,6 +72,7 @@ const ProductListingCategory = () => {
                 {currentItems.map((product: IProduct) => (
                   <Link to={`/product/${product._id}`} key={product._id}>
                     <ProductCard
+                      id={product._id}
                       key={product._id}
                       name={product.name}
                       image={product.images[0]}

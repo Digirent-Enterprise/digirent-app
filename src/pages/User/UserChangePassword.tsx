@@ -13,10 +13,15 @@ import {
   Stack,
   useColorModeValue,
   FormErrorMessage,
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalFooter,
+  useDisclosure,
 } from "@chakra-ui/react";
 import { WarningTwoIcon } from "@chakra-ui/icons";
 import { useForm } from "react-hook-form";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { AiOutlineArrowLeft } from "react-icons/ai";
 import qs from "qs";
 import { toast } from "react-toastify";
@@ -45,6 +50,7 @@ const schema = yup.object().shape({
 
 const UserChangePassword = () => {
   const { t } = useTranslation();
+  const { isOpen, onOpen, onClose } = useDisclosure();
   const {
     register,
     handleSubmit,
@@ -54,18 +60,17 @@ const UserChangePassword = () => {
     mode: "onBlur",
   });
 
-  const navigate = useNavigate();
-
-  const onCancel = () => {
-    navigate("/user/my-profile");
-  };
-
   const onSubmit = async (data: IFormInputs) => {
-    const update = await customAxios().put(
-      "user/edit-user",
-      qs.stringify(data),
-    );
-    if (update.data) {
+    const newMappingObj = {
+      currentPassword: data.password,
+      newPassword: data.changePassword,
+    };
+    const update = await customAxios()
+      .put("auth/reset-password", qs.stringify(newMappingObj))
+      .catch((e) => {
+        toast.error(`Error: ${e.response.data}`, { theme: "dark" });
+      });
+    if (update && update.data) {
       toast.success("Change password successfully!", {
         theme: "dark",
         icon: "🚀",
@@ -86,7 +91,7 @@ const UserChangePassword = () => {
           my={12}
         >
           <form onSubmit={handleSubmit(onSubmit)}>
-            <Link to="/user/my-profile">
+            <Link to="/user/change-password/" onClick={onOpen}>
               <div className="flex">
                 <AiOutlineArrowLeft color="#4169E1" className="mx-2 text-3xl" />
                 <Text color="#4169E1" className="mx-2 mb-10 text-lg">
@@ -153,17 +158,6 @@ const UserChangePassword = () => {
               className="flex"
             >
               <Button
-                bg="grey"
-                color="white"
-                w="50%"
-                _hover={{
-                  bg: "#153289",
-                }}
-                onClick={onCancel}
-              >
-                {t("Cancel")}
-              </Button>
-              <Button
                 bg="#4169E1"
                 color="white"
                 w="50%"
@@ -177,6 +171,30 @@ const UserChangePassword = () => {
             </Stack>
           </form>
         </Box>
+        <Modal isOpen={isOpen} onClose={onClose}>
+          <ModalOverlay />
+          <ModalContent>
+            <div className="text-center justify-center p-[10%]">
+              <p className="pb-8 text-3xl font-bold">
+                You have unsaved changes
+              </p>
+              <p>Are you sure you want to leave</p>
+            </div>
+            <ModalFooter className="flex text-center align-center">
+              <Button
+                colorScheme="blue"
+                mr={3}
+                onClick={onClose}
+                className="w-1/2"
+              >
+                Stay
+              </Button>
+              <Button type="submit" colorScheme="red" mr={3} className="w-1/2">
+                Leave
+              </Button>
+            </ModalFooter>
+          </ModalContent>
+        </Modal>
       </Flex>
     </DefaultLayout>
   );

@@ -20,15 +20,20 @@ const ProductDetailsPage = () => {
       dispatch(getProductByID(id));
     }
   }, [id]);
+
   return (
     <DefaultLayout>
-      {selectedProduct && (
-        <div className="w-full ">
+      {selectedProduct._id && (
+        <>
           <ProductSummaryDisplay name={selectedProduct.name} />
           <GalleryDisplay productData={{ images: selectedProduct.images }} />
-          <BookingBoxDisplay {...selectedProduct} />
-          <StaticGoogleMap />
-        </div>
+          <div className="w-full">
+            <BookingBoxDisplay {...selectedProduct} />
+          </div>
+          <div className="mt-10">
+            <StaticGoogleMap />
+          </div>
+        </>
       )}
     </DefaultLayout>
   );

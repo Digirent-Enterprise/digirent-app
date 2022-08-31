@@ -1,4 +1,4 @@
-export type newProductProps = Partial<{
+export type NewProductProps = Partial<{
   brand: string;
   category: string;
   createdDate: string;

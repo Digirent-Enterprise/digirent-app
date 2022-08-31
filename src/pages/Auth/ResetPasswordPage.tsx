@@ -15,6 +15,7 @@ import {
 } from "@chakra-ui/react";
 import { WarningTwoIcon } from "@chakra-ui/icons";
 // import { customAxios } from "../../http-common";
+import { toast } from "react-toastify";
 import { AuthFormGrid, Transition } from "../../components";
 import Helmet from "../../Helmet";
 
@@ -48,6 +49,7 @@ const ResetPasswordPage = () => {
   });
   // const navigate = useNavigate();
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const onSubmit = (data: IFormInputs) => {
     // return axios("application/x-www-form-urlencoded")
     //   .post("api/auth/register", qs.stringify(data))
@@ -67,7 +69,7 @@ const ResetPasswordPage = () => {
     //       />;
     //     }
     //   });
-    alert(data);
+    toast.success("Reset password successfully!", { theme: "dark" });
   };
 
   return (

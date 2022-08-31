@@ -1,22 +1,15 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
-import {
-  Box,
-  Center,
-  Stack,
-  Button,
-  useColorModeValue,
-} from "@chakra-ui/react";
-import { IconContext } from "react-icons";
+import { Box, Center, Stack, useColorModeValue } from "@chakra-ui/react";
 import { BsKey } from "react-icons/bs";
 import { AiOutlineEdit, AiOutlineProfile } from "react-icons/ai";
-import { TbHeartOff } from "react-icons/tb";
 import { UserTab } from "../../components";
 import {
   UserProfileAddress,
   UserProfileAvatar,
   UserProfileButton,
+  UserProfileDeactivateButton,
   UserProfileEmail,
   UserProfileName,
 } from "../../components/elements";
@@ -58,8 +51,8 @@ const UserProfile = () => {
                 leftIcon={<BsKey />}
               />
               <UserProfileButton
-                directUrl="/user/edit-my-profile"
-                userButtonItem={t("Edit")}
+                directUrl="/user/:id/edit"
+                userButtonItem="Edit"
                 leftIcon={<AiOutlineEdit />}
               />
             </Stack>
@@ -84,31 +77,7 @@ const UserProfile = () => {
               justifyContent="center"
               pt="15px"
             >
-              <Button
-                flex={1}
-                maxW="300px"
-                fontSize="sm"
-                rounded="full"
-                alignItems="center"
-                bg="#FF385C"
-                color="white"
-                _hover={{
-                  bg: "#AE1010",
-                }}
-              >
-                <IconContext.Provider
-                  value={{
-                    style: { verticalAlign: "middle", color: "white" },
-                    size: "25px",
-                    className: "global-class-name",
-                  }}
-                >
-                  <div className="pr-2">
-                    <TbHeartOff />
-                  </div>
-                </IconContext.Provider>
-                {t("DeactivateAcc")}
-              </Button>
+              <UserProfileDeactivateButton />
             </Stack>
           </Box>
         </Center>

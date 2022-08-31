@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { useForm } from "react-hook-form";
 import { useDropzone } from "react-dropzone";
-import * as yup from "yup";
+// import * as yup from "yup";
 import {
   FormControl,
   FormLabel,
@@ -34,15 +34,15 @@ type FormValues = {
   serial: string;
 };
 
-const schema = yup.object().shape({
-  name: yup.string().required(),
-  serial: yup.string().required(),
-  brand: yup.string().required(),
-  description: yup.string().required().min(150),
-  rentalCost: yup.string().required(),
-  rentalCostType: yup.string().required(),
-  imagePath: yup.string().required(),
-});
+// const schema = yup.object().shape({
+//   name: yup.string().required(),
+//   serial: yup.string().required(),
+//   brand: yup.string().required(),
+//   description: yup.string().required().min(150),
+//   rentalCost: yup.string().required(),
+//   rentalCostType: yup.string().required(),
+//   imagePath: yup.string().required(),
+// });
 
 const AddProduct = () => {
   const [images, setImages] = useState<string[]>([]);

@@ -4,17 +4,16 @@ import { getCategories } from "../../../../store/actions/category.action";
 import { getAllCategoriesSelector } from "../../../../store/selectors/category.selector";
 import CategoryCardLayout from "./CategoryCardLayout";
 
-// import CategoryCard from "./CategoryCard";
-
 const CategoryCardListing = () => {
   const dispatch = useDispatch();
   const categoryFetchData = useSelector(getAllCategoriesSelector);
+
+  const categoryData = useMemo(() => categoryFetchData, [categoryFetchData]);
 
   useEffect(() => {
     dispatch(getCategories());
   }, []);
 
-  const categoryData = useMemo(() => categoryFetchData, [categoryFetchData]);
   return <CategoryCardLayout categories={categoryData} />;
 };
 
