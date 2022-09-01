@@ -7,13 +7,13 @@ import {
   AccordionIcon,
   Box,
 } from "@chakra-ui/react";
+import { toast } from "react-toastify";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import dayjs from "dayjs";
 import { setTransaction } from "../../../../store/actions/transaction.action";
 import { getCurrentUserSelector } from "../../../../store/selectors/user.selector";
 import { IProduct } from "../../../../store/types/product.types";
-import { toast } from "react-toastify";
 
 interface BookingBoxProps {
   price: number;
@@ -53,7 +53,7 @@ const BookingBox: React.FC<BookingBoxProps> = ({
     navigate(`/checkout/${productData._id}`);
   };
 
-  const validateRentPeriodNotNull = (startDate: any, endDate: any) => {
+  const validateRentPeriodNotNull = () => {
     return (
       (startDate === null && endDate === null) ||
       (startDate === undefined && endDate === undefined)
@@ -99,7 +99,7 @@ const BookingBox: React.FC<BookingBoxProps> = ({
         <div className="flex justify-center mt-7">
           <button
             onClick={
-              !validateRentPeriodNotNull(startDate, endDate)
+              !validateRentPeriodNotNull()
                 ? handleRent
                 : () => {
                     toast.warning("Please pick a rent period to proceed!", {

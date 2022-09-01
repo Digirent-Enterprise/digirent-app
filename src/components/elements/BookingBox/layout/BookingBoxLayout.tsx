@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import { toast } from "react-toastify";
 import BookingBox from "../item/BookingBox";
 
 import "./Datepicker.css";
