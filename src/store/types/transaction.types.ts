@@ -10,8 +10,8 @@ export interface ITransaction {
   status: string;
   latePenalty: number;
   currency: string;
-  from: Date;
-  to: Date;
+  from?: Date;
+  to?: Date;
 }
 
 export type TransactionLoading = "" | "loading" | "success" | "fail";
