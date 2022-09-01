@@ -2,8 +2,8 @@
 import { useEffect, useState } from "react";
 import qs from "qs";
 import { toast } from "react-toastify";
-import { customAxios } from "../../http-common";
 import { ITransaction } from "../../store/types/transaction.types";
+import { customAxios } from "../../http-common";
 
 const PaymentSuccess = () => {
   const queryParams = new URLSearchParams(window.location.search);
@@ -40,9 +40,7 @@ const PaymentSuccess = () => {
       setIntent(response.data);
       if (response.data.charges.data[0].paid) {
         await updateTransactionStatus();
-        toast.success("The order has been paid successfully!", {
-          theme: "dark",
-        });
+        toast.success("You have paid your order.");
         const newTransState = await fetchTransaction();
         if (newTransState && newTransState.data) {
           setNewTrans(newTransState.data);
