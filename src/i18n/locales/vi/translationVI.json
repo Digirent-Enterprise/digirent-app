@@ -5,13 +5,16 @@
   "Confirm": "Xác nhận", 
   "Cancel": "Huỷ",
   "Edit": "Chỉnh sửa",
+  "Add": "Thêm",
+  "Clear": "Xoá",
   "Next": "Tiếp theo >",
   "Previous": "< Trước",
+  "Others": "Khác",
+  "Topic": "Chủ đề",
 
   "featuredProduct": "Sản phẩm nổi bật",
 
   "getStarted": "Bắt đầu",
-  "learnmore": "Tìm hiểu thêm",
   "learnmore": "Tìm hiểu thêm",
   "emailAddress": "Địa chỉ email",
   "newsletter": "Đăng kí để nhận những thông tin mới nhất",
@@ -47,18 +50,32 @@
   
   "frequentlyAsked": "Các câu hỏi thường gặp", 
   "frequentlyAskedBody": "Dưới đây là các câu hỏi mà chúng tôi thường gặp đến từ khách hàng. Bạn có thể xem qua nếu gặp bất kì vấn đề gì.",
-  "Q1": "Tôi có thể tạo tài khoản như thế nào ?",
-  "A1": "Bạn có thể tạo tài khoản bằng cách nhấn vào nút đăng kí trong giao giện đăng nhập của chúng tôi. Sau đó chỉ cần điền thông tin và xác thực mail của bạn. Giờ thì bạn có thể bắt đầu thuê đồ!",
-  "Q2": "Giá tiền vận chuyển như thế nào ?",
-  "A2": "Giá tiền vận chuyển giao động dựa trên khoảng cách từ công ty chúng tôi tới địa chỉ cá nhân của bạn. Bạn có thể xem phí ước tính khi bắt đầu thanh toán.",
-  "Q3": "Tôi có thể trả sản phẩm trước không?",
-  "A3": "Bạn có thể trả sản phẩm sớm hơn dự tính. Nhưng hãy nhớ rằng công ty của chúng tôi không có chính sách hoàn trả tiền.",
-  "Q4": "Nếu tôi làm hư sản phẩm ?",
-  "A4": "Tuỳ thuộc vào mức độ hư hại, bạn có thể chỉ cần trả phí bảo trì hoặc bồi thường sản phẩm cho chúng tôi.",
-  "Q5": "Sẽ ra sao nếu tôi nhận được sản phẩm bị hư hại ?",
-  "A5": "Trong trường hợp này, xin hãy liên hệ chúng tôi ngay lập tức để được hỗ trợ.",
-  "Q6": "Các vấn đề liên quan đến dịch bệnh",
-  "A6": "Chúng tôi bảo quản, đóng gói và giao hàng theo giao thức an toàn được đưa ra bởi Bộ Y Tế. Tìm hiểu thêm tại: https://covid19.gov.vn/",
+  "faqs": [
+    {
+      "question": "Tôi có thể tạo tài khoản như thế nào ?",
+      "answer": "Bạn có thể tạo tài khoản bằng cách nhấn vào nút đăng kí trong giao giện đăng nhập của chúng tôi. Sau đó chỉ cần điền thông tin và xác thực mail của bạn. Giờ thì bạn có thể bắt đầu thuê đồ!"
+    },
+    {
+      "question": "Giá tiền vận chuyển được tính như thế nào ?",
+      "answer": "Giá tiền vận chuyển giao động dựa trên khoảng cách từ công ty chúng tôi tới địa chỉ cá nhân của bạn. Bạn có thể xem phí ước tính khi bắt đầu thanh toán."
+    },
+    {
+      "question": "Tôi có thể trả sản phẩm trước thời hạn không?",
+      "answer": "Bạn có thể trả sản phẩm sớm hơn dự tính. Nhưng hãy nhớ rằng công ty của chúng tôi không có chính sách hoàn trả tiền."
+    },
+    {
+      "question": "Nếu tôi làm hư sản phẩm thì như thế nào?",
+      "answer": "Tuỳ thuộc vào mức độ hư hại, bạn có thể chỉ cần trả phí bảo trì hoặc bồi thường sản phẩm cho chúng tôi."
+    },
+    {
+      "question": "Sẽ ra sao nếu tôi nhận được sản phẩm bị hư hại ?",
+      "answer": "Trong trường hợp này, xin hãy liên hệ chúng tôi ngay lập tức để nhận được sự hỗ trợ."
+    },
+    {
+      "question": "Các vấn đề liên quan đến dịch bệnh",
+      "answer": "Chúng tôi cam kết bảo quản, đóng gói và giao hàng theo quy định được ban hành hiện thời của Bộ Y Tế. Tìm hiểu thêm tại: https://covid19.gov.vn/"
+    }
+  ],
   
   "AboutTitle":"Thế mạnh của chúng tôi",
   "AboutFirstSect": "Còn nhớ khi bạn cần một chiếc máy ảnh nhưng lại không có ? Bạn có muốn mua một thứ gì đó mà bạn biết bạn sẽ không dùng lần hai ? Với Digirent, bạn có thể thuê với mức giá hấp dẫn và sản phẩm chất lượng!",
@@ -177,12 +194,14 @@
   
   "TransactionHis": "Lịch sử giao dịch",
   "TransactionHisContent": "Xem các giao dịch gần nhất, ghi chú ngày trả và khám phá nhiều sản phẩm hơn tại đây!",
+  "TransactionNPayment": "Giao dịch và thanh toán",
   "ReturnedOn": "Trả vào ngày",
 
   "BySelecting": "Ấn nút này nghĩa là bạn đã đồng ý với",
   "PrivacyPolicy": "Chính sách quyền riêng tư",
   "And": "và",
   "CookiePolicy": "Chính sách Cookie",
+  "RentPolicy": "Chính sách cho thuê",
   "PrivacyPolicySubContent":"Tại Digirent, chúng tôi rất quan tâm đến sự riêng tư cuả khách hàng. Bạn có thể tìm hiểu thêm về các dạng thông tin chúng tôi thu thập và chính sách sử dụng chúng tại đây.",
   "PrivacyPolicyAdditionalQ": "Nếu bạn có câu hỏi về chính sách của chúng tôi, đừng ngần ngại liên hệ chúng tôi.",
   "PrivacyPolicyContent": "Chính sách của chúng tôi chỉ áp dụng với các hoạt động online và chỉ có tác dụng với những khách hàng đã hiểu và đồng ý các chính sách của chúng tôi. Văn bản này không có tác dụng với các hoạt động offline, tổ chúc hay trang web khác.",
@@ -195,10 +214,36 @@
   
   "ReturnToProfile": "Quay về hồ sơ cá nhân",
   "ViewYourInfo": "Hiển thị thông tin cá nhân",
-  "DeactivateAcc": "Vô hiệu hoá tài khoản"
+  "DeactivateAcc": "Vô hiệu hoá tài khoản",
   
-
-
+  "ProductAdded": "Thêm sản phẩm thành công!",
+  "ProductName": "Tên sản phẩm",
+  "Category": "Thể loại",
+  "SelectCat": "Chọn thể loại",
+  "Brand": "Thương hiệu",
+  "ProdDes": "Mô tả sản phẩm",
+  "SelectPeriod": "Chọn thời hạn thuê",
+  "Day": "Ngày",
+  "Month": "Tháng",
+  "Year": "Năm",
+  "ProdImg": "Hình ảnh sản phẩm",
+  "Drop": "Thả file tại đây ...",
+  "DragNDrop": "Kéo và thả file tại đây hoặc click chuột để chọn file",
+  "General": "Tổng quan",
+  "Chat": "Chat",
+  "Users": "Người dùng",
+  "Products": "Sản phẩm",
+  "Transaction": "Giao dịch",
+  "CustomerInq": "Khảo sát khách hàng",
+  "InqType": "Vấn đề khảo sát",
+  "AddProd": "Thêm sản phẩm",
+  "Last30D": "30 ngày gần nhất",
+  "ViewAll": "Hiển thị hết",
+  "MostRent": "Thuê nhiều nhất",
+  "ReturnProd": "Trả sản phẩm",
+  "Account": "Tài khoản",
+  "AttachedImg": "Ảnh đính kèm",
+  "InquireNow": "Góp ý ngay"
 
 
 

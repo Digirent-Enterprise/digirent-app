@@ -8,7 +8,7 @@ import AvatarMenu from "./AvatarMenu";
 import { getCurrentUserSelector } from "../../../../store/selectors/user.selector";
 
 const NavBar = () => {
-  const {t} = useTranslation();
+  const { t } = useTranslation();
   const currentUser = useSelector(getCurrentUserSelector);
 
   const [toggle, toggleNav] = useState(false);

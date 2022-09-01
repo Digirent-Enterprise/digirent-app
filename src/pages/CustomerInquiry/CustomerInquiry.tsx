@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useTranslation } from "react-i18next";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
@@ -38,6 +39,7 @@ const schema = yup.object().shape({
 });
 
 const CustomerInquiry = () => {
+  const { t } = useTranslation();
   const [agreed, setAgreed] = useState(false);
   const [loading, setLoading] = useState(false);
   const [img, setImg] = useState("");
@@ -180,10 +182,10 @@ const CustomerInquiry = () => {
           </svg>
           <div className="text-center">
             <h2 className="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">
-              Contact sales
+              {t("ContactSales")}
             </h2>
             <div className="mt-4 text-lg leading-6 text-gray-500">
-              Ask Us anything
+              {t("AskUs")}
             </div>
           </div>
           <div className="mt-12">
@@ -199,7 +201,7 @@ const CustomerInquiry = () => {
                       {...register("email")}
                       type="email"
                       name="email"
-                      placeholder="Enter your email"
+                      placeholder={t("EnterYourEmail")}
                       size="md"
                     />
                     <FormErrorMessage>
@@ -211,21 +213,21 @@ const CustomerInquiry = () => {
                     isInvalid={!!errors?.inquiryType?.message}
                     isRequired
                   >
-                    <FormLabel>Inquiry Type</FormLabel>
+                    <FormLabel>{t("InqType")}</FormLabel>
                     <Select
                       {...register("inquiryType")}
                       name="inquiryType"
                       size="md"
-                      placeholder="Topic"
+                      placeholder={t("Topic")}
                     >
-                      <option value="Product">Product</option>
-                      <option value="Rent Policy">Rent Policy</option>
+                      <option value="Product">{t("Products")}</option>
+                      <option value="Rent Policy">{t("RentPolicy")}</option>
                       <option value="Transaction and Payment">
-                        Transaction and Payment
+                        {t("TransactionNPayment")}
                       </option>
-                      <option value="Return Product">Return product</option>
-                      <option value="Account">Account</option>
-                      <option value="Others">Others</option>
+                      <option value="Return Product">{t("ReturnProd")}</option>
+                      <option value="Account">{t("Account")}</option>
+                      <option value="Others">{t("Others")}</option>
                     </Select>
                     <FormErrorMessage>
                       {errors?.inquiryType?.message}
@@ -235,19 +237,19 @@ const CustomerInquiry = () => {
                     isInvalid={!!errors?.inquiryType?.message}
                     isRequired
                   >
-                    <FormLabel>Description</FormLabel>
+                    <FormLabel>{t("Description")}</FormLabel>
                     <Textarea
                       {...register("inquiryDescription")}
                       name="inquiryDescription"
                       size="md"
-                      placeholder="description"
+                      placeholder={t("Description")}
                     />
                     <FormErrorMessage>
                       {errors?.inquiryDescription?.message}
                     </FormErrorMessage>
                   </FormControl>
                   <FormControl>
-                    <FormLabel>Attached Image</FormLabel>
+                    <FormLabel>{t("AttachedImg")}</FormLabel>
                     <div
                       style={
                         img
@@ -269,12 +271,7 @@ const CustomerInquiry = () => {
                       {...getRootProps()}
                     >
                       <input {...getInputProps()} />
-                      {img ? null : (
-                        <p>
-                          Drag 'n' drop some files here, or click to select
-                          files
-                        </p>
-                      )}
+                      {img ? null : <p>{t("DragNDrop")}</p>}
                     </div>
                   </FormControl>
                   <Button
@@ -285,7 +282,7 @@ const CustomerInquiry = () => {
                     width="full"
                     isLoading={loading}
                   >
-                    Inquire now
+                    {t("InquireNow")}
                   </Button>
                   <div className="sm:col-span-2">
                     <div className="flex items-start">
@@ -299,21 +296,20 @@ const CustomerInquiry = () => {
                       </div>
                       <div className="ml-3">
                         <p className="text-base text-gray-500">
-                          By selecting this, you agree to the{" "}
+                          {t("BySelecting")}{" "}
                           <a
                             href="/privacy"
                             className="font-medium text-gray-700 underline"
                           >
-                            Privacy Policy
+                            {t("PrivacyPolicy")}
                           </a>{" "}
-                          and{" "}
+                          {t("And")}{" "}
                           <a
                             href="/privacy"
                             className="font-medium text-gray-700 underline"
                           >
-                            Cookie Policy
+                            {t("CookiePolicy")}
                           </a>
-                          .
                         </p>
                       </div>
                     </div>

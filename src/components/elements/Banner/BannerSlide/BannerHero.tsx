@@ -1,4 +1,5 @@
 import { useTranslation } from "react-i18next";
+
 const BannerHero = () => {
   const { t } = useTranslation();
   return (

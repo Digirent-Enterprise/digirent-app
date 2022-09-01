@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import React from "react";
 import { useTranslation } from "react-i18next";
 import {
@@ -102,4 +101,3 @@ const AvatarMenu = () => {
 };
 
 export default AvatarMenu;
->>>>>>> e86d9bd5a4b8e111555788cdeb76905f923134bd

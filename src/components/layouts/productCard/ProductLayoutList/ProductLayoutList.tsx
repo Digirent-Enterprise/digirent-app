@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
-import { Link } from "react-router-dom";
 import ReactPaginate from "react-paginate";
 
 import ProductCard from "../Item/ProductCard";

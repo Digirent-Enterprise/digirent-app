@@ -5,13 +5,16 @@
   "Confirm": "Confirm", 
   "Cancel": "Cancel",
   "Edit": "Edit",
+  "Add": "Add",
+  "Clear": "Clear",
   "Next": "Next >",
   "Previous": "< Previous",
+  "Others": "Others",
+  "Topic": "Topic",
   
   "featuredProduct": "Featured Products",
   
   "getStarted": "Get Started",
-  "learnmore": "Learn more",
   "learnmore": "Learn more",
   "emailAddress": "Email address",
   "newsletter": "Join us and get the update from anywhere",
@@ -47,18 +50,32 @@
   
   "frequentlyAsked": "Frequently Asked Questions", 
   "frequentlyAskedBody": "Below are questions that we often received from our customers. Take a look if you run into any problems.",
-  "Q1": "How do I open an account?",
-  "A1": "You can create account simply by clicking the sign up button from the login interface. After that just fill in the required information and verified your email. After that you can start renting.",
-  "Q2": "How much is delivery?",
-  "A2": "The delivery fees variate depends on the distance from our company to your personal address. You can sê the estimated delivery fees when you checkout your cart.",
-  "Q3": "Can I cancel my rental before?",
-  "A3": "You can return the products sooner than your order. However, please noted that we have no refund policy.",
-  "Q4": "What happen if I damage the products?",
-  "A4": "Depends on the damage level, your indemnify will vary from paying just the maintenance fee or the entire products.",
-  "Q5": "What happen if we receive a damaged product?",
-  "A5": "In this case, please contact us immedidately to receive further support.",
-  "Q6": "Pandemic concerns",
-  "A6": "We follow the safety protocols provided by the National Ministry of Health when maintain and handle our products. Learn more at: https://covid19.gov.vn/",
+  "faqs": [
+    {
+      "question": "How do I open an account?",
+      "answer": "You can create account simply by clicking the sign up button from the login interface. After that just fill in the required information and verified your email. After that you can start renting."
+    },
+    {
+      "question": "How much is delivery?",
+      "answer": "The delivery fees variate depends on the distance from our company to your personal address. You can see the estimated delivery fees when you checkout your cart."
+    },
+    {
+      "question": "Can I cancel my rental before return date?",
+      "answer": "You can return the products sooner than your order. However, please noted that we have no refund policy."
+    },
+    {
+      "question": "What happen if I damage the products?",
+      "answer": "Depends on the damage level, your indemnify will vary from paying just the maintenance fee or the entire products."
+    },
+    {
+      "question": "What happen if we receive a damaged product?",
+      "answer": "In this case, please contact us immediately to receive further support."
+    },
+    {
+      "question": "Pandemic concerns",
+      "answer": "We do follow the safety protocols provided by the National Ministry of Health when maintain and handle our products. Learn more at: https://covid19.gov.vn/"
+    }
+  ],
   
   "AboutTitle": "Our competitive advantage",
   "AboutFirstSect": "Remember when you need a camera but did not have it? Would you buy it if you know you would not use it the second time? At Digirent, we understand what the you need. Now, you can enjoy renting anything you want at a reasonable cost and high quality products.",
@@ -176,12 +193,14 @@
 
   "TransactionHis": "Transaction history",
   "TransactionHisContent": "Check the status of recent orders, manage returns, and discover similar products.",
+  "TransactionNPayment": "Transaction and Payment",
   "ReturnedOn": "Returned on",
 
   "BySelecting": "By selecting this, you agree to the",
   "PrivacyPolicy": "Privacy policy",
   "And": "and",
   "CookiePolicy": "Cookie policy",
+  "RentPolicy": "Rent policy",
   "PrivacyPolicySubContent":"At Digirent, accessible from digirent.dev, one of our main priorities is the privacy of our visitors. This Privacy Policy document contains types of information that is collected and recorded by Digirent and how we use it.",
   "PrivacyPolicyAdditionalQ": "If you have additional questions or require more information about our Privacy Policy, do not hesitate to contact us.",
   "PrivacyPolicyContent": "This Privacy Policy applies only to our online activities and is valid for visitors to our website with regards to the information that they shared and/or collect in digirent.dev. This policy is not applicable to any information collected offline or via channels other than this website.",
@@ -194,7 +213,34 @@
   
   "ReturnToProfile": "Return to profile info",
   "ViewYourInfo": "View your information",
-  "DeactivateAcc": "Deactivate account"
+  "DeactivateAcc": "Deactivate account",
   
-  
+  "ProductAdded": "Product is added successfully!",
+  "ProductName": "Product Name",
+  "Category": "Category",
+  "SelectCat": "Select category",
+  "Brand": "Brand",
+  "ProdDes": "Product Description",
+  "SelectPeriod": "Select rent period",
+  "Day": "Day",
+  "Month": "Month",
+  "Year": "Year",
+  "ProdImg": "Product Images",
+  "Drop": "Drop the files here ...",
+  "DragNDrop": "Drag 'n' drop some files here, or click to select files",
+  "General": "General",
+  "Chat": "Chat",
+  "Users": "Users",
+  "Products": "Products",
+  "Transaction": "Transaction",
+  "CustomerInq": "Customer Inquiries",
+  "InqType": "Inquiries type",
+  "AddProd": "Add products",
+  "Last30D": "Last 30 days",
+  "ViewAll": "View all",
+  "MostRent": "Most rental",
+  "ReturnProd": "Return product",
+  "Account": "Account",
+  "AttachedImg": "Attached Image",
+  "InquireNow": "Inquire Now"
 }

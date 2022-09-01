@@ -1,7 +1,7 @@
 import React, { useState } from "react";
+import { useTranslation } from "react-i18next";
 import { Alert, AlertIcon, Switch } from "@chakra-ui/react";
 import DefaultLayout from "../DefaultLayout";
-import { useTranslation } from "react-i18next";
 
 function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(" ");

@@ -1,12 +1,10 @@
 import { Grid, GridItem } from "@chakra-ui/react";
-import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
 import { CheckoutDetailsCard, OrderSummaryContent } from "../../components";
 import DefaultLayout from "../DefaultLayout";
 import { getTransactionSelector } from "../../store/selectors/transaction.selector";
 
 const CheckoutPage = () => {
-  const { t } = useTranslation();
   const transactionData: any = useSelector(getTransactionSelector);
 
   return (
