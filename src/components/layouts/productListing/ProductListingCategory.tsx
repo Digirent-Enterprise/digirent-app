@@ -1,4 +1,5 @@
-import { useLocation } from "react-router-dom";
+import { useLocation, Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import { useEffect, useMemo, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import ReactPaginate from "react-paginate";
@@ -11,6 +12,7 @@ import { IProduct } from "../../../store/types/product.types";
 import NotFoundCategory from "../NotFoundResult/NotFoundCategory";
 
 const ProductListingCategory = () => {
+  const { t } = useTranslation();
   const dispatch = useDispatch();
   const [selectedOpt, setSelectedOpt] = useState<String>("");
   const query = new URLSearchParams(useLocation().search);
@@ -65,17 +67,19 @@ const ProductListingCategory = () => {
             </div>
           </div>
           <div className="grid grid-cols-3 pb-10 mx-auto lg:py-12 lg:px-8">
-            <div className="w-full col-span-5 gap-24">
-              <div className="grid items-center justify-center grid-cols-1 pr-8 border-black gap-y-10 sm:grid-cols-2 md:grid-cols-3 gap-x-6 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
+            <div className="col-span-5 gap-24 w-full">
+              <div className=" border-black grid justify-center items-center pr-8 grid-cols-1 gap-y-10 sm:grid-cols-2 md:grid-cols-3 gap-x-6 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
                 {currentItems.map((product: IProduct) => (
-                  <ProductCard
-                    id={product._id}
-                    key={product._id}
-                    name={product.name}
-                    image={product.images[0]}
-                    rentalCost={product.rentalCost}
-                    rentalCostType={product.rentalCostType}
-                  />
+                  <Link to={`/product/${product._id}`} key={product._id}>
+                    <ProductCard
+                      id={product._id}
+                      key={product._id}
+                      name={product.name}
+                      image={product.images[0]}
+                      rentalCost={product.rentalCost}
+                      rentalCostType={product.rentalCostType}
+                    />
+                  </Link>
                 ))}
               </div>
             </div>
@@ -85,11 +89,11 @@ const ProductListingCategory = () => {
       {products.length > 0 ? (
         <ReactPaginate
           breakLabel="..."
-          nextLabel="next >"
+          nextLabel={t("Next")}
           onPageChange={handlePageClick}
           pageRangeDisplayed={5}
           pageCount={pageCount}
-          previousLabel="< previous"
+          previousLabel={t("Previous")}
           containerClassName="pagination container flex justify-center mx-auto py-10"
           pageLinkClassName="age-num z-10 border-black relative inline-flex items-center px-4 py-2 border text-sm font-medium border-r-0 hover:bg-blue-100 hover:text-white"
           previousLinkClassName="age-num z-10 border-black text-black relative inline-flex items-center px-4 py-2 border text-sm font-medium border-r-0 hover:bg-blue-100 hover:text-white"

@@ -1,3 +1,5 @@
+import { useTranslation } from "react-i18next";
+
 const files = [
   {
     title: "IMG_4985.HEIC",
@@ -49,10 +51,11 @@ const files = [
   },
 ];
 const MostRentalProduct = () => {
+  const { t } = useTranslation();
   return (
     <div className="px-8 py-6">
       <h3 className="text-lg leading-6 font-medium text-[#111827] py-4">
-        Most rental
+        {t("MostRent")}
       </h3>
       <ul className="grid grid-cols-2 gap-x-4 gap-y-8 sm:grid-cols-3 sm:gap-x-6 lg:grid-cols-4 xl:gap-x-8">
         {files.map((file) => (

@@ -1,5 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import React, { useEffect } from "react";
+import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 import dayjs from "dayjs";
 import { UserTab } from "../../components";
@@ -13,6 +14,7 @@ import { ITransaction } from "../../store/types/transaction.types";
 import Helmet from "../../Helmet";
 
 const UserTransactionHistory = () => {
+  const { t } = useTranslation();
   const transactions = useSelector(getTransactionByUserEmailSelector);
   const transactionLoading = useSelector(selectTransactionLoading);
   const dispatch = useDispatch();
@@ -29,9 +31,9 @@ const UserTransactionHistory = () => {
   return (
     <DefaultLayout>
       <Helmet
-        title="Order History"
+        title={t("Order History")}
         addPostfixTitle
-        description="View all your orders history"
+        description={t("ViewAllOrderHis")}
       />
       <UserTab />
       <main
@@ -43,11 +45,10 @@ const UserTransactionHistory = () => {
             id="transaction-history-heading"
             className="text-3xl font-extrabold tracking-tight text-gray-900"
           >
-            Transaction history
+            {t("TransactionHis")}
           </h1>
           <p className="mt-2 text-sm text-gray-500">
-            Check the status of recent orders, manage returns, and discover
-            similar products.
+            {t("TransactionHisContent")}
           </p>
         </div>
         {transactions.length > 0 ? (

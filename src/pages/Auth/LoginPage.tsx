@@ -1,4 +1,5 @@
 import { useForm } from "react-hook-form";
+import { useTranslation } from "react-i18next";
 import { useDispatch } from "react-redux";
 
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -37,6 +38,7 @@ const schema = yup.object().shape({
 });
 
 const LoginPage = () => {
+  const { t } = useTranslation();
   const [disable, setDisable] = useState(false);
   const {
     register,
@@ -80,12 +82,12 @@ const LoginPage = () => {
   return (
     <Transition>
       <Helmet
-        title="Login"
+        title={t("Login")}
         addPostfixTitle
-        description="Login to your existing account at Digirent"
+        description={t("LoginToExist")}
       />
       <AuthFormGrid
-        childTitle="Login to your account"
+        childTitle={t("LoginToAccount")}
         childCompForm={
           <Box textAlign="center">
             <form onSubmit={handleSubmit(onSubmit)}>
@@ -96,26 +98,26 @@ const LoginPage = () => {
                     {...register("email")}
                     type="email"
                     name="email"
-                    placeholder="Enter your email"
+                    placeholder={t("EnterYourEmail")}
                     size="md"
                   />
                   <FormErrorMessage>{errors?.email?.message}</FormErrorMessage>
                 </FormControl>
 
                 <FormControl isInvalid={!!errors?.password?.message} isRequired>
-                  <FormLabel>Password</FormLabel>
+                  <FormLabel>{t("Password")}</FormLabel>
                   <Input
                     {...register("password")}
                     name="password"
                     size="md"
                     type="password"
-                    placeholder="Enter your password"
+                    placeholder={t("EnterYourPassword")}
                   />
                   <FormErrorMessage>
                     {errors?.password?.message}
                   </FormErrorMessage>
                   <FormHelperText textAlign="right">
-                    <Link href="/forgot-password">forgot password?</Link>
+                    <Link href="/forgot-password">{t("ForgotP")}</Link>
                   </FormHelperText>
                 </FormControl>
                 <Button
@@ -126,14 +128,14 @@ const LoginPage = () => {
                   width="full"
                   disabled={!!errors.email || !!errors.password || disable}
                 >
-                  Login
+                  {t("Login")}
                 </Button>
 
                 <Box>
-                  New to us?
+                  {t("NewToUs?")}
                   <Link color="brand.500" href="/register">
                     {" "}
-                    Register
+                    {t("Resgister")}
                   </Link>
                 </Box>
               </Stack>

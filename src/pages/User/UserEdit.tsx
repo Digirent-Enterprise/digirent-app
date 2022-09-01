@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useTranslation } from "react-i18next";
 import { useSelector , useDispatch } from "react-redux";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -53,6 +54,7 @@ const schema = yup.object().shape({
 });
 
 const UserEdit = () => {
+  const { t } = useTranslation();
   const currentUser = useSelector(getCurrentUserSelector);
   const [toggleName, toggleNameButton] = useState(false);
   const [toggleEmail, toggleEmailButton] = useState(false);
@@ -118,14 +120,14 @@ const UserEdit = () => {
               <div className="flex">
                 <AiOutlineArrowLeft color="#4169E1" className="mx-2 text-3xl" />
                 <Text color="#4169E1" className="mx-2 mb-10 text-lg">
-                  Return to profile info
+                  {t("ReturnToProfile")}
                 </Text>
               </div>
             </Link>
 
             <FormControl isInvalid={!!errors?.name?.message} py="10px">
               <FormLabel>
-                User name: {currentUser.name}
+                {t("Username")}: {currentUser.name}
                 <Button
                   onClick={() => toggleNameButton(!toggleName)}
                   h="30px"
@@ -137,7 +139,7 @@ const UserEdit = () => {
                     bg: "#153289",
                   }}
                 >
-                  Edit
+                  {t("Edit")}
                 </Button>
               </FormLabel>
               <div
@@ -179,7 +181,7 @@ const UserEdit = () => {
                     bg: "#153289",
                   }}
                 >
-                  Edit
+                  {t("Edit")}
                 </Button>
               </FormLabel>
               <div
@@ -208,7 +210,7 @@ const UserEdit = () => {
             </FormControl>
             <FormControl isInvalid={!!errors?.name?.message} py="10px">
               <FormLabel>
-                Phone Number: {currentUser.phone}
+                {t("PhoneNum")}: {currentUser.phone}
                 <Button
                   onClick={() => togglePhoneButton(!togglePhone)}
                   h="30px"
@@ -220,7 +222,7 @@ const UserEdit = () => {
                     bg: "#153289",
                   }}
                 >
-                  Edit
+                  {t("Edit")}
                 </Button>
               </FormLabel>
               <div
@@ -249,7 +251,7 @@ const UserEdit = () => {
             </FormControl>
             <FormControl isInvalid={!!errors?.location?.message} py="10px">
               <FormLabel>
-                Location: {currentUser.location}
+                {t("Address")}: {currentUser.location}
                 <Button
                   onClick={() => toggleLocationButton(!toggleLocation)}
                   h="30px"
@@ -261,7 +263,7 @@ const UserEdit = () => {
                     bg: "#153289",
                   }}
                 >
-                  Edit
+                  {t("Edit")}
                 </Button>
               </FormLabel>
               <div
@@ -303,7 +305,7 @@ const UserEdit = () => {
                 }}
                 onClick={onCancel}
               >
-                Cancel
+                {t("Cancel")}
               </Button>
               <Button
                 bg="#4169E1"
@@ -314,7 +316,7 @@ const UserEdit = () => {
                 }}
                 type="submit"
               >
-                Confirm
+                {t("Confirm")}
               </Button>
             </Stack>
           </form>

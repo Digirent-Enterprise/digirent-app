@@ -1,4 +1,5 @@
 import { useForm } from "react-hook-form";
+import { useTranslation } from "react-i18next";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 // import { useNavigate } from "react-router-dom";
@@ -37,6 +38,7 @@ const schema = yup.object().shape({
 });
 
 const ResetPasswordPage = () => {
+  const { t } = useTranslation();
   const {
     register,
     handleSubmit,
@@ -78,18 +80,18 @@ const ResetPasswordPage = () => {
         description="Enter new password in order to reset new ones"
       />
       <AuthFormGrid
-        childTitle="Reset Password"
+        childTitle={t("ResetPass")}
         childCompForm={
           <Box textAlign="center">
             <form onSubmit={handleSubmit(onSubmit)}>
               <Stack spacing={2} p="1rem" backgroundColor="whiteAlpha.900">
                 <FormControl isInvalid={!!errors.pw1?.message}>
-                  <FormLabel>New Password</FormLabel>
+                  <FormLabel>{t("NewPass")}</FormLabel>
                   <Input
                     {...register("pw1")}
                     pr="4.5rem"
                     type="password"
-                    placeholder="Enter password"
+                    placeholder={t("EnterYourPassword")}
                     name="pw1"
                   />
                   <FormErrorMessage>
@@ -99,12 +101,12 @@ const ResetPasswordPage = () => {
                   </FormErrorMessage>
                 </FormControl>
                 <FormControl isInvalid={!!errors.pw2?.message}>
-                  <FormLabel>Confirm New Password</FormLabel>
+                  <FormLabel>{t("ConfirmPassword")}</FormLabel>
                   <Input
                     {...register("pw2")}
                     pr="4.5rem"
                     type="password"
-                    placeholder="Confirm password"
+                    placeholder={t("ConfirmPassword")}
                     name="pw2"
                   />
                   <FormErrorMessage>
@@ -120,7 +122,7 @@ const ResetPasswordPage = () => {
                   width="full"
                   disabled={!!errors.pw1 || !!errors.pw2}
                 >
-                  Reset Password
+                  {t("ResetPass")}
                 </Button>
               </Stack>
             </form>
