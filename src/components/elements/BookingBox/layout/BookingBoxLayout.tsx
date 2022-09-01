@@ -7,18 +7,15 @@ import BookingBox from "../item/BookingBox";
 import "./Datepicker.css";
 
 const BookingBoxLayout = ({ productData }: any) => {
-  const [startDate, setStartDate] = useState(new Date());
-  const [endDate, setEndDate] = useState(new Date());
-  const [mappedProductData, setMappedProductData] = useState<any>(productData);
+  const [startDate, setStartDate] = useState<Date>();
+  const [endDate, setEndDate] = useState<Date>();
   const [excludedDates, setExcludedDates] = useState<any>([]);
   const onChange = (dates: any) => {
-    const start = dates;
+    const [start, end] = dates;
     setStartDate(start);
-  };
-  const onChange2 = (dates: any) => {
-    const end = dates;
     setEndDate(end);
   };
+
   const formatDate = (date: any) => {
     const d = new Date(date);
     function pad(s: any) {
@@ -27,7 +24,7 @@ const BookingBoxLayout = ({ productData }: any) => {
     return [pad(d.getDate()), pad(d.getMonth() + 1), d.getFullYear()].join("/");
   };
 
-  const _onHandleAddDates = () => {
+  const onHandleAddDates = () => {
     const exclude = [...excludedDates];
     for (let item of productData.excludeIntervals) {
       if (item.start && item.end) {
@@ -46,17 +43,11 @@ const BookingBoxLayout = ({ productData }: any) => {
     setExcludedDates(exclude);
   };
 
-  if (startDate > endDate) {
-    toast.warning("Please choose valid rental period", {
-      theme: "dark",
-    });
-    setEndDate(startDate);
-  }
-
   useEffect(() => {
-    _onHandleAddDates();
+    onHandleAddDates();
   }, []);
 
+ 
   return (
     <div className="flex flex-col justify-center w-full gap-2">
       <div className="flex flex-col justify-center mt-10 lg:flex-row">
@@ -75,13 +66,9 @@ const BookingBoxLayout = ({ productData }: any) => {
                   onChange={onChange}
                   minDate={new Date()}
                   inline
-                  excludeDates={excludedDates}
-                />
-                <DatePicker
-                  wrapperClassName="date-picker"
-                  onChange={onChange2}
-                  minDate={startDate}
-                  inline
+                  startDate={startDate}
+                  endDate={endDate}
+                  selectsRange
                   excludeDates={excludedDates}
                 />
               </div>
@@ -92,8 +79,8 @@ const BookingBoxLayout = ({ productData }: any) => {
           <BookingBox
             productData={productData}
             price={productData.rentalCost}
-            startDate={new Date(startDate.toString())}
-            endDate={new Date(endDate.toString())}
+            startDate={startDate ? new Date(startDate) : undefined}
+            endDate={endDate ? new Date(endDate) : undefined}
             rentalCost={productData.rentalCost}
             rentalCostType={productData.rentalCostType}
           />
