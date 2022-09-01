@@ -1,4 +1,5 @@
 import { useForm } from "react-hook-form";
+import { useTranslation } from "react-i18next";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { useNavigate } from "react-router-dom";
@@ -15,7 +16,6 @@ import {
 } from "@chakra-ui/react";
 import { WarningTwoIcon } from "@chakra-ui/icons";
 import { toast } from "react-toastify";
-
 import { customAxios } from "../../http-common";
 import { AuthFormGrid, Transition } from "../../components";
 import Helmet from "../../Helmet";
@@ -50,6 +50,7 @@ const schema = yup.object().shape({
 });
 
 const RegisterPage = () => {
+  const { t } = useTranslation();
   const {
     register,
     handleSubmit,
@@ -88,21 +89,21 @@ const RegisterPage = () => {
   return (
     <Transition>
       <Helmet
-        title="Register"
+        title={t("Register")}
         addPostfixTitle
-        description="Register new account at Digirent"
+        description={t("RegisterNew")}
       />
       <AuthFormGrid
-        childTitle="Join us now"
+        childTitle={t("JoinUs")}
         childCompForm={
           <Box textAlign="center">
             <form onSubmit={handleSubmit(onSubmit)} autoComplete="new-password">
               <Stack spacing={2} p="1rem" backgroundColor="whiteAlpha.900">
                 <FormControl isInvalid={!!errors?.name?.message} isRequired>
-                  <FormLabel>Name</FormLabel>
+                  <FormLabel>{t("Name")}</FormLabel>
                   <Input
                     {...register("name")}
-                    placeholder="Enter name"
+                    placeholder={t("EnterName")}
                     size="md"
                     type="text"
                     name="name"
@@ -116,7 +117,7 @@ const RegisterPage = () => {
                   <Input
                     type="email"
                     {...register("email")}
-                    placeholder="Enter email"
+                    placeholder={t("EnterYourEmail")}
                     size="md"
                     name="email"
                   />
@@ -126,10 +127,10 @@ const RegisterPage = () => {
                   </FormErrorMessage>
                 </FormControl>
                 <FormControl isInvalid={!!errors.phone?.message} isRequired>
-                  <FormLabel>Phone</FormLabel>
+                  <FormLabel>{t("PhoneNum")}</FormLabel>
                   <Input
                     {...register("phone")}
-                    placeholder="Enter phone"
+                    placeholder={t("EnterYourPhone")}
                     size="md"
                     type="tel"
                     name="phone"
@@ -139,12 +140,12 @@ const RegisterPage = () => {
                   </FormErrorMessage>
                 </FormControl>
                 <FormControl isInvalid={!!errors.pw1?.message}>
-                  <FormLabel>Password</FormLabel>
+                  <FormLabel>{t("Password")}</FormLabel>
                   <Input
                     {...register("pw1")}
                     pr="4.5rem"
                     type="password"
-                    placeholder="Enter password"
+                    placeholder={t("EnterYourPassword")}
                     name="pw1"
                   />
                   <FormErrorMessage>
@@ -154,12 +155,12 @@ const RegisterPage = () => {
                   </FormErrorMessage>
                 </FormControl>
                 <FormControl isInvalid={!!errors.pw2?.message}>
-                  <FormLabel>Confirm Password</FormLabel>
+                  <FormLabel>{t("ConfirmPassword")}</FormLabel>
                   <Input
                     {...register("pw2")}
                     pr="4.5rem"
                     type="password"
-                    placeholder="Confirm password"
+                    placeholder={t("ConfirmPassword")}
                     name="pw2"
                   />
                   <FormErrorMessage>
@@ -167,7 +168,7 @@ const RegisterPage = () => {
                     {errors?.pw2?.message}
                   </FormErrorMessage>
                   <FormHelperText textAlign="right">
-                    <Link href="/forgot-password">forgot password?</Link>
+                    <Link href="/forgot-password">{t("ForgotP")}</Link>
                   </FormHelperText>
                 </FormControl>
                 <Button
@@ -184,14 +185,14 @@ const RegisterPage = () => {
                     !!errors.pw2
                   }
                 >
-                  Register
+                  {t("Resgister")}
                 </Button>
 
                 <Box>
-                  Already had an account?
+                  {t("AlreadyHadAcc?")}
                   <Link color="brand.500" href="/login">
                     {" "}
-                    Login
+                    {t("Login")}
                   </Link>
                 </Box>
               </Stack>

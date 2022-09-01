@@ -1,14 +1,16 @@
+import { useTranslation } from "react-i18next";
 import { UserTab } from "../../components";
 import Helmet from "../../Helmet";
 import DefaultLayout from "../DefaultLayout";
 
 const UserFavoriteProduct = () => {
+  const { t } = useTranslation();
   return (
     <DefaultLayout>
       <Helmet
-        title="Favorite products"
+        title={t("FavProd")}
         addPostfixTitle
-        description="View all your favorite products"
+        description={t("FavProdDes")}
       />
       <UserTab />
     </DefaultLayout>
