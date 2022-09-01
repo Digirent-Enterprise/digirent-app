@@ -8,6 +8,7 @@ import {
   AccordionIcon,
   Box,
 } from "@chakra-ui/react";
+import { toast } from "react-toastify";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import dayjs from "dayjs";
@@ -19,8 +20,8 @@ interface BookingBoxProps {
   price: number;
   rentalCost: number;
   rentalCostType: string;
-  startDate: Date;
-  endDate: Date;
+  startDate?: Date;
+  endDate?: Date;
   productData: IProduct;
 }
 const BookingBox: React.FC<BookingBoxProps> = ({
@@ -54,16 +55,28 @@ const BookingBox: React.FC<BookingBoxProps> = ({
     navigate(`/checkout/${productData._id}`);
   };
 
+  const validateRentPeriodNotNull = () => {
+    return (
+      (startDate === null && endDate === null) ||
+      (startDate === undefined && endDate === undefined)
+    );
+  };
+
   useEffect(() => {
     if (price) {
-      const diff: number = Math.abs(startDate.getTime() - endDate.getTime());
+      const diff: any =
+        startDate && endDate
+          ? Math.abs(startDate.getTime() - endDate.getTime())
+          : null;
       const numDateDiff =
         diff / 1000 / 60 / 60 / 24 >= 1
           ? Math.ceil(diff / 1000 / 60 / 60 / 24)
           : 1;
       setTotalPrice(price * numDateDiff);
     }
+    console.log("startDate :>> ", startDate);
   }, [startDate, endDate]);
+
   return (
     <div className="flex flex-col">
       <div className=" w-[300px] rounded-3xl bg-white flex flex-col drop-shadow-[0px_10px_10px_rgba(0,0,0,0.25)]">
@@ -87,7 +100,15 @@ const BookingBox: React.FC<BookingBoxProps> = ({
         </div>
         <div className="flex justify-center mt-7">
           <button
-            onClick={handleRent}
+            onClick={
+              !validateRentPeriodNotNull()
+                ? handleRent
+                : () => {
+                    toast.warning("Please pick a rent period to proceed!", {
+                      theme: "dark",
+                    });
+                  }
+            }
             className="bg-[#1010AE] w-[90%] h-[50px] rounded-xl hover:scale-[1.02] text-white text-lg"
           >
             {t("Rent")}
