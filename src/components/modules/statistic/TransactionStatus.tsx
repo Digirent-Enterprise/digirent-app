@@ -2,10 +2,10 @@ import React from "react";
 import PieChart from "./base/PieChart";
 
 export const data = {
-  labels: ["Pending", "Paid", "Shipped"],
+  labels: ["Pending", "Paid"],
   datasets: [
     {
-      data: [12, 19, 3],
+      data: [12, 19],
       backgroundColor: [
         "rgba(255, 99, 132, 0.2)",
         "rgba(54, 162, 235, 0.2)",
