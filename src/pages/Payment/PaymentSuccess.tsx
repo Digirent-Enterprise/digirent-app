@@ -53,12 +53,13 @@ const PaymentSuccess = () => {
     fetchIntent();
   }, []);
 
-  const rentDays = newTrans
-    ? (new Date(newTrans?.to).getTime() - new Date(newTrans?.from).getTime()) /
-      (1000 * 3600 * 24)
-    : "";
-
-  return newTrans ? (
+  const rentDays =
+    newTrans && newTrans.to && newTrans.from
+      ? (new Date(newTrans?.to).getTime() -
+          new Date(newTrans?.from).getTime()) /
+        (1000 * 3600 * 24)
+      : "";
+  return newTrans && newTrans.from && newTrans.to ? (
     <main className="relative lg:min-h-full lg:ml-32">
       <div className="h-80 overflow-hidden lg:absolute lg:w-1/2 lg:h-full lg:pr-4 xl:pr-12">
         <img
