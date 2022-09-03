@@ -74,11 +74,10 @@ const BookingBox: React.FC<BookingBoxProps> = ({
           : 1;
       setTotalPrice(price * numDateDiff);
     }
-    console.log("startDate :>> ", startDate);
   }, [startDate, endDate]);
 
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col">s
       <div className=" w-[300px] rounded-3xl bg-white flex flex-col drop-shadow-[0px_10px_10px_rgba(0,0,0,0.25)]">
         <div className="w-[150px]] flex justify-left ml-7 mt-5 mb-4 gap-1 text-lg ">
           <b>${price}</b>

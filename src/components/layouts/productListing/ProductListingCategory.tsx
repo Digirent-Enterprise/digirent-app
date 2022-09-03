@@ -3,6 +3,7 @@ import { useTranslation } from "react-i18next";
 import { useEffect, useMemo, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import ReactPaginate from "react-paginate";
+import { AiOutlineArrowLeft } from "react-icons/ai";
 import { getCategoryByID } from "../../../store/actions/category.action";
 import CategoryBannerLayout from "./Layout/CategoryBannerLayout";
 import { getCategoriesByIdSelector } from "../../../store/selectors/category.selector";
@@ -53,6 +54,12 @@ const ProductListingCategory = () => {
     <>
       {categoryData && Object.keys(categoryData) && (
         <div className="gap-5">
+          <Link to="/">
+            <div className="flex px-8 py-8">
+              <AiOutlineArrowLeft color="#4169E1" className="mx-2 text-3xl" />
+              <p className="text-lg text-[#4169E1]">Return to homepage</p>
+            </div>
+          </Link>
           <div className="flex flex-col gap-5">
             <div className="flex flex-col gap-5">
               <div className="flex justify-center w-full">
