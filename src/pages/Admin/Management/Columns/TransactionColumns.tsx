@@ -6,9 +6,7 @@ import { ClickDelete, ClickEdit } from "../HandleActionClick";
 export const TransactionColumns: Array<Column> = [
   {
     Header: "Transaction ID",
-    accessor: (e: any) => {
-      return e._id.toUpperCase();
-    },
+    accessor: "_id",
   },
   {
     Header: "User Email",
@@ -30,12 +28,17 @@ export const TransactionColumns: Array<Column> = [
     accessor: "to",
   },
   {
+    Header: "Intent",
+    accessor: "intent",
+  },
+  {
     id: "status",
     Header: "Status",
-    accessor: (e: any) => {
-      return e.status === "paid" ? (
+    accessor: "status",
+    Cell: ({ row }: any) => {
+      return row.values.status === "paid" ? (
         <Badge colorScheme="gray">Paid</Badge>
-      ) : e.status === "shipped" ? (
+      ) : row.values.status === "shipped" ? (
         <Badge colorScheme="green">Shipped</Badge>
       ) : (
         <Badge colorScheme="yellow">Pending</Badge>
@@ -43,17 +46,18 @@ export const TransactionColumns: Array<Column> = [
     },
   },
   {
+    id: "productId",
     Header: "Product ID",
     accessor: (e: any) => {
-      return e.productId._id.toUpperCase();
+      return e.productId._id;
     },
   },
   {
     Header: "Action",
-    accessor: () => (
+    Cell: ({ row }: any) => (
       <div>
-        <ClickEdit pageType="transaction" />
-        <ClickDelete pageType="transaction" />
+        <ClickEdit pageType="transaction" rowData={row} />
+        <ClickDelete pageType="transaction" rowData={row} />
       </div>
     ),
   },

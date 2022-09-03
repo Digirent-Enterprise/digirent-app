@@ -1,5 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import React, { useEffect } from "react";
+import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 import dayjs from "dayjs";
 import { UserTab } from "../../components";
@@ -9,11 +10,11 @@ import {
   selectTransactionLoading,
 } from "../../store/selectors/transaction.selector";
 import { getTransactionByUserEmail } from "../../store/actions/transaction.action";
-import { IProduct } from "../../store/types/product.types";
 import { ITransaction } from "../../store/types/transaction.types";
 import Helmet from "../../Helmet";
 
 const UserTransactionHistory = () => {
+  const { t } = useTranslation();
   const transactions = useSelector(getTransactionByUserEmailSelector);
   const transactionLoading = useSelector(selectTransactionLoading);
   const dispatch = useDispatch();
@@ -27,14 +28,12 @@ const UserTransactionHistory = () => {
     dispatch(getTransactionByUserEmail());
   }, []);
 
-  console.log("transaction", transactions);
-
   return (
     <DefaultLayout>
       <Helmet
-        title="Order History"
+        title={t("Order History")}
         addPostfixTitle
-        description="View all your orders history"
+        description={t("ViewAllOrderHis")}
       />
       <UserTab />
       <main
@@ -46,11 +45,10 @@ const UserTransactionHistory = () => {
             id="transaction-history-heading"
             className="text-3xl font-extrabold tracking-tight text-gray-900"
           >
-            Transaction history
+            {t("TransactionHis")}
           </h1>
           <p className="mt-2 text-sm text-gray-500">
-            Check the status of recent orders, manage returns, and discover
-            similar products.
+            {t("TransactionHisContent")}
           </p>
         </div>
         {transactions.length > 0 ? (
@@ -66,14 +64,14 @@ const UserTransactionHistory = () => {
                   >
                     <div className="overflow-hidden bg-[#E5E7EB] rounded-md aspect-w-1 aspect-h-1 group-hover:opacity-75">
                       <img
-                        src={(transaction.productId as IProduct).images[0]}
+                        src=""
                         alt="product"
                         className="object-cover object-center"
                       />
                     </div>
                     <h3 className="mt-4 text-sm text-[#6B7280]">
                       <span className="absolute inset-0" />
-                      {(transaction.productId as IProduct).name}
+                      {transaction.productId.name}
                     </h3>
                     <p className="mt-1 text-lg font-medium">
                       {transaction.status === "shipped" ? (

@@ -8,11 +8,10 @@ import {
 import NotFoundProduct from "../../components/layouts/NotFoundResult/NotFoundProduct";
 import FilterPanel from "../../components/layouts/filters/FilterPanel";
 
-import ProductListLayout from "../../components/layouts/productCard/ProductLayoutList/ProductLayoutList";
-
 import { getAllProductsSelector } from "../../store/selectors/product.selector";
 
 import DefaultLayout from "../DefaultLayout";
+import ProductListLayout from "../../components/layouts/productCard/ProductLayoutList/ProductLayoutList";
 
 const ProductSearchPage = () => {
   const [selected, setSelected] = useState<String>("");

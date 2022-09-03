@@ -24,7 +24,6 @@ const fetchTransactionByUserEmail = () =>
     `${API_BASE_URL}/v1/api/transaction/user-transaction`,
   );
 
-
 const fetchTransactionById = (_id: string) =>
   customAxios().get<ITransaction>(
     `${API_BASE_URL}/v1/api/transaction/transaction-detail?id=${_id}`,
@@ -49,7 +48,6 @@ function* getTransactions(): any {
 function* getTransactionByUserEmail(): any {
   try {
     const response = yield call(fetchTransactionByUserEmail);
-    console.log(response, "response");
     yield put(setTransactionByUserEmail(response.data));
   } catch (e: any) {
     yield put(

@@ -1,4 +1,5 @@
 import React, { useEffect, useMemo, useState } from "react";
+import { useTranslation } from "react-i18next";
 
 import { useDispatch, useSelector } from "react-redux";
 
@@ -50,6 +51,7 @@ type FormValues = {
 // });
 
 const AddProduct = () => {
+  const { t } = useTranslation();
   const [images, setImages] = useState<string[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const { register, handleSubmit } = useForm<FormValues>({});
@@ -59,7 +61,7 @@ const AddProduct = () => {
     fd.append("images", file);
     const response = await customAxios("multipart/form-data").post(
       "product/upload-single-image",
-      fd
+      fd,
     );
     setImages([...images, response.data.url]);
   };
@@ -77,8 +79,8 @@ const AddProduct = () => {
         acceptedFiles.map((image: any) =>
           Object.assign(image, {
             preview: image,
-          })
-        )
+          }),
+        ),
       );
     },
   });
@@ -102,7 +104,7 @@ const AddProduct = () => {
   const onSubmit = async (data: FormValues) => {
     const response = await customAxios().post(
       "product",
-      qs.stringify(Object.assign(data, { images }))
+      qs.stringify(Object.assign(data, { images })),
     );
     if (response.status === 200) {
       toast.success("Product is added successfully!", {
@@ -135,16 +137,16 @@ const AddProduct = () => {
             <Stack flex={1} spacing={{ base: 5, md: 10 }}>
               <GridItem colSpan={2} className="px-4 ">
                 <FormControl isRequired>
-                  <FormLabel>Product Name</FormLabel>
+                  <FormLabel>{t("ProductName")}</FormLabel>
                   <Input {...register("name")} type="text" name="name" />
                 </FormControl>
 
                 <FormControl className="pb-5" isRequired>
-                  <FormLabel>Category</FormLabel>
+                  <FormLabel>{t("Category")}</FormLabel>
                   <Select
                     {...register("category")}
                     name="category"
-                    placeholder="Select category"
+                    placeholder={t("SelectCat")}
                   >
                     {categoryData.map((category) => (
                       <option value={category.name}>{category.name}</option>
@@ -153,16 +155,16 @@ const AddProduct = () => {
                 </FormControl>
 
                 <FormControl className="pb-5" isRequired>
-                  <FormLabel>Brand</FormLabel>
+                  <FormLabel>{t("Brand")}</FormLabel>
                   <Input {...register("brand")} type="text" name="brand" />
                 </FormControl>
 
                 <FormControl className="pb-5" isRequired>
-                  <FormLabel>Product Description</FormLabel>
+                  <FormLabel>{t("ProdDes")}</FormLabel>
                   <Textarea {...register("description")} name="description" />
                 </FormControl>
                 <FormControl isRequired>
-                  <FormLabel>Rental Cost</FormLabel>
+                  <FormLabel>{t("RentalCost")}</FormLabel>
                   <InputGroup>
                     <Input
                       {...register("rentalCost")}
@@ -173,11 +175,11 @@ const AddProduct = () => {
                       <Select
                         variant="unstyled"
                         {...register("rentalCostType")}
-                        placeholder="Select rent period"
+                        placeholder={t("SelectPeriod")}
                       >
-                        <option>Day</option>
-                        <option>Month</option>
-                        <option>Year</option>
+                        <option>{t("Day")}</option>
+                        <option>{t("Month")}</option>
+                        <option>{t("Year")}</option>
                       </Select>
                     </InputRightAddon>
                   </InputGroup>
@@ -205,19 +207,16 @@ const AddProduct = () => {
               >
                 <GridItem className="pb-5 px-4" colSpan={{ base: 6, sm: 3 }}>
                   <FormControl className="min-w-4xl w-full">
-                    <FormLabel>Product Images</FormLabel>
+                    <FormLabel>{t("ProdImg")}</FormLabel>
                     <div
                       className="border-dashed border-4 text-center justify-center p-[20%] "
                       {...getRootProps()}
                     >
                       <input {...getInputProps()} />
                       {isDragActive ? (
-                        <p>Drop the files here ...</p>
+                        <p>{t("Drop")}</p>
                       ) : (
-                        <p>
-                          Drag 'n' drop some files here, or click to select
-                          files
-                        </p>
+                        <p>{t("DragNDrop")}</p>
                       )}
                     </div>
                   </FormControl>
@@ -230,7 +229,7 @@ const AddProduct = () => {
                         type="submit"
                         disabled={isLoading}
                       >
-                        Add
+                        {t("Add")}
                       </button>
                     </GridItem>
                     <GridItem colSpan={2}>
@@ -239,7 +238,7 @@ const AddProduct = () => {
                         type="reset"
                         onClick={() => setImages([])}
                       >
-                        Clear
+                        {t("Clear")}
                       </button>
                     </GridItem>
                   </Grid>

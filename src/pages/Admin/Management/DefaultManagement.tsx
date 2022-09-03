@@ -37,6 +37,8 @@ import { BiExport } from "react-icons/bi";
 
 import DefaultAdminLayout from "../DefaultAdminLayout";
 
+const initialState = { hiddenColumns: ["_id", "intent", "productId"] };
+
 const DefaultManagement = ({
   columnProps,
   dataProps,
@@ -48,6 +50,7 @@ const DefaultManagement = ({
     {
       columns: columnProps,
       data: dataProps,
+      initialState,
     },
     useSortBy,
     usePagination,

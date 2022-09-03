@@ -1,4 +1,6 @@
 import { useDisclosure } from "@chakra-ui/hooks";
+import { useMemo } from "react";
+import { useSelector } from "react-redux";
 import {
   DeleteProductModal,
   DeleteTransactionModal,
@@ -6,13 +8,16 @@ import {
   EditProductModal,
   EditTransactionModal,
   EditUserModal,
+  InquiryModal,
 } from "../../../components";
+import { getCurrentUserSelector } from "../../../store/selectors/user.selector";
 
 interface HandleProps {
   pageType: string;
+  rowData: any;
 }
 
-export const ClickEdit = ({ pageType }: HandleProps) => {
+export const ClickEdit = ({ pageType, rowData }: HandleProps) => {
   const {
     isOpen: isEditOpen,
     onOpen: onEditOpen,
@@ -29,19 +34,31 @@ export const ClickEdit = ({ pageType }: HandleProps) => {
     >
       Edit
       {pageType === "user" && (
-        <EditUserModal isOpen={isEditOpen} onClose={onEditClose} />
+        <EditUserModal
+          isOpen={isEditOpen}
+          onClose={onEditClose}
+          rowData={rowData.values}
+        />
       )}
       {pageType === "product" && (
-        <EditProductModal isOpen={isEditOpen} onClose={onEditClose} />
+        <EditProductModal
+          isOpen={isEditOpen}
+          onClose={onEditClose}
+          rowData={rowData.values}
+        />
       )}
       {pageType === "transaction" && (
-        <EditTransactionModal isOpen={isEditOpen} onClose={onEditClose} />
+        <EditTransactionModal
+          isOpen={isEditOpen}
+          onClose={onEditClose}
+          rowData={rowData.values}
+        />
       )}
     </div>
   );
 };
 
-export const ClickDelete = ({ pageType }: HandleProps) => {
+export const ClickDelete = ({ pageType, rowData }: HandleProps) => {
   const {
     isOpen: isDeleteOpen,
     onOpen: onDeleteOpen,
@@ -58,14 +75,42 @@ export const ClickDelete = ({ pageType }: HandleProps) => {
     >
       Delete
       {pageType === "user" && (
-        <DeleteUserModal isOpen={isDeleteOpen} onClose={onDeleteClose} />
+        <DeleteUserModal
+          isOpen={isDeleteOpen}
+          onClose={onDeleteClose}
+          rowData={rowData.values}
+        />
       )}
       {pageType === "product" && (
-        <DeleteProductModal isOpen={isDeleteOpen} onClose={onDeleteClose} />
+        <DeleteProductModal
+          isOpen={isDeleteOpen}
+          onClose={onDeleteClose}
+          rowData={rowData.values}
+        />
       )}
       {pageType === "transaction" && (
-        <DeleteTransactionModal isOpen={isDeleteOpen} onClose={onDeleteClose} />
+        <DeleteTransactionModal
+          isOpen={isDeleteOpen}
+          onClose={onDeleteClose}
+          rowData={rowData.values}
+        />
       )}
     </div>
+  );
+};
+
+export const ResponseToInquiryAction = ({ rowData }: any) => {
+  const { isOpen: modalOpen, onClose, onOpen } = useDisclosure();
+  const currentUser = useSelector(getCurrentUserSelector);
+  const currentUserData = useMemo(() => currentUser, currentUser);
+
+  return (
+    <InquiryModal
+      isOpen={modalOpen}
+      onClose={onClose}
+      onOpen={onOpen}
+      currentUserData={currentUserData}
+      rowData={rowData.values}
+    />
   );
 };
