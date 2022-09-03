@@ -51,7 +51,7 @@ export const getProductByID = (_id: string) => {
 };
 
 export const fetchProductsError = (
-  payload: FetchProductErrorPayload
+  payload: FetchProductErrorPayload,
 ): FetchProductError => ({
   type: FETCH_PRODUCTS_ERROR,
   payload,

@@ -24,26 +24,7 @@ function* getProducts(): any {
     yield put(
       fetchProductsError({
         error: e.message,
-      })
-    );
-  }
-}
-
-function* getProductByID(action: {
-  type: string;
-  payload: { _id: string };
-}): any {
-  console.log("vo gia bao");
-  try {
-    console.log("run yeid", action.payload);
-    const response = yield call(fetchProductByID, action.payload._id);
-    yield put(setProductByID(response.data));
-  } catch (e: any) {
-    console.log("errror", e);
-    yield put(
-      fetchProductByIDError({
-        error: e.message,
-      })
+      }),
     );
   }
 }

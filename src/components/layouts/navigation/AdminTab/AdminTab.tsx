@@ -1,6 +1,8 @@
+import { useTranslation } from "react-i18next";
 import "./AdminTab.css";
 
 const AdminTab = () => {
+  const { t } = useTranslation();
   return (
     <div className="px-4 py-6">
       <div className="flex justify-center ">
@@ -10,7 +12,7 @@ const AdminTab = () => {
               className="inline-block p-4 w-full bg-white text-black hover:text-blue-100 link"
               href="/admin"
             >
-              General
+              {t("General")}
             </a>
           </li>
           <li className="mr-6">
@@ -18,7 +20,7 @@ const AdminTab = () => {
               className="inline-block p-4 w-full bg-white text-black hover:text-blue-100 link"
               href="/admin/chat"
             >
-              Chat
+              {t("Chat")}
             </a>
           </li>
           <li className="mr-6">
@@ -26,7 +28,7 @@ const AdminTab = () => {
               className="inline-block p-4 w-full bg-white text-black hover:text-blue-100 link"
               href="/admin/users"
             >
-              Users
+              {t("Users")}
             </a>
           </li>
           <li className="mr-6">
@@ -34,7 +36,7 @@ const AdminTab = () => {
               className="inline-block p-4 w-full bg-white text-black hover:text-blue-100 link"
               href="/admin/products"
             >
-              Products
+              {t("Products")}
             </a>
           </li>
           <li className="mr-6">
@@ -42,7 +44,15 @@ const AdminTab = () => {
               className="inline-block p-4 w-full bg-white text-black hover:text-blue-100 link"
               href="/admin/transactions"
             >
-              Transactions
+              {t("Transaction")}
+            </a>
+          </li>
+          <li className="mr-6">
+            <a
+              className="inline-block p-4 w-full bg-white text-black hover:text-blue-100 link"
+              href="/admin/inquiries"
+            >
+              {t("CustomerInq")}
             </a>
           </li>
           <li className="mr-6">
@@ -50,7 +60,7 @@ const AdminTab = () => {
               className="inline-block p-4 w-full bg-white text-black hover:text-blue-100 link"
               href="/admin/add-product"
             >
-              Add Product
+              {t("AddProd")}
             </a>
           </li>
         </ul>

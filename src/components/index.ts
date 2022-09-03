@@ -32,10 +32,14 @@ import {
   EditProductModal,
   EditTransactionModal,
   EditUserModal,
+  InquiryModal,
   LanguageSwitcher,
   GalleryDisplay,
   StaticGoogleMap,
   ProductSummaryDisplay,
+  CategoryPercentage,
+  RevenueByMonth,
+  TransactionStatus,
 } from "./modules";
 import {
   NavBar,
@@ -79,6 +83,7 @@ export {
   EditUserModal,
   EditTransactionModal,
   EditProductModal,
+  InquiryModal,
   SearchHeaderSection,
   SearchResultsSection,
   ChatLeftSide,
@@ -102,4 +107,7 @@ export {
   FAQ,
   Partner,
   Search,
+  CategoryPercentage,
+  RevenueByMonth,
+  TransactionStatus,
 };
