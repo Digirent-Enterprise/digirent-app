@@ -1,4 +1,4 @@
-import { all, call, put, delay, takeLatest } from "redux-saga/effects";
+import { all, call, put, takeLatest } from "redux-saga/effects";
 import { ICategory } from "../types/category.types";
 import { customAxios } from "../../http-common";
 import { API_BASE_URL } from "../../utils/constants/api.constants";
@@ -10,7 +10,7 @@ const fetchCategory = () =>
 
 const fetchCategorybyID = (queryName: string) => {
   return customAxios().get<ICategory[]>(
-    `${API_BASE_URL}/v1/api/category/get-category-products?queryName=${queryName}`
+    `${API_BASE_URL}/v1/api/category/get-category-products?queryName=${queryName}`,
   );
 };
 

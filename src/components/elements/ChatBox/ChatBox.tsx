@@ -38,8 +38,8 @@ const generateMessage = () => {
     "burn",
   ];
   const text = [];
-  let x = 7;
-  while (--x) text.push(words[Math.floor(Math.random() * words.length)]);
+  const x = 7;
+  while (x - 1) text.push(words[Math.floor(Math.random() * words.length)]);
   return text.join(" ");
 };
 

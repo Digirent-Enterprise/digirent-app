@@ -1,5 +1,4 @@
-import { Link, useLocation } from "react-router-dom";
-// import { categoryBanner } from "../../../utils/constants/helper.constant";
+import { useLocation } from "react-router-dom";
 import { useEffect, useMemo, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import ReactPaginate from "react-paginate";
@@ -9,6 +8,7 @@ import { getCategoriesByIdSelector } from "../../../store/selectors/category.sel
 import SearchResultsSection from "../search/SearchResultsSection";
 import ProductCard from "../productCard/Item/ProductCard";
 import { IProduct } from "../../../store/types/product.types";
+import NotFoundCategory from "../NotFoundResult/NotFoundCategory";
 
 const ProductListingCategory = () => {
   const dispatch = useDispatch();
@@ -31,10 +31,9 @@ const ProductListingCategory = () => {
 
   useEffect(() => {
     const endOffset = itemOffset + itemsPerPage;
-    if (products && products?.length > 0) {
+    if (products && products.length > 0) {
       setCurrentItems(products.slice(itemOffset, endOffset));
-      // eslint-disable-next-line no-unsafe-optional-chaining
-      setPageCount(Math.ceil(products?.length / itemsPerPage));
+      setPageCount(Math.ceil(products.length / itemsPerPage));
     }
   }, [itemOffset, itemsPerPage, products]);
 
@@ -53,7 +52,7 @@ const ProductListingCategory = () => {
         <div className="gap-5">
           <div className="flex flex-col gap-5">
             <div className="flex flex-col gap-5">
-              <div className="w-full flex justify-center">
+              <div className="flex justify-center w-full">
                 <CategoryBannerLayout categoryData={categoryData} />
               </div>
               <div className="w-[97.5%] flex justify-end">
@@ -65,8 +64,8 @@ const ProductListingCategory = () => {
             </div>
           </div>
           <div className="grid grid-cols-3 pb-10 mx-auto lg:py-12 lg:px-8">
-            <div className="col-span-5 gap-24 w-full">
-              <div className=" border-black grid justify-center items-center pr-8 grid-cols-1 gap-y-10 sm:grid-cols-2 md:grid-cols-3 gap-x-6 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
+            <div className="w-full col-span-5 gap-24">
+              <div className="grid items-center justify-center grid-cols-1 pr-8 border-black gap-y-10 sm:grid-cols-2 md:grid-cols-3 gap-x-6 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
                 {currentItems.map((product: IProduct) => (
                   <ProductCard
                     id={product._id}
@@ -82,19 +81,25 @@ const ProductListingCategory = () => {
           </div>
         </div>
       )}
-      <ReactPaginate
-        breakLabel="..."
-        nextLabel="next >"
-        onPageChange={handlePageClick}
-        pageRangeDisplayed={5}
-        pageCount={pageCount}
-        previousLabel="< previous"
-        containerClassName="pagination container flex justify-center mx-auto py-10"
-        pageLinkClassName="age-num z-10 border-black relative inline-flex items-center px-4 py-2 border text-sm font-medium border-r-0 hover:bg-blue-100 hover:text-white"
-        previousLinkClassName="age-num z-10 border-black text-black relative inline-flex items-center px-4 py-2 border text-sm font-medium border-r-0 hover:bg-blue-100 hover:text-white"
-        nextLinkClassName="page-num z-10 border-black text-black relative inline-flex items-center px-4 py-2 border text-sm font-medium hover:bg-blue-100 hover:text-white"
-        activeLinkClassName="page-num text-white bg-blue-300"
-      />
+      {products.length > 0 ? (
+        <ReactPaginate
+          breakLabel="..."
+          nextLabel="next >"
+          onPageChange={handlePageClick}
+          pageRangeDisplayed={5}
+          pageCount={pageCount}
+          previousLabel="< previous"
+          containerClassName="pagination container flex justify-center mx-auto py-10"
+          pageLinkClassName="age-num z-10 border-black relative inline-flex items-center px-4 py-2 border text-sm font-medium border-r-0 hover:bg-blue-100 hover:text-white"
+          previousLinkClassName="age-num z-10 border-black text-black relative inline-flex items-center px-4 py-2 border text-sm font-medium border-r-0 hover:bg-blue-100 hover:text-white"
+          nextLinkClassName="page-num z-10 border-black text-black relative inline-flex items-center px-4 py-2 border text-sm font-medium hover:bg-blue-100 hover:text-white"
+          activeLinkClassName="page-num text-white bg-blue-300"
+        />
+      ) : (
+        <div className="flex justify-center text-5xl font-bold text-center">
+          <NotFoundCategory />
+        </div>
+      )}
     </>
   );
 };

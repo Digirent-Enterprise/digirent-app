@@ -21,6 +21,7 @@ const Banner = () => {
       pagination={{
         clickable: true,
       }}
+      autoplay={{ delay: 3000 }}
       updateOnWindowResize
       observer
       observeParents

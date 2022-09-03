@@ -13,13 +13,19 @@ import {
   Stack,
   useColorModeValue,
   FormErrorMessage,
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalFooter,
 } from "@chakra-ui/react";
-import { WarningTwoIcon } from "@chakra-ui/icons";
+import { useDisclosure } from "@chakra-ui/hooks";
+import { AiOutlineWarning, AiOutlineArrowLeft } from "react-icons/ai";
+import { IconContext } from "react-icons";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
-import { AiOutlineArrowLeft } from "react-icons/ai";
 import qs from "qs";
 import { toast } from "react-toastify";
+import { WarningTwoIcon } from "@chakra-ui/icons";
 import { UserTab } from "../../components";
 import DefaultLayout from "../DefaultLayout";
 import { getCurrentUserSelector } from "../../store/selectors/user.selector";
@@ -50,6 +56,7 @@ const UserEdit = () => {
   const [toggleEmail, toggleEmailButton] = useState(false);
   const [togglePhone, togglePhoneButton] = useState(false);
   const [toggleAddress, toggleAddressButton] = useState(false);
+  const { isOpen, onOpen, onClose } = useDisclosure();
 
   const {
     register,
@@ -89,7 +96,7 @@ const UserEdit = () => {
           my={12}
         >
           <form onSubmit={handleSubmit(onSubmit)}>
-            <Link to="/user/my-profile">
+            <Link to="/user/my-profile" onClick={onOpen}>
               <div className="flex">
                 <AiOutlineArrowLeft color="#4169E1" className="mx-2 text-3xl" />
                 <Text color="#4169E1" className="mx-2 mb-10 text-lg">
@@ -294,6 +301,35 @@ const UserEdit = () => {
             </Stack>
           </form>
         </Box>
+        <Modal isOpen={isOpen} onClose={onClose}>
+          <ModalOverlay />
+          <ModalContent>
+            <div className="text-center justify-center p-[10%]">
+              <IconContext.Provider value={{ className: "w-10 h-10" }}>
+                <div className="text-[#FACC15] flex justify-center mb-5">
+                  <AiOutlineWarning />
+                </div>
+              </IconContext.Provider>
+              <p className="pb-8 text-3xl font-bold">
+                You have unsaved changes
+              </p>
+              <p>Are you sure you want to leave ?</p>
+            </div>
+            <ModalFooter className="flex text-center align-center">
+              <Button
+                colorScheme="blue"
+                mr={3}
+                onClick={onClose}
+                className="w-1/2"
+              >
+                Stay
+              </Button>
+              <Button type="submit" colorScheme="red" mr={3} className="w-1/2">
+                Leave
+              </Button>
+            </ModalFooter>
+          </ModalContent>
+        </Modal>
       </Flex>
     </DefaultLayout>
   );

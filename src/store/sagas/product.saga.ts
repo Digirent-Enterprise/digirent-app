@@ -48,6 +48,22 @@ function* getProductByID(action: {
   }
 }
 
+function* getProductByID(action: {
+  type: string;
+  payload: { _id: string };
+}): any {
+  try {
+    const response = yield call(fetchProductByID, action.payload._id);
+    yield put(setProductByID(response.data));
+  } catch (e: any) {
+    yield put(
+      fetchProductByIDError({
+        error: e.message,
+      }),
+    );
+  }
+}
+
 function* productSaga() {
   yield all([
     takeLatest(GET_PRODUCTS, getProducts),

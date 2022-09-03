@@ -16,17 +16,17 @@ import {
   ModalOverlay,
   ModalContent,
   ModalFooter,
-  useDisclosure,
 } from "@chakra-ui/react";
+import { useDisclosure } from "@chakra-ui/hooks";
 import { WarningTwoIcon } from "@chakra-ui/icons";
+import { AiOutlineWarning, AiOutlineArrowLeft } from "react-icons/ai";
+import { IconContext } from "react-icons";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
-import { AiOutlineArrowLeft } from "react-icons/ai";
 import qs from "qs";
 import { toast } from "react-toastify";
 import { UserTab } from "../../components";
 import DefaultLayout from "../DefaultLayout";
-import { getCurrentUserSelector } from "../../store/selectors/user.selector";
 import { customAxios } from "../../http-common";
 
 interface IFormInputs {
@@ -67,10 +67,13 @@ const UserChangePassword = () => {
     const update = await customAxios()
       .put("auth/reset-password", qs.stringify(newMappingObj))
       .catch((e) => {
-        toast.error(`Error: ${e}`, { theme: "dark", icon: "🚀" });
+        toast.error(`Error: ${e.response.data}`, { theme: "dark" });
       });
     if (update && update.data) {
-      toast.success("Update user successfully", { theme: "dark", icon: "🚀" });
+      toast.success("Change password successfully!", {
+        theme: "dark",
+        icon: "🚀",
+      });
     }
   };
 
@@ -87,7 +90,7 @@ const UserChangePassword = () => {
           my={12}
         >
           <form onSubmit={handleSubmit(onSubmit)}>
-            <Link to="/user/change-password/" onClick={onOpen}>
+            <Link to="/user/change-password" onClick={onOpen}>
               <div className="flex">
                 <AiOutlineArrowLeft color="#4169E1" className="mx-2 text-3xl" />
                 <Text color="#4169E1" className="mx-2 mb-10 text-lg">
@@ -171,10 +174,15 @@ const UserChangePassword = () => {
           <ModalOverlay />
           <ModalContent>
             <div className="text-center justify-center p-[10%]">
-              <p className="text-3xl font-bold pb-8">
+              <IconContext.Provider value={{ className: "w-10 h-10" }}>
+                <div className="text-[#FACC15] flex justify-center mb-5">
+                  <AiOutlineWarning />
+                </div>
+              </IconContext.Provider>
+              <p className="pb-8 text-3xl font-bold">
                 You have unsaved changes
               </p>
-              <p>Are you sure you want to leave</p>
+              <p>Are you sure you want to leave ?</p>
             </div>
             <ModalFooter className="flex text-center align-center">
               <Button

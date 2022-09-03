@@ -32,9 +32,9 @@ const BookingBoxLayout = ({ productData }: any) => {
     setEndDate(startDate);
   }
   return (
-    <div className="flex flex-col w-full gap-2">
-      <div className="flex flex-col justify-center mt-10 ml-[32px] lg:flex-row md:flex-row">
-        <div className="lg:mr-48 min-w-[50%] flex flex-col">
+    <div className="flex flex-col justify-center w-full gap-2">
+      <div className="flex flex-col justify-center mt-10 lg:flex-row">
+        <div className="ml-[35px] lg:ml-0 lg:mr-64 min-w-[50%] flex flex-col">
           <div className="font-extrabold">Description</div>
           <div className="text-justify min-w-[220px]">
             {productData.description}
@@ -43,7 +43,7 @@ const BookingBoxLayout = ({ productData }: any) => {
             <div className="font-extrabold">Rental period: </div>
             <div className=" min-w-[220px]">
               {formatDate(startDate)} - {formatDate(endDate)}
-              <div className="flex gap-x-2 mt-5">
+              <div className="flex gap-x-2 mt-5 flex-col md:flex-row lg:flex-row">
                 <DatePicker
                   wrapperClassName="date-picker"
                   selected={startDate}
@@ -62,13 +62,12 @@ const BookingBoxLayout = ({ productData }: any) => {
             </div>
           </div>
         </div>
-        <div className="sm:mt-10">
+        <div className="sm:mt-10 ml-[35px] lg:ml-0">
           <BookingBox
+            productData={productData}
             price={productData.rentalCost}
-            borrow={startDate}
-            returnDate={endDate}
-            startDate={startDate}
-            endDate={endDate}
+            startDate={new Date(startDate.toString())}
+            endDate={new Date(endDate.toString())}
             rentalCost={productData.rentalCost}
             rentalCostType={productData.rentalCostType}
           />

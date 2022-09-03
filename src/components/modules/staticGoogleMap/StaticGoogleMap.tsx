@@ -2,7 +2,7 @@ import React, { useState, useCallback } from "react";
 import { GoogleMap, useJsApiLoader, Marker } from "@react-google-maps/api";
 
 const containerStyle = {
-  width: "1260px",
+  width: "1525px",
   height: "500px",
 };
 
@@ -30,9 +30,9 @@ const StaticGoogleMap = () => {
   }, []);
 
   return isLoaded ? (
-    <div className="flex flex-col mt-10">
-      <h1 className="mb-5 ml-40 font-extrabold">Rental location</h1>
-      <div className="flex items-center justify-center lg:pl-10">
+    <div className="flex flex-col mt-10 mx-[35px]">
+      <h1 className="mb-5 lg:ml-[200px] font-extrabold">Rental location</h1>
+      <div className="flex  items-center justify-center lg:pl-10">
         <GoogleMap
           mapContainerStyle={containerStyle}
           center={center}
