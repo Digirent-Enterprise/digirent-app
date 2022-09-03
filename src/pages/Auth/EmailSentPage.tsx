@@ -7,15 +7,15 @@ import Helmet from "../../Helmet";
 import { getUserInfoSelector } from "../../store/selectors/user.selector";
 
 const EmailSentPage = () => {
-  const {t} = useTranslation();
+  const { t } = useTranslation();
   const userInfo = useSelector(getUserInfoSelector);
 
   return (
     <Transition>
       <Helmet
-        title="Email sent"
+        title={t("EmailSentHelmetTitle")}
         addPostfixTitle
-        description="Email sent successfully to reset password"
+        description={t("EmailSentHelmetDes")}
       />
       <div className="relative flex flex-col items-center justify-center min-h-screen py-6 overflow-hidden bg-white sm:py-12">
         <div className="max-w-xl px-5 text-center">

@@ -2,15 +2,12 @@ import React, { useEffect, useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { useTranslation } from "react-i18next";
-import { toast } from "react-toastify";
 import BookingBox from "../item/BookingBox";
 
 import "./Datepicker.css";
 
 const BookingBoxLayout = ({ productData }: any) => {
   const { t } = useTranslation();
-  const [startDate, setStartDate] = useState(new Date());
-  const [endDate, setEndDate] = useState(new Date());
   const [startDate, setStartDate] = useState<Date>();
   const [endDate, setEndDate] = useState<Date>();
   const [excludedDates, setExcludedDates] = useState<any>([]);
@@ -30,14 +27,14 @@ const BookingBoxLayout = ({ productData }: any) => {
 
   const onHandleAddDates = () => {
     const exclude = [...excludedDates];
-    for (let item of productData.excludeIntervals) {
+    // eslint-disable-next-line no-restricted-syntax
+    for (const item of productData.excludeIntervals) {
       if (item.start && item.end) {
         let startTime = new Date(item.start);
         const endTime = new Date(item.end);
         exclude.push(startTime.setDate(startTime.getDate() - 1));
         exclude.push(endTime);
         exclude.push(startTime);
-        // @ts-ignore
         while (startTime < endTime) {
           startTime = new Date(startTime.setDate(startTime.getDate() + 1));
           exclude.push(startTime);
@@ -51,7 +48,6 @@ const BookingBoxLayout = ({ productData }: any) => {
     onHandleAddDates();
   }, []);
 
- 
   return (
     <div className="flex flex-col justify-center w-full gap-2">
       <div className="flex flex-col justify-center mt-10 lg:flex-row">

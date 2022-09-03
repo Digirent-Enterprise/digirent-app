@@ -1,6 +1,4 @@
 import React, { useEffect, useMemo, useState } from "react";
-import { useTranslation } from "react-i18next";
-
 import { useDispatch, useSelector } from "react-redux";
 
 import { useForm } from "react-hook-form";
@@ -24,6 +22,8 @@ import {
   Textarea,
 } from "@chakra-ui/react";
 import { toast } from "react-toastify";
+import { useTranslation } from "react-i18next";
+import Helmet from "../../../Helmet";
 import { customAxios } from "../../../http-common";
 import DefaultLayout from "../DefaultAdminLayout";
 import { getAllCategoriesSelector } from "../../../store/selectors/category.selector";
@@ -126,6 +126,11 @@ const AddProduct = () => {
 
   return (
     <DefaultLayout>
+      <Helmet
+        title={t("AddProd")}
+        addPostfixTitle
+        description={t("AddProdDes")}
+      />
       <form onSubmit={handleSubmit(onSubmit)}>
         <Container maxW="7xl">
           <Stack

@@ -29,6 +29,7 @@ import { toast } from "react-toastify";
 import { UserTab } from "../../components";
 import DefaultLayout from "../DefaultLayout";
 import { customAxios } from "../../http-common";
+import Helmet from "../../Helmet";
 
 interface IFormInputs {
   password: string;
@@ -81,6 +82,11 @@ const UserChangePassword = () => {
 
   return (
     <DefaultLayout>
+      <Helmet
+        title={t("UserChangePassHelmetTitle")}
+        addPostfixTitle
+        description={t("UserChangePassHelmetDes")}
+      />
       <UserTab />
       <Flex minH="70vh" align="center" justify="center" bg="#fff">
         <Box
@@ -181,10 +187,8 @@ const UserChangePassword = () => {
                   <AiOutlineWarning />
                 </div>
               </IconContext.Provider>
-              <p className="pb-8 text-3xl font-bold">
-                You have unsaved changes
-              </p>
-              <p>Are you sure you want to leave ?</p>
+              <p className="pb-8 text-3xl font-bold">{t("Unsaved")}</p>
+              <p>{t("UnsavedWarning")}</p>
             </div>
             <ModalFooter className="flex text-center align-center">
               <Button
@@ -193,10 +197,10 @@ const UserChangePassword = () => {
                 onClick={onClose}
                 className="w-1/2"
               >
-                Stay
+                {t("Stay")}
               </Button>
               <Button type="submit" colorScheme="red" mr={3} className="w-1/2">
-                Leave
+                {t("Leave")}
               </Button>
             </ModalFooter>
           </ModalContent>

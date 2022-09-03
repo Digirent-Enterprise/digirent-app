@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Alert, AlertIcon, Switch } from "@chakra-ui/react";
 import DefaultLayout from "../DefaultLayout";
+import Helmet from "../../Helmet";
 
 function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(" ");
@@ -36,6 +37,11 @@ const ContactUsPage = () => {
 
   return (
     <DefaultLayout>
+      <Helmet
+        title={t("ContactPageHelmetTitle")}
+        addPostfixTitle
+        description={t("ContactPageHelmetDes")}
+      />
       <div className="px-4 py-16 overflow-hidden bg-white sm:px-6 lg:px-8 lg:py-24">
         <div className="relative max-w-xl mx-auto">
           <svg

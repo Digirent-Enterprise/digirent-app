@@ -84,9 +84,9 @@ const ForgotPasswordPage = () => {
   return (
     <Transition>
       <Helmet
-        title="Forgot Password"
+        title={t("ForgotPassHelmetTitle")}
         addPostfixTitle
-        description="Enter email to reset password"
+        description={t("ForgotPassHelmetDes")}
       />
       <AuthFormGrid
         childTitle={t("ForgotP")}
