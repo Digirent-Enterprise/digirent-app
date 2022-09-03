@@ -37,6 +37,9 @@ import {
   GalleryDisplay,
   StaticGoogleMap,
   ProductSummaryDisplay,
+  CategoryPercentage,
+  RevenueByMonth,
+  TransactionStatus,
 } from "./modules";
 import {
   NavBar,
@@ -104,4 +107,7 @@ export {
   FAQ,
   Partner,
   Search,
+  CategoryPercentage,
+  RevenueByMonth,
+  TransactionStatus,
 };

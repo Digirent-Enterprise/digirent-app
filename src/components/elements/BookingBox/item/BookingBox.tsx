@@ -74,7 +74,6 @@ const BookingBox: React.FC<BookingBoxProps> = ({
           : 1;
       setTotalPrice(price * numDateDiff);
     }
-    console.log("startDate :>> ", startDate);
   }, [startDate, endDate]);
 
   return (
