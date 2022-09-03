@@ -25,12 +25,12 @@ const BookingBoxLayout = ({ productData }: any) => {
 
   const onHandleAddDates = () => {
     const exclude = [...excludedDates];
-    for (let item of productData.excludeIntervals) {
+    for (const item of productData.excludeIntervals) {
       if (item.start && item.end) {
         let startTime = new Date(item.start);
         const endTime = new Date(item.end);
         exclude.push(startTime.setDate(startTime.getDate() - 1));
-        exclude.push(endTime);
+        exclude.push(endTime.setDate(endTime.getDate() - 1));
         exclude.push(startTime);
         // @ts-ignore
         while (startTime < endTime) {
@@ -46,7 +46,6 @@ const BookingBoxLayout = ({ productData }: any) => {
     onHandleAddDates();
   }, []);
 
- 
   return (
     <div className="flex flex-col justify-center w-full gap-2">
       <div className="flex flex-col justify-center mt-10 lg:flex-row">

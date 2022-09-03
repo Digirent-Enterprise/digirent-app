@@ -1,19 +1,15 @@
 import React, { useEffect, useMemo, useState } from "react";
-
+import "react-dropzone-uploader/dist/styles.css";
+import Dropzone, { IPreviewProps } from "react-dropzone-uploader";
 import { useDispatch, useSelector } from "react-redux";
-
 import { useForm } from "react-hook-form";
-import { useDropzone } from "react-dropzone";
-// import * as yup from "yup";
+import * as yup from "yup";
 import qs from "qs";
-
+import { useNavigate } from "react-router-dom";
 import {
-  Container,
   FormControl,
   FormLabel,
-  Stack,
-  Flex,
-  Box,
+  Spinner,
   Grid,
   GridItem,
   Input,
@@ -21,12 +17,14 @@ import {
   InputRightAddon,
   Select,
   Textarea,
+  Button,
 } from "@chakra-ui/react";
 import { toast } from "react-toastify";
 import { customAxios } from "../../../http-common";
 import DefaultLayout from "../DefaultAdminLayout";
 import { getAllCategoriesSelector } from "../../../store/selectors/category.selector";
 import { getCategories } from "../../../store/actions/category.action";
+import CustomPreview from "./CustomePreview";
 
 type FormValues = {
   name: string;
@@ -39,77 +37,88 @@ type FormValues = {
   serial: string;
 };
 
-// const schema = yup.object().shape({
-//   name: yup.string().required(),
-//   serial: yup.string().required(),
-//   brand: yup.string().required(),
-//   description: yup.string().required().min(150),
-//   rentalCost: yup.string().required(),
-//   rentalCostType: yup.string().required(),
-//   imagePath: yup.string().required(),
-// });
+const schema = yup.object().shape({
+  name: yup.string().required(),
+  serial: yup.string().required(),
+  brand: yup.string().required(),
+  description: yup.string().required().min(150),
+  rentalCost: yup.string().required(),
+  rentalCostType: yup.string().required(),
+  imagePath: yup.string().required(),
+});
 
 const AddProduct = () => {
   const [images, setImages] = useState<string[]>([]);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [uploadInProgress, setUploadInProgress] = useState(false);
   const { register, handleSubmit } = useForm<FormValues>({});
+  const navigate = useNavigate();
+
+  // const Preview = (props: IPreviewProps) => {
+  //   console.log(props.fileWithMeta);
+  //   const { name, percent, status, id, uploadedDate } = props.meta;
+  //   return (
+  //     <div className={status === "done" ? "preview" : "preview-x"}>
+  //       <CustomPreview
+  //         name={name}
+  //         percent={Math.round(percent)}
+  //         status={status}
+  //         id={id}
+  //         uploadedDate={uploadedDate}
+  //         fileWithMeta={props.fileWithMeta}
+  //       />
+  //     </div>
+  //   );
+  // };
 
   const handleUploadFiles = async (file: any) => {
     const fd = new FormData();
     fd.append("images", file);
-    const response = await customAxios("multipart/form-data").post(
+    return customAxios("multipart/form-data").post(
       "product/upload-single-image",
       fd,
     );
-    setImages([...images, response.data.url]);
   };
 
-  const { getRootProps, getInputProps, isDragActive } = useDropzone({
-    accept: {
-      "image/*": [],
-    },
-    maxFiles: 10,
-    onDrop: async (acceptedFiles: File[]) => {
-      setIsLoading(true);
-      await acceptedFiles.map((file: any) => handleUploadFiles(file));
-      setIsLoading(false);
-      setImages(
-        acceptedFiles.map((image: any) =>
-          Object.assign(image, {
-            preview: image,
-          }),
-        ),
-      );
-    },
-  });
+  const getUploadParams = async ({ file, meta }: any) => {
+    const fd = new FormData();
+    fd.append("images", file);
+    const { data } = await handleUploadFiles(file);
+    return {
+      url: "http://localhost:8000/v1/api/product/upload-single-image",
+      body: fd,
+      meta: { ...meta, url: data.url },
+    };
+  };
 
-  const thumbs = images.map((image: any) => {
-    return (
-      <div className="flex flex-row flex-wrap" key={image.name}>
-        <div className="flex overflow-hidden">
-          <img className="w-full p-4" src={image} alt="thumbs" />
-        </div>
-      </div>
-    );
-  });
-
-  // useEffect(() => {
-  //   // Make sure to revoke the data uris to avoid memory leaks, will run on unmount
-  //   return () =>
-  //     acceptedFiles.forEach((image) => URL.revokeObjectURL(image.path));
-  // }, []);
-
-  const onSubmit = async (data: FormValues) => {
-    const response = await customAxios().post(
-      "product",
-      qs.stringify(Object.assign(data, { images })),
-    );
-    if (response.status === 200) {
-      toast.success("Product is added successfully!", {
-        theme: "dark",
-        icon: "🚀",
-      });
+  const handleChangeStatus = ({ meta }: any, status: any) => {
+    if (status === "done") {
+      setImages([...images, meta.url]);
+      setUploadInProgress(false);
+    } else {
+      setUploadInProgress(true);
     }
+  };
+
+  const onSubmit = (data: FormValues) => {
+    setIsLoading(true);
+    customAxios()
+      .post("product", qs.stringify(Object.assign(data, { images })))
+      .then((res) => {
+        setIsLoading(true);
+        if (res.status === 200) {
+          setIsLoading(false);
+          toast.success("Product is added successfully!", {
+            theme: "dark",
+            icon: "🚀",
+          });
+        }
+      })
+      .catch((error: any) => {
+        toast.warning(`${error.response.data} error, failed add product!`, {
+          theme: "dark",
+        });
+      });
   };
 
   // Category Data
@@ -125,129 +134,157 @@ const AddProduct = () => {
   return (
     <DefaultLayout>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <Container maxW="7xl">
-          <Stack
-            align="center"
-            spacing={{ base: 8, md: 10 }}
-            py={{ base: 5, md: 7 }}
-            direction={{ base: "column", md: "row" }}
+        <div className="lg:mx-8">
+          <Grid
+            templateColumns={{
+              base: "repeat(2, 1fr)",
+              lg: "repeat(4, 1fr)",
+            }}
+            templateRows={{ base: "repeat(2, 1fr)", lg: "repeat(1, 1fr)" }}
+            h="max-content"
+            gap={6}
+            m={6}
           >
-            <Stack flex={1} spacing={{ base: 5, md: 10 }}>
-              <GridItem colSpan={2} className="px-4 ">
-                <FormControl isRequired>
-                  <FormLabel>Product Name</FormLabel>
-                  <Input {...register("name")} type="text" name="name" />
-                </FormControl>
-
-                <FormControl className="pb-5" isRequired>
-                  <FormLabel>Category</FormLabel>
-                  <Select
-                    {...register("category")}
-                    name="category"
-                    placeholder="Select category"
-                  >
-                    {categoryData.map((category) => (
-                      <option value={category.name}>{category.name}</option>
-                    ))}
-                  </Select>
-                </FormControl>
-
-                <FormControl className="pb-5" isRequired>
-                  <FormLabel>Brand</FormLabel>
-                  <Input {...register("brand")} type="text" name="brand" />
-                </FormControl>
-
-                <FormControl className="pb-5" isRequired>
-                  <FormLabel>Product Description</FormLabel>
-                  <Textarea {...register("description")} name="description" />
-                </FormControl>
-                <FormControl isRequired>
-                  <FormLabel>Rental Cost</FormLabel>
-                  <InputGroup>
-                    <Input
-                      {...register("rentalCost")}
-                      name="rentalCost"
-                      type="text"
-                    />
-                    <InputRightAddon>
-                      <Select
-                        variant="unstyled"
-                        {...register("rentalCostType")}
-                        placeholder="Select rent period"
-                      >
-                        <option>Day</option>
-                        <option>Month</option>
-                        <option>Year</option>
-                      </Select>
-                    </InputRightAddon>
-                  </InputGroup>
-                </FormControl>
-
-                <FormControl className="pb-5" isRequired>
-                  <FormLabel>Serial</FormLabel>
-                  <Input {...register("serial")} type="text" name="serial" />
-                </FormControl>
-              </GridItem>
-            </Stack>
-            <Flex
-              flex={1}
-              justify="center"
-              align="center"
-              position="relative"
-              w="full"
+            <GridItem
+              colSpan={{
+                base: 2,
+                lg: 3,
+              }}
+              colStart={{
+                base: 0,
+                lg: 0,
+              }}
+              colEnd={{
+                base: 3,
+                lg: 3,
+              }}
+              rowSpan={{
+                base: 1,
+                lg: 1,
+              }}
             >
-              <Box
-                position="relative"
-                height="400px"
-                rounded="2xl"
-                width="full"
-                overflow="hidden"
-              >
-                <GridItem className="pb-5 px-4" colSpan={{ base: 6, sm: 3 }}>
-                  <FormControl className="min-w-4xl w-full">
-                    <FormLabel>Product Images</FormLabel>
-                    <div
-                      className="border-dashed border-4 text-center justify-center p-[20%] "
-                      {...getRootProps()}
-                    >
-                      <input {...getInputProps()} />
-                      {isDragActive ? (
-                        <p>Drop the files here ...</p>
-                      ) : (
-                        <p>
-                          Drag 'n' drop some files here, or click to select
-                          files
-                        </p>
-                      )}
-                    </div>
-                  </FormControl>
-                  <aside className="flex flex-row">{thumbs}</aside>
+              <FormControl isRequired>
+                <FormLabel>Product Name</FormLabel>
+                <Input {...register("name")} type="text" name="name" />
+              </FormControl>
 
-                  <Grid templateColumns="repeat(4, 1fr)" gap={4}>
-                    <GridItem colSpan={2}>
-                      <button
-                        className="w-full p-2 my-5 text-white bg-blue-200 rounded hover:bg-blue-100"
-                        type="submit"
-                        disabled={isLoading}
-                      >
-                        Add
-                      </button>
-                    </GridItem>
-                    <GridItem colSpan={2}>
-                      <button
-                        className="w-full p-2 my-5 text-white bg-blue-200 rounded hover:bg-blue-100"
-                        type="reset"
-                        onClick={() => setImages([])}
-                      >
-                        Clear
-                      </button>
-                    </GridItem>
-                  </Grid>
-                </GridItem>
-              </Box>
-            </Flex>
-          </Stack>
-        </Container>
+              <FormControl className="pb-5" isRequired>
+                <FormLabel>Category</FormLabel>
+                <Select
+                  {...register("category")}
+                  name="category"
+                  placeholder="Select category"
+                >
+                  {categoryData.map((category) => (
+                    <option value={category.name}>{category.name}</option>
+                  ))}
+                </Select>
+              </FormControl>
+
+              <FormControl className="pb-5" isRequired>
+                <FormLabel>Brand</FormLabel>
+                <Input {...register("brand")} type="text" name="brand" />
+              </FormControl>
+
+              <FormControl className="pb-5" isRequired>
+                <FormLabel>Product Description</FormLabel>
+                <Textarea {...register("description")} name="description" />
+              </FormControl>
+              <FormControl isRequired>
+                <FormLabel>Rental Cost</FormLabel>
+                <InputGroup>
+                  <Input
+                    {...register("rentalCost")}
+                    name="rentalCost"
+                    type="text"
+                  />
+                  <InputRightAddon>
+                    <Select
+                      variant="filled"
+                      {...register("rentalCostType")}
+                      placeholder="Select rent period"
+                    >
+                      <option>Day</option>
+                      <option>Month</option>
+                      <option>Year</option>
+                    </Select>
+                  </InputRightAddon>
+                </InputGroup>
+              </FormControl>
+
+              <FormControl className="pb-5" isRequired>
+                <FormLabel>Serial</FormLabel>
+                <Input {...register("serial")} type="text" name="serial" />
+              </FormControl>
+            </GridItem>
+
+            <GridItem
+              colSpan={{
+                base: 2,
+                lg: 2,
+              }}
+              colStart={{
+                base: 0,
+                lg: 3,
+              }}
+              colEnd={{
+                base: 3,
+                lg: 5,
+              }}
+              rowSpan={{
+                base: 1,
+                lg: 1,
+              }}
+              className="flex flex-col lg:justify-between"
+            >
+              <FormControl>
+                <FormLabel>Product Images</FormLabel>
+                <div className="text-center justify-center">
+                  <Dropzone
+                    // PreviewComponent={Preview}
+                    maxFiles={10}
+                    inputContent="Upload at least 5 Pictures"
+                    inputWithFilesContent={(files) =>
+                      `${5 - files.length} more`
+                    }
+                    getUploadParams={getUploadParams}
+                    onChangeStatus={handleChangeStatus}
+                    accept="image/*"
+                    styles={{
+                      dropzone: { minHeight: 200, maxHeight: 250 },
+                      preview: { height: "3rem" },
+                      previewImage: {},
+                    }}
+                  />
+                </div>
+              </FormControl>
+              <div className="flex flex-row justify-between gap-4">
+                <Button
+                  className="w-full p-2 my-5 rounded"
+                  type="submit"
+                  bgColor="blue.200"
+                  color="white"
+                  _hover={{ bgColor: "blue" }}
+                  isDisabled={uploadInProgress || images.length < 5}
+                  isLoading={isLoading}
+                >
+                  {isLoading ? <Spinner /> : "Add"}
+                </Button>
+
+                <Button
+                  className="w-full p-2 my-5 text-white"
+                  type="reset"
+                  bgColor="blue.200"
+                  color="white"
+                  _hover={{ bgColor: "blue" }}
+                  onClick={() => setImages([])}
+                >
+                  Clear
+                </Button>
+              </div>
+            </GridItem>
+          </Grid>
+        </div>
       </form>
     </DefaultLayout>
   );
