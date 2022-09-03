@@ -61,7 +61,7 @@ const AddProduct = () => {
     fd.append("images", file);
     const response = await customAxios("multipart/form-data").post(
       "product/upload-single-image",
-      fd
+      fd,
     );
     setImages([...images, response.data.url]);
   };
@@ -79,8 +79,8 @@ const AddProduct = () => {
         acceptedFiles.map((image: any) =>
           Object.assign(image, {
             preview: image,
-          })
-        )
+          }),
+        ),
       );
     },
   });
@@ -104,7 +104,7 @@ const AddProduct = () => {
   const onSubmit = async (data: FormValues) => {
     const response = await customAxios().post(
       "product",
-      qs.stringify(Object.assign(data, { images }))
+      qs.stringify(Object.assign(data, { images })),
     );
     if (response.status === 200) {
       toast.success("Product is added successfully!", {

@@ -7,7 +7,7 @@ import Helmet from "../../Helmet";
 import { getUserInfoSelector } from "../../store/selectors/user.selector";
 
 const EmailSentPage = () => {
-  const {t} = useTranslation();
+  const { t } = useTranslation();
   const userInfo = useSelector(getUserInfoSelector);
 
   return (

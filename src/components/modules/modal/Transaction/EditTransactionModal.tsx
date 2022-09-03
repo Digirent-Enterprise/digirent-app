@@ -23,36 +23,7 @@ interface EditTransactionModalProps {
   onClose: () => void;
   rowData: any;
 }
-const inputs = [
-  {
-    label: "Transaction ID",
-    placeHolder: "New Product ID",
-  },
-  {
-    label: "User Email",
-    placeHolder: "New User Email",
-  },
-  {
-    label: "Total Cost",
-    placeHolder: "New Total Cost",
-  },
-  {
-    label: "Borrowed Dated",
-    placeHolder: "Set new Borrowed Dated",
-  },
-  {
-    label: "Return Date",
-    placeHolder: "New Return Date",
-  },
-  {
-    label: "Status",
-    placeHolder: "New Status",
-  },
-  {
-    label: "Product ID",
-    placeHolder: "New Product ID",
-  },
-];
+
 const EditTransactionModal = ({
   isOpen,
   onClose,
@@ -85,9 +56,8 @@ const EditTransactionModal = ({
       .put(
         "transaction/update-transaction",
         qs.stringify({
-            ...updateTransaction,
-            intent: updateTransaction.intent,
-
+          ...updateTransaction,
+          intent: updateTransaction.intent,
         }),
       )
       .then((res) => {

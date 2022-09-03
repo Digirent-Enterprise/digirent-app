@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
-import { useSelector , useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import {
@@ -32,7 +32,6 @@ import DefaultLayout from "../DefaultLayout";
 import { getCurrentUserSelector } from "../../store/selectors/user.selector";
 import { customAxios } from "../../http-common";
 import { getUserDetail } from "../../store/actions/user.action";
-
 
 interface IFormInputs {
   name: string;
