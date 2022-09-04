@@ -39,15 +39,15 @@ type FormValues = {
   serial: string;
 };
 
-const schema = yup.object().shape({
-  name: yup.string().required(),
-  serial: yup.string().required(),
-  brand: yup.string().required(),
-  description: yup.string().required().min(150),
-  rentalCost: yup.string().required(),
-  rentalCostType: yup.string().required(),
-  imagePath: yup.string().required(),
-});
+// const schema = yup.object().shape({
+//   name: yup.string().required(),
+//   serial: yup.string().required(),
+//   brand: yup.string().required(),
+//   description: yup.string().required().min(150),
+//   rentalCost: yup.string().required(),
+//   rentalCostType: yup.string().required(),
+//   imagePath: yup.string().required(),
+// });
 
 const AddProduct = () => {
   const { t } = useTranslation();
@@ -55,7 +55,7 @@ const AddProduct = () => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [uploadInProgress, setUploadInProgress] = useState(false);
   const { register, handleSubmit } = useForm<FormValues>({
-    resolver: yupResolver(schema),
+    // resolver: yupResolver(schema),
     mode: "onBlur",
   });
   const navigate = useNavigate();
