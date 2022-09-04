@@ -21,6 +21,8 @@ import {
   Button,
 } from "@chakra-ui/react";
 import { toast } from "react-toastify";
+import { useTranslation } from "react-i18next";
+import Helmet from "../../../Helmet";
 import { customAxios } from "../../../http-common";
 import DefaultLayout from "../DefaultAdminLayout";
 import { getAllCategoriesSelector } from "../../../store/selectors/category.selector";
@@ -48,6 +50,7 @@ const schema = yup.object().shape({
 });
 
 const AddProduct = () => {
+  const { t } = useTranslation();
   const [images, setImages] = useState<string[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [uploadInProgress, setUploadInProgress] = useState(false);
@@ -120,6 +123,11 @@ const AddProduct = () => {
 
   return (
     <DefaultLayout>
+      <Helmet
+        title={t("AddProd")}
+        addPostfixTitle
+        description={t("AddProdDes")}
+      />
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="lg:mx-8">
           <Grid
@@ -255,7 +263,7 @@ const AddProduct = () => {
                   isDisabled={uploadInProgress || images.length < 5}
                   isLoading={isLoading}
                 >
-                  {isLoading ? <Spinner /> : "Add"}
+                  {isLoading ? <Spinner /> :t("Add")}
                 </Button>
 
                 <Button
@@ -266,7 +274,7 @@ const AddProduct = () => {
                   _hover={{ bgColor: "blue" }}
                   onClick={() => setImages([])}
                 >
-                  Clear
+                  {t("Clear")}
                 </Button>
               </div>
             </GridItem>

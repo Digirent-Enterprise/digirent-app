@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useTranslation } from "react-i18next";
 import { Box, Flex, Show } from "@chakra-ui/react";
 import { useSelector } from "react-redux";
 import Logo from "./Logo";
@@ -7,6 +8,7 @@ import AvatarMenu from "./AvatarMenu";
 import { getCurrentUserSelector } from "../../../../store/selectors/user.selector";
 
 const NavBar = () => {
+  const { t } = useTranslation();
   const currentUser = useSelector(getCurrentUserSelector);
 
   const [toggle, toggleNav] = useState(false);
@@ -25,13 +27,13 @@ const NavBar = () => {
         <Show above="md">
           <ul className="flex list-none">
             {currentUser.role === "admin" && (
-              <NavButton navItem="Dashboard" directUrl="/admin" />
+              <NavButton navItem={t("Dashboard")} directUrl="/admin" />
             )}
-            <NavButton navItem="Home" directUrl="/" />
-            <NavButton navItem="About" directUrl="/about" />
-            <NavButton navItem="Contact" directUrl="/contact" />
+            <NavButton navItem={t("Home")} directUrl="/" />
+            <NavButton navItem={t("About")} directUrl="/about" />
+            <NavButton navItem={t("Contact")} directUrl="/contact" />
             {!currentUser.email ? (
-              <NavButton navItem="Login" directUrl="/login" />
+              <NavButton navItem={t("Login")} directUrl="/login" />
             ) : (
               <AvatarMenu />
             )}
@@ -74,22 +76,22 @@ const NavBar = () => {
           >
             {currentUser.role === "admin" && (
               <div className="pt-2 pl-3 mt-10 text-2xl">
-                <NavButton navItem="Dashboard" directUrl="/admin" />
+                <NavButton navItem={t("Dashboard")} directUrl="/admin" />
               </div>
             )}
             <div className="pt-2 pl-3 mt-10 text-2xl">
-              <NavButton navItem="Home" directUrl="/" />
+              <NavButton navItem={t("Home")} directUrl="/" />
             </div>
             <div className="pt-2 pl-3 mt-10 text-2xl">
-              <NavButton navItem="About" directUrl="/about" />
+              <NavButton navItem={t("About")} directUrl="/about" />
             </div>
             <div className="pt-2 pl-2 mt-10 text-2xl">
-              <NavButton navItem="Contact" directUrl="/contact" />
+              <NavButton navItem={t("Contact")} directUrl="/contact" />
             </div>
             <div className="pl-6 mt-10 text-2xl">
               {" "}
               {!currentUser.email ? (
-                <NavButton navItem="Login" directUrl="/login" />
+                <NavButton navItem={t("Login")} directUrl="/login" />
               ) : (
                 <AvatarMenu />
               )}

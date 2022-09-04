@@ -1,4 +1,5 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 import {
   Flex,
   Avatar,
@@ -22,6 +23,7 @@ import { clearUserSession } from "../../../../helpers/authHelpers";
 import { deleteUserSession } from "../../../../store/actions/user.action";
 
 const AvatarMenu = () => {
+  const { t } = useTranslation();
   const navigate = useNavigate();
   const currentUser = useSelector(getCurrentUserSelector);
   const dispatch = useDispatch();
@@ -80,17 +82,17 @@ const AvatarMenu = () => {
             <br />
             <MenuDivider />
             <MenuItem onClick={() => navigate("/user/my-profile")}>
-              Account Settings
+              {t("AccountSetting")}
             </MenuItem>
             <MenuItem
               onClick={() => navigate("/transaction/transaction-history")}
             >
-              Order History
+              {t("OrderHistory")}
             </MenuItem>
             <MenuItem onClick={() => navigate("/user/favorite-product")}>
-              Favorite Products
+              {t("FavProd")}
             </MenuItem>
-            <MenuItem onClick={() => logOut()}>Logout</MenuItem>
+            <MenuItem onClick={() => logOut()}>{t("Logout")}</MenuItem>
           </MenuList>
         </Menu>
       </Stack>

@@ -1,12 +1,20 @@
+import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
+import Helmet from "../../Helmet";
 import { getCurrentUserSelector } from "../../store/selectors/user.selector";
 import { IMAGES } from "../../utils/constants/image.constant";
 import DefaultLayout from "../DefaultLayout";
 
 const UserViewInfo = () => {
+  const { t } = useTranslation();
   const currentUser = useSelector(getCurrentUserSelector);
   return (
     <DefaultLayout>
+      <Helmet
+        title={t("UserViewInfoHelmetTitle")}
+        addPostfixTitle
+        description={t("UserViewInfoHelmetDes")}
+      />
       <section className="relative block h-[500px] -mt-5">
         <div
           className="absolute top-0 w-full h-full bg-center bg-cover"

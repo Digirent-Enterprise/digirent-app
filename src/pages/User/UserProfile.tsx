@@ -1,4 +1,5 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
 import { Box, Center, Stack, useColorModeValue } from "@chakra-ui/react";
 import { BsKey } from "react-icons/bs";
@@ -14,11 +15,18 @@ import {
 } from "../../components/elements";
 import DefaultLayout from "../DefaultLayout";
 import { getCurrentUserSelector } from "../../store/selectors/user.selector";
+import Helmet from "../../Helmet";
 
 const UserProfile = () => {
+  const { t } = useTranslation();
   const currentUser = useSelector(getCurrentUserSelector);
   return (
     <DefaultLayout>
+      <Helmet
+        title={t("UserProfileHelmetTitle")}
+        addPostfixTitle
+        description={t("UserProfileHelmetDes")}
+      />
       <Box>
         <UserTab />
 
@@ -45,7 +53,7 @@ const UserProfile = () => {
             >
               <UserProfileButton
                 directUrl="/user/change-password"
-                userButtonItem="Change your password"
+                userButtonItem={t("ChangePassword")}
                 leftIcon={<BsKey />}
               />
               <UserProfileButton
@@ -63,7 +71,7 @@ const UserProfile = () => {
             >
               <UserProfileButton
                 directUrl="/user/view-my-profile"
-                userButtonItem="View your information"
+                userButtonItem={t("ViewYourInfo")}
                 leftIcon={<AiOutlineProfile />}
               />
             </Stack>
