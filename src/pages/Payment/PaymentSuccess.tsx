@@ -9,8 +9,8 @@ import { customAxios } from "../../http-common";
 const PaymentSuccess = () => {
   const { t } = useTranslation();
   const queryParams = new URLSearchParams(window.location.search);
-  const payment_intent = queryParams.get("payment_intent");
-  const paymentIntentClientSecret = queryParams.get(
+  const paymentIntent = queryParams.get("payment_intent");
+    const paymentIntentClientSecret = queryParams.get(
     "payment_intent_client_secret",
   );
   const [newTrans, setNewTrans] = useState<ITransaction>();
@@ -36,7 +36,7 @@ const PaymentSuccess = () => {
 
   const fetchIntent = async () => {
     const response = await customAxios().get("payment-intent", {
-      params: { payment_intent },
+      params: { paymentIntent },
     });
     if (response && response.data) {
       setIntent(response.data);
