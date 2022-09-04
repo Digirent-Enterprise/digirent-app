@@ -1,9 +1,15 @@
+import { useTranslation } from "react-i18next";
 import Helmet from "../../Helmet";
 
 const NotFound = () => {
+  const {t} = useTranslation();
   return (
     <>
-      <Helmet title="Not Found" addPostfixTitle description="Not Found Page" />
+      <Helmet
+        title={t("NotFoundHelmetTitle")}
+        addPostfixTitle
+        description={t("NotFoundHelmetDes")}
+      />
       <div className="min-h-full px-4 py-16 bg-white sm:px-6 sm:py-24 md:grid md:place-items-center lg:px-8">
         <div className="mx-auto max-w-max">
           <main className="sm:flex">

@@ -32,6 +32,7 @@ import DefaultLayout from "../DefaultLayout";
 import { getCurrentUserSelector } from "../../store/selectors/user.selector";
 import { customAxios } from "../../http-common";
 import { getUserDetail } from "../../store/actions/user.action";
+import Helmet from "../../Helmet";
 
 interface IFormInputs {
   name: string;
@@ -104,6 +105,11 @@ const UserEdit = () => {
 
   return (
     <DefaultLayout>
+      <Helmet
+        title={t("UserEditHelmetTitle")}
+        addPostfixTitle
+        description={t("UserEditHelmetDes")}
+      />
       <UserTab />
       <Flex minH="70vh" align="center" justify="center" bg="#fff">
         <Box
