@@ -185,7 +185,7 @@
   "Sort": "Lọc:",
   "ResetSort": "Xoá bộ lọc",
   "ExportCSV": "Xuất CSV",
-  
+
   "AccountSetting": "Thiết lập tài khoản",
 
   "Fav": "Yêu thích",
@@ -227,9 +227,9 @@
   "ViewYourInfo": "Hiển thị thông tin cá nhân",
   "Deactivate": "Vô hiệu hoá",
   "DeactivateAcc": "Vô hiệu hoá tài khoản",
-  "DeactivateWarning":"Bạn có chắc muốn vô hiệu hoá tài khoản của mình ?",
+  "DeactivateWarning": "Bạn có chắc muốn vô hiệu hoá tài khoản của mình ?",
 
-   "Unsaved": "Bạn vẫn chưa lưu",
+  "Unsaved": "Bạn vẫn chưa lưu",
   "UnsavedWarning": "Bạn có chắc muốn thoát huỷ các thay đổi của mình ?",
 
   "ProductAdded": "Thêm sản phẩm thành công!",
@@ -316,8 +316,7 @@
   "UserEditHelmetTitle": "Chỉnh sửa người dùng",
   "UserEditHelmetDes": "Nơi người dùng có thể thay đổi thông tin của họ",
   "UserProfileHelmetTitle": "Trang cá nhân",
-  "UserProfileHelmetDes": "Hiển thị tất cả thông tin liên quan đến người dùng", 
+  "UserProfileHelmetDes": "Hiển thị tất cả thông tin liên quan đến người dùng",
   "UserViewInfoHelmetTitle": "Hiển thị thông tin người dùng",
   "UserViewInfoHelmetDes": "Hiển thị thông tin người dùng"
-
 }

@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next";
 import { StripePayment } from "../../elements";
 
 const OrderSummaryContent = ({ transactionData }: any) => {
-  const {t} = useTranslation();
+  const { t } = useTranslation();
   return (
     <div className="container flex flex-col grow">
       <h5 className="pb-4 text-2xl">{t("OrderSummary")}</h5>
