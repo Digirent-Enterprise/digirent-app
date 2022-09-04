@@ -1,6 +1,7 @@
 import React, { useEffect, useMemo, useState } from "react";
 import "react-dropzone-uploader/dist/styles.css";
-import Dropzone, { IPreviewProps } from "react-dropzone-uploader";
+import Dropzone from "react-dropzone-uploader";
+import { yupResolver } from "@hookform/resolvers/yup";
 import { useDispatch, useSelector } from "react-redux";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
@@ -24,7 +25,6 @@ import { customAxios } from "../../../http-common";
 import DefaultLayout from "../DefaultAdminLayout";
 import { getAllCategoriesSelector } from "../../../store/selectors/category.selector";
 import { getCategories } from "../../../store/actions/category.action";
-import CustomPreview from "./CustomePreview";
 
 type FormValues = {
   name: string;
@@ -51,25 +51,11 @@ const AddProduct = () => {
   const [images, setImages] = useState<string[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [uploadInProgress, setUploadInProgress] = useState(false);
-  const { register, handleSubmit } = useForm<FormValues>({});
+  const { register, handleSubmit } = useForm<FormValues>({
+    resolver: yupResolver(schema),
+    mode: "onBlur",
+  });
   const navigate = useNavigate();
-
-  // const Preview = (props: IPreviewProps) => {
-  //   console.log(props.fileWithMeta);
-  //   const { name, percent, status, id, uploadedDate } = props.meta;
-  //   return (
-  //     <div className={status === "done" ? "preview" : "preview-x"}>
-  //       <CustomPreview
-  //         name={name}
-  //         percent={Math.round(percent)}
-  //         status={status}
-  //         id={id}
-  //         uploadedDate={uploadedDate}
-  //         fileWithMeta={props.fileWithMeta}
-  //       />
-  //     </div>
-  //   );
-  // };
 
   const handleUploadFiles = async (file: any) => {
     const fd = new FormData();
@@ -112,6 +98,7 @@ const AddProduct = () => {
             theme: "dark",
             icon: "🚀",
           });
+          navigate("/admin");
         }
       })
       .catch((error: any) => {
