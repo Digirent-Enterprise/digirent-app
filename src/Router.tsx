@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { AnimatePresence } from "framer-motion";
 import {
   Maintain,
+  UnderDevelopmentPage,
   NotFound,
   RegisterPage,
   LoginPage,
@@ -224,6 +225,8 @@ const AppRouter = () => {
         />
         {/* 404 Not Found Route */}
         <Route path="*" element={<NotFound />} />
+        {/* Under development page Route */}
+        <Route path="under-development" element={<UnderDevelopmentPage />} />
       </Routes>
     </AnimatePresence>
   );
