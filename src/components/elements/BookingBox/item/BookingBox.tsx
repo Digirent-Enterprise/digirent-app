@@ -48,14 +48,15 @@ const BookingBox: React.FC<BookingBoxProps> = ({
         status: "pending",
         latePenalty: 0,
         currency: "$",
-        from: startDate,
-        to: endDate,
+        from: new Date(startDate?.setDate(startDate.getDate() + 1) as number),
+        to: new Date(endDate?.setDate(endDate.getDate() + 1) as number),
       }),
     );
     navigate(`/checkout/${productData._id}`);
   };
 
   const validateRentPeriodNotNull = () => {
+    console.log("startDate, endDate :>> ", startDate, endDate);
     return (
       (startDate === null && endDate === null) ||
       (startDate === undefined && endDate === undefined)
@@ -74,6 +75,7 @@ const BookingBox: React.FC<BookingBoxProps> = ({
           : 1;
       setTotalPrice(price * numDateDiff);
     }
+    console.log("startDate :>> ", startDate);
   }, [startDate, endDate]);
 
   return (
