@@ -3,7 +3,6 @@ import ProductDetailsPage from "./Product/ProductDetailsPage";
 import LoginPage from "./Auth/LoginPage";
 import RegisterPage from "./Auth/RegisterPage";
 import Maintain from "./Maintain/Maintain";
-import UnderDevelopmentPage from "./UnderDevelopment/UnderDevelopmentPage";
 import NotFound from "./NotFound/NotFound";
 import Home from "./Home/Home";
 import ResetPasswordPage from "./Auth/ResetPasswordPage";
@@ -45,7 +44,6 @@ export {
   LoginPage,
   RegisterPage,
   Maintain,
-  UnderDevelopmentPage,
   NotFound,
   ResetPasswordPage,
   ForgotPasswordPage,
