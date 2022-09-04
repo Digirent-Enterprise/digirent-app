@@ -61,7 +61,7 @@ const EditProductModal = ({
   const inputRef = useRef<any>([]);
 
   const handleEdit = async () => {
-    const updateProduct = {
+    const updatedProduct = {
       id: rowData._id,
       name: inputRef.current[0].value,
       serial: inputRef.current[1].value,
@@ -71,8 +71,10 @@ const EditProductModal = ({
       status: inputRef.current[5].value,
     };
 
+    console.log("updatedProduct", updatedProduct);
+
     await customAxios()
-      .put("product/update-product", qs.stringify(updateProduct))
+      .put("product/update-product", qs.stringify(updatedProduct))
       .then((res) => {
         if (res.status === 200 || res.status === 201) {
           dispatch(getProducts());

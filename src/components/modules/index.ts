@@ -10,6 +10,9 @@ import EditUserModal from "./modal/User/EditUserModal";
 import ProductSummaryDisplay from "./productSummary/ProductSummaryDisplay";
 import StaticGoogleMap from "./staticGoogleMap/StaticGoogleMap";
 import InquiryModal from "./modal/Inquiry/InquiryModal";
+import CategoryPercentage from "./statistic/CategoryPercentage";
+import RevenueByMonth from "./statistic/RevenueByMonth";
+import TransactionStatus from "./statistic/TransactionStatus";
 
 export {
   DeleteUserModal,
@@ -24,4 +27,7 @@ export {
   GalleryDisplay,
   StaticGoogleMap,
   ProductSummaryDisplay,
+  CategoryPercentage,
+  RevenueByMonth,
+  TransactionStatus,
 };

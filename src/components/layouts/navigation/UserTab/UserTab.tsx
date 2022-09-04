@@ -4,7 +4,7 @@ import { Tabs, TabList, Box, Flex } from "@chakra-ui/react";
 import TabButton from "./TabButton";
 
 const UserTab = () => {
-  const {t}=useTranslation();
+  const { t } = useTranslation();
   return (
     <Box>
       <Flex alignContent="center" justifyContent="center">

@@ -1,8 +1,9 @@
 {
   "Home": "Home",
+  "Dashboard": "Dashboard",
   "About": "About",
   "Contact": "Contact",
-  "Confirm": "Confirm", 
+  "Confirm": "Confirm",
   "Cancel": "Cancel",
   "Edit": "Edit",
   "Add": "Add",
@@ -20,42 +21,42 @@
   "Descending": "Descending",
   
   "featuredProduct": "Featured Products",
-  
+
   "getStarted": "Get Started",
   "learnmore": "Learn more",
   "emailAddress": "Email address",
   "newsletter": "Join us and get the update from anywhere",
-  
+
   "bannerHeroTitle": "Get involved with us now",
   "bannerHeroDes": "Start exploring our storage and experience an enjoyable and convenient experience.",
-  
+
   "ourStoryTitle": "Why buy when you can rent?",
   "ourStoryDes": "An isue that we all have is that we needed something but would use it once. Paying an amount of money for something that would be used once seems to be a waste of money. At Digirent, we understand this problem and provide the customers what they need: a renting solution.",
   "readOurStory": "Read our story",
-  
+
   "phoneCategoryBannerTitle": "Mini is Mighty",
   "phoneCategoryBannerDes": "Browse our arsenal of phones from any brands you may like!",
-  
+
   "exploreNow": "Explore Now",
   "readyToDiveIn?": "Ready to dive in ?",
   "startYourRental": "Start your rental now",
-  
+
   "searchAllProducts": "Search all products",
   "newProduct": "New products",
-  
+
   "AdTitle": "National Independence Day special offer for all products",
-  "AdBody": "From September 1st, 2022 to September 14th, 2022, when using our products, you can get discount up to 50% for all products! In this period ò time, you can also enjoy free transaction fees bonus gift from us! Start now!", 
-  
+  "AdBody": "From September 1st, 2022 to September 14th, 2022, when using our products, you can get discount up to 50% for all products! In this period ò time, you can also enjoy free transaction fees bonus gift from us! Start now!",
+
   "getInTouch": "Get in touch",
   "rentNowBTN": "Rent now",
-  
+
   "reviewTitle1": "Dont't just take our word for it...",
   "reviewTitle2": "Read reviews from our customers!",
   "reviewBody": "Take a look through the honest reviews from previous satisfied customers that have used our service.",
-  "reviewContentTitle": "Stayin' Alive", 
+  "reviewContentTitle": "Stayin' Alive",
   "reviewContentBody": "I have been a customer of Digirent since their first initiation. From then til nơ, there services remains excellent. The products are always in good condition when I receive it. The transaction methods are flexible and convenient. When ever I needed help, there customer service teams always done the job. Overall, 10 outta 10.",
-  
-  "frequentlyAsked": "Frequently Asked Questions", 
+
+  "frequentlyAsked": "Frequently Asked Questions",
   "frequentlyAskedBody": "Below are questions that we often received from our customers. Take a look if you run into any problems.",
   "faqs": [
     {
@@ -83,28 +84,28 @@
       "answer": "We do follow the safety protocols provided by the National Ministry of Health when maintain and handle our products. Learn more at: https://covid19.gov.vn/"
     }
   ],
-  
+
   "AboutTitle": "Our competitive advantage",
   "AboutFirstSect": "Remember when you need a camera but did not have it? Would you buy it if you know you would not use it the second time? At Digirent, we understand what the you need. Now, you can enjoy renting anything you want at a reasonable cost and high quality products.",
   "AboutSecondSectP1": "With Digirent, you can explore thoudsand of products from different categories and brands. Our products are strictly examined before handling to the customers so we can guarantee about the quality of our products. If you are curious about our",
   "AboutSecondSectHighlight": "maintain",
   "AboutSecondSectP2": "policy. Dive in and enjoy a never before experience!",
   "AboutUs": "About Us",
-  "AboutUsContent":"We, the people at Digirent believe that we have a duty to create and provide the world with a proper rental solution. Having use many traditional rental service, we understand that there are many problems within the system. Here are why you should choose Digirent:",
+  "AboutUsContent": "We, the people at Digirent believe that we have a duty to create and provide the world with a proper rental solution. Having use many traditional rental service, we understand that there are many problems within the system. Here are why you should choose Digirent:",
   "Bullet1": "Diverse Products with excellent quality",
   "Bullet2": "Creative and active development team",
   "Bullet3": "Thoughtful customers service",
   "Quote": "Treat the customer like you are that customer",
-  
+
   "Feature": "Features",
   "FeaturesContent": "With Digirent, we included all the basic search and filter functions, making it easier for customer to navigate through products. Not only that, our UI/UX was design thoroughly and simple, ensuring that all even new customers can get used to in no time. We also enforce the customer privacy by verifying their email at sign up phase, you can get more details by taking a look customer personal information policy.",
-  
+
   "Technology": "Technologies",
   "TechnologyContent": "Here are the technologies that we used for our website.",
-  
+
   "MeetOurTeam": "Meet our team",
   "MeetOurTeamContent": "Each members has their own position during the build. You can know more about them with the information below.",
-  
+
   "YouNeedToAgree": "You need to agree to our policies.",
   "ContactSales": "Contact Sales",
   "AskUs": "Ask Us anything",
@@ -114,7 +115,7 @@
   "FirstName": "Firstname",
   "LastName": "Lastname",
   "Company": "Company",
-  "PhoneNum":"Phone number",
+  "PhoneNum": "Phone number",
   "Address": "Address",
   "DeliveryAdd": "Delivery address",
   "BillingAdd": "Billing address",
@@ -132,18 +133,18 @@
   "LatePen": "Late penalty",
   "RentalCost": "Rental cost",
   "Message": "Message",
-  
+
   "LetsTalk": "Let's talk!",
   "EmailSentPageTitle": "We are glad that you are with us! We have sent a reset link to your email address",
   "OpenTheApp": "Open the App →",
   "Reset": "Reset",
-  
+
   "Remember?": "Remember your password?",
   "LoginInstead": "Login instead",
   "Password": "Password",
   "ForgotP": "Forgot password?",
   "Login": "Login",
-  "LoginToExist":"Login to your existing account at Digirent",
+  "LoginToExist": "Login to your existing account at Digirent",
   "LoginToAccount": "Login to your account",
   "Logout": "Logout",
   "NewToUs?": "New to us?",
@@ -156,7 +157,7 @@
   "EnterYourEmail": "Enter your email",
   "EnterYourPassword": "Enter your password",
   "CurPass": "Current password",
-  "NewPass":"New password",
+  "NewPass": "New password",
   "ConfirmPassword": "Confirm password",
   "ConfirmNewPass": "Confirm new password",
   "ChangePassword": "Change password",
@@ -167,7 +168,7 @@
   "Error3": "Please enter your new password!",
   "Error4": "Your passwords do not match!",
   "Error5": "Please retype your password!",
-  
+
   "Confirm&Pay": "Confirm and pay",
   "Description": "Description",
   "RentalPeriod": "Rental period:",
@@ -186,14 +187,14 @@
   "ExportCSV": "Export CSV",
   
   "AccountSetting": "Account Settings",
-  
+
   "Fav": "Favorite",
   "FavProd": "Favorite Products",
   "FavProdDes": "View all your favorite products",
-  
+
   "Profile": "Profile",
   "ProductPurch": "Products purchased",
-  
+
   "Order": "Order",
   "OrderTotal": "Tổng đơn",
   "OrderPlaced": "Order placed",
@@ -212,16 +213,16 @@
   "And": "and",
   "CookiePolicy": "Cookie policy",
   "RentPolicy": "Rent policy",
-  "PrivacyPolicySubContent":"At Digirent, accessible from digirent.dev, one of our main priorities is the privacy of our visitors. This Privacy Policy document contains types of information that is collected and recorded by Digirent and how we use it.",
+  "PrivacyPolicySubContent": "At Digirent, accessible from digirent.dev, one of our main priorities is the privacy of our visitors. This Privacy Policy document contains types of information that is collected and recorded by Digirent and how we use it.",
   "PrivacyPolicyAdditionalQ": "If you have additional questions or require more information about our Privacy Policy, do not hesitate to contact us.",
   "PrivacyPolicyContent": "This Privacy Policy applies only to our online activities and is valid for visitors to our website with regards to the information that they shared and/or collect in digirent.dev. This policy is not applicable to any information collected offline or via channels other than this website.",
   "Consent": "Consent",
   "ByUsing": "By using our website, you hereby consent to our Privacy Policy and agree to its terms.",
   "InfoCollected": "Information we collected",
-  "InfoCollectedContent":"The personal information that you are asked to provide, and the reasons why you are asked to provide it, will be made clear to you at the point we ask you to provide your personal information.",
+  "InfoCollectedContent": "The personal information that you are asked to provide, and the reasons why you are asked to provide it, will be made clear to you at the point we ask you to provide your personal information.",
   "InfoCollectedContent1": "If you contact us directly, we may receive additional information about you such as your name, email address, phone number, the contents of the message and/or attachments you may send us, and any other information you may choose to provide.",
   "InfoCollectedContent2": "When you register for an account, we may ask for your contact information, including items such as name, company name, address, email address, and telephone number.",
-  
+
   "ReturnToProfile": "Return to profile info",
   "ViewYourInfo": "View your information",
   "Deactivate": "Deactivate",

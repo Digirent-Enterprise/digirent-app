@@ -27,7 +27,7 @@ const NavBar = () => {
         <Show above="md">
           <ul className="flex list-none">
             {currentUser.role === "admin" && (
-              <NavButton navItem="Dashboard" directUrl="/admin" />
+              <NavButton navItem={t("Dashboard")} directUrl="/admin" />
             )}
             <NavButton navItem={t("Home")} directUrl="/" />
             <NavButton navItem={t("About")} directUrl="/about" />
@@ -76,7 +76,7 @@ const NavBar = () => {
           >
             {currentUser.role === "admin" && (
               <div className="pt-2 pl-3 mt-10 text-2xl">
-                <NavButton navItem="Dashboard" directUrl="/admin" />
+                <NavButton navItem={t("Dashboard")} directUrl="/admin" />
               </div>
             )}
             <div className="pt-2 pl-3 mt-10 text-2xl">
