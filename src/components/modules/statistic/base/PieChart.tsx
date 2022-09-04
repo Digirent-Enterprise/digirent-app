@@ -37,7 +37,7 @@ const PieChart = ({ data, title }: ChartProps) => {
   };
   return (
     <div style={{ width: "600px", height: "600px" }}>
-      {data && <Pie data={data} options={options} />}
+      {data !== undefined ? <Pie data={data} options={options} /> : <h1>hwwww</h1>}
     </div>
   );
 };
