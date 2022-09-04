@@ -10,7 +10,7 @@ const PaymentSuccess = () => {
   const { t } = useTranslation();
   const queryParams = new URLSearchParams(window.location.search);
   const paymentIntent = queryParams.get("payment_intent");
-  const paymentIntentClientSecret = queryParams.get(
+    const paymentIntentClientSecret = queryParams.get(
     "payment_intent_client_secret",
   );
   const [newTrans, setNewTrans] = useState<ITransaction>();

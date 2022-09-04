@@ -26,8 +26,6 @@ const TransactionManagement = () => {
     [transactionFetchData],
   );
 
-  console.log("transactionFetchData", transactionFetchData);
-
   const headers = [
     { label: "Transaction ID", key: "_id" },
     { label: "User email", key: "userEmail" },
