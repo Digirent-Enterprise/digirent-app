@@ -185,7 +185,7 @@
   "Sort": "Lọc:",
   "ResetSort": "Xoá bộ lọc",
   "ExportCSV": "Xuất CSV",
-  
+
   "AccountSetting": "Thiết lập tài khoản",
 
   "Fav": "Yêu thích",
@@ -316,7 +316,7 @@
   "UserEditHelmetTitle": "Chỉnh sửa người dùng",
   "UserEditHelmetDes": "Nơi người dùng có thể thay đổi thông tin của họ",
   "UserProfileHelmetTitle": "Trang cá nhân",
-  "UserProfileHelmetDes": "Hiển thị tất cả thông tin liên quan đến người dùng", 
+  "UserProfileHelmetDes": "Hiển thị tất cả thông tin liên quan đến người dùng",
   "UserViewInfoHelmetTitle": "Hiển thị thông tin người dùng",
   "UserViewInfoHelmetDes": "Hiển thị thông tin người dùng"
 
