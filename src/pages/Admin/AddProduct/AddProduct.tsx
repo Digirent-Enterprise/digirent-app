@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useEffect, useMemo, useState } from "react";
 import "react-dropzone-uploader/dist/styles.css";
 import Dropzone from "react-dropzone-uploader";
@@ -23,7 +24,6 @@ import {
   Button,
 } from "@chakra-ui/react";
 import { toast } from "react-toastify";
-import { useTranslation } from "react-i18next";
 import Helmet from "../../../Helmet";
 import { customAxios } from "../../../http-common";
 import DefaultLayout from "../DefaultAdminLayout";
