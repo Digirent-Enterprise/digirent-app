@@ -12,6 +12,9 @@ import store from "./store";
 
 const theme = extendTheme({
   colors: {
+    blue: {
+      200: "#1010AE",
+    },
     brand: {
       500: "#4169E1",
     },

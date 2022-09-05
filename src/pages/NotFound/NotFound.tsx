@@ -2,7 +2,7 @@ import { useTranslation } from "react-i18next";
 import Helmet from "../../Helmet";
 
 const NotFound = () => {
-  const {t} = useTranslation();
+  const { t } = useTranslation();
   return (
     <>
       <Helmet
