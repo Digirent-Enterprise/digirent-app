@@ -174,12 +174,15 @@ const DefaultManagement = ({
                 {allColumns.map((column: any, idx: number) => (
                   <MenuItemOption
                     icon={
-                      <>
-                        column.isSorted ? ( column.isSortedDesc ? (
-                        <TriangleDownIcon />
+                      column.isSorted ? (
+                        column.isSortedDesc ? (
+                          <TriangleDownIcon />
                         ) : (
-                        <TriangleUpIcon />) ) : ( "" )
-                      </>
+                          <TriangleUpIcon />
+                        )
+                      ) : (
+                        <> </>
+                      )
                     }
                     key={idx}
                     value={column.id}
