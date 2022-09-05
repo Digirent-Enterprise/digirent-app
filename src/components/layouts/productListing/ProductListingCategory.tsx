@@ -57,7 +57,7 @@ const ProductListingCategory = () => {
           <Link to="/">
             <div className="flex px-8 py-8">
               <AiOutlineArrowLeft color="#4169E1" className="mx-2 text-3xl" />
-              <p className="text-lg text-[#4169E1]">{t("BackToHome")}</p>
+              <p className="text-lg text-[#4169E1]">R{t("BackToHome")}</p>
             </div>
           </Link>
           <div className="flex flex-col gap-5">
