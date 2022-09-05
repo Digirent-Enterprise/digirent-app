@@ -249,7 +249,7 @@
   "Chat": "Tin nhắn",
   "Users": "Người dùng",
   "Product": "Sản phẩm",
-  "Products": "Các Sản phẩm",
+  "Products": "Sản phẩm",
   "Transaction": "Giao dịch",
   "CustomerInq": "Khảo sát khách hàng",
   "InqType": "Vấn đề khảo sát",
@@ -318,5 +318,9 @@
   "UserProfileHelmetTitle": "Trang cá nhân",
   "UserProfileHelmetDes": "Hiển thị tất cả thông tin liên quan đến người dùng",
   "UserViewInfoHelmetTitle": "Hiển thị thông tin người dùng",
-  "UserViewInfoHelmetDes": "Hiển thị thông tin người dùng"
+  "UserViewInfoHelmetDes": "Hiển thị thông tin người dùng",
+  "ProductManagement": "Quản lí sản phẩm",
+  "UserManagement": "Quản lí người dùng",
+  "TransactionManagement": "Quản lí giao dịch",
+  "InquiryManagement": "Quản lí khảo sát"
 }
