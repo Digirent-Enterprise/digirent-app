@@ -1,12 +1,14 @@
 import React, { useMemo, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
+import { useTranslation } from "react-i18next";
 import { getInquiries } from "../../../store/actions/inquiry.action";
 import { getAllInquiriesSelector } from "../../../store/selectors/inquiry.selector";
 import DefaultManagement from "./DefaultManagement";
 import { InquiryColumns } from "./Columns/InquiryColumns";
 
 const InquiryManagement = () => {
+  const { t } = useTranslation();
   const dispatch = useDispatch();
 
   const inquiryFetchData = useSelector(getAllInquiriesSelector);
@@ -29,7 +31,7 @@ const InquiryManagement = () => {
 
   return (
     <DefaultManagement
-      title="Customer Inquiry Management"
+      title={t("InquiryManagement")}
       filename="Inquiry.csv"
       headers={headers}
       columnProps={inquiryColumns}

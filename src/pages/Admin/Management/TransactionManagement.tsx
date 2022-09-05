@@ -1,5 +1,6 @@
 import React, { useMemo, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useTranslation } from "react-i18next";
 import {
   getAllTransactionsSelector,
   selectTransactionLoading,
@@ -10,6 +11,7 @@ import DefaultManagement from "./DefaultManagement";
 import { TransactionColumns } from "./Columns";
 
 const TransactionManagement = () => {
+  const {t} = useTranslation();
   const dispatch = useDispatch();
 
   const transactionFetchData = useSelector(getAllTransactionsSelector);
@@ -37,7 +39,7 @@ const TransactionManagement = () => {
 
   return (
     <DefaultManagement
-      title="Transaction Management"
+      title={t("TransactionManagement")}
       filename="Transactions.csv"
       headers={headers}
       columnProps={transactionColumns}

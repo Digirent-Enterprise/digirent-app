@@ -313,5 +313,9 @@
   "UserProfileHelmetTitle": "User profile",
   "UserProfileHelmetDes": "Display all users' relevant information",
   "UserViewInfoHelmetTitle": "User view info",
-  "UserViewInfoHelmetDes": "View user's info"
+  "UserViewInfoHelmetDes": "View user's info",
+  "ProductManagement": "Product management",
+  "UserManagement": "User management",
+  "TransactionManagement": "Transaction management",
+  "InquiryManagement": "Customer Inquiry management"
 }
