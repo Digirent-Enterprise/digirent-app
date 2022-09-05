@@ -71,8 +71,6 @@ const EditProductModal = ({
       status: inputRef.current[5].value,
     };
 
-    console.log("updatedProduct", updatedProduct);
-
     await customAxios()
       .put("product/update-product", qs.stringify(updatedProduct))
       .then((res) => {

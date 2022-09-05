@@ -5,11 +5,10 @@ import PieChart from "./base/PieChart";
 const TransactionStatus = () => {
   const [chartData, setChartData] = useState({}) as any;
 
-  const StatisticChart = () => {
+  useEffect(() => {
     customAxios()
       .get("statistic/transaction-status")
-      .then((res) => {
-        console.log("res", res.data);
+      .then((res: any) => {
         setChartData({
           labels: Object.keys(res.data),
           datasets: [
@@ -25,14 +24,13 @@ const TransactionStatus = () => {
           ],
         });
       })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
-  useEffect(() => {
-    StatisticChart();
   }, []);
-  return <PieChart data={chartData} title="Transaction Status" />;
+
+  return Object.keys(chartData).length !== 0 ? (
+    <PieChart data={chartData} title="Transaction Status" />
+  ) : (
+    <h1>Failed to load data</h1>
+  );
 };
 
 export default TransactionStatus;
