@@ -265,7 +265,7 @@ const AddProduct = () => {
                   isDisabled={uploadInProgress || images.length < 5}
                   isLoading={isLoading}
                 >
-                  {isLoading ? <Spinner /> :t("Add")}
+                  {isLoading ? <Spinner /> : t("Add")}
                 </Button>
 
                 <Button
