@@ -7,9 +7,9 @@ const PrivacyPolicy = () => {
   return (
     <DefaultLayout>
       <Helmet
-        title="Privacy Policy"
+        title={t("PrivacyPageHelmetTitle")}
         addPostfixTitle
-        description="Privacy Policy of Digirent"
+        description={t("PrivacyPageHelmetDes")}
       />
       <div className="py-6 bg-white sm:py-8 lg:py-12">
         <div className="max-w-screen-md px-4 mx-auto md:px-8">

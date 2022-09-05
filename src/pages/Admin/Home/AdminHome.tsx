@@ -1,3 +1,4 @@
+import { useTranslation } from "react-i18next";
 import {
   MostRentalProduct,
   GreetingCard,
@@ -10,12 +11,13 @@ import Helmet from "../../../Helmet";
 import DefaultAdminLayout from "../DefaultAdminLayout";
 
 const AdminHome = () => {
+  const { t } = useTranslation();
   return (
     <DefaultAdminLayout>
       <Helmet
-        title="Admin"
+        title={t("Admin")}
         addPostfixTitle
-        description="Dashboard for administrator"
+        description={t("AdminDashboardHelmetDes")}
       />
       <GreetingCard />
       <div className="px-8">

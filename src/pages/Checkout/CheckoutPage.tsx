@@ -1,14 +1,22 @@
 import { Grid, GridItem } from "@chakra-ui/react";
+import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
 import { CheckoutDetailsCard, OrderSummaryContent } from "../../components";
 import DefaultLayout from "../DefaultLayout";
 import { getTransactionSelector } from "../../store/selectors/transaction.selector";
+import Helmet from "../../Helmet";
 
 const CheckoutPage = () => {
+  const { t } = useTranslation();
   const transactionData: any = useSelector(getTransactionSelector);
 
   return (
     <DefaultLayout>
+      <Helmet
+        title={t("CheckoutPageHelmetTitle")}
+        addPostfixTitle
+        description={t("CheckoutPageHelmetDes")}
+      />
       <Grid
         templateColumns={{
           base: "repeat(2, 1fr)",
