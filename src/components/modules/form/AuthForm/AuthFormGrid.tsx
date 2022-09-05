@@ -54,7 +54,6 @@ const AuthFormGrid: React.FC<ParentCompProps> = (props) => {
                       <svg
                         className="w-4 h-4 mr-2 -ml-1 text-center"
                         aria-hidden="true"
-                        focusable="false"
                         data-prefix="fab"
                         data-icon="google"
                         role="img"
@@ -75,7 +74,6 @@ const AuthFormGrid: React.FC<ParentCompProps> = (props) => {
                       <svg
                         className="w-4 h-4 mr-2 -ml-1"
                         aria-hidden="true"
-                        focusable="false"
                         data-prefix="fab"
                         data-icon="facebook-f"
                         role="img"
@@ -96,7 +94,6 @@ const AuthFormGrid: React.FC<ParentCompProps> = (props) => {
                       <svg
                         className="w-4 h-4 mr-2 -ml-1"
                         aria-hidden="true"
-                        focusable="false"
                         data-prefix="fab"
                         data-icon="twitter"
                         role="img"

@@ -44,7 +44,7 @@ const CategoryPercentage = () => {
     <PieChart data={chartData} title="Category Percentage" />
   ) : (
     <h1>Failed to load data</h1>
-  );;
+  );
 };
 
 export default CategoryPercentage;

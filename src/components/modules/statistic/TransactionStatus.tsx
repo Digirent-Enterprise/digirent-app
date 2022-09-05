@@ -23,7 +23,7 @@ const TransactionStatus = () => {
             },
           ],
         });
-      })
+      });
   }, []);
 
   return Object.keys(chartData).length !== 0 ? (

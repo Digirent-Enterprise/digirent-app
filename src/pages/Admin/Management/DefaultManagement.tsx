@@ -40,8 +40,6 @@ import Helmet from "../../../Helmet";
 
 const initialState = { hiddenColumns: ["_id", "intent", "productId"] };
 
-const initialState = { hiddenColumns: ["_id", "intent", "productId"] };
-
 const DefaultManagement = ({
   columnProps,
   dataProps,
