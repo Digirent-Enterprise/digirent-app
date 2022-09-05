@@ -8,7 +8,7 @@ const TransactionStatus = () => {
   useEffect(() => {
     customAxios()
       .get("statistic/transaction-status")
-      .then((res) => {
+      .then((res: any) => {
         setChartData({
           labels: Object.keys(res.data),
           datasets: [
@@ -24,15 +24,12 @@ const TransactionStatus = () => {
           ],
         });
       })
-      .catch((err) => {
-        console.log(err);
-      });
   }, []);
 
   return Object.keys(chartData).length !== 0 ? (
     <PieChart data={chartData} title="Transaction Status" />
   ) : (
-    <>Failed to load data</>
+    <h1>Failed to load data</h1>
   );
 };
 

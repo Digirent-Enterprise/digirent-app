@@ -10,7 +10,6 @@ interface ChartProps {
 }
 
 const PieChart = ({ data, title }: ChartProps) => {
-  console.log("data :>> ", data);
   const options: any = {
     responsive: true,
     maintainAspectRatio: true,
@@ -37,7 +36,7 @@ const PieChart = ({ data, title }: ChartProps) => {
   };
   return (
     <div style={{ width: "600px", height: "600px" }}>
-      {data !== undefined ? <Pie data={data} options={options} /> : <h1>hwwww</h1>}
+      <Pie data={data} options={options} />
     </div>
   );
 };
