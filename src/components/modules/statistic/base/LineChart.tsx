@@ -70,9 +70,9 @@ const LineChart = ({
         display: true,
         text: title,
         position: "top",
+        align: "start",
         font: {
           size: 20,
-          weight: "bold",
         },
       },
     },
@@ -86,11 +86,7 @@ const LineChart = ({
       { ...straightLine, label: "Mean", data: Array(7).fill(mean.toFixed(2)) },
     ],
   };
-  return (
-    <div style={{ width: "600px", height: "600px" }}>
-      <Line data={data} options={option} />
-    </div>
-  );
+  return <Line data={data} options={option} width="28%" height="25%" />;
 };
 
 export default LineChart;
