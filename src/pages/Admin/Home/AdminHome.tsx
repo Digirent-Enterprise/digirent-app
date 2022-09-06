@@ -27,6 +27,9 @@ const AdminHome = () => {
         <CategoryPercentage />
         <RevenueByMonth />
         <TransactionStatus />
+        <SalesByMonth/>
+        <CategoryRevenue/>
+        <UserStatus />
       </div>
 
       <Stat />

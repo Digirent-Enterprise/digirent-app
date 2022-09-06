@@ -1,4 +1,5 @@
 import { BarChart } from "./base/BarChart";
+import ContainerCard from "./base/ContainerCard";
 
 const dataset = {
   label: "Revenue",
@@ -10,20 +11,24 @@ const dataset = {
 
 const CategoryRevenue = () => {
   return (
-    <BarChart
-      type="normal"
-      title="Purchased by Categories"
-      labels={[
-        "Tablets and Cellphones",
-        "Laptops",
-        "Wearables",
-        "Cameras",
-        "Audio",
-        "Home Entertainment",
-        "Gaming and VR",
-        "E-Mobility",
-      ]}
-      datasets={dataset}
+    <ContainerCard
+      chart={
+        <BarChart
+          type="normal"
+          title="Purchased by Categories"
+          labels={[
+            "Tablets and Cellphones",
+            "Laptops",
+          "Wearables",
+            "Cameras",
+            "Audio",
+            "Home Entertainment",
+            "Gaming and VR",
+            "E-Mobility",
+          ]}
+          datasets={dataset}
+        />
+      }
     />
   );
 };

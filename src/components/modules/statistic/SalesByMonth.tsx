@@ -1,4 +1,5 @@
 import { BarChart } from "./base/BarChart";
+import ContainerCard from "./base/ContainerCard";
 
 const dataset = {
   label: "Revenue",
@@ -10,24 +11,28 @@ const dataset = {
 
 const SalesByMonth = () => {
   return (
-    <BarChart
-      type="normal"
-      title="Sales Revenue by Month"
-      labels={[
-        "January",
-        "February",
-        "March",
-        "April",
-        "May",
-        "June",
-        "July",
-        "August",
-        "September",
-        "October",
-        "November",
-        "December",
-      ]}
-      datasets={dataset}
+    <ContainerCard
+      chart={
+        <BarChart
+          type="normal"
+          title="Sales Revenue by Month"
+          labels={[
+            "January",
+            "February",
+            "March",
+            "April",
+            "May",
+            "June",
+            "July",
+            "August",
+            "September",
+            "October",
+            "November",
+            "December",
+          ]}
+          datasets={dataset}
+        />
+      }
     />
   );
 };
