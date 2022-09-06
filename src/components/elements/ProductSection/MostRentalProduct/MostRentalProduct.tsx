@@ -1,12 +1,13 @@
 import { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { customAxios } from "../../../../http-common";
-import { IProduct } from "../../../../store/types/product.types";
+import {IMostRentalProduct, IProduct} from "../../../../store/types/product.types";
 import Spinner from "../../Spinner/Spinner";
+import {Badge} from "@chakra-ui/react";
 
 const MostRentalProduct = () => {
   const { t } = useTranslation();
-  const [mostRentalProducts, setMostRentalProducts] = useState<IProduct[]>([]);
+  const [mostRentalProducts, setMostRentalProducts] = useState<IMostRentalProduct[]>([]);
 
   useEffect(() => {
     customAxios()
@@ -36,7 +37,7 @@ const MostRentalProduct = () => {
               <li className="relative">
                 <div className="group block w-full aspect-w-10 aspect-h-7 rounded-lg bg-gray-100 focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-offset-gray-100 focus-within:ring-indigo-500 overflow-hidden">
                   <img
-                    src=""
+                    src={rental._id.images && rental._id.images[0]}
                     alt=""
                     className="object-cover pointer-events-none group-hover:opacity-75"
                   />
@@ -45,16 +46,21 @@ const MostRentalProduct = () => {
                     className="absolute inset-0 focus:outline-none"
                   >
                     <span className="sr-only">
-                      View details for {rental.name}
+                      View details for {rental._id.name}
                     </span>
                   </button>
                 </div>
-                <p className="mt-2 block text-sm font-medium text-gray-900 truncate pointer-events-none">
-                  {rental.name}
+                  <div className='text-center'>
+                <p className="inline-block mr-1 text-sm font-medium text-gray-900 pointer-events-none">
+                  {rental._id.name} -
                 </p>
-                <p className="block text-sm font-medium text-gray-500 pointer-events-none">
-                  {rental.rentalCost}
+                <p className="inline-block text-sm font-medium text-gray-500 pointer-events-none">
+                  {rental._id.rentalCost}$
                 </p>
+                  </div>
+                  <p className="block text-center text-sm font-medium text-gray-500 pointer-events-none" style={{color: 'red', fontSize:'bold'}}>
+                      Has been rented  {rental.rentalTimes > 1 ? rental.rentalTimes + ' times' : rental.rentalTimes + ' time'}
+                  </p>
               </li>
             ))}
           </>
