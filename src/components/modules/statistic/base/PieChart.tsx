@@ -13,15 +13,15 @@ const PieChart = ({ data, title }: ChartProps) => {
   console.log("data :>> ", data);
   const options: any = {
     responsive: true,
-    maintainAspectRatio: true,
+    maintainAspectRatio: false,
     plugins: {
       title: {
         display: true,
         text: title,
         position: "top",
+        align: "start",
         font: {
           size: 20,
-          weight: "bold",
         },
       },
       legend: {
@@ -35,10 +35,10 @@ const PieChart = ({ data, title }: ChartProps) => {
       },
     },
   };
-  return (
-    <div style={{ width: "600px", height: "600px" }}>
-      {data !== undefined ? <Pie data={data} options={options} /> : <h1>hwwww</h1>}
-    </div>
+  return data !== undefined ? (
+    <Pie data={data} options={options} width="28%" height="15%" />
+  ) : (
+    <h1>hwwww</h1>
   );
 };
 

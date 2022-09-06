@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { customAxios } from "../../../http-common";
+import ContainerCard from "./base/ContainerCard";
 import PieChart from "./base/PieChart";
 
 const CategoryPercentage = () => {
@@ -41,7 +42,9 @@ const CategoryPercentage = () => {
       });
   }, []);
   return Object.keys(chartData).length !== 0 ? (
-    <PieChart data={chartData} title="Category Percentage" />
+    <ContainerCard
+      chart={<PieChart data={chartData} title="Category Percentage" />}
+    />
   ) : (
     <h1>Failed to load data</h1>
   );
