@@ -1,5 +1,6 @@
 import React from "react";
 import { useDispatch } from "react-redux";
+import { useTranslation } from "react-i18next";
 import { IconContext } from "react-icons";
 import { TbHeartOff } from "react-icons/tb";
 import {
@@ -18,6 +19,7 @@ import { deleteUserSession } from "../../../store/actions/user.action";
 import { clearUserSession } from "../../../helpers/authHelpers";
 
 const UserProfileDeactivateButton = () => {
+  const { t } = useTranslation();
   const { isOpen, onOpen, onClose } = useDisclosure();
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -67,7 +69,7 @@ const UserProfileDeactivateButton = () => {
             <TbHeartOff />
           </div>
         </IconContext.Provider>
-        Deactivate account
+        {t("DeactivateAcc")}
       </Button>
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
@@ -88,8 +90,8 @@ const UserProfileDeactivateButton = () => {
                 d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
               />
             </svg>
-            <p className="pb-3 text-2xl font-bold">Deactivate account</p>
-            <p>Are you sure you want to deactivate your account ?</p>
+            <p className="pb-3 text-2xl font-bold">{t("DeactivateAcc")}</p>
+            <p>{t("DeactivateWarning")}</p>
           </div>
 
           <ModalFooter>
@@ -99,7 +101,7 @@ const UserProfileDeactivateButton = () => {
               onClick={onClose}
               className="w-1/2"
             >
-              Close
+              {t("Close")}
             </Button>
             <Button
               onClick={handleDeactivated}
@@ -108,7 +110,7 @@ const UserProfileDeactivateButton = () => {
               mr={3}
               className="w-1/2"
             >
-              Deactivate
+              {t("Deactivate")}
             </Button>
           </ModalFooter>
         </ModalContent>

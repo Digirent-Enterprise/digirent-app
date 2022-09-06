@@ -30,7 +30,6 @@ const BackToTop = () => {
     >
       <svg
         aria-hidden="true"
-        focusable="false"
         data-prefix="fas"
         className="w-4 h-4"
         role="img"

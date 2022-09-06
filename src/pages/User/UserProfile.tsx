@@ -15,12 +15,18 @@ import {
 } from "../../components/elements";
 import DefaultLayout from "../DefaultLayout";
 import { getCurrentUserSelector } from "../../store/selectors/user.selector";
+import Helmet from "../../Helmet";
 
 const UserProfile = () => {
   const { t } = useTranslation();
   const currentUser = useSelector(getCurrentUserSelector);
   return (
     <DefaultLayout>
+      <Helmet
+        title={t("UserProfileHelmetTitle")}
+        addPostfixTitle
+        description={t("UserProfileHelmetDes")}
+      />
       <Box>
         <UserTab />
 

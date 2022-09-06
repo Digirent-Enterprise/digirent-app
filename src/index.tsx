@@ -1,4 +1,9 @@
-import { ChakraProvider, extendTheme } from "@chakra-ui/react";
+import {
+  ChakraProvider,
+  CSSReset,
+  extendTheme,
+  ColorModeProvider,
+} from "@chakra-ui/react";
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { Provider } from "react-redux";
@@ -12,6 +17,9 @@ import store from "./store";
 
 const theme = extendTheme({
   colors: {
+    blue: {
+      200: "#1010AE",
+    },
     brand: {
       500: "#4169E1",
     },

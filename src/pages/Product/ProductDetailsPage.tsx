@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import {
   BookingBoxDisplay,
   GalleryDisplay,
@@ -10,8 +11,10 @@ import {
 import DefaultLayout from "../DefaultLayout";
 import { getProductByIDSelector } from "../../store/selectors/product.selector";
 import { getProductByID } from "../../store/actions/product.action";
+import Helmet from "../../Helmet";
 
 const ProductDetailsPage = () => {
+  const { t } = useTranslation();
   const { id } = useParams();
   const selectedProduct = useSelector(getProductByIDSelector);
   const dispatch = useDispatch();
@@ -23,6 +26,11 @@ const ProductDetailsPage = () => {
 
   return (
     <DefaultLayout>
+      <Helmet
+        title={t("ProductDetailPageHelmetTitle")}
+        addPostfixTitle
+        description={t("ProductDetailPageHelmetDes")}
+      />
       {selectedProduct._id && (
         <>
           <ProductSummaryDisplay name={selectedProduct.name} />
