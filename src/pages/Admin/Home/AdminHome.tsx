@@ -6,6 +6,9 @@ import {
   CategoryPercentage,
   RevenueByMonth,
   TransactionStatus,
+  SalesByMonth,
+  CategoryRevenue,
+  UserStatus,
 } from "../../../components";
 import Helmet from "../../../Helmet";
 import DefaultAdminLayout from "../DefaultAdminLayout";
@@ -21,10 +24,25 @@ const AdminHome = () => {
       />
       <GreetingCard />
       <div className="px-8">
-        <div className="flex mx-2">
-          <CategoryPercentage />
-          <RevenueByMonth />
-          <TransactionStatus />
+        <div className="grid grid-cols-3 gap-6">
+          <div className="flex flex-col">
+            <CategoryPercentage />
+          </div>
+          <div className="flex flex-col">
+            <RevenueByMonth />
+          </div>
+          <div className="flex flex-col">
+            <TransactionStatus />
+          </div>
+          <div className="flex flex-col">
+            <SalesByMonth />
+          </div>
+          <div className="flex flex-col">
+            <CategoryRevenue />
+          </div>
+          <div className="flex flex-col">
+            <UserStatus />
+          </div>
         </div>
       </div>
       <Stat />

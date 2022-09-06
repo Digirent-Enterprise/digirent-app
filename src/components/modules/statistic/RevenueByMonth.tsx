@@ -22,7 +22,7 @@ const RevenueByMonth = () => {
   return (
     <LineChart
       backgroundColor="red"
-      title="Revenue By Month"
+      title="Revenue by Day"
       labels={daysArray}
       dataPoints={[34.5, 36.2, 37, 36.7, 35.9, 36.5, 35]}
       mean={
