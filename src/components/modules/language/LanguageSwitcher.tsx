@@ -8,7 +8,7 @@ interface Props {
 }
 const lngs: Props = {
   en: { nativeName: "English" },
-  vi: { nativeName: "Vietnam" },
+  vi: { nativeName: "Vietnamese" },
 };
 
 const LanguageSwitcher = () => {

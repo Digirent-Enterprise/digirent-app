@@ -24,9 +24,9 @@ interface ChartProps {
   labels: any;
   type: any;
   title: string;
-  dataPoint1: any;
-  dataPoint2: any;
-  dataPoint3: any;
+  dataPoint1?: any;
+  dataPoint2?: any;
+  dataPoint3?: any;
 }
 
 export const BarChart = ({
