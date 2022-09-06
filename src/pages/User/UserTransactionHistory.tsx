@@ -64,7 +64,7 @@ const UserTransactionHistory = () => {
                   >
                     <div className="overflow-hidden bg-[#E5E7EB] rounded-md aspect-w-1 aspect-h-1 group-hover:opacity-75">
                       <img
-                        src=""
+                        src={transaction.productId.images ? transaction.productId.images[0] : ''}
                         alt="product"
                         className="object-cover object-center"
                       />
