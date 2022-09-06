@@ -23,28 +23,12 @@ const AdminHome = () => {
         description={t("AdminDashboardHelmetDes")}
       />
       <GreetingCard />
-      <div className="px-8">
-        <div className="grid grid-cols-3 gap-6">
-          <div className="flex flex-col">
-            <CategoryPercentage />
-          </div>
-          <div className="flex flex-col">
-            <RevenueByMonth />
-          </div>
-          <div className="flex flex-col">
-            <TransactionStatus />
-          </div>
-          <div className="flex flex-col">
-            <SalesByMonth />
-          </div>
-          <div className="flex flex-col">
-            <CategoryRevenue />
-          </div>
-          <div className="flex flex-col">
-            <UserStatus />
-          </div>
-        </div>
+      <div className="grid gap-6 mx-4 px-8 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1">
+        <CategoryPercentage />
+        <RevenueByMonth />
+        <TransactionStatus />
       </div>
+
       <Stat />
       <MostRentalProduct />
     </DefaultAdminLayout>

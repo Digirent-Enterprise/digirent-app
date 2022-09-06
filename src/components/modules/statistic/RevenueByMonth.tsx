@@ -1,4 +1,5 @@
 import React from "react";
+import ContainerCard from "./base/ContainerCard";
 import LineChart from "./base/LineChart";
 
 const getDates = (startDate: any, endDate: any) => {
@@ -20,16 +21,20 @@ const RevenueByMonth = () => {
     day.toISOString().substring(5, 10).replaceAll("-", "/"),
   );
   return (
-    <LineChart
-      backgroundColor="red"
-      title="Revenue by Day"
-      labels={daysArray}
-      dataPoints={[34.5, 36.2, 37, 36.7, 35.9, 36.5, 35]}
-      mean={
-        [34.5, 36.2, 37, 36.7, 35.9, 36.5, 35].reduce(
-          (cur, next) => cur + next,
-          0,
-        ) / 7
+    <ContainerCard
+      chart={
+        <LineChart
+          backgroundColor="red"
+          title="Revenue By Month"
+          labels={daysArray}
+          dataPoints={[34.5, 36.2, 37, 36.7, 35.9, 36.5, 35]}
+          mean={
+            [34.5, 36.2, 37, 36.7, 35.9, 36.5, 35].reduce(
+              (cur, next) => cur + next,
+              0,
+            ) / 7
+          }
+        />
       }
     />
   );

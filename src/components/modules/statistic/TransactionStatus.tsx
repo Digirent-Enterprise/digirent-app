@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { customAxios } from "../../../http-common";
 import PieChart from "./base/PieChart";
+import ContainerCard from "./base/ContainerCard";
 
 const TransactionStatus = () => {
   const [chartData, setChartData] = useState({}) as any;
@@ -27,7 +28,9 @@ const TransactionStatus = () => {
   }, []);
 
   return Object.keys(chartData).length !== 0 ? (
-    <PieChart data={chartData} title="Transaction Status" />
+    <ContainerCard
+      chart={<PieChart data={chartData} title="Transaction Status" />}
+    />
   ) : (
     <h1>Failed to load data</h1>
   );

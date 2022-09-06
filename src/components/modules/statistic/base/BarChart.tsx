@@ -53,9 +53,10 @@ export const BarChart = ({
       title: {
         display: true,
         text: title,
+        position: "top",
+        align: "start",
         font: {
           size: 20,
-          weight: "bold",
         },
       },
     },
@@ -73,5 +74,5 @@ export const BarChart = ({
     datasets:
       type === "stacked" ? [dataPoint1, dataPoint2, dataPoint3] : [datasets],
   };
-  return <Bar data={data} options={options} />;
+  return <Bar data={data} options={options} width="28%" height="20%" />;
 };
