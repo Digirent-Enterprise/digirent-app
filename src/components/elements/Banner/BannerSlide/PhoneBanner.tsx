@@ -1,4 +1,5 @@
 import { useTranslation } from "react-i18next";
+import { Link } from "react-router-dom";
 import { IMAGES } from "../../../../utils/constants/image.constant";
 
 const PhoneCategoryBanner = () => {
@@ -14,13 +15,16 @@ const PhoneCategoryBanner = () => {
             <h2>{t("phoneCategoryBannerDes")}</h2>
           </div>
           <div className="lg:flex">
-            <button className="flex items-center justify-center w-full px-10 py-2 mt-6 text-base font-medium text-black transition duration-700 bg-white border-2 border-black shrink-0 md:w-auto lg:mt-8 md:py-3 hover:-translate-y-1 ">
-              {t("exploreNow")}
-            </button>
+            <Link to="/products">
+              <button className="flex items-center justify-center w-full px-10 py-2 mt-6 text-base font-medium text-black transition duration-700 bg-white border-2 border-black shrink-0 md:w-auto lg:mt-8 md:py-3 hover:-translate-y-1 ">
+                {t("exploreNow")}
+              </button>
+            </Link>
           </div>
         </div>
         <div>
           <img
+            loading="lazy"
             className="object-fill w-full mt-8 md:mt-0 md:w-2/3 md:-ml-4 lg:-ml-4 xl:ml-0"
             src={IMAGES.phoneBannerImg}
             alt="banner"

@@ -1,6 +1,7 @@
 import React, { useMemo, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
+import { useTranslation } from "react-i18next";
 import { getAllUsersSelector } from "../../../store/selectors/user.selector";
 import { getUsers } from "../../../store/actions/user.action";
 
@@ -9,6 +10,7 @@ import DefaultManagement from "./DefaultManagement";
 import { UserColumns } from "./Columns";
 
 const UserManagement = () => {
+  const { t } = useTranslation();
   const dispatch = useDispatch();
 
   const userFetchData = useSelector(getAllUsersSelector);
@@ -32,7 +34,7 @@ const UserManagement = () => {
 
   return (
     <DefaultManagement
-      title="User Management"
+      title={t("UserManagement")}
       filename="Users.csv"
       headers={headers}
       columnProps={userColumns}

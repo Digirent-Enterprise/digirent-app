@@ -1,7 +1,7 @@
+  import { useTranslation } from "react-i18next";
 import {
   Banner,
   CTA,
-  FeatureProduct,
   NewProduct,
   ProductProgressBar,
   Testimonial,
@@ -15,18 +15,18 @@ import Helmet from "../../Helmet";
 import DefaultLayout from "../DefaultLayout";
 
 const Home = () => {
+  const { t } = useTranslation();
   return (
     <DefaultLayout>
       <Helmet
-        title="Homepage"
+        title={t("HomeHelmetTitle")}
         addPostfixTitle
-        description="Digirent marketplace"
+        description={t("HomeHelmetDes")}
       />
       <Banner />
       <CategoryCardListing />
       <Search />
       <NewProduct />
-      <FeatureProduct />
       <ProductProgressBar />
       <Partner />
       <Testimonial />

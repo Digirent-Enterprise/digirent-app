@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
+import { useTranslation } from "react-i18next";
 import {
   SearchHeaderSection,
   SearchResultsSection,
@@ -9,14 +10,16 @@ import {
 import NotFoundProduct from "../../components/layouts/NotFoundResult/NotFoundProduct";
 import FilterPanel from "../../components/layouts/filters/FilterPanel";
 
-import ProductListLayout from "../../components/layouts/productCard/ProductLayoutList/ProductLayoutList";
-
 import { getAllProductsSelector } from "../../store/selectors/product.selector";
 
 import DefaultLayout from "../DefaultLayout";
 import { Show, Hide } from "@chakra-ui/react";
+import ProductListLayout from "../../components/layouts/productCard/ProductLayoutList/ProductLayoutList";
+import Helmet from "../../Helmet";
+
 
 const ProductSearchPage = () => {
+  const { t } = useTranslation();
   const [selected, setSelected] = useState<String>("");
 
   const productData = useSelector(getAllProductsSelector);
@@ -165,6 +168,11 @@ const ProductSearchPage = () => {
   return (
     <Transition>
       <DefaultLayout>
+        <Helmet
+          title={t("ProductSearchPageHelmetTitle")}
+          addPostfixTitle
+          description={t("ProductSearchPageHelmetDes")}
+        />
         <SearchHeaderSection
           searchInput={searchInput}
           onChangeInput={(e: any) => setSearchInput(e.target.value)}
