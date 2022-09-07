@@ -12,6 +12,7 @@ const CheckoutDetailsCard = ({ transactionData }: any) => {
               <div className="flex flex-col space-y-4">
                 <div className="flex space-x-4">
                   <img
+                    loading="lazy"
                     src={
                       productId.images == null
                         ? "https://via.placeholder.com/150"

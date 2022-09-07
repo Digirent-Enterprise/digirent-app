@@ -73,6 +73,8 @@ const UserTransactionDetails = () => {
                   <div className="sm:flex lg:col-span-7">
                     <div className="flex-shrink-0 w-full overflow-hidden rounded-lg aspect-w-1 aspect-h-1 sm:aspect-none sm:w-40 sm:h-40">
                       <img
+                                              loading="lazy"
+
                         src={product.images[0]}
                         alt="product"
                         className="object-cover object-center w-full h-full sm:w-full sm:h-full"

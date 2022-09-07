@@ -23,6 +23,7 @@ const AuthFormGrid: React.FC<ParentCompProps> = (props) => {
         <div className="flex flex-col md:flex-row">
           <div className="h-32 md:h-auto md:w-1/2">
             <img
+              loading="lazy"
               className="object-cover w-full h-full opacity-100 brightness-50"
               src={`${childCompSideContent}`}
               alt="img"
