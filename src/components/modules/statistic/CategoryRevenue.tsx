@@ -7,7 +7,6 @@ const CategoryRevenue = () => {
   const [chartData, setChartData] = useState({}) as any;
     const [labels, setLabels] = useState([]) as any;
 
-
   useEffect(() => {
     customAxios()
       .get("statistic/cats-revenue")
