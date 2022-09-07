@@ -70,6 +70,7 @@ const FilterPanel: React.FC<Props> = ({
           marginBottom={10}
           className="grid grid-cols-2 md:grid-cols-1"
         >
+
           <p className="pt-2 pr-">Categories & filter</p>
           <Hide below="md">
             {categories.map((category: any) => (
@@ -187,7 +188,6 @@ const FilterPanel: React.FC<Props> = ({
                       <RangeSliderThumb index={1} />
                     </Tooltip>
                   </RangeSlider>
-
                   <div className="grid grid-cols-2 pb-4">
                     <div className="col-span-1">
                       <Box>
@@ -204,6 +204,7 @@ const FilterPanel: React.FC<Props> = ({
               </PopoverContent>
             </Popover>
           </Show>
+
         </FormControl>
         <FormControl> </FormControl>
       </Box>
