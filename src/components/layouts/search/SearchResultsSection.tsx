@@ -14,7 +14,7 @@ const SearchResultsSection = ({
 }: SearchResultsSectionProps) => {
   const { t } = useTranslation();
   return (
-    <div className="px-4 space-y-6 sm:px-6 lg:px-0 lg:col-span-10">
+    <div className="flex justify-center sm:justify-end px-4 space-y-6 sm:px-6 lg:px-0 lg:col-span-10">
       <div className="flex flex-col sm:flex-row sm:flex-wrap sm:space-x-6">
         <div className="flex-1" />
         <div className="flex items-center text-sm text-gray-500">

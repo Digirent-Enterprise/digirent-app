@@ -6,14 +6,17 @@ import {
   SearchResultsSection,
   Transition,
 } from "../../components";
+
 import NotFoundProduct from "../../components/layouts/NotFoundResult/NotFoundProduct";
 import FilterPanel from "../../components/layouts/filters/FilterPanel";
 
 import { getAllProductsSelector } from "../../store/selectors/product.selector";
 
 import DefaultLayout from "../DefaultLayout";
+import { Show, Hide } from "@chakra-ui/react";
 import ProductListLayout from "../../components/layouts/productCard/ProductLayoutList/ProductLayoutList";
 import Helmet from "../../Helmet";
+
 
 const ProductSearchPage = () => {
   const { t } = useTranslation();
@@ -79,7 +82,7 @@ const ProductSearchPage = () => {
   const handleChangeChecked = (id: any) => {
     const categoriesList = categories;
     const changeChecked = categoriesList.map((item) =>
-      item.id === id ? { ...item, checked: !item.checked } : item,
+      item.id === id ? { ...item, checked: !item.checked } : item
     );
     setCategories(changeChecked);
   };
@@ -92,7 +95,7 @@ const ProductSearchPage = () => {
   const filters = () => {
     let updatedList = productData;
     updatedList = updatedList.sort((productA, productB) =>
-      productA.name.localeCompare(productB.name),
+      productA.name.localeCompare(productB.name)
     );
 
     // Sort
@@ -100,7 +103,7 @@ const ProductSearchPage = () => {
       // default
       if (selected === "default") {
         updatedList = updatedList.sort((productA, productB) =>
-          productA.name.localeCompare(productB.name),
+          productA.name.localeCompare(productB.name)
         );
       }
 
@@ -124,7 +127,7 @@ const ProductSearchPage = () => {
       updatedList = updatedList.filter(
         (item) =>
           item.name.toLowerCase().search(searchInput.toLowerCase().trim()) !==
-          -1,
+          -1
       );
     }
 
@@ -144,7 +147,7 @@ const ProductSearchPage = () => {
     const max = selectedCost[1];
 
     updatedList = updatedList.filter(
-      (item) => item.rentalCost >= min && item.rentalCost <= max,
+      (item) => item.rentalCost >= min && item.rentalCost <= max
     );
 
     setProductList(updatedList);
@@ -175,19 +178,33 @@ const ProductSearchPage = () => {
           onChangeInput={(e: any) => setSearchInput(e.target.value)}
         />
 
-        <div className="grid grid-cols-5 pb-10 mx-auto max-w-7xl lg:py-12 lg:px-8">
-          <div className="col-span-1">
-            <FilterPanel
-              selectedCost={selectedCost}
-              changeCost={handleChangeCost}
-              categories={categories}
-              changeChecked={handleChangeChecked}
-            />
-          </div>
-          <div className="col-span-4">
-            <div className="flex items-center px-5 text-base font-medium text-gray-400">
+        <div className="grid grid-cols-5 mx-auto max-w-7xl md:py-12 md:px-6l g:py-12 lg:px-8">
+          <Hide below="md">
+            {" "}
+            <div className="col-span-1 md:p-4 md:mx-4 md:flex ">
+              <FilterPanel
+                selectedCost={selectedCost}
+                changeCost={handleChangeCost}
+                categories={categories}
+                changeChecked={handleChangeChecked}
+              />
+            </div>
+          </Hide>
+
+          <div className="col-span-5 md:col-span-4">
+            <div className="flex justify-center sm:justify-start px-5 text-base font-medium text-gray-400">
               {foundProduct ? <p>Found {productList.length} results</p> : null}
             </div>
+            <Show below="md">
+              <div className="flex justify-center  w-full mx-auto">
+                <FilterPanel
+                  selectedCost={selectedCost}
+                  changeCost={handleChangeCost}
+                  categories={categories}
+                  changeChecked={handleChangeChecked}
+                />
+              </div>
+            </Show>
 
             <SearchResultsSection
               selectChange={handleSelected}
@@ -195,7 +212,9 @@ const ProductSearchPage = () => {
             />
 
             {foundProduct ? (
-              <ProductListLayout products={productList} />
+              <div className="">
+                <ProductListLayout products={productList} />
+              </div>
             ) : (
               <div className="flex justify-center text-5xl font-bold text-center">
                 <NotFoundProduct />
