@@ -70,7 +70,10 @@ const NavBar = () => {
       <Show below="md">
         <div
           className="z-50 w-full duration-300 ease-in-out bg-black transition-height fixed"
-          style={{ height: toggle ? "400px" : 0 }}
+          style={{
+            height: toggle ? "400px" : 0,
+            visibility: toggle ? "visible" : "hidden",
+          }}
         >
           <ul
             className="absolute list-none transition-opacity duration-300 ease-in-out translate-x-1/2 z-500 left-1/3"
