@@ -16,6 +16,7 @@ const CategoryBanner = ({
       </h1>
       <div className="flex justify-center items-center w-full h-[280px]">
         <img
+          loading="lazy"
           className=" w-[100%] h-full object-cover overflow-hidden rounded-md"
           src={bannerUrl}
           alt={bannerAlt}
