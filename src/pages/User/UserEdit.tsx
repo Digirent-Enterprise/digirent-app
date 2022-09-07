@@ -105,7 +105,7 @@ const UserEdit = () => {
 
   return (
     <DefaultLayout>
-      <UserTab />
+      <UserTab tabIndex={0} />
       <Flex minH="70vh" align="center" justify="center" bg="#fff">
         <Box
           w="full"

@@ -22,7 +22,7 @@ const UserProfile = () => {
   return (
     <DefaultLayout>
       <Box>
-        <UserTab />
+        <UserTab tabIndex={0} />
 
         <Center py={6}>
           <Box
