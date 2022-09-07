@@ -22,6 +22,7 @@ const NavBar = () => {
         display="flex"
         alignItems="center"
         justifyContent="space-between"
+        className="fixed w-full  "
       >
         <Logo />
         <Show above="md">
@@ -65,6 +66,7 @@ const NavBar = () => {
           </button>
         </Show>
       </Flex>
+      <Flex minH="9vh" bgColor="#222"></Flex>
       <Show below="md">
         <div
           className="z-50 w-full duration-300 ease-in-out bg-black transition-height"
