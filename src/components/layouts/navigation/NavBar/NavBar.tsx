@@ -77,20 +77,35 @@ const NavBar = () => {
             style={{ opacity: toggle ? 1 : 0 }}
           >
             {currentUser.role === "admin" && (
-              <div className="pt-2 pl-3 mt-10 text-2xl">
+              <div
+                className="pt-2 pl-3 mt-10 text-2xl"
+                style={{ visibility: toggle ? "visible" : "hidden" }}
+              >
                 <NavButton navItem={t("Dashboard")} directUrl="/admin" />
               </div>
             )}
-            <div className="pt-2 pl-3 mt-10 text-2xl">
+            <div
+              className="pt-2 pl-3 mt-10 text-2xl"
+              style={{ visibility: toggle ? "visible" : "hidden" }}
+            >
               <NavButton navItem={t("Home")} directUrl="/" />
             </div>
-            <div className="pt-2 pl-3 mt-10 text-2xl">
+            <div
+              className="pt-2 pl-3 mt-10 text-2xl"
+              style={{ visibility: toggle ? "visible" : "hidden" }}
+            >
               <NavButton navItem={t("About")} directUrl="/about" />
             </div>
-            <div className="pt-2 pl-2 mt-10 text-2xl">
+            <div
+              className="pt-2 pl-2 mt-10 text-2xl"
+              style={{ visibility: toggle ? "visible" : "hidden" }}
+            >
               <NavButton navItem={t("Contact")} directUrl="/contact" />
             </div>
-            <div className="pl-6 mt-10 text-2xl">
+            <div
+              className="pl-6 mt-10 text-2xl"
+              style={{ visibility: toggle ? "visible" : "hidden" }}
+            >
               {" "}
               {!currentUser.email ? (
                 <NavButton navItem={t("Login")} directUrl="/login" />
