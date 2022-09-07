@@ -13,6 +13,9 @@ import InquiryModal from "./modal/Inquiry/InquiryModal";
 import CategoryPercentage from "./statistic/CategoryPercentage";
 import RevenueByMonth from "./statistic/RevenueByMonth";
 import TransactionStatus from "./statistic/TransactionStatus";
+import SalesByMonth from "./statistic/SalesByMonth";
+import CategoryRevenue from "./statistic/CategoryRevenue";
+import UserStatus from "./statistic/UserStatus";
 
 export {
   DeleteUserModal,
@@ -30,4 +33,7 @@ export {
   CategoryPercentage,
   RevenueByMonth,
   TransactionStatus,
+  SalesByMonth,
+  CategoryRevenue,
+  UserStatus,
 };

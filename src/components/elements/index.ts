@@ -2,7 +2,6 @@ import Banner from "./Banner/Banner";
 import CustomBreadcrumb from "./Breadcrumb/CustomBreadcrumb";
 import CategoryCard from "./Category/CategoryCard/CategoryCard";
 import CTA from "./CTA/CTA";
-import FeatureProduct from "./ProductSection/FeatureProduct/FeatureProduct";
 import Spinner from "./Spinner/Spinner";
 import Testimonial from "./Testimonial/Testimonial";
 import CustomTooltip from "./Tooltip/CustomTooltip";
@@ -47,7 +46,6 @@ export {
   Teams,
   Technology,
   CategoryCard,
-  FeatureProduct,
   ProductProgressBar,
   Testimonial,
   NewProduct,

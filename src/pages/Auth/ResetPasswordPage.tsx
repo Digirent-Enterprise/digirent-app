@@ -75,9 +75,9 @@ const ResetPasswordPage = () => {
   return (
     <Transition>
       <Helmet
-        title="Rest Password"
+        title={t("ResetPass")}
         addPostfixTitle
-        description="Enter new password in order to reset new ones"
+        description={t("ResetPassHelmetDes")}
       />
       <AuthFormGrid
         childTitle={t("ResetPass")}

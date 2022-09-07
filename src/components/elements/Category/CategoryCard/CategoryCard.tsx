@@ -23,6 +23,7 @@ const CategoryCard = ({ categoryImage, categoryName }: CategoryCardProps) => {
     bg-gray-100"
     >
       <img
+        loading="lazy"
         src={categoryImage}
         alt="category"
         className="

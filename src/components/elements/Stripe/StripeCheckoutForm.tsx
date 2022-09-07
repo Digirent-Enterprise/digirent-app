@@ -6,9 +6,9 @@ import {
 } from "@stripe/react-stripe-js";
 
 import { toast } from "react-toastify";
+import qs from "qs";
 import "./Stripe.css";
 import { useSelector } from "react-redux";
-import qs from "qs";
 import { customAxios } from "../../../http-common";
 import { getCurrentUserSelector } from "../../../store/selectors/user.selector";
 

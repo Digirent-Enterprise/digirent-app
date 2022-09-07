@@ -1,14 +1,16 @@
+import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import { Transition } from "../../components";
 import Helmet from "../../Helmet";
 
 const Maintain = () => {
+  const { t } = useTranslation();
   return (
     <Transition>
       <Helmet
-        title="Maintain"
+        title={t("MaintainHelmetTitle")}
         addPostfixTitle
-        description="Feature still be in development"
+        description={t("MaintainHelmetDes")}
       />
       <section className="flex items-center h-full p-16 dark:bg-gray-900 dark:text-gray-100">
         <div className="container flex flex-col items-center justify-center px-5 mx-auto my-8">
@@ -24,16 +26,16 @@ const Maintain = () => {
               />
             </svg>
             <h1 className="mb-4 text-4xl font-bold leading-none tracking-tight text-gray-900 lg:mb-6 md:text-5xl xl:text-6xl">
-              Under Development
+              {t("UnderDev")}
             </h1>{" "}
             <p className="mt-4 mb-8 dark:text-gray-400">
-              This feature is still being in development
+              {t("UnderDevContent")}
             </p>
             <Link
               to="/"
               className="px-8 py-3 font-semibold rounded dark:bg-violet-400 dark:text-gray-900"
             >
-              Back to homepage
+              {t("BackToHome")}
             </Link>
           </div>
         </div>

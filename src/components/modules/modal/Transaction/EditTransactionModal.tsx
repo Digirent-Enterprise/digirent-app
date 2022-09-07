@@ -56,9 +56,8 @@ const EditTransactionModal = ({
       .put(
         "transaction/update-transaction",
         qs.stringify({
-            ...updateTransaction,
-            intent: updateTransaction.intent,
-
+          ...updateTransaction,
+          intent: updateTransaction.intent,
         }),
       )
       .then((res) => {

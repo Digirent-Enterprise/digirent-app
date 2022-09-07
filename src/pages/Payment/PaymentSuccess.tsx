@@ -2,10 +2,12 @@
 import { useEffect, useState } from "react";
 import qs from "qs";
 import { toast } from "react-toastify";
+import { useTranslation } from "react-i18next";
 import { ITransaction } from "../../store/types/transaction.types";
 import { customAxios } from "../../http-common";
 
 const PaymentSuccess = () => {
+  const { t } = useTranslation();
   const queryParams = new URLSearchParams(window.location.search);
   const paymentIntent = queryParams.get("payment_intent");
   const paymentIntentClientSecret = queryParams.get(
@@ -63,6 +65,7 @@ const PaymentSuccess = () => {
     <main className="relative lg:min-h-full lg:ml-32">
       <div className="h-80 overflow-hidden lg:absolute lg:w-1/2 lg:h-full lg:pr-4 xl:pr-12">
         <img
+          loading="lazy"
           src="https://images.unsplash.com/photo-1491933382434-500287f9b54b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1364&q=80"
           className="h-full w-full object-center object-cover"
           alt="checkout"
@@ -73,24 +76,22 @@ const PaymentSuccess = () => {
         <div className="max-w-2xl mx-auto px-4 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8 lg:py-32 lg:grid lg:grid-cols-2 lg:gap-x-8 xl:gap-x-24">
           <div className="lg:col-start-2">
             <h1 className="text-sm font-medium text-blue-100">
-              Payment successful
+              {t("PaymentScss")}
             </h1>
             <p className="mt-2 text-4xl font-extrabold tracking-tight text-gray-900 sm:text-5xl">
-              Thanks for ordering
+              {t("Thanks4Order")}
             </p>
-            <p className="mt-2 text-base text-gray-500">
-              We appreciate your order, we’re currently processing it. So hang
-              tight and we’ll send you confirmation very soon!
-            </p>
+            <p className="mt-2 text-base text-gray-500">{t("ThanksContent")}</p>
 
             <dl className="mt-16 text-sm font-medium">
-              <dt className="text-gray-900">Tracking number</dt>
+              <dt className="text-gray-900">{t("TrackingNum")}</dt>
               <dd className="mt-2 text-blue-100">{newTrans._id}</dd>
             </dl>
 
             <ul className="mt-6 text-sm font-medium text-gray-500 border-t border-gray-200 divide-y divide-gray-200">
               <li key={newTrans._id} className="flex py-6 space-x-6">
                 <img
+                  loading="lazy"
                   src={newTrans.productId.images[0]}
                   alt="checkout-transaction"
                   className="flex-none w-24 h-24 bg-gray-100 rounded-md object-center object-cover"
@@ -113,7 +114,7 @@ const PaymentSuccess = () => {
 
             <dl className="text-sm font-medium text-gray-500 space-y-6 border-t border-gray-200 pt-6">
               <div className="flex justify-between">
-                <dt>Subtotal</dt>
+                <dt>{t("Subtotal")}</dt>
                 <dd className="text-gray-900">
                   {newTrans.currency}
                   {newTrans.rentalCost}
@@ -121,7 +122,7 @@ const PaymentSuccess = () => {
               </div>
 
               <div className="flex items-center justify-between border-t border-gray-200 text-gray-900 pt-6">
-                <dt className="text-base">Total</dt>
+                <dt className="text-base">{t("Total")}</dt>
                 <dd className="text-base">
                   {" "}
                   {newTrans.currency}
@@ -132,16 +133,14 @@ const PaymentSuccess = () => {
 
             <dl className="mt-16 grid grid-cols-2 gap-x-4 text-sm text-gray-600">
               <div>
-                <dt className="font-medium text-gray-900">
-                  Please come pick up your item at
-                </dt>
+                <dt className="font-medium text-gray-900">{t("PickAt")}</dt>
                 <dd className="mt-2">
                   <address className="not-italic">
                     <span className="block">Digirent Ltd.</span>
                     <span className="block">1000 Nguyen Van Linh St.</span>
                     <span className="block">District 7, HCMC</span>
                     <span className="flex flex-row">
-                      <div>Before: </div>
+                      <div>{t("Before")}</div>
                       <b>&nbsp;{newTrans.from.toString()}</b>
                     </span>
                   </address>
@@ -149,7 +148,7 @@ const PaymentSuccess = () => {
               </div>
               <div>
                 <dt className="font-medium text-gray-900">
-                  Payment Information
+                  {t("PaymentInfo")}
                 </dt>
                 <dd className="mt-2 space-y-2 sm:flex sm:space-y-0 sm:space-x-4">
                   <div className="flex-none">
@@ -182,7 +181,8 @@ const PaymentSuccess = () => {
                 href="/"
                 className="text-sm font-medium text-blue-100 hover:text-indigo-500"
               >
-                Continue Shopping<span aria-hidden="true"> &rarr;</span>
+                {t("ContinueShopping")}
+                <span aria-hidden="true"> &rarr;</span>
               </a>
             </div>
           </div>

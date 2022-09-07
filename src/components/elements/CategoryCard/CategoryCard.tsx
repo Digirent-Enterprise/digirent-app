@@ -28,6 +28,7 @@ export const CategoryCard = ({
       "
     >
       <img
+        loading="lazy"
         src={categoryImage}
         alt="category"
         className="
