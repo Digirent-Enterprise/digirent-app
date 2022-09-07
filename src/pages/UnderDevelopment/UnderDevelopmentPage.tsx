@@ -11,7 +11,6 @@ import {
   Button,
 } from "@chakra-ui/react";
 import { AiOutlineDown } from "react-icons/ai";
-import DefaultLayout from "../DefaultLayout";
 
 const UnderDevelopmentPage = () => {
   return (

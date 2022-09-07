@@ -13,7 +13,7 @@ const UserFavoriteProduct = () => {
         addPostfixTitle
         description={t("FavProdDes")}
       />
-      <UserTab tabIndex={2} />
+      <UserTab index={2} />
       <UnderDevelopmentPage />
     </DefaultLayout>
   );

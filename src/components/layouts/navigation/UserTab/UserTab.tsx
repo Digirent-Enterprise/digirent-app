@@ -4,14 +4,14 @@ import { Tabs, TabList, Box, Flex } from "@chakra-ui/react";
 import TabButton from "./TabButton";
 
 interface IUserTab {
-  tabIndex: number;
+  index: number;
 }
-const UserTab = ({ tabIndex }: IUserTab) => {
+const UserTab = ({ index }: IUserTab) => {
   const { t } = useTranslation();
   return (
     <Box>
       <Flex alignContent="center" justifyContent="center">
-        <Tabs index={tabIndex} alignItems="center">
+        <Tabs index={index} alignItems="center">
           <TabList>
             <TabButton directUrl="/user/my-profile" tabItem={t("Profile")} />
             <TabButton
