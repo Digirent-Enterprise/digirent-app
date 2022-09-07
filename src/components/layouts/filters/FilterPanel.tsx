@@ -54,9 +54,12 @@ const FilterPanel: React.FC<Props> = ({
 
   return (
     <div>
-      <Box marginTop={10} w={[50, 100, 200]}>
+      <Box marginTop={10} w="full">
         {/* Category filter */}
-        <FormControl marginBottom={10}>
+        <FormControl
+          marginBottom={10}
+          className="grid grid-cols-2 md:grid-cols-1"
+        >
           <FormLabel>Categories</FormLabel>
 
           {categories.map((category: any) => (
@@ -109,7 +112,7 @@ const FilterPanel: React.FC<Props> = ({
             </Tooltip>
           </RangeSlider>
 
-          <div className="grid grid-cols-2">
+          <div className="grid grid-cols-2 pb-4">
             <div className="col-span-1">
               <Box>
                 <span>Min: {selectedCost[0]}$</span>

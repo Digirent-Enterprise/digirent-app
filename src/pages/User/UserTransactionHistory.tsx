@@ -35,7 +35,7 @@ const UserTransactionHistory = () => {
         addPostfixTitle
         description={t("ViewAllOrderHis")}
       />
-      <UserTab />
+      <UserTab tabIndex={1} />
       <main
         className="max-w-2xl px-4 py-24 mx-auto sm:px-6 lg:max-w-7xl lg:px-8"
         aria-labelledby="transaction-history-heading"
