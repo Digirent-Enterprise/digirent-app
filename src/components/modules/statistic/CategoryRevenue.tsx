@@ -5,6 +5,7 @@ import ContainerCard from "./base/ContainerCard";
 
 const CategoryRevenue = () => {
   const [chartData, setChartData] = useState({}) as any;
+    const [labels, setLabels] = useState([]) as any;
 
   useEffect(() => {
     customAxios()
@@ -17,6 +18,7 @@ const CategoryRevenue = () => {
           backgroundColor: "red",
           data: Object.values(res.data),
         });
+        setLabels(Object.keys(res.data));
       });
   }, []);
   return Object.keys(chartData).length !== 0 ? (
@@ -25,20 +27,12 @@ const CategoryRevenue = () => {
         <BarChart
           type="normal"
           title="Purchased by Categories"
-          labels={[
-            "Tablets and Cellphones",
-            "Laptops",
-            "Wearables",
-            "Cameras",
-            "Audio",
-            "Home Entertainment",
-            "Gaming and VR",
-            "E-Mobility",
-          ]}
+          labels={labels}
           datasets={chartData}
         />
       }
-    />) : (
+    />
+  ) : (
     <h1>Failed to load data</h1>
   );
 };
