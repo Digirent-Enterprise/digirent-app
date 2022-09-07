@@ -69,7 +69,7 @@ const NavBar = () => {
       <Flex minH="9vh" bgColor="#222"></Flex>
       <Show below="md">
         <div
-          className="z-50 w-full duration-300 ease-in-out bg-black transition-height"
+          className="z-50 w-full duration-300 ease-in-out bg-black transition-height fixed"
           style={{ height: toggle ? "400px" : 0 }}
         >
           <ul
