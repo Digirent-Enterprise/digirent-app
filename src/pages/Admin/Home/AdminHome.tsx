@@ -6,6 +6,9 @@ import {
   CategoryPercentage,
   RevenueByMonth,
   TransactionStatus,
+  SalesByMonth,
+  CategoryRevenue,
+  UserStatus,
 } from "../../../components";
 import Helmet from "../../../Helmet";
 import DefaultAdminLayout from "../DefaultAdminLayout";
@@ -20,13 +23,15 @@ const AdminHome = () => {
         description={t("AdminDashboardHelmetDes")}
       />
       <GreetingCard />
-      <div className="px-8">
-        <div className="flex mx-2">
-          <CategoryPercentage />
-          <RevenueByMonth />
-          <TransactionStatus />
-        </div>
+      <div className="grid gap-6 mx-4 px-8 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1">
+        <CategoryPercentage />
+        <RevenueByMonth />
+        <TransactionStatus />
+        <SalesByMonth/>
+        <CategoryRevenue/>
+        <UserStatus />
       </div>
+
       <Stat />
       <MostRentalProduct />
     </DefaultAdminLayout>

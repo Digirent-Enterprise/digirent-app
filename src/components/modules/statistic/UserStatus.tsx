@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { customAxios } from "../../../http-common";
-import PieChart from "./base/PieChart";
 import ContainerCard from "./base/ContainerCard";
+import PieChart from "./base/PieChart";
 
-const TransactionStatus = () => {
+const UserStatus = () => {
   const [chartData, setChartData] = useState({}) as any;
 
   useEffect(() => {
     customAxios()
-      .get("statistic/transaction-status")
+      .get("statistic/user-status")
       .then((res: any) => {
         setChartData({
           labels: Object.keys(res.data),
@@ -29,11 +29,11 @@ const TransactionStatus = () => {
 
   return Object.keys(chartData).length !== 0 ? (
     <ContainerCard
-      chart={<PieChart data={chartData} title="Transaction Status" />}
+      chart={<PieChart data={chartData} title="User Status" />}
     />
   ) : (
     <h1>Failed to load data</h1>
   );
 };
 
-export default TransactionStatus;
+export default UserStatus;

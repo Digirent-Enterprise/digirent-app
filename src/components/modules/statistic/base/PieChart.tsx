@@ -12,15 +12,15 @@ interface ChartProps {
 const PieChart = ({ data, title }: ChartProps) => {
   const options: any = {
     responsive: true,
-    maintainAspectRatio: true,
+    maintainAspectRatio: false,
     plugins: {
       title: {
         display: true,
         text: title,
         position: "top",
+        align: "start",
         font: {
           size: 20,
-          weight: "bold",
         },
       },
       legend: {
@@ -34,11 +34,7 @@ const PieChart = ({ data, title }: ChartProps) => {
       },
     },
   };
-  return (
-    <div style={{ width: "600px", height: "600px" }}>
-      <Pie data={data} options={options} />
-    </div>
-  );
+  return <Pie data={data} options={options} width="28%" height="15%" />;
 };
 
 export default PieChart;

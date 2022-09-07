@@ -64,7 +64,12 @@ const UserTransactionHistory = () => {
                   >
                     <div className="overflow-hidden bg-[#E5E7EB] rounded-md aspect-w-1 aspect-h-1 group-hover:opacity-75">
                       <img
-                        src=""
+                        loading="lazy"
+                        src={
+                          transaction.productId.images
+                            ? transaction.productId.images[0]
+                            : ""
+                        }
                         alt="product"
                         className="object-cover object-center"
                       />
@@ -98,6 +103,7 @@ const UserTransactionHistory = () => {
           <div className="flex justify-center text-5xl font-bold text-center">
             <div className="mb-10">
               <img
+                loading="lazy"
                 src={defaultTransaction}
                 alt="transaction"
                 className="w-100 h-100"

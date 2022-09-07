@@ -45,7 +45,7 @@ const Content = () => {
           <img
             src="https://images.unsplash.com/photo-1593508512255-86ab42a8e620?auto=format&q=75&fit=crop&w=600&h=350"
             loading="lazy"
-            alt=""
+            alt="partner"
             className="object-cover object-center w-full h-full"
           />
         </div>

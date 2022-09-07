@@ -56,6 +56,7 @@ const UserViewInfo = () => {
                 <div className="flex justify-center w-full px-4 lg:w-3/12 lg:order-2">
                   <div className="relative">
                     <img
+                      loading="lazy"
                       alt="avatar"
                       src={
                         currentUser.profileImage

@@ -6,7 +6,6 @@ import {
   Spinner,
   CTA,
   CategoryCard,
-  FeatureProduct,
   Testimonial,
   NewProduct,
   ProductProgressBar,
@@ -40,6 +39,9 @@ import {
   CategoryPercentage,
   RevenueByMonth,
   TransactionStatus,
+  SalesByMonth,
+  CategoryRevenue,
+  UserStatus,
 } from "./modules";
 import {
   NavBar,
@@ -69,7 +71,6 @@ export {
   Testimonial,
   CustomBreadcrumb,
   Banner,
-  FeatureProduct,
   ProductProgressBar,
   NewProduct,
   CustomTooltip,
@@ -110,4 +111,7 @@ export {
   CategoryPercentage,
   RevenueByMonth,
   TransactionStatus,
+  SalesByMonth,
+  CategoryRevenue,
+  UserStatus,
 };
