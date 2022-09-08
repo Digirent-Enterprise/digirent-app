@@ -34,7 +34,6 @@ const SalesByMonth = () => {
       });
   }, []);
 
-const SalesByMonth = () => {
   return (
     <ContainerCard
       chart={
