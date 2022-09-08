@@ -38,7 +38,7 @@ const MostRentalProduct = () => {
                     loading="lazy"
                     src={rental._id.images && rental._id.images[0]}
                     alt="rental"
-                    className="object-cover pointer-events-none group-hover:opacity-75"
+                    className="object-scale-down pointer-events-none group-hover:opacity-75"
                   />
                   <button
                     type="button"

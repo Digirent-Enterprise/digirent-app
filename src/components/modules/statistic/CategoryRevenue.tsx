@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { customAxios } from "../../../http-common";
+import { COLOR_PALETTE } from "../../../utils/constants/chart.constants";
 import { BarChart } from "./base/BarChart";
 import ContainerCard from "./base/ContainerCard";
 
@@ -15,7 +16,7 @@ const CategoryRevenue = () => {
           label: "Revenue",
           fill: true,
           barThickness: "flex",
-          backgroundColor: "red",
+          backgroundColor: COLOR_PALETTE[0],
           data: Object.values(res.data),
         });
         setLabels(Object.keys(res.data));
