@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/tabindex-no-positive */
 import { useDispatch, useSelector } from "react-redux";
 import React, { useEffect } from "react";
 import { useTranslation } from "react-i18next";
