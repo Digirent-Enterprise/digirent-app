@@ -11,7 +11,7 @@ import DefaultManagement from "./DefaultManagement";
 import { TransactionColumns } from "./Columns";
 
 const TransactionManagement = () => {
-  const {t} = useTranslation();
+  const { t } = useTranslation();
   const dispatch = useDispatch();
 
   const transactionFetchData = useSelector(getAllTransactionsSelector);

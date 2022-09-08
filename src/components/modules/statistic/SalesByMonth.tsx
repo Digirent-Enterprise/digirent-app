@@ -31,7 +31,7 @@ const SalesByMonth = () => {
           data: Object.values(sorted),
         });
         setLabels(Object.keys(sorted));
-      })
+      });
   }, []);
   return (
     <ContainerCard

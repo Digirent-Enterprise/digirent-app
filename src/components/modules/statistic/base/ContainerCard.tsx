@@ -15,7 +15,7 @@ const ContainerCard = (props: ICompProps) => {
       boxShadow="2xl"
       backgroundColor="#fff"
       textAlign="center"
-      rounded='lg'
+      rounded="lg"
     >
       {chart}
     </Box>
