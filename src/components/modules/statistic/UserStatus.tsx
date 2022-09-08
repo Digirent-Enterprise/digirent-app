@@ -24,7 +24,9 @@ const UserStatus = () => {
   }, []);
 
   return Object.keys(chartData).length !== 0 ? (
-    <ContainerCard chart={<PieChart data={chartData} title="User Status" />} />
+    <ContainerCard
+      chart={<PieChart data={chartData} title="User Status" />}
+    />
   ) : (
     <h1>Failed to load data</h1>
   );

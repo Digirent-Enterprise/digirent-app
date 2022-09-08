@@ -43,6 +43,7 @@ const SalesByMonth = () => {
         );
       });
   }, []);
+
   return (
     <ContainerCard
       chart={
