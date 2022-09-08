@@ -22,6 +22,7 @@ import {
   FAQ,
   Partner,
   Search,
+  Chatbox
 } from "./elements";
 import {
   AuthFormGrid,
@@ -114,4 +115,5 @@ export {
   SalesByMonth,
   CategoryRevenue,
   UserStatus,
+  Chatbox,
 };
