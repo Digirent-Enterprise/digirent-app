@@ -27,7 +27,7 @@ const ProductListLayout = (props: { products: any }) => {
   };
   return (
     <>
-      <div className="grid grid-cols-1 gap-y-10 sm:grid-cols-2 gap-x-6 lg:grid-cols-2 xl:grid-cols-3 xl:gap-x-8">
+      <div className="flex justify-center grid grid-cols-1 w-full px-6  sm:grid-cols-2 gap-x-6 md:w-11/12 md:mx-auto lg:grid-cols-2 xl:grid-cols-3 xl:gap-x-8">
         {currentItems &&
           currentItems.map((product: IProduct) => (
             <ProductCard

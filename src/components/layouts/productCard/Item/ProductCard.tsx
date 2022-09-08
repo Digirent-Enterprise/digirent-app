@@ -49,7 +49,7 @@ const ProductCard = ({
           loading="lazy"
           src={image}
           alt="pictures"
-          className="object-cover w-64 h-52"
+          className="sm:object-fill sm:w-64 sm:h-52"
         />
         <p className="text-lg font-bold uppercase text-transform:">{name}</p>
         <h4 className="font-bold">
