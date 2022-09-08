@@ -9,8 +9,8 @@ const CategoryCard = ({ categoryImage, categoryName }: CategoryCardProps) => {
   return (
     <div
       className="overflow-hidden
-    h-[179px]
-    w-[266px]
+    h-full
+    w-full
     shadow-md
     rounded-md
     flex
@@ -29,8 +29,7 @@ const CategoryCard = ({ categoryImage, categoryName }: CategoryCardProps) => {
         className="
         w-[140px]
         h-[120px]
-        object-cover
-      "
+        object-scale-down"
       />
       <div className="py-5 text-xl text-center">{categoryName}</div>
     </div>
