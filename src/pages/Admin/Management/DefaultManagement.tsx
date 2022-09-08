@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-
+import { useTranslation } from "react-i18next";
 import {
   Table,
   Thead,
@@ -36,6 +36,9 @@ import { CSVLink } from "react-csv";
 import { BiExport } from "react-icons/bi";
 
 import DefaultAdminLayout from "../DefaultAdminLayout";
+import Helmet from "../../../Helmet";
+
+const initialState = { hiddenColumns: ["_id", "intent", "productId"] };
 
 const DefaultManagement = ({
   columnProps,
@@ -44,10 +47,12 @@ const DefaultManagement = ({
   headers,
   filename,
 }: any): any => {
+  const { t } = useTranslation();
   const tableInstance = useTable(
     {
       columns: columnProps,
       data: dataProps,
+      initialState,
     },
     useSortBy,
     usePagination,
@@ -102,6 +107,11 @@ const DefaultManagement = ({
 
   return (
     <DefaultAdminLayout>
+      <Helmet
+        title={t("DefManagementHelmetTitle")}
+        addPostfixTitle
+        description={t("DefManagementHelmetDes")}
+      />
       <h1 className="py-4 text-4xl font-semibold text-center text-black">
         {title}
       </h1>
@@ -115,7 +125,7 @@ const DefaultManagement = ({
             }
           >
             <CSVLink data={dataProps} headers={headers} filename={filename}>
-              <span className="text-black">Export CSV</span>
+              <span className="text-black">{t("ExportCSV")}</span>
             </CSVLink>
           </Button>
         </div>
@@ -139,10 +149,10 @@ const DefaultManagement = ({
                 onChange={(e) => typeOfSort(e)}
               >
                 <MenuItemOption key={0} value="0">
-                  Ascending
+                  {t("Ascending")}
                 </MenuItemOption>
                 <MenuItemOption key={1} value="1">
-                  Descending
+                  {t("Descending")}
                 </MenuItemOption>
               </MenuOptionGroup>
             </MenuList>
@@ -157,19 +167,22 @@ const DefaultManagement = ({
               as={Button}
               colorScheme="blue"
             >
-              Sort By
+              {t("Sort")}
             </MenuButton>
             <MenuList color="gray.800" zIndex="3" minWidth="240px">
               <MenuOptionGroup type="radio" onChange={(e) => handleSort(e)}>
                 {allColumns.map((column: any, idx: number) => (
                   <MenuItemOption
                     icon={
-                      <>
-                        column.isSorted ? ( column.isSortedDesc ? (
-                        <TriangleDownIcon />
+                      column.isSorted ? (
+                        column.isSortedDesc ? (
+                          <TriangleDownIcon />
                         ) : (
-                        <TriangleUpIcon />) ) : ( "" )
-                      </>
+                          <TriangleUpIcon />
+                        )
+                      ) : (
+                        <> </>
+                      )
                     }
                     key={idx}
                     value={column.id}
@@ -187,7 +200,7 @@ const DefaultManagement = ({
             variant="outline"
             onClick={() => setSortBy([])}
           >
-            Reset Sorting
+            {t("ResetSort")}
           </Button>
         </Box>
       </div>
@@ -254,7 +267,7 @@ const DefaultManagement = ({
               })
             ) : (
               <Text textAlign="center" fontSize="1em" mx="auto">
-                No Data Found
+                {t("NoDataFound")}
               </Text>
             )}
           </Tbody>
@@ -328,7 +341,7 @@ const DefaultManagement = ({
             fontSize="sm"
             whiteSpace="nowrap"
           >
-            Go to page
+            {t("GoToPage")}
           </Text>
           <Input
             mx="5px"

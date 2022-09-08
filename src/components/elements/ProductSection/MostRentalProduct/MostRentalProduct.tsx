@@ -1,83 +1,77 @@
-const files = [
-  {
-    title: "IMG_4985.HEIC",
-    size: "10 rents",
-    source:
-      "https://images.unsplash.com/photo-1582053433976-25c00369fc93?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=512&q=80",
-  },
-  {
-    title: "IMG_4985.HEIC",
-    size: "10 rents",
-    source:
-      "https://images.unsplash.com/photo-1582053433976-25c00369fc93?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=512&q=80",
-  },
-  {
-    title: "IMG_4985.HEIC",
-    size: "10 rents",
-    source:
-      "https://images.unsplash.com/photo-1582053433976-25c00369fc93?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=512&q=80",
-  },
-  {
-    title: "IMG_4985.HEIC",
-    size: "10 rents",
-    source:
-      "https://images.unsplash.com/photo-1582053433976-25c00369fc93?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=512&q=80",
-  },
-  {
-    title: "IMG_4985.HEIC",
-    size: "10 rents",
-    source:
-      "https://images.unsplash.com/photo-1582053433976-25c00369fc93?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=512&q=80",
-  },
-  {
-    title: "IMG_4985.HEIC",
-    size: "10 rents",
-    source:
-      "https://images.unsplash.com/photo-1582053433976-25c00369fc93?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=512&q=80",
-  },
-  {
-    title: "IMG_4985.HEIC",
-    size: "10 rents",
-    source:
-      "https://images.unsplash.com/photo-1582053433976-25c00369fc93?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=512&q=80",
-  },
-  {
-    title: "IMG_4985.HEIC",
-    size: "10 rents",
-    source:
-      "https://images.unsplash.com/photo-1582053433976-25c00369fc93?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=512&q=80",
-  },
-];
+import { useState, useEffect } from "react";
+import { useTranslation } from "react-i18next";
+import { customAxios } from "../../../../http-common";
+import { IMostRentalProduct } from "../../../../store/types/product.types";
+import Spinner from "../../Spinner/Spinner";
+
 const MostRentalProduct = () => {
+  const { t } = useTranslation();
+  const [mostRentalProducts, setMostRentalProducts] = useState<
+    IMostRentalProduct[]
+  >([]);
+
+  useEffect(() => {
+    customAxios()
+      .get("product/most-rental")
+      .then((res: any) => {
+        const { data } = res;
+        const sortedProducts = data.sort((itemA: any, itemB: any) =>
+          itemA.rentalTimes > itemB.rentalTimes ? -1 : 1,
+        );
+        const mostRentalSortedProducts = sortedProducts.slice(0, 8);
+        setMostRentalProducts(mostRentalSortedProducts);
+      });
+  }, []);
+
   return (
     <div className="px-8 py-6">
       <h3 className="text-lg leading-6 font-medium text-[#111827] py-4">
-        Most rental
+        {t("MostRent")}
       </h3>
       <ul className="grid grid-cols-2 gap-x-4 gap-y-8 sm:grid-cols-3 sm:gap-x-6 lg:grid-cols-4 xl:gap-x-8">
-        {files.map((file) => (
-          <li key={file.source} className="relative">
-            <div className="group block w-full aspect-w-10 aspect-h-7 rounded-lg bg-gray-100 focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-offset-gray-100 focus-within:ring-indigo-500 overflow-hidden">
-              <img
-                src={file.source}
-                alt=""
-                className="object-cover pointer-events-none group-hover:opacity-75"
-              />
-              <button
-                type="button"
-                className="absolute inset-0 focus:outline-none"
-              >
-                <span className="sr-only">View details for {file.title}</span>
-              </button>
-            </div>
-            <p className="mt-2 block text-sm font-medium text-gray-900 truncate pointer-events-none">
-              {file.title}
-            </p>
-            <p className="block text-sm font-medium text-gray-500 pointer-events-none">
-              {file.size}
-            </p>
-          </li>
-        ))}
+        {mostRentalProducts && Object.keys(mostRentalProducts).length > 0 ? (
+          <>
+            {mostRentalProducts.map((rental) => (
+              <li className="relative">
+                <div className="group block w-full aspect-w-10 aspect-h-7 rounded-lg bg-gray-100 focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-offset-gray-100 focus-within:ring-indigo-500 overflow-hidden">
+                  <img
+                    loading="lazy"
+                    src={rental._id.images && rental._id.images[0]}
+                    alt="rental"
+                    className="object-cover pointer-events-none group-hover:opacity-75"
+                  />
+                  <button
+                    type="button"
+                    className="absolute inset-0 focus:outline-none"
+                  >
+                    <span className="sr-only">
+                      View details for {rental._id.name}
+                    </span>
+                  </button>
+                </div>
+                <div className="mt-2 text-center">
+                  <p className="inline-block mr-1 text-sm font-medium text-gray-900 pointer-events-none">
+                    {rental._id.name} -
+                  </p>
+                  <p className="inline-block text-sm font-medium text-gray-500 pointer-events-none">
+                    {rental._id.rentalCost}$
+                  </p>
+                </div>
+                <p
+                  className="block text-center text-sm font-medium text-gray-500 pointer-events-none"
+                  style={{ color: "red", fontSize: "bold" }}
+                >
+                  Has been rented{" "}
+                  {rental.rentalTimes > 1
+                    ? `${rental.rentalTimes} times`
+                    : `${rental.rentalTimes} time`}
+                </p>
+              </li>
+            ))}
+          </>
+        ) : (
+          <Spinner />
+        )}
       </ul>
     </div>
   );

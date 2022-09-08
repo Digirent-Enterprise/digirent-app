@@ -1,16 +1,21 @@
+/* eslint-disable jsx-a11y/tabindex-no-positive */
+import { useTranslation } from "react-i18next";
 import { UserTab } from "../../components";
 import Helmet from "../../Helmet";
+import UnderDevelopmentPage from "../UnderDevelopment/UnderDevelopmentPage";
 import DefaultLayout from "../DefaultLayout";
 
 const UserFavoriteProduct = () => {
+  const { t } = useTranslation();
   return (
     <DefaultLayout>
       <Helmet
-        title="Favorite products"
+        title={t("FavProd")}
         addPostfixTitle
-        description="View all your favorite products"
+        description={t("FavProdDes")}
       />
-      <UserTab />
+      <UserTab index={2} />
+      <UnderDevelopmentPage />
     </DefaultLayout>
   );
 };

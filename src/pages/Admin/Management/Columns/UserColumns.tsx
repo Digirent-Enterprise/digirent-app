@@ -4,7 +4,11 @@ import { ClickDelete, ClickEdit } from "../HandleActionClick";
 
 export const UserColumns: Array<Column> = [
   {
-    Header: "User",
+    Header: "User ID",
+    accessor: "_id",
+  },
+  {
+    Header: "User Name",
     accessor: "name",
   },
   {
@@ -18,8 +22,9 @@ export const UserColumns: Array<Column> = [
   {
     id: "role",
     Header: "Role",
-    accessor: (e: any) => {
-      return e.role === "user" ? (
+    accessor: "role",
+    Cell: ({ row }: any) => {
+      return row.values.role === "user" ? (
         <Badge colorScheme="green">User</Badge>
       ) : (
         <Badge colorScheme="yellow">Admin</Badge>
@@ -37,8 +42,10 @@ export const UserColumns: Array<Column> = [
   {
     id: "status",
     Header: "Status",
-    accessor: (e: any) => {
-      return e.status ? (
+
+    accessor: "status",
+    Cell: ({ row }: any) => {
+      return row.values.status ? (
         <Badge colorScheme="green">Active</Badge>
       ) : (
         <Badge colorScheme="red">Deactivate</Badge>
@@ -47,10 +54,10 @@ export const UserColumns: Array<Column> = [
   },
   {
     Header: "Action",
-    accessor: () => (
+    Cell: ({ row }: any) => (
       <div>
-        <ClickEdit pageType="user" />
-        <ClickDelete pageType="user" />
+        <ClickEdit pageType="user" rowData={row} />
+        <ClickDelete pageType="user" rowData={row} />
       </div>
     ),
   },

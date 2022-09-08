@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useTranslation } from "react-i18next";
 import { Box, Flex, Show } from "@chakra-ui/react";
 import { useSelector } from "react-redux";
 import Logo from "./Logo";
@@ -7,7 +8,9 @@ import AvatarMenu from "./AvatarMenu";
 import { getCurrentUserSelector } from "../../../../store/selectors/user.selector";
 
 const NavBar = () => {
+  const { t } = useTranslation();
   const currentUser = useSelector(getCurrentUserSelector);
+
   const [toggle, toggleNav] = useState(false);
   return (
     <Box className="z-50">
@@ -19,15 +22,19 @@ const NavBar = () => {
         display="flex"
         alignItems="center"
         justifyContent="space-between"
+        className="fixed w-full  "
       >
         <Logo />
         <Show above="md">
           <ul className="flex list-none">
-            <NavButton navItem="Home" directUrl="/" />
-            <NavButton navItem="About" directUrl="/about" />
-            <NavButton navItem="Contact" directUrl="/contact" />
+            {currentUser.role === "admin" && (
+              <NavButton navItem={t("Dashboard")} directUrl="/admin" />
+            )}
+            <NavButton navItem={t("Home")} directUrl="/" />
+            <NavButton navItem={t("About")} directUrl="/about" />
+            <NavButton navItem={t("Contact")} directUrl="/contact" />
             {!currentUser.email ? (
-              <NavButton navItem="Login" directUrl="/login" />
+              <NavButton navItem={t("Login")} directUrl="/login" />
             ) : (
               <AvatarMenu />
             )}
@@ -59,28 +66,52 @@ const NavBar = () => {
           </button>
         </Show>
       </Flex>
+      <Flex minH="9vh" bgColor="#222" />
       <Show below="md">
         <div
-          className="z-50 w-full duration-300 ease-in-out bg-black transition-height"
-          style={{ height: toggle ? "400px" : 0 }}
+          className="z-50 w-full duration-300 ease-in-out bg-black transition-height fixed"
+          style={{
+            height: toggle ? "400px" : 0,
+            visibility: toggle ? "visible" : "hidden",
+          }}
         >
           <ul
             className="absolute list-none transition-opacity duration-300 ease-in-out translate-x-1/2 z-500 left-1/3"
             style={{ opacity: toggle ? 1 : 0 }}
           >
-            <div className="pt-2 pl-3 mt-10 text-2xl">
-              <NavButton navItem="Home" directUrl="/" />
+            {currentUser.role === "admin" && (
+              <div
+                className="pt-2 pl-3 mt-10 text-2xl"
+                style={{ visibility: toggle ? "visible" : "hidden" }}
+              >
+                <NavButton navItem={t("Dashboard")} directUrl="/admin" />
+              </div>
+            )}
+            <div
+              className="pt-2 pl-3 mt-10 text-2xl"
+              style={{ visibility: toggle ? "visible" : "hidden" }}
+            >
+              <NavButton navItem={t("Home")} directUrl="/" />
             </div>
-            <div className="pt-2 pl-3 mt-10 text-2xl">
-              <NavButton navItem="About" directUrl="/about" />
+            <div
+              className="pt-2 pl-3 mt-10 text-2xl"
+              style={{ visibility: toggle ? "visible" : "hidden" }}
+            >
+              <NavButton navItem={t("About")} directUrl="/about" />
             </div>
-            <div className="pt-2 pl-2 mt-10 text-2xl">
-              <NavButton navItem="Contact" directUrl="/contact" />
+            <div
+              className="pt-2 pl-2 mt-10 text-2xl"
+              style={{ visibility: toggle ? "visible" : "hidden" }}
+            >
+              <NavButton navItem={t("Contact")} directUrl="/contact" />
             </div>
-            <div className="pl-6 mt-10 text-2xl">
+            <div
+              className="pl-6 mt-10 text-2xl"
+              style={{ visibility: toggle ? "visible" : "hidden" }}
+            >
               {" "}
               {!currentUser.email ? (
-                <NavButton navItem="Login" directUrl="/login" />
+                <NavButton navItem={t("Login")} directUrl="/login" />
               ) : (
                 <AvatarMenu />
               )}

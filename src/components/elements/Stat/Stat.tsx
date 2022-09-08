@@ -1,5 +1,6 @@
 import { useSelector, useDispatch } from "react-redux";
 import { IconContext } from "react-icons";
+import { useTranslation } from "react-i18next";
 import {
   AiOutlineArrowDown,
   AiOutlineArrowUp,
@@ -19,6 +20,7 @@ function classNames(...classes: any) {
 }
 
 const Stat = () => {
+  const { t } = useTranslation();
   const dispatch = useDispatch();
   const userData = useSelector(getAllUsersSelector);
   const productData = useSelector(getAllProductsSelector);
@@ -66,7 +68,7 @@ const Stat = () => {
   return (
     <div className="px-8 py-6">
       <h3 className="text-lg leading-6 font-medium text-[#111827]">
-        Last 30 days
+        {t("Last30D")}
       </h3>
 
       <dl className="mt-5 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
@@ -130,7 +132,7 @@ const Stat = () => {
                     className="font-medium text-[#4F46E5] hover:text-[#6366F1]"
                   >
                     {" "}
-                    View all
+                    {t("ViewAll")}
                     <span className="sr-only"> {item.name} stats</span>
                   </a>
                 </div>

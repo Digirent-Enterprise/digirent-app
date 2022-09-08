@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
+import { useTranslation } from "react-i18next";
 import { sortByOptions } from "../../../utils/constants/helper.constant";
 
 type SearchResultsSectionProps = {
@@ -10,8 +12,9 @@ const SearchResultsSection = ({
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   selectedOption,
 }: SearchResultsSectionProps) => {
+  const { t } = useTranslation();
   return (
-    <div className="px-4 space-y-6 sm:px-6 lg:px-0 lg:col-span-10">
+    <div className="flex justify-center sm:justify-end px-4 space-y-6 sm:px-6 lg:px-0 lg:col-span-10">
       <div className="flex flex-col sm:flex-row sm:flex-wrap sm:space-x-6">
         <div className="flex-1" />
         <div className="flex items-center text-sm text-gray-500">
@@ -19,7 +22,7 @@ const SearchResultsSection = ({
             htmlFor="sort"
             className="inline-block w-auto pr-2 text-base font-medium text-gray-400"
           >
-            Sort by:
+            {t("Sort")}
           </label>
           <select
             defaultValue="default"

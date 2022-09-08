@@ -21,6 +21,7 @@ const ProductItem = (productItemProps: NewProductProps) => {
       </div>
 
       <img
+        loading="lazy"
         alt="New Product"
         src={defaultImage}
         className="object-cover w-full -mt-3 h-96"
@@ -36,7 +37,7 @@ const ProductItem = (productItemProps: NewProductProps) => {
 };
 
 const NewProduct = () => {
-  const {t} = useTranslation();
+  const { t } = useTranslation();
   const [newProducts, setNewProducts] = useState<IProduct[]>([]);
   const products = useSelector(getAllProductsSelector);
   useEffect(() => {

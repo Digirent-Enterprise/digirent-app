@@ -3,15 +3,15 @@ import { IProduct } from "./product.types";
 
 export interface ITransaction {
   _id?: string;
-  productId: IProduct | string;
+  productId: IProduct;
   userEmail: string;
   rentalCost: number;
   deposit: number;
   status: string;
   latePenalty: number;
   currency: string;
-  from: Date;
-  to: Date;
+  from?: Date;
+  to?: Date;
 }
 
 export type TransactionLoading = "" | "loading" | "success" | "fail";

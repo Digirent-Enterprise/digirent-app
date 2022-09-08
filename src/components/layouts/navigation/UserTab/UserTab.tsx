@@ -1,19 +1,24 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 import { Tabs, TabList, Box, Flex } from "@chakra-ui/react";
 import TabButton from "./TabButton";
 
-const UserTab = () => {
+interface IUserTab {
+  index: number;
+}
+const UserTab = ({ index }: IUserTab) => {
+  const { t } = useTranslation();
   return (
     <Box>
       <Flex alignContent="center" justifyContent="center">
-        <Tabs alignItems="center">
+        <Tabs index={index} alignItems="center">
           <TabList>
-            <TabButton directUrl="/user/my-profile" tabItem="Profile" />
+            <TabButton directUrl="/user/my-profile" tabItem={t("Profile")} />
             <TabButton
               directUrl="/transaction/transaction-history"
-              tabItem="Order"
+              tabItem={t("Order")}
             />
-            <TabButton directUrl="/user/favorite-product" tabItem="Favorite" />
+            <TabButton directUrl="/user/favorite-product" tabItem={t("Fav")} />
           </TabList>
         </Tabs>
       </Flex>

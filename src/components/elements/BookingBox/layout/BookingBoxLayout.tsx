@@ -1,22 +1,22 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import { toast } from "react-toastify";
+import { useTranslation } from "react-i18next";
 import BookingBox from "../item/BookingBox";
 
 import "./Datepicker.css";
 
 const BookingBoxLayout = ({ productData }: any) => {
-  const [startDate, setStartDate] = useState(new Date());
-  const [endDate, setEndDate] = useState(new Date());
+  const { t } = useTranslation();
+  const [startDate, setStartDate] = useState<Date>();
+  const [endDate, setEndDate] = useState<Date>();
+  const [excludedDates, setExcludedDates] = useState<any>([]);
   const onChange = (dates: any) => {
-    const start = dates;
+    const [start, end] = dates;
     setStartDate(start);
-  };
-  const onChange2 = (dates: any) => {
-    const end = dates;
     setEndDate(end);
   };
+
   const formatDate = (date: any) => {
     const d = new Date(date);
     function pad(s: any) {
@@ -25,52 +25,70 @@ const BookingBoxLayout = ({ productData }: any) => {
     return [pad(d.getDate()), pad(d.getMonth() + 1), d.getFullYear()].join("/");
   };
 
-  if (startDate > endDate) {
-    toast.warning("Please choose valid rental period", {
-      theme: "dark",
-    });
-    setEndDate(startDate);
-  }
+  const onHandleAddDates = () => {
+    const exclude = [...excludedDates];
+    // eslint-disable-next-line no-restricted-syntax
+    for (const item of productData.excludeIntervals) {
+      if (item.start && item.end) {
+        let startTime = new Date(item.start);
+        const endTime = new Date(item.end);
+        exclude.push(startTime.setDate(startTime.getDate() - 1));
+        exclude.push(endTime);
+        exclude.push(startTime);
+        while (startTime < endTime) {
+          startTime = new Date(startTime.setDate(startTime.getDate() + 1));
+          exclude.push(startTime);
+        }
+      }
+    }
+    setExcludedDates(exclude);
+  };
+
+  useEffect(() => {
+    onHandleAddDates();
+  }, []);
+
   return (
-    <div className="flex flex-col justify-center w-full gap-2">
-      <div className="flex flex-col justify-center mt-10 lg:flex-row">
-        <div className="ml-[35px] lg:ml-0 lg:mr-64 min-w-[50%] flex flex-col">
-          <div className="font-extrabold">Description</div>
-          <div className="text-justify min-w-[220px]">
-            {productData.description}
-          </div>
-          <div className="flex flex-col gap-2 mt-10">
-            <div className="font-extrabold">Rental period: </div>
-            <div className=" min-w-[220px]">
+    <div>
+      <div className="px-16 py-8">
+        <div className="font-extrabold text-2xl pb-4">{t("Description")}</div>
+        <div className="text-justify w-full h-32  overflow-y-auto pr-4 pl-1 border border-gray rounded-md">
+          {productData.description}
+        </div>
+      </div>
+      <div className="font-extrabold text-2xl pb-4 px-16 py-8">
+        {t("RentalPeriod")}
+      </div>
+      <div className="">
+        <div className="grid grid-cols-1  md:grid-cols-2 md:flex md:justify-between px-16 py-8">
+          <div className="col-span-1 min-w-[220px]">
+            <div className=" text-lg">
               {formatDate(startDate)} - {formatDate(endDate)}
-              <div className="flex gap-x-2 mt-5 flex-col md:flex-row lg:flex-row">
-                <DatePicker
-                  wrapperClassName="date-picker"
-                  selected={startDate}
-                  onChange={onChange}
-                  minDate={new Date()}
-                  inline
-                />
-                <DatePicker
-                  wrapperClassName="date-picker"
-                  selected={endDate}
-                  onChange={onChange2}
-                  minDate={startDate}
-                  inline
-                />
-              </div>
+            </div>
+
+            <div className="">
+              <DatePicker
+                wrapperClassName="date-picker"
+                onChange={onChange}
+                minDate={new Date()}
+                inline
+                startDate={startDate}
+                endDate={endDate}
+                selectsRange
+                excludeDates={excludedDates}
+              />
             </div>
           </div>
-        </div>
-        <div className="sm:mt-10 ml-[35px] lg:ml-0">
-          <BookingBox
-            productData={productData}
-            price={productData.rentalCost}
-            startDate={new Date(startDate.toString())}
-            endDate={new Date(endDate.toString())}
-            rentalCost={productData.rentalCost}
-            rentalCostType={productData.rentalCostType}
-          />
+          <div className="col-span-1 py-8 md:py-4">
+            <BookingBox
+              productData={productData}
+              price={productData.rentalCost}
+              startDate={startDate ? new Date(startDate) : undefined}
+              endDate={endDate ? new Date(endDate) : undefined}
+              rentalCost={productData.rentalCost}
+              rentalCostType={productData.rentalCostType}
+            />
+          </div>
         </div>
       </div>
     </div>

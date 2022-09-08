@@ -1,10 +1,10 @@
 import React, { useState } from "react";
+import { useTranslation } from "react-i18next";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
+import { useDropzone } from "react-dropzone";
 import {
-  Alert,
-  AlertIcon,
   Switch,
   Button,
   FormControl,
@@ -20,6 +20,7 @@ import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import { customAxios } from "../../http-common";
 import DefaultLayout from "../DefaultLayout";
+import Helmet from "../../Helmet";
 
 function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(" ");
@@ -39,8 +40,10 @@ const schema = yup.object().shape({
 });
 
 const CustomerInquiry = () => {
+  const { t } = useTranslation();
   const [agreed, setAgreed] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [img, setImg] = useState("");
 
   const navigate = useNavigate();
   const {
@@ -52,12 +55,33 @@ const CustomerInquiry = () => {
     mode: "onBlur",
   });
 
+  const handleUploadFiles = async (file: any) => {
+    const fd = new FormData();
+    fd.append("images", file);
+    const response = await customAxios("multipart/form-data").post(
+      "product/upload-single-image",
+      fd,
+    );
+    if (response.data) {
+      setImg(response.data.url!);
+    }
+  };
+
+  const { getRootProps, getInputProps } = useDropzone({
+    accept: {
+      "image/*": [],
+    },
+    maxFiles: 1,
+    onDrop: async (acceptedFiles: File[]) => {
+      await handleUploadFiles(acceptedFiles[0]);
+    },
+  });
+
   const onSubmit = (data: IFormInputs) => {
     setLoading(true);
     if (agreed) {
-      // submit form
       customAxios()
-        .post("inquiry", qs.stringify({ ...data, image: "no data" }))
+        .post("inquiry", qs.stringify({ ...data, image: img }))
         .then((res) => {
           if (res.status === 200 || res.status === 201) {
             toast.success("We've got your inquiry!", {
@@ -69,23 +93,31 @@ const CustomerInquiry = () => {
         })
         .catch((error: any) => {
           setLoading(false);
-          toast.warning(`${error.response.data} error, failed to login!`, {
-            theme: "dark",
-          });
+          toast.warning(
+            `${error.response.data} error, failed to create your inquiry!`,
+            {
+              theme: "dark",
+            },
+          );
         })
         .finally(() => {
           navigate("/");
         });
     } else {
-      <Alert status="error">
-        <AlertIcon />
-        You need to agree to our policies.
-      </Alert>;
+      setTimeout(() => {
+        toast.warning("You need to agree our policy!", { theme: "dark" });
+        setLoading(false);
+      }, 1000);
     }
   };
 
   return (
     <DefaultLayout>
+      <Helmet
+        title={t("ContactPageHelmetTitle")}
+        addPostfixTitle
+        description={t("ContactPageHelmetDes")}
+      />
       <div className="px-4 py-16 overflow-hidden bg-white sm:px-6 lg:px-8 lg:py-24">
         <div className="relative max-w-xl mx-auto">
           <svg
@@ -156,10 +188,10 @@ const CustomerInquiry = () => {
           </svg>
           <div className="text-center">
             <h2 className="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">
-              Contact sales
+              {t("ContactSales")}
             </h2>
             <div className="mt-4 text-lg leading-6 text-gray-500">
-              Ask Us anything
+              {t("AskUs")}
             </div>
           </div>
           <div className="mt-12">
@@ -175,7 +207,7 @@ const CustomerInquiry = () => {
                       {...register("email")}
                       type="email"
                       name="email"
-                      placeholder="Enter your email"
+                      placeholder={t("EnterYourEmail")}
                       size="md"
                     />
                     <FormErrorMessage>
@@ -187,21 +219,21 @@ const CustomerInquiry = () => {
                     isInvalid={!!errors?.inquiryType?.message}
                     isRequired
                   >
-                    <FormLabel>Inquiry Type</FormLabel>
+                    <FormLabel>{t("InqType")}</FormLabel>
                     <Select
                       {...register("inquiryType")}
                       name="inquiryType"
                       size="md"
-                      placeholder="Topic"
+                      placeholder={t("Topic")}
                     >
-                      <option value="Product">Product</option>
-                      <option value="Rent Policy">Rent Policy</option>
+                      <option value="Product">{t("Products")}</option>
+                      <option value="Rent Policy">{t("RentPolicy")}</option>
                       <option value="Transaction and Payment">
-                        Transaction and Payment
+                        {t("TransactionNPayment")}
                       </option>
-                      <option value="Return Product">Return product</option>
-                      <option value="Account">Account</option>
-                      <option value="Others">Others</option>
+                      <option value="Return Product">{t("ReturnProd")}</option>
+                      <option value="Account">{t("Account")}</option>
+                      <option value="Others">{t("Others")}</option>
                     </Select>
                     <FormErrorMessage>
                       {errors?.inquiryType?.message}
@@ -211,16 +243,42 @@ const CustomerInquiry = () => {
                     isInvalid={!!errors?.inquiryType?.message}
                     isRequired
                   >
-                    <FormLabel>Description</FormLabel>
+                    <FormLabel>{t("Description")}</FormLabel>
                     <Textarea
                       {...register("inquiryDescription")}
                       name="inquiryDescription"
                       size="md"
-                      placeholder="description"
+                      placeholder={t("Description")}
                     />
                     <FormErrorMessage>
                       {errors?.inquiryDescription?.message}
                     </FormErrorMessage>
+                  </FormControl>
+                  <FormControl>
+                    <FormLabel>{t("AttachedImg")}</FormLabel>
+                    <div
+                      style={
+                        img
+                          ? {
+                              backgroundImage: `url('${img}')`,
+                              backgroundPosition: "center center",
+                              backgroundRepeat: "no-repeat",
+                              backgroundSize: "cover",
+                            }
+                          : {
+                              background: "none",
+                            }
+                      }
+                      className={
+                        img
+                          ? "border-4 cursor-pointer text-center justify-center p-[20%]"
+                          : "border-dashed border-4 cursor-pointer text-center justify-center p-[20%]"
+                      }
+                      {...getRootProps()}
+                    >
+                      <input {...getInputProps()} />
+                      {img ? null : <p>{t("DragNDrop")}</p>}
+                    </div>
                   </FormControl>
                   <Button
                     borderRadius={0}
@@ -230,7 +288,7 @@ const CustomerInquiry = () => {
                     width="full"
                     isLoading={loading}
                   >
-                    Inquire now
+                    {t("InquireNow")}
                   </Button>
                   <div className="sm:col-span-2">
                     <div className="flex items-start">
@@ -244,21 +302,20 @@ const CustomerInquiry = () => {
                       </div>
                       <div className="ml-3">
                         <p className="text-base text-gray-500">
-                          By selecting this, you agree to the{" "}
+                          {t("BySelecting")}{" "}
                           <a
                             href="/privacy"
                             className="font-medium text-gray-700 underline"
                           >
-                            Privacy Policy
+                            {t("PrivacyPolicy")}
                           </a>{" "}
-                          and{" "}
+                          {t("And")}{" "}
                           <a
                             href="/privacy"
                             className="font-medium text-gray-700 underline"
                           >
-                            Cookie Policy
+                            {t("CookiePolicy")}
                           </a>
-                          .
                         </p>
                       </div>
                     </div>

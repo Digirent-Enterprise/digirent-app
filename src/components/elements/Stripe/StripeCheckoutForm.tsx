@@ -6,15 +6,17 @@ import {
 } from "@stripe/react-stripe-js";
 
 import { toast } from "react-toastify";
+import qs from "qs";
 import "./Stripe.css";
+import { useSelector } from "react-redux";
 import { customAxios } from "../../../http-common";
+import { getCurrentUserSelector } from "../../../store/selectors/user.selector";
 
-const StripeCheckoutForm = ({ transaction }: any) => {
+const StripeCheckoutForm = ({ transactionData }: any) => {
   const stripe = useStripe();
   const elements = useElements();
-
+  const user = useSelector(getCurrentUserSelector);
   const [isLoading, setIsLoading] = useState(false);
-
   useEffect(() => {
     if (!stripe) {
       return;
@@ -61,6 +63,16 @@ const StripeCheckoutForm = ({ transaction }: any) => {
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    const intent = localStorage.getItem("currentPi");
+    await customAxios().post(
+      "transaction/create-transaction",
+      qs.stringify({
+        ...transactionData,
+        productId: transactionData.productId._id,
+        intent,
+        userEmail: user.email,
+      }),
+    );
 
     if (!stripe || !elements) {
       toast.warning(
@@ -73,40 +85,13 @@ const StripeCheckoutForm = ({ transaction }: any) => {
     }
 
     setIsLoading(true);
-    // @ts-ignore
-    const { error: stripeError } = await stripe.confirmPayment({
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const response = stripe.confirmPayment({
       elements,
       confirmParams: {
-        // Make sure to change this to your payment completion page
-        return_url: "http://localhost:3000/",
+        return_url: "http://localhost:3000/payment-success",
       },
     });
-    // This point will only be reached if there is an immediate error when
-    // confirming the payment. Otherwise, your customer will be redirected to
-    // your `return_url`. For some payment methods like iDEAL, your customer will
-    // be redirected to an intermediate site first to authorize the payment, then
-    // redirected to the `return_url`.
-    if (
-      stripeError.type === "card_error" ||
-      stripeError.type === "validation_error"
-    ) {
-      toast.error(`${stripeError.message}`, {
-        theme: "dark",
-      });
-    } else {
-      toast.error("An unexpected error occurred.", {
-        theme: "dark",
-      });
-    }
-
-    // if (!stripeError) {
-    //   customAxios().post(
-    //       "transaction/create-transaction",
-    //       transaction,
-    //     ).then(res=>console.log("res.status :>> ", res.status));
-    //   };
-    // }
-
     setIsLoading(false);
   };
 

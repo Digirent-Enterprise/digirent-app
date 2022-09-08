@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import { useDispatch } from "react-redux";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -31,6 +32,7 @@ const schema = yup.object().shape({
 });
 
 const ForgotPasswordPage = () => {
+  const { t } = useTranslation();
   const {
     register,
     handleSubmit,
@@ -82,12 +84,12 @@ const ForgotPasswordPage = () => {
   return (
     <Transition>
       <Helmet
-        title="Forgot Password"
+        title={t("ForgotPassHelmetTitle")}
         addPostfixTitle
-        description="Enter email to reset password"
+        description={t("ForgotPassHelmetDes")}
       />
       <AuthFormGrid
-        childTitle="Forgot Password"
+        childTitle={t("ForgotP")}
         childCompForm={
           <Box textAlign="center">
             <form onSubmit={handleSubmit(onSubmit)}>
@@ -98,7 +100,7 @@ const ForgotPasswordPage = () => {
                     {...register("email")}
                     type="email"
                     name="email"
-                    placeholder="Enter your email"
+                    placeholder={t("EnterYourEmail")}
                     size="md"
                     value={email}
                     onChange={(e) => handleSaveEmail(e.target.value)}
@@ -114,14 +116,14 @@ const ForgotPasswordPage = () => {
                   width="full"
                   disabled={!!errors.email}
                 >
-                  Reset
+                  {t("Reset")}
                 </Button>
 
                 <Box>
-                  Remember your password?
+                  {t("Remember?")}
                   <Link color="brand.500" href="/login">
                     {" "}
-                    Login instead
+                    {t("LoginInstead")}
                   </Link>
                 </Box>
               </Stack>

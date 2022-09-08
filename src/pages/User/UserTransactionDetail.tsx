@@ -1,10 +1,10 @@
 import { useEffect } from "react";
+import { useTranslation } from "react-i18next";
 import { Link, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { AiOutlineArrowLeft } from "react-icons/ai";
 import dayjs from "dayjs";
 import DefaultLayout from "../DefaultLayout";
-import { IProduct } from "../../store/types/product.types";
 import { getCurrentUserSelector } from "../../store/selectors/user.selector";
 import { getTransactionByIdSelector } from "../../store/selectors/transaction.selector";
 import { getTransactionByID } from "../../store/actions/transaction.action";
@@ -14,6 +14,7 @@ function classNames(...classes: any) {
   return classes.filter(Boolean).join(" ");
 }
 const UserTransactionDetails = () => {
+  const { t } = useTranslation();
   const { id } = useParams();
   const dispatch = useDispatch();
   const transaction = useSelector(getTransactionByIdSelector);
@@ -25,16 +26,16 @@ const UserTransactionDetails = () => {
     }
   }, []);
 
-  const product = transaction.productId as IProduct;
+  const product = transaction.productId;
 
   const steps = ["placed", "pending", "paid", "shipped"];
 
   return (
     <DefaultLayout>
       <Helmet
-        title="Order History"
+        title={t("OrderHistory")}
         addPostfixTitle
-        description="View all your orders history"
+        description={t("ViewAllOrderHis")}
       />
       {transaction._id && (
         <main className="max-w-2xl pt-8 pb-24 mx-auto sm:pt-16 sm:px-6 lg:max-w-7xl lg:px-8">
@@ -42,18 +43,18 @@ const UserTransactionDetails = () => {
             <Link to="/transaction/transaction-history">
               <div className="flex">
                 <AiOutlineArrowLeft color="#4169E1" className="mx-2 text-3xl" />
-                <p className="mx-2 mb-10 text-lg">Return to order history</p>
+                <p className="mx-2 mb-10 text-lg">{t("ReturnToOrderHis")}</p>
               </div>
             </Link>
           </div>
           <div className="px-4 space-y-2 sm:px-0 sm:flex sm:items-baseline sm:justify-between sm:space-y-0">
             <div className="flex sm:items-baseline sm:space-x-4">
               <h1 className="text-2xl font-extrabold tracking-tight text-[#111827] sm:text-3xl">
-                Order #{transaction._id.substring(0, 10).toUpperCase()}
+                {t("Order")} #{transaction._id.substring(0, 10).toUpperCase()}
               </h1>
             </div>
             <p className="text-sm text-[#6B7280]">
-              Order placed
+              {t("OrderPlaced")}
               <span className="font-medium text-[#111827]">
                 {" "}
                 {dayjs(transaction.from).format("MMM DD, YYYY")}
@@ -64,7 +65,7 @@ const UserTransactionDetails = () => {
           {/* Products */}
           <section aria-labelledby="products-heading" className="mt-6">
             <h2 id="products-heading" className="sr-only">
-              Products purchased
+              {t("ProductPurch")}
             </h2>
             <div className="space-y-8">
               <div className="bg-white border-t border-b border-[#E5E7EB] shadow-sm sm:border sm:rounded-lg">
@@ -72,6 +73,7 @@ const UserTransactionDetails = () => {
                   <div className="sm:flex lg:col-span-7">
                     <div className="flex-shrink-0 w-full overflow-hidden rounded-lg aspect-w-1 aspect-h-1 sm:aspect-none sm:w-40 sm:h-40">
                       <img
+                        loading="lazy"
                         src={product.images[0]}
                         alt="product"
                         className="object-cover object-center w-full h-full sm:w-full sm:h-full"
@@ -95,7 +97,7 @@ const UserTransactionDetails = () => {
                     <dl className="grid grid-cols-2 text-sm gap-x-6">
                       <div>
                         <dt className="font-medium text-[#111827]">
-                          Delivery address
+                          {t("DeliveryAdd")}
                         </dt>
                         <dd className="mt-3 text-[#6B7280]">
                           <span className="block">{currentUser.location}</span>
@@ -103,7 +105,7 @@ const UserTransactionDetails = () => {
                       </div>
                       <div>
                         <dt className="font-medium text-[#111827]">
-                          Shipping updates
+                          {t("ShipUpdt")}
                         </dt>
                         <dd className="mt-3 space-y-3 text-[#6B7280]">
                           <p>{currentUser.email}</p>
@@ -115,7 +117,7 @@ const UserTransactionDetails = () => {
                 </div>
 
                 <div className="px-4 py-6 border-t border-[#E5E7EB] sm:px-6 lg:p-8">
-                  <h4 className="sr-only">Status</h4>
+                  <h4 className="sr-only">{t("Status")}</h4>
                   <p className="text-sm font-medium text-[#111827]">
                     {transaction?.status.replace(
                       /^./,
@@ -136,7 +138,7 @@ const UserTransactionDetails = () => {
                       />
                     </div>
                     <div className="hidden grid-cols-4 mt-6 text-sm font-medium text-[#4B5563] sm:grid">
-                      <div className="text-[#4F46E5]">Order placed</div>
+                      <div className="text-[#4F46E5]">{t("OrderPlaced")}</div>
                       <div
                         className={classNames(
                           steps.indexOf(transaction.status) > 0
@@ -145,7 +147,7 @@ const UserTransactionDetails = () => {
                           "text-center",
                         )}
                       >
-                        Processing
+                        {t("Processing")}
                       </div>
                       <div
                         className={classNames(
@@ -155,7 +157,7 @@ const UserTransactionDetails = () => {
                           "text-center",
                         )}
                       >
-                        Paid
+                        {t("Shipped")}
                       </div>
                       <div
                         className={classNames(
@@ -165,7 +167,7 @@ const UserTransactionDetails = () => {
                           "text-right",
                         )}
                       >
-                        Shipped
+                        {t("Paid")}
                       </div>
                     </div>
                   </div>
@@ -177,14 +179,14 @@ const UserTransactionDetails = () => {
           {/* Billing */}
           <section aria-labelledby="summary-heading" className="mt-16">
             <h2 id="summary-heading" className="sr-only">
-              Billing Summary
+              {t("BillingSum")}
             </h2>
 
             <div className="px-4 py-6 bg-[#F3F4F6] sm:px-6 sm:rounded-lg lg:px-8 lg:py-8 lg:grid lg:grid-cols-12 lg:gap-x-8">
               <dl className="grid grid-cols-2 gap-6 text-sm sm:grid-cols-2 md:gap-x-8 lg:col-span-7">
                 <div>
                   <dt className="font-medium text-[#111827]">
-                    Billing address
+                    {t("BillingAdd")}
                   </dt>
                   <dd className="mt-3 text-[#6B7280]">
                     <span className="block">{currentUser.location}</span>
@@ -192,7 +194,7 @@ const UserTransactionDetails = () => {
                 </div>
                 <div>
                   <dt className="font-medium text-[#111827]">
-                    Payment information
+                    {t("PaymentInfo")}
                   </dt>
                   <div className="mt-3">
                     <dd className="flex flex-wrap -mt-4 -ml-4">
@@ -223,25 +225,27 @@ const UserTransactionDetails = () => {
 
               <dl className="mt-8 text-sm divide-y divide-[#E5E7EB] lg:mt-0 lg:col-span-5">
                 <div className="flex items-center justify-between pb-4">
-                  <dt className="text-[#4B5563]">Deposit</dt>
+                  <dt className="text-[#4B5563]">{t("Deposit")}</dt>
                   <dd className="font-medium text-[#111827]">
                     ${transaction.deposit}
                   </dd>
                 </div>
                 <div className="flex items-center justify-between py-4">
-                  <dt className="text-[#4B5563]">Late Penalty</dt>
+                  <dt className="text-[#4B5563]">{t("LatePen")}</dt>
                   <dd className="font-medium text-[#111827]">
                     ${transaction.latePenalty}
                   </dd>
                 </div>
                 <div className="flex items-center justify-between py-4">
-                  <dt className="text-[#4B5563]">Rental cost</dt>
+                  <dt className="text-[#4B5563]">{t("RentalCost")}</dt>
                   <dd className="font-medium text-[#111827]">
                     ${transaction.rentalCost}
                   </dd>
                 </div>
                 <div className="flex items-center justify-between pt-4">
-                  <dt className="font-medium text-[#111827]">Order total</dt>
+                  <dt className="font-medium text-[#111827]">
+                    {t("OrderTotal")}
+                  </dt>
                   <dd className="font-medium text-[#4F46E5]">
                     $
                     {transaction.deposit +

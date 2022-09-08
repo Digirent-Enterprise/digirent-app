@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { AnimatePresence } from "framer-motion";
 import {
   Maintain,
+  UnderDevelopmentPage,
   NotFound,
   RegisterPage,
   LoginPage,
@@ -18,6 +19,7 @@ import {
   EmailSentPage,
   ProductDetailsPage,
   CustomerInquiryManagement,
+  PaymentSuccess,
 } from "./pages";
 import PrivateRoute from "./components/PrivateRoute";
 
@@ -91,7 +93,7 @@ const AppRouter = () => {
         <Route path="product/:id" element={<ProductDetailsPage />} />
         {/* Payment */}
         <Route path="checkout/:id" element={<CheckoutPage />} />
-        <Route path="checkout-success/:id" />
+        <Route path="/payment-success" element={<PaymentSuccess />} />
         {/* Users */}
         <Route
           path="user/my-profile"
@@ -185,7 +187,7 @@ const AppRouter = () => {
           }
         />
 
-        {/* Product management */}
+        {/* Inquiry management */}
         <Route
           path="admin/inquiries"
           element={
@@ -221,9 +223,10 @@ const AppRouter = () => {
             </PrivateRoute>
           }
         />
-        <Route path="admin/chat/:id" />
         {/* 404 Not Found Route */}
         <Route path="*" element={<NotFound />} />
+        {/* Under development Route */}
+        <Route path="/under-development" element={<UnderDevelopmentPage />} />
       </Routes>
     </AnimatePresence>
   );

@@ -1,4 +1,5 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import {
@@ -28,6 +29,7 @@ import { toast } from "react-toastify";
 import { UserTab } from "../../components";
 import DefaultLayout from "../DefaultLayout";
 import { customAxios } from "../../http-common";
+import Helmet from "../../Helmet";
 
 interface IFormInputs {
   password: string;
@@ -49,6 +51,7 @@ const schema = yup.object().shape({
 });
 
 const UserChangePassword = () => {
+  const { t } = useTranslation();
   const { isOpen, onOpen, onClose } = useDisclosure();
   const {
     register,
@@ -79,7 +82,12 @@ const UserChangePassword = () => {
 
   return (
     <DefaultLayout>
-      <UserTab />
+      <UserTab index={0} />
+      <Helmet
+        title={t("UserChangePassHelmetTitle")}
+        addPostfixTitle
+        description={t("UserChangePassHelmetDes")}
+      />
       <Flex minH="70vh" align="center" justify="center" bg="#fff">
         <Box
           w="full"
@@ -94,16 +102,16 @@ const UserChangePassword = () => {
               <div className="flex">
                 <AiOutlineArrowLeft color="#4169E1" className="mx-2 text-3xl" />
                 <Text color="#4169E1" className="mx-2 mb-10 text-lg">
-                  Return to profile info
+                  {t("ReturnToProfile")}
                 </Text>
               </div>
             </Link>
 
             <FormControl isInvalid={!!errors?.password?.message} py="10px">
-              <FormLabel>Enter your current password:</FormLabel>
+              <FormLabel>{t("CurPass")}</FormLabel>
               <Input
                 {...register("password")}
-                placeholder="Current password"
+                placeholder={t("CurPass")}
                 _placeholder={{ color: "#777" }}
                 type="password"
                 bg={useColorModeValue("gray.50", "gray.500")}
@@ -118,10 +126,10 @@ const UserChangePassword = () => {
               isInvalid={!!errors?.changePassword?.message}
               py="10px"
             >
-              <FormLabel>Enter your new password:</FormLabel>
+              <FormLabel>{t("NewPass")}</FormLabel>
               <Input
                 {...register("changePassword")}
-                placeholder="New"
+                placeholder={t("NewPass")}
                 _placeholder={{ color: "#777" }}
                 type="password"
                 bg={useColorModeValue("gray.50", "gray.500")}
@@ -136,10 +144,10 @@ const UserChangePassword = () => {
               isInvalid={!!errors?.retypeChangePassword?.message}
               py="10px"
             >
-              <FormLabel>Retype your new password:</FormLabel>
+              <FormLabel>{t("ConfirmNewPass")}</FormLabel>
               <Input
                 {...register("retypeChangePassword")}
-                placeholder="Retype your password"
+                placeholder={t("ConfirmNewPass")}
                 _placeholder={{ color: "#777" }}
                 type="password"
                 bg={useColorModeValue("gray.50", "gray.500")}
@@ -165,7 +173,7 @@ const UserChangePassword = () => {
                 }}
                 type="submit"
               >
-                Confirm
+                {t("Confirm")}
               </Button>
             </Stack>
           </form>
@@ -179,10 +187,8 @@ const UserChangePassword = () => {
                   <AiOutlineWarning />
                 </div>
               </IconContext.Provider>
-              <p className="pb-8 text-3xl font-bold">
-                You have unsaved changes
-              </p>
-              <p>Are you sure you want to leave ?</p>
+              <p className="pb-8 text-3xl font-bold">{t("Unsaved")}</p>
+              <p>{t("UnsavedWarning")}</p>
             </div>
             <ModalFooter className="flex text-center align-center">
               <Button
@@ -191,10 +197,10 @@ const UserChangePassword = () => {
                 onClick={onClose}
                 className="w-1/2"
               >
-                Stay
+                {t("Stay")}
               </Button>
               <Button type="submit" colorScheme="red" mr={3} className="w-1/2">
-                Leave
+                {t("Leave")}
               </Button>
             </ModalFooter>
           </ModalContent>

@@ -1,14 +1,16 @@
+import { useTranslation } from "react-i18next";
 import { Content, Teams, Technology } from "../../components";
 import Helmet from "../../Helmet";
 import DefaultLayout from "../DefaultLayout";
 
 const About = () => {
+  const { t } = useTranslation();
   return (
     <DefaultLayout>
       <Helmet
-        title="About"
+        title={t("About")}
         addPostfixTitle
-        description="A about page to discover our motivation and meet our team."
+        description={t("AboutHelmetDes")}
       />
       <Content />
       <Technology />
