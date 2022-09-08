@@ -18,7 +18,8 @@
       "type": "image/png"
     }
   ],
-  "start_url": ".",
+  "start_url": "https://www.digirent.dev/",
+  "scope": "https://www.digirent.dev/",
   "theme_color": "#ffffff",
   "background_color": "#ffffff",
   "display": "standalone"
