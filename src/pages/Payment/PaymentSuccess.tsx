@@ -35,7 +35,7 @@ const PaymentSuccess = () => {
   };
 
   const fetchIntent = async () => {
-    const response = await customAxios().get("payment-intent", {
+    const response = await customAxios().get("intent/payment-intent", {
       params: { paymentIntent },
     });
     if (response && response.data) {
