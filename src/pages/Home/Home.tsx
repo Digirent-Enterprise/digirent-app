@@ -2,7 +2,6 @@ import { useTranslation } from "react-i18next";
 import {
   Banner,
   CTA,
-  FeatureProduct,
   NewProduct,
   ProductProgressBar,
   Testimonial,
@@ -28,7 +27,6 @@ const Home = () => {
       <CategoryCardListing />
       <Search />
       <NewProduct />
-      <FeatureProduct />
       <ProductProgressBar />
       <Partner />
       <Testimonial />

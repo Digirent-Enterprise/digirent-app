@@ -6,6 +6,9 @@ import {
   CategoryPercentage,
   RevenueByMonth,
   TransactionStatus,
+  SalesByMonth,
+  CategoryRevenue,
+  UserStatus,
 } from "../../../components";
 import Helmet from "../../../Helmet";
 import DefaultAdminLayout from "../DefaultAdminLayout";
@@ -24,6 +27,9 @@ const AdminHome = () => {
         <CategoryPercentage />
         <RevenueByMonth />
         <TransactionStatus />
+        <SalesByMonth />
+        <CategoryRevenue />
+        <UserStatus />
       </div>
 
       <Stat />

@@ -12,6 +12,7 @@ const AvatarFromId: FC<IAvatarFromIdProps> = ({ size = 40 }) => {
   const currentUser = useSelector(getCurrentUserSelector);
   return (
     <img
+      loading="lazy"
       className="object-cover rounded-full"
       style={{ width: size, height: size }}
       src={currentUser.avatar ? currentUser.avatar : IMAGES.defaultAvatar}

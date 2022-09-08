@@ -278,6 +278,7 @@
   "UnderDev": "Đang phát triển",
   "UnderDevContent": "Chức năng này đang được phát triển",
   "BackToHome": "Quay về trang chủ",
+  "Featured": "Nổi bật",
 
   "AboutHelmetDes": "Nơi tìm hiểu rõ hơn về team chúng tôi và động lực đằng sau Digirent",
   "AddProdDes": "Nơi các quản trị viên có thể thêm sản phẩm",
@@ -288,6 +289,7 @@
   "DefManagementDes": "Giao diện quản lí mặc định",
   "DefAdminsLayoutHelmetTitle": "Giao diện quản trị viên mặc định",
   "DefAdminsLAyoutHelmetDes": "Giao diện quản trị viên mặc định",
+  "DefManagementHelmetTitle": "Quản lí",
   "EmailSentHelmetTitle": "Gửi Email",
   "EmailSentHelmetDes": "Email thay đổi mật khẩu đã được gửi thành công",
   "ForgotPassHelmetTitle": "Quên mật khẩu",

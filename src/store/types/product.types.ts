@@ -3,6 +3,11 @@ import {
   FETCH_PRODUCT_BY_ID_ERROR,
 } from "./action.types";
 
+export interface IMostRentalProduct {
+  _id: IProduct;
+  rentalTimes: number;
+}
+
 export interface IProduct {
   _id: string;
   name: string;
