@@ -35,11 +35,7 @@ const PieChart = ({ data, title }: ChartProps) => {
       },
     },
   };
-  return data !== undefined ? (
-    <Pie data={data} options={options} width="28%" height="15%" />
-  ) : (
-    <h1>hwwww</h1>
-  );
+  return <Pie data={data} options={options} width="28%" height="15%" />;
 };
 
 export default PieChart;

@@ -105,12 +105,12 @@ const UserEdit = () => {
 
   return (
     <DefaultLayout>
+      <UserTab index={0} />
       <Helmet
         title={t("UserEditHelmetTitle")}
         addPostfixTitle
         description={t("UserEditHelmetDes")}
       />
-      <UserTab />
       <Flex minH="70vh" align="center" justify="center" bg="#fff">
         <Box
           w="full"

@@ -21,9 +21,10 @@ const ProductItem = (productItemProps: NewProductProps) => {
       </div>
 
       <img
+        loading="lazy"
         alt="New Product"
         src={defaultImage}
-        className="object-cover w-full -mt-3 h-96"
+        className="object-scale-down w-full -mt-3 h-96"
       />
 
       <h5 className="mt-4 text-sm text-black/90">{name}</h5>

@@ -45,7 +45,12 @@ const ProductCard = ({
         )}
       </button>
       <div className="p-10 card-content">
-        <img src={image} alt="pictures" className="object-cover w-64 h-52" />
+        <img
+          loading="lazy"
+          src={image}
+          alt="pictures"
+          className="sm:object-fill sm:w-64 sm:h-52"
+        />
         <p className="text-lg font-bold uppercase text-transform:">{name}</p>
         <h4 className="font-bold">
           {/* Type: Day, Month, Year */}

@@ -22,6 +22,7 @@ const NavBar = () => {
         display="flex"
         alignItems="center"
         justifyContent="space-between"
+        className="fixed w-full  "
       >
         <Logo />
         <Show above="md">
@@ -65,30 +66,49 @@ const NavBar = () => {
           </button>
         </Show>
       </Flex>
+      <Flex minH="9vh" bgColor="#222" />
       <Show below="md">
         <div
-          className="z-50 w-full duration-300 ease-in-out bg-black transition-height"
-          style={{ height: toggle ? "400px" : 0 }}
+          className="z-50 w-full duration-300 ease-in-out bg-black transition-height fixed"
+          style={{
+            height: toggle ? "400px" : 0,
+            visibility: toggle ? "visible" : "hidden",
+          }}
         >
           <ul
             className="absolute list-none transition-opacity duration-300 ease-in-out translate-x-1/2 z-500 left-1/3"
             style={{ opacity: toggle ? 1 : 0 }}
           >
             {currentUser.role === "admin" && (
-              <div className="pt-2 pl-3 mt-10 text-2xl">
+              <div
+                className="pt-2 pl-3 mt-10 text-2xl"
+                style={{ visibility: toggle ? "visible" : "hidden" }}
+              >
                 <NavButton navItem={t("Dashboard")} directUrl="/admin" />
               </div>
             )}
-            <div className="pt-2 pl-3 mt-10 text-2xl">
+            <div
+              className="pt-2 pl-3 mt-10 text-2xl"
+              style={{ visibility: toggle ? "visible" : "hidden" }}
+            >
               <NavButton navItem={t("Home")} directUrl="/" />
             </div>
-            <div className="pt-2 pl-3 mt-10 text-2xl">
+            <div
+              className="pt-2 pl-3 mt-10 text-2xl"
+              style={{ visibility: toggle ? "visible" : "hidden" }}
+            >
               <NavButton navItem={t("About")} directUrl="/about" />
             </div>
-            <div className="pt-2 pl-2 mt-10 text-2xl">
+            <div
+              className="pt-2 pl-2 mt-10 text-2xl"
+              style={{ visibility: toggle ? "visible" : "hidden" }}
+            >
               <NavButton navItem={t("Contact")} directUrl="/contact" />
             </div>
-            <div className="pl-6 mt-10 text-2xl">
+            <div
+              className="pl-6 mt-10 text-2xl"
+              style={{ visibility: toggle ? "visible" : "hidden" }}
+            >
               {" "}
               {!currentUser.email ? (
                 <NavButton navItem={t("Login")} directUrl="/login" />

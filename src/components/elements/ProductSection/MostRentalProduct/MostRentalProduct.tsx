@@ -1,13 +1,14 @@
 import { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { customAxios } from "../../../../http-common";
-import {IMostRentalProduct, IProduct} from "../../../../store/types/product.types";
+import { IMostRentalProduct } from "../../../../store/types/product.types";
 import Spinner from "../../Spinner/Spinner";
-import {Badge} from "@chakra-ui/react";
 
 const MostRentalProduct = () => {
   const { t } = useTranslation();
-  const [mostRentalProducts, setMostRentalProducts] = useState<IMostRentalProduct[]>([]);
+  const [mostRentalProducts, setMostRentalProducts] = useState<
+    IMostRentalProduct[]
+  >([]);
 
   useEffect(() => {
     customAxios()
@@ -17,14 +18,11 @@ const MostRentalProduct = () => {
         const sortedProducts = data.sort((itemA: any, itemB: any) =>
           itemA.rentalTimes > itemB.rentalTimes ? -1 : 1,
         );
-        const mostRentalSortedProducts = sortedProducts.slice(0, 7);
+        const mostRentalSortedProducts = sortedProducts.slice(0, 8);
         setMostRentalProducts(mostRentalSortedProducts);
       });
   }, []);
 
-  useEffect(() => {
-    console.log("mostRentalProducts", mostRentalProducts);
-  }, []);
   return (
     <div className="px-8 py-6">
       <h3 className="text-lg leading-6 font-medium text-[#111827] py-4">
@@ -37,9 +35,10 @@ const MostRentalProduct = () => {
               <li className="relative">
                 <div className="group block w-full aspect-w-10 aspect-h-7 rounded-lg bg-gray-100 focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-offset-gray-100 focus-within:ring-indigo-500 overflow-hidden">
                   <img
+                    loading="lazy"
                     src={rental._id.images && rental._id.images[0]}
-                    alt=""
-                    className="object-cover pointer-events-none group-hover:opacity-75"
+                    alt="rental"
+                    className="object-scale-down pointer-events-none group-hover:opacity-75"
                   />
                   <button
                     type="button"
@@ -50,17 +49,23 @@ const MostRentalProduct = () => {
                     </span>
                   </button>
                 </div>
-                  <div className='text-center'>
-                <p className="inline-block mr-1 text-sm font-medium text-gray-900 pointer-events-none">
-                  {rental._id.name} -
-                </p>
-                <p className="inline-block text-sm font-medium text-gray-500 pointer-events-none">
-                  {rental._id.rentalCost}$
-                </p>
-                  </div>
-                  <p className="block text-center text-sm font-medium text-gray-500 pointer-events-none" style={{color: 'red', fontSize:'bold'}}>
-                      Has been rented  {rental.rentalTimes > 1 ? rental.rentalTimes + ' times' : rental.rentalTimes + ' time'}
+                <div className="mt-2 text-center">
+                  <p className="inline-block mr-1 text-sm font-medium text-gray-900 pointer-events-none">
+                    {rental._id.name} -
                   </p>
+                  <p className="inline-block text-sm font-medium text-gray-500 pointer-events-none">
+                    {rental._id.rentalCost}$
+                  </p>
+                </div>
+                <p
+                  className="block text-center text-sm font-medium text-gray-500 pointer-events-none"
+                  style={{ color: "red", fontSize: "bold" }}
+                >
+                  Has been rented{" "}
+                  {rental.rentalTimes > 1
+                    ? `${rental.rentalTimes} times`
+                    : `${rental.rentalTimes} time`}
+                </p>
               </li>
             ))}
           </>

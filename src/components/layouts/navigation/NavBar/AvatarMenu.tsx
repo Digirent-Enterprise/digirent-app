@@ -89,9 +89,6 @@ const AvatarMenu = () => {
             >
               {t("OrderHistory")}
             </MenuItem>
-            <MenuItem onClick={() => navigate("/user/favorite-product")}>
-              {t("FavProd")}
-            </MenuItem>
             <MenuItem onClick={() => logOut()}>{t("Logout")}</MenuItem>
           </MenuList>
         </Menu>

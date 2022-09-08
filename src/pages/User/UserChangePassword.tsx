@@ -82,12 +82,12 @@ const UserChangePassword = () => {
 
   return (
     <DefaultLayout>
+      <UserTab index={0} />
       <Helmet
         title={t("UserChangePassHelmetTitle")}
         addPostfixTitle
         description={t("UserChangePassHelmetDes")}
       />
-      <UserTab />
       <Flex minH="70vh" align="center" justify="center" bg="#fff">
         <Box
           w="full"
