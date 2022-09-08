@@ -88,7 +88,7 @@ const ProductProgressBar = () => {
                   <SwiperSlide>
                     <a
                       href={`/product/${rental._id._id}`}
-                      className="relative block transition duration-700 border border-[#f3f4f6] hover:-translate-y-5"
+                      className="relative transition duration-700 border border-[#f3f4f6] hover:-translate-y-5"
                     >
                       <button
                         type="button"
@@ -110,11 +110,10 @@ const ProductProgressBar = () => {
                           />
                         </svg>
                       </button>
-
                       <img
                         loading="lazy"
                         alt="rental"
-                        className="object-cover w-full h-56 lg:h-72"
+                        className="object-scale-down"
                         src={rental._id.images && rental._id.images[0]}
                       />
 
