@@ -82,7 +82,7 @@ const LineChart = ({
     backgroundColor,
     labels,
     datasets: [
-      { ...mainLine, label: "Temperature", data: dataPoints },
+      { ...mainLine, label: "Revenue", data: dataPoints },
       { ...straightLine, label: "Mean", data: Array(7).fill(mean.toFixed(2)) },
     ],
   };
