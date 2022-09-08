@@ -10,6 +10,7 @@ interface ChartProps {
 }
 
 const PieChart = ({ data, title }: ChartProps) => {
+  console.log("data :>> ", data);
   const options: any = {
     responsive: true,
     maintainAspectRatio: false,
