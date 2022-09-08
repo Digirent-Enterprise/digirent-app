@@ -1,15 +1,28 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
+import {IUser} from "../../../../store/types/user.types";
+import ChatBox from "../../ChatBox/ChatBox";
 // import ScrollableFeed from "react-scrollable-feed";
 
-const ChatBody = () => {
+type MessageProps = {
+    content: string;
+    from: IUser;
+    to: IUser;
+    at: string;
+}
+
+type ChatBodyProps = {
+    content: MessageProps[],
+    from: string
+}
+
+const ChatBody = ({content, from}: ChatBodyProps) => {
+  useEffect(() => {
+  }, [])
+
   return (
-    <div className="relative overflow-auto h-24">
-      <div className="flex flex-col p-4">
-        <div className="flex shrink-1 bg-light rounded py-2 px-3 ml-3">
-          Messages
+        <div className="flex bg-light rounded py-2 px-3 ml-3 flex-col overflow-x-hidden overflow-y-auto">
+            {content.map(message => <ChatBox content={message.content} mine={message.from._id === from}></ChatBox>)}
         </div>
-      </div>
-    </div>
   );
 };
 
