@@ -4,8 +4,8 @@ import {
 } from "./action.types";
 
 export interface IMostRentalProduct {
-  _id: IProduct;
-  rentalTimes: number;
+  _id: IProduct,
+  rentalTimes: number
 }
 
 export interface IProduct {

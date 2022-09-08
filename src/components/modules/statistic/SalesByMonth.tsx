@@ -33,6 +33,8 @@ const SalesByMonth = () => {
         setLabels(Object.keys(sorted));
       });
   }, []);
+
+const SalesByMonth = () => {
   return (
     <ContainerCard
       chart={
