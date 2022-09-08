@@ -1,12 +1,16 @@
-import React, { Suspense } from "react";
+import React, { Suspense, useState } from "react";
 import { BrowserRouter } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
-import { Spinner } from "./components";
+import { Spinner } from "./components"; 
 import AppRouter from "./Router";
 
 import "react-toastify/dist/ReactToastify.css";
 
 const App = () => {
+  const [members, setMembers] = useState([]);
+  const [messages, setMessages] = useState([]);
+  const [privateMessages, setPrivateMessages] = useState({});
+  const [newMessage, setNewMessage] = useState({});
   return (
     <>
       <BrowserRouter>
