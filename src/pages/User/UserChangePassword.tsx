@@ -82,7 +82,7 @@ const UserChangePassword = () => {
 
   return (
     <DefaultLayout>
-      <UserTab tabIndex={0} />
+      <UserTab index={0} />
       <Helmet
         title={t("UserChangePassHelmetTitle")}
         addPostfixTitle
