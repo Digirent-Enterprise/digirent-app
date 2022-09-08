@@ -16,7 +16,9 @@ const RevenueByMonth = () => {
         setLabels(Object.keys(res.data));
         const accumulatedRevenue = Object.values(res.data).map(
           (
+            // eslint-disable-next-line no-return-assign
             (sum) => (value: any) =>
+              // eslint-disable-next-line no-param-reassign
               (sum += value)
           )(0),
         );

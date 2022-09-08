@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { customAxios } from "../../../http-common";
 import { COLOR_PALETTE } from "../../../utils/constants/chart.constants";
 import { BarChart } from "./base/BarChart";
@@ -16,8 +16,8 @@ const SalesByMonth = () => {
           .map((item) => {
             return {
               month: new Date(
-                parseInt(item.split("/")[1]),
-                parseInt(item.split("/")[0]) - 1,
+                parseInt(item.split("/")[1], 10),
+                parseInt(item.split("/")[0], 10) - 1,
               ),
               value: res.data[item],
             };

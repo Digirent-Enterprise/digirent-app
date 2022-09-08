@@ -15,7 +15,7 @@ import dayjs from "dayjs";
 import { setTransaction } from "../../../../store/actions/transaction.action";
 import { getCurrentUserSelector } from "../../../../store/selectors/user.selector";
 import { IProduct } from "../../../../store/types/product.types";
-import { MILISECONDS_PER_DAY } from "../../../../utils/constants/datetime.constants";
+import { MILLISECONDS_PER_DAY } from "../../../../utils/constants/datetime.constants";
 
 interface BookingBoxProps {
   price: number;
@@ -70,8 +70,8 @@ const BookingBox: React.FC<BookingBoxProps> = ({
           ? Math.abs(startDate.getTime() - endDate.getTime())
           : null;
       const numDateDiff =
-        diff / MILISECONDS_PER_DAY >= 1
-          ? Math.ceil(diff / MILISECONDS_PER_DAY)
+        diff / MILLISECONDS_PER_DAY >= 1
+          ? Math.ceil(diff / MILLISECONDS_PER_DAY)
           : 1;
       setTotalPrice(price * numDateDiff);
     }
