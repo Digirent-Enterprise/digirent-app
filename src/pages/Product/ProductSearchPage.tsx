@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useTranslation } from "react-i18next";
+import { Show, Hide } from "@chakra-ui/react";
 import {
   SearchHeaderSection,
   SearchResultsSection,
   Transition,
 } from "../../components";
+
 import NotFoundProduct from "../../components/layouts/NotFoundResult/NotFoundProduct";
 import FilterPanel from "../../components/layouts/filters/FilterPanel";
 
@@ -175,19 +177,33 @@ const ProductSearchPage = () => {
           onChangeInput={(e: any) => setSearchInput(e.target.value)}
         />
 
-        <div className="grid grid-cols-5 pb-10 mx-auto max-w-7xl lg:py-12 lg:px-8">
-          <div className="col-span-1">
-            <FilterPanel
-              selectedCost={selectedCost}
-              changeCost={handleChangeCost}
-              categories={categories}
-              changeChecked={handleChangeChecked}
-            />
-          </div>
-          <div className="col-span-4">
-            <div className="flex items-center px-5 text-base font-medium text-gray-400">
+        <div className="grid grid-cols-5 mx-auto max-w-7xl md:py-12 md:px-6l g:py-12 lg:px-8">
+          <Hide below="md">
+            {" "}
+            <div className="col-span-1 md:p-4 md:mx-4 md:flex ">
+              <FilterPanel
+                selectedCost={selectedCost}
+                changeCost={handleChangeCost}
+                categories={categories}
+                changeChecked={handleChangeChecked}
+              />
+            </div>
+          </Hide>
+
+          <div className="col-span-5 md:col-span-4">
+            <div className="flex justify-center px-5 text-base font-medium text-gray-400 sm:justify-start">
               {foundProduct ? <p>Found {productList.length} results</p> : null}
             </div>
+            <Show below="md">
+              <div className="flex justify-center w-full mx-auto">
+                <FilterPanel
+                  selectedCost={selectedCost}
+                  changeCost={handleChangeCost}
+                  categories={categories}
+                  changeChecked={handleChangeChecked}
+                />
+              </div>
+            </Show>
 
             <SearchResultsSection
               selectChange={handleSelected}
@@ -195,7 +211,9 @@ const ProductSearchPage = () => {
             />
 
             {foundProduct ? (
-              <ProductListLayout products={productList} />
+              <div className="">
+                <ProductListLayout products={productList} />
+              </div>
             ) : (
               <div className="flex justify-center text-5xl font-bold text-center">
                 <NotFoundProduct />

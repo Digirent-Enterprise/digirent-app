@@ -49,41 +49,46 @@ const BookingBoxLayout = ({ productData }: any) => {
   }, []);
 
   return (
-    <div className="flex flex-col justify-center w-full gap-2">
-      <div className="flex flex-col justify-center mt-10 lg:flex-row">
-        <div className="ml-[35px] lg:ml-0 lg:mr-64 min-w-[50%] flex flex-col">
-          <div className="font-extrabold">{t("Description")}</div>
-          <div className="text-justify min-w-[220px]">
-            {productData.description}
-          </div>
-          <div className="flex flex-col gap-2 mt-10">
-            <div className="font-extrabold">{t("RentalPeriod")}</div>
-            <div className=" min-w-[220px]">
+    <div>
+      <div className="px-16 py-8">
+        <div className="font-extrabold text-2xl pb-4">{t("Description")}</div>
+        <div className="text-justify w-full h-32  overflow-y-auto pr-4 pl-1 border border-gray rounded-md">
+          {productData.description}
+        </div>
+      </div>
+      <div className="font-extrabold text-2xl pb-4 px-16 py-8">
+        {t("RentalPeriod")}
+      </div>
+      <div className="">
+        <div className="grid grid-cols-1  md:grid-cols-2 md:flex md:justify-between px-16 py-8">
+          <div className="col-span-1 min-w-[220px]">
+            <div className=" text-lg">
               {formatDate(startDate)} - {formatDate(endDate)}
-              <div className="flex gap-x-2 mt-5 flex-col md:flex-row lg:flex-row">
-                <DatePicker
-                  wrapperClassName="date-picker"
-                  onChange={onChange}
-                  minDate={new Date()}
-                  inline
-                  startDate={startDate}
-                  endDate={endDate}
-                  selectsRange
-                  excludeDates={excludedDates}
-                />
-              </div>
+            </div>
+
+            <div className="">
+              <DatePicker
+                wrapperClassName="date-picker"
+                onChange={onChange}
+                minDate={new Date()}
+                inline
+                startDate={startDate}
+                endDate={endDate}
+                selectsRange
+                excludeDates={excludedDates}
+              />
             </div>
           </div>
-        </div>
-        <div className="sm:mt-10 ml-[35px] lg:ml-0">
-          <BookingBox
-            productData={productData}
-            price={productData.rentalCost}
-            startDate={startDate ? new Date(startDate) : undefined}
-            endDate={endDate ? new Date(endDate) : undefined}
-            rentalCost={productData.rentalCost}
-            rentalCostType={productData.rentalCostType}
-          />
+          <div className="col-span-1 py-8 md:py-4">
+            <BookingBox
+              productData={productData}
+              price={productData.rentalCost}
+              startDate={startDate ? new Date(startDate) : undefined}
+              endDate={endDate ? new Date(endDate) : undefined}
+              rentalCost={productData.rentalCost}
+              rentalCostType={productData.rentalCostType}
+            />
+          </div>
         </div>
       </div>
     </div>
