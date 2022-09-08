@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/tabindex-no-positive */
 import { useTranslation } from "react-i18next";
 import { UserTab } from "../../components";
 import Helmet from "../../Helmet";

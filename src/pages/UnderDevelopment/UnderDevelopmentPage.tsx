@@ -14,19 +14,19 @@ import { AiOutlineDown } from "react-icons/ai";
 
 const UnderDevelopmentPage = () => {
   return (
-    <div className="lg:px-14 lg:py-24 md:py-20 md:px-24 px-4 py-24 items-center flex justify-center flex-col-reverse lg:flex-row">
-      <div className="xl:pt-24 w-full xl:w-1/2 relative pb-12 lg:pb-0">
+    <div className="flex flex-col-reverse items-center justify-center px-4 py-24 lg:px-14 lg:py-24 md:py-20 md:px-24 lg:flex-row">
+      <div className="relative w-full pb-12 xl:pt-24 xl:w-1/2 lg:pb-0">
         <div className="relative">
           <div className="">
-            <h1 className="flex my-2 text-gray-800 font-bold text-2xl">
-              Sorry, the website is currently under development{" "}
+            <h1 className="flex my-2 text-2xl font-bold text-gray-800">
+              Sorry, this feature is currently under development{" "}
             </h1>
 
             <p className="flex my-2 text-gray-800 text-2lg">
               Please redirect to our most visited page!{" "}
             </p>
             <div className="flex">
-              <span className="animate-waving-hand text-4xl pb-4 pr-4">👋🏻</span>
+              <span className="pb-4 pr-4 text-4xl animate-waving-hand">👋🏻</span>
               <Menu>
                 <MenuButton as={Button} rightIcon={<AiOutlineDown />}>
                   Most visited page
@@ -52,9 +52,9 @@ const UnderDevelopmentPage = () => {
           </div>
         </div>
       </div>
-      <div className="align-center justify-center">
+      <div className="justify-center align-center">
         <Image boxSize="350px" objectFit="cover" src="/figma-logo.png" alt="" />
-        <p className="italic font-medium text-2xl px-auto text-center pt-6">
+        <p className="pt-6 text-2xl italic font-medium text-center px-auto">
           "This is Digirent"
         </p>
       </div>

@@ -14,10 +14,8 @@ import FilterPanel from "../../components/layouts/filters/FilterPanel";
 import { getAllProductsSelector } from "../../store/selectors/product.selector";
 
 import DefaultLayout from "../DefaultLayout";
-
 import ProductListLayout from "../../components/layouts/productCard/ProductLayoutList/ProductLayoutList";
 import Helmet from "../../Helmet";
-
 
 const ProductSearchPage = () => {
   const { t } = useTranslation();
@@ -83,7 +81,7 @@ const ProductSearchPage = () => {
   const handleChangeChecked = (id: any) => {
     const categoriesList = categories;
     const changeChecked = categoriesList.map((item) =>
-      item.id === id ? { ...item, checked: !item.checked } : item
+      item.id === id ? { ...item, checked: !item.checked } : item,
     );
     setCategories(changeChecked);
   };
@@ -96,7 +94,7 @@ const ProductSearchPage = () => {
   const filters = () => {
     let updatedList = productData;
     updatedList = updatedList.sort((productA, productB) =>
-      productA.name.localeCompare(productB.name)
+      productA.name.localeCompare(productB.name),
     );
 
     // Sort
@@ -104,7 +102,7 @@ const ProductSearchPage = () => {
       // default
       if (selected === "default") {
         updatedList = updatedList.sort((productA, productB) =>
-          productA.name.localeCompare(productB.name)
+          productA.name.localeCompare(productB.name),
         );
       }
 
@@ -128,7 +126,7 @@ const ProductSearchPage = () => {
       updatedList = updatedList.filter(
         (item) =>
           item.name.toLowerCase().search(searchInput.toLowerCase().trim()) !==
-          -1
+          -1,
       );
     }
 
@@ -148,7 +146,7 @@ const ProductSearchPage = () => {
     const max = selectedCost[1];
 
     updatedList = updatedList.filter(
-      (item) => item.rentalCost >= min && item.rentalCost <= max
+      (item) => item.rentalCost >= min && item.rentalCost <= max,
     );
 
     setProductList(updatedList);
@@ -193,11 +191,11 @@ const ProductSearchPage = () => {
           </Hide>
 
           <div className="col-span-5 md:col-span-4">
-            <div className="flex justify-center sm:justify-start px-5 text-base font-medium text-gray-400">
+            <div className="flex justify-center px-5 text-base font-medium text-gray-400 sm:justify-start">
               {foundProduct ? <p>Found {productList.length} results</p> : null}
             </div>
             <Show below="md">
-              <div className="flex justify-center  w-full mx-auto">
+              <div className="flex justify-center w-full mx-auto">
                 <FilterPanel
                   selectedCost={selectedCost}
                   changeCost={handleChangeCost}
