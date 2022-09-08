@@ -43,45 +43,26 @@ const generateMessage = () => {
   return text.join(" ");
 };
 
-const ChatBox = () => {
+const ChatBox = ({mine, content}: {mine: boolean, content: string}) => {
   const messageEl = useRef(null);
   const [messages, setMessages] = useState([]);
 
-  useEffect(() => {
-    if (messageEl) {
-      // @ts-ignore
-      messageEl.current.addEventListener("DOMNodeInserted", (event) => {
-        const { currentTarget: target } = event;
-        target.scroll({ top: target.scrollHeight, behavior: "smooth" });
-      });
-    }
-  }, []);
-
-  useEffect(() => {
-    const generateDummyMessage = () => {
-      setInterval(() => {
-        // @ts-ignore
-        setMessages((prevMsg) => [...prevMsg, generateMessage()]);
-      }, 2000);
-    };
-    generateDummyMessage();
-  }, []);
+  // useEffect(() => {
+  //   if (messageEl) {
+  //     // @ts-ignore
+  //     messageEl.current.addEventListener("DOMNodeInserted", (event) => {
+  //       const { currentTarget: target } = event;
+  //       target.scroll({ top: target.scrollHeight, behavior: "smooth" });
+  //     });
+  //   }
+  // }, []);
 
   return (
-    <div className="chat">
-      <div className="head">Chat</div>
-      <div className="messages" ref={messageEl}>
-        {messages.map((m, i) => (
-          <div key={i} className={`msg${i % 2 !== 0 ? " dark" : ""}`}>
-            {m}
+      <div className={`flex flex-row ${mine? 'justify-start': 'justify-end'}`}>
+          <div className={`msg${!mine ? " dark" : ""}`}>
+            {content}
           </div>
-        ))}
       </div>
-      <div className="footer">
-        <input type="text" placeholder="Type here..." />
-        <img src={sendIcon} alt="send" />
-      </div>
-    </div>
   );
 };
 

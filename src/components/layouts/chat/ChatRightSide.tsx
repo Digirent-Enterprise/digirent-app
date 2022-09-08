@@ -5,7 +5,7 @@ const ChatRightSide = () => {
     <div className="hidden lg:col-span-2 lg:block">
       <div className="w-full">
         <div className="relative flex items-center p-3 border-b border-gray-300">
-          <AvatarFromId />
+          {/*<AvatarFromId />*/}
           <span className="block ml-2 font-bold text-gray-600">John Doe</span>
           <span className="absolute w-3 h-3 bg-green-600 rounded-full left-10 top-3" />
         </div>

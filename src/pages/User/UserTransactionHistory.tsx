@@ -90,7 +90,7 @@ const UserTransactionHistory = () => {
                         </div>
                       ) : transaction.status === "pending" ? (
                         <span className="text-[#4F46E5]">
-                          Waiting for shipping
+                          Pending
                         </span>
                       ) : transaction.status === "paid" ? (
                         <span className="text-[#14B8A6]">Paid</span>
