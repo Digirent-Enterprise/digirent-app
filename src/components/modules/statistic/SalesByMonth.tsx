@@ -12,7 +12,6 @@ const SalesByMonth = () => {
     customAxios()
       .get("statistic/yearly-revenue")
       .then((res: any) => {
-        console.log("res.data :>> ", res.data);
         const sorted = Object.keys(res.data)
           .map((item) => {
             return {

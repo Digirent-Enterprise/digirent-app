@@ -25,7 +25,7 @@ ChartJS.register(
   BarController,
 );
 
-function LineMixedBarChart({ barData, lineData, labels, title }: any) {
+const LineMixedBarChart = ({ barData, lineData, labels, title }: any) => {
   const options: any = {
     responsive: true,
     plugins: {

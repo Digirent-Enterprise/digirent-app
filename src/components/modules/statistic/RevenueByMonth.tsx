@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import ContainerCard from "./base/ContainerCard";
-import LineChart from "./base/LineChart";
 import { customAxios } from "../../../http-common";
 import LineMixedBarChart from "./base/LineMixedBarChart";
 import { COLOR_PALETTE } from "../../../utils/constants/chart.constants";
@@ -14,8 +13,6 @@ const RevenueByMonth = () => {
     customAxios()
       .get("statistic/monthly-status")
       .then((res) => {
-        console.log("object :>> ", res.data);
-
         setLabels(Object.keys(res.data));
         const accumulatedRevenue = Object.values(res.data).map(
           (

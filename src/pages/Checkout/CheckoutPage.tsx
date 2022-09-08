@@ -44,7 +44,6 @@ const CheckoutPage = () => {
             base: 1,
             lg: 1,
           }}
-          
           className="flex flex-col justify-between flex-grow"
         >
           <CheckoutDetailsCard transactionData={transactionData} />
