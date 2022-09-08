@@ -47,6 +47,6 @@ const LineMixedBarChart = ({ barData, lineData, labels, title }: any) => {
   return (
     <Chart type="bar" data={data} options={options} width="28%" height="20%" />
   );
-}
+};
 
 export default LineMixedBarChart;

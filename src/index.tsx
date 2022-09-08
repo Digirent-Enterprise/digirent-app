@@ -1,10 +1,5 @@
-import {
-  ChakraProvider,
-  CSSReset,
-  extendTheme,
-  ColorModeProvider,
-} from "@chakra-ui/react";
 import React from "react";
+import { ChakraProvider, extendTheme } from "@chakra-ui/react";
 import ReactDOM from "react-dom/client";
 import { Provider } from "react-redux";
 import App from "./App";
