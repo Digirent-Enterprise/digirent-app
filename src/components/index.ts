@@ -22,7 +22,7 @@ import {
   FAQ,
   Partner,
   Search,
-  Chatbox
+  Chatbox,
 } from "./elements";
 import {
   AuthFormGrid,
