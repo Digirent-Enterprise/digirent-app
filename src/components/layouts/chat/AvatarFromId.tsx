@@ -1,12 +1,10 @@
 import { FC } from "react";
-import { useSelector } from "react-redux";
-import { getCurrentUserSelector } from "../../../store/selectors/user.selector";
 import { IMAGES } from "../../../utils/constants/image.constant";
 
 interface IAvatarFromIdProps {
   // uid: string;
   size?: number;
-  src: string
+  src: string;
 }
 
 const AvatarFromId: FC<IAvatarFromIdProps> = ({ size = 40, src }) => {
