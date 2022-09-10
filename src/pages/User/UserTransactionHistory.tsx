@@ -89,9 +89,7 @@ const UserTransactionHistory = () => {
                           </span>
                         </div>
                       ) : transaction.status === "pending" ? (
-                        <span className="text-[#4F46E5]">
-                          Waiting for shipping
-                        </span>
+                        <span className="text-[#4F46E5]">Pending</span>
                       ) : transaction.status === "paid" ? (
                         <span className="text-[#14B8A6]">Paid</span>
                       ) : null}

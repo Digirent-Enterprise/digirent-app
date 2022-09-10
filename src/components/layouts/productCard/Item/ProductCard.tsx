@@ -46,6 +46,7 @@ const ProductCard = ({
       </button>
       <div className="p-10 card-content">
         <img
+          loading="lazy"
           src={image}
           alt="pictures"
           className="sm:object-fill sm:w-64 sm:h-52"
