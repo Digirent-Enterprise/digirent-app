@@ -3,10 +3,10 @@ import { BrowserRouter } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import { Spinner } from "./components";
 import AppRouter from "./Router";
-
 import "react-toastify/dist/ReactToastify.css";
+
 const App = () => {
-   return (
+  return (
     <>
       <BrowserRouter>
         <Suspense fallback={<Spinner />}>

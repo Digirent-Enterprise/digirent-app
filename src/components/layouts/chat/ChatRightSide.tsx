@@ -1,11 +1,22 @@
-import AvatarFromId from "./AvatarFromId";
+// import AvatarFromId from "./AvatarFromId";
+import { IUser } from "../../../store/types/user.types";
 
-const ChatRightSide = () => {
+
+type MessageProps = {
+  from: IUser;
+  messages: {
+    from: IUser;
+    to: IUser;
+    content: string;
+  }[];
+}[];
+
+const ChatRightSide = ({ users }: { users: MessageProps }) => {
   return (
     <div className="hidden lg:col-span-2 lg:block">
       <div className="w-full">
         <div className="relative flex items-center p-3 border-b border-gray-300">
-          {/*<AvatarFromId />*/}
+          {/* <AvatarFromId src={users.from.profileImage} /> */}
           <span className="block ml-2 font-bold text-gray-600">John Doe</span>
           <span className="absolute w-3 h-3 bg-green-600 rounded-full left-10 top-3" />
         </div>
