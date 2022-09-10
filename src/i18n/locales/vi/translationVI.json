@@ -123,7 +123,7 @@
   "ShipUpdt": "Cập nhật đơn hàng",
   "Status": "Tình trạng",
   "Processing": "Đang xử lí",
-  "WaitingForShip": "Chờ vận chuyển",
+  "WaitingForShip": "Chờ Thanh Toán",
   "Shipped": "Đã giao",
   "Paid": "Đã thanh toán",
   "PaymentInfo": "Thông tin thanh toán",

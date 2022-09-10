@@ -122,7 +122,7 @@
   "ShipUpdt": "Shipping updates",
   "Status": "Status",
   "Processing": "Processing",
-  "WaitingForShip": "Waiting for shipping",
+  "WaitingForShip": "Pending",
   "Shipped": "Shipped",
   "Paid": "Paid",
   "PaymentInfo": "Payment information",
