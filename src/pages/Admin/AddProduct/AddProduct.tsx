@@ -86,6 +86,8 @@ const AddProduct = () => {
     if (status === "done") {
       setImages([...images, meta.url]);
       setUploadInProgress(false);
+    } else if (status === "removed") {
+      setImages(images.filter((item) => item === meta.url));
     } else {
       setUploadInProgress(true);
     }
