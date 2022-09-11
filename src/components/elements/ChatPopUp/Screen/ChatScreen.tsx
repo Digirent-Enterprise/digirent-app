@@ -21,28 +21,28 @@ const ChatScreen = (props: any) => {
   const [receiverName, setReceiverName] = useState("Admin");
   const [content, setContent] = useState<MessageProps[]>([]);
 
-  const socket = io("http://localhost:8000");
-  useEffect(() => {
-    if (userDetail._id) {
-      socket.on("connect", () => {
-        socket.emit("create-chat-room", {
-          from: userDetail._id,
-          to: TO,
-          message: [],
-        });
-        socket.on("create-room-success", (data) => {
-          setReceiverName(`${data.to.email} - ${data.to.role}`);
-          setContent(data.messages as MessageProps[]);
-        });
-        socket.on("send-success", (data) => {
-          setContent(data as MessageProps[]);
-        });
-      });
-      socket.on("disconnect", () => {
-        return socket.disconnect();
-      });
-    }
-  }, [socket]);
+  // const socket = io("http://localhost:8000");
+  // useEffect(() => {
+  //   if (userDetail._id) {
+  //     socket.on("connect", () => {
+  //       socket.emit("create-chat-room", {
+  //         from: userDetail._id,
+  //         to: TO,
+  //         message: [],
+  //       });
+  //       socket.on("create-room-success", (data) => {
+  //         setReceiverName(`${data.to.email} - ${data.to.role}`);
+  //         setContent(data.messages as MessageProps[]);
+  //       });
+  //       socket.on("send-success", (data) => {
+  //         setContent(data as MessageProps[]);
+  //       });
+  //     });
+  //     socket.on("disconnect", () => {
+  //       return socket.disconnect();
+  //     });
+  //   }
+  // }, [socket]);
   return (
     <Box
       style={{
@@ -70,7 +70,7 @@ const ChatScreen = (props: any) => {
         <div className="flex flex-col h-full">
           <ChatHeader receiver={receiverName} />
           <ChatBody content={content} from={userDetail._id} />
-          <ChatInput socket={socket} from={userDetail._id} to={TO} />
+          <ChatInput from={userDetail._id} to={TO} />
         </div>
       </ChatContainer>
     </Box>
