@@ -195,7 +195,7 @@ Come and join us to explore an exceptional, like no others renting service!
 
 See the [open issues](https://github.com/Digirent-Enterprise/digirent-app/issues) for a full list of proposed features (and known issues).
 
-<p align="right">(<a href="#top">back to top</a>)</p>
+<p align="right">(<a href="#top">back to top</a>)</p> -->
 
 <!-- CONTRIBUTING -->
 
