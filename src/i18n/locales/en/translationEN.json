@@ -8,6 +8,7 @@
   "Edit": "Edit",
   "Add": "Add",
   "Clear": "Clear",
+  "Close": "Close",
   "Next": "Next >",
   "Previous": "< Previous",
   "Others": "Others",
@@ -126,6 +127,7 @@
   "Shipped": "Shipped",
   "Paid": "Paid",
   "PaymentInfo": "Payment information",
+  "PaymentMethod": "Payment method",
   "BillingSum": "Billing summary",
   "Deposit": "Deposit",
   "LatePen": "Late penalty",
@@ -197,6 +199,7 @@
   "OrderTotal": "Tổng đơn",
   "OrderPlaced": "Order placed",
   "OrderHistory": "Order History",
+  "OrderSummary": "Order summary",
   "ViewAllOrderHis": "View all your orders history",
   "ReturnToOrderHis": "Return to order history",
 
@@ -222,6 +225,7 @@
 
   "ReturnToProfile": "Return to profile info",
   "ViewYourInfo": "View your information",
+  "Deactivate": "Deactivate",
   "DeactivateAcc": "Deactivate account",
   "DeactivateWarning": "Are you sure you want to deactivate your account ?",
 
@@ -244,6 +248,7 @@
   "General": "General",
   "Chat": "Chat",
   "Users": "Users",
+  "Product": "Product",
   "Products": "Products",
   "Transaction": "Transaction",
   "CustomerInq": "Customer Inquiries",

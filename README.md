@@ -15,19 +15,11 @@
 *** for contributors-url, forks-url, etc. This is an optional, concise syntax you may use.
 *** https://www.markdownguide.org/basic-syntax/#reference-style-links
 -->
-
-[![Contributors][contributors-shield]][contributors-url]
-[![Forks][forks-shield]][forks-url]
-[![Stargazers][stars-shield]][stars-url]
-[![Issues][issues-shield]][issues-url]
-[![MIT License][license-shield]][license-url]
-[![LinkedIn][linkedin-shield]][linkedin-url]
-
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
   <a href="https://github.com/Digirent-Enterprise/digirent-app.git">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
+    <img src="public/apple-touch-icon.png" alt="Logo" width="80" height="80">
   </a>
 
 <h3 align="center">Digirent</h3>
@@ -38,7 +30,7 @@
     <a href="https://github.com/Digirent-Enterprise/digirent-app.git"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/Digirent-Enterprise/digirent-app">View Demo</a>
+    <a href="https://www.digirent.dev/">View Demo</a>
     ·
     <a href="https://github.com/Digirent-Enterprise/digirent-app/issues">Report Bug</a>
     ·
@@ -69,7 +61,6 @@
 
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
 
 In a 4.0 technology world, using electronic devices has been a lifestyle for everyone. However, you do not always have the necessary tools for what you are doing. Maybe becasue you have finacial problesm or just simply, you do not use that device often. Understand this, our team decided to create a website where customers can rent any digital devices that they needed.
 Here is why you wanted to choose our service:
@@ -84,22 +75,30 @@ Here is why you wanted to choose our service:
 
 ### Built With
 
-- [![Next][next.js]][next-url]
-- [![React][react.js]][react-url]
-- [![Vue][vue.js]][vue-url]
-- [![Angular][angular.io]][angular-url]
-- [![Svelte][svelte.dev]][svelte-url]
-- [![Laravel][laravel.com]][laravel-url]
-- [![Bootstrap][bootstrap.com]][bootstrap-url]
-- [![JQuery][jquery.com]][jquery-url]
+##### Front-end
 
+- [![React][react.js]][react-url]
+- [![ReduxToolkit][reduxtk.js]][reduxtk-url]
+- [![ReduxSaga][reduxsg.js]][reduxsg-url]
+- [![Typescript][typescript.js]][typescript-url]
+- [![Tailwind][tailwind.js]][tailwind-url]
+- [![ChakraUI][chakraui.js]][chakraui-url]
+
+##### Back-end
+
+- [![MongoDB][mongodb.js]][mongodb-url]
+- [![Express][express.js]][express-url]
+- [![SocketIO][socketio.js]][socketio-url]
+- [![Cloudinary][cloudinary.js]][cloudinary-url]
+- [![GoogleAPI][googleapi.js]][googleapi-url]
+  
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 <!-- GETTING STARTED -->
 
 ## Getting Started
 
-Website URL:
+Website URL: <a>digirent.dev</a>
 
 To contribute to our project:
 
@@ -157,15 +156,17 @@ This is all the framework and prequisites for the website:
 
 ## Usage
 
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
+Digirent is a website designed to provide customer with exceptional renting service. With Digirent, renting has never been so fast, convenient and cheap. At Digirent, we have thoudsands of products awaiting for you to explore. We constantly offer many exciting discounts to our customers. 
 
-_For more examples, please refer to the [Documentation](https://example.com)_
+To use our service, simply access the website and browse a product. Click on that product, you will be navigate to the product page. Here, you can choose your renting period and the system will automatically calculate the renting fees and display it on the booking box on the right. Now you can click rent and proceed to transaction page where you will be able to input your billing information. Finally, click "confirm" and you have successfully rent a product at Digirent!
+
+Come and join us to explore an exceptional, like no others renting service!
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
-<!-- ROADMAP -->
+<!-- ROADMAP
 
-## Roadmap
+## File tree
 
 - [ ] Feature 1
 - [ ] Feature 2
@@ -174,7 +175,7 @@ _For more examples, please refer to the [Documentation](https://example.com)_
 
 See the [open issues](https://github.com/Digirent-Enterprise/digirent-app/issues) for a full list of proposed features (and known issues).
 
-<p align="right">(<a href="#top">back to top</a>)</p>
+<p align="right">(<a href="#top">back to top</a>)</p> -->
 
 <!-- CONTRIBUTING -->
 
@@ -193,19 +194,10 @@ Don't forget to give the project a star! Thanks again!
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
-<!-- LICENSE -->
-
-## License
-
-Distributed under the MIT License. See `LICENSE.txt` for more information.
-
-<p align="right">(<a href="#top">back to top</a>)</p>
 
 <!-- CONTACT -->
 
-## Contact
-
-Your Name - [@twitter_handle](https://twitter.com/twitter_handle) - email@email_client.com
+## Links
 
 Project Link: [https://github.com/Digirent-Enterprise/digirent-app](https://github.com/Digirent-Enterprise/digirent-app)
 
@@ -227,33 +219,27 @@ Project Link: [https://github.com/Digirent-Enterprise/digirent-app](https://gith
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 
-[contributors-shield]: https://img.shields.io/github/contributors/Digirent-Enterprise/digirent-app.svg?style=for-the-badge
-[contributors-url]: https://github.com/Digirent-Enterprise/digirent-app/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/Digirent-Enterprise/digirent-app.svg?style=for-the-badge
-[forks-url]: https://github.com/Digirent-Enterprise/digirent-app/network/members
-[stars-shield]: https://img.shields.io/github/stars/Digirent-Enterprise/digirent-app.svg?style=for-the-badge
-[stars-url]: https://github.com/Digirent-Enterprise/digirent-app/stargazers
-[issues-shield]: https://img.shields.io/github/issues/Digirent-Enterprise/digirent-app.svg?style=for-the-badge
-[issues-url]: https://github.com/Digirent-Enterprise/digirent-app/issues
 [license-shield]: https://img.shields.io/github/license/Digirent-Enterprise/digirent-app.svg?style=for-the-badge
 [license-url]: https://github.com/Digirent-Enterprise/digirent-app/blob/master/LICENSE.txt
-[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
-[linkedin-url]: https://linkedin.com/in/linkedin_username
-[product-screenshot]: images/unknown.png
-[next.js]: https://img.shields.io/badge/next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white
-[next-url]: https://nextjs.org/
 [react.js]: https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
 [react-url]: https://reactjs.org/
-[vue.js]: https://img.shields.io/badge/Vue.js-35495E?style=for-the-badge&logo=vuedotjs&logoColor=4FC08D
-[vue-url]: https://vuejs.org/
-[angular.io]: https://img.shields.io/badge/Angular-DD0031?style=for-the-badge&logo=angular&logoColor=white
-[angular-url]: https://angular.io/
-[svelte.dev]: https://img.shields.io/badge/Svelte-4A4A55?style=for-the-badge&logo=svelte&logoColor=FF3E00
-[svelte-url]: https://svelte.dev/
-[laravel.com]: https://img.shields.io/badge/Laravel-FF2D20?style=for-the-badge&logo=laravel&logoColor=white
-[laravel-url]: https://laravel.com
-[bootstrap.com]: https://img.shields.io/badge/Bootstrap-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white
-[bootstrap-url]: https://getbootstrap.com
-[jquery.com]: https://img.shields.io/badge/jQuery-0769AD?style=for-the-badge&logo=jquery&logoColor=white
-[jquery-url]: https://jquery.com
-[license-shield]: https://img.shields.io/github/license/othneildrew/Best-README-Template.svg?style=for-the-badge
+[tailwind-url]: https://tailwindcss.com/
+[tailwind.js]: https://img.shields.io/badge/-Tailwindcss-20232A?style=for-the-badge&logo=tailwindcss
+[chakraui.js]: https://img.shields.io/badge/-ChakraUI-black?style=for-the-badge&logo=chakraui
+[chakraui-url]: https://chakra-ui.com/
+[reduxtk.js]: https://img.shields.io/badge/-redux%20tooklkit-black?style=for-the-badge&logo=redux
+[reduxtk-url]: https://redux-toolkit.js.org/
+[reduxsg.js]: https://img.shields.io/badge/-redux%20saga-black?style=for-the-badge&logo=reduxsaga
+[reduxsg-url]: https://redux-saga.js.org/
+[typescript.js]: https://img.shields.io/badge/-typescript-black?style=for-the-badge&logo=typescript
+[typescript-url]: https://www.typescriptlang.org/
+[mongodb.js]: https://img.shields.io/badge/-mongodb-black?style=for-the-badge&logo=mongodb
+[mongodb-url]: https://www.mongodb.com/cloud/atlas/lp/try2?utm_source=google&utm_campaign=gs_apac_vietnam_search_core_brand_atlas_desktop&utm_term=mongodb&utm_medium=cpc_paid_search&utm_ad=e&utm_ad_campaign_id=12212624377&adgroup=115749709583&gclid=Cj0KCQjw39uYBhCLARIsAD_SzMTjEdnWHHJQbX9lwRm8UIXdGXVzzhGfiN0lyOtKmQoi_xj0ukrlOWMaAu-3EALw_wcB
+[express.js]: https://img.shields.io/badge/-express-black?style=for-the-badge&logo=express
+[express-url]: https://expressjs.com/
+[socketio.js]: https://img.shields.io/badge/-Socket.IO-black?style=for-the-badge&logo=socket.io
+[socketio-url]: https://socket.io/
+[cloudinary.js]: https://img.shields.io/badge/-cloudinary-black?style=for-the-badge&logo=cloudinary
+[cloudinary-url]: https://cloudinary.com/
+[googleapi.js]: https://img.shields.io/badge/-GoogleAPI-black?style=for-the-badge&logo=google
+[googleapi-url]: https://cloud.google.com/

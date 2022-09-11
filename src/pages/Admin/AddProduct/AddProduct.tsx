@@ -24,6 +24,7 @@ import {
   Button,
 } from "@chakra-ui/react";
 import { toast } from "react-toastify";
+import { useTranslation } from "react-i18next";
 import Helmet from "../../../Helmet";
 import { customAxios } from "../../../http-common";
 import DefaultLayout from "../DefaultAdminLayout";
