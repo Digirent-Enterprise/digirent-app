@@ -65,6 +65,7 @@ const AppRouter = () => {
   const currentUser = useSelector(getCurrentUserSelector);
   const appLoading = useSelector(selectAppLoading);
   const dispatch = useDispatch();
+
   useEffect(() => {
     if (!appLoading) {
       dispatch(initApp());
