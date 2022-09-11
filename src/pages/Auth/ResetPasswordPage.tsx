@@ -15,7 +15,7 @@ import {
 } from "@chakra-ui/react";
 import { WarningTwoIcon } from "@chakra-ui/icons";
 // import { customAxios } from "../../http-common";
-import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 import { AuthFormGrid, Transition } from "../../components";
 import Helmet from "../../Helmet";
 
@@ -39,6 +39,7 @@ const schema = yup.object().shape({
 
 const ResetPasswordPage = () => {
   const { t } = useTranslation();
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -47,7 +48,6 @@ const ResetPasswordPage = () => {
     mode: "onBlur",
     resolver: yupResolver(schema),
   });
-  // const navigate = useNavigate();
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const onSubmit = (data: IFormInputs) => {
@@ -69,7 +69,7 @@ const ResetPasswordPage = () => {
     //       />;
     //     }
     //   });
-    toast.success("Reset password successfully!", { theme: "dark" });
+    navigate("/reset-success");
   };
 
   return (

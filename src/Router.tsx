@@ -10,6 +10,7 @@ import {
   LoginPage,
   ResetPasswordPage,
   ForgotPasswordPage,
+  ResetSuccessPage,
   ChatViewPage,
   AdminHome,
   ProductManagement,
@@ -86,6 +87,7 @@ const AppRouter = () => {
         <Route path="login" element={<LoginPage />} />
         <Route path="register" element={<RegisterPage />} />
         <Route path="reset-password" element={<ResetPasswordPage />} />
+        <Route path="reset-success" element={<ResetSuccessPage />} />
         <Route path="email-sent" element={<EmailSentPage />} />
         <Route path="forgot-password" element={<ForgotPasswordPage />} />
         {/* Product */}
