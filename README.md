@@ -15,6 +15,10 @@
 *** for contributors-url, forks-url, etc. This is an optional, concise syntax you may use.
 *** https://www.markdownguide.org/basic-syntax/#reference-style-links
 -->
+[![Contributors][contributors-shield]][contributors-url]
+[![Forks][forks-shield]][forks-url]
+[![Stargazers][stars-shield]][stars-url]
+[![Issues][issues-shield]][issues-url]
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
@@ -45,14 +49,14 @@
     <li>
       <a href="#about-the-project">About The Project</a>
       <ul>
-        <li><a href="#built-with">Built With</a></li>
+        <li><a href="#built-with">Technology stacks</a></li>
       </ul>
     </li>
     <li><a href="#usage">Usage</a></li>
     <li><a href="#roadmap">Roadmap</a></li>
     <li><a href="#contributing">Contributing</a></li>
     <li><a href="#license">License</a></li>
-    <li><a href="#contact">Contact</a></li>
+    <li><a href="#links">Links</a></li>
     <li><a href="#acknowledgments">Acknowledgments</a></li>
   </ol>
 </details>
@@ -73,7 +77,7 @@ Here is why you wanted to choose our service:
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
-### Built With
+### Technology stacks
 
 ##### Front-end
 
@@ -87,6 +91,7 @@ Here is why you wanted to choose our service:
 ##### Back-end
 
 - [![MongoDB][mongodb.js]][mongodb-url]
+- [![NodeJS][node.js]][nodejs-url]
 - [![Express][express.js]][express-url]
 - [![SocketIO][socketio.js]][socketio-url]
 - [![Cloudinary][cloudinary.js]][cloudinary-url]
@@ -97,8 +102,6 @@ Here is why you wanted to choose our service:
 <!-- GETTING STARTED -->
 
 ## Getting Started
-
-Website URL: <a>digirent.dev</a>
 
 To contribute to our project:
 
@@ -113,39 +116,36 @@ To contribute to our project:
 
 This is all the framework and prequisites for the website:
 
+- NodeJS  
+  Download NodeJS via: <https://nodejs.org/en/download/>
+  <br>
 - npm
   ```sh
   npm install npm@latest -g
   ```
-- Tailwind CSS
-  ```sh
-  npm install -D tailwindcss
-  npx tailwindcss init
-  ```
-- NodeJS  
-  Download NodeJS via: https://nodejs.org/en/download/
+
 
 ### Installation
 
-1. Clone the repo
-   ```sh
-   git clone https://github.com/Digirent-Enterprise/digirent-app.git
-   ```
-2. Install NPM packages
-   ```sh
-   npm install
-   ```
-3. Install NodeJS
+1. Install NodeJS
+
    ```
    Link: https://nodejs.org/en/download/
    ```
-4. Install TailwindCSS
+
+2. Clone the repo
    ```sh
-   npm install -D tailwindcss
-   npx tailwindcss init
+   git clone https://github.com/Digirent-Enterprise/digirent-app.git
    ```
-5. Include TailwindCSS by following the instructions provided in the TailwindCSS's website.
-6. Use this command in terminal to initiate the website:
+3. Change directory to project folder
+    ```sh
+    cd digirent-app
+    ```
+4. Install NPM packages
+   ```sh
+   npm install
+   ```
+5. Use this command in terminal to initiate the website:
    ```sh
    npm start
    ```
@@ -164,14 +164,34 @@ Come and join us to explore an exceptional, like no others renting service!
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
-<!-- ROADMAP
+<!-- ROADMAP -->
+## ROADMAP
 
-## File tree
+## Phase 1
 
-- [ ] Feature 1
-- [ ] Feature 2
-- [ ] Feature 3
-  - [ ] Nested Feature
+  <b>User's features</b>
+  - [x] Browse and view digital gadgets for rent
+  - [x] Rent digital products for a fixed term period
+  - [x] Keep track of purchase history
+  - [x] Get support throughout the rental period
+  - [x] Manage personal account
+
+  <b>Admin's features</b>
+  - [x] Product and stock management
+  - [x] Customer management
+  - [x] Transaction management
+  - [x] Customer inquiry management
+  - [x] Chart visualization 
+
+## Phase 2
+
+  <b>User's features</b>
+  - [ ] User review
+  - [ ] User wishlist
+  - [ ] User rating
+
+  <b>Admin's features</b>
+  - [ ] Page builder
 
 See the [open issues](https://github.com/Digirent-Enterprise/digirent-app/issues) for a full list of proposed features (and known issues).
 
@@ -196,6 +216,9 @@ Don't forget to give the project a star! Thanks again!
 
 
 <!-- CONTACT -->
+## License 
+
+MIT license
 
 ## Links
 
@@ -212,15 +235,20 @@ Project Link: [https://github.com/Digirent-Enterprise/digirent-app](https://gith
 - [Nguyen Thi Quynh Giang - s3866617]()
 - [Vo Khai Minh - s3879953]()
 - [Vo Gia Bao - s3823477]()
-- [Tran Khanh Duc-s3907087]()
+- [Tran Khanh Duc - s3907087]()
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-
-[license-shield]: https://img.shields.io/github/license/Digirent-Enterprise/digirent-app.svg?style=for-the-badge
-[license-url]: https://github.com/Digirent-Enterprise/digirent-app/blob/master/LICENSE.txt
+[contributors-shield]: https://img.shields.io/github/contributors/Digirent-Enterprise/digirent-app.svg?style=for-the-badge
+[contributors-url]: https://github.com/Digirent-Enterprise/digirent-app/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/Digirent-Enterprise/digirent-app.svg?style=for-the-badge
+[forks-url]: https://github.com/Digirent-Enterprise/digirent-app/network/members
+[stars-shield]: https://img.shields.io/github/stars/Digirent-Enterprise/digirent-app.svg?style=for-the-badge
+[stars-url]: https://github.com/Digirent-Enterprise/digirent-app/stargazers
+[issues-shield]: https://img.shields.io/github/issues/Digirent-Enterprise/digirent-app.svg?style=for-the-badge
+[issues-url]: https://github.com/Digirent-Enterprise/digirent-app/issues
 [react.js]: https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
 [react-url]: https://reactjs.org/
 [tailwind-url]: https://tailwindcss.com/
@@ -235,6 +263,8 @@ Project Link: [https://github.com/Digirent-Enterprise/digirent-app](https://gith
 [typescript-url]: https://www.typescriptlang.org/
 [mongodb.js]: https://img.shields.io/badge/-mongodb-black?style=for-the-badge&logo=mongodb
 [mongodb-url]: https://www.mongodb.com/cloud/atlas/lp/try2?utm_source=google&utm_campaign=gs_apac_vietnam_search_core_brand_atlas_desktop&utm_term=mongodb&utm_medium=cpc_paid_search&utm_ad=e&utm_ad_campaign_id=12212624377&adgroup=115749709583&gclid=Cj0KCQjw39uYBhCLARIsAD_SzMTjEdnWHHJQbX9lwRm8UIXdGXVzzhGfiN0lyOtKmQoi_xj0ukrlOWMaAu-3EALw_wcB
+[node.js]: https://img.shields.io/badge/-nodejs-black?style=for-the-badge&logo=node.js
+[nodejs-url]: https://nodejs.org/en/
 [express.js]: https://img.shields.io/badge/-express-black?style=for-the-badge&logo=express
 [express-url]: https://expressjs.com/
 [socketio.js]: https://img.shields.io/badge/-Socket.IO-black?style=for-the-badge&logo=socket.io
