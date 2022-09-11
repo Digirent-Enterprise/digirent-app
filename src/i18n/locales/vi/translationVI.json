@@ -123,7 +123,7 @@
   "ShipUpdt": "Cập nhật đơn hàng",
   "Status": "Tình trạng",
   "Processing": "Đang xử lí",
-  "WaitingForShip": "Chờ vận chuyển",
+  "WaitingForShip": "Chờ Thanh Toán",
   "Shipped": "Đã giao",
   "Paid": "Đã thanh toán",
   "PaymentInfo": "Thông tin thanh toán",
@@ -185,7 +185,7 @@
   "Sort": "Lọc:",
   "ResetSort": "Xoá bộ lọc",
   "ExportCSV": "Xuất CSV",
-  
+
   "AccountSetting": "Thiết lập tài khoản",
 
   "Fav": "Yêu thích",
@@ -227,9 +227,9 @@
   "ViewYourInfo": "Hiển thị thông tin cá nhân",
   "Deactivate": "Vô hiệu hoá",
   "DeactivateAcc": "Vô hiệu hoá tài khoản",
-  "DeactivateWarning":"Bạn có chắc muốn vô hiệu hoá tài khoản của mình ?",
+  "DeactivateWarning": "Bạn có chắc muốn vô hiệu hoá tài khoản của mình ?",
 
-   "Unsaved": "Bạn vẫn chưa lưu",
+  "Unsaved": "Bạn vẫn chưa lưu",
   "UnsavedWarning": "Bạn có chắc muốn thoát huỷ các thay đổi của mình ?",
 
   "ProductAdded": "Thêm sản phẩm thành công!",
@@ -278,6 +278,7 @@
   "UnderDev": "Đang phát triển",
   "UnderDevContent": "Chức năng này đang được phát triển",
   "BackToHome": "Quay về trang chủ",
+  "Featured": "Nổi bật",
 
   "AboutHelmetDes": "Nơi tìm hiểu rõ hơn về team chúng tôi và động lực đằng sau Digirent",
   "AddProdDes": "Nơi các quản trị viên có thể thêm sản phẩm",
@@ -288,6 +289,7 @@
   "DefManagementDes": "Giao diện quản lí mặc định",
   "DefAdminsLayoutHelmetTitle": "Giao diện quản trị viên mặc định",
   "DefAdminsLAyoutHelmetDes": "Giao diện quản trị viên mặc định",
+  "DefManagementHelmetTitle": "Quản lí",
   "EmailSentHelmetTitle": "Gửi Email",
   "EmailSentHelmetDes": "Email thay đổi mật khẩu đã được gửi thành công",
   "ForgotPassHelmetTitle": "Quên mật khẩu",
@@ -316,8 +318,11 @@
   "UserEditHelmetTitle": "Chỉnh sửa người dùng",
   "UserEditHelmetDes": "Nơi người dùng có thể thay đổi thông tin của họ",
   "UserProfileHelmetTitle": "Trang cá nhân",
-  "UserProfileHelmetDes": "Hiển thị tất cả thông tin liên quan đến người dùng", 
+  "UserProfileHelmetDes": "Hiển thị tất cả thông tin liên quan đến người dùng",
   "UserViewInfoHelmetTitle": "Hiển thị thông tin người dùng",
-  "UserViewInfoHelmetDes": "Hiển thị thông tin người dùng"
-
+  "UserViewInfoHelmetDes": "Hiển thị thông tin người dùng",
+  "ProductManagement": "Quản lí sản phẩm",
+  "UserManagement": "Quản lí người dùng",
+  "TransactionManagement": "Quản lí giao dịch",
+  "InquiryManagement": "Quản lí khảo sát"
 }

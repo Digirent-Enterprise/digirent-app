@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/tabindex-no-positive */
 import { useDispatch, useSelector } from "react-redux";
 import React, { useEffect } from "react";
 import { useTranslation } from "react-i18next";
@@ -35,7 +36,7 @@ const UserTransactionHistory = () => {
         addPostfixTitle
         description={t("ViewAllOrderHis")}
       />
-      <UserTab />
+      <UserTab index={1} />
       <main
         className="max-w-2xl px-4 py-24 mx-auto sm:px-6 lg:max-w-7xl lg:px-8"
         aria-labelledby="transaction-history-heading"
@@ -64,7 +65,12 @@ const UserTransactionHistory = () => {
                   >
                     <div className="overflow-hidden bg-[#E5E7EB] rounded-md aspect-w-1 aspect-h-1 group-hover:opacity-75">
                       <img
-                        src=""
+                        loading="lazy"
+                        src={
+                          transaction.productId.images
+                            ? transaction.productId.images[0]
+                            : ""
+                        }
                         alt="product"
                         className="object-cover object-center"
                       />
@@ -83,9 +89,7 @@ const UserTransactionHistory = () => {
                           </span>
                         </div>
                       ) : transaction.status === "pending" ? (
-                        <span className="text-[#4F46E5]">
-                          Waiting for shipping
-                        </span>
+                        <span className="text-[#4F46E5]">Pending</span>
                       ) : transaction.status === "paid" ? (
                         <span className="text-[#14B8A6]">Paid</span>
                       ) : null}
@@ -98,6 +102,7 @@ const UserTransactionHistory = () => {
           <div className="flex justify-center text-5xl font-bold text-center">
             <div className="mb-10">
               <img
+                loading="lazy"
                 src={defaultTransaction}
                 alt="transaction"
                 className="w-100 h-100"

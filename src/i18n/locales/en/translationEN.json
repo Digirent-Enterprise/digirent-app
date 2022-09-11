@@ -19,7 +19,7 @@
   "Admin": "Admin",
   "Ascending": "Ascending",
   "Descending": "Descending",
-  
+
   "featuredProduct": "Featured Products",
 
   "getStarted": "Get Started",
@@ -123,7 +123,7 @@
   "ShipUpdt": "Shipping updates",
   "Status": "Status",
   "Processing": "Processing",
-  "WaitingForShip": "Waiting for shipping",
+  "WaitingForShip": "Pending",
   "Shipped": "Shipped",
   "Paid": "Paid",
   "PaymentInfo": "Payment information",
@@ -185,7 +185,7 @@
   "Sort": "Sort by:",
   "ResetSort": "Reset Sorting",
   "ExportCSV": "Export CSV",
-  
+
   "AccountSetting": "Account Settings",
 
   "Fav": "Favorite",
@@ -227,8 +227,8 @@
   "ViewYourInfo": "View your information",
   "Deactivate": "Deactivate",
   "DeactivateAcc": "Deactivate account",
-  "DeactivateWarning":"Are you sure you want to deactivate your account ?",
-  
+  "DeactivateWarning": "Are you sure you want to deactivate your account ?",
+
   "Unsaved": "You have unsaved changes",
   "UnsavedWarning": "Are you sure you want to leave ?",
 
@@ -278,7 +278,8 @@
   "UnderDev": "Under Development",
   "UnderDevContent": "This feature is still being in development",
   "BackToHome": "Back to Homepage",
-  
+  "Featured": "Featured",
+
   "AboutHelmetDes": "An about page to discover our motivation and meet our team.",
   "AddProdDes": "Where admins add more products",
   "ChatPageHelmetTitle": "Chat page",
@@ -316,7 +317,11 @@
   "UserEditHelmetTitle": "User edit",
   "UserEditHelmetDes": "Where users can edit their information",
   "UserProfileHelmetTitle": "User profile",
-  "UserProfileHelmetDes": "Display all users' relevant information", 
+  "UserProfileHelmetDes": "Display all users' relevant information",
   "UserViewInfoHelmetTitle": "User view info",
-  "UserViewInfoHelmetDes": "View user's info"
+  "UserViewInfoHelmetDes": "View user's info",
+  "ProductManagement": "Product management",
+  "UserManagement": "User management",
+  "TransactionManagement": "Transaction management",
+  "InquiryManagement": "Customer Inquiry management"
 }

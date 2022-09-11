@@ -15,6 +15,7 @@ import dayjs from "dayjs";
 import { setTransaction } from "../../../../store/actions/transaction.action";
 import { getCurrentUserSelector } from "../../../../store/selectors/user.selector";
 import { IProduct } from "../../../../store/types/product.types";
+import { MILLISECONDS_PER_DAY } from "../../../../utils/constants/datetime.constants";
 
 interface BookingBoxProps {
   price: number;
@@ -48,8 +49,8 @@ const BookingBox: React.FC<BookingBoxProps> = ({
         status: "pending",
         latePenalty: 0,
         currency: "$",
-        from: startDate,
-        to: endDate,
+        from: new Date(startDate?.setDate(startDate.getDate() + 1) as number),
+        to: new Date(endDate?.setDate(endDate.getDate() + 1) as number),
       }),
     );
     navigate(`/checkout/${productData._id}`);
@@ -69,8 +70,8 @@ const BookingBox: React.FC<BookingBoxProps> = ({
           ? Math.abs(startDate.getTime() - endDate.getTime())
           : null;
       const numDateDiff =
-        diff / 1000 / 60 / 60 / 24 >= 1
-          ? Math.ceil(diff / 1000 / 60 / 60 / 24)
+        diff / MILLISECONDS_PER_DAY >= 1
+          ? Math.ceil(diff / MILLISECONDS_PER_DAY)
           : 1;
       setTotalPrice(price * numDateDiff);
     }

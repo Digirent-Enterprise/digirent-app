@@ -35,7 +35,7 @@ const PaymentSuccess = () => {
   };
 
   const fetchIntent = async () => {
-    const response = await customAxios().get("payment-intent", {
+    const response = await customAxios().get("intent/payment-intent", {
       params: { paymentIntent },
     });
     if (response && response.data) {
@@ -65,6 +65,7 @@ const PaymentSuccess = () => {
     <main className="relative lg:min-h-full lg:ml-32">
       <div className="h-80 overflow-hidden lg:absolute lg:w-1/2 lg:h-full lg:pr-4 xl:pr-12">
         <img
+          loading="lazy"
           src="https://images.unsplash.com/photo-1491933382434-500287f9b54b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1364&q=80"
           className="h-full w-full object-center object-cover"
           alt="checkout"
@@ -90,6 +91,7 @@ const PaymentSuccess = () => {
             <ul className="mt-6 text-sm font-medium text-gray-500 border-t border-gray-200 divide-y divide-gray-200">
               <li key={newTrans._id} className="flex py-6 space-x-6">
                 <img
+                  loading="lazy"
                   src={newTrans.productId.images[0]}
                   alt="checkout-transaction"
                   className="flex-none w-24 h-24 bg-gray-100 rounded-md object-center object-cover"

@@ -18,6 +18,7 @@ const TechnologyCard = ({
   return (
     <div className="p-6">
       <img
+        loading="lazy"
         className="object-cover object-center w-full mb-8 duration-500 ease-in scale-100 lg:h-48 md:h-36 rounded-xl hover:scale-125"
         src={imageUrl}
         alt={alt}

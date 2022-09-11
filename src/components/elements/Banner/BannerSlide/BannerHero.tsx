@@ -17,7 +17,7 @@ const BannerHero = () => {
           <div className="flex flex-wrap justify-center gap-4 mt-8">
             <a
               className="block w-full px-12 py-3 text-sm font-medium text-white bg-blue-200 border border-blue-200 rounded sm:w-auto active:text-opacity-75 hover:bg-transparent hover:text-white focus:outline-none focus:ring"
-              href="/login"
+              href="/products"
             >
               {t("getStarted")}
             </a>

@@ -6,7 +6,6 @@ import {
   Spinner,
   CTA,
   CategoryCard,
-  FeatureProduct,
   Testimonial,
   NewProduct,
   ProductProgressBar,
@@ -23,6 +22,7 @@ import {
   FAQ,
   Partner,
   Search,
+  Chatbox,
 } from "./elements";
 import {
   AuthFormGrid,
@@ -40,6 +40,9 @@ import {
   CategoryPercentage,
   RevenueByMonth,
   TransactionStatus,
+  SalesByMonth,
+  CategoryRevenue,
+  UserStatus,
 } from "./modules";
 import {
   NavBar,
@@ -69,7 +72,6 @@ export {
   Testimonial,
   CustomBreadcrumb,
   Banner,
-  FeatureProduct,
   ProductProgressBar,
   NewProduct,
   CustomTooltip,
@@ -110,4 +112,8 @@ export {
   CategoryPercentage,
   RevenueByMonth,
   TransactionStatus,
+  SalesByMonth,
+  CategoryRevenue,
+  UserStatus,
+  Chatbox,
 };

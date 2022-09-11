@@ -1,6 +1,7 @@
 import React, { useMemo, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
+import { useTranslation } from "react-i18next";
 import { getAllProductsSelector } from "../../../store/selectors/product.selector";
 import { getProducts } from "../../../store/actions/product.action";
 import DefaultManagement from "./DefaultManagement";
@@ -8,6 +9,7 @@ import DefaultManagement from "./DefaultManagement";
 import { ProductColumns } from "./Columns";
 
 const ProductManagement = () => {
+  const { t } = useTranslation();
   const dispatch = useDispatch();
 
   const productFetchData = useSelector(getAllProductsSelector);
@@ -31,7 +33,7 @@ const ProductManagement = () => {
 
   return (
     <DefaultManagement
-      title="Product Management"
+      title={t("ProductManagement")}
       filename="Products.csv"
       headers={headers}
       columnProps={productColumns}

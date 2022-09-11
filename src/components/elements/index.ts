@@ -2,7 +2,6 @@ import Banner from "./Banner/Banner";
 import CustomBreadcrumb from "./Breadcrumb/CustomBreadcrumb";
 import CategoryCard from "./Category/CategoryCard/CategoryCard";
 import CTA from "./CTA/CTA";
-import FeatureProduct from "./ProductSection/FeatureProduct/FeatureProduct";
 import Spinner from "./Spinner/Spinner";
 import Testimonial from "./Testimonial/Testimonial";
 import CustomTooltip from "./Tooltip/CustomTooltip";
@@ -28,6 +27,7 @@ import StripePayment from "./Stripe/StripePayment";
 import FAQ from "./FAQ/FAQ";
 import Partner from "./Partner/Partner";
 import Search from "./CTA/Search";
+import Chatbox from "./ChatPopUp/ChatBox";
 
 export {
   CustomBreadcrumb,
@@ -47,7 +47,6 @@ export {
   Teams,
   Technology,
   CategoryCard,
-  FeatureProduct,
   ProductProgressBar,
   Testimonial,
   NewProduct,
@@ -60,4 +59,5 @@ export {
   FAQ,
   Partner,
   Search,
+  Chatbox,
 };

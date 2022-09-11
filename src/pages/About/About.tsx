@@ -4,7 +4,7 @@ import Helmet from "../../Helmet";
 import DefaultLayout from "../DefaultLayout";
 
 const About = () => {
-  const {t} = useTranslation();
+  const { t } = useTranslation();
   return (
     <DefaultLayout>
       <Helmet

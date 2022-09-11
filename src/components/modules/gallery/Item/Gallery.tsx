@@ -86,7 +86,7 @@ const Gallery = ({
       <div className="w-4/5 gap-2 lg:flex h-auto max-h-[500px]">
         <div className="relative flex items-center lg:w-2/4">
           <img
-            className="w-full h-full lg:rounded-l-2xl shadow-[0px_0px_5px_2px_rgba(0,0,0,0.1)]"
+            className="w-full h-full object-scale-down lg:rounded-l-2xl shadow-[0px_0px_5px_2px_rgba(0,0,0,0.1)]"
             src={firstImages}
             alt="firstImage"
           />
@@ -97,14 +97,14 @@ const Gallery = ({
         <div className="w-1/4 hidden lg:flex lg:flex-col gap-2">
           <div className="h-3/6">
             <img
-              className="w-full h-full shadow-[0px_0px_5px_2px_rgba(0,0,0,0.1)]"
+              className="w-full h-full object-scale-down shadow-[0px_0px_5px_2px_rgba(0,0,0,0.1)]"
               src={secondImages}
               alt="secondImage"
             />
           </div>
           <div className="h-3/6">
             <img
-              className="w-full h-full shadow-[0px_0px_5px_2px_rgba(0,0,0,0.1)]"
+              className="w-full h-full object-scale-down shadow-[0px_0px_5px_2px_rgba(0,0,0,0.1)]"
               src={thirdImages}
               alt="thirdImage"
             />
@@ -113,14 +113,14 @@ const Gallery = ({
         <div className="w-1/4 hidden lg:flex lg:flex-col gap-2">
           <div className="h-3/6 rounded-tr-2xl">
             <img
-              className="w-full h-full rounded-tr-2xl shadow-[0px_0px_5px_2px_rgba(0,0,0,0.1)]"
+              className="w-full h-full object-scale-down rounded-tr-2xl shadow-[0px_0px_5px_2px_rgba(0,0,0,0.1)]"
               src={fourthImages}
               alt="fourthImage"
             />
           </div>
           <div className="relative flex h-3/6 w-full rounded-br-2xl">
             <img
-              className="w-full h-full rounded-br-2xl shadow-[0px_0px_5px_2px_rgba(0,0,0,0.1)]"
+              className="w-full h-full object-scale-down rounded-br-2xl shadow-[0px_0px_5px_2px_rgba(0,0,0,0.1)]"
               src={fifthImages}
               alt="fifthImage"
             />

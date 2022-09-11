@@ -4,7 +4,7 @@ import CategoryCard from "./CategoryCard";
 
 const CategoryCardLayout = ({ categories }: any) => {
   return (
-    <div className="max-w-screen-xl px-4 py-16 mx-auto sm:px-6 lg:px-8">
+    <div className="max-w-screen-xl mx-auto flex justify-center px-4 py-16 sm:px-6 lg:px-8">
       <div className="grid grid-cols-2 mt-8 lg:grid-cols-4 gap-x-4 gap-y-8">
         {categories &&
           categories.map((cate: ICategory) => {

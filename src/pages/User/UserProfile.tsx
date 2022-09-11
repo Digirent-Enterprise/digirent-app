@@ -28,7 +28,7 @@ const UserProfile = () => {
         description={t("UserProfileHelmetDes")}
       />
       <Box>
-        <UserTab />
+        <UserTab index={0} />
 
         <Center py={6}>
           <Box

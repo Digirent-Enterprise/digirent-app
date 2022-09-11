@@ -1,20 +1,19 @@
 import { FC } from "react";
-import { useSelector } from "react-redux";
-import { getCurrentUserSelector } from "../../../store/selectors/user.selector";
 import { IMAGES } from "../../../utils/constants/image.constant";
 
 interface IAvatarFromIdProps {
   // uid: string;
   size?: number;
+  src: string;
 }
 
-const AvatarFromId: FC<IAvatarFromIdProps> = ({ size = 40 }) => {
-  const currentUser = useSelector(getCurrentUserSelector);
+const AvatarFromId: FC<IAvatarFromIdProps> = ({ size = 40, src }) => {
   return (
     <img
+      loading="lazy"
       className="object-cover rounded-full"
       style={{ width: size, height: size }}
-      src={currentUser.avatar ? currentUser.avatar : IMAGES.defaultAvatar}
+      src={src ? src : IMAGES.defaultAvatar}
       alt="user avatar"
     />
   );

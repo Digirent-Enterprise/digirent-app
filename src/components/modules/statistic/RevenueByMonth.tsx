@@ -1,35 +1,54 @@
-import React from "react";
-import LineChart from "./base/LineChart";
-
-const getDates = (startDate: any, endDate: any) => {
-  let dates: any = [];
-  // to avoid modifying the original date
-  const theDate = new Date(startDate);
-  while (theDate < endDate) {
-    dates = [...dates, new Date(theDate)];
-    theDate.setDate(theDate.getDate() + 1);
-  }
-  return dates;
-};
+import React, { useEffect, useState } from "react";
+import ContainerCard from "./base/ContainerCard";
+import { customAxios } from "../../../http-common";
+import LineMixedBarChart from "./base/LineMixedBarChart";
+import { COLOR_PALETTE } from "../../../utils/constants/chart.constants";
 
 const RevenueByMonth = () => {
-  const today = new Date();
-  const thirtyDaysPriorDate = new Date(today).setDate(today.getDate() - 7);
+  const [barChartData, setBarChartData] = useState([]) as any;
+  const [lineChartData, setLineChartData] = useState([]) as any;
+  const [labels, setLabels] = useState([]) as any;
 
-  const daysArray = getDates(thirtyDaysPriorDate, today).map((day: any) =>
-    day.toISOString().substring(5, 10).replaceAll("-", "/"),
-  );
+  useEffect(() => {
+    customAxios()
+      .get("statistic/monthly-status")
+      .then((res) => {
+        setLabels(Object.keys(res.data));
+        const accumulatedRevenue = Object.values(res.data).map(
+          // eslint-disable-next-line no-return-assign
+          (
+            (sum) => (value: any) =>
+              // eslint-disable-next-line no-param-reassign
+              (sum += value)
+          )(0),
+        );
+        setBarChartData({
+          type: "bar" as const,
+          label: "Revenue By Date",
+          backgroundColor: COLOR_PALETTE,
+          data: Object.values(res.data),
+          borderColor: "white",
+          borderWidth: 2,
+        });
+        setLineChartData({
+          type: "line" as const,
+          label: "Revenue Running Sum",
+          borderColor: COLOR_PALETTE[4],
+          fill: true,
+          data: accumulatedRevenue,
+        });
+      });
+  }, []);
+
   return (
-    <LineChart
-      backgroundColor="red"
-      title="Revenue By Month"
-      labels={daysArray}
-      dataPoints={[34.5, 36.2, 37, 36.7, 35.9, 36.5, 35]}
-      mean={
-        [34.5, 36.2, 37, 36.7, 35.9, 36.5, 35].reduce(
-          (cur, next) => cur + next,
-          0,
-        ) / 7
+    <ContainerCard
+      chart={
+        <LineMixedBarChart
+          title="Revenue by date in the last 30 days"
+          labels={labels}
+          lineData={lineChartData}
+          barData={barChartData}
+        />
       }
     />
   );
