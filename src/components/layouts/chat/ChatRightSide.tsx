@@ -11,6 +11,7 @@ type MessageProps = {
   }[];
 }[];
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const ChatRightSide = ({ users }: { users: MessageProps }) => {
   return (
     <div className="hidden lg:col-span-2 lg:block">
