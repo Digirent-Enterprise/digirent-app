@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
+import React from "react";
 import { useNavigate } from "react-router-dom";
 import Rating from "../Rating/Rating";
 
@@ -18,11 +17,7 @@ const ProductCard = ({
   rentalCostType,
   id,
 }: ProductCardProps) => {
-  const [like, setLike] = useState(false);
   const navigate = useNavigate();
-  const handleAddToFavourite = () => {
-    setLike(!like);
-  };
 
   const productShadow = "shadow-[0px_0px_5px_2px_rgba(0,0,0,0.15)]";
 
@@ -30,26 +25,15 @@ const ProductCard = ({
     <div
       aria-hidden="true"
       onClick={() => navigate(`/product/${id}`, { replace: true })}
-      className={`${productShadow} flex-col col-span-1 w-full mx-5 my-5 overflow-hidden transition-transform rounded-lg
+      className={`${productShadow} flex flex-col items-center col-span-1 w-full my-5 overflow-hidden transition-transform rounded-lg
  cursor-pointer card aspect-w-1 aspect-h-1 hover:scale-105 xl:aspect-w-7 xl:aspect-h-8`}
     >
-      <button
-        type="submit"
-        className="relative right-0 flex justify-end float-right p-3 text-black bg-white bottom-52"
-        onClick={handleAddToFavourite}
-      >
-        {!like ? (
-          <AiOutlineHeart size="30" fill="red" />
-        ) : (
-          <AiFillHeart size="30" fill="red" />
-        )}
-      </button>
       <div className="p-10 card-content">
         <img
           loading="lazy"
           src={image}
           alt="pictures"
-          className="sm:object-fill sm:w-64 sm:h-52"
+          className="sm:object-scale-down lg:h-36 lg:w-auto"
         />
         <p className="text-lg font-bold uppercase text-transform:">{name}</p>
         <h4 className="font-bold">

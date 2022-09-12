@@ -3,7 +3,6 @@ import { useMemo } from "react";
 import { useSelector } from "react-redux";
 import {
   DeleteProductModal,
-  DeleteTransactionModal,
   DeleteUserModal,
   EditProductModal,
   EditTransactionModal,
@@ -83,13 +82,6 @@ export const ClickDelete = ({ pageType, rowData }: HandleProps) => {
       )}
       {pageType === "product" && (
         <DeleteProductModal
-          isOpen={isDeleteOpen}
-          onClose={onDeleteClose}
-          rowData={rowData.values}
-        />
-      )}
-      {pageType === "transaction" && (
-        <DeleteTransactionModal
           isOpen={isDeleteOpen}
           onClose={onDeleteClose}
           rowData={rowData.values}

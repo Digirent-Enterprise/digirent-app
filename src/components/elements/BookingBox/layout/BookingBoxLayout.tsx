@@ -50,23 +50,23 @@ const BookingBoxLayout = ({ productData }: any) => {
 
   return (
     <div>
-      <div className="px-16 py-8">
+      <div className="px-4 sm:px-16 py-8">
         <div className="font-extrabold text-2xl pb-4">{t("Description")}</div>
-        <div className="text-justify w-full h-32  overflow-y-auto pr-4 pl-1 border border-gray rounded-md">
+        <div className="text-justify w-full h-48 overflow-y-auto px-8 py-4 shadow-md rounded-md">
           {productData.description}
         </div>
       </div>
-      <div className="font-extrabold text-2xl pb-4 px-16 py-8">
+      <div className="font-extrabold text-2xl pb-4 px-4 sm:px-16 py-8">
         {t("RentalPeriod")}
       </div>
       <div className="">
-        <div className="grid grid-cols-1  md:grid-cols-2 md:flex md:justify-between px-16 py-8">
+        <div className="grid grid-cols-1  md:grid-cols-2 md:flex md:justify-between px-4 sm:px-16 py-8">
           <div className="col-span-1 min-w-[220px]">
-            <div className=" text-lg">
+            <div className="flex align-center justify-center text-lg">
               {formatDate(startDate)} - {formatDate(endDate)}
             </div>
 
-            <div className="">
+            <div className="flex align-center justify-center">
               <DatePicker
                 wrapperClassName="date-picker"
                 onChange={onChange}
@@ -79,7 +79,7 @@ const BookingBoxLayout = ({ productData }: any) => {
               />
             </div>
           </div>
-          <div className="col-span-1 py-8 md:py-4">
+          <div className="col-span-1 py-8 md:py-4 flex align-center justify-center">
             <BookingBox
               productData={productData}
               price={productData.rentalCost}

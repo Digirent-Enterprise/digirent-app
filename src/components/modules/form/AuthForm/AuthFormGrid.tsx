@@ -47,7 +47,7 @@ const AuthFormGrid: React.FC<ParentCompProps> = (props) => {
                     <span className="p-4 mb-1 text-black">or</span>
                     <hr className="w-full" />
                   </div>
-                <div className="flex flex-col items-center justify-between">
+                  <div className="flex flex-col items-center justify-between">
                     <Link to="/maintain">
                       <button
                         type="button"

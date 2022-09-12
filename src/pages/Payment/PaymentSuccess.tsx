@@ -94,7 +94,7 @@ const PaymentSuccess = () => {
                   loading="lazy"
                   src={newTrans.productId.images[0]}
                   alt="checkout-transaction"
-                  className="flex-none w-24 h-24 bg-gray-100 rounded-md object-center object-cover"
+                  className="flex-none w-24 h-24 bg-gray-100 rounded-md object-center object-scale-down"
                 />
                 <div className="flex-auto space-y-1">
                   <h3 className="text-gray">
