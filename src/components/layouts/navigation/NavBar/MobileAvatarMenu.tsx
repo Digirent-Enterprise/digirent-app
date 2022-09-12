@@ -9,7 +9,7 @@ import { customAxios } from "../../../../http-common";
 import { clearUserSession } from "../../../../helpers/authHelpers";
 import { deleteUserSession } from "../../../../store/actions/user.action";
 
-export const MobileAvaterMenu = () => {
+const MobileAvatarMenu = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
   const currentUser = useSelector(getCurrentUserSelector);
@@ -51,4 +51,4 @@ export const MobileAvaterMenu = () => {
   );
 };
 
-export default MobileAvaterMenu;
+export default MobileAvatarMenu;

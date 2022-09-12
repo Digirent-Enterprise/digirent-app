@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 import Logo from "./Logo";
 import NavButton from "./NavButton";
 import AvatarMenu from "./AvatarMenu";
-import MobileAvaterMenu from "./MobileAvaterMenu";
+import MobileAvatarMenu from "./MobileAvatarMenu";
 import { getCurrentUserSelector } from "../../../../store/selectors/user.selector";
 
 const NavBar = () => {
@@ -118,7 +118,7 @@ const NavBar = () => {
               {!currentUser.email ? (
                 <NavButton navItem={t("Login")} directUrl="/login" />
               ) : (
-                <MobileAvaterMenu />
+                <MobileAvatarMenu />
               )}
             </div>
           </ul>
