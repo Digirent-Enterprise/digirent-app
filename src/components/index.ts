@@ -21,7 +21,6 @@ import {
   FAQ,
   Partner,
   Search,
-  Chatbox,
 } from "./elements";
 import {
   AuthFormGrid,
