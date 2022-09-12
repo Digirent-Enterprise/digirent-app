@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useDispatch } from "react-redux";
 import { useForm } from "react-hook-form";
@@ -18,6 +18,9 @@ import {
   FormErrorMessage,
 } from "@chakra-ui/react";
 // import { customAxios } from "../../http-common";
+import axios from "axios";
+import qs from "qs";
+import { toast } from "react-toastify";
 import { AuthFormGrid, Transition } from "../../components";
 import { saveUserInfo } from "../../store/actions/user.action";
 import Helmet from "../../Helmet";
@@ -46,35 +49,32 @@ const ForgotPasswordPage = () => {
 
   const [email, setEmail] = useState("");
 
-  // useEffect(() => {
-  //   if (email) {
-  //     dispatch(saveEmail(email));
-  //   }
-  // }, []);
+  useEffect(() => {
+    if (email) {
+      dispatch(saveUserInfo(email));
+    }
+  }, []);
   const navigate = useNavigate();
 
-  const onSubmit = (data: IFormInputs) => {
-    dispatch(saveUserInfo(data.email));
-    navigate("/email-sent");
-    // axios("application/x-www-form-urlencoded")
-    //   .post("auth/login", data)
-    //   .then((res) => {s
-    //     if (res.status === 201) {
-    //       <StatusToaster
-    //         childCompToasterTitle="Welcome back!"
-    //         childCompStatusColor="success"
-    //         childCompToasterDescription="You have successfully logged in!"
-    //       />;
-    //       storeUserSession(res.data.accessToken);
-    //       navigate("/");
-    //     } else {
-    //       <StatusToaster
-    //         childCompStatusColor="warning"
-    //         childCompToasterTitle={`Fail to log you in, error ${res.status}.`}
-    //         childCompToasterDescription={`${res.statusText}`}
-    //       />;
-    //     }
-    //   });
+  const onSubmit = async (data: IFormInputs) => {
+    await axios
+      .post(
+        "https://backend-digirent-rmit-app.herokuapp.com/v1/api/auth/forgot-password-request",
+        qs.stringify({
+          email: data.email,
+        }),
+      )
+      .then(() => {
+        toast.success("We are sending your request. Let's wait...", {
+          theme: "dark",
+        });
+        setTimeout(() => {
+          navigate("/email-sent");
+        }, 3000);
+      })
+      .catch(() => {
+        toast.error("Invalid Token", { theme: "dark" });
+      });
   };
 
   const handleSaveEmail = (data: any) => {

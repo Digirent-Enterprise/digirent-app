@@ -20,6 +20,11 @@ import {
   PopoverBody,
   PopoverArrow,
   PopoverCloseButton,
+  Table,
+  Tbody,
+  Td,
+  Tr,
+  TableContainer,
 } from "@chakra-ui/react";
 
 interface Props {
@@ -71,7 +76,7 @@ const FilterPanel: React.FC<Props> = ({
           className="grid grid-cols-2 md:grid-cols-1"
         >
 
-          <p className="pt-2 pr-">Categories & filter</p>
+          <p className="pt-2 pr-2">Categories & filter</p>
           <Hide below="md">
             {categories.map((category: any) => (
               <CategoryCheckbox
@@ -142,13 +147,23 @@ const FilterPanel: React.FC<Props> = ({
                 <PopoverCloseButton />
                 <PopoverHeader>Select anything you want!</PopoverHeader>
                 <PopoverBody>
-                  {categories.map((category: any) => (
-                    <CategoryCheckbox
-                      key={category.id}
-                      category={category}
-                      checkedCategory={changeChecked}
-                    />
-                  ))}
+                  <TableContainer>
+                    <Table variant="simple" size="sm">
+                      <Tbody>
+                        {categories.map((category: any) => (
+                          <Tr>
+                            <Td>
+                              <CategoryCheckbox
+                                key={category.id}
+                                category={category}
+                                checkedCategory={changeChecked}
+                              />
+                            </Td>
+                          </Tr>
+                        ))}
+                      </Tbody>
+                    </Table>
+                  </TableContainer>
 
                   {/* RentalCost filter */}
                   <FormLabel>Rental Cost</FormLabel>
@@ -204,7 +219,6 @@ const FilterPanel: React.FC<Props> = ({
               </PopoverContent>
             </Popover>
           </Show>
-
         </FormControl>
         <FormControl> </FormControl>
       </Box>

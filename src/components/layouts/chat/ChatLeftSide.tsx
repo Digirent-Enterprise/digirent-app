@@ -2,8 +2,17 @@ import { AiOutlineSearch } from "react-icons/ai";
 import { IconContext } from "react-icons";
 
 import AvatarFromId from "./AvatarFromId";
+import { IUser } from "../../../store/types/user.types";
 
-const ChatLeftSide = () => {
+type MessageProps = {
+  from: IUser;
+  messages: {
+    from: IUser;
+    to: IUser;
+    content: string;
+  }[];
+}[];
+const ChatLeftSide = ({ users }: { users: MessageProps }) => {
   return (
     <div className="border-r border-gray-300 lg:col-span-1">
       <div className="mx-3 my-3">
@@ -31,57 +40,29 @@ const ChatLeftSide = () => {
       <ul className="overflow-auto h-[32rem]">
         <h2 className="my-2 mb-2 ml-2 text-lg text-gray-600">Chats</h2>
         <li>
-          <a
-            href="/"
-            className="flex items-center px-3 py-2 text-sm transition duration-150 ease-in-out border-b border-gray-300 cursor-pointer hover:bg-gray-100 focus:outline-none"
-          >
-            <AvatarFromId />
-            <div className="w-full pb-2">
-              <div className="flex justify-between">
-                <span className="block ml-2 font-semibold text-gray-600">
-                  John Doe
-                </span>
+          {users.map((user) => (
+            <a
+              href="/"
+              className="flex items-center px-3 py-2 text-sm transition duration-150 ease-in-out border-b border-gray-300 cursor-pointer hover:bg-gray-100 focus:outline-none"
+            >
+              <AvatarFromId src={user.from.profileImage} />
+              <div className="w-full pb-2">
+                <div className="flex justify-between">
+                  <span className="block ml-2 font-semibold text-gray-600">
+                    {user.from.name}
+                  </span>
+                  <span className="block ml-2 text-sm text-gray-600">
+                    25 minutes
+                  </span>
+                </div>
                 <span className="block ml-2 text-sm text-gray-600">
-                  25 minutes
+                  {user.messages &&
+                    user.messages.length &&
+                    user.messages[user.messages.length - 1].content}
                 </span>
               </div>
-              <span className="block ml-2 text-sm text-gray-600">bye</span>
-            </div>
-          </a>
-          <a
-            href="/"
-            className="flex items-center px-3 py-2 text-sm transition duration-150 ease-in-out bg-gray-100 border-b border-gray-300 cursor-pointer focus:outline-none"
-          >
-            <AvatarFromId />
-            <div className="w-full pb-2">
-              <div className="flex justify-between">
-                <span className="block ml-2 font-semibold text-gray-600">
-                  John Doe
-                </span>
-                <span className="block ml-2 text-sm text-gray-600">
-                  25 minutes
-                </span>
-              </div>
-              <span className="block ml-2 text-sm text-gray-600">bye</span>
-            </div>
-          </a>
-          <a
-            href="/"
-            className="flex items-center px-3 py-2 text-sm transition duration-150 ease-in-out border-b border-gray-300 cursor-pointer hover:bg-gray-100 focus:outline-none"
-          >
-            <AvatarFromId />
-            <div className="w-full pb-2">
-              <div className="flex justify-between">
-                <span className="block ml-2 font-semibold text-gray-600">
-                  John Doe
-                </span>
-                <span className="block ml-2 text-sm text-gray-600">
-                  25 minutes
-                </span>
-              </div>
-              <span className="block ml-2 text-sm text-gray-600">bye</span>
-            </div>
-          </a>
+            </a>
+          ))}
         </li>
       </ul>
     </div>

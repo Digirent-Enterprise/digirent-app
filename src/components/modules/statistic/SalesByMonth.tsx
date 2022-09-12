@@ -1,5 +1,6 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { customAxios } from "../../../http-common";
+import { COLOR_PALETTE } from "../../../utils/constants/chart.constants";
 import { BarChart } from "./base/BarChart";
 import ContainerCard from "./base/ContainerCard";
 
@@ -12,25 +13,34 @@ const SalesByMonth = () => {
       .get("statistic/yearly-revenue")
       .then((res: any) => {
         const sorted = Object.keys(res.data)
-          .sort()
-          .reduce((accumulator: any, key: any) => {
-            accumulator[key] = res.data[key];
-
-            return accumulator;
-          }, {});
-        console.log("sorted)", sorted);
-
-        console.log("Object.keys(sorted)", Object.keys(sorted));
-        console.log("Object.values(sorted)", Object.values(sorted));
+          .map((item) => {
+            return {
+              month: new Date(
+                parseInt(item.split("/")[1], 10),
+                parseInt(item.split("/")[0], 10) - 1,
+              ),
+              value: res.data[item],
+            };
+          })
+          .sort(
+            (cur: any, next: any) => cur.month.getTime() - next.month.getTime(),
+          );
 
         setChartData({
           label: "Revenue",
           fill: true,
           barThickness: "flex",
-          backgroundColor: "pink",
-          data: Object.values(sorted),
+          backgroundColor: COLOR_PALETTE[0],
+          data: sorted.map((item) => item.value),
         });
-        setLabels(Object.keys(sorted));
+        setLabels(
+          sorted.map((item) =>
+            item.month.toLocaleDateString("en-US", {
+              year: "numeric",
+              month: "numeric",
+            }),
+          ),
+        );
       });
   }, []);
 

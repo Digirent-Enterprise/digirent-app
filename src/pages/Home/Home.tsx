@@ -1,4 +1,4 @@
-  import { useTranslation } from "react-i18next";
+import { useTranslation } from "react-i18next";
 import {
   Banner,
   CTA,
@@ -9,6 +9,7 @@ import {
   FAQ,
   Partner,
   Search,
+  Chatbox,
 } from "../../components";
 
 import Helmet from "../../Helmet";
@@ -23,6 +24,7 @@ const Home = () => {
         addPostfixTitle
         description={t("HomeHelmetDes")}
       />
+      <Chatbox />
       <Banner />
       <CategoryCardListing />
       <Search />
