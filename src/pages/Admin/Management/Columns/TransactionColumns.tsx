@@ -1,7 +1,7 @@
 import { Column } from "react-table";
 import { Badge } from "@chakra-ui/react";
 
-import { ClickDelete, ClickEdit } from "../HandleActionClick";
+import { ClickEdit } from "../HandleActionClick";
 
 export const TransactionColumns: Array<Column> = [
   {
@@ -57,7 +57,6 @@ export const TransactionColumns: Array<Column> = [
     Cell: ({ row }: any) => (
       <div>
         <ClickEdit pageType="transaction" rowData={row} />
-        <ClickDelete pageType="transaction" rowData={row} />
       </div>
     ),
   },

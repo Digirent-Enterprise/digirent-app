@@ -1,5 +1,3 @@
-import ChatLeftSide from "./chat/ChatLeftSide";
-import ChatRightSide from "./chat/ChatRightSide";
 import AdminTab from "./navigation/AdminTab/AdminTab";
 import UserTab from "./navigation/UserTab/UserTab";
 import NavBar from "./navigation/NavBar/NavBar";
@@ -19,8 +17,6 @@ export {
   UserTab,
   SearchHeaderSection,
   SearchResultsSection,
-  ChatLeftSide,
-  ChatRightSide,
   ProductCardListing,
   ProductListingCategory,
   OrderSummaryContent,

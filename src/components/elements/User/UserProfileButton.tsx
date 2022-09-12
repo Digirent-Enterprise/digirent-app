@@ -17,7 +17,7 @@ const UserProfileButton = ({
   return (
     <form action="">
       <Link to={directUrl}>
-        <div className="flex">
+        <div className="flex align-center justify-center">
           <IconContext.Provider
             value={{
               style: { verticalAlign: "middle", color: "#4169E1" },
@@ -27,7 +27,7 @@ const UserProfileButton = ({
           >
             <div>{leftIcon}</div>
           </IconContext.Provider>
-          <Text color="#4169E1" className="mx-2 mb-10 text-lg">
+          <Text color="#4169E1" className=" mx-1 sm:mx-2 mb-10 text-lg">
             {userButtonItem}
           </Text>
         </div>
