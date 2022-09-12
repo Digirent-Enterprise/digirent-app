@@ -89,7 +89,7 @@ const StripeCheckoutForm = ({ transactionData }: any) => {
     const response = stripe.confirmPayment({
       elements,
       confirmParams: {
-        return_url: "http://localhost:3000/payment-success",
+        return_url: "https://digirent.dev/payment-success",
       },
     });
     setIsLoading(false);

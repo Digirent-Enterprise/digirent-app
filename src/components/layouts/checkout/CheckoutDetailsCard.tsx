@@ -18,7 +18,7 @@ const CheckoutDetailsCard = ({ transactionData }: any) => {
                       : productId.images[0]
                   }
                   alt="order"
-                  className="w-[40%] h-40 rounded-2xl border border-gray shadow-sm"
+                  className="w-[40%] h-40 object-scale-down rounded-2xl border border-gray shadow-sm"
                 />
                 <div className="container mx-auto w-[60%]">
                   <h2 className="text-xl">{productId.name}</h2>
