@@ -94,6 +94,7 @@ const StripeCheckoutForm = ({ transactionData }: any) => {
     });
     } catch (e) {
       console.log('error', e)
+      alert(JSON.stringify(e))
     }
     setIsLoading(false);
   };
