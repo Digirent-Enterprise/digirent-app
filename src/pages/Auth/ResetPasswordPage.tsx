@@ -11,17 +11,17 @@ import {
   FormErrorMessage,
   FormLabel,
   Input,
-  Stack, Toast,
+  Stack,
 } from "@chakra-ui/react";
 import { WarningTwoIcon } from "@chakra-ui/icons";
 // import { customAxios } from "../../http-common";
-import {useNavigate, useParams} from "react-router-dom";
-import { AuthFormGrid, Transition } from "../../components";
-import Helmet from "../../Helmet";
-import {useEffect, useState} from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
 import axios from "axios";
-import {toast} from "react-toastify";
+import { toast } from "react-toastify";
 import qs from "qs";
+import Helmet from "../../Helmet";
+import { AuthFormGrid, Transition } from "../../components";
 
 interface IFormInputs {
   pw1: string;
@@ -42,10 +42,11 @@ const schema = yup.object().shape({
 });
 
 const ResetPasswordPage = () => {
-  const {token} = useParams();
+  const { token } = useParams();
   const { t } = useTranslation();
   const navigate = useNavigate();
-  const [email ,setEmail] = useState('');
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [email, setEmail] = useState("");
   const {
     register,
     handleSubmit,
@@ -55,48 +56,67 @@ const ResetPasswordPage = () => {
     resolver: yupResolver(schema),
   });
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const onSubmit = async (data: IFormInputs) => {
-    await resetForgotPassword(data.pw2)
+  const verifyToken = async () => {
+    await axios
+      .post(
+        "https://backend-digirent-rmit-app.herokuapp.com/api/auth/verify-forgot-password-request",
+        {},
+        {
+          headers: {
+            authorization: `Bearer ${token}`,
+          },
+        },
+      )
+      .then((res) => {
+        toast.success(
+          "You have validated your account. Let's change your password",
+          { theme: "dark" },
+        );
+        setEmail(res.data.email);
+      })
+      .catch(() => {
+        toast.error("Invalid Token (Token wrong or expired)", {
+          theme: "dark",
+        });
+        navigate("/");
+      });
   };
 
-  const verifyToken = async () => {
-    await axios.post('https://backend-digirent-rmit-app.herokuapp.com/api/auth/verify-forgot-password-request', { }, {
-      headers: {
-        authorization: `Bearer ${token}`
-      }
-    }).then(res => {
-      toast.success("You have validated your account. Let's change your password")
-      setEmail(res.data.email)
-
-    }).catch(err => {
-      toast.error("Invalid Token (Token wrong or expired)")
-      navigate('/')
-    });
-  }
-
   const resetForgotPassword = async (pw2: string) => {
-    await axios.put('https://backend-digirent-rmit-app.herokuapp.com/v1/api/auth/reset-forgot-password', qs.stringify({
-      newPassword: pw2
-    }), {
-      headers: {
-        authorization: `Bearer ${token}`
-      }
-    }).then(res => {
-      toast.success("We are verifying your request. Let's wait...")
-      setTimeout(() => {
-        navigate("/reset-success");
-      }, 3000)
-    }).catch(err => {
-      toast.error("Invalid Token")
-    });
-  }
+    await axios
+      .put(
+        "https://backend-digirent-rmit-app.herokuapp.com/v1/api/auth/reset-forgot-password",
+        qs.stringify({
+          newPassword: pw2,
+        }),
+        {
+          headers: {
+            authorization: `Bearer ${token}`,
+          },
+        },
+      )
+      .then(() => {
+        toast.success("We are verifying your request. Let's wait...", {
+          theme: "dark",
+        });
+        setTimeout(() => {
+          navigate("/reset-success");
+        }, 3000);
+      })
+      .catch(() => {
+        toast.error("Invalid Token", { theme: "dark" });
+      });
+  };
+
+  const onSubmit = async (data: IFormInputs) => {
+    await resetForgotPassword(data.pw2);
+  };
 
   useEffect(() => {
     if (token) {
-      verifyToken()
+      verifyToken();
     }
-  }, [])
+  }, []);
 
   return (
     <Transition>
