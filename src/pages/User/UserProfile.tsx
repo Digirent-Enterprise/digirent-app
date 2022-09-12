@@ -43,7 +43,7 @@ const UserProfile = () => {
             <UserProfileAvatar />
             <UserProfileName userName={currentUser.name} />
             <UserProfileEmail userEmail={currentUser.email} />
-            <UserProfileAddress userAddress="Ho Chi Minh city" />
+            <UserProfileAddress userAddress={currentUser.location} />
             <Stack
               mt={8}
               direction="row"

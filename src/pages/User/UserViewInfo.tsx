@@ -105,7 +105,7 @@ const UserViewInfo = () => {
               _hover={{
                 bg: "#153289",
               }}
-              onClick={() => navigate("user/my-profile")}
+              onClick={() => navigate("/user/my-profile")}
             >
               Back To Profile
             </Button>

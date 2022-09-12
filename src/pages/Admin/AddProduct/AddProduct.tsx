@@ -76,7 +76,7 @@ const AddProduct = () => {
     fd.append("images", file);
     const { data } = await handleUploadFiles(file);
     return {
-      url: "http://localhost:8000/v1/api/product/upload-single-image",
+      url: "https://backend-digirent-rmit-app.herokuapp.com/v1/api/product/upload-single-image",
       body: fd,
       meta: { ...meta, url: data.url },
     };
