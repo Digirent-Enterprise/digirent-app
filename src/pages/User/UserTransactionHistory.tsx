@@ -60,10 +60,10 @@ const UserTransactionHistory = () => {
                   <div
                     key={transaction._id}
                     aria-hidden="true"
-                    className="relative cursor-pointer group"
+                    className="relative cursor-pointer group p-4 rounded-md shadow-lg"
                     onClick={() => navigate(`/transaction/${transaction._id}`)}
                   >
-                    <div className="overflow-hidden bg-[#E5E7EB] rounded-md aspect-w-1 aspect-h-1 group-hover:opacity-75">
+                    <div className="overflow-hidden rounded-md aspect-w-1 aspect-h-1 group-hover:opacity-75">
                       <img
                         loading="lazy"
                         src={
@@ -72,7 +72,7 @@ const UserTransactionHistory = () => {
                             : ""
                         }
                         alt="product"
-                        className="object-cover object-center"
+                        className="object-scale-down object-center"
                       />
                     </div>
                     <h3 className="mt-4 text-sm text-[#6B7280]">

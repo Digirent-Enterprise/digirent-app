@@ -4,12 +4,12 @@ const OurStory = () => {
   const { t } = useTranslation();
   return (
     <div className="relative w-full h-full px-6 py-32 bg-gray-800 sm:py-40 sm:px-12 lg:px-16">
-      <div className="absolute inset-0 overflow-hidden">
+      <div className="absolute inset-0 overflow-hidden w-full">
         <img
           loading="lazy"
           src="https://tailwindui.com/img/ecommerce-images/home-page-03-feature-section-full-width.jpg"
           alt="story"
-          className="object-cover object-center w-full h-full"
+          className="object-fill object-center w-full h-full"
         />
       </div>
       <div aria-hidden="true" className="absolute inset-0 bg-[#111827]/50" />

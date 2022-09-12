@@ -11,7 +11,6 @@ import {
   ResetPasswordPage,
   ForgotPasswordPage,
   ResetSuccessPage,
-  ChatViewPage,
   AdminHome,
   ProductManagement,
   UserManagement,
@@ -96,7 +95,7 @@ const AppRouter = () => {
         <Route path="product/:id" element={<ProductDetailsPage />} />
         {/* Payment */}
         <Route path="checkout/:id" element={<CheckoutPage />} />
-        <Route path="/payment-success" element={<PaymentSuccess />} />
+        <Route path="payment-success" element={<PaymentSuccess />} />
         {/* Users */}
         <Route
           path="user/my-profile"
@@ -217,19 +216,10 @@ const AppRouter = () => {
             </PrivateRoute>
           }
         />
-        {/* Chat */}
-        <Route
-          path="admin/chat"
-          element={
-            <PrivateRoute permission={AdminPermission}>
-              <ChatViewPage />
-            </PrivateRoute>
-          }
-        />
         {/* 404 Not Found Route */}
         <Route path="*" element={<NotFound />} />
         {/* Under development Route */}
-        <Route path="/under-development" element={<UnderDevelopmentPage />} />
+        <Route path="under-development" element={<UnderDevelopmentPage />} />
       </Routes>
     </AnimatePresence>
   );

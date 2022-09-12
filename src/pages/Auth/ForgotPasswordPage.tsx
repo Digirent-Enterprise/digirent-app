@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useDispatch } from "react-redux";
 import { useForm } from "react-hook-form";
@@ -18,12 +18,12 @@ import {
   FormErrorMessage,
 } from "@chakra-ui/react";
 // import { customAxios } from "../../http-common";
+import axios from "axios";
+import qs from "qs";
+import { toast } from "react-toastify";
 import { AuthFormGrid, Transition } from "../../components";
 import { saveUserInfo } from "../../store/actions/user.action";
 import Helmet from "../../Helmet";
-import axios from "axios";
-import qs from "qs";
-import {toast} from "react-toastify";
 
 interface IFormInputs {
   email: string;
@@ -49,24 +49,32 @@ const ForgotPasswordPage = () => {
 
   const [email, setEmail] = useState("");
 
-  // useEffect(() => {
-  //   if (email) {
-  //     dispatch(saveEmail(email));
-  //   }
-  // }, []);
+  useEffect(() => {
+    if (email) {
+      dispatch(saveUserInfo(email));
+    }
+  }, []);
   const navigate = useNavigate();
 
   const onSubmit = async (data: IFormInputs) => {
-    await axios.post('https://backend-digirent-rmit-app.herokuapp.com/v1/api/auth/forgot-password-request', qs.stringify({
-      email: data.email
-    })).then(res => {
-      toast.success("We are sending your request. Let's wait...")
-      setTimeout(() => {
-        navigate("/email-sent");
-      }, 3000)
-    }).catch(err => {
-      toast.error("Invalid Token")
-    });
+    await axios
+      .post(
+        "https://backend-digirent-rmit-app.herokuapp.com/v1/api/auth/forgot-password-request",
+        qs.stringify({
+          email: data.email,
+        }),
+      )
+      .then(() => {
+        toast.success("We are sending your request. Let's wait...", {
+          theme: "dark",
+        });
+        setTimeout(() => {
+          navigate("/email-sent");
+        }, 3000);
+      })
+      .catch(() => {
+        toast.error("Invalid Token", { theme: "dark" });
+      });
   };
 
   const handleSaveEmail = (data: any) => {
