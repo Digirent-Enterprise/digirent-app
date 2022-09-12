@@ -1,5 +1,7 @@
 import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { Avatar, Button, Stack } from "@chakra-ui/react";
 import Helmet from "../../Helmet";
 import { getCurrentUserSelector } from "../../store/selectors/user.selector";
 import { IMAGES } from "../../utils/constants/image.constant";
@@ -8,6 +10,7 @@ import DefaultLayout from "../DefaultLayout";
 const UserViewInfo = () => {
   const { t } = useTranslation();
   const currentUser = useSelector(getCurrentUserSelector);
+  const navigate = useNavigate();
   return (
     <DefaultLayout>
       <Helmet
@@ -55,9 +58,9 @@ const UserViewInfo = () => {
               <div className="flex flex-wrap justify-center">
                 <div className="flex justify-center w-full px-4 lg:w-3/12 lg:order-2">
                   <div className="relative">
-                    <img
+                    <Avatar
                       loading="lazy"
-                      alt="avatar"
+                      boxSize="150px"
                       src={
                         currentUser.profileImage
                           ? currentUser.profileImage
@@ -83,6 +86,30 @@ const UserViewInfo = () => {
               </div>
             </div>
           </div>
+          <Stack
+            mt={4}
+            direction="row"
+            spacing={4}
+            alignContent="center"
+            justifyContent="center"
+            pt="15px"
+          >
+            <Button
+              flex={1}
+              maxW="200px"
+              fontSize="sm"
+              rounded="full"
+              alignItems="center"
+              bg="#4169E1"
+              color="white"
+              _hover={{
+                bg: "#153289",
+              }}
+              onClick={() => navigate("user/my-profile")}
+            >
+              Back To Profile
+            </Button>
+          </Stack>
         </div>
       </section>
     </DefaultLayout>
