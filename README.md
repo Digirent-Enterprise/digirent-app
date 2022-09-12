@@ -19,6 +19,7 @@
 [![Forks][forks-shield]][forks-url]
 [![Stargazers][stars-shield]][stars-url]
 [![Issues][issues-shield]][issues-url]
+
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
@@ -65,7 +66,6 @@
 
 ## About The Project
 
-
 In a 4.0 technology world, using electronic devices has been a lifestyle for everyone. However, you do not always have the necessary tools for what you are doing. Maybe becasue you have finacial problesm or just simply, you do not use that device often. Understand this, our team decided to create a website where customers can rent any digital devices that they needed.
 Here is why you wanted to choose our service:
 
@@ -93,10 +93,18 @@ Here is why you wanted to choose our service:
 - [![MongoDB][mongodb.js]][mongodb-url]
 - [![NodeJS][node.js]][nodejs-url]
 - [![Express][express.js]][express-url]
+- [![Cloudinary][cloudinary.js]][cloudinary-url]
+- [![GoogleAPI][googleapi.js]][googleapi-url]
+
+##### Back-end
+
+- [![MongoDB][mongodb.js]][mongodb-url]
+- [![NodeJS][node.js]][nodejs-url]
+- [![Express][express.js]][express-url]
 - [![SocketIO][socketio.js]][socketio-url]
 - [![Cloudinary][cloudinary.js]][cloudinary-url]
 - [![GoogleAPI][googleapi.js]][googleapi-url]
-  
+
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 <!-- GETTING STARTED -->
@@ -116,14 +124,13 @@ To contribute to our project:
 
 This is all the framework and prequisites for the website:
 
-- NodeJS  
+- NodeJS
   Download NodeJS via: <https://nodejs.org/en/download/>
   <br>
 - npm
   ```sh
   npm install npm@latest -g
   ```
-
 
 ### Installation
 
@@ -138,9 +145,9 @@ This is all the framework and prequisites for the website:
    git clone https://github.com/Digirent-Enterprise/digirent-app.git
    ```
 3. Change directory to project folder
-    ```sh
-    cd digirent-app
-    ```
+   ```sh
+   cd digirent-app
+   ```
 4. Install NPM packages
    ```sh
    npm install
@@ -156,7 +163,7 @@ This is all the framework and prequisites for the website:
 
 ## Usage
 
-Digirent is a website designed to provide customer with exceptional renting service. With Digirent, renting has never been so fast, convenient and cheap. At Digirent, we have thoudsands of products awaiting for you to explore. We constantly offer many exciting discounts to our customers. 
+Digirent is a website designed to provide customer with exceptional renting service. With Digirent, renting has never been so fast, convenient and cheap. At Digirent, we have thoudsands of products awaiting for you to explore. We constantly offer many exciting discounts to our customers.
 
 To use our service, simply access the website and browse a product. Click on that product, you will be navigate to the product page. Here, you can choose your renting period and the system will automatically calculate the renting fees and display it on the booking box on the right. Now you can click rent and proceed to transaction page where you will be able to input your billing information. Finally, click "confirm" and you have successfully rent a product at Digirent!
 
@@ -167,31 +174,37 @@ Come and join us to explore an exceptional, like no others renting service!
 <!-- ROADMAP -->
 ## ROADMAP
 
+## ROADMAP
+
 ## Phase 1
 
-  <b>User's features</b>
-  - [x] Browse and view digital gadgets for rent
-  - [x] Rent digital products for a fixed term period
-  - [x] Keep track of purchase history
-  - [x] Get support throughout the rental period
-  - [x] Manage personal account
+<b>User's features</b>
 
-  <b>Admin's features</b>
-  - [x] Product and stock management
-  - [x] Customer management
-  - [x] Transaction management
-  - [x] Customer inquiry management
-  - [x] Chart visualization 
+- [x] Browse and view digital gadgets for rent
+- [x] Rent digital products for a fixed term period
+- [x] Keep track of purchase history
+- [x] Get support throughout the rental period
+- [x] Manage personal account
+
+<b>Admin's features</b>
+
+- [x] Product and stock management
+- [x] Customer management
+- [x] Transaction management
+- [x] Customer inquiry management
+- [x] Chart visualization
 
 ## Phase 2
 
-  <b>User's features</b>
-  - [ ] User review
-  - [ ] User wishlist
-  - [ ] User rating
+<b>User's features</b>
 
-  <b>Admin's features</b>
-  - [ ] Page builder
+- [ ] User review
+- [ ] User wishlist
+- [ ] User rating
+
+<b>Admin's features</b>
+
+- [ ] Page builder
 
 See the [open issues](https://github.com/Digirent-Enterprise/digirent-app/issues) for a full list of proposed features (and known issues).
 
@@ -214,9 +227,9 @@ Don't forget to give the project a star! Thanks again!
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
-
 <!-- CONTACT -->
-## License 
+
+## License
 
 MIT license
 
@@ -267,8 +280,6 @@ Project Link: [https://github.com/Digirent-Enterprise/digirent-app](https://gith
 [nodejs-url]: https://nodejs.org/en/
 [express.js]: https://img.shields.io/badge/-express-black?style=for-the-badge&logo=express
 [express-url]: https://expressjs.com/
-[socketio.js]: https://img.shields.io/badge/-Socket.IO-black?style=for-the-badge&logo=socket.io
-[socketio-url]: https://socket.io/
 [cloudinary.js]: https://img.shields.io/badge/-cloudinary-black?style=for-the-badge&logo=cloudinary
 [cloudinary-url]: https://cloudinary.com/
 [googleapi.js]: https://img.shields.io/badge/-GoogleAPI-black?style=for-the-badge&logo=google

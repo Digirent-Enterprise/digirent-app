@@ -33,7 +33,7 @@ const MobileAvatarMenu = () => {
       <MenuButton
         as={Button}
         background="#222"
-        _hover={{ bg: "#777" }}
+        _hover={{ bg: "#353535" }}
         className="text-white"
       >
         {currentUser.name}
