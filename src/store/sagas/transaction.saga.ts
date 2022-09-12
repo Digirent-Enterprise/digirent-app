@@ -48,7 +48,7 @@ function* getTransactions(): any {
 function* getTransactionByUserEmail(): any {
   try {
     const response = yield call(fetchTransactionByUserEmail);
-    yield put(setTransactionByUserEmail(response.data));
+    yield put(setTransactionByUserEmail(response.data.reverse()));
   } catch (e: any) {
     yield put(
       fetchTransactionsError({

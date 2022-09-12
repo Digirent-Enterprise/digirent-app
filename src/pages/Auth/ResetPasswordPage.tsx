@@ -15,9 +15,13 @@ import {
 } from "@chakra-ui/react";
 import { WarningTwoIcon } from "@chakra-ui/icons";
 // import { customAxios } from "../../http-common";
+import { useNavigate, useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
+import axios from "axios";
 import { toast } from "react-toastify";
-import { AuthFormGrid, Transition } from "../../components";
+import qs from "qs";
 import Helmet from "../../Helmet";
+import { AuthFormGrid, Transition } from "../../components";
 
 interface IFormInputs {
   pw1: string;
@@ -38,7 +42,11 @@ const schema = yup.object().shape({
 });
 
 const ResetPasswordPage = () => {
+  const { token } = useParams();
   const { t } = useTranslation();
+  const navigate = useNavigate();
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [email, setEmail] = useState("");
   const {
     register,
     handleSubmit,
@@ -47,30 +55,68 @@ const ResetPasswordPage = () => {
     mode: "onBlur",
     resolver: yupResolver(schema),
   });
-  // const navigate = useNavigate();
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const onSubmit = (data: IFormInputs) => {
-    // return axios("application/x-www-form-urlencoded")
-    //   .post("api/auth/register", qs.stringify(data))
-    //   .then((res) => {
-    //     if (res.status === 201) {
-    //       <StatusToaster
-    //         childCompStatusColor="success"
-    //         childCompToasterTitle="Account created!"
-    //         childCompToasterDescription="Your information has been registered successfully with us!"
-    //       />;
-    //       navigate("/login");
-    //     } else {
-    //       <StatusToaster
-    //         childCompStatusColor="warning"
-    //         childCompToasterTitle={`Failed to register, error code ${res.status}`}
-    //         childCompToasterDescription={`${res.statusText} error has happened while creating your account!`}
-    //       />;
-    //     }
-    //   });
-    toast.success("Reset password successfully!", { theme: "dark" });
+  const verifyToken = async () => {
+    await axios
+      .post(
+        "https://backend-digirent-rmit-app.herokuapp.com/api/auth/verify-forgot-password-request",
+        {},
+        {
+          headers: {
+            authorization: `Bearer ${token}`,
+          },
+        },
+      )
+      .then((res) => {
+        toast.success(
+          "You have validated your account. Let's change your password",
+          { theme: "dark" },
+        );
+        setEmail(res.data.email);
+      })
+      .catch(() => {
+        toast.error("Invalid Token (Token wrong or expired)", {
+          theme: "dark",
+        });
+        navigate("/");
+      });
   };
+
+  const resetForgotPassword = async (pw2: string) => {
+    await axios
+      .put(
+        "https://backend-digirent-rmit-app.herokuapp.com/v1/api/auth/reset-forgot-password",
+        qs.stringify({
+          newPassword: pw2,
+        }),
+        {
+          headers: {
+            authorization: `Bearer ${token}`,
+          },
+        },
+      )
+      .then(() => {
+        toast.success("We are verifying your request. Let's wait...", {
+          theme: "dark",
+        });
+        setTimeout(() => {
+          navigate("/reset-success");
+        }, 3000);
+      })
+      .catch(() => {
+        toast.error("Invalid Token", { theme: "dark" });
+      });
+  };
+
+  const onSubmit = async (data: IFormInputs) => {
+    await resetForgotPassword(data.pw2);
+  };
+
+  useEffect(() => {
+    if (token) {
+      verifyToken();
+    }
+  }, []);
 
   return (
     <Transition>

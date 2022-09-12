@@ -5,6 +5,7 @@ import { useSelector } from "react-redux";
 import Logo from "./Logo";
 import NavButton from "./NavButton";
 import AvatarMenu from "./AvatarMenu";
+import MobileAvatarMenu from "./MobileAvatarMenu";
 import { getCurrentUserSelector } from "../../../../store/selectors/user.selector";
 
 const NavBar = () => {
@@ -69,51 +70,55 @@ const NavBar = () => {
       <Flex minH="9vh" bgColor="#222" />
       <Show below="md">
         <div
-          className="z-50 w-full duration-300 ease-in-out bg-black transition-height fixed"
-          style={{
-            height: toggle ? "400px" : 0,
-            visibility: toggle ? "visible" : "hidden",
-          }}
+          className="z-40 w-full duration-300 ease-in-out bg-black transition-height fixed"
+          {...(currentUser.role === "admin"
+            ? {
+                style: { ...{ height: toggle ? "500px" : "0px" } },
+              }
+            : { style: { ...{ height: toggle ? "400px" : "0px" } } })}
         >
           <ul
-            className="absolute list-none transition-opacity duration-300 ease-in-out translate-x-1/2 z-500 left-1/3"
-            style={{ opacity: toggle ? 1 : 0 }}
+            className="absolute grid place-items-center w-screen list-none transition-opacity duration-300 ease-in-out  z-500 mx-auto"
+            style={{
+              opacity: toggle ? 1 : 0,
+              visibility: toggle ? "visible" : "hidden",
+            }}
           >
             {currentUser.role === "admin" && (
               <div
-                className="pt-2 pl-3 mt-10 text-2xl"
+                className="pt-2 mt-10 text-2xl"
                 style={{ visibility: toggle ? "visible" : "hidden" }}
               >
                 <NavButton navItem={t("Dashboard")} directUrl="/admin" />
               </div>
             )}
             <div
-              className="pt-2 pl-3 mt-10 text-2xl"
+              className="pt-2 mt-10 text-2xl"
               style={{ visibility: toggle ? "visible" : "hidden" }}
             >
               <NavButton navItem={t("Home")} directUrl="/" />
             </div>
             <div
-              className="pt-2 pl-3 mt-10 text-2xl"
+              className="pt-2  mt-10 text-2xl"
               style={{ visibility: toggle ? "visible" : "hidden" }}
             >
               <NavButton navItem={t("About")} directUrl="/about" />
             </div>
             <div
-              className="pt-2 pl-2 mt-10 text-2xl"
+              className="pt-2 mt-10 text-2xl"
               style={{ visibility: toggle ? "visible" : "hidden" }}
             >
               <NavButton navItem={t("Contact")} directUrl="/contact" />
             </div>
             <div
-              className="pl-6 mt-10 text-2xl"
+              className=" mt-10 text-2xl"
               style={{ visibility: toggle ? "visible" : "hidden" }}
             >
               {" "}
               {!currentUser.email ? (
                 <NavButton navItem={t("Login")} directUrl="/login" />
               ) : (
-                <AvatarMenu />
+                <MobileAvatarMenu />
               )}
             </div>
           </ul>

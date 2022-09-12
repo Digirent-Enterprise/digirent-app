@@ -10,6 +10,7 @@ import {
   LoginPage,
   ResetPasswordPage,
   ForgotPasswordPage,
+  ResetSuccessPage,
   ChatViewPage,
   AdminHome,
   ProductManagement,
@@ -64,6 +65,7 @@ const AppRouter = () => {
   const currentUser = useSelector(getCurrentUserSelector);
   const appLoading = useSelector(selectAppLoading);
   const dispatch = useDispatch();
+
   useEffect(() => {
     if (!appLoading) {
       dispatch(initApp());
@@ -85,7 +87,8 @@ const AppRouter = () => {
         <Route path="about" element={<About />} />
         <Route path="login" element={<LoginPage />} />
         <Route path="register" element={<RegisterPage />} />
-        <Route path="reset-password" element={<ResetPasswordPage />} />
+        <Route path="reset-password/:token" element={<ResetPasswordPage />} />
+        <Route path="reset-success" element={<ResetSuccessPage />} />
         <Route path="email-sent" element={<EmailSentPage />} />
         <Route path="forgot-password" element={<ForgotPasswordPage />} />
         {/* Product */}

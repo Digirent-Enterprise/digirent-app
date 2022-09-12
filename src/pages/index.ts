@@ -28,6 +28,7 @@ import UserChangePassword from "./User/UserChangePassword";
 import UserFavoriteProduct from "./User/UserFavoriteProduct";
 import CustomerInquiryManagement from "./Admin/Management/CustomerInquiryManagement";
 import PaymentSuccess from "./Payment/PaymentSuccess";
+import ResetSuccessPage from "./Auth/ResetSuccessPage";
 
 export {
   Home,
@@ -60,4 +61,5 @@ export {
   UserFavoriteProduct,
   CustomerInquiryManagement,
   PaymentSuccess,
+  ResetSuccessPage,
 };
