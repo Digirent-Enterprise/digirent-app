@@ -86,15 +86,15 @@ const StripeCheckoutForm = ({ transactionData }: any) => {
 
     setIsLoading(true);
     try {
-    const response = await stripe.confirmPayment({
+    await stripe.confirmPayment({
       elements,
       confirmParams: {
         return_url: "https://digirent.dev/payment-success",
       },
     });
-    } catch (e) {
-      console.log('error', e)
-      alert(JSON.stringify(e))
+    } catch (error) {
+      console.log('error', error)
+      alert(JSON.stringify(error))
     }
     setIsLoading(false);
   };
