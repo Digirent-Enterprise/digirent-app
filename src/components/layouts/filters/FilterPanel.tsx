@@ -75,7 +75,6 @@ const FilterPanel: React.FC<Props> = ({
           marginBottom={10}
           className="grid grid-cols-2 md:grid-cols-1"
         >
-
           <p className="pt-2 pr-2">Categories & filter</p>
           <Hide below="md">
             {categories.map((category: any) => (

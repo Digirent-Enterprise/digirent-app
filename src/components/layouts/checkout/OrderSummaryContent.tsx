@@ -34,7 +34,7 @@ const OrderSummaryContent = ({ transactionData }: any) => {
               </div>
               <div>
                 <h2 className="text-2xl font-bold text-gray">
-                  {t("PaymentMethod")}
+                  {t("Payment Method")}
                 </h2>
               </div>
               <StripePayment transactionData={transactionData} />

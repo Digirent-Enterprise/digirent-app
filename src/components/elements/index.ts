@@ -22,12 +22,10 @@ import UserProfileName from "./User/UserProfileName";
 import Stat from "./Stat/Stat";
 import MostRentalProduct from "./ProductSection/MostRentalProduct/MostRentalProduct";
 import BookingBoxDisplay from "./BookingBox/BookingBoxDisplay";
-import ChatBox from "./ChatBox/ChatBox";
 import StripePayment from "./Stripe/StripePayment";
 import FAQ from "./FAQ/FAQ";
 import Partner from "./Partner/Partner";
 import Search from "./CTA/Search";
-import Chatbox from "./ChatPopUp/ChatBox";
 
 export {
   CustomBreadcrumb,
@@ -54,10 +52,8 @@ export {
   Stat,
   MostRentalProduct,
   BookingBoxDisplay,
-  ChatBox,
   StripePayment,
   FAQ,
   Partner,
   Search,
-  Chatbox,
 };
