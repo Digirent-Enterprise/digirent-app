@@ -26,7 +26,6 @@ import StripePayment from "./Stripe/StripePayment";
 import FAQ from "./FAQ/FAQ";
 import Partner from "./Partner/Partner";
 import Search from "./CTA/Search";
-import Chatbox from "./ChatPopUp/ChatBox";
 
 export {
   CustomBreadcrumb,
@@ -57,5 +56,4 @@ export {
   FAQ,
   Partner,
   Search,
-  Chatbox,
 };
