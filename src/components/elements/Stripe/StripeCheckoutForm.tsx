@@ -85,13 +85,17 @@ const StripeCheckoutForm = ({ transactionData }: any) => {
     }
 
     setIsLoading(true);
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const response = stripe.confirmPayment({
+    try {
+    const response = await stripe.confirmPayment({
       elements,
       confirmParams: {
         return_url: "https://digirent.dev/payment-success",
       },
     });
+    } catch (e) {
+      console.log('error', e)
+      alert(JSON.stringify(e))
+    }
     setIsLoading(false);
   };
 
