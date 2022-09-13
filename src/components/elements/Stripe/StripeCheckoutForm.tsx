@@ -89,7 +89,7 @@ const StripeCheckoutForm = ({ transactionData }: any) => {
     await stripe.confirmPayment({
       elements,
       confirmParams: {
-        return_url: "https://digirent.dev/payment-success",
+        return_url: "https://www.digirent.dev/payment-success",
       },
     });
     } catch (error) {
