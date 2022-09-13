@@ -13,15 +13,10 @@ import {
   Stack,
   useColorModeValue,
   FormErrorMessage,
-  Modal,
-  ModalOverlay,
-  ModalContent,
-  ModalFooter,
 } from "@chakra-ui/react";
 import { useDisclosure } from "@chakra-ui/hooks";
 import { WarningTwoIcon } from "@chakra-ui/icons";
-import { AiOutlineWarning, AiOutlineArrowLeft } from "react-icons/ai";
-import { IconContext } from "react-icons";
+import { AiOutlineArrowLeft } from "react-icons/ai";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 import qs from "qs";
@@ -52,7 +47,7 @@ const schema = yup.object().shape({
 
 const UserChangePassword = () => {
   const { t } = useTranslation();
-  const { isOpen, onOpen, onClose } = useDisclosure();
+  const { onOpen } = useDisclosure();
   const {
     register,
     handleSubmit,
@@ -178,33 +173,6 @@ const UserChangePassword = () => {
             </Stack>
           </form>
         </Box>
-        <Modal isOpen={isOpen} onClose={onClose}>
-          <ModalOverlay />
-          <ModalContent>
-            <div className="text-center justify-center p-[10%]">
-              <IconContext.Provider value={{ className: "w-10 h-10" }}>
-                <div className="text-[#FACC15] flex justify-center mb-5">
-                  <AiOutlineWarning />
-                </div>
-              </IconContext.Provider>
-              <p className="pb-8 text-3xl font-bold">{t("Unsaved")}</p>
-              <p>{t("UnsavedWarning")}</p>
-            </div>
-            <ModalFooter className="flex text-center align-center">
-              <Button
-                colorScheme="blue"
-                mr={3}
-                onClick={onClose}
-                className="w-1/2"
-              >
-                {t("Stay")}
-              </Button>
-              <Button type="submit" colorScheme="red" mr={3} className="w-1/2">
-                {t("Leave")}
-              </Button>
-            </ModalFooter>
-          </ModalContent>
-        </Modal>
       </Flex>
     </DefaultLayout>
   );
