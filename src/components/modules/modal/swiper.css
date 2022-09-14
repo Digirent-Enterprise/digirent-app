@@ -1,0 +1,14 @@
+.swiper img {
+  display: block;
+  width: 100%;
+  height: 20vw;
+  object-fit: scale-down;
+}
+
+.swiper-slide {
+  height: fit-content !important;
+}
+
+.swiper {
+  height: fit-content !important;
+}
