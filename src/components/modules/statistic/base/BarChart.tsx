@@ -38,7 +38,6 @@ export const BarChart = ({
   dataPoint2,
   dataPoint3,
 }: ChartProps) => {
-
   const options: any = {
     legend: { display: true },
     plugins: {

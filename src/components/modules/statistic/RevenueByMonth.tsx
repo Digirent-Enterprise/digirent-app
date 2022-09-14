@@ -1,3 +1,4 @@
+/* eslint-disable no-return-assign */
 import React, { useEffect, useState } from "react";
 import ContainerCard from "./base/ContainerCard";
 import { customAxios } from "../../../http-common";
@@ -15,7 +16,6 @@ const RevenueByMonth = () => {
       .then((res) => {
         setLabels(Object.keys(res.data));
         const accumulatedRevenue = Object.values(res.data).map(
-          // eslint-disable-next-line no-return-assign
           (
             (sum) => (value: any) =>
               // eslint-disable-next-line no-param-reassign

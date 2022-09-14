@@ -15,6 +15,7 @@ const CheckoutPage = () => {
 
   const unloadCallback = (event: any) => {
     event.preventDefault();
+    // eslint-disable-next-line no-param-reassign
     event.returnValue = "";
     return "";
   };

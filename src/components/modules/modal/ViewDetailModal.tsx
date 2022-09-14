@@ -70,11 +70,7 @@ const InquiryModal = ({ onClose, onOpen, isOpen, rowData, pageType }: any) => {
             <ModalCloseButton />
             <ModalBody>
               <div className="flex flex-col justify-center">
-                <Swiper
-                  navigation
-                  modules={[Navigation]}
-                  className="mySwiper"
-                >
+                <Swiper navigation modules={[Navigation]} className="mySwiper">
                   {rowData.images.map((image: any) => (
                     <SwiperSlide>
                       <img
