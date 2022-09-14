@@ -29,7 +29,7 @@ const ProductManagement = () => {
     { label: "Category", key: "category" },
     { label: "Description", key: "description" },
     { label: "Status", key: "status" },
-    {label:"Images", key:"images"}
+    { label: "Images", key: "images" },
   ];
 
   return (

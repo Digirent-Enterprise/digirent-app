@@ -40,7 +40,7 @@ export const InquiryColumns: Array<Column> = [
     Cell: ({ row }: any) => (
       <div className="flex flex-row">
         <ResponseToInquiryAction rowData={row} />
-        <ViewDetailModalAction pageType='inquiry' rowData={row} />
+        <ViewDetailModalAction pageType="inquiry" rowData={row} />
       </div>
     ),
   },

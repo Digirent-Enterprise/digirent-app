@@ -35,7 +35,11 @@ const InquiryModal = ({ onClose, onOpen, isOpen, rowData, pageType }: any) => {
             <ModalBody>
               <div className="flex flex-col justify-center">
                 <a href="#!">
-                  <img className="rounded-t-lg" src={rowData.image} alt="data" />
+                  <img
+                    className="rounded-t-lg"
+                    src={rowData.image}
+                    alt="data"
+                  />
                 </a>
                 <div className="p-6">
                   <h5 className="text-blue-100 text-lg font-medium mb-2">
@@ -67,7 +71,7 @@ const InquiryModal = ({ onClose, onOpen, isOpen, rowData, pageType }: any) => {
             <ModalBody>
               <div className="flex flex-col justify-center">
                 <Swiper
-                  navigation={true}
+                  navigation
                   modules={[Navigation]}
                   className="mySwiper"
                 >
