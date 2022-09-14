@@ -5,7 +5,7 @@ import { StripePayment } from "../../elements";
 const OrderSummaryContent = ({ transactionData }: any) => {
   const { t } = useTranslation();
   return (
-    <div className="container flex flex-col grow">
+    <div className="container flex flex-col">
       <h5 className="pb-4 text-2xl">{t("OrderSummary")}</h5>
       <div className="flex flex-col w-full px-0 shrink">
         <div className="flex flex-col">
