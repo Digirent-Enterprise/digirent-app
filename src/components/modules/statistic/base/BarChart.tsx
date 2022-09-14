@@ -38,10 +38,6 @@ export const BarChart = ({
   dataPoint2,
   dataPoint3,
 }: ChartProps) => {
-  //   type === "stacked"
-  //     ? console.log("first", [dataPoint1, dataPoint2, dataPoint3])
-  //     : console.log("first", [datasets]);
-
   const options: any = {
     legend: { display: true },
     plugins: {

@@ -9,6 +9,7 @@ import {
   EditUserModal,
   InquiryModal,
 } from "../../../components";
+import ViewDetailModal from "../../../components/modules/modal/ViewDetailModal";
 import { getCurrentUserSelector } from "../../../store/selectors/user.selector";
 
 interface HandleProps {
@@ -103,6 +104,20 @@ export const ResponseToInquiryAction = ({ rowData }: any) => {
       onOpen={onOpen}
       currentUserData={currentUserData}
       rowData={rowData.values}
+    />
+  );
+};
+
+export const ViewDetailModalAction = ({ pageType, rowData }: any) => {
+  const { isOpen: modalOpen, onClose, onOpen } = useDisclosure();
+
+  return (
+    <ViewDetailModal
+      isOpen={modalOpen}
+      onClose={onClose}
+      onOpen={onOpen}
+      rowData={rowData.values}
+      pageType={pageType}
     />
   );
 };

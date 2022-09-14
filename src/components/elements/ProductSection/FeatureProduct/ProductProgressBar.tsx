@@ -12,6 +12,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { BiPurchaseTag } from "react-icons/bi";
 
 // Import Swiper styles
+import "./swiper.css";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
@@ -88,7 +89,7 @@ const ProductProgressBar = () => {
                   <SwiperSlide>
                     <a
                       href={`/product/${rental._id._id}`}
-                      className="relative transition duration-700 border border-[#f3f4f6] hover:-translate-y-5"
+                      className="relative transition duration-700 border border-[#f3f4f6] hover:-translate-y-5 object-scale-down"
                     >
                       <button
                         type="button"
@@ -113,7 +114,7 @@ const ProductProgressBar = () => {
                       <img
                         loading="lazy"
                         alt="rental"
-                        className="object-scale-down"
+                        className="object-scale-down h-3/12"
                         src={rental._id.images && rental._id.images[0]}
                       />
 
