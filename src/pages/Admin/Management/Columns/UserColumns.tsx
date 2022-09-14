@@ -1,6 +1,10 @@
 import { Badge } from "@chakra-ui/react";
 import { Column } from "react-table";
-import { ClickDelete, ClickEdit } from "../HandleActionClick";
+import {
+  ClickDelete,
+  ClickEdit,
+  ViewDetailModalAction,
+} from "../HandleActionClick";
 
 export const UserColumns: Array<Column> = [
   {
@@ -48,7 +52,7 @@ export const UserColumns: Array<Column> = [
       return row.values.status ? (
         <Badge colorScheme="green">Active</Badge>
       ) : (
-        <Badge colorScheme="red">Deactivate</Badge>
+        <Badge colorScheme="red">Deactivated</Badge>
       );
     },
   },
@@ -58,6 +62,14 @@ export const UserColumns: Array<Column> = [
       <div>
         <ClickEdit pageType="user" rowData={row} />
         <ClickDelete pageType="user" rowData={row} />
+      </div>
+    ),
+  },
+  {
+    Header: "View",
+    Cell: ({ row }: any) => (
+      <div>
+        <ViewDetailModalAction rowData={row} pageType="user" />
       </div>
     ),
   },

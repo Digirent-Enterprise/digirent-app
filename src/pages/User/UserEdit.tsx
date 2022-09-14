@@ -16,7 +16,8 @@ import {
   FormErrorMessage,
 } from "@chakra-ui/react";
 import { useDisclosure } from "@chakra-ui/hooks";
-import { AiOutlineArrowLeft } from "react-icons/ai";import { useForm } from "react-hook-form";
+import { AiOutlineArrowLeft } from "react-icons/ai";
+import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import qs from "qs";
 import { toast } from "react-toastify";

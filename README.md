@@ -15,6 +15,7 @@
 *** for contributors-url, forks-url, etc. This is an optional, concise syntax you may use.
 *** https://www.markdownguide.org/basic-syntax/#reference-style-links
 -->
+
 [![Contributors][contributors-shield]][contributors-url]
 [![Forks][forks-shield]][forks-url]
 [![Stargazers][stars-shield]][stars-url]
@@ -172,6 +173,7 @@ Come and join us to explore an exceptional, like no others renting service!
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 <!-- ROADMAP -->
+
 ## ROADMAP
 
 ## ROADMAP
@@ -254,6 +256,7 @@ Project Link: [https://github.com/Digirent-Enterprise/digirent-app](https://gith
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
+
 [contributors-shield]: https://img.shields.io/github/contributors/Digirent-Enterprise/digirent-app.svg?style=for-the-badge
 [contributors-url]: https://github.com/Digirent-Enterprise/digirent-app/graphs/contributors
 [forks-shield]: https://img.shields.io/github/forks/Digirent-Enterprise/digirent-app.svg?style=for-the-badge

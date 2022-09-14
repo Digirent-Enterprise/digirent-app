@@ -1,6 +1,9 @@
 import { Column } from "react-table";
 
-import { ResponseToInquiryAction } from "../HandleActionClick";
+import {
+  ResponseToInquiryAction,
+  ViewDetailModalAction,
+} from "../HandleActionClick";
 
 export const InquiryColumns: Array<Column> = [
   {
@@ -22,6 +25,10 @@ export const InquiryColumns: Array<Column> = [
   {
     Header: "Attached Image",
     accessor: "image",
+    Cell: ({ row }: any) =>
+      row.original?.image && (
+        <img src={row.original?.image} width="80vw" alt="inquiry" />
+      ),
   },
   {
     Header: "Description",
@@ -31,8 +38,9 @@ export const InquiryColumns: Array<Column> = [
   {
     Header: "Action",
     Cell: ({ row }: any) => (
-      <div>
+      <div className="flex flex-row">
         <ResponseToInquiryAction rowData={row} />
+        <ViewDetailModalAction pageType='inquiry' rowData={row} />
       </div>
     ),
   },

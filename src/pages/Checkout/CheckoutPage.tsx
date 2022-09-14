@@ -1,12 +1,12 @@
 import { Grid, GridItem } from "@chakra-ui/react";
 import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { CheckoutDetailsCard, OrderSummaryContent } from "../../components";
 import DefaultLayout from "../DefaultLayout";
 import { getTransactionSelector } from "../../store/selectors/transaction.selector";
 import Helmet from "../../Helmet";
-import { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 
 const CheckoutPage = () => {
   const { t } = useTranslation();
