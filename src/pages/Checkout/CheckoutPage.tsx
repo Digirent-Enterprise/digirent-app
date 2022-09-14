@@ -5,10 +5,32 @@ import { CheckoutDetailsCard, OrderSummaryContent } from "../../components";
 import DefaultLayout from "../DefaultLayout";
 import { getTransactionSelector } from "../../store/selectors/transaction.selector";
 import Helmet from "../../Helmet";
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 const CheckoutPage = () => {
   const { t } = useTranslation();
   const transactionData: any = useSelector(getTransactionSelector);
+  const navigate = useNavigate();
+
+  const unloadCallback = (event: any) => {
+    event.preventDefault();
+    event.returnValue = "";
+    return "";
+  };
+
+  useEffect(() => {
+    window.addEventListener("beforeunload", unloadCallback);
+    return () => {
+      window.removeEventListener("beforeunload", unloadCallback);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (!transactionData.userEmail) {
+      navigate(-1);
+    }
+  }, []);
 
   return (
     <DefaultLayout>
