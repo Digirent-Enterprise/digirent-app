@@ -18,11 +18,11 @@ const CheckoutDetailsCard = ({ transactionData }: any) => {
                       : productId.images[0]
                   }
                   alt="order"
-                  className="w-[40%] h-40 rounded-2xl border border-gray shadow-sm"
+                  className="w-[40%] h-40 object-scale-down rounded-2xl border border-gray shadow-sm"
                 />
-                <div className="container mx-auto w-[60%]">
+                <div className="container mx-auto w-[40%]">
                   <h2 className="text-xl">{productId.name}</h2>
-                  <div className="w-[80%] truncate">
+                  <div className="w-[80%] lg:w-[80%] sm:w-[40%] truncate">
                     {productId.description}
                   </div>
                   <span className="text-blue-200 truncate">Price</span>{" "}

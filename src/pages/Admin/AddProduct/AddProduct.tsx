@@ -24,7 +24,6 @@ import {
   Button,
 } from "@chakra-ui/react";
 import { toast } from "react-toastify";
-import { useTranslation } from "react-i18next";
 import Helmet from "../../../Helmet";
 import { customAxios } from "../../../http-common";
 import DefaultLayout from "../DefaultAdminLayout";
@@ -77,7 +76,7 @@ const AddProduct = () => {
     fd.append("images", file);
     const { data } = await handleUploadFiles(file);
     return {
-      url: "http://localhost:8000/v1/api/product/upload-single-image",
+      url: "https://backend-digirent-rmit-app.herokuapp.com/v1/api/product/upload-single-image",
       body: fd,
       meta: { ...meta, url: data.url },
     };
@@ -87,6 +86,8 @@ const AddProduct = () => {
     if (status === "done") {
       setImages([...images, meta.url]);
       setUploadInProgress(false);
+    } else if (status === "removed") {
+      setImages(images.filter((item) => item === meta.url));
     } else {
       setUploadInProgress(true);
     }

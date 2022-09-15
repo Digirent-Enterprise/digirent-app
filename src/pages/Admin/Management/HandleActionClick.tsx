@@ -3,13 +3,13 @@ import { useMemo } from "react";
 import { useSelector } from "react-redux";
 import {
   DeleteProductModal,
-  DeleteTransactionModal,
   DeleteUserModal,
   EditProductModal,
   EditTransactionModal,
   EditUserModal,
   InquiryModal,
 } from "../../../components";
+import ViewDetailModal from "../../../components/modules/modal/ViewDetailModal";
 import { getCurrentUserSelector } from "../../../store/selectors/user.selector";
 
 interface HandleProps {
@@ -88,13 +88,6 @@ export const ClickDelete = ({ pageType, rowData }: HandleProps) => {
           rowData={rowData.values}
         />
       )}
-      {pageType === "transaction" && (
-        <DeleteTransactionModal
-          isOpen={isDeleteOpen}
-          onClose={onDeleteClose}
-          rowData={rowData.values}
-        />
-      )}
     </div>
   );
 };
@@ -111,6 +104,20 @@ export const ResponseToInquiryAction = ({ rowData }: any) => {
       onOpen={onOpen}
       currentUserData={currentUserData}
       rowData={rowData.values}
+    />
+  );
+};
+
+export const ViewDetailModalAction = ({ pageType, rowData }: any) => {
+  const { isOpen: modalOpen, onClose, onOpen } = useDisclosure();
+
+  return (
+    <ViewDetailModal
+      isOpen={modalOpen}
+      onClose={onClose}
+      onOpen={onOpen}
+      rowData={rowData.values}
+      pageType={pageType}
     />
   );
 };

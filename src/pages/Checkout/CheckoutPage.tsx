@@ -1,6 +1,8 @@
 import { Grid, GridItem } from "@chakra-ui/react";
 import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { CheckoutDetailsCard, OrderSummaryContent } from "../../components";
 import DefaultLayout from "../DefaultLayout";
 import { getTransactionSelector } from "../../store/selectors/transaction.selector";
@@ -9,6 +11,27 @@ import Helmet from "../../Helmet";
 const CheckoutPage = () => {
   const { t } = useTranslation();
   const transactionData: any = useSelector(getTransactionSelector);
+  const navigate = useNavigate();
+
+  const unloadCallback = (event: any) => {
+    event.preventDefault();
+    // eslint-disable-next-line no-param-reassign
+    event.returnValue = "";
+    return "";
+  };
+
+  useEffect(() => {
+    window.addEventListener("beforeunload", unloadCallback);
+    return () => {
+      window.removeEventListener("beforeunload", unloadCallback);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (!transactionData.userEmail) {
+      navigate(-1);
+    }
+  }, []);
 
   return (
     <DefaultLayout>
@@ -44,7 +67,7 @@ const CheckoutPage = () => {
             base: 1,
             lg: 1,
           }}
-          className="flex flex-col justify-between flex-grow"
+          className="flex flex-col justify-between"
         >
           <CheckoutDetailsCard transactionData={transactionData} />
         </GridItem>

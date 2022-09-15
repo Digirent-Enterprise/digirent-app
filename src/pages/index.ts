@@ -8,7 +8,6 @@ import NotFound from "./NotFound/NotFound";
 import Home from "./Home/Home";
 import ResetPasswordPage from "./Auth/ResetPasswordPage";
 import ForgotPasswordPage from "./Auth/ForgotPasswordPage";
-import ChatViewPage from "./Admin/Chat/ChatViewPage";
 import AdminHome from "./Admin/Home/AdminHome";
 import UserProfile from "./User/UserProfile";
 import ProductManagement from "./Admin/Management/ProductManagement";
@@ -28,6 +27,7 @@ import UserChangePassword from "./User/UserChangePassword";
 import UserFavoriteProduct from "./User/UserFavoriteProduct";
 import CustomerInquiryManagement from "./Admin/Management/CustomerInquiryManagement";
 import PaymentSuccess from "./Payment/PaymentSuccess";
+import ResetSuccessPage from "./Auth/ResetSuccessPage";
 
 export {
   Home,
@@ -50,7 +50,6 @@ export {
   ResetPasswordPage,
   ForgotPasswordPage,
   EmailSentPage,
-  ChatViewPage,
   CheckoutPage,
   ContactUsPage,
   UserTransactionDetails,
@@ -60,4 +59,5 @@ export {
   UserFavoriteProduct,
   CustomerInquiryManagement,
   PaymentSuccess,
+  ResetSuccessPage,
 };

@@ -33,7 +33,7 @@ const StaticGoogleMap = () => {
 
   return isLoaded ? (
     <div className="flex flex-col mt-10 mx-[35px]">
-      <h1 className="mb-5 lg:ml-[200px] font-extrabold">
+      <h1 className="font-extrabold text-2xl pb-4 px-16 py-8">
         {t("RentalLocation")}
       </h1>
       <div className="flex  items-center justify-center lg:pl-10">

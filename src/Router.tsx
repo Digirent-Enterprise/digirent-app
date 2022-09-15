@@ -10,7 +10,7 @@ import {
   LoginPage,
   ResetPasswordPage,
   ForgotPasswordPage,
-  ChatViewPage,
+  ResetSuccessPage,
   AdminHome,
   ProductManagement,
   UserManagement,
@@ -64,6 +64,7 @@ const AppRouter = () => {
   const currentUser = useSelector(getCurrentUserSelector);
   const appLoading = useSelector(selectAppLoading);
   const dispatch = useDispatch();
+
   useEffect(() => {
     if (!appLoading) {
       dispatch(initApp());
@@ -85,7 +86,8 @@ const AppRouter = () => {
         <Route path="about" element={<About />} />
         <Route path="login" element={<LoginPage />} />
         <Route path="register" element={<RegisterPage />} />
-        <Route path="reset-password" element={<ResetPasswordPage />} />
+        <Route path="reset-password/:token" element={<ResetPasswordPage />} />
+        <Route path="reset-success" element={<ResetSuccessPage />} />
         <Route path="email-sent" element={<EmailSentPage />} />
         <Route path="forgot-password" element={<ForgotPasswordPage />} />
         {/* Product */}
@@ -93,7 +95,7 @@ const AppRouter = () => {
         <Route path="product/:id" element={<ProductDetailsPage />} />
         {/* Payment */}
         <Route path="checkout/:id" element={<CheckoutPage />} />
-        <Route path="/payment-success" element={<PaymentSuccess />} />
+        <Route path="payment-success" element={<PaymentSuccess />} />
         {/* Users */}
         <Route
           path="user/my-profile"
@@ -214,19 +216,10 @@ const AppRouter = () => {
             </PrivateRoute>
           }
         />
-        {/* Chat */}
-        <Route
-          path="admin/chat"
-          element={
-            <PrivateRoute permission={AdminPermission}>
-              <ChatViewPage />
-            </PrivateRoute>
-          }
-        />
         {/* 404 Not Found Route */}
         <Route path="*" element={<NotFound />} />
         {/* Under development Route */}
-        <Route path="/under-development" element={<UnderDevelopmentPage />} />
+        <Route path="under-development" element={<UnderDevelopmentPage />} />
       </Routes>
     </AnimatePresence>
   );
