@@ -1,9 +1,9 @@
-.mySwiper {
+.container-3 .mySwiper {
   width: 100%;
   height: 600px;
 }
 
-.swiper-slide {
+.container-3 .swiper-slide {
   font-size: 18px;
   background: #fff;
 
@@ -22,14 +22,14 @@
   align-items: center;
 }
 
-.swiper-slide img {
+.container-3 .swiper-slide img {
   display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
-.swiper {
+.container-3 .swiper {
   margin-left: auto;
   margin-right: auto;
 }

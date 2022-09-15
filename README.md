@@ -1,11 +1,4 @@
 <div id="top"></div>
-<!--
-*** Thanks for checking out the Best-README-Template. If you have a suggestion
-*** that would make this better, please fork the repo and create a pull request
-*** or simply open an issue with the tag "enhancement".
-*** Don't forget to give the project a star!
-*** Thanks again! Now go create something AMAZING! :D
--->
 
 <!-- PROJECT SHIELDS -->
 <!--
@@ -36,7 +29,9 @@
     <a href="https://github.com/Digirent-Enterprise/digirent-app.git"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://www.digirent.dev/">View Demo</a>
+    <a href="https://www.digirent.dev/">View Deployment</a>
+    ·
+    <a href="https://www.youtube.com/watch?v=ZmCZoZ7XotY">View demo video</a>
     ·
     <a href="https://github.com/Digirent-Enterprise/digirent-app/issues">Report Bug</a>
     ·
@@ -102,7 +97,6 @@ Here is why you wanted to choose our service:
 - [![MongoDB][mongodb.js]][mongodb-url]
 - [![NodeJS][node.js]][nodejs-url]
 - [![Express][express.js]][express-url]
-- [![SocketIO][socketio.js]][socketio-url]
 - [![Cloudinary][cloudinary.js]][cloudinary-url]
 - [![GoogleAPI][googleapi.js]][googleapi-url]
 
@@ -230,6 +224,9 @@ Don't forget to give the project a star! Thanks again!
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 <!-- CONTACT -->
+## License 
+
+MIT license
 
 ## License
 

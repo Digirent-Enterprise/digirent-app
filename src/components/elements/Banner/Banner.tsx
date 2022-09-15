@@ -14,31 +14,33 @@ import BannerHero from "./BannerSlide/BannerHero";
 
 const Banner = () => {
   return (
-    <Swiper
-      slidesPerView={1}
-      spaceBetween={30}
-      loop
-      pagination={{
-        clickable: true,
-      }}
-      autoplay={{ delay: 3000 }}
-      updateOnWindowResize
-      observer
-      observeParents
-      navigation
-      modules={[Pagination, Navigation]}
-      className="mySwiper"
-    >
-      <SwiperSlide>
-        <BannerHero />
-      </SwiperSlide>
-      <SwiperSlide>
-        <OurStory />
-      </SwiperSlide>
-      <SwiperSlide>
-        <PhoneCategoryBanner />
-      </SwiperSlide>
-    </Swiper>
+    <div className="container-3">
+      <Swiper
+        slidesPerView={1}
+        spaceBetween={30}
+        loop
+        pagination={{
+          clickable: true,
+        }}
+        autoplay={{ delay: 3000 }}
+        updateOnWindowResize
+        observer
+        observeParents
+        navigation
+        modules={[Pagination, Navigation]}
+        className="mySwiper"
+      >
+        <SwiperSlide>
+          <BannerHero />
+        </SwiperSlide>
+        <SwiperSlide>
+          <OurStory />
+        </SwiperSlide>
+        <SwiperSlide>
+          <PhoneCategoryBanner />
+        </SwiperSlide>
+      </Swiper>
+    </div>
   );
 };
 

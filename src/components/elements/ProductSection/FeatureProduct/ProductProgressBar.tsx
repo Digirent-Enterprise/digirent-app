@@ -55,7 +55,7 @@ const ProductProgressBar = () => {
         </h2>
       </div>
 
-      <div className="mt-4">
+      <div className="mt-4 container-2">
         <Swiper
           loop
           slidesPerView={1}
