@@ -42,16 +42,16 @@ const InquiryModal = ({ onClose, onOpen, isOpen, rowData, pageType }: any) => {
                   />
                 </a>
                 <div className="p-6">
-                  <h5 className="text-blue-100 text-lg font-medium mb-2">
+                  <h5 className="mb-2 text-lg font-medium text-blue-100">
                     Inquiry ID: {rowData._id}
                   </h5>
-                  <p className="text-gray-700 text-base mb-4">
+                  <p className="mb-4 text-base text-gray-700">
                     <b>User Email: </b> {rowData.email}
                   </p>
-                  <p className="text-gray-700 text-base mb-4">
+                  <p className="mb-4 text-base text-gray-700">
                     <b>Inquiry Type: </b> {rowData.inquiryType}
                   </p>
-                  <p className="text-gray-700 text-base mb-4">
+                  <p className="mb-4 text-base text-gray-700">
                     <b>Description: </b> {rowData.inquiryDescription}
                   </p>
                 </div>
@@ -69,7 +69,7 @@ const InquiryModal = ({ onClose, onOpen, isOpen, rowData, pageType }: any) => {
             <ModalHeader>Product Detail</ModalHeader>
             <ModalCloseButton />
             <ModalBody>
-              <div className="flex flex-col justify-center">
+              <div className="flex flex-col justify-center container-1">
                 <Swiper navigation modules={[Navigation]} className="mySwiper">
                   {rowData.images.map((image: any) => (
                     <SwiperSlide>
@@ -82,16 +82,16 @@ const InquiryModal = ({ onClose, onOpen, isOpen, rowData, pageType }: any) => {
                   ))}
                 </Swiper>
                 <div className="p-6">
-                  <h5 className="text-blue-100 text-lg font-medium mb-2">
+                  <h5 className="mb-2 text-lg font-medium text-blue-100">
                     Product ID: {rowData._id}
                   </h5>
-                  <p className="text-gray-700 text-base mb-4">
+                  <p className="mb-4 text-base text-gray-700">
                     <b>Product Name: </b> {rowData.name}
                   </p>
-                  <p className="text-gray-700 text-base mb-4">
+                  <p className="mb-4 text-base text-gray-700">
                     <b>Product Brand: </b> {rowData.brand}
                   </p>
-                  <p className="text-gray-700 text-base mb-4">
+                  <p className="mb-4 text-base text-gray-700">
                     <b>Category: </b> {rowData.category}
                   </p>
                   <b>Description: </b>
@@ -115,13 +115,13 @@ const InquiryModal = ({ onClose, onOpen, isOpen, rowData, pageType }: any) => {
             <ModalBody>
               <div className="flex flex-col justify-center">
                 <div className="p-6">
-                  <h5 className="text-blue-100 text-lg font-medium mb-2">
+                  <h5 className="mb-2 text-lg font-medium text-blue-100">
                     Transaction ID: {rowData._id}
                   </h5>
-                  <h5 className="text-blue-100 text-lg font-medium mb-2">
+                  <h5 className="mb-2 text-lg font-medium text-blue-100">
                     <b>Product ID: </b> {rowData.productId}{" "}
                   </h5>
-                  <p className="text-gray-700 text-base mb-4">
+                  <p className="mb-4 text-base text-gray-700">
                     <b>Status: </b>{" "}
                     {rowData.status === "paid" ? (
                       <Badge colorScheme="gray">Paid</Badge>
@@ -131,14 +131,14 @@ const InquiryModal = ({ onClose, onOpen, isOpen, rowData, pageType }: any) => {
                       <Badge colorScheme="yellow">Pending</Badge>
                     )}
                   </p>
-                  <p className="text-gray-700 text-base mb-4">
+                  <p className="mb-4 text-base text-gray-700">
                     <b>Total: </b> {rowData.total}
                   </p>
-                  <p className="text-gray-700 text-base mb-4">
+                  <p className="mb-4 text-base text-gray-700">
                     <b>User Email: </b>
                     {rowData.userEmail}
                   </p>
-                  <p className="text-gray-700 text-base mb-4">
+                  <p className="mb-4 text-base text-gray-700">
                     <b>Return date: </b>
                     {rowData.to}
                   </p>
@@ -159,16 +159,16 @@ const InquiryModal = ({ onClose, onOpen, isOpen, rowData, pageType }: any) => {
             <ModalBody>
               <div className="flex flex-col justify-center">
                 <div className="p-6">
-                  <h5 className="text-blue-100 text-lg font-medium mb-2">
+                  <h5 className="mb-2 text-lg font-medium text-blue-100">
                     User ID: {rowData._id}
                   </h5>
-                  <h5 className="text-blue-100 text-lg font-medium mb-2">
+                  <h5 className="mb-2 text-lg font-medium text-blue-100">
                     Name: {rowData.name}
                   </h5>
-                  <p className="text-gray-700 text-base mb-4">
+                  <p className="mb-4 text-base text-gray-700">
                     <b>Email: </b> {rowData.email}
                   </p>
-                  <p className="text-gray-700 text-base mb-4">
+                  <p className="mb-4 text-base text-gray-700">
                     <b>Status: </b>{" "}
                     {rowData.status === true ? (
                       <Badge colorScheme="green">Active</Badge>
@@ -176,14 +176,14 @@ const InquiryModal = ({ onClose, onOpen, isOpen, rowData, pageType }: any) => {
                       <Badge colorScheme="red">Deactivated</Badge>
                     )}
                   </p>
-                  <p className="text-gray-700 text-base mb-4">
+                  <p className="mb-4 text-base text-gray-700">
                     <b>Phone Number: </b> {rowData.phone}
                   </p>
-                  <p className="text-gray-700 text-base mb-4">
+                  <p className="mb-4 text-base text-gray-700">
                     <b>Location: </b>
                     {rowData.location}
                   </p>
-                  <p className="text-gray-700 text-base mb-4">
+                  <p className="mb-4 text-base text-gray-700">
                     <b>Return date: </b>
                     {rowData.to}
                   </p>

@@ -1,11 +1,4 @@
 <div id="top"></div>
-<!--
-*** Thanks for checking out the Best-README-Template. If you have a suggestion
-*** that would make this better, please fork the repo and create a pull request
-*** or simply open an issue with the tag "enhancement".
-*** Don't forget to give the project a star!
-*** Thanks again! Now go create something AMAZING! :D
--->
 
 <!-- PROJECT SHIELDS -->
 <!--
@@ -102,7 +95,6 @@ Here is why you wanted to choose our service:
 - [![MongoDB][mongodb.js]][mongodb-url]
 - [![NodeJS][node.js]][nodejs-url]
 - [![Express][express.js]][express-url]
-- [![SocketIO][socketio.js]][socketio-url]
 - [![Cloudinary][cloudinary.js]][cloudinary-url]
 - [![GoogleAPI][googleapi.js]][googleapi-url]
 
