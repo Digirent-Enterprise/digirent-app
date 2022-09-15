@@ -71,6 +71,10 @@ Here is why you wanted to choose our service:
 - Our products are always in great conditions.
 - We provide 24/7 support so contact us when needed.
 
+<div>View deployment: <a href="https:/https://www.youtube.com/watch?v=HEUMxaKKBMs/www.digirent.dev">https://www.digirent.dev</a></div>
+
+<div>View demo video: <a href="https://www.youtube.com/watch?v=HEUMxaKKBMs">https://www.youtube.com/watch?v=HEUMxaKKBMs</a></div>
+
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 ### Technology stacks
@@ -83,14 +87,6 @@ Here is why you wanted to choose our service:
 - [![Typescript][typescript.js]][typescript-url]
 - [![Tailwind][tailwind.js]][tailwind-url]
 - [![ChakraUI][chakraui.js]][chakraui-url]
-
-##### Back-end
-
-- [![MongoDB][mongodb.js]][mongodb-url]
-- [![NodeJS][node.js]][nodejs-url]
-- [![Express][express.js]][express-url]
-- [![Cloudinary][cloudinary.js]][cloudinary-url]
-- [![GoogleAPI][googleapi.js]][googleapi-url]
 
 ##### Back-end
 
@@ -123,6 +119,7 @@ This is all the framework and prequisites for the website:
   Download NodeJS via: <https://nodejs.org/en/download/>
   <br>
 - npm
+
   ```sh
   npm install npm@latest -g
   ```
@@ -136,18 +133,25 @@ This is all the framework and prequisites for the website:
    ```
 
 2. Clone the repo
+
    ```sh
    git clone https://github.com/Digirent-Enterprise/digirent-app.git
    ```
+
 3. Change directory to project folder
+
    ```sh
    cd digirent-app
    ```
+
 4. Install NPM packages
+
    ```sh
    npm install
    ```
+
 5. Use this command in terminal to initiate the website:
+
    ```sh
    npm start
    ```
@@ -165,10 +169,6 @@ To use our service, simply access the website and browse a product. Click on tha
 Come and join us to explore an exceptional, like no others renting service!
 
 <p align="right">(<a href="#top">back to top</a>)</p>
-
-<!-- ROADMAP -->
-
-## ROADMAP
 
 ## ROADMAP
 
@@ -204,7 +204,7 @@ Come and join us to explore an exceptional, like no others renting service!
 
 See the [open issues](https://github.com/Digirent-Enterprise/digirent-app/issues) for a full list of proposed features (and known issues).
 
-<p align="right">(<a href="#top">back to top</a>)</p> -->
+<p align="right">(<a href="#top">back to top</a>)</p>
 
 <!-- CONTRIBUTING -->
 
@@ -223,14 +223,11 @@ Don't forget to give the project a star! Thanks again!
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
-<!-- CONTACT -->
-## License 
+## Licenses
 
 MIT license
 
-## License
-
-MIT license
+<p align="right">(<a href="#top">back to top</a>)</p>
 
 ## Links
 
