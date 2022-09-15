@@ -29,7 +29,9 @@
     <a href="https://github.com/Digirent-Enterprise/digirent-app.git"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://www.digirent.dev/">View Demo</a>
+    <a href="https://www.digirent.dev/">View Deployment</a>
+    ·
+    <a href="https://www.youtube.com/watch?v=ZmCZoZ7XotY">View demo video</a>
     ·
     <a href="https://github.com/Digirent-Enterprise/digirent-app/issues">Report Bug</a>
     ·
@@ -222,6 +224,9 @@ Don't forget to give the project a star! Thanks again!
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 <!-- CONTACT -->
+## License 
+
+MIT license
 
 ## License
 
